@@ -5,5 +5,7 @@ class Good < ActiveRecord::Base
 
 	has_many :goods_impexpcompanies, inverse_of: :good
 	has_many :impexpcompanies, through: :goods_impexpcompanies
+
+	belongs_to :local_taric
 	
 end
