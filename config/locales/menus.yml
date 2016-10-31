@@ -1,0 +1,31 @@
+en:
+  goodsdb: "Goods"
+  clientsdb: "Our clients"
+  manufacturersdb: "Manufacturers/consumers"
+  localtaricdb: "Local TARIC database"
+
+  new_item: "Add item"
+
+  footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
+  footer_advertisement_webpage: "www.roulage.sk/en"
+  footer_advertisement_webpage_link: "http://roulage.sk/en"
+  footer_advertisement_creator: "Created by Matej Kováč"
+
+  no_results: "No results meet criteria"
+
+
+
+sk:
+  goodsdb: "Tovary"
+  clientsdb: "Naši klienti"
+  manufacturersdb: "Výrobcovia/odoberatelia"
+  localtaricdb: "Lokálna databáza TARIC"
+
+  new_item: "Pridať položku"
+
+  footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
+  footer_advertisement_webpage: "www.roulage.sk"
+  footer_advertisement_webpage_link: "http://roulage.sk"
+  footer_advertisement_creator: "Vytvoril Matej Kováč"
+
+  no_results: "Požadovaným kritériám nevyhovuje žiaden záznam"

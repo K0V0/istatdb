@@ -1,0 +1,31 @@
+<table>
+	
+	<thead>
+
+		<tr>
+			<th> <%= cbt :table_cap_makers %> </th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+
+		<% makers.each do |maker| %>
+			<tr>
+				<td>
+					<%= maker.name %>
+				</td>
+			</tr>
+		<% end %>
+
+	</tbody>
+
+	<tfoot>
+		
+		<tr>
+			<td> <%= cbt :table_cap_makers_count %> </td>
+		</tr>
+
+	</tfoot>
+
+</table>

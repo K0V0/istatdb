@@ -1,0 +1,19 @@
+
+<section class="item_details">
+
+	<h1> <%= @good.ident %> </h1>
+	<h2> <%= @good.kncode %> </h2>
+
+	<p>
+
+	<%= @good.description %>
+
+	<p>
+
+	<%= render 'goods/goodslist/item_details_clients', clients: @good.impexpcompanies %>
+
+	<p>
+
+	<%= render 'goods/goodslist/item_details_manufacturers', makers: @good.manufacturers %>
+
+</section>

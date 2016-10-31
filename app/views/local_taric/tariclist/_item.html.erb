@@ -1,0 +1,20 @@
+
+<% items.each do |item| %>
+
+	<tr>
+
+		<td> 
+			<%= highlight_search item, :kncode %>
+		</td>
+		
+		<td> 
+			<%= highlight_search item, :description %>
+		</td>
+
+		<td> <%= item.additional_info %> </td>
+
+	</tr>
+
+<% end %>
+
+<%= render 'layouts/no_results', items: items %>

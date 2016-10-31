@@ -1,0 +1,12 @@
+<% content_for :actions do %>
+
+	<section class="actions">
+		
+		<%= link_to t(:new_item), {
+			controller: controller_name,
+			action: "new"
+		} %>
+
+	</section>
+
+<% end %>

@@ -1,0 +1,21 @@
+en:
+  goods:
+    table_cap_ident: "Identification"
+    table_cap_description: "Description, additional info"
+    table_cap_knnumber: "Nomenclature num."
+
+    table_cap_clients: "Clients that buy/sell this product"
+    table_cap_clients_count: "Total clients: "
+    table_cap_makers: "Manufacturers of this product"
+    table_cap_makers_count: "Total manufacturers: "
+
+sk:
+  goods:
+    table_cap_ident: "Identifikácia"
+    table_cap_description: "Popis, doplnk. informácie"
+    table_cap_knnumber: "kód KN"
+
+    table_cap_clients: "Klienti predávajúci alebo nakupujúci tento tovar"
+    table_cap_clients_count: "Klientov celkom: "
+    table_cap_makers: "Spoločnosti vyrábajúce tento produkt"
+    table_cap_makers_count: "Výrobcov celkom: "

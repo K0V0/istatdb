@@ -1,0 +1,28 @@
+<% content_for :mainmenu do %>
+	
+	<nav class="main_menu">
+
+		<ul>
+
+			<li>
+				<%= link_to t(:goodsdb), goods_path %>
+			</li>
+
+			<li>
+				<%= link_to t(:clientsdb), clients_path %>
+			</li>
+
+			<li>
+				<%= link_to t(:manufacturersdb), manufacturers_path %>
+			</li>
+
+			<li>
+				<%= link_to t(:localtaricdb), local_tarics_path %>
+			</li>
+
+		</ul>
+
+	</nav>
+	
+
+<% end %>

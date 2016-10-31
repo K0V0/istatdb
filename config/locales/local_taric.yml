@@ -1,0 +1,46 @@
+en:
+  local_taric:
+    table_cap_additional_info: "Identification"
+    table_cap_description: "Description, additional info"
+    table_cap_knnumber: "Nomenclature num."
+
+   
+
+sk:
+  local_taric:
+    table_cap_additional_info: "Identifikácia"
+    table_cap_description: "Popis, doplnk. informácie"
+    table_cap_knnumber: "kód KN"
+
+  
+en:
+  activerecord:
+    models:
+      local_taric: TARIC
+    attributes:
+      local_taric:
+        kncode: "Nomenclature"
+        description: "Description"
+        additional_info: "Additional informations"
+
+sk:
+  activerecord:
+    models:
+      local_taric: TARIC
+    attributes:
+      local_taric:
+        kncode: "Kód KN"
+        description: "Popis položky"
+        additional_info: "Dodatočné informácie"
+    errors:
+      models:
+        local_taric:
+          attributes:
+            kncode:
+              not_a_number: "môže pozostávať iba výhradne z číslic."
+              too_short: "je príliš krátky. Štandartne pozostáva z 8 alebo 10 číslic."
+              too_long: "je príliš dlhý. Štandartne pozostáva z 8 alebo 10 číslic."
+              blank: "ostal nevyplnený."
+            description:
+              blank: "chýba."
+

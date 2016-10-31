@@ -1,0 +1,7 @@
+
+elem = $('#kncodes').children('tbody');
+
+elem.children('tr').remove();
+
+$('<%= j(render "local_taric/tariclist/item", items: @result) %>').appendTo(elem);
+

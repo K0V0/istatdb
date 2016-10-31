@@ -1,0 +1,16 @@
+
+<% content_for :search_bar do %>
+
+	<section class="search_bar"> 
+
+		<%= search_form_for @search, remote: true do |s| %> 
+
+			<%= s.search_field :ident_cont %>
+
+			<%= s.submit %>
+
+		<% end %>
+
+	</section>
+
+<% end %>

@@ -1,0 +1,24 @@
+
+<section class="items_table">
+
+	<table id="goods">
+
+		<thead>
+				
+		<tr>
+			<th> <%= cbt :table_cap_ident %> </th>
+			<th> <%= cbt :table_cap_description %> </th>
+			<th> <%= cbt :table_cap_knnumber %> </th>
+		</tr>
+
+		</thead>
+
+		<tbody>
+
+			<%= render 'goods/goodslist/item', items: @result %>
+
+		</tbody>
+
+	</table>
+
+</section>
