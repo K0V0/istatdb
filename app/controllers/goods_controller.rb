@@ -1,23 +1,21 @@
 class GoodsController < ApplicationController
 
-	before_action :searcher, only: [:index, :search, :show]
+	before_action :searcher_for, only: [:index, :search, :show]
 
 	def index
-		#@goods = Good.all
+
+	end
+
+	def search
+		
 	end
 
 	def show
-		#@good = @result.find(params[:id])
+		
 	end
 
 	def new
 		@good = Good.new
-	end
-
-	private
-
-	def searcher
-		searcher_for  
 	end
 
 end

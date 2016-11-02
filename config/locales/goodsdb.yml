@@ -9,6 +9,8 @@ en:
     table_cap_makers: "Manufacturers of this product"
     table_cap_makers_count: "Total manufacturers: "
 
+    search_client_filter_none: "Goods used by all clients"
+
 sk:
   goods:
     table_cap_ident: "Identifikácia"
@@ -19,3 +21,5 @@ sk:
     table_cap_clients_count: "Klientov celkom: "
     table_cap_makers: "Spoločnosti vyrábajúce tento produkt"
     table_cap_makers_count: "Výrobcov celkom: "
+
+    search_client_filter_none: "Tovar všetkých klientov"

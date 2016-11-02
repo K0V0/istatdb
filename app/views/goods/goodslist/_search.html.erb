@@ -7,6 +7,13 @@
 
 			<%= s.search_field :ident_cont %>
 
+			<%= s.collection_select :client_filter,
+				Impexpcompany.all,
+				:id,
+				:company_name,
+				include_blank: cbt(:search_client_filter_none)
+			%>
+
 			<%= s.submit %>
 
 		<% end %>

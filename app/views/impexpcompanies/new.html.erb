@@ -1,0 +1,19 @@
+<%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @impexpcompany do |t| %>
+
+		<div>
+			<%= t.label :company_name %>
+			<%= t.text_field :company_name %>
+			<%= t.errors :company_name %>
+		</div>
+
+		<div>
+			<%= t.submit %>
+		</div>
+
+	<% end %>
+
+</section>

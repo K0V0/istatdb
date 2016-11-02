@@ -1,0 +1,15 @@
+<% items.each do |item| %>
+
+	<tr>
+
+		<td> 
+			
+			<%= item.company_name %>
+
+		</td>
+		
+	</tr>
+
+<% end %>
+
+<%= render 'layouts/no_results', items: items %>

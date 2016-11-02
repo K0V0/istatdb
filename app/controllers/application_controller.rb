@@ -40,4 +40,28 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  # DRY for create action
+  def create_action permitted_params_obj
+    instance_variable_set(
+      '@'+controller_name.singularize,
+      controller_name.classify.constantize.send(:new, permitted_params_obj)
+    )
+    if instance_variable_get('@'+controller_name.singularize).send(:save)
+      redirect_to public_send("#{controller_name.pluralize}_path")
+    else
+       render "new"
+    end
+  end
+
+
+  # some DRY for simmilar controllers
+  # sets instance variable named as controler according to RoR conventions 
+  def new_action
+      instance_variable_set(
+        '@'+controller_name.singularize,
+        controller_name.classify.constantize.new
+      )
+  end
+
 end

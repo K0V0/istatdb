@@ -31,13 +31,17 @@ Rails.application.routes.draw do
 
   # index
   get "clientsdb",
-    to: "impexp#index",
-    as: "clients"
+    to: "impexpcompanies#index",
+    as: "impexpcompanies"
 
   # novy klient
   get "clientsdb/new",
-    to: "impexp#new",
-    as: "new_client"
+    to: "impexpcompanies#new",
+    as: "new_impexpcompany"
+
+  #create
+  post "clientsdb",
+    to: "impexpcompanies#create"
 
 
 
@@ -53,6 +57,9 @@ Rails.application.routes.draw do
     to: "manufacturers#new",
     as: "new_manufacturer" 
 
+  get "manufacturersdb/:id/details",
+    to: "manufacturers#show",
+    as: "manufacturer" 
 
 
   ### lokalna taric databaza

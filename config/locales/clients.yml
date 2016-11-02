@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      impexpcompany: TARIC
+    attributes:
+      impexpcompany:
+         company_name: Client
+
+sk:
+  activerecord:
+    models:
+      impexpcompany: Klienti
+    attributes:
+      impexpcompany:
+        company_name: Klient
+    errors:
+      models:
+        impexpcompany:
+          attributes:
+            company_name:
+              blank: "musí mať názov"
+              taken: "už v databáze existuje"
+            

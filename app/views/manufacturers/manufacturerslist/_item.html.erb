@@ -1,0 +1,16 @@
+
+<% items.each do |item| %>
+
+	<tr>
+
+		<td> 
+			
+				<%= highlight_search item, :name %>
+			
+		</td>
+		
+	</tr>
+
+<% end %>
+
+<%= render 'layouts/no_results', items: items %>

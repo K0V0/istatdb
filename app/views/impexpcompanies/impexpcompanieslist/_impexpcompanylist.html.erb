@@ -1,0 +1,22 @@
+<section class="items_table">
+
+	<table id="impexpcompany">
+
+		<thead>
+				
+		<tr>
+			<th> <%= cbt :table_cap_client %> </th>
+		</tr>
+
+		</thead>
+
+		<tbody>
+
+			<%= render 'impexpcompanies/impexpcompanieslist/item', 
+				items: @impexpcompanies %>
+
+		</tbody>
+
+	</table>
+
+</section>
