@@ -1,0 +1,5 @@
+elem = $('#manufacturers').children('tbody');
+
+elem.children('tr').remove();
+
+$('<%= j(render "manufacturers/manufacturerslist/item", items: @result) %>').appendTo(elem);
