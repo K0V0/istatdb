@@ -2,6 +2,8 @@ class Good < ActiveRecord::Base
 
 	attr_accessor :kn_code
 	attr_accessor :kn_code_description
+	attr_accessor :client
+	attr_accessor :manufacturer
 
 	has_many :goods_manufacturers, inverse_of: :good
 	has_many :manufacturers, through: :goods_manufacturers

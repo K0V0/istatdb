@@ -17,6 +17,7 @@ class GoodsController < ApplicationController
 
 	def new
 		@good = Good.new
+		@taric = LocalTaric.all
 	end
 
 	def create
