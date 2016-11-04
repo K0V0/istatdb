@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     to: "goods#show",
     as: "good"
 
+  post "goodsdb",
+    to: "goods#create"
+
 
 
   ### databaza klientov (objednavatelia sluzby intrastat) 

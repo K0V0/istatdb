@@ -1,2 +1,18 @@
 
 <%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @good do |t| %>
+
+		<%= render 'goods/new/good', obj: t %>
+
+		<%= render 'goods/new/taricnum', obj: t %>
+
+		<div>
+			<%= t.submit %>
+		</div>
+
+	<% end %>
+
+</section>

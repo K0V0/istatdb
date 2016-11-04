@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025190550) do
+ActiveRecord::Schema.define(version: 20161103204224) do
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
     t.text     "description"
-    t.text     "kncode"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "local_taric_id"
