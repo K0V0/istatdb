@@ -23,3 +23,43 @@ sk:
     table_cap_makers_count: "Výrobcov celkom: "
 
     search_client_filter_none: "Tovar všetkých klientov"
+
+en:
+  activerecord:
+    models:
+      good: Goods
+    attributes:
+      good:
+        ident: "Catalog n."
+        description: "Description of goods"
+        kn_code: "TARIC code"
+        kn_code_description: "Description of group"
+        client: "Client"
+        manufacturer: "Manufacturer"
+    errors:
+      models:
+        good:
+          attributes:
+            ident:
+              blank: "left blank."
+            description:
+
+sk:
+  activerecord:
+    models:
+      good: Tovary
+    attributes:
+      good:
+        ident: "Katalógové č."
+        description: "Popis tovaru"
+        kn_code: "Nomenklatúra"
+        kn_code_description: "Popis colnej skupiny"
+        client: "Klientská firma"
+        manufacturer: "Výrobca"
+    errors:
+      models:
+        good:
+          attributes:
+            ident:
+              blank: "ostalo nevyplnené"
+            description:

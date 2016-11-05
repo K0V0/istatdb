@@ -24,9 +24,14 @@ Rails.application.routes.draw do
     to: "goods#show",
     as: "good"
 
+  # vytvorit novu
   post "goodsdb",
     to: "goods#create"
 
+  # new good creation form - for searching kncodes in LocalTaric
+  # thats why in another controller
+  post "goodsdb/new/knnumber_search",
+    to: "local_taric#new_good_knnumber_search"
 
 
   ### databaza klientov (objednavatelia sluzby intrastat) 

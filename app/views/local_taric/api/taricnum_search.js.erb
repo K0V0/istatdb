@@ -1,0 +1,4 @@
+
+$("#new_good_taric_search").children("tbody").children('tr').remove();
+
+$("#new_good_taric_search > tbody").append('<%= j(render "local_taric/api/taricnum_search", items: @result) %>');

@@ -22,6 +22,19 @@ en:
         kncode: "Nomenclature"
         description: "Description"
         additional_info: "Additional informations"
+    errors:
+      models:
+        local_taric:
+          attributes:
+            kncode:
+              not_a_number: "can consist only from digits 0-9."
+              too_short: "is too short. Normally consists of 8 or 10 digits."
+              too_long: "is too long. Normally consists of 8 or 10 digits."
+              exactly: "has not allowed length. Normally consists exactly of 8 or 10 digits."
+              blank: "left blank."
+            description:
+              blank: "missing."
+              taken: "with this description already exists"
 
 sk:
   activerecord:
@@ -40,7 +53,9 @@ sk:
               not_a_number: "môže pozostávať iba výhradne z číslic."
               too_short: "je príliš krátky. Štandartne pozostáva z 8 alebo 10 číslic."
               too_long: "je príliš dlhý. Štandartne pozostáva z 8 alebo 10 číslic."
+              exactly: "má nesprávnu dĺžku. Štandartne pozostáva z 8 alebo 10 číslic."
               blank: "ostal nevyplnený."
             description:
               blank: "chýba."
+              taken: "s týmto popisom sa už v databáze nachádza."
 
