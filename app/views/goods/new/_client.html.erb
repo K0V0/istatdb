@@ -1,6 +1,28 @@
 <div>
+
 	<%= obj.label :client %>
 	<%= obj.text_field :client %>
 
 	<%= obj.errors :client %>
+
+</div>
+
+<div>
+	
+	<table id="new_good_client_search">
+
+		<thead>
+			<tr>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'impexpcompanies/api/client_search', items: @clients %>
+
+		</tbody>
+
+	</table>
+
 </div>

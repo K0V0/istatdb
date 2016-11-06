@@ -33,6 +33,11 @@ Rails.application.routes.draw do
   post "goodsdb/new/knnumber_search",
     to: "local_taric#new_good_knnumber_search"
 
+  # new good creation form - for searching client's company in Impexpcompany
+  post "goodsdb/new/client_search",
+    to: "impexpcompanies#new_good_client_search"
+
+
 
   ### databaza klientov (objednavatelia sluzby intrastat) 
   ### dovozcovia a vyvozcovia

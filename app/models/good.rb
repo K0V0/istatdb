@@ -3,6 +3,7 @@ class Good < ActiveRecord::Base
 	attr_accessor :kn_code
 	attr_accessor :kn_code_description
 	attr_accessor :client
+	attr_accessor :client_office
 	attr_accessor :manufacturer
 
 	has_many :goods_manufacturers, inverse_of: :good
@@ -17,6 +18,10 @@ class Good < ActiveRecord::Base
 	validates :ident, uniqueness: true
 
 	validate :kn_code_validation
+	after_create :assign_to_taric
+
+	validate :client_validation
+	after_create :assign_to_client
 
 	scope :client_filter, -> (pars) { 
 		self
@@ -31,9 +36,41 @@ class Good < ActiveRecord::Base
 	end
 
 	def kn_code_validation
-		tmp = LocalTaric.new(kncode: @kn_code, description: @kn_code_description)
-		if !tmp.valid?
-			errors.add(:kn_code, tmp.errors.to_a.first) 
+		assoc_validator( LocalTaric, { 
+			kncode: @kn_code, 
+			description: @kn_code_description 
+		})
+	end
+
+	def assign_to_taric
+		@local_taric.goods << self
+	end
+
+	def client_validation
+		assoc_validator( Impexpcompany, { 
+			company_name: @client, 
+			affiliated_office: @client_office
+		})
+	end
+
+	def assign_to_client
+		@impexpcompany.goods << self
+	end
+
+	def assoc_validator object, fields={}
+		tmp = object.where(fields)
+		if !tmp.blank?
+			# nachadza sa v DB takze bude valid
+			instance_variable_set('@'+object.to_s.singularize.underscore, tmp.first)
+		else
+			# nutne obidenie validacej podmienky na unikatnost
+			tmp = object.new(fields)
+			if !tmp.valid?
+				errors.add(fields.last.key, tmp.errors.to_a.first) 
+			else
+				instance_variable_set('@'+object.to_s.singularize.underscore, tmp)
+				'@'+object.to_s.singularize.underscore.constantize.send(:save)
+			end
 		end
 	end
 	

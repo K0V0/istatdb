@@ -21,6 +21,8 @@ class GoodsController < ApplicationController
 	def new
 		@good = Good.new
 		@taric = LocalTaric.all
+		@clients = Impexpcompany.all
+		@manufacturers = Manufacturer.all
 	end
 
 	def create
@@ -30,7 +32,14 @@ class GoodsController < ApplicationController
 	private 
 
 	def permitted_pars
-		params[:good].permit(:ident, :kn_code, :kn_code_description, :client, :manufacturer)
+		params[:good].permit(
+			:ident, 
+			:kn_code, 
+			:kn_code_description, 
+			:client, 
+			:manufacturer,
+			:description
+		)
 	end
 
 	def reload_vars
@@ -39,6 +48,7 @@ class GoodsController < ApplicationController
 			"#{params[:good][:kn_code]}%",
 			"%#{params[:good][:kn_code_description]}%"
 		)
+		@clients = Impexpcompany.where("company_name LIKE ?", "%#{params[:good][:client]}%")
 	end
 
 end

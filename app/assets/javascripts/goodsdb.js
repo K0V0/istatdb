@@ -17,6 +17,16 @@ $(document).ready(function() {
 	    	}
 	    );
 	});
+
+	$(document).on('input', "#good_client", function(e) {
+	    ajaxer('/goodsdb/new/client_search', 
+	    	{ 
+    			q: 	{ 
+    				company_name_cont: $("#good_client").val()
+    				} 
+	    	}
+	    );
+	});
 	
 	// goods section - adding new item - write kn code and description 
 	// to input field when selected from list
@@ -26,6 +36,12 @@ $(document).ready(function() {
 	    var desc = $.trim( $(this).children('td:last-child').text() );
 	    $("#good_kn_code_description").val(desc);
 	});
+
+	$(document).on('click', "#new_good_client_search > tbody > tr", function(e) {
+	    var client = $.trim( $(this).children('td:first-child').text() );
+	    $("#good_client").val(client);
+	});
+
 
 });
 

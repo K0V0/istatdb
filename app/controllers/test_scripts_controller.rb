@@ -6,10 +6,10 @@ class TestScriptsController < ApplicationController
 	def add_fake_data
 		i = 1
 		5.times do
-			#l = LocalTaric.new
-			#l.kncode = (1000000 + i).to_s
-			#l.description = "popis " + i.to_s
-			#l.save
+			l = LocalTaric.new
+			l.kncode = (1000000 + i).to_s
+			l.description = "popis " + i.to_s
+			l.save
 
 			g = Good.new
 			g.ident = "tovar " + i.to_s

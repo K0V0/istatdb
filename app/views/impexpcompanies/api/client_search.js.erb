@@ -1,0 +1,4 @@
+
+$("#new_good_client_search").children("tbody").children('tr').remove();
+
+$("#new_good_client_search > tbody").append('<%= j(render "impexpcompanies/api/client_search", items: @result) %>');
