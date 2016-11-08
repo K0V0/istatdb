@@ -20,6 +20,7 @@ class GoodsController < ApplicationController
 
 	def new
 		@good = Good.new
+		#@good.manufacturers.build
 		@taric = LocalTaric.all
 		@clients = Impexpcompany.all
 		@manufacturers = Manufacturer.all
@@ -37,8 +38,9 @@ class GoodsController < ApplicationController
 			:kn_code, 
 			:kn_code_description, 
 			:client, 
-			:manufacturer,
-			:description
+			:description,
+			:client_office,
+			:manufacturer_name
 		)
 	end
 

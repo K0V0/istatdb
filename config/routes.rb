@@ -74,6 +74,10 @@ Rails.application.routes.draw do
     to: "manufacturers#show",
     as: "manufacturer" 
 
+  post "manufacturersdb",
+    to: "manufacturers#create"
+  
+
 
   ### lokalna taric databaza
 

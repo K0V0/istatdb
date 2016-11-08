@@ -4,7 +4,14 @@ class Good < ActiveRecord::Base
 	attr_accessor :kn_code_description
 	attr_accessor :client
 	attr_accessor :client_office
-	attr_accessor :manufacturer
+	attr_accessor :manufacturer_name
+
+	# cannot use accept_nested_attributes_for due to fact that when user in this model 
+	# writes something that is in database I want to associate it only
+	# what can not be done when validations fail
+	# cannot use second solution to validate on parent model because each association 
+	# here can be added independently from other places in app and validations 
+	# on both sides causes circular dependency error
 
 	has_many :goods_manufacturers, inverse_of: :good
 	has_many :manufacturers, through: :goods_manufacturers
@@ -18,10 +25,10 @@ class Good < ActiveRecord::Base
 	validates :ident, uniqueness: true
 
 	validate :kn_code_validation
-	after_create :assign_to_taric
-
 	validate :client_validation
-	after_create :assign_to_client
+	#validate :manufacturer_validation
+
+	after_create :assignments
 
 	scope :client_filter, -> (pars) { 
 		self
@@ -42,10 +49,6 @@ class Good < ActiveRecord::Base
 		})
 	end
 
-	def assign_to_taric
-		@local_taric.goods << self
-	end
-
 	def client_validation
 		assoc_validator( Impexpcompany, { 
 			company_name: @client, 
@@ -53,17 +56,26 @@ class Good < ActiveRecord::Base
 		})
 	end
 
-	def assign_to_client
+	def manufacturer_validation
+		assoc_validator( Manufacturer, { 
+			name: @manufacturer_name
+		})
+	end
+
+	def assignments
+		@local_taric.goods << self
 		@impexpcompany.goods << self
+		#@manufacturer.goods << self
 	end
 
 	def assoc_validator object, fields={}
 		tmp = object.where(fields)
 		if !tmp.blank?
-			# nachadza sa v DB takze bude valid
+			# is also in DB, so will be valid
 			instance_variable_set('@'+object.to_s.singularize.underscore, tmp.first)
 		else
-			# nutne obidenie validacej podmienky na unikatnost
+			# uniqueness validation condition bypassed by validating on new object
+			# object is unique because by given criteria not found ind DB
 			tmp = object.new(fields)
 			if !tmp.valid?
 				errors.add(fields.last.key, tmp.errors.to_a.first) 

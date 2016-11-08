@@ -11,9 +11,11 @@ class LocalTaric < ActiveRecord::Base
 	validates_uniqueness_of :kncode, scope: :description
 
 	def kncode_length_valid
-		if !(kncode.length == 8 || kncode.length == 10)
-			errors.add(:kncode, :exactly)
-		end
+		#if !kncode.nil?
+			if !(kncode.length == 8 || kncode.length == 10)
+				errors.add(:kncode, :exactly)
+			end
+		#end
 	end
 
 end
