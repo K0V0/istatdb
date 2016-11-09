@@ -1,4 +1,4 @@
 
-$("#new_good_taric_search").children("tbody").children('tr').remove();
+$("#good_local_taric_kncode_results").children("tbody").children('tr').remove();
 
-$("#new_good_taric_search > tbody").append('<%= j(render "local_taric/api/taricnum_search", items: @result) %>');
+$("#good_local_taric_kncode_results > tbody").append('<%= j(render "local_taric/api/taricnum_search", items: @result) %>');

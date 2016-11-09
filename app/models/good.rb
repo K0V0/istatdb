@@ -1,9 +1,10 @@
 class Good < ActiveRecord::Base
 
-	attr_accessor :kn_code
-	attr_accessor :kn_code_description
-	attr_accessor :client
-	attr_accessor :client_office
+	# convention: <associated model name><underscore><field name in assoc model>
+	attr_accessor :local_taric_kncode
+	attr_accessor :local_taric_description
+	attr_accessor :impexpcompany_company_name
+	attr_accessor :impexpcompany_affiliated_office
 	attr_accessor :manufacturer_name
 
 	# cannot use accept_nested_attributes_for due to fact that when user in this model 
@@ -26,7 +27,7 @@ class Good < ActiveRecord::Base
 
 	validate :kn_code_validation
 	validate :client_validation
-	#validate :manufacturer_validation
+	validate :manufacturer_validation
 
 	after_create :assignments
 
@@ -43,45 +44,49 @@ class Good < ActiveRecord::Base
 	end
 
 	def kn_code_validation
-		assoc_validator( LocalTaric, { 
-			kncode: @kn_code, 
-			description: @kn_code_description 
-		})
+		assoc_validator LocalTaric, :kncode, :description
 	end
 
 	def client_validation
-		assoc_validator( Impexpcompany, { 
-			company_name: @client, 
-			affiliated_office: @client_office
-		})
+		assoc_validator Impexpcompany, :company_name
 	end
 
 	def manufacturer_validation
-		assoc_validator( Manufacturer, { 
-			name: @manufacturer_name
-		})
+		assoc_validator Manufacturer, :name
 	end
 
 	def assignments
 		@local_taric.goods << self
 		@impexpcompany.goods << self
-		#@manufacturer.goods << self
+		@manufacturer.goods << self
 	end
 
-	def assoc_validator object, fields={}
-		tmp = object.where(fields)
+	def assoc_validator object, *fields
+		query = {}
+		mdl = object.to_s.underscore
+		instvar_string = '@' + mdl
+
+		fields.each do |field|
+			query[field] = instance_variable_get(instvar_string + '_' + field.to_s)
+		end
+
+		tmp = object.where(query)
 		if !tmp.blank?
 			# is also in DB, so will be valid
-			instance_variable_set('@'+object.to_s.singularize.underscore, tmp.first)
+			instance_variable_set(instvar_string, tmp.first)
 		else
 			# uniqueness validation condition bypassed by validating on new object
 			# object is unique because by given criteria not found ind DB
-			tmp = object.new(fields)
+			tmp = object.new(query)
 			if !tmp.valid?
-				errors.add(fields.last.key, tmp.errors.to_a.first) 
+				errors.add(
+					(mdl + '_' + fields.last.to_s).to_sym,
+					tmp.errors.to_a.first
+				) 
 			else
-				instance_variable_set('@'+object.to_s.singularize.underscore, tmp)
-				'@'+object.to_s.singularize.underscore.constantize.send(:save)
+				instance_variable_set(instvar_string, tmp)
+				instance_variable_get(instvar_string).send(:save)
+				#instvar.send(:save)
 			end
 		end
 	end

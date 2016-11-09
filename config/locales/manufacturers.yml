@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    models:
+      manufacturer: Manufacturer
+    attributes:
+      manufacturer:
+         name: Manufacturer/buyer
+    errors:
+      models:
+        manufacturer:
+          attributes:
+            name:
+              blank: "must be filled in"
+              taken: "exists"
+
+
+sk:
+  activerecord:
+    models:
+      manufacturer: Výrobca
+    attributes:
+      manufacturer:
+         name: Výrobca/odberateľ
+    errors:
+      models:
+        manufacturer:
+          attributes:
+            name:
+              blank: "je povinný údaj"
+              taken: "sa už v databáze nachádza"

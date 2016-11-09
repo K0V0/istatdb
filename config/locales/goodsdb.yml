@@ -32,10 +32,10 @@ en:
       good:
         ident: "Catalog n."
         description: "Description of goods"
-        kn_code: "TARIC code"
-        kn_code_description: "Description of group"
-        client: "Client"
-        manufacturer: "Manufacturer"
+        local_taric_kncode: "TARIC code"
+        local_taric_description: "Description of group"
+        impexpcompany_company_name: "Client"
+        manufacturer_name: "Manufacturer"
     errors:
       models:
         good:
@@ -54,8 +54,8 @@ sk:
         description: "Popis tovaru"
         kn_code: "Nomenklatúra"
         kn_code_description: "Popis colnej skupiny"
-        client: "Klientská firma"
-        manufacturer: "Výrobca"
+        impexpcompany_company_name: "Klientská firma"
+        manufacturer_name: "Výrobca"
     errors:
       models:
         good:

@@ -5,6 +5,13 @@ en:
     attributes:
       impexpcompany:
          company_name: Client
+    errors:
+      models:
+        impexpcompany:
+          attributes:
+            company_name:
+              blank: "must be filled in"
+              taken: "exists"
 
 sk:
   activerecord:
