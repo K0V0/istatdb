@@ -1,12 +1,20 @@
 class ManufacturersController < ApplicationController
 
-	  before_action :searcher, only: [:index, :search, :show]
+    before_action(only: [:index, :search, :show, :new_good_manufacturer_search]) {
+      searcher_for autoshow:false 
+    }
+
     before_action :new_action, only: :new
+    
     before_action(only: :create) { create_action permitted_pars }
 
   	def index
 
   	end
+
+    def search
+
+    end
 
   	def new
 
@@ -20,11 +28,11 @@ class ManufacturersController < ApplicationController
 
     end
 
-  	private
+    def new_good_manufacturer_search
+      render('manufacturers/api/manufacturer_search')
+    end
 
-  	def searcher
-  		searcher_for autoshow:false
-  	end
+  	private
 
     def permitted_pars
       params[:manufacturer].permit(:name)

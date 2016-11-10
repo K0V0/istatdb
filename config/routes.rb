@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   post "goodsdb/new/client_search",
     to: "impexpcompanies#new_good_client_search"
 
+  post "goodsdb/new/manufacturer_search",
+    to: "manufacturers#new_good_manufacturer_search"
+
 
 
   ### databaza klientov (objednavatelia sluzby intrastat) 

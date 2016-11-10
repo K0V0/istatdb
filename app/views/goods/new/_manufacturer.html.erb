@@ -6,3 +6,23 @@
 	<%= obj.errors :manufacturer_name %>
 
 </div>
+
+<div>
+	
+	<table id="good_manufacturer_name_results">
+
+		<thead>
+			<tr>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'manufacturers/api/manufacturer_search', items: @manufacturers %>
+
+		</tbody>
+
+	</table>
+
+</div>

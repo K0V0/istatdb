@@ -21,6 +21,13 @@ $(document).ready(function() {
 			good_impexpcompany_company_name: "company_name_cont"
 		}
 	);
+
+	searchQuery(
+		'/goodsdb/new/manufacturer_search',
+		{ 
+			good_manufacturer_name: "name_cont"
+		}
+	);
 });
 
 // conds: { input_elem_id: ransack_cond } 
