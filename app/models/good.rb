@@ -86,7 +86,6 @@ class Good < ActiveRecord::Base
 			else
 				instance_variable_set(instvar_string, tmp)
 				instance_variable_get(instvar_string).send(:save)
-				#instvar.send(:save)
 			end
 		end
 	end

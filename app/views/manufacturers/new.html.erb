@@ -1,2 +1,20 @@
 
 <%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @manufacturer do |t| %>
+
+		<div>
+			<%= t.label :name %>
+			<%= t.text_field :name %>
+			<%= t.errors :name %>
+		</div>
+
+		<div>
+			<%= t.submit %>
+		</div>
+
+	<% end %>
+
+</section>

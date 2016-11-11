@@ -1,2 +1,30 @@
 sk:
-  hello: "Ahoj svet"
+
+  goods:
+
+    table_cap_ident: "Identifikácia"
+    table_cap_description: "Popis, doplnk. informácie"
+    table_cap_knnumber: "kód KN"
+
+    table_cap_clients: "Klienti predávajúci alebo nakupujúci tento tovar"
+    table_cap_clients_count: "Klientov celkom: "
+    table_cap_makers: "Spoločnosti vyrábajúce tento produkt"
+    table_cap_makers_count: "Výrobcov celkom: "
+
+    search_client_filter_none: "Tovar všetkých klientov"
+
+  local_taric:
+
+    table_cap_additional_info: "Identifikácia"
+    table_cap_description: "Popis, doplnk. informácie"
+    table_cap_knnumber: "kód KN"
+
+  impexpcompanies:
+
+    table_cap_client: "Klienti"
+
+  manufacturers: 
+
+    table_cap_manufacturer: "Výrobca"
+    table_cap_site: "Závod"
+  

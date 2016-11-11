@@ -1,0 +1,54 @@
+en:
+
+  helpers:
+    submit:
+      good:
+        create: "Add good(s) item"
+
+  activerecord:
+    models:
+      good: Goods
+    attributes:
+      good:
+        ident: "Catalog n."
+        description: "Description of goods"
+        local_taric_kncode: "TARIC code"
+        local_taric_description: "Description of group"
+        impexpcompany_company_name: "Client"
+        manufacturer_name: "Manufacturer"
+
+    errors:
+      models:
+        good:
+          attributes:
+            ident:
+              blank: "left blank."
+            description:
+
+sk:
+
+  helpers:
+    submit:
+      good:
+        create: "Pridať tovarovú položku"
+
+  activerecord:
+    models:
+      good: Tovary
+    attributes:
+      good:
+        ident: "Katalógové č."
+        description: "Popis tovaru"
+        local_taric_kncode: "Nomenklatúra"
+        local_taric_description: "Popis colnej skupiny"
+        impexpcompany_company_name: "Klientská firma"
+        manufacturer_name: "Výrobca"
+    errors:
+      models:
+        good:
+          attributes:
+            ident:
+              blank: "ostalo nevyplnené"
+            description:
+
+

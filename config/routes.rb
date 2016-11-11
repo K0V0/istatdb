@@ -106,9 +106,13 @@ Rails.application.routes.draw do
     to: "test_scripts#index",
     as: "test_scripts"
 
-  get "add_fake_data",
+  get "test_scripts/add_fake_data",
     to: "test_scripts#add_fake_data",
     as: "test_add_fake_data"
+
+  get "test_scripts/remove_everything",
+    to: "test_scripts#remove_all",
+    as: "test_remove_everything"
 
 
 

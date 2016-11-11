@@ -6,7 +6,7 @@ module ApplicationHelper
 	# here I group translations by controllers and associated views
 	# using this function in view you don't need to write too much 
 	def cbt translation_key
-		t(params[:controller] + "." + translation_key.to_s)
+		I18n.t(params[:controller] + "." + translation_key.to_s)
 	end
 
 	### function for higlighting (wrapping with tags) occurences in searched string

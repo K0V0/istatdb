@@ -1,18 +1,4 @@
-en:
-  local_taric:
-    table_cap_additional_info: "Identification"
-    table_cap_description: "Description, additional info"
-    table_cap_knnumber: "Nomenclature num."
 
-   
-
-sk:
-  local_taric:
-    table_cap_additional_info: "Identifikácia"
-    table_cap_description: "Popis, doplnk. informácie"
-    table_cap_knnumber: "kód KN"
-
-  
 en:
   activerecord:
     models:
