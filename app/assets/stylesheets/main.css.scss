@@ -1,5 +1,33 @@
- html {
+$background_color: #000;
+$white: #fff;
 
- }
 
- 
+html {
+
+	body {
+		margin:0;
+	}
+}
+
+nav {
+
+	ul {
+		display: block;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+	}
+
+	&.main_menu {
+		background-color: $background_color;
+		color: $white;
+	}
+}
