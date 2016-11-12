@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+  before_action :administrative_mode, only: [:administration]
+
+
   def searcher_for object: nil, autoshow: true, search_condition:nil
 
     object ||= controller_name.classify.constantize
@@ -40,7 +43,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   # DRY for create action
   def create_action permitted_params_obj
     instance_variable_set(
@@ -53,7 +55,6 @@ class ApplicationController < ActionController::Base
        render "new"
     end
   end
-
 
   # some DRY for simmilar controllers
   # sets instance variable named as controler according to RoR conventions 
@@ -101,6 +102,26 @@ class ApplicationController < ActionController::Base
 
     result = model.where(query_string, *query_parameters) || model.all
     instance_variable_set(instvar_string, result)
+  end
+
+  # model: {
+  #   field: :method
+  # }
+  def reload_result_by_params_nested(**options)
+    options.each do |option|
+      settings = {}
+      option[1].each do |setting|
+        settings[setting[0]] = { 
+          param: (option[0].to_s.underscore + '_' + setting[0].to_s).to_sym,
+          search_method: setting[1]
+        }
+      end 
+      reload_result_by_params(option[0].to_s.constantize, settings)
+    end
+  end
+
+  def administrative_mode
+    @administrative_mode = (action_name == 'administration')
   end
 
 end

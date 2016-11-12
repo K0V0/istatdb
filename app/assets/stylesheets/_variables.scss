@@ -1,0 +1,26 @@
+$background_color: #000;
+$white: #eee;
+$white_input: #fefefe;
+
+$main_menu_active_link: $white;
+$main_menu_active_link_text: #000;
+$main_menu_inactive_link_hover: #444;
+
+$button_grey: #777;
+$button_grey_hover: #666;
+
+$button_selected: #00f;
+$button_selected_hover: #00f;
+
+$button_danger: #f00;
+$button_danger_hover: #f00;
+
+$group_background: #bbb;
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}

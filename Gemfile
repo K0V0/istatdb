@@ -33,6 +33,8 @@ gem 'ransack', git: 'https://github.com/K0V0/ransack'
 
 gem 'jquery-turbolinks'
 
+gem 'active_link_to'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

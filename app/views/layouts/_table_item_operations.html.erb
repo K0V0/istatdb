@@ -1,0 +1,27 @@
+<% if @administrative_mode %> 
+
+	<td>
+		<%= link_to( 
+			t(:edit_item), 
+			{
+				controller: controller_name,
+				action: "edit",
+				id: item_id
+			},
+			class: "edit_item" 
+		) %>
+	</td>
+
+	<td>
+		<%= link_to( 
+			t(:delete_item), 
+			{
+				controller: controller_name,
+				action: "delete",
+				id: item_id
+			},
+			class: "delete_item" 
+		) %>
+	</td>
+
+<% end %>

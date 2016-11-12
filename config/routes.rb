@@ -37,8 +37,25 @@ Rails.application.routes.draw do
   post "goodsdb/new/client_search",
     to: "impexpcompanies#new_good_client_search"
 
+  # new good creation form - for searching manufacturer's company in Manufcturer
   post "goodsdb/new/manufacturer_search",
     to: "manufacturers#new_good_manufacturer_search"
+
+  # administration - enter index page into administration mode
+  get "goodsdb/edit",
+    to: "goods#administration"
+
+  patch "goodsdb/:id/edit",
+    to: "goods#edit",
+    as: "edit_good"
+
+  put "goodsdb/:id/update",
+    to: "goods#update",
+    as: "update_good"
+
+  delete "goodsdb/:id/delete",
+    to: "goods#delete",
+    as: "delete_good"
 
 
 

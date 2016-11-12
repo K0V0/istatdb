@@ -1,0 +1,27 @@
+@import "variables";
+
+section.actions {
+
+	a {
+		//font-family: amsans;
+		background-color: $button_grey;
+		padding: 0.125em 0.25em;
+		border-radius: 0.25em;
+		color: white;
+		display: inline-block;
+
+		@include transition(background-color .1s ease);
+
+		&:hover {
+			background-color: $button_grey_hover;
+		}
+
+		&.selected_button:hover {
+			background-color: $button_selected_hover;
+		}
+
+		&.danger_button:hover {
+			background-color: $button_danger_hover;
+		}
+	}
+}

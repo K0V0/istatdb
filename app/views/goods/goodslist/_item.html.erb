@@ -2,6 +2,8 @@
 <% items.each do |item| %>
 
 	<tr>
+		
+		<%= render 'layouts/table_checkbox', item_id: item.id %>
 
 		<td> 
 			<%= link_to item, remote: true do %>
@@ -11,7 +13,8 @@
 		
 		<td> <%= item.description %> </td>
 		<td> <%= item.local_taric.kncode %> </td>
-		<td> <%#= item.local_taric.description %> </td>
+
+		<%= render 'layouts/table_item_operations', item_id: item.id %>
 
 	</tr>
 

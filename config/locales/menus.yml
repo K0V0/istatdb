@@ -5,6 +5,15 @@ en:
   localtaricdb: "Local TARIC database"
 
   new_item: "Add item"
+  edit_items: "Edit/Delete item(s)"
+  edit_items_finish: "Finish operations"
+  delete_items: "Delete selected"
+  delete_items_all: "Delete all found"
+  select_items: "Select all"
+  deselect_items: "Deselect all"
+
+  edit_item: "Edit"
+  delete_item: "Delete"
 
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
@@ -22,6 +31,15 @@ sk:
   localtaricdb: "Lokálna databáza TARIC"
 
   new_item: "Pridať položku"
+  edit_items: "Spravovať položky"
+  edit_items_finish: "Ukončiť správcu položiek"
+  delete_items: "Zmazať označené"
+  select_items: "Vybrať všetky"
+  delete_items_all: "Zmazať všetky nájdené"
+  deselect_items: "Zrušiť výber"
+
+  edit_item: "Upraviť"
+  delete_item: "Odstrániť"
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"

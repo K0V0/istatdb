@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
 
-	before_action :searcher_for, only: [:index, :search, :show]
+	before_action :searcher_for, only: [:index, :search, :show, :administration]
 
 	before_action(only: :create) { 
 		reload_tables_for_select
@@ -30,6 +30,23 @@ class GoodsController < ApplicationController
 
 	end
 
+	def administration
+		#@edit_mode = true
+		render 'index'
+	end
+
+	def edit
+		@good = Good.find(params[:id])
+	end
+
+	def update
+
+	end
+
+	def delete
+
+	end
+
 	private 
 
 	def permitted_pars
@@ -52,22 +69,6 @@ class GoodsController < ApplicationController
 			Impexpcompany: { company_name: :contains },
 			Manufacturer: { name: :contains }
 		)
-	end
-
-	# model: {
-	# 	field: :method
-	# }
-	def reload_result_by_params_nested(**options)
-		options.each do |option|
-			settings = {}
-			option[1].each do |setting|
-				settings[setting[0]] = { 
-					param: (option[0].to_s.underscore + '_' + setting[0].to_s).to_sym,
-					search_method: setting[1]
-				}
-			end 
-			reload_result_by_params(option[0].to_s.constantize, settings)
-		end
 	end
 
 end
