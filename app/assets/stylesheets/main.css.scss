@@ -7,58 +7,59 @@
 }
 
 html {
+	height: 100%;
+	width:100%;
 
 	body {
 		margin:0;
 		background-color: $white;
+		min-height: 100%;
+		position:relative;
 
 		a {
-			text-decoration: none;				
+			text-decoration: none;
+			color: $hreflink_color_2;
+
+			&:hover {
+				text-decoration: underline;
+			}			
 		}
 
 		section {
-			padding: 0 0.5em;
+			padding: 0 0.75em;
 			margin: 0.5em 0;
 		}
 
-		input, select {
-			font-size: 1em;
-			border:0;
-			padding:0.125em 0.25em;
-			margin:0em;
-			border-radius:0.25em;
-			background-color: $white_input;
-			//line-height:1.25em;
-			//background-color: white;
-			-webkit-appearance:     none;
-		    -moz-appearance:        none;
-		    -ms-appearance:         none;
-		    -o-appearance:          none;
-		    appearance:             none;
-		    outline:	none;
+		div.dummy_load {
+			height:2.25em;
+			width:100%;
 		}
 
-		input[type=submit] {
-			background-color: $button_grey;
+		footer {
+			background-color: $background_color;
 			color: white;
+			position:absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			padding: 0.25em 0.25em;
 
-			@include transition(background-color .1s ease);
+			div {
+				display: inline-block;
 
-			&:hover {
-				background-color: $button_grey_hover;
+				a {
+					font-weight: bold;
+					color: $hreflink_color;
+				}
+
+				&:first-child {
+					float:left;
+				}
+
+				&:last-child {
+					float:right;
+				}
 			}
-		}
-
-		select {
-			padding-right: 2em;
-		}
-
-		.selected_button {
-			background-color: $button_selected;
-		}
-
-		.danger_button {
-			background-color: $button_danger;
 		}
 	}
 }

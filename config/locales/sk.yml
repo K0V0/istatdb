@@ -13,6 +13,8 @@ sk:
 
     search_client_filter_none: "Tovar všetkých klientov"
 
+    table_foot_goods_total: "výsledkov celkom: "
+
   local_taric:
 
     table_cap_additional_info: "Identifikácia"

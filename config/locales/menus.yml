@@ -3,6 +3,7 @@ en:
   clientsdb: "Our clients"
   manufacturersdb: "Manufacturers/consumers"
   localtaricdb: "Local TARIC database"
+  settings: "Settings"
 
   new_item: "Add item"
   edit_items: "Edit/Delete item(s)"
@@ -15,6 +16,8 @@ en:
   edit_item: "Edit"
   delete_item: "Delete"
 
+  search: "Search!"
+
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
   footer_advertisement_webpage_link: "http://roulage.sk/en"
@@ -26,9 +29,10 @@ en:
 
 sk:
   goodsdb: "Tovary"
-  clientsdb: "Naši klienti"
-  manufacturersdb: "Výrobcovia/odoberatelia"
-  localtaricdb: "Lokálna databáza TARIC"
+  clientsdb: "Klienti"
+  manufacturersdb: "Výrobcovia odberatelia"
+  localtaricdb: "Lokálny TARIC"
+  settings: "Nastavenia"
 
   new_item: "Pridať položku"
   edit_items: "Spravovať položky"
@@ -40,6 +44,8 @@ sk:
 
   edit_item: "Upraviť"
   delete_item: "Odstrániť"
+
+  search: "Vyhladať!"
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"

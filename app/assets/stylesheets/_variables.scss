@@ -9,13 +9,37 @@ $main_menu_inactive_link_hover: #444;
 $button_grey: #777;
 $button_grey_hover: #666;
 
-$button_selected: #00f;
-$button_selected_hover: #00f;
+$button_selected: #000;
+$button_selected_hover: #333;
 
-$button_danger: #f00;
-$button_danger_hover: #f00;
+$button_danger: #8E0000;
+$button_danger_hover: #e00;
+
+$input_selected: #8E0000;
+
+$hreflink_color: #D60000;
+$hreflink_color_2: #000000;
 
 $group_background: #bbb;
+
+$even_table_line_color: #ccc;
+$odd_table_line_color: #ddd;
+$item_selected: #83B2FF;
+
+$buttons_mouse_actions_transition_time: 0.15s;
+$main_menu_mouse_actions_transition_time: 0.30s;
+
+@mixin button_transitions() {
+	@include transition(background-color $buttons_mouse_actions_transition_time ease);
+}
+
+@mixin menu_transitions() {
+	@include transition(background-color $main_menu_mouse_actions_transition_time ease);
+}
+
+@mixin inputs_transitions() {
+	@include transition(border-color $main_menu_mouse_actions_transition_time ease);
+}
 
 @mixin transition($args...) {
   -webkit-transition: $args;
@@ -23,4 +47,29 @@ $group_background: #bbb;
   -ms-transition: $args;
   -o-transition: $args;
   transition: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+@mixin transition_for_transform($amount-of-time) {
+	-webkit-transition: -webkit-transform $amount-of-time ease;
+	-moz-transition:    -moz-transform $amount-of-time ease;
+	-o-transition:      -o-transform $amount-of-time ease;
+	-ms-transition:     -ms-transform $amount-of-time ease;
+	transition:         transform $amount-of-time ease;
+}
+
+@mixin reset_input_browser_styles() {
+	-webkit-appearance:     none;
+    -moz-appearance:        none;
+    -ms-appearance:         none;
+    -o-appearance:          none;
+    appearance:             none;
+    outline:	none;
 }

@@ -4,10 +4,8 @@ section.search_bar {
 	form {
 		border-radius: 0.25em;
 		background-color: #bbb;
-		padding: 0.25em;
-
-		input {
-			
-		}
+		padding: 0.25em 0.25em;
+		display:table;
 	}
+
 }

@@ -1,0 +1,58 @@
+@import "variables";
+
+.button {
+	@include reset_input_browser_styles();
+	@include transition(
+		border-color $main_menu_mouse_actions_transition_time ease,
+		background-color $buttons_mouse_actions_transition_time ease
+	);
+
+	cursor: pointer;
+	color: white;
+	background-color: $button_grey;
+	border-color: transparent;
+
+	&:hover {
+		background-color: $button_grey_hover;
+		text-decoration: none;
+	}
+
+	&:focus {
+		background-color: $button_grey_hover;
+		border-color: $button_danger;
+	}
+
+	&:active {
+		background-color: $button_selected;
+		border-color: $white;
+	}
+
+	&.danger {
+		background-color: $button_danger;
+
+		&:hover {
+			background-color: $button_danger_hover;
+		}
+
+		&:focus {
+			background-color: $button_danger_hover;
+		}
+
+		&:active {
+			background-color: $button_selected;
+			border-color: $white;
+		}
+	}
+
+	&.selected {
+		background-color: $button_selected;
+
+		&:hover {
+			background-color: $button_selected_hover;
+		}
+
+		&:focus {
+			background-color: $button_selected_hover;
+		}
+	}
+}

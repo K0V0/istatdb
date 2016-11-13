@@ -1,0 +1,106 @@
+@import "variables";
+
+input, select {
+	@include reset_input_browser_styles();
+	@include inputs_transitions();
+	
+	display: inline-block;
+	margin: 0.125em 0.125em;
+	font-size: 1em;
+	border:0.125em solid $white_input;
+	padding:0.125em 0.25em;
+	border-radius:0.25em;
+	background-color: $white_input;
+	line-height:1em;
+}
+
+input:focus, select:focus {
+	border-color: $input_selected
+}
+
+input[type=submit] {
+	padding: 0.125em 0.25em;
+	border-width: 0.125em;
+	border-color: transparent;
+
+	&:active {
+		border-color: $button_selected;
+	}
+}
+
+input[type=checkbox] {
+	//@include reset_input_browser_styles();
+	//@include button_transitions();
+	display: block;
+	border:0.25em solid $button_grey;
+	border-radius:0.5em;
+	margin:0;
+	padding:0;
+	//width:0.5em;
+	//height:0.5em;
+	width:0.875em;
+	height:0.875em;
+	background-color: white;
+	cursor:pointer;
+
+	&:hover {
+		border-color: $button_grey_hover;
+	}
+
+	&:checked {
+		background-color: $hreflink_color;
+		border-color: $button_selected;
+
+		&:hover {
+			border-color: $button_selected_hover;
+		}
+	}
+
+
+}
+/*
+input[type=checkbox]:checked {
+	background-color: $hreflink_color;
+	border-color: $button_selected;
+}
+*/
+
+div.select_wrapper {
+	position: relative;
+	background-color: $white_input;
+	border-radius:0.25em;
+	display: inline-block;
+	margin: 0.125em 0.125em;
+
+	select {
+		margin:0em;
+		padding-right: 1.25em;
+		background: transparent;
+		position: relative;
+		z-index: 3;
+		min-height: 22px;
+		cursor: pointer;
+	}
+
+	span {
+		@include button_transitions();
+		position: absolute;
+		top:0;
+		bottom:0;
+		right:0;
+		width:1.25em;
+		background-image: url(select_dropdown_arrow.png);
+		background-repeat: no-repeat;
+		background-position: right;
+		background-size: contain;
+		@include transition_for_transform(1s);
+	}
+
+	select:hover + span, span:hover {
+		background-image: url(select_dropdown_arrow_hover.png);
+	}
+
+	select:active + span {
+		@include transform(rotate(-180deg));
+	}
+}

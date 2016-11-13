@@ -1,18 +1,29 @@
 
 <section class="items_table">
 
-	<table id="goods">
+	<table id="goods" class="items">
 
 		<thead>
 				
-		<tr>
-			<% if @administrative_mode %> <th> </th> <% end %>
-			<th> <%= cbt :table_cap_ident %> </th>
-			<th> <%= cbt :table_cap_description %> </th>
-			<th> <%= cbt :table_cap_knnumber %> </th>
-		</tr>
+			<tr>
+				<% if @administrative_mode %> <th> </th> <% end %>
+				<th> <%= cbt :table_cap_ident %> </th>
+				<th> <%= cbt :table_cap_description %> </th>
+				<th> <%= cbt :table_cap_knnumber %> </th>
+			</tr>
 
 		</thead>
+
+		<tfoot>
+			
+			<tr>
+				<th colspan="6"> 
+					<%= cbt :table_foot_goods_total %>
+					<b> <%= @result.count %> </b>
+				</th>
+			</tr>
+
+		</tfoot>
 
 		<tbody>
 

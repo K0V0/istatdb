@@ -1,27 +1,14 @@
 @import "variables";
 
 section.actions {
+	display: table;
 
 	a {
-		//font-family: amsans;
-		background-color: $button_grey;
 		padding: 0.125em 0.25em;
-		border-radius: 0.25em;
+		border-radius: 0.375em;
 		color: white;
 		display: inline-block;
-
-		@include transition(background-color .1s ease);
-
-		&:hover {
-			background-color: $button_grey_hover;
-		}
-
-		&.selected_button:hover {
-			background-color: $button_selected_hover;
-		}
-
-		&.danger_button:hover {
-			background-color: $button_danger_hover;
-		}
+		//margin: 0.125em 0.125em;
+		border: 0.125em solid $white;
 	}
 }

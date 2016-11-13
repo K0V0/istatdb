@@ -117,6 +117,15 @@ Rails.application.routes.draw do
 
 
 
+  ### Nastavenia
+
+  #index
+  get "settings",
+    to: "settings#index",
+    as: "settings" 
+
+
+
   ### hidden section for testing purposes
 
   get "test_scripts",
