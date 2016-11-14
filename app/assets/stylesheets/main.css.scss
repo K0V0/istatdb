@@ -29,15 +29,19 @@ html {
 				position: relative;
 
 				&:after {
-					//text-decoration: underline;
+					@include button_transitions();
+					display: block;
 					content: '';
-					//border-color: black;
 					position: absolute;
 					height: 1px;
 					left:0;
 					right:0;
-					background-color: black;
+					background-color: transparent;
 					bottom: 1px;
+				}
+
+				&:hover:after {
+					background-color: black;
 				}			
 			}
 

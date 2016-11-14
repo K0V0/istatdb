@@ -9,7 +9,10 @@ section.actions {
 		border-radius: 0.375em;
 		color: white;
 		display: inline-block;
-		//margin: 0.125em 0.125em;
 		border: 0.125em solid $white;
+
+		&:after {
+			display: none;
+		}
 	}
 }
