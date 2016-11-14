@@ -3,7 +3,8 @@
 section.actions {
 	display: table;
 
-	a {
+	a, span, button {
+		font-size: 1em;
 		padding: 0.125em 0.25em;
 		border-radius: 0.375em;
 		color: white;

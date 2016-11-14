@@ -12,7 +12,7 @@ class GoodsController < ApplicationController
 	end
 
 	def search
-		
+		render 'index'
 	end
 
 	def show
@@ -31,7 +31,6 @@ class GoodsController < ApplicationController
 	end
 
 	def administration
-		#@edit_mode = true
 		render 'index'
 	end
 

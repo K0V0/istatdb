@@ -29,15 +29,11 @@ input[type=submit] {
 }
 
 input[type=checkbox] {
-	//@include reset_input_browser_styles();
-	//@include button_transitions();
 	display: block;
 	border:0.25em solid $button_grey;
 	border-radius:0.5em;
 	margin:0;
 	padding:0;
-	//width:0.5em;
-	//height:0.5em;
 	width:0.875em;
 	height:0.875em;
 	background-color: white;

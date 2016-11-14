@@ -3,10 +3,11 @@
 
 	<section class="search_bar"> 
 
-		<%= search_form_for @search, remote: true do |s| %> 
+		<%= search_form_for @search, 
+			url: search_goods_path,
+			remote: true do |s| %> 
 
 			<%= s.search_field :ident_cont %>
-
 
 			<div class="select_wrapper">
 
@@ -20,6 +21,8 @@
 				<span></span>
 
 			</div>
+
+			<%= hidden_field_tag :administrative_mode, @administrative_mode %>
 
 			<%= s.submit t(:search), class: "button" %>
 

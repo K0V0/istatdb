@@ -14,13 +14,15 @@
 
 		<%= yield :mainmenu if content_for? :mainmenu %>
 
-		<%= yield :search_bar if content_for? :search_bar %>
+		<main>
 
-		<%= yield :actions if content_for? :actions %>
+			<%= yield :search_bar if content_for? :search_bar %>
 
-		<%= yield %>
+			<%= yield :actions if content_for? :actions %>
 
-		<div class="dummy_load"></div>
+			<%= yield %>
+
+		</main>
 
 		<%= render 'layouts/footer' %>
 

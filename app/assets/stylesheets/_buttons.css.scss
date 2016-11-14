@@ -55,4 +55,9 @@
 			background-color: $button_selected_hover;
 		}
 	}
+
+	&.disabled {
+		background-color: $group_background;
+		color: $button_grey;
+	}
 }

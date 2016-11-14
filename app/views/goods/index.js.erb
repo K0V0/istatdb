@@ -6,7 +6,7 @@ if (elem.length === 0) {
 	// if goods table sectione removed from document due item details showup,
 	// recreate table
 	$('.item_details').remove();
-	$('<%= j(render "goods/goodslist/goodslist") %>').insertAfter('.search_bar');
+	$('<%= j(render "goods/goodslist/goodslist") %>').insertAfter('.actions');
 
 } else {
 	// no need to remove whole section, just replace lines

@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/K0V0/active_link_to
+  revision: 4869936715eb41d526a1d48e7472515d760dc1ef
+  specs:
+    active_link_to (1.0.3)
+      actionpack
+
+GIT
   remote: https://github.com/K0V0/ransack
   revision: 352ba2cf7d7486344e5307ef6682e57c622ca442
   specs:
@@ -31,8 +38,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_link_to (1.0.3)
-      actionpack
     activejob (4.2.6)
       activesupport (= 4.2.6)
       globalid (>= 0.3.0)
@@ -165,7 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_link_to
+  active_link_to!
   byebug
   coffee-rails (~> 4.1.0)
   hirb

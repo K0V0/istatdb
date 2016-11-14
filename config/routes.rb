@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   ### nastavenie domovskej stranky
 
-  root 'goods#index'
+  root to: 'goods#index'
 
 
 
@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get "goodsdb/new",
     to: "goods#new",
     as: "new_good"
+
+  get "goodsdb/search",
+    to: "goods#search",
+    as: "search_goods" 
 
   # zobrazit detaily o polozke
   get "goodsdb/:id/details",

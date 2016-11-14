@@ -1,7 +1,6 @@
 @import "variables";
 
 nav {
-	margin-bottom: 0.75em;
 
 	ul {
 		display: table;
@@ -20,7 +19,6 @@ nav {
 	}
 
 	&.main_menu {
-		@include menu_transitions();
 		background-color: $background_color;
 		color: $white;
 		line-height: 32px;
@@ -34,9 +32,11 @@ nav {
 			li {
 
 				a {
+					@include menu_transitions();
 					padding: 0 0.375em;
 					border-top-left-radius: 0.25em;
 					border-top-right-radius: 0.25em;
+					text-decoration:none;
 					
 					&.active {
 						background-color: $main_menu_active_link;
@@ -45,7 +45,6 @@ nav {
 
 					&:hover {
 						background-color: $main_menu_inactive_link_hover;
-						text-decoration:none;
 					}
 
 					&.active:hover {

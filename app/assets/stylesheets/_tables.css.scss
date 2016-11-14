@@ -9,6 +9,18 @@ table.items {
 		padding: 0 0.25em;
 	}
 
+	td:first-child {
+		padding-left:0.375em;
+	}
+
+	td:last-child {
+		padding-right:0.375em;
+	}
+
+	td.checkbox {
+		padding-right: 0.125em;
+	}
+
 	thead {
 
 		tr {

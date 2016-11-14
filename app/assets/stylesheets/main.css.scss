@@ -7,41 +7,44 @@
 }
 
 html {
-	height: 100%;
-	width:100%;
-
+	
 	body {
 		margin:0;
 		background-color: $white;
-		min-height: 100%;
+		display: flex;
+		min-height: 100%; // ?IE
+  		min-height: 100vh;
+  		flex-direction: column;
 		position:relative;
 
-		a {
-			text-decoration: none;
-			color: $hreflink_color_2;
+		main {
+			flex: 1;
+			margin-top:0.375em;
+			margin-bottom: 0.375em;
 
-			&:hover {
-				text-decoration: underline;
-			}			
-		}
+			a {
+				text-decoration: none;
+				color: $hreflink_color_2;
 
-		section {
-			padding: 0 0.75em;
-			margin: 0.5em 0;
-		}
+				&:hover {
+					text-decoration: underline;
+				}			
+			}
 
-		div.dummy_load {
-			height:2.25em;
-			width:100%;
+			section {
+				padding: 0 0.75em;
+				margin: 0.5em 0;
+			}
+
+			div.dummy_load {
+				height:2.25em;
+				width:100%;
+			}
 		}
 
 		footer {
 			background-color: $background_color;
 			color: white;
-			position:absolute;
-			bottom:0;
-			left:0;
-			right:0;
 			padding: 0.25em 0.25em;
 
 			div {

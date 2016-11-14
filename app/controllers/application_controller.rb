@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
-  before_action :administrative_mode, only: [:administration]
-
+  before_action :administrative_mode
 
   def searcher_for object: nil, autoshow: true, search_condition:nil
 
@@ -121,7 +119,7 @@ class ApplicationController < ActionController::Base
   end
 
   def administrative_mode
-    @administrative_mode = (action_name == 'administration')
+    @administrative_mode = (params[:administrative_mode] == "true")||(action_name == "administration")
   end
 
 end
