@@ -8,6 +8,7 @@ function ActionsHandler(controller_name) {
 	this.deselect_button = $('#deselect_all_'+controller_name);
 	this.checkboxes = [];
 	this.checkboxes_checked = [];
+	this.checked_ids = [];
 
 	this.init();
 	this.refresh();
@@ -19,7 +20,6 @@ ActionsHandler.prototype = {
 	init: function() {
 		var totok = this;
 		$(document).on('change', '#'+this.controller_name+' input[type=checkbox]', function() {
-			totok.refresh();
 			totok.refresh();
 		});
 		$(document).on('click', '#select_all_'+this.controller_name, function() {
@@ -51,7 +51,6 @@ ActionsHandler.prototype = {
 		if (nochkd == total && total > 0) {
 			this.disableDeselectAll();
 		} else if (chkd == total && total > 0) {
-			console.log("heel");
 			this.disableSelectAll();
 		} else if (nochkd < total) {
 			this.enableBothSelects();
@@ -78,5 +77,17 @@ ActionsHandler.prototype = {
 	enableBothSelects: function() {
 		this.select_button.prop('disabled', false).removeClass().addClass('button');
 		this.deselect_button.prop('disabled', false).removeClass().addClass('button');
+	},
+
+	preserve_checked: function() {
+		var totok = this;
+		this.checkboxes_checked.each(function() {
+			var id = $(this).attr('id').replace(totok.controller_name+'_', '');
+			if (totok.checked_ids.indexOf(id) == -1) {
+				totok.checked_ids.push(id);
+			}
+		});
+		$('#preserve_checked').val(totok.checked_ids);
+		totok.checked_ids = [];
 	} 
 }

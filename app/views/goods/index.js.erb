@@ -2,8 +2,9 @@
 // goods table
 elem = $('#goods').children('tbody');
 
-if (elem.length === 0) {
+if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
 	// if goods table sectione removed from document due item details showup,
+	// or if administrative mode enables
 	// recreate table
 	$('.item_details').remove();
 	$('<%= j(render "goods/goodslist/goodslist") %>').insertAfter('.actions');
@@ -12,4 +13,10 @@ if (elem.length === 0) {
 	// no need to remove whole section, just replace lines
 	elem.children('tr').remove();
 	$('<%= j(render "goods/goodslist/item", items: @result) %>').appendTo(elem);
+}
+
+$('#total_goods_count').children('b').text('<%= @result.count %>');
+
+if ('<%= @administrative_mode %>' == 'true') {
+	GOODS_ACTIONS.refresh();
 }

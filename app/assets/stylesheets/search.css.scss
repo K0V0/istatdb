@@ -8,4 +8,27 @@ section.search_bar {
 		display:table;
 	}
 
+	form > div  {
+		display: inline-block;
+		margin-right: 0.125em;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:last-child > * {
+			
+			&:first-child {
+				margin-right: 0.25em;
+			}
+
+			&:last-child {
+				margin-right: 0.125em;
+			}
+		}
+
+		label {
+			margin-left: 0.25em;
+		}
+	}
 }

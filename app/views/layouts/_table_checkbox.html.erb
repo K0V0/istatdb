@@ -2,8 +2,18 @@
 <% if @administrative_mode %> 
 	
 	<td class="checkbox">
+
+		<% 
+			if !params[:preserve_checked].blank?
+				chkd = params[:preserve_checked].split(',').include? item_id.to_s
+			end
+		%>
 		
-		<%= check_box_tag controller_name.to_s + '_' + item_id.to_s, item_id %>
+		<%= check_box_tag(
+			controller_name.to_s + '_' + item_id.to_s,
+			item_id,
+			chkd
+		) %>
 
 	</td>
 

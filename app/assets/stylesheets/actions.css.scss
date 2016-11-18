@@ -2,17 +2,4 @@
 
 section.actions {
 	display: table;
-
-	a, span, button {
-		font-size: 1em;
-		padding: 0.125em 0.25em;
-		border-radius: 0.375em;
-		color: white;
-		display: inline-block;
-		border: 0.125em solid $white;
-
-		&:after {
-			display: none;
-		}
-	}
 }

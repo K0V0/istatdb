@@ -5,13 +5,21 @@
 
 	<%= form_for @good do |t| %>
 
-		<%= render 'goods/new/good', obj: t %>
+		<article>
+			<%= render 'goods/new/good', obj: t %>
+		</article>
 
-		<%= render 'goods/new/taricnum', obj: t %>
+		<article>
+			<%= render 'goods/new/taricnum', obj: t %>
+		</article>
 
-		<%= render 'goods/new/client', obj: t %>
+		<article>
+			<%= render 'goods/new/client', obj: t %>
+		</article>
 
-		<%= render 'goods/new/manufacturer', obj: t %>
+		<article>
+			<%= render 'goods/new/manufacturer', obj: t %>
+		</article>
 
 		<div>
 			<%= t.submit %>

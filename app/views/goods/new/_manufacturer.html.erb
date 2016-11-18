@@ -1,9 +1,9 @@
 <div>
 
-	<%= obj.label :manufacturer_name %>
-	<%= obj.text_field :manufacturer_name %>
-
-	<%= obj.errors :manufacturer_name %>
+	<div>
+		<%= obj.label :manufacturer_name %>
+		<%= obj.text_field :manufacturer_name %>
+	</div>
 
 </div>
 
@@ -25,4 +25,8 @@
 
 	</table>
 
+</div>
+
+<div class="form_errors">
+	<%= obj.errors :manufacturer_name %>
 </div>

@@ -1,10 +1,10 @@
 <div>
 
-	<%= obj.label :impexpcompany_company_name %>
-	<%= obj.text_field :impexpcompany_company_name %>
-
-	<%= obj.errors :impexpcompany_company_name %>
-
+	<div>
+		<%= obj.label :impexpcompany_company_name %>
+		<%= obj.text_field :impexpcompany_company_name %>
+	</div>
+	
 </div>
 
 <div>
@@ -25,4 +25,8 @@
 
 	</table>
 
+</div>
+
+<div class="form_errors">
+	<%= obj.errors :impexpcompany_company_name %>
 </div>

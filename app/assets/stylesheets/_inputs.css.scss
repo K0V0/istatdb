@@ -51,8 +51,23 @@ input[type=checkbox] {
 			border-color: $button_selected_hover;
 		}
 	}
+}
 
+button, a.button {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0.125em;
+	font-size: 1em;
+	line-height:1em;
+	padding: 0.125em 0.25em;
+	border-radius: 0.25em;
+	border-style: solid;
+	border-width: 0.125em;
+	color: white;
+	display: inline-block;
 
+	&:after {
+		display: none;
+	}
 }
 
 div.select_wrapper {

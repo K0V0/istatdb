@@ -7,24 +7,44 @@
 			url: search_goods_path,
 			remote: true do |s| %> 
 
-			<%= s.search_field :ident_cont %>
+			<div>
+				<%= s.label :ident %>
+				<%= s.search_field :ident_cont, autocomplete: "off" %>
+			</div>
 
-			<div class="select_wrapper">
+			<div>
+				<%= s.label :description %>
+				<%= s.search_field :description_cont, autocomplete: "off" %>
+			</div>
 
-				<%= s.collection_select :client_filter,
-					Impexpcompany.all,
-					:id,
-					:company_name,
-					include_blank: cbt(:search_client_filter_none)
-				%>
+			<div>
+				<div class="select_wrapper">
 
-				<span></span>
+					<%= s.collection_select :client_filter,
+						Impexpcompany.all,
+						:id,
+						:company_name,
+						include_blank: cbt(:search_client_filter_none)
+					%>
 
+					<span></span>
+
+				</div>
 			</div>
 
 			<%= hidden_field_tag :administrative_mode, @administrative_mode %>
 
-			<%= s.submit t(:search), class: "button" %>
+			<%= hidden_field_tag(:preserve_checked, "") if @administrative_mode %>
+
+			<div>
+
+				<button id="clear_search" class="button">
+					<%= t :clear_search %>
+				</button><!--
+
+				--><%= s.submit t(:search), class: "button" %>
+
+			</div>
 
 		<% end %>
 

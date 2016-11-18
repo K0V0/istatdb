@@ -5,6 +5,22 @@ class ApplicationController < ActionController::Base
 
   before_action :administrative_mode
 
+  before_action(only: :administration) { 
+    params[:q] = Rails.cache.read("q")
+  }
+
+  before_action(only: :index) { 
+    params[:q] = Rails.cache.read("q")
+  }
+
+  after_action(only: :search) {
+    Rails.cache.write("q",params[:q])
+  }
+
+  after_action(only: :administration) {
+    Rails.cache.write("q",params[:q])
+  }
+
   def searcher_for object: nil, autoshow: true, search_condition:nil
 
     object ||= controller_name.classify.constantize

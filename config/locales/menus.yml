@@ -17,6 +17,7 @@ en:
   delete_item: "Delete"
 
   search: "Search!"
+  clean_search: "Clean"
 
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
@@ -46,6 +47,7 @@ sk:
   delete_item: "Odstrániť"
 
   search: "Vyhladať!"
+  clear_search: "Zrušiť"
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"

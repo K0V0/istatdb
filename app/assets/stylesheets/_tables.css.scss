@@ -1,6 +1,6 @@
 @import "variables";
 
-table.items {
+table {
 	background-color: $group_background;
 	border-radius: 0.25em;
 	border-collapse: collapse;
@@ -45,15 +45,19 @@ table.items {
 				background-color: $odd_table_line_color;
 			}
 
+			&.no_results {
+				background-color: $button_danger;
+				color: white;
+			}
+
 			td {
 				vertical-align: middle;
 
 				a.edit_item, a.delete_item {
 					line-height:1em;
-					padding: 1px 0.25em;
-					border-radius: 0.25em;
 					font-size:0.75em;
 					display: block;
+					margin: 0;
 				}
 			}
 		}

@@ -1,12 +1,16 @@
 
 <div>
-	<%= obj.label :local_taric_kncode %>
-	<%= obj.text_field :local_taric_kncode %>
 
-	<%= obj.label :local_taric_description %>
-	<%= obj.text_field :local_taric_description %>
+	<div>
+		<%= obj.label :local_taric_kncode %>
+		<%= obj.text_field :local_taric_kncode %>
+	</div>
 
-	<%= obj.errors :local_taric_description %>
+	<div>
+		<%= obj.label :local_taric_description %>
+		<%= obj.text_field :local_taric_description %>
+	</div>
+
 </div>
 
 <div>
@@ -28,4 +32,9 @@
 
 	</table>
 
+</div>
+
+<div class="form_errors">
+	<%= obj.errors :local_taric_kncode %>
+	<%= obj.errors :local_taric_description %>
 </div>
