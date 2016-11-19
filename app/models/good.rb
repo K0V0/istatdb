@@ -1,5 +1,8 @@
 class Good < ActiveRecord::Base
 
+	include AssocValidator
+	include AssocFillup
+
 	# convention: <associated model name><underscore><field name in assoc model>
 	attr_accessor :local_taric_kncode
 	attr_accessor :local_taric_description
@@ -20,16 +23,16 @@ class Good < ActiveRecord::Base
 	has_many :goods_impexpcompanies, inverse_of: :good
 	has_many :impexpcompanies, through: :goods_impexpcompanies
 
-	belongs_to :local_taric
+	belongs_to :local_taric, inverse_of: :goods
 
 	validates :ident, presence: true
 	validates :ident, uniqueness: true
 
-	validate :kn_code_validation
-	validate :client_validation
-	validate :manufacturer_validation
+	validate :associated_validations, on: :create
 
 	after_create :assignments
+	before_update :kn_code_update
+	after_initialize :fillup_virtual_params
 
 	scope :client_filter, -> (pars) { 
 		self
@@ -43,15 +46,16 @@ class Good < ActiveRecord::Base
 	    %i(client_filter)
 	end
 
-	def kn_code_validation
+	def fillup_virtual_params
+		#self.fillup_virtual :local_taric, fields: [:kncode, :description]
+		self.class.send(:define_method, :local_taric_kncode) do
+	      instance_variable_set('@local_taric_kncode', 'AAAA')
+	    end
+	end
+
+	def associated_validations
 		assoc_validator LocalTaric, :kncode, :description
-	end
-
-	def client_validation
 		assoc_validator Impexpcompany, :company_name
-	end
-
-	def manufacturer_validation
 		assoc_validator Manufacturer, :name
 	end
 
@@ -61,33 +65,24 @@ class Good < ActiveRecord::Base
 		@manufacturer.goods << self
 	end
 
-	def assoc_validator object, *fields
-		query = {}
-		mdl = object.to_s.underscore
-		instvar_string = '@' + mdl
+	def kn_code_update
+		l = LocalTaric.find_or_create_by(kncode: @local_taric_kncode, description: @local_taric_description)
+		Rails.logger.info "--------------"
+		Rails.logger.info l.id
+		Rails.logger.info self.local_taric.id
+		if l.id == self.local_taric.id
 
-		fields.each do |field|
-			query[field] = instance_variable_get(instvar_string + '_' + field.to_s)
-		end
-
-		tmp = object.where(query)
-		if !tmp.blank?
-			# is also in DB, so will be valid
-			instance_variable_set(instvar_string, tmp.first)
 		else
-			# uniqueness validation condition bypassed by validating on new object
-			# object is unique because by given criteria not found ind DB
-			tmp = object.new(query)
-			if !tmp.valid?
-				errors.add(
-					(mdl + '_' + fields.last.to_s).to_sym,
-					tmp.errors.to_a.first
-				) 
-			else
-				instance_variable_set(instvar_string, tmp)
-				instance_variable_get(instvar_string).send(:save)
-			end
+			self.local_taric = l
 		end
+		
+		#Rails.logger.info self.local_taric.update(kncode: @local_taric_kncode)
 	end
-	
+
+	#def self.fillup_virtual(assoc_name, fields: [])
+		#fields.each do |field|
+		#	make_verbose_getter assoc_name.to_s+'_'+field.to_s
+		#end
+	#end
+
 end

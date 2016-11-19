@@ -26,9 +26,14 @@ function searchQuery(path, conds) {
 		$.ajax({
 		  	method: "POST",
 		 	url: path,
-		  	data: { q: request_data }
+		  	data: { 
+		  		q: request_data,
+		  		render_element_id: Object.keys(conds)[0]+"_results"
+		  	}
 		});
 	});
+
+	console.log(Object.keys(conds)[0]);
 
 	var i = 0;
 	for (var cond_key in conds) {

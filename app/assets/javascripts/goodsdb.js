@@ -22,4 +22,13 @@ $(document).on('turbolinks:load', function() {
 			good_manufacturer_name: "name_cont"
 		}
 	);
+
+	// edit form
+	searchQuery(
+		'/goodsdb/new/knnumber_search',
+		{ 
+			good_local_taric_attributes_kncode: "kncode_start",
+			good_local_taric_attributes_description: "description_cont"
+		}
+	);
 });

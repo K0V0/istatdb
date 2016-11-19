@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     to: "goods#edit",
     as: "edit_good"
 
-  put "goodsdb/:id/update",
+  patch "goodsdb/:id/edit",
     to: "goods#update",
     as: "update_good"
 
@@ -118,6 +118,9 @@ Rails.application.routes.draw do
   #create - ulozi novy zaznam
   post "localtaricdb",
     to: "local_taric#create"
+
+  get "localtaricdb/edit",
+    to: "local_taric#administration"
 
 
 

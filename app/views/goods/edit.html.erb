@@ -2,10 +2,14 @@
 
 <section class="form">
 
-	<%= form_for @good do |t| %>
+	<%= form_for @good, url: update_good_path do |t| %>
 
 		<article>
 			<%= render 'goods/edit/good', obj: t %>
+		</article>
+
+		<article>
+			<%= render 'goods/edit/local_taric', obj: t %>
 		</article>
 
 		<div>

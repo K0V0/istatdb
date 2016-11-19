@@ -1,0 +1,40 @@
+
+<div>
+
+	<div>
+		<%= obj.label :local_taric_kncode %>
+		<%= obj.text_field :local_taric_kncode, autocomplete: "off" %>
+	</div>
+
+	<div>
+		<%= obj.label :local_taric_description %>
+		<%= obj.text_field :local_taric_description, autocomplete: "off" %>
+	</div>
+
+</div>
+
+<div class="tablewrap">
+	
+	<table id="good_local_taric_attributes_kncode_results">
+
+		<thead>
+			<tr>
+				<th>  </th>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'local_taric/api/taricnum_search', items: @local_tarics %>
+
+		</tbody>
+
+	</table>
+
+</div>
+
+<div class="form_errors">
+	<%= obj.errors :local_taric_kncode %>
+	<%= obj.errors :local_taric_description %>
+</div>

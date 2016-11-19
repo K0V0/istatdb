@@ -1,6 +1,6 @@
 class LocalTaricController < ApplicationController
 
-  	before_action(only: [:index, :search, :show, :new_good_knnumber_search]) {
+  	before_action(only: [:index, :search, :show, :new_good_knnumber_search, :administration]) {
       searcher_for autoshow:false 
     }
 
@@ -22,6 +22,10 @@ class LocalTaricController < ApplicationController
 
     def new_good_knnumber_search
       render('local_taric/api/taricnum_search')
+    end
+
+    def administration
+      render 'index'
     end
 
     def create
