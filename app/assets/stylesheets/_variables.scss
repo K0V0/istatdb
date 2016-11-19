@@ -25,13 +25,14 @@ $group_background: #bbb;
 
 $even_table_line_color: #ccc;
 $odd_table_line_color: #ddd;
+$table_row_hover: #aaa;
 $item_selected: #83B2FF;
 
 $buttons_mouse_actions_transition_time: 0.15s;
 $main_menu_mouse_actions_transition_time: 0.30s;
 
 @mixin button_transitions() {
-	@include transition(background-color $buttons_mouse_actions_transition_time ease);
+	@include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease);
 }
 
 @mixin menu_transitions() {

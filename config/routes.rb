@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   get "goodsdb/edit",
     to: "goods#administration"
 
-  patch "goodsdb/:id/edit",
+  get "goodsdb/:id/edit",
     to: "goods#edit",
     as: "edit_good"
 

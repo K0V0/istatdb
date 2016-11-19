@@ -7,15 +7,17 @@ section.form {
 	}
 
 	article {
-		display: table;
+		//display: table;
 		background-color: $group_background;
 		border-radius: 0.25em;
 		padding:0.25em;
 		margin: 0.5em 0;
 
 		div {
+			width: 100%;
 
 			div {
+				width: auto;
 				float:left;
 			}
 
@@ -43,8 +45,13 @@ section.form {
 			}
 
 			table {
+				/*
 				margin: 0.125em;
 				margin-top: 0.25em;
+				*/
+				//margin:0.5em;
+				cursor: pointer;
+				width: 100%;
 
 				tbody {
 
@@ -78,6 +85,11 @@ section.form {
 							}
 						}
 
+						&:active, &.selected {
+							background-color: black;
+							color: white;
+						}
+
 						td {
 							
 						}
@@ -85,5 +97,10 @@ section.form {
 				}
 			}
 		}
+	}
+
+	article > div.tablewrap {
+		width:99%;
+		margin:0.5%;
 	}
 }

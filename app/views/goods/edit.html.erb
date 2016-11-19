@@ -1,0 +1,13 @@
+<%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @good do |t| %>
+
+		<article>
+			<%= render 'goods/edit/good', obj: t %>
+		</article>
+
+	<% end %>
+
+</section>

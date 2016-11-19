@@ -39,6 +39,9 @@ function searchQuery(path, conds) {
 
 	$(document).on('click', elem_string_table_row_onclick, function(e) {
 
+		$(elem_string_table_row_onclick).removeClass();
+		$(this).addClass('selected');
+		
 	    var i = 0;
 	    for (var cond_key in conds) { 
 	    	i++;

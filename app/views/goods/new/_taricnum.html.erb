@@ -3,17 +3,17 @@
 
 	<div>
 		<%= obj.label :local_taric_kncode %>
-		<%= obj.text_field :local_taric_kncode %>
+		<%= obj.text_field :local_taric_kncode, autocomplete: "off" %>
 	</div>
 
 	<div>
 		<%= obj.label :local_taric_description %>
-		<%= obj.text_field :local_taric_description %>
+		<%= obj.text_field :local_taric_description, autocomplete: "off" %>
 	</div>
 
 </div>
 
-<div>
+<div class="tablewrap">
 	
 	<table id="good_local_taric_kncode_results">
 
