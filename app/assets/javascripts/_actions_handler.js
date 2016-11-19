@@ -30,6 +30,13 @@ ActionsHandler.prototype = {
 			totok.removeAllSelected();
 			totok.refresh();
 		});
+		$(document).on('input', "section.search_bar > form", function(e) {
+			totok.preserve_checked();
+		    $(this).submit();
+		});
+		$(document).on('click', "#clear_search", function(e) {
+			$('section.search_bar > form').find('input[type=search]').val('');
+		});
 	},
 
 	removeAllSelected: function() {
