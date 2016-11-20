@@ -1,11 +1,9 @@
 module AssocValidator
 	extend ActiveSupport::Concern
 
-=begin
 	def self.included(base)
 	  base.extend(ClassMethods)
 	end
-=end
 
 	module ClassMethods 
 		 

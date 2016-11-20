@@ -47,10 +47,7 @@ class Good < ActiveRecord::Base
 	end
 
 	def fillup_virtual_params
-		#self.fillup_virtual :local_taric, fields: [:kncode, :description]
-		self.class.send(:define_method, :local_taric_kncode) do
-	      instance_variable_set('@local_taric_kncode', 'AAAA')
-	    end
+		fillup_virtual :local_taric, fields: [:kncode, :description]
 	end
 
 	def associated_validations
@@ -78,11 +75,5 @@ class Good < ActiveRecord::Base
 		
 		#Rails.logger.info self.local_taric.update(kncode: @local_taric_kncode)
 	end
-
-	#def self.fillup_virtual(assoc_name, fields: [])
-		#fields.each do |field|
-		#	make_verbose_getter assoc_name.to_s+'_'+field.to_s
-		#end
-	#end
 
 end

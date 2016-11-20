@@ -9,6 +9,8 @@
 html {
 
 	body {
+		@include scrollbars();
+
 		margin:0;
 		background-color: $white;
 		display: flex;

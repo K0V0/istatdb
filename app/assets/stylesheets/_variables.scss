@@ -75,3 +75,35 @@ $main_menu_mouse_actions_transition_time: 0.30s;
     appearance:             none;
     outline:	none;
 }
+
+@mixin scrollbars() {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  1em;
+      height: 1em;
+
+     // border-width:1em;
+     
+      //border-radius:0.25em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $button_grey;
+      border-radius:0.5em;
+      border: 0.25em solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+  }
+
+
+  ::-webkit-scrollbar-track {
+      background: $white;
+      border-radius:0.5em;
+      border:0.25em solid $group_background;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $button_grey;
+    scrollbar-track-color: $white_input;
+  }
+}
