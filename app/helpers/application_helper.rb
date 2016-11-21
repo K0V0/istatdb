@@ -39,8 +39,10 @@ module ApplicationHelper
 	def highlight_search obj, param
 		p = ""
 		if params.has_key? :q
-			k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^" + param.to_s + "_.+$")) }.first
-			p = params[:q][(k.to_sym)] if !k.blank?
+			if !params[:q].blank?
+				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^" + param.to_s + "_.+$")) }.first
+				p = params[:q][(k.to_sym)] if !k.blank?
+			end
 		end
 		highlight_searched obj.send(param), p 
 	end

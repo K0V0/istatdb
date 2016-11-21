@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function() {
 			edit_good_impexpcompany_company_name: "company_name_cont"
 		},
 		{
-			good_id: "35"
+			good_id: $('#good_id').val()
 		}
 	);
 
@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function() {
 			edit_good_impexpcompany_company_name: "company_name_cont"
 		},
 		{
-			good_id: "35"
+			good_id: $('#good_id').val()
 		}
 	);
 
