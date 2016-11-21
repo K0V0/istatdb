@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     Rails.cache.write("q",params[:q])
   }
 
-  def searcher_for object: nil, autoshow: true, search_condition:nil
+  def searcher_for object: nil, autoshow: true, search_condition: nil
 
     object ||= controller_name.classify.constantize
     @search = object.ransack(params[:q])

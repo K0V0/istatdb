@@ -64,16 +64,11 @@ class Good < ActiveRecord::Base
 
 	def kn_code_update
 		l = LocalTaric.find_or_create_by(kncode: @local_taric_kncode, description: @local_taric_description)
-		Rails.logger.info "--------------"
-		Rails.logger.info l.id
-		Rails.logger.info self.local_taric.id
 		if l.id == self.local_taric.id
 
 		else
 			self.local_taric = l
 		end
-		
-		#Rails.logger.info self.local_taric.update(kncode: @local_taric_kncode)
 	end
 
 end

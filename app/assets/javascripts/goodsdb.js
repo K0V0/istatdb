@@ -23,12 +23,24 @@ $(document).on('turbolinks:load', function() {
 		}
 	);
 
-	// edit form
 	searchQuery(
-		'/goodsdb/new/knnumber_search',
+		'/goodsdb/new/client_search_using',
 		{ 
-			good_local_taric_attributes_kncode: "kncode_start",
-			good_local_taric_attributes_description: "description_cont"
+			edit_good_impexpcompany_company_name: "company_name_cont"
+		},
+		{
+			good_id: "35"
 		}
 	);
+
+	searchQuery(
+		'/goodsdb/new/client_search_free',
+		{ 
+			edit_good_impexpcompany_company_name: "company_name_cont"
+		},
+		{
+			good_id: "35"
+		}
+	);
+
 });

@@ -57,6 +57,14 @@ Rails.application.routes.draw do
     to: "goods#update",
     as: "update_good"
 
+  # good edit form - for searching client's that are importing/exporting this good now
+  post "goodsdb/new/client_search_using",
+    to: "impexpcompanies#edit_good_client_using_search"
+
+  # good edit form - for searching client's that are not assigned to this good yet
+  post "goodsdb/new/client_search_free",
+    to: "impexpcompanies#edit_good_client_free_search"
+
   delete "goodsdb/:id/delete",
     to: "goods#delete",
     as: "delete_good"

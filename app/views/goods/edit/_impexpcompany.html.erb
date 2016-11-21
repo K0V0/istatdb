@@ -1,0 +1,59 @@
+
+<div class="tablewrap dual">
+	
+	<table id="edit_good_impexpcompany_company_name_results">
+
+		<thead>
+			<tr>
+				<th>  </th>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'impexpcompanies/api/client_search', items: @good.impexpcompanies %>
+
+		</tbody>
+
+	</table>
+
+</div><!--
+
+--><div class="tablewrap dual">
+	
+	<table id="edit_good_all_impexpcompany_company_name_results">
+
+		<thead>
+			<tr>
+				<th>  </th>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'impexpcompanies/api/client_search', items: (@impexpcompanies-@good.impexpcompanies) %>
+
+		</tbody>
+
+	</table>
+
+</div>
+
+<div>
+
+	<div>
+		<%= obj.label :impexpcompany_company_name %>
+		<%= obj.text_field(
+			:impexpcompany_company_name,
+			id: 'edit_good_impexpcompany_company_name',
+			autocomplete: "off"
+		) %>
+	</div>
+
+</div>
+
+<div class="form_errors">
+	<%= obj.errors :impexpcompany_company_name %>
+</div>

@@ -100,5 +100,12 @@ section.form {
 		margin:0.5%;
 		max-height: 7.5em;
 		overflow-y: auto;
+		border-radius:0.25em;
+
+		&.dual {
+			width:49%;
+			display:inline-block;
+			vertical-align: top;
+		}
 	}
 }

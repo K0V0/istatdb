@@ -1,0 +1,3 @@
+$("#edit_good_all_impexpcompany_company_name_results").children("tbody").children('tr').remove();
+
+$("#edit_good_all_impexpcompany_company_name_results > tbody").append('<%= j(render "impexpcompanies/api/client_search", items: @result) %>');

@@ -2,7 +2,7 @@
 // conventions: 
 	// id of input field: #input_field_name
 	// id of related table with search result: #input_field_name_results
-function searchQuery(path, conds) {
+function searchQuery(path, conds, other_data) {
 
 	var elem_string = "";
 	var elem_string_table_row_onclick = "";
@@ -28,7 +28,8 @@ function searchQuery(path, conds) {
 		 	url: path,
 		  	data: { 
 		  		q: request_data,
-		  		render_element_id: Object.keys(conds)[0]+"_results"
+		  		render_element_id: Object.keys(conds)[0]+"_results",
+		  		other_data
 		  	}
 		});
 	});
