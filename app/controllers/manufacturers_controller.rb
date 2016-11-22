@@ -32,6 +32,23 @@ class ManufacturersController < ApplicationController
       render('manufacturers/api/manufacturer_search')
     end
 
+    def edit_manufacturers_making_search
+      searcher_for(
+        object: Good.find(params[:other_data][:manufacturer_id]).manufacturers,
+        autoshow: false
+      )
+        render('manufacturers/api/manufactuer_search_making')
+    end
+
+    def edit_manufacturers_other_search
+      ids = Good.find(params[:other_data][:manufacturer_id]).manufacturers.pluck(:id)
+      searcher_for(
+        object: Manufacturer.where.not(id: ids),
+        autoshow: false
+      )
+        render('manufacturers/api/manufacturer_search_other')
+    end
+
   	private
 
     def permitted_pars

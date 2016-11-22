@@ -4,6 +4,8 @@
 
 	<%= form_for @good, url: update_good_path do |t| %>
 
+		<%= t.hidden_field :id %>
+
 		<article>
 			<%= render 'goods/edit/good', obj: t %>
 		</article>
@@ -19,8 +21,6 @@
 		<div>
 			<%= t.submit class: "button" %>
 		</div>
-
-		<%= t.hidden_field :id %>
 
 	<% end %>
 

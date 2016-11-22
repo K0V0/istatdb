@@ -1,4 +1,5 @@
-<div class="tablewrap">
+
+<div class="tablewrap dual">
 	
 	<table id="edit_good_impexpcompany_company_name_results">
 
@@ -11,9 +12,30 @@
 		
 		<tbody>
 			
-			<%= render 'impexpcompanies/api/edit_client_search', o: obj %>
+			<%= render 'impexpcompanies/api/client_search', items: @good.impexpcompanies %>
 
-	 	</tbody>
+		</tbody>
+
+	</table>
+
+</div><!--
+
+--><div class="tablewrap dual">
+	
+	<table id="edit_good_all_impexpcompany_company_name_results">
+
+		<thead>
+			<tr>
+				<th>  </th>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'impexpcompanies/api/client_search', items: (@impexpcompanies-@good.impexpcompanies) %>
+
+		</tbody>
 
 	</table>
 
@@ -22,9 +44,6 @@
 <div>
 
 	<div>
-		<span class="checkbox_wrapper">
-			<%= check_box_tag :include_impexpcompany_search_field, false %>
-		</span>
 		<%= obj.label :impexpcompany_company_name %>
 		<%= obj.text_field(
 			:impexpcompany_company_name,

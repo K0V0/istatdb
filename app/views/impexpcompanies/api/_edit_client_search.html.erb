@@ -1,0 +1,13 @@
+ 
+<%= collection_check_boxes(
+	:good,
+	:impexpcompany_ids,
+	@impexpcompanies,
+	:id,
+	:company_name) do |b| 
+		("<tr> <td>" +
+		b.check_box +
+		"</td><td>" +
+		b.label +
+		"</td></tr>").html_safe 
+end %>
