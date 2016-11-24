@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103204224) do
+ActiveRecord::Schema.define(version: 20161124101555) do
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20161103204224) do
     t.integer  "manufacturer_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.float    "uom"
+    t.integer  "uom_multiplier"
   end
 
   add_index "goods_manufacturers", ["good_id"], name: "index_goods_manufacturers_on_good_id"
