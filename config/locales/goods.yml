@@ -10,9 +10,9 @@ en:
       good: Goods
     attributes:
       good:
-        ident: "Catalog n."
+        ident: "Reference"
         description: "Description of goods"
-        local_taric_kncode: "TARIC code"
+        local_taric_kncode: "HS/TARIC code"
         local_taric_description: "Description of group"
         impexpcompany_company_name: "Client"
         manufacturer_name: "Manufacturer"
@@ -24,6 +24,12 @@ en:
             ident:
               blank: "left blank."
             description:
+        goods_manufacturer:
+          attributes:
+            uom:
+              not_a_number: "is not a number"
+            uom_multiplier: 
+              not_a_number: "can only be integer non-negative number, bigger than zero"
 
 sk:
 
@@ -35,20 +41,32 @@ sk:
   activerecord:
     models:
       good: Tovary
+      goods_manufacturer: ""
     attributes:
       good:
-        ident: "Katalógové č."
+        ident: "Referencia"
         description: "Popis tovaru"
-        local_taric_kncode: "Nomenklatúra"
+        local_taric_kncode: "Kód KN/TARIC"
         local_taric_description: "Popis colnej skupiny"
         impexpcompany_company_name: "Klientská firma"
         manufacturer_name: "Výrobca"
+        goods_manufacturer_uom: "Veličina"
+        goods_manufacturer_uom_multiplier: "Počet jednotiek"
+      goods_manufacturer:
+        uom: "Veličina"
+        uom_multiplier: "Počet jednotiek"
     errors:
       models:
         good:
           attributes:
             ident:
-              blank: "ostalo nevyplnené"
+              blank: "ostala nevyplnená"
             description:
+        goods_manufacturer:
+          attributes:
+            uom:
+              not_a_number: "môže byť len kladné celé alebo desatinné číslo"
+            uom_multiplier: 
+              not_a_number: "môže byť len celé kladné číslo väčšie ako nula. Ak nechané prázdne, hodnota sa nastaví na 1"
 
 

@@ -1,0 +1,18 @@
+<div>
+
+	<div>
+		<%= obj.label :goods_manufacturer_uom %>
+		<%= obj.text_field :goods_manufacturer_uom, autocomplete: "off" %>
+	</div>
+
+	<div>
+		<%= obj.label :goods_manufacturer_uom_multiplier %>
+		<%= obj.text_field :goods_manufacturer_uom_multiplier, autocomplete: "off" %>
+	</div>
+
+</div>
+
+<div class="form_errors">
+	<%= obj.errors :goods_manufacturer_uom %>
+	<%= obj.errors :goods_manufacturer_uom_multiplier %>
+</div>

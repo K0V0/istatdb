@@ -7,7 +7,6 @@ section.form {
 	}
 
 	article {
-		//display: table;
 		background-color: $group_background;
 		border-radius: 0.25em;
 		padding:0.25em;
@@ -36,7 +35,7 @@ section.form {
 			&.form_errors {
 
 				span {
-					display: block;
+					display: inline-block;
 					background-color: $button_danger;
 					color: white;
 					padding: 0.125em 0.25em;
@@ -48,6 +47,10 @@ section.form {
 
 			label {
 				margin-right: 0.125em;
+
+				&.required {
+					font-weight: bold;
+				}
 			}
 
 			table {

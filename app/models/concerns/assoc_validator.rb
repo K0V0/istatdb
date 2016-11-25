@@ -27,10 +27,14 @@ module AssocValidator
 			# object is unique because by given criteria not found ind DB
 			tmp = object.new(query)
 			if !tmp.valid?
-				errors.add(
-					(mdl + '_' + fields.last.to_s).to_sym,
-					tmp.errors.to_a.first
-				) 
+				fields.each do |field|
+					if !tmp.errors[field.to_sym].blank?
+						errors.add(
+							(mdl + '_' + field.to_s).to_sym,
+							tmp.errors[field.to_sym].first
+						)
+					end
+				end
 			else
 				instance_variable_set(instvar_string, tmp)
 				instance_variable_get(instvar_string).send(:save)
