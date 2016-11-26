@@ -6,9 +6,9 @@ sk:
     table_cap_description: "Popis, doplnk. informácie"
     table_cap_knnumber: "kód KN"
 
-    table_cap_clients: "Klienti predávajúci alebo nakupujúci tento tovar"
+    table_cap_clients: "Výskyt tovaru u klientov"
     table_cap_clients_count: "Klientov celkom: "
-    table_cap_makers: "Spoločnosti vyrábajúce tento produkt"
+    table_cap_makers: "Výrobcovia tovaru"
     table_cap_makers_count: "Výrobcov celkom: "
 
     search_client_filter_none: "Tovar všetkých klientov"

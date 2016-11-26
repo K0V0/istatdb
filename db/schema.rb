@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124101555) do
+ActiveRecord::Schema.define(version: 20161126140710) do
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 20161124101555) do
     t.integer  "manufacturer_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.float    "uom"
-    t.integer  "uom_multiplier"
   end
 
   add_index "goods_manufacturers", ["good_id"], name: "index_goods_manufacturers_on_good_id"
@@ -66,5 +64,23 @@ ActiveRecord::Schema.define(version: 20161124101555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "uom_types", force: :cascade do |t|
+    t.string   "uom_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "uoms", force: :cascade do |t|
+    t.float    "uom"
+    t.integer  "uom_multipliter"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "uom_type_id"
+    t.integer  "goods_manufacturer_id"
+  end
+
+  add_index "uoms", ["goods_manufacturer_id"], name: "index_uoms_on_goods_manufacturer_id"
+  add_index "uoms", ["uom_type_id"], name: "index_uoms_on_uom_type_id"
 
 end

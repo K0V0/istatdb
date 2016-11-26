@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uom: 
+  uom_multipliter: 
+  uom_type_id: 
+
+two:
+  uom: 
+  uom_multipliter: 
+  uom_type_id: 

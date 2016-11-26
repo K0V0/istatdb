@@ -10,6 +10,20 @@
 		<%= obj.text_field :goods_manufacturer_uom_multiplier, autocomplete: "off" %>
 	</div>
 
+	<div class="select_wrapper">
+
+		<%#= obj.collection_select('uom[]',
+			Impexpcompany.all,
+			:id,
+			:company_name,
+			include_blank: cbt(:search_client_filter_none) 
+		)
+		%>
+
+		<span></span>
+
+	</div>
+
 </div>
 
 <div class="form_errors">

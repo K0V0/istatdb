@@ -3,11 +3,14 @@ class GoodsManufacturer < ActiveRecord::Base
 	belongs_to :manufacturer, inverse_of: :goods_manufacturers
 	belongs_to :good, inverse_of: :goods_manufacturers
 
-	validates :uom, numericality: true, allow_blank: true
+	#has_many :goods_manufacturers_uoms, inverse_of: :goods_manufacturer
+	has_many :uoms, inverse_of: :goods_manufacturer #,# #through: :goods_manufacturers_uoms
 
-	validates :uom_multiplier, allow_blank: true, numericality: { only_integer: true, greater_than: 0 }
+	#validates :uom, numericality: true, allow_blank: true
 
-	before_save :set_fallback_multiplier
+	#validates :uom_multiplier, allow_blank: true, numericality: { only_integer: true, greater_than: 0 }
+
+	#before_save :set_fallback_multiplier
 
 	def set_fallback_multiplier
 		if !self.uom.blank? && self.uom_multiplier.blank?
