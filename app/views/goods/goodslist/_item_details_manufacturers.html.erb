@@ -1,9 +1,11 @@
 <table>
-	
+
 	<thead>
 
 		<tr>
 			<th> <%= cbt :table_cap_makers %> </th>
+			<th></th>
+			<th></th>
 		</tr>
 
 	</thead>
@@ -11,11 +13,21 @@
 	<tbody>
 
 		<% makers.each do |maker| %>
+
+			<% gm = maker.goods_manufacturers.where(good_id: @good.id).first %>
+
 			<tr>
 				<td>
 					<%= maker.name %>
 				</td>
+				<td>
+					<%= gm.uom %>
+				</td>
+				<td>
+					<%= gm.uom_multiplier %>
+				</td>
 			</tr>
+
 		<% end %>
 
 	</tbody>
@@ -23,7 +35,7 @@
 	<tfoot>
 		
 		<tr>
-			<td> <%= cbt :table_cap_makers_count %> </td>
+			<td> <%= cbt :table_cap_makers_count %> <%= makers.size %> </td>
 		</tr>
 
 	</tfoot>

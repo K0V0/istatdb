@@ -11,10 +11,12 @@ table {
 
 	td:first-child {
 		padding-left:0.375em;
+		white-space: nowrap;
 	}
 
 	td:last-child {
 		padding-right:0.375em;
+		white-space: nowrap;
 	}
 
 	td.checkbox {

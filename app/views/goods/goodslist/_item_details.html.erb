@@ -2,7 +2,9 @@
 <section class="item_details">
 
 	<h1> <%= @good.ident %> </h1>
-	<h2> <%= @good.local_taric.kncode %> </h2>
+	<br>
+	<h2> <%= num_to_kncode @good.local_taric.kncode %> </h2>
+	<br>
 	<h3> <%= @good.local_taric.description %> </h3>
 
 	<p>
@@ -11,10 +13,12 @@
 
 	<p>
 
-	<%= render 'goods/goodslist/item_details_clients', clients: @good.impexpcompanies %>
-
-	<p>
-
-	<%= render 'goods/goodslist/item_details_manufacturers', makers: @good.manufacturers %>
+	<div class="tablewrap">
+		<%= render 'goods/goodslist/item_details_clients', clients: @good.impexpcompanies %>
+	</div>
+	
+	<div class="tablewrap">
+		<%= render 'goods/goodslist/item_details_manufacturers', makers: @good.manufacturers %>
+	</div>
 
 </section>

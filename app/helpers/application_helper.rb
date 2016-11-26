@@ -47,6 +47,18 @@ module ApplicationHelper
 		highlight_searched obj.send(param), p 
 	end
 
+	def num_to_kncode num
+		itm = num.dup
+		str_len = itm.length
+		divisions = str_len % 2 == 0 ? ((str_len / 2) - 2) : ((str_len / 2) - 1)
+		startpos = 4
+		for i in 0..divisions-1
+			itm.insert(startpos, " ")
+			startpos += (2 + (i + 1))
+		end	
+		return itm
+	end
+
 	class ActionView::Helpers::FormBuilder
 
 	  	def errors(field, continue: false)

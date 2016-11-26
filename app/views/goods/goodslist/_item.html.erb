@@ -12,7 +12,7 @@
 		</td>
 		
 		<td> <%= item.description %> </td>
-		<td> <%= item.local_taric.kncode %> </td>
+		<td> <%= num_to_kncode item.local_taric.kncode %> </td>
 
 		<%= render 'layouts/table_item_operations', item_id: item.id %>
 
