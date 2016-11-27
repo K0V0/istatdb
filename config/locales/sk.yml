@@ -15,6 +15,13 @@ sk:
 
     table_foot_goods_total: "výsledkov celkom: "
 
+    uoms_uom: "Hodnota veličiny"
+    uoms_uom_multiplier: "Pre počet jednotiek"
+    uoms_uom_type: "Merná jednotka"
+    uoms_add: "Pridať ďalšie"
+    uoms_empty: "Vyberte jednotku"
+    uoms_remove: "Odstrániť"
+
   local_taric:
 
     table_cap_additional_info: "Identifikácia"

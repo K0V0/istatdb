@@ -18,7 +18,11 @@ section.form {
 			div {
 				margin: 0em 0.25em;
 				width: auto;
-				float:left;
+				display: inline-block;
+
+				&.remove_uom {
+					display:none;
+				}
 			}
 
 			span.checkbox_wrapper {
@@ -92,6 +96,10 @@ section.form {
 						&:active, &.selected {
 							background-color: black;
 							color: white;
+
+							&:hover {
+								background-color: $button_selected_hover;
+							}
 						}
 
 						td {

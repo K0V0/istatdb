@@ -57,6 +57,7 @@ class GoodsController < ApplicationController
 		@local_tarics = LocalTaric.all
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
+		@uom_types = UomType.all
 	end
 
 	def permitted_pars
@@ -67,8 +68,7 @@ class GoodsController < ApplicationController
 			:local_taric_description,
 			:impexpcompany_company_name,
 			:manufacturer_name,
-			:goods_manufacturer_uom,
-			:goods_manufacturer_uom_multiplier
+			uoms: [:uom, :uom_multiplier, :uom_type]
 		)
 	end
 

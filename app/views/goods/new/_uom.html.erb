@@ -1,0 +1,71 @@
+<div>
+
+	<div>
+
+		<label>	<%= cbt :uoms_uom %> </label>
+
+		<input type="text"
+		 name='good[uoms][][uom]'
+		 value='<%= obj[:uom] %>'
+		 id='good_uoms_uom_<%= index %>'
+		 autocomplete='off'
+		 class='good_uoms_uom'
+		>
+		
+	</div>
+
+	<div>
+		
+		<label>	<%= cbt :uoms_uom_multiplier %> </label>
+
+		<input type="text"
+		 name='good[uoms][][uom_multiplier]'
+		 value='<%= obj[:uom_multiplier] %>'
+		 id='good_uoms_uom_multiplier_<%= index %>'
+		 autocomplete='off'
+		 class='good_uoms_uom_multiplier'
+		>
+
+	</div>
+
+	<div class="select_wrapper">
+
+		<select name='good[uoms][][uom_type]'>
+			
+			<% UomType.all.each do |uom_type| %>
+
+				<option> <%= cbt :uoms_empty %> </option>
+
+				<option 
+				 value="<%= uom_type.id %>"
+				 <%= 'selected="selected"' if uom_type.id == obj[:uom_type].to_i %>
+				>
+					<%= uom_type.uom_type %>
+				</option>
+
+			<% end %>
+
+		</select>
+
+		<span></span>
+
+	</div>
+
+	<div class="remove_uom">
+		<button class="button remove_uom" type="button"> 
+			<%= cbt :uoms_remove %> 
+		</button>
+	</div><!--
+
+	--><div class="add_uom">
+		<button class="button add_uom" type="button"> 
+			<%= cbt :uoms_add %> 
+		</button>
+	</div>
+
+</div>
+
+<div class="form_errors">
+	<%#= obj.errors :goods_manufacturer_uom %>
+	<%#= obj.errors :goods_manufacturer_uom_multiplier %>
+</div>

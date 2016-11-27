@@ -21,9 +21,13 @@
 			<%= render 'goods/new/manufacturer', obj: t %>
 		</article>
 
-		<article>
-			<%= render 'goods/new/misc', obj: t %>
-		</article>
+		<% @good.uoms.each_with_index do |uom, index| %>
+
+			<article class="new_good_uom">
+				<%= render 'goods/new/uom', obj: uom, index: index %>
+			</article>
+
+		<% end %>
 
 		<div>
 			<%= t.submit class: "button" %>
