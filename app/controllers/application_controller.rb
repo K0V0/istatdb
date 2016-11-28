@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     params[:q] = Rails.cache.read("q")
   }
 
-  before_action(only: :index) { 
+  before_action(only: [:index, :show]) { 
     params[:q] = Rails.cache.read("q")
   }
 

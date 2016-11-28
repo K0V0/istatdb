@@ -92,19 +92,6 @@ section.form {
 								}
 							}
 						}
-
-						&:active, &.selected {
-							background-color: black;
-							color: white;
-
-							&:hover {
-								background-color: $button_selected_hover;
-							}
-						}
-
-						td {
-							
-						}
 					}
 				}
 			}

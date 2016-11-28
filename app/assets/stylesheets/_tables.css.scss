@@ -11,12 +11,10 @@ table {
 
 	td:first-child {
 		padding-left:0.375em;
-		white-space: nowrap;
 	}
 
 	td:last-child {
 		padding-right:0.375em;
-		white-space: nowrap;
 	}
 
 	td.checkbox {
@@ -68,11 +66,19 @@ table {
 					margin: 0;
 				}
 			}
+
+			&:active, &.selected {
+				background-color: black;
+				color: white;
+
+				&:hover {
+					background-color: $button_selected_hover;
+				}
+			}
 		}
 	}
 
 	tfoot {
-
 		text-align:right;
 
 		th {

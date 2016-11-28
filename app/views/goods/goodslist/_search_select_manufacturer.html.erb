@@ -1,0 +1,12 @@
+
+<%= select_tag('q[manufacturer_filter]',
+	options_from_collection_for_select(
+	 	@searcher_load_manufacturers_by_impexpcompany,
+	 	"id",
+	 	"name",
+	 	@search.manufacturer_filter),
+	include_blank: cbt(:search_manufacturers_filter_none)
+) %>
+
+<span></span>
+

@@ -5,14 +5,16 @@
 		
 		<%= render 'layouts/table_checkbox', item_id: item.id %>
 
-		<td> 
+		<td class="good_ref"> 
 			<%= link_to item, remote: true do %>
 				<%= highlight_search item, :ident %>
 			<% end %>
 		</td>
 		
 		<td> <%= item.description %> </td>
-		<td> <%= num_to_kncode item.local_taric.kncode %> </td>
+		<td class="kn_code"> 
+			<%= num_to_kncode item.local_taric.kncode %> 
+		</td>
 
 		<%= render 'layouts/table_item_operations', item_id: item.id %>
 

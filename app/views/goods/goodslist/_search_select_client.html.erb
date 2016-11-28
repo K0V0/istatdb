@@ -1,0 +1,16 @@
+<div>
+
+	<div class="select_wrapper">
+
+		<%= obj.collection_select :client_filter,
+			Impexpcompany.all,
+			:id,
+			:company_name,
+			include_blank: cbt(:search_client_filter_none)
+		%>
+
+		<span></span>
+
+	</div>
+
+</div>

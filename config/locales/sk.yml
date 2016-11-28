@@ -12,6 +12,7 @@ sk:
     table_cap_makers_count: "Výrobcov celkom: "
 
     search_client_filter_none: "Tovar všetkých klientov"
+    search_manufacturers_filter_none: "Všetci výrobcovia"
 
     table_foot_goods_total: "výsledkov celkom: "
 
@@ -21,6 +22,12 @@ sk:
     uoms_add: "Pridať ďalšie"
     uoms_empty: "Vyberte jednotku"
     uoms_remove: "Odstrániť"
+    uoms_uom_short: "Hodnota"
+    uoms_uom_multiplier_short: "Pre poč. ks"
+    uoms_uom_type_short: "Jednotka"
+    uoms_result_short: "Výsledok"
+    uoms_calculator_cap: "Kalkulačka"
+    uoms_count: "Počet ks."
 
   local_taric:
 

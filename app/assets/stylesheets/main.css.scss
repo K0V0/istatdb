@@ -23,6 +23,20 @@ html {
 			clear:both;
 		}
 
+		.center {
+			text-align: center;
+		}
+
+		.decorated_wrap {
+			border-color:$wrap_border_color;
+			border-style: solid;
+			border-radius:0.375em;
+			border-bottom-width:0.125em;
+			border-right-width:0.125em;
+			border-left-width:0;
+			border-top-width:0;
+		}
+
 		main {
 			flex: 1;
 			margin:0.25em 0.75em;

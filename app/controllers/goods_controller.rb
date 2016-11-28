@@ -2,6 +2,8 @@ class GoodsController < ApplicationController
 
 	before_action :searcher_for, only: [:index, :search, :show, :administration]
 
+	before_action :searcher_load_manufacturers_by_impexpcompany, only: [:index, :search, :administration, :show]
+
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
 	before_action(only: :create) { 
@@ -39,7 +41,6 @@ class GoodsController < ApplicationController
 
 	def update
 		@good = Good.find(params[:id])
-
 	    if @good.update(permitted_pars)
 	      redirect_to @good
 	    else
@@ -68,7 +69,7 @@ class GoodsController < ApplicationController
 			:local_taric_description,
 			:impexpcompany_company_name,
 			:manufacturer_name,
-			uoms: [:uom, :uom_multiplier, :uom_type]
+			uoms: [:uom, :uom_multiplier, :uom_type_id]
 		)
 	end
 
@@ -81,6 +82,15 @@ class GoodsController < ApplicationController
 			Impexpcompany: { company_name: :contains },
 			Manufacturer: { name: :contains }
 		)
+	end
+
+	def searcher_load_manufacturers_by_impexpcompany
+		client_id = params[:q][:client_filter]
+		if !client_id.blank?
+			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).goods.includes(:manufacturers).collect(&:manufacturers).flatten.uniq
+		else
+			@searcher_load_manufacturers_by_impexpcompany = Manufacturer.all
+		end
 	end
 
 end

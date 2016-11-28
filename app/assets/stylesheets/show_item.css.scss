@@ -1,8 +1,44 @@
+@import "variables";
+
 section.item_details {
 
 	div.tablewrap {
 		display: inline-block;
+		margin: 0.25em 0;
 		margin-right: 0.25em;
 		vertical-align: top;
+
+		table {
+
+			tbody {
+
+				&.uom_calculator {
+
+					tr {
+						background-color: $even_table_line_color;
+
+						&:active {
+							color:inherit;
+						}
+					}
+				}
+			}
+
+			&.good_manufacturers_list {
+				pointer-events:none;
+
+				tr {
+
+					td.inner_table_wrap {
+						padding:0;
+
+						table {
+							width:100%;
+							margin:0;
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -1,11 +1,13 @@
-<table>
+
+<table class="good_manufacturers_list">
 
 	<thead>
 
 		<tr>
 			<th> <%= cbt :table_cap_makers %> </th>
-			<th></th>
-			<th></th>
+			<th> <%= cbt :uoms_uom_short %> </th>
+			<th> <%= cbt :uoms_uom_multiplier_short %> </th>
+			<th> <%= cbt :uoms_uom_type_short %> </th>
 		</tr>
 
 	</thead>
@@ -16,16 +18,30 @@
 
 			<% gm = maker.goods_manufacturers.where(good_id: @good.id).first %>
 
-			<tr>
+			<tr <%= 'class="selected"'.html_safe if (@search.manufacturer_filter.to_i == maker.id) %>>
+
 				<td>
 					<%= maker.name %>
 				</td>
-				<td>
-					<%= gm.uom %>
+
+				<td colspan="3" class="inner_table_wrap">
+					<table>
+						<% gm.uoms.each do |uom| %>
+							<tr>
+								<td>
+									<%= uom.uom %> 
+								</td>
+								<td>
+									<%= uom.uom_multiplier %> 
+								</td>
+								<td>
+									<%= uom.type %> 
+								</td>
+							</tr>
+						<% end %>
+					</table>
 				</td>
-				<td>
-					<%= gm.uom_multiplier %>
-				</td>
+
 			</tr>
 
 		<% end %>
@@ -35,7 +51,9 @@
 	<tfoot>
 		
 		<tr>
-			<td> <%= cbt :table_cap_makers_count %> <%= makers.size %> </td>
+			<td colspan="10"> 
+				<%= cbt :table_cap_makers_count %> <%= makers.size %> 
+			</td>
 		</tr>
 
 	</tfoot>

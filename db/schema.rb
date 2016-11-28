@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126140710) do
+ActiveRecord::Schema.define(version: 20161127150100) do
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20161126140710) do
 
   create_table "uoms", force: :cascade do |t|
     t.float    "uom"
-    t.integer  "uom_multipliter"
+    t.integer  "uom_multiplier"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.integer  "uom_type_id"

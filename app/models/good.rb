@@ -19,7 +19,7 @@ class Good < ActiveRecord::Base
 	# on both sides causes circular dependency error
 
 	def uoms
-		 @uoms ||= [{ uom: "", uom_multiplier: "1", uom_type: "" }]
+		 @uoms ||= [{ uom: "", uom_multiplier: "1", uom_type_id: "" }]
 	end
 
 	def uoms=(par)
@@ -51,10 +51,19 @@ class Good < ActiveRecord::Base
 		})
 	}
 
+	scope :manufacturer_filter, -> (pars) { 
+		self
+		.joins(:manufacturers)
+		.where(manufacturers: { 
+			id: pars 
+		})
+	}
+
 	def self.ransackable_scopes(*pars)
-	    %i(client_filter)
+	    %i(client_filter manufacturer_filter)
 	end
 
+	## resolve how to run from update action only - maybe run from controller
 	def fillup_virtual_params
 		#fillup_virtual :local_taric, fields: [:kncode, :description]
 	end
@@ -63,9 +72,7 @@ class Good < ActiveRecord::Base
 		assoc_validator LocalTaric, :kncode, :description
 		assoc_validator Impexpcompany, :company_name
 		assoc_validator Manufacturer, :name
-		#Rails.logger.info("----------------------")
-		#Rails.logger.info(@goods_manufacturer_uom)
-		#assoc_validator GoodsManufacturer, :uom, :uom_multiplier
+		assoc_validator_uoms @uoms
 	end
 
 	def assignments
@@ -73,11 +80,10 @@ class Good < ActiveRecord::Base
 		@impexpcompany.goods << self
 		@manufacturer.goods << self
 		# this search should always return unique one result 
-		#gm = @manufacturer.goods_manufacturers.where(good_id: self.id).first
-		#gm.update(
-		#	uom: @goods_manufacturer_uom,
-		#	uom_multiplier: @goods_manufacturer_uom_multiplier
-		#)
+		gm = @manufacturer.goods_manufacturers.where(good_id: self.id).first.uoms
+		@uoms.each do |uom|
+			gm << Uom.new(uom)
+		end
 	end
 
 	def kn_code_update

@@ -59,6 +59,27 @@ module ApplicationHelper
 		return itm
 	end
 
+	def content_yelder symb, wrap_tag=nil, html_options={}
+		end_tag, start_tag = "", ""
+
+		if !wrap_tag.nil?
+			start_tag = '<' + wrap_tag.to_s + '>'
+			end_tag = start_tag.dup
+			end_tag.insert(1, '/')
+		end
+
+		if !html_options.blank?
+			options_string = ""
+			html_options.each do |k, v|
+				options_string += ' ' + k.to_s + '="' + v.to_s + '"'
+			end
+			start_tag.insert(start_tag.length-1, options_string)
+		end
+
+		html_string = start_tag + (content_for(symb) || " --- ") + end_tag
+		html_string.html_safe
+	end
+
 	class ActionView::Helpers::FormBuilder
 
 	  	def errors(field, continue: false)

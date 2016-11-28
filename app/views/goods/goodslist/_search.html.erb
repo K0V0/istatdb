@@ -17,18 +17,11 @@
 				<%= s.search_field :description_cont, autocomplete: "off" %>
 			</div>
 
+			<%= render 'goods/goodslist/search_select_client', obj: s %>
+
 			<div>
 				<div class="select_wrapper">
-
-					<%= s.collection_select :client_filter,
-						Impexpcompany.all,
-						:id,
-						:company_name,
-						include_blank: cbt(:search_client_filter_none)
-					%>
-
-					<span></span>
-
+					<%= render 'goods/goodslist/search_select_manufacturer', obj: s %>
 				</div>
 			</div>
 

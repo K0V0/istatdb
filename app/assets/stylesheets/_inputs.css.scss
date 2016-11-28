@@ -18,6 +18,11 @@ input:focus, select:focus {
 	border-color: $input_selected
 }
 
+input:disabled {
+	background-color: $disabled_input;
+	border-color: $disabled_input;
+}
+
 input[type=submit] {
 	padding: 0.125em 0.25em;
 	border-width: 0.125em;

@@ -1,3 +1,5 @@
+<% err = @good.errors[('uoms_'+index.to_s).to_sym] %>
+
 <div>
 
 	<div>
@@ -30,15 +32,15 @@
 
 	<div class="select_wrapper">
 
-		<select name='good[uoms][][uom_type]'>
+		<select name='good[uoms][][uom_type_id]'>
 			
 			<% UomType.all.each do |uom_type| %>
 
-				<option> <%= cbt :uoms_empty %> </option>
+				<option value=""> <%= cbt :uoms_empty %> </option>
 
 				<option 
 				 value="<%= uom_type.id %>"
-				 <%= 'selected="selected"' if uom_type.id == obj[:uom_type].to_i %>
+				 <%= 'selected="selected"' if uom_type.id == obj[:uom_type_id].to_i %>
 				>
 					<%= uom_type.uom_type %>
 				</option>
@@ -66,6 +68,7 @@
 </div>
 
 <div class="form_errors">
-	<%#= obj.errors :goods_manufacturer_uom %>
-	<%#= obj.errors :goods_manufacturer_uom_multiplier %>
+	<% err.each do |e| %>
+		<span> <%= e %> </span>
+	<% end %>
 </div>

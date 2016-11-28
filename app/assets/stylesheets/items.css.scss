@@ -1,0 +1,19 @@
+table {
+
+	tbody {
+
+		tr {
+
+			td {
+
+				&.kn_code {
+					white-space: nowrap;
+				}
+
+				&.good_ref {
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+}

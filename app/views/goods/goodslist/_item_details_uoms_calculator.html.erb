@@ -1,0 +1,71 @@
+
+<% uom_val, uom_multiplier, uom_type = "", "", ""
+if makers.size == 1
+	tmp = makers.first.goods_manufacturers.where(good_id: @good.id).first.uoms
+	if tmp.size == 1
+		uom_val = tmp.first.uom
+		uom_multiplier = tmp.first.uom_multiplier
+		uom_type = tmp.first.type
+	end
+end 
+%>
+
+<table>
+
+	<thead>
+		<tr>
+			<th> <%= cbt :uoms_calculator_cap  %> </th>
+		</tr>
+	</thead>
+
+	<tbody class="uom_calculator">
+
+		<tr>
+			<td>
+				<label> <%= cbt :uoms_uom_short %>  </label>
+			</td>
+
+			<td>
+				<input type="text" name="uom_value" value="<%= uom_val %>"
+				disabled="disabled">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label> <%= cbt :uoms_uom_multiplier_short %> </label>
+			</td>
+			<td>
+				<input type="text" name="uom_multiplier" value="<%= uom_multiplier %>" disabled="disabled">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label> <%= cbt :uoms_count %> </label>
+			</td>
+
+			<td>
+				<input type="text" name="uom_count">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label> <%= cbt :uoms_result_short %> </label>
+			</td>
+
+			<td>
+				<input type="text" name="uom_result">
+			</td>
+		</tr>
+
+	</tbody>
+
+	<tfoot>
+		<tr>
+			<td colspan="10"> <%= cbt :uoms_uom_type_short %>: <%= uom_type %> </td>
+		</tr>
+	</tfoot>
+
+</table>

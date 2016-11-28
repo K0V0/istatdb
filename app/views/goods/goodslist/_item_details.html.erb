@@ -13,12 +13,16 @@
 
 	<p>
 
-	<div class="tablewrap">
+	<div class="tablewrap decorated_wrap">
 		<%= render 'goods/goodslist/item_details_clients', clients: @good.impexpcompanies %>
 	</div>
 	
-	<div class="tablewrap">
+	<div class="tablewrap decorated_wrap">
 		<%= render 'goods/goodslist/item_details_manufacturers', makers: @good.manufacturers %>
+	</div>
+
+	<div class="tablewrap decorated_wrap">
+		<%= render 'goods/goodslist/item_details_uoms_calculator', makers: @good.manufacturers %>
 	</div>
 
 </section>

@@ -1,4 +1,5 @@
-$(document).on('turbolinks:load', function() {
+//$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
 
 	// adding new good page - searching help tables for fast picking up criterium if exist 
 	searchQuery(

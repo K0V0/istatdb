@@ -41,7 +41,7 @@ sk:
   activerecord:
     models:
       good: Tovary
-      goods_manufacturer: ""
+      uom: ""
     attributes:
       good:
         ident: "Referencia"
@@ -52,8 +52,8 @@ sk:
         manufacturer_name: "Výrobca"
         goods_manufacturer_uom: "Veličina"
         goods_manufacturer_uom_multiplier: "Počet jednotiek"
-      goods_manufacturer:
-        uom: "Veličina"
+      uom:
+        uom: "Hodnota"
         uom_multiplier: "Počet jednotiek"
     errors:
       models:
@@ -62,11 +62,13 @@ sk:
             ident:
               blank: "ostala nevyplnená"
             description:
-        goods_manufacturer:
+        uom:
           attributes:
             uom:
-              not_a_number: "môže byť len kladné celé alebo desatinné číslo"
+              not_a_number: "Hodnota môže byť len kladné celé alebo desatinné číslo"
             uom_multiplier: 
-              not_a_number: "môže byť len celé kladné číslo väčšie ako nula. Ak nechané prázdne, hodnota sa nastaví na 1"
+              not_a_number: "Počet jednotiek môže byť len celé kladné číslo väčšie ako nula. Ak nechané prázdne, hodnota sa nastaví na 1"
+            uom_type_id: 
+              blank: "Vyberte jednotku v ktorej je veličina meraná"
 
 
