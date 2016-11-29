@@ -39,6 +39,8 @@ gem 'jquery-turbolinks'
 
 gem 'active_link_to', git: 'https://github.com/K0V0/active_link_to'
 
+gem 'localtunnel'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
