@@ -18,6 +18,7 @@ sk:
 
     uoms_uom: "Hodnota veličiny"
     uoms_uom_multiplier: "Pre počet jednotiek"
+    uoms_uom_multiplier2: "Pre počet ks."
     uoms_uom_type: "Merná jednotka"
     uoms_add: "Pridať ďalšie"
     uoms_empty: "Vyberte jednotku"
