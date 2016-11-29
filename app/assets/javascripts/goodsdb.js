@@ -83,4 +83,12 @@ $(document).ready(function() {
 		}
 	});
 
+	$(document).on('input', 'input[name=uom_count]', function() {
+		var val = parseFloat($('input[name=uom_value]').val());
+		var multiplier = parseInt($('input[name=uom_multiplier]').val());
+		var count = parseFloat($('input[name=uom_count]').val());
+		var result = (val * count) / multiplier;
+		$('input[name=uom_result]').val(result.toFixed(2));
+	});
+
 });

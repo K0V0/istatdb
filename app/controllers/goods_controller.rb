@@ -88,7 +88,9 @@ class GoodsController < ApplicationController
 		client_id = nil
 		##client_id = params[:q][:client_filter] if params.has_key?(:q)
 		if params.has_key?(:q)
-			client_id = params[:q][:client_filter]
+			if !params[:q].blank?
+				client_id = params[:q][:client_filter]
+			end
 		end
 		if !client_id.blank?
 			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).goods.includes(:manufacturers).collect(&:manufacturers).flatten.uniq
