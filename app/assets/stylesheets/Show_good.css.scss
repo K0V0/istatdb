@@ -1,0 +1,58 @@
+@import "variables";
+
+section.item_details {
+
+	div.tablewrap {
+		display: inline-table;
+		margin: 0.25em 0;
+		margin-right: 0.25em;
+		vertical-align: top;
+
+		table.uom_calculator {
+
+			tbody {
+				border-top: 0.25em solid transparent;
+				border-bottom: 0.25em solid transparent;
+				background-color: $table_background;
+			}
+		}
+
+		table.good_manufacturers_list {
+
+			tr {
+
+				// values
+				td.inner_table_wrap {
+					padding-right:0;
+
+					table {
+						width:100%;
+
+						tr {
+
+							td {
+								width: 33.3%;
+							}
+						}
+					}
+				}
+
+				// caption
+				th.inner_table_wrap {
+
+					table {
+						table-layout: fixed;
+
+						tr {
+
+							th {
+								min-width: 4em;
+								width: 33.3%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

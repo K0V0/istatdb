@@ -6,29 +6,27 @@ section.search_bar {
 		background-color: #bbb;
 		padding: 0.25em 0.25em;
 		display:table;
+		text-align: left;
 	}
 
-	form > div  {
+	form > div {
 		display: inline-block;
 		margin-right: 0.125em;
 
 		&:last-child {
 			margin-right: 0;
-		}
 
-		&:last-child > * {
-			
-			&:first-child {
+			*:first-child {
 				margin-right: 0.25em;
-			}
-
-			&:last-child {
-				margin-right: 0.125em;
 			}
 		}
 
 		label {
 			margin-left: 0.25em;
+		}
+
+		input[type=text], input[type=search] {
+			max-width: 10em;
 		}
 	}
 }

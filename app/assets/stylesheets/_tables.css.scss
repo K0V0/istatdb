@@ -33,26 +33,15 @@ table {
 	}
 
 	tbody {
+		background-color: $odd_table_line_color;
 
 		tr {
 			@include button_transitions();
 			line-height:1.25em;
 
-			&:nth-child(2n) {
-				background-color: $even_table_line_color;
-			}
-
-			&:nth-child(2n-1){
-				background-color: $odd_table_line_color;
-			}
-
 			&.no_results {
 				background-color: $button_danger;
 				color: white;
-			}
-
-			&:hover {
-				background-color: $table_row_hover;
 			}
 
 			td {
@@ -66,15 +55,6 @@ table {
 					margin: 0;
 				}
 			}
-
-			&:active, &.selected {
-				background-color: black;
-				color: white;
-
-				&:hover {
-					background-color: $button_selected_hover;
-				}
-			}
 		}
 	}
 
@@ -84,6 +64,41 @@ table {
 		th {
 			font-weight: normal;
 			padding-right: 1em;
+		}
+	}
+}
+
+table.rows_colored {
+
+	tbody {
+
+		tr {
+
+			&:nth-child(2n) {
+				background-color: $even_table_line_color;
+			}
+		}
+	}
+}
+
+table.with_efects {
+
+	tbody {
+
+		tr {
+
+			&:hover {
+				background-color: $table_row_hover;
+			}
+
+			&:active, &.selected {
+				background-color: $black;
+				color: $white;
+
+				&:hover {
+					background-color: $button_selected_hover;
+				}
+			}
 		}
 	}
 }

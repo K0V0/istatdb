@@ -5,25 +5,25 @@
 
 	<%= form_for @good do |t| %>
 
-		<article>
+		<article class="decorated_wrap">
 			<%= render 'goods/new/good', obj: t %>
 		</article>
 
-		<article>
+		<article class="decorated_wrap">
 			<%= render 'goods/new/taricnum', obj: t %>
 		</article>
 
-		<article>
+		<article class="decorated_wrap">
 			<%= render 'goods/new/client', obj: t %>
 		</article>
 
-		<article>
+		<article class="decorated_wrap">
 			<%= render 'goods/new/manufacturer', obj: t %>
 		</article>
 
 		<% @good.uoms.each_with_index do |uom, index| %>
 
-			<article class="new_good_uom">
+			<article class="new_good_uom decorated_wrap">
 				<%= render 'goods/new/uom', obj: uom, index: index %>
 			</article>
 

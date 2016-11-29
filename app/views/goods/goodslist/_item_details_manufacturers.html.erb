@@ -5,9 +5,17 @@
 
 		<tr>
 			<th> <%= cbt :table_cap_makers %> </th>
-			<th> <%= cbt :uoms_uom_short %> </th>
-			<th> <%= cbt :uoms_uom_multiplier_short %> </th>
-			<th> <%= cbt :uoms_uom_type_short %> </th>
+			<th class="inner_table_wrap"> 
+				<table>
+					<thead>
+						<tr>
+							<th><%= cbt :uoms_uom_short %></th>
+							<th> <%= cbt :uoms_uom_multiplier_short %> </th>
+							<th> <%= cbt :uoms_uom_type_short %> </th>
+						</tr>
+					</thead>
+				</table> 
+			</th>
 		</tr>
 
 	</thead>
@@ -25,7 +33,7 @@
 				</td>
 
 				<td colspan="3" class="inner_table_wrap">
-					<table>
+					<table class="with_efects">
 						<% gm.uoms.each do |uom| %>
 							<tr>
 								<td>

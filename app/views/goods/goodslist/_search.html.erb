@@ -5,7 +5,8 @@
 
 		<%= search_form_for @search, 
 			url: search_goods_path,
-			remote: true do |s| %> 
+			remote: true,
+			class: "decorated_wrap" do |s| %> 
 
 			<div>
 				<%= s.label :ident %>

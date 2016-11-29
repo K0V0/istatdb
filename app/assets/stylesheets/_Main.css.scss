@@ -14,7 +14,7 @@ html {
 		margin:0;
 		background-color: $white;
 		display: flex;
-		min-height: 100%; // ?IE
+		min-height: 100%; 
   		min-height: 100vh;
   		flex-direction: column;
 		position:relative;
@@ -35,6 +35,13 @@ html {
 			border-right-width:0.125em;
 			border-left-width:0;
 			border-top-width:0;
+		}
+
+		.wrapper {
+			display: table;
+			padding:0.25em;
+			background-color: $group_background;
+			border-radius: 0.25em;
 		}
 
 		main {

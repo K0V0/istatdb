@@ -23,7 +23,7 @@ sk:
     uoms_empty: "Vyberte jednotku"
     uoms_remove: "Odstrániť"
     uoms_uom_short: "Hodnota"
-    uoms_uom_multiplier_short: "Pre poč. ks"
+    uoms_uom_multiplier_short: "Kusov"
     uoms_uom_type_short: "Jednotka"
     uoms_result_short: "Výsledok"
     uoms_calculator_cap: "Kalkulačka"

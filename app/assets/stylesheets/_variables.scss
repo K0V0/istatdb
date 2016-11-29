@@ -1,15 +1,23 @@
-$background_color: #000;
+$superwhite: #fff;
 $white: #eee;
+$black: #000;
 
-$white_input: #f8f8f8;
-$disabled_input: #E6E6E6;
+$background_color: #000;
 
 $main_menu_active_link: $white;
-$main_menu_active_link_text: #000;
+$main_menu_active_link_text: $black;
 $main_menu_inactive_link_hover: #444;
+
+$white_input: #f8f8f8;
+//$disabled_input: #E6E6E6;
+$disabled_input: #aaa;
+//$hovered_input: #DDD;
+$input_selected: #8E0000;
+$input_validation_error: #FF7F7F;
 
 $button_grey: #777;
 $button_grey_hover: #666;
+$button_grey_border: rgba(85,85,85,1);
 
 $button_selected: #000;
 $button_selected_hover: #333;
@@ -17,14 +25,12 @@ $button_selected_hover: #333;
 $button_danger: #8E0000;
 $button_danger_hover: #e00;
 
-$input_selected: #8E0000;
-$input_validation_error: #FF7F7F;
-
 $hreflink_color: #D60000;
 $hreflink_color_2: #000000;
 
 $group_background: #bbb;
-$wrap_border_color: #aaa;
+$table_background: #ccc;
+$wrap_border_color: #999;
 
 $even_table_line_color: #ccc;
 $odd_table_line_color: #ddd;
@@ -44,6 +50,16 @@ $main_menu_mouse_actions_transition_time: 0.30s;
 
 @mixin inputs_transitions() {
 	@include transition(border-color $main_menu_mouse_actions_transition_time ease);
+}
+
+@mixin all_transitions() {
+  @include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease, border-color $main_menu_mouse_actions_transition_time ease);
+}
+
+@mixin box_shadows() {
+  -webkit-box-shadow: 1px 1px 0px 1px $button_grey_border;
+  -moz-box-shadow: 1px 1px 0px 1px $button_grey_border;
+  box-shadow: 1px 1px 0px 1px $button_grey_border;
 }
 
 @mixin transition($args...) {

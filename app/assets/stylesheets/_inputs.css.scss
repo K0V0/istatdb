@@ -2,16 +2,21 @@
 
 input, select {
 	@include reset_input_browser_styles();
-	@include inputs_transitions();
+	@include all_transitions();
 	
 	display: inline-block;
 	margin: 0.125em 0.125em;
 	font-size: 1em;
-	border:0.125em solid $white_input;
+	border:0.125em solid $white;
 	padding:0.125em 0.25em;
 	border-radius:0.25em;
-	background-color: $white_input;
+	background-color: $white;
 	line-height:1em;
+}
+
+input:hover, select:hover {
+	background-color: $superwhite;
+	border-color: $superwhite;
 }
 
 input:focus, select:focus {
@@ -58,26 +63,11 @@ input[type=checkbox] {
 	}
 }
 
-button, a.button {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0.125em;
-	font-size: 1em;
-	line-height:1em;
-	padding: 0.125em 0.25em;
-	border-radius: 0.25em;
-	border-style: solid;
-	border-width: 0.125em;
-	color: white;
-	display: inline-block;
-
-	&:after {
-		display: none;
-	}
-}
-
 div.select_wrapper {
+	@include button_transitions();
+
 	position: relative;
-	background-color: $white_input;
+	background-color: $white;
 	border-radius:0.25em;
 	display: inline-block;
 	margin: 0.125em 0.125em;
@@ -94,7 +84,7 @@ div.select_wrapper {
 	}
 
 	span {
-		@include button_transitions();
+		//@include button_transitions();
 		position: absolute;
 		top:0;
 		bottom:0;
@@ -113,5 +103,9 @@ div.select_wrapper {
 
 	select:active + span {
 		@include transform(rotate(-180deg));
+	}
+
+	&:hover {
+		background-color: $superwhite;
 	}
 }
