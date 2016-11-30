@@ -13,6 +13,26 @@
 	
 </div>
 
+<div class="tablewrap">
+	
+	<table id="good_ident_results" class="rows_colored with_efects">
+
+		<thead>
+			<tr>
+				<th>  </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+			<%= render 'impexpcompanies/api/client_search', items: @impexpcompanies %>
+
+		</tbody>
+
+	</table>
+
+</div>
+
 <div class="form_errors">
 	<%= obj.errors :ident %>
 	<%= obj.errors :description %>
