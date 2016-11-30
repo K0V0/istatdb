@@ -33,23 +33,24 @@
 				</td>
 
 				<td colspan="3" class="inner_table_wrap">
-					<table class="with_efects">
-						<% gm.uoms.each do |uom| %>
-							<tr>
-								<td>
-									<%= uom.uom %> 
-								</td>
-								<td>
-									<%= uom.uom_multiplier %> 
-								</td>
-								<td>
-									<%= uom.type %> 
-								</td>
-							</tr>
-						<% end %>
-					</table>
+					<% if !gm.uoms.blank? %>
+						<table class="with_efects">
+							<% gm.uoms.each do |uom| %>
+								<tr>
+									<td>
+										<%= uom.uom %> 
+									</td>
+									<td>
+										<%= uom.uom_multiplier %> 
+									</td>
+									<td>
+										<%#= uom.type %> 
+									</td>
+								</tr>
+							<% end %>
+						</table>
+					<% end %>
 				</td>
-
 			</tr>
 
 		<% end %>
