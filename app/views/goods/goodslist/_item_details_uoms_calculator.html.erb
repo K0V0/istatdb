@@ -1,11 +1,15 @@
 
 <% uom_val, uom_multiplier, uom_type = "", "", ""
+show_uom = false
 if makers.size == 1
-	tmp = makers.first.goods_manufacturers.where(good_id: @good.id).first.uoms
-	if tmp.size == 1
-		uom_val = tmp.first.uom
-		uom_multiplier = tmp.first.uom_multiplier
-		uom_type = tmp.first.type
+	tmp2 = makers.first.goods_manufacturers.where(good_id: @good.id).first
+	if !tmp2.uoms.blank?
+		tmp = tmp2.uoms
+		if tmp.size == 1
+			uom_val = tmp.first.uom
+			uom_multiplier = tmp.first.uom_multiplier
+			#uom_type = tmp.first.type
+		end
 	end
 end 
 %>
