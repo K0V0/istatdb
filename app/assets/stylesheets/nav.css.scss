@@ -6,6 +6,7 @@ nav {
 		display: table;
 		margin: 0;
 		padding: 0;
+		max-width: 100%;
 
 		li {
 			display: table-cell;
@@ -26,10 +27,17 @@ nav {
 		padding-top: 0.375em;
 		font-size: 1.25em;
 		font-family:amsans;
+		//white-space: nowrap;
 
 		ul {
+			//table-layout: fixed;
+			//width:100%;
+			//display: inline-block;
 
 			li {
+				//display: block;
+				//float:left;
+				height: 100%;
 
 				a {
 					@include menu_transitions();
@@ -37,6 +45,9 @@ nav {
 					border-top-left-radius: 0.25em;
 					border-top-right-radius: 0.25em;
 					text-decoration:none;
+					word-wrap: break-word;
+					//word-break: break-all;
+
 					
 					&.active {
 						background-color: $main_menu_active_link;
@@ -51,6 +62,10 @@ nav {
 						background-color: $main_menu_active_link;
 					}
 				}
+			}
+
+			li.dummy {
+				width: 100%;
 			}
 		}
 	}
