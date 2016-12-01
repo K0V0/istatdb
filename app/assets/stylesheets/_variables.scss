@@ -1,6 +1,7 @@
 $superwhite: #fff;
 $white: #eee;
 $black: #000;
+$softer_black:#222;
 
 $background_color: #000;
 
@@ -15,8 +16,12 @@ $disabled_input: #aaa;
 $input_selected: #8E0000;
 $input_validation_error: #FF7F7F;
 
-$button_grey: #777;
-$button_grey_hover: #666;
+//$button_grey: #777;
+$button_grey: #eee;
+//$button_grey_hover: #666;
+$button_grey_hover: #fff;
+$button_grey_text: #444;
+$button_grey_text_hover: #000;
 $button_grey_border: rgba(85,85,85,1);
 
 $button_selected: #000;

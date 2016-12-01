@@ -19,7 +19,7 @@ class Uom < ActiveRecord::Base
 	end
 
 	def type
-		uom_type.uom_type
+		uom_type.try(:uom_type)
 	end
 
 end

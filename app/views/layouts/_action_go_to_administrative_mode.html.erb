@@ -1,0 +1,17 @@
+<%= link_to(
+	t(:edit_items),
+	{
+		controller: controller_name,
+		action: "administration"
+	},
+	class: "button" 
+) if !@administrative_mode %><!--
+
+--><%= link_to( 
+	t(:edit_items_finish), 
+	{
+		controller: controller_name,
+		action: "index"
+	},
+	class: "button selected" 
+) if @administrative_mode %>

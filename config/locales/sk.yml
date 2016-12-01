@@ -30,6 +30,8 @@ sk:
     uoms_calculator_cap: "Kalkulačka"
     uoms_count: "Počet ks."
 
+    good_search_no_results: "Nenašiel sa žiadnen tovar podla požadovaných kritérií. Ak chcete tento tovar pridať, kliknite na sprístupnenú voľbu \" Pridať\" a budete nasmerovaný na formulár"
+
   local_taric:
 
     table_cap_additional_info: "Identifikácia"

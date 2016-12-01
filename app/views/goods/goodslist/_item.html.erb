@@ -12,6 +12,7 @@
 		</td>
 		
 		<td> <%= item.description %> </td>
+		
 		<td class="kn_code"> 
 			<%= num_to_kncode item.local_taric.kncode %> 
 		</td>
@@ -22,4 +23,5 @@
 
 <% end %>
 
-<%= render 'layouts/no_results', items: items %>
+<%= render 'layouts/no_results', items: items, err_message: :good_search_no_results %>
+

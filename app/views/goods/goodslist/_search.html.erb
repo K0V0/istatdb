@@ -32,7 +32,16 @@
 
 			<div>
 
-				<button id="clear_search" class="button">
+				<%= render 'layouts/action_add_new', pars: [
+					:ident,
+					:description,
+					:client_filter,
+					:manufacturer_filter
+				] %><!--
+
+				--><%= render 'layouts/action_go_to_administrative_mode' %><!--
+
+				--><button id="clear_search" class="button">
 					<%= t :clear_search %>
 				</button><!--
 

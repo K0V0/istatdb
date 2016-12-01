@@ -33,8 +33,11 @@
 				</td>
 
 				<td colspan="3" class="inner_table_wrap">
-					<% if !gm.uoms.blank? %>
+
+					<% if (!gm.uoms.blank?)and(!gm.uoms.first.uom.blank?) %>
+
 						<table class="with_efects">
+
 							<% gm.uoms.each do |uom| %>
 								<tr>
 									<td>
@@ -44,13 +47,25 @@
 										<%= uom.uom_multiplier %> 
 									</td>
 									<td>
-										<%#= uom.type %> 
+										<%= uom.type %> 
 									</td>
 								</tr>
 							<% end %>
+
 						</table>
+
+					<% else %>
+
+						<table>
+							<tr> 
+								<td>---</td><td>---</td><td>---</td>
+							</tr>
+						</table>
+
 					<% end %>
-				</td>
+
+				</td>				
+
 			</tr>
 
 		<% end %>

@@ -42,6 +42,7 @@ table {
 			&.no_results {
 				background-color: $button_danger;
 				color: white;
+				pointer-events: none;
 			}
 
 			td {

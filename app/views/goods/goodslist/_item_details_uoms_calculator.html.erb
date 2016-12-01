@@ -1,75 +1,84 @@
+<% 
+# preload calculator with values if there is only one manufacturer with only one UOM
+uom_val, uom_multiplier, uom_type = "", "", ""
+show_uom = true
 
-<% uom_val, uom_multiplier, uom_type = "", "", ""
-show_uom = false
 if makers.size == 1
 	tmp2 = makers.first.goods_manufacturers.where(good_id: @good.id).first
-	if !tmp2.uoms.blank?
+
+	if (!tmp2.uoms.blank?)and(!tmp2.uoms.first.uom.blank?)
 		tmp = tmp2.uoms
 		if tmp.size == 1
 			uom_val = tmp.first.uom
 			uom_multiplier = tmp.first.uom_multiplier
-			#uom_type = tmp.first.type
+			uom_type = tmp.first.type
 		end
+	else
+		show_uom = false
 	end
 end 
 %>
 
-<table class="uom_calculator">
+<% if show_uom %>
 
-	<thead>
-		<tr>
-			<th> <%= cbt :uoms_calculator_cap  %> </th>
-		</tr>
-	</thead>
+	<table class="uom_calculator">
 
-	<tbody>
+		<thead>
+			<tr>
+				<th> <%= cbt :uoms_calculator_cap  %> </th>
+			</tr>
+		</thead>
 
-		<tr>
-			<td>
-				<label> <%= cbt :uoms_uom_short %>  </label>
-			</td>
+		<tbody>
 
-			<td>
-				<input type="text" name="uom_value" value="<%= uom_val %>"
-				disabled="disabled">
-			</td>
-		</tr>
+			<tr>
+				<td>
+					<label> <%= cbt :uoms_uom_short %>  </label>
+				</td>
 
-		<tr>
-			<td>
-				<label> <%= cbt :uoms_uom_multiplier2 %> </label>
-			</td>
-			<td>
-				<input type="text" name="uom_multiplier" value="<%= uom_multiplier %>" disabled="disabled">
-			</td>
-		</tr>
+				<td>
+					<input type="text" name="uom_value" value="<%= uom_val %>"
+					disabled="disabled">
+				</td>
+			</tr>
 
-		<tr>
-			<td>
-				<label> <%= cbt :uoms_count %> </label>
-			</td>
+			<tr>
+				<td>
+					<label> <%= cbt :uoms_uom_multiplier2 %> </label>
+				</td>
+				<td>
+					<input type="text" name="uom_multiplier" value="<%= uom_multiplier %>" disabled="disabled">
+				</td>
+			</tr>
 
-			<td>
-				<input type="text" name="uom_count">
-			</td>
-		</tr>
+			<tr>
+				<td>
+					<label> <%= cbt :uoms_count %> </label>
+				</td>
 
-		<tr>
-			<td>
-				<label> <%= cbt :uoms_result_short %> </label>
-			</td>
+				<td>
+					<input type="text" name="uom_count">
+				</td>
+			</tr>
 
-			<td>
-				<input type="text" name="uom_result">
-			</td>
-		</tr>
+			<tr>
+				<td>
+					<label> <%= cbt :uoms_result_short %> </label>
+				</td>
 
-	</tbody>
+				<td>
+					<input type="text" name="uom_result">
+				</td>
+			</tr>
 
-	<tfoot>
-		<tr>
-			<td colspan="10"> <%= cbt :uoms_uom_type_short %>: <%= uom_type %> </td>
-		</tr>
-	</tfoot>
+		</tbody>
 
-</table>
+		<tfoot>
+			<tr>
+				<td colspan="10"> <%= cbt :uoms_uom_type_short %>: <%= uom_type %> </td>
+			</tr>
+		</tfoot>
+
+	</table>
+
+<% end %>

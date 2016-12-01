@@ -1,87 +1,62 @@
-<section class="wrapper decorated_wrap actions <%= 'administrative' if @administrative_mode %>">
-	
-	<%= link_to(
-		t(:new_item),
-		{
-			controller: controller_name,
-			action: "new"
-		},
-		class: "button"
-	) %>
 
-	<%= link_to(
-		t(:edit_items),
-		{
-			controller: controller_name,
-			action: "administration"
-		},
-		class: "button" 
-	) if !@administrative_mode %>
+<% if @administrative_mode %>
 
-	<%= link_to( 
-		t(:edit_items_finish), 
-		{
-			controller: controller_name,
-			action: "index"
-		},
-		class: "button selected" 
-	) if @administrative_mode %>
+	<section class="wrapper decorated_wrap actions <%= 'administrative' if @administrative_mode %>">
+		
+			<button
+			 class="button" 
+			 id="select_all_<%= controller_name %>">
 
-	<% if @administrative_mode %>
+				<%= t(:select_items) %>
 
-		<button
-		 class="button" 
-		 id="select_all_<%= controller_name %>">
+			</button>
 
-			<%= t(:select_items) %>
+			<button
+			 class="button" 
+			 id="deselect_all_<%= controller_name %>">
 
-		</button>
+				<%= t(:deselect_items) %>
 
-		<button
-		 class="button" 
-		 id="deselect_all_<%= controller_name %>">
+			</button>
 
-			<%= t(:deselect_items) %>
 
-		</button>
+		<%#= link_to(
+			t(:select_items),
+			{
+				controller: controller_name,
+				action: "administration"
+			},
+			class: "button"
+		) if @administrative_mode %>
 
-	<% end %>
+		<%#= link_to(
+			t(:deselect_items),
+			{
+				controller: controller_name,
+				action: "administration"
+			},
+			class: "button"
+		) if @administrative_mode %>
 
-	<%#= link_to(
-		t(:select_items),
-		{
-			controller: controller_name,
-			action: "administration"
-		},
-		class: "button"
-	) if @administrative_mode %>
+		<%= link_to(
+			t(:delete_items), 
+			{
+				controller: controller_name,
+				action: "administration"
+			},
+			class: "button danger"
+		) if @administrative_mode %>
 
-	<%#= link_to(
-		t(:deselect_items),
-		{
-			controller: controller_name,
-			action: "administration"
-		},
-		class: "button"
-	) if @administrative_mode %>
+		<%= link_to(
+			t(:delete_items_all), 
+			{
+				controller: controller_name,
+				action: "administration"
+			},
+			class: "button danger"
+		) if @administrative_mode %>
 
-	<%= link_to(
-		t(:delete_items), 
-		{
-			controller: controller_name,
-			action: "administration"
-		},
-		class: "button danger"
-	) if @administrative_mode %>
+	</section>
 
-	<%= link_to(
-		t(:delete_items_all), 
-		{
-			controller: controller_name,
-			action: "administration"
-		},
-		class: "button danger"
-	) if @administrative_mode %>
-
-</section>
+<% end %>
 

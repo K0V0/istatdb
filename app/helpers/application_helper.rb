@@ -1,21 +1,29 @@
 module ApplicationHelper
 
 	### cbt - controller based translation
-	# helpful if you trying to keep discipline in YML files
-	# by grouping translations into multiple keys and logical hierarchy
-	# here I group translations by controllers and associated views
-	# using this function in view you don't need to write too much 
+	### helpful if you trying to keep discipline in YML files
+	### by grouping translations into multiple keys and logical hierarchy
+	### here I group translations by controllers and associated views
+	### using this function in view you don't need to write too much 
 	def cbt translation_key
 		I18n.t(params[:controller] + "." + translation_key.to_s)
 	end
 
+
 	### function for higlighting (wrapping with tags) occurences in searched string
-	def highlight_searched str, patt, case_insensitive=true, open_tag="<em>", close_tag="</em>"
+	# str -					whole string
+	# patt -				pattern to be higlighted
+	# case_insensitive - 	self-explaining
+	# tag -					wrapping html element
+	def highlight_searched str: "", patt: "", case_insensitive: true, tag: :em
+
 		if patt.blank?
 			return str
 		else
+			open_tag = "<" + tag.to_s + ">"
+			close_tag = "</" + tag.to_s + ">"
 			patt_len = patt.length
-			str_len = str.length
+			str_len = str.length;
 			open_tag_len = open_tag.length
 			tags_len = open_tag_len + close_tag.length
 
@@ -31,6 +39,7 @@ module ApplicationHelper
 		str.html_safe
 	end
 
+
 	### function using prevoius highlihting function to higlight occurences in 
 	### ransack gem search results
 	# obj - 	resulting object
@@ -44,9 +53,13 @@ module ApplicationHelper
 				p = params[:q][(k.to_sym)] if !k.blank?
 			end
 		end
-		highlight_searched obj.send(param), p 
+		highlight_searched str: obj.send(param), patt: p 
 	end
 
+
+	### function for formatting kncode number output 
+	# first part of HS/TARIC code is group of 4 numbers
+	# other parts are groups of 2 numbers 
 	def num_to_kncode num
 		itm = num.dup
 		str_len = itm.length
@@ -59,6 +72,11 @@ module ApplicationHelper
 		return itm
 	end
 
+
+	### function for yelding content saved in content_for 
+	# symb - 			same as first parameter of content_for function, symbol to your content
+	# wrap tag - 		if specified, wraps content with this tag(s)
+	# html_options -	for wrapping element if defined, html attributes like class, id, etc...
 	def content_yelder symb, wrap_tag=nil, html_options={}
 		end_tag, start_tag = "", ""
 

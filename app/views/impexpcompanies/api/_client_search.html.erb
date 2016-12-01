@@ -1,6 +1,6 @@
 <% items.each do |item| %>
 
-	<tr>
+	<tr <%= 'class="selected"'.html_safe if item.id == params[:good][:client_filter].to_i %>>
 
 		<td> 
 			<%= item.company_name %>

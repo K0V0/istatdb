@@ -1,0 +1,25 @@
+<% 
+	try_suffix = ["_cont", "_start"]
+	parms = {}
+	pars.each do |par|
+		parms[par.to_sym] = try_suffix.map { |ts|
+			ransack_key = (par.to_s + ts).to_sym;
+			ret = params[:q][ransack_key] if params[:q].has_key?(ransack_key);
+			ret = params[:q][par] if params[:q].has_key?(par);
+			ret
+		}.compact.first
+	end
+%>
+
+<%= link_to(
+	t(:new_item_short),
+	{
+		controller: controller_name,
+		action: "new",
+		params: {
+			controller_name.singularize.to_sym => parms
+		}
+	},
+	class: "button", 
+	id: "new_good_from_search"
+) %>
