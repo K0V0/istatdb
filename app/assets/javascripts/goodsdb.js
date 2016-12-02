@@ -55,10 +55,12 @@ $(document).ready(function() {
 	);
 */
 	$(document).on('click', 'button.add_uom', function() {
+		console.log('add uom');
 		var clone = $(this).closest('article').clone();
 		clone.find('.good_uoms_uom').val('');
 		clone.find('.good_uoms_uom_multiplier').val('1');
-		clone.insertBefore('form > div:last-child');
+		//clone.insertBefore('form > div:last-child');
+		clone.insertBefore('form > article:last-child');
 		var not_last = $(document).find('.new_good_uom').not(':last');
 		not_last.find('button.add_uom').parent().addClass('remove_uom');
 		not_last.find('button.remove_uom').parent().removeClass('remove_uom');

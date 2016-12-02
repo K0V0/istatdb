@@ -8,7 +8,9 @@
 			<tr>
 				<% if @administrative_mode %> <th> </th> <% end %>
 				<th> <%= cbt :table_cap_ident %> </th>
-				<th> <%= cbt :table_cap_description %> </th>
+				<th class="good_description">
+					<%= cbt :table_cap_description %>
+				</th>
 				<th> <%= cbt :table_cap_knnumber %> </th>
 			</tr>
 

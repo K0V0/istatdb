@@ -8,7 +8,7 @@ class GoodsController < ApplicationController
 
 	before_action(only: :create) { 
 		reload_tables_for_select
-		create_action permitted_pars
+		#create_action permitted_pars
 	}
 
 	def index
@@ -33,7 +33,19 @@ class GoodsController < ApplicationController
 	end
 
 	def create
-
+		@good = Good.new(permitted_pars)
+	    if @good.save
+	    	if params[:create_and_next]
+	    		@good = Good.new(permitted_pars)
+	    		@good.ident = ""
+	    		@good.description = ""
+	    		render "new"
+	    	else
+	     		redirect_to goods_path
+	     	end
+	    else
+	       render "new"
+	    end
 	end
 
 	def administration

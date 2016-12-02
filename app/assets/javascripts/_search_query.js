@@ -18,6 +18,9 @@ function searchQuery(path, conds, other_data) {
 
 	$(document).on('input', elem_string, function(e) {
 
+		$(this).removeClass('error');
+		$(this).closest('article').find('div.form_errors').empty();
+
 		var request_data = {};
 		for (var cond_key in conds) {
 			request_data[conds[cond_key]] = $('#'+cond_key).val();

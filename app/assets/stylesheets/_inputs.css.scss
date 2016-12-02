@@ -40,7 +40,7 @@ input[type=submit] {
 
 input[type=checkbox] {
 	display: block;
-	border:0.25em solid $button_grey;
+	border:0.25em solid $button;
 	border-radius:0.5em;
 	margin:0;
 	padding:0;
@@ -50,7 +50,7 @@ input[type=checkbox] {
 	cursor:pointer;
 
 	&:hover {
-		border-color: $button_grey_hover;
+		border-color: $button_hover;
 	}
 
 	&:checked {

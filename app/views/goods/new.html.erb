@@ -29,9 +29,17 @@
 
 		<% end %>
 
-		<div>
-			<%= t.submit class: "button" %>
-		</div>
+		<article class="decorated_wrap shrinked">
+			<div>
+				<%= t.submit class: "button" %>
+			
+		
+				<%= submit_tag(
+					cbt(:create_good_and_next),
+					name: 'create_and_next',
+					class: "button") %>
+			</div>
+		</article>
 
 	<% end %>
 

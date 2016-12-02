@@ -7,54 +7,65 @@
 		background-color $buttons_mouse_actions_transition_time ease,
 		color $main_menu_mouse_actions_transition_time ease
 	);
+	@include transitions(border-color color);
 
 	cursor: pointer;
-	color: $button_grey_text;
-	background-color: $button_grey;
+	color: $button_text;
+	background-color: $button;
 	border-color: transparent;
 
 	&:hover {
-		background-color: $button_grey_hover;
-		color: $button_grey_text_hover;
+		background-color: $button_hover;
+		color: $button_text_hover;
 		text-decoration: none;
 	}
 
 	&:focus {
-		background-color: $button_grey_hover;
-		border-color: $button_danger;
+		background-color: $button_hover;
+		color: $button_text_hover;
+		border-color: $input_selected;
 	}
 
 	&:active {
 		background-color: $button_selected;
-		border-color:  $button_selected;
+		border-color: $button_selected;
+		color: $button_selected_text_hover;
 	}
 
 	&.danger {
 		background-color: $button_danger;
+		color: $button_danger_text;
 
 		&:hover {
 			background-color: $button_danger_hover;
+			color: $button_danger_text_hover;
 		}
 
 		&:focus {
 			background-color: $button_danger_hover;
+			color: $button_danger_text_hover;
+			border-color: $input_selected_inverted;
 		}
 
 		&:active {
 			background-color: $button_selected;
 			border-color:  $button_selected;
+			color: $button_danger_text_hover;
 		}
 	}
 
 	&.selected {
 		background-color: $button_selected;
+		color: $button_selected_text;
 
 		&:hover {
 			background-color: $button_selected_hover;
+			color: $button_selected_text_hover;
 		}
 
 		&:focus {
 			background-color: $button_selected_hover;
+			color: $button_selected_text_hover;
 		}
 
 		&:active {
@@ -64,8 +75,8 @@
 	}
 
 	&.disabled {
-		background-color: $group_background;
-		color: $button_grey;
+		background-color: $button_disabled;
+		color: $button_disabled_text;
 	}
 }
 
@@ -78,7 +89,6 @@ button, a.button {
 	border-radius: 0.25em;
 	border-style: solid;
 	border-width: 0.125em;
-	//color: $white;
 	display: inline-block;
 
 	&:after {

@@ -31,19 +31,24 @@ sk:
     uoms_count: "Počet ks."
 
     good_search_no_results: "Nenašiel sa žiadnen tovar podla požadovaných kritérií. Ak chcete tento tovar pridať, kliknite na sprístupnenú voľbu \" Pridať\" a budete nasmerovaný na formulár"
+    #new_good_search_no_results: "Žiaden zhodný tovar nenájdený. "
+    create_good_and_next: "Uložiť a pridať ďalšiu"
 
   local_taric:
 
     table_cap_additional_info: "Identifikácia"
     table_cap_description: "Popis, doplnk. informácie"
     table_cap_knnumber: "kód KN"
+    new_local_taric_search_no_results: "Žiadna položka lokálnej databázy Nomenklatúrnych kódov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
 
   impexpcompanies:
 
     table_cap_client: "Klienti"
+    new_client_search_no_results: "Žiadna položka v databáze klientov nevyhovuje kritériam vyhľadávania. Konto nového klienta bude vygenerované."
 
   manufacturers: 
 
     table_cap_manufacturer: "Výrobca"
     table_cap_site: "Závod"
+    new_manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
   

@@ -1,36 +1,52 @@
-$superwhite: #fff;
-$white: #eee;
-$black: #000;
-$softer_black:#222;
+$superwhite:      #fff;
+$white:           #eee;
 
-$background_color: #000;
+$dark_grey:       #999;
+$strong_grey:     #aaa;
+$base_grey:       #bbb;
+$grey_2n-1:       #ddd;
+$grey_2n:         #ccc;
 
-$main_menu_active_link: $white;
-$main_menu_active_link_text: $black;
-$main_menu_inactive_link_hover: #444;
+$strong_black:    #000;
+$black:           #222;
+$soft_black:      #444;
 
-$white_input: #f8f8f8;
-//$disabled_input: #E6E6E6;
-$disabled_input: #aaa;
-//$hovered_input: #DDD;
-$input_selected: #8E0000;
-$input_validation_error: #FF7F7F;
+$soft_red:        #FF7F7F;
+$strong_red:      #e00;
+$dark_red:        #8E0000;    
 
-//$button_grey: #777;
-$button_grey: #eee;
-//$button_grey_hover: #666;
-$button_grey_hover: #fff;
-$button_grey_text: #444;
-$button_grey_text_hover: #000;
-$button_grey_border: rgba(85,85,85,1);
 
-$button_selected: #000;
-$button_selected_hover: #333;
-$button_selected_text: #BBB;
-$button_selected_text_hover: #EEE;
+$background_color:                $strong_black;
 
-$button_danger: #8E0000;
-$button_danger_hover: #e00;
+$main_menu_active_link:           $white;
+$main_menu_active_link_text:      $strong_black;
+$main_menu_inactive_link_hover:   $soft_black;
+
+$disabled_input:                  $strong_grey;
+$input_selected:                  $dark_red;
+$input_selected_inverted:         $black;
+$input_validation_error:          $soft_red;
+
+$button:                          $white;
+$button_hover:                    $superwhite;
+$button_text:                     $soft_black;
+$button_text_hover:               $strong_black;
+//$button_border:                   rgba(85,85,85,1);
+
+$button_selected:                 $black;
+$button_selected_hover:           $strong_black;
+$button_selected_text:            $white;
+$button_selected_text_hover:      $superwhite;
+
+$button_danger:                   $dark_red;
+$button_danger_hover:             $strong_red;
+$button_danger_text:              $white;
+$button_danger_text_hover:        $superwhite;
+
+$button_disabled:                 $dark_grey;
+//$button_disabled_hover:           $dark_grey;
+$button_disabled_text:            $grey_2n-1;
+//$button_disabled_text_hover:      $base_grey;
 
 $hreflink_color: #D60000;
 $hreflink_color_2: #000000;
@@ -44,8 +60,30 @@ $odd_table_line_color: #ddd;
 $table_row_hover: #aaa;
 $item_selected: #83B2FF;
 
+$main_border_radius: 0.25em;
+$wrap_border_radius: 0.5em;
+$border-width: 0.125em;
+$border-2x-width: $border-width * 2;
+
 $buttons_mouse_actions_transition_time: 0.15s;
 $main_menu_mouse_actions_transition_time: 0.30s;
+
+
+@mixin transitions($list) {
+    //color: #aaa;
+    $text: "aaaaa";
+    $str: "";
+    @each $prop in $list {
+        $i: index($list, $prop);
+        $str: $text + $prop;
+    }
+}
+
+@function generate_transition_string($list) {
+
+}
+
+
 
 @mixin button_transitions() {
 	@include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease);
@@ -110,28 +148,28 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   }
 
   ::-webkit-scrollbar-thumb {
-      background-color: $button_grey;
+      background-color: $white;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      background-color: $button_grey_hover;
+      background-color: $superwhite;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-track {
-      background: $white;
+      background: $dark_grey;
       border-radius:0.5em;
-      border:0.25em solid $group_background;
+      border:0.25em solid $base_grey;
   }
 
   // For Internet Explorer
   body {
-    scrollbar-face-color: $button_grey;
-    scrollbar-track-color: $white_input;
+    scrollbar-face-color: $button;
+    scrollbar-track-color: $strong_grey;
   }
 }

@@ -30,11 +30,15 @@ html {
 		.decorated_wrap {
 			border-color:$wrap_border_color;
 			border-style: solid;
-			border-radius:0.375em;
-			border-bottom-width:0.125em;
-			border-right-width:0.125em;
+			border-bottom-width:$border_2x_width;
+			border-right-width:$border_2x_width;
 			border-left-width:0;
 			border-top-width:0;
+			border-radius: $wrap_border_radius;
+
+			&.shrinked {
+				display:table;
+			}
 		}
 
 		.wrapper {
@@ -46,7 +50,7 @@ html {
 
 		main {
 			flex: 1;
-			margin:0.25em 0.75em;
+			padding:0.25em 0.75em;
 
 			a {
 				text-decoration: none;
@@ -69,6 +73,10 @@ html {
 				&:hover:after {
 					background-color: black;
 				}			
+			}
+
+			article {
+				border-radius: $wrap_border_radius;
 			}
 
 			em {

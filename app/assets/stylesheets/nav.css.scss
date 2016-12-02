@@ -1,6 +1,7 @@
 @import "variables";
 
 nav {
+	overflow-x:hidden;
 
 	ul {
 		display: table;
@@ -27,17 +28,10 @@ nav {
 		padding-top: 0.375em;
 		font-size: 1.25em;
 		font-family:amsans;
-		//white-space: nowrap;
 
 		ul {
-			//table-layout: fixed;
-			//width:100%;
-			//display: inline-block;
 
 			li {
-				//display: block;
-				//float:left;
-				height: 100%;
 
 				a {
 					@include menu_transitions();
@@ -46,8 +40,6 @@ nav {
 					border-top-right-radius: 0.25em;
 					text-decoration:none;
 					word-wrap: break-word;
-					//word-break: break-all;
-
 					
 					&.active {
 						background-color: $main_menu_active_link;

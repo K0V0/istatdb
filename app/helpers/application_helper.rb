@@ -98,6 +98,13 @@ module ApplicationHelper
 		html_string.html_safe
 	end
 
+
+	def return_selected_class_if_in_new_obj_attrs item, symsym
+		if params.deep_has_key? controller_name.singularize.to_sym, symsym
+			return 'class="selected"'.html_safe if item.id == params[:good][symsym].to_i
+		end
+	end
+
 	class ActionView::Helpers::FormBuilder
 
 	  	def errors(field, continue: false)

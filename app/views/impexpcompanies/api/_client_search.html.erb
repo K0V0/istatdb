@@ -1,6 +1,6 @@
 <% items.each do |item| %>
 
-	<tr <%= 'class="selected"'.html_safe if item.id == params[:good][:client_filter].to_i %>>
+	<tr <%= return_selected_class_if_in_new_obj_attrs item, :client_filter %>>
 
 		<td> 
 			<%= item.company_name %>
@@ -13,3 +13,5 @@
 	</tr>
 
 <% end %>
+
+<%= render 'layouts/no_results', items: items, err_message: :new_client_search_no_results %>

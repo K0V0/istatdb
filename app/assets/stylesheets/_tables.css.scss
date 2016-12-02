@@ -40,9 +40,15 @@ table {
 			line-height:1.25em;
 
 			&.no_results {
-				background-color: $button_danger;
-				color: white;
-				pointer-events: none;
+				pointer-events: none !important;
+				background-color: $group_background;
+
+				td {
+					display: inline-block;
+					padding:0.125em 0.25em;
+					background-color: $button_danger;
+					color: white;
+				}
 			}
 
 			td {

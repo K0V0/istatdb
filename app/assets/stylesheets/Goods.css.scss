@@ -1,20 +1,22 @@
 table#goods {
 	width: 100%;
+	max-width:100%;
 
-	tbody {
+	td, th {
 
-		tr {
+		&.good_description {
+			word-wrap:break-all;
+			word-break: break-all;
+			white-space: normal;
+			width:100%;
+		}
 
-			td {
+		&.kn_code {
+			white-space: nowrap;
+		}
 
-				&.kn_code {
-					white-space: nowrap;
-				}
-
-				&.good_ref {
-					white-space: nowrap;
-				}
-			}
+		&.good_ref {
+			white-space: nowrap;
 		}
 	}
 }
