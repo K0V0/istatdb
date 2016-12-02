@@ -1,17 +1,7 @@
 
 <section class="item_details">
 
-	<h1> <%= @good.ident %> </h1>
-	<br>
-	<h2> <%= num_to_kncode @good.local_taric.kncode %> </h2>
-	<br>
-	<h3> <%= @good.local_taric.description %> </h3>
-
-	<p>
-
-	<%= @good.description %>
-
-	<p>
+	<%= render 'goods/goodslist/item_details_self', good: @good %>
 
 	<div class="tablewrap decorated_wrap">
 		<%= render 'goods/goodslist/item_details_clients', clients: @good.impexpcompanies %>
