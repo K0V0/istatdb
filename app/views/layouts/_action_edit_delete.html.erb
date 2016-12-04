@@ -1,0 +1,21 @@
+<%= link_to(
+	t(:edit_item),
+	{
+		controller: controller_name,
+		action: "edit",
+		id: params[:id]
+	},
+	class: "button", 
+	id: "edit_good_from_search"
+) if (action_name == "show")||(defined?(force)) %>
+
+<%= link_to(
+	t(:delete_item),
+	{
+		controller: controller_name,
+		action: "delete",
+		id: params[:id]
+	},
+	class: "button danger", 
+	id: "delete_good_from_search"
+) if (action_name == "show")||(defined?(force)) %>

@@ -5,6 +5,7 @@ class Good < ActiveRecord::Base
 	include AssocFillup
 
 	# convention: <associated model name><underscore><field name in assoc model>
+	#attr_accessor :search_both
 	attr_accessor :local_taric_kncode
 	attr_accessor :local_taric_description
 	attr_accessor :impexpcompany_company_name
@@ -24,6 +25,14 @@ class Good < ActiveRecord::Base
 
 	def uoms=(par)
 		@uoms = par
+	end
+
+	def kncode
+		local_taric.kncode
+	end
+
+	def kncode_description
+		local_taric.description
 	end
 
 	has_many :goods_manufacturers, inverse_of: :good

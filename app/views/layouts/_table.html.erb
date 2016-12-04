@@ -1,0 +1,37 @@
+
+<%
+colspan_num = fields.size if foots.size == 1 
+colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe 
+%>
+
+<table>	
+
+	<thead>
+		<tr>
+			<% captions.each do |caption| %>
+				<th> <%= caption %> </th>
+			<% end %>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% if object.respond_to?(:each) %>
+			<% object.each do |o| %>
+				<%= render 'layouts/table_row', o: o, fields: fields %>
+			<% end %>
+		<% else %>
+			<%= render 'layouts/table_row', o: object, fields: fields %>
+		<% end %>
+	</tbody>
+
+	<tfoot>
+		<tr>
+			<% foots.each do |foot| %>
+				<td <%= colspan_string %>>
+					<%= foot.html_safe %>
+				</td>
+			<% end %>
+		</tr>
+	</tfoot>
+
+</table>

@@ -40,24 +40,25 @@ input[type=submit] {
 
 input[type=checkbox] {
 	display: block;
-	border:0.25em solid $button;
+	border:0.25em solid $button_disabled;
+	background-color: $soft_black;
 	border-radius:0.5em;
 	margin:0;
 	padding:0;
 	width:0.875em;
 	height:0.875em;
-	background-color: white;
 	cursor:pointer;
 
 	&:hover {
-		border-color: $button_hover;
+		border-color: $button_disabled_hover;
 	}
 
 	&:checked {
-		background-color: $hreflink_color;
+		background-color: $button_danger_hover;
 		border-color: $button_selected;
 
 		&:hover {
+			//background-color: $button_danger_hover;
 			border-color: $button_selected_hover;
 		}
 	}

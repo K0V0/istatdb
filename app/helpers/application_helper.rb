@@ -105,6 +105,11 @@ module ApplicationHelper
 		end
 	end
 
+
+	def group_options obj
+		[items: obj.to_a]
+	end
+
 	class ActionView::Helpers::FormBuilder
 
 	  	def errors(field, continue: false)

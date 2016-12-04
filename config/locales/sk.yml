@@ -10,6 +10,8 @@ sk:
     table_cap_clients_count: "Klientov celkom: "
     table_cap_makers: "Výrobcovia tovaru"
     table_cap_makers_count: "Výrobcov celkom: "
+    table_cap_kngroup: "Zaradenie v systéme HS(KN)/TARIC"
+    table_cap_good: "Tovar"
 
     search_client_filter_none: "Tovar všetkých klientov"
     search_manufacturers_filter_none: "Všetci výrobcovia"

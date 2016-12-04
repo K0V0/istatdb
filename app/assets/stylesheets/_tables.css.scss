@@ -68,9 +68,16 @@ table {
 	tfoot {
 		text-align:right;
 
-		th {
-			font-weight: normal;
-			padding-right: 1em;
+		tr {
+			
+			th, td {
+				font-weight: normal;
+				padding-right: 1em;
+
+				span {
+					font-weight: bold;
+				}
+			}
 		}
 	}
 }

@@ -1,18 +1,42 @@
 
 <section class="item_details">
 
-	<%= render 'goods/goodslist/item_details_self', good: @good %>
+	<% desc = @good.description.blank? ? " --- " : $good.description %>
+	<div class="tablewrap decorated_wrap">
+		<%= render('layouts/table', 
+			object: @good,
+			captions: [cbt(:table_cap_good)],
+			fields: ["<h1>#{@good.ident}</h1><br><h4>#{desc}</h4>"],
+			foots: [" --- "]
+		) %>
+	</div>
 
 	<div class="tablewrap decorated_wrap">
-		<%= render 'goods/goodslist/item_details_clients', clients: @good.impexpcompanies %>
+
+		<%= render('layouts/table', 
+			object: @good,
+			captions: [cbt(:table_cap_kngroup)],
+			fields: ["<h2>#{num_to_kncode(@good.kncode)}</h2><br><h3>#{@good.kncode_description}</h3>"],
+			foots: [" --- "]
+		) %>
+
+	</div>
+
+	<br>
+
+	<div class="tablewrap decorated_wrap">
+
+		<%= render('layouts/table', 
+			object: @good.impexpcompanies,
+			captions: [cbt(:table_cap_clients)],
+			fields: [:company_name],
+			foots: [cbt(:table_cap_clients_count) + @good.impexpcompanies.size.to_s]
+		) %>
+
 	</div>
 	
-	<div class="tablewrap decorated_wrap">
-		<%= render 'goods/goodslist/item_details_manufacturers', makers: @good.manufacturers %>
-	</div>
-
-	<div class="tablewrap decorated_wrap">
-		<%= render 'goods/goodslist/item_details_uoms_calculator', makers: @good.manufacturers %>
-	</div>
+	<%= render 'goods/goodslist/item_details_manufacturers', makers: @good.manufacturers %>
+	
+	<%= render 'goods/goodslist/item_details_uoms_calculator', makers: @good.manufacturers %>
 
 </section>

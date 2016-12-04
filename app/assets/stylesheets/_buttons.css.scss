@@ -78,6 +78,10 @@
 		background-color: $button_disabled;
 		color: $button_disabled_text;
 	}
+
+	&.important {
+		font-weight: bold;
+	}
 }
 
 button, a.button {

@@ -4,3 +4,5 @@ $('section.items_table').remove();
 $('section.item_details').remove();
 
 $('<%= j(render "goods/goodslist/item_details") %>').appendTo('main');
+
+$('<%= j(render("layouts/action_edit_delete", force: "true")) %>').insertBefore('button#clear_search');

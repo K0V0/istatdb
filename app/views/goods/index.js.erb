@@ -6,7 +6,7 @@ if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
 	// if goods table sectione removed from document due item details showup,
 	// or if administrative mode enables
 	// recreate table
-	$('.item_details').remove();
+	$('section.item_details').remove();
 	$('<%= j(render "goods/goodslist/goodslist") %>').appendTo('main');
 
 } else {
@@ -26,6 +26,9 @@ $('<%= j(render "goods/goodslist/search_select_manufacturer") %>').appendTo(pare
 // from search fields
 var new_good_href = $('<%= j(render "layouts/action_add_new", pars: [:ident, :description, :client_filter, :manufacturer_filter]) %>').attr('href');
 $('#new_good_from_search').attr('href', new_good_href);
+
+// remove edit item buttons when going back from show item
+$('#delete_good_from_search, #edit_good_from_search').remove();
 
 if ('<%= @administrative_mode %>' == 'true') {
 	GOODS_ACTIONS.refresh();

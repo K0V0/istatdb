@@ -17,6 +17,9 @@ $dark_red:        #8E0000;
 
 
 $background_color:                $strong_black;
+$group_background:                $base_grey;
+$table_background:                $grey_2n;
+$wrap_border_color:               $dark_grey;
 
 $main_menu_active_link:           $white;
 $main_menu_active_link_text:      $strong_black;
@@ -44,26 +47,20 @@ $button_danger_text:              $white;
 $button_danger_text_hover:        $superwhite;
 
 $button_disabled:                 $dark_grey;
-//$button_disabled_hover:           $dark_grey;
+$button_disabled_hover:           $grey_2n;
 $button_disabled_text:            $grey_2n-1;
 //$button_disabled_text_hover:      $base_grey;
 
-$hreflink_color: #D60000;
-$hreflink_color_2: #000000;
+$even_table_line_color:           $grey_2n;
+$odd_table_line_color:            $grey_2n-1;
+$table_row_hover:                 $strong_grey;
 
-$group_background: #bbb;
-$table_background: #ccc;
-$wrap_border_color: #999;
-
-$even_table_line_color: #ccc;
-$odd_table_line_color: #ddd;
-$table_row_hover: #aaa;
-$item_selected: #83B2FF;
 
 $main_border_radius: 0.25em;
 $wrap_border_radius: 0.5em;
 $border-width: 0.125em;
 $border-2x-width: $border-width * 2;
+
 
 $buttons_mouse_actions_transition_time: 0.15s;
 $main_menu_mouse_actions_transition_time: 0.30s;

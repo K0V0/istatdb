@@ -15,11 +15,10 @@ section.search_bar {
 
 		&:last-child {
 			margin-right: 0;
-/*
-			*:first-child {
-				margin-right: 0.25em;
+
+			& > * {
+				float:left;
 			}
-			*/
 		}
 
 		label {

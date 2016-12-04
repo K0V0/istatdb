@@ -93,4 +93,13 @@ $(document).ready(function() {
 		$('input[name=uom_result]').val(result.toFixed(2));
 	});
 
+	$(document).on('click', '.good_manufacturer_uoms_list tr', function() {
+		$(this).siblings().removeClass('selected');
+		$(this).addClass('selected');
+
+		$(this).children('td.good_manufacturer_uoms_list_val').sendValTo('input[name=uom_value]');
+		$(this).children('td.good_manufacturer_uoms_list_multiplier').sendValTo('input[name=uom_multiplier]');
+		$(this).children('td.good_manufacturer_uoms_list_type').sendValTo('span.uoms_calculator_uom_type');
+	});
+
 });

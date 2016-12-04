@@ -1,0 +1,13 @@
+<tr>
+	<% fields.each do |field| %>
+
+		<td> 
+			<% if field.is_a? Symbol %>
+				<%= o.send(field) %>
+			<% else %>
+				<%= field.html_safe %>
+			<% end %>
+		</td>
+		
+	<% end %>
+</tr>

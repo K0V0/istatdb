@@ -96,14 +96,15 @@ html {
 				}
 			}
 
-			h1, h2, h3 {
+			h1, h2, h3, h4 {
 				display: inline-block;
+				line-height: 100%;
 				margin:0;
 				padding:0;
 			}
 
 			h1 {
-				font-size: 1.5em;
+				font-size: 2.25em;
 			}
 
 			h2 {
@@ -111,6 +112,11 @@ html {
 			}
 
 			h3 {
+				font-size: 1.125em;
+				font-weight:normal;
+			}
+
+			h4 {
 				font-size: 1.25em;
 				font-weight:normal;
 			}
@@ -126,7 +132,7 @@ html {
 
 				a {
 					font-weight: bold;
-					color: $hreflink_color;
+					color: $dark_red;
 				}
 
 				&:first-child {

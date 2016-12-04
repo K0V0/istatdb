@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base
     	# set this single result as instance variable (singular form) 
     	# for controller "show" action, then render templates defined for "show" action
     	instance_variable_set('@'+controller_name.singularize, @result.first)
+      params[:id] = @result.first.id
     	action_respond_to "show", :js
     else
     	# when item is manually selected
