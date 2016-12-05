@@ -4,15 +4,17 @@
 	<tr>
 
 		<td> 
-			
-				<%= highlight_search item, :name %>
-			
+			<%= highlight_search item, :name %>
 		</td>
 
 		<td> 
-			
-				<%= item.plant %>
-			
+			<%= item.plant %>
+		</td>
+
+		<td>
+			<% item.impexpcompanies.each do |i| %>
+				<%= i.company_name %> <br>
+			<% end %>
 		</td>
 		
 	</tr>

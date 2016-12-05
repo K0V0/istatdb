@@ -5,9 +5,18 @@
 
 		<%= search_form_for @search, class: "decorated_wrap", remote: true do |s| %> 
 
-			<%= s.search_field :name_cont %>
+			<div>
+				<%= s.label :name %>
+				<%= s.search_field :name_cont %>
+			</div>
 
-			<%= s.submit %>
+			<div>
+				<%= render 'layouts/action_add_new' %>
+
+				<%= render 'layouts/action_go_to_administrative_mode' %>
+
+				<%= s.submit t(:search) %>
+			</div>
 
 		<% end %>
 

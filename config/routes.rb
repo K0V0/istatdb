@@ -104,7 +104,8 @@ Rails.application.routes.draw do
   post "manufacturersdb",
     to: "manufacturers#create"
   
-
+  get "manufacturersdb/edit",
+    to: "manufacturers#administration"
 
   ### lokalna taric databaza
 

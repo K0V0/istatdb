@@ -28,6 +28,10 @@ class ManufacturersController < ApplicationController
 
     end
 
+    def administration
+
+    end
+
     def new_good_manufacturer_search
       render('manufacturers/api/manufacturer_search')
     end

@@ -1,13 +1,15 @@
 <% 
-	try_suffix = ["_cont", "_start"]
-	parms = {}
-	pars.each do |par|
-		parms[par.to_sym] = try_suffix.map { |ts|
-			ransack_key = (par.to_s + ts).to_sym;
-			ret = params[:q][ransack_key] if params[:q].has_key?(ransack_key);
-			ret = params[:q][par] if params[:q].has_key?(par);
-			ret
-		}.compact.first
+	if defined? pars
+		try_suffix = ["_cont", "_start"]
+		parms = {}
+		pars.each do |par|
+			parms[par.to_sym] = try_suffix.map { |ts|
+				ransack_key = (par.to_s + ts).to_sym;
+				ret = params[:q][ransack_key] if params[:q].has_key?(ransack_key);
+				ret = params[:q][par] if params[:q].has_key?(par);
+				ret
+			}.compact.first
+		end
 	end
 %>
 

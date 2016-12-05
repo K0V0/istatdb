@@ -56,5 +56,6 @@ sk:
 
     table_cap_manufacturer: "Výrobca"
     table_cap_site: "Závod"
+    table_cap_clients: "Odoberatelia/odosielatelia"
     new_manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
   
