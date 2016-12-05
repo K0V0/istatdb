@@ -1,7 +1,7 @@
 
 <section class="item_details">
 
-	<% desc = @good.description.blank? ? " --- " : $good.description %>
+	<% desc = @good.description.blank? ? " --- " : @good.description %>
 	<div class="tablewrap decorated_wrap">
 		<%= render('layouts/table', 
 			object: @good,

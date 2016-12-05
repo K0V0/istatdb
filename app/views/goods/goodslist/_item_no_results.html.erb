@@ -9,7 +9,7 @@
 				impexpcompany_id: params[:q][:client_filter]
 			).first
 
-			if !res.blank? %>
+			if !res.local_taric.blank? %>
 
 				<tr>
 					<td colspan="10">
