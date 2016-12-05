@@ -150,6 +150,10 @@ Rails.application.routes.draw do
     to: "test_scripts#remove_all",
     as: "test_remove_everything"
 
+  get "test_scripts/impexpmanudb_fixture_fillup",
+    to: "test_scripts#impexpcompany_manufacturer_fixture",
+    as: "test_dbfixture1"
+
 
 
 

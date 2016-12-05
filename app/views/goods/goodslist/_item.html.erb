@@ -12,7 +12,7 @@
 		</td>
 		
 		<td class="good_description"> 
-			<%= item.description %>
+			<%= highlight_search item, :description, :ident %>
 		</td>
 
 		<td class="kn_code"> 
@@ -25,5 +25,5 @@
 
 <% end %>
 
-<%= render 'layouts/no_results', items: items, err_message: :good_search_no_results %>
+<%= render 'goods/goodslist/item_no_results', items: items %>
 

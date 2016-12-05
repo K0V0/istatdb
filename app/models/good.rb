@@ -93,6 +93,10 @@ class Good < ActiveRecord::Base
 		@uoms.each do |uom|
 			gm << Uom.new(uom)
 		end
+		ImpexpcompanyManufacturer.create(
+			manufacturer_id: @manufacturer.id,
+			impexpcompany_id: @impexpcompany.id
+		)
 	end
 
 	def kn_code_update

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127150100) do
+ActiveRecord::Schema.define(version: 20161204233102) do
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20161127150100) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  create_table "impexpcompany_manufacturers", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "impexpcompany_id"
+    t.integer  "manufacturer_id"
+    t.integer  "local_taric_id"
+  end
+
+  add_index "impexpcompany_manufacturers", ["impexpcompany_id"], name: "index_impexpcompany_manufacturers_on_impexpcompany_id"
+  add_index "impexpcompany_manufacturers", ["local_taric_id"], name: "index_impexpcompany_manufacturers_on_local_taric_id"
+  add_index "impexpcompany_manufacturers", ["manufacturer_id"], name: "index_impexpcompany_manufacturers_on_manufacturer_id"
 
   create_table "local_tarics", force: :cascade do |t|
     t.string   "kncode"

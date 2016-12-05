@@ -49,6 +49,13 @@ table {
 					background-color: $button_danger;
 					color: white;
 				}
+
+				&.as_row {
+
+					td {
+						display:table-cell;
+					}
+				}
 			}
 
 			td {

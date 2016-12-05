@@ -20,6 +20,7 @@ module ApplicationHelper
 		if patt.blank?
 			return str
 		else
+			str_copy = str.dup
 			open_tag = "<" + tag.to_s + ">"
 			close_tag = "</" + tag.to_s + ">"
 			patt_len = patt.length
@@ -27,16 +28,16 @@ module ApplicationHelper
 			open_tag_len = open_tag.length
 			tags_len = open_tag_len + close_tag.length
 
-			positions = str.enum_for(:scan, (Regexp.new patt, case_insensitive)).map { Regexp.last_match.begin(0) }
+			positions = str_copy.enum_for(:scan, (Regexp.new patt, case_insensitive)).map { Regexp.last_match.begin(0) }
 
 			positions.each_with_index do |p, i|
 				pos_of_open_tag = p + (i * tags_len)
 				pos_of_close_tag = pos_of_open_tag + open_tag_len + patt_len 
-				str.insert pos_of_open_tag, open_tag 
-				str.insert pos_of_close_tag, close_tag
+				str_copy.insert pos_of_open_tag, open_tag 
+				str_copy.insert pos_of_close_tag, close_tag
 			end
 		end
-		str.html_safe
+		str_copy.html_safe
 	end
 
 
@@ -45,11 +46,12 @@ module ApplicationHelper
 	# obj - 	resulting object
 	# param - 	wanted attribute, for ex. have object with results from clients database,
 	# 			and you want field with client name  
-	def highlight_search obj, param
+	def highlight_search obj, param, multiple_with=nil
 		p = ""
 		if params.has_key? :q
 			if !params[:q].blank?
-				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^" + param.to_s + "_.+$")) }.first
+				tmp = multiple_with || param
+				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^" + tmp.to_s + "_.+$")) }.first
 				p = params[:q][(k.to_sym)] if !k.blank?
 			end
 		end

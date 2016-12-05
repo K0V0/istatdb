@@ -110,7 +110,8 @@ class GoodsController < ApplicationController
 			end
 		end
 		if !client_id.blank?
-			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).goods.includes(:manufacturers).collect(&:manufacturers).flatten.uniq
+			#@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).goods.includes(:manufacturers).collect(&:manufacturers).flatten.uniq
+			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).manufacturers
 		else
 			@searcher_load_manufacturers_by_impexpcompany = Manufacturer.all
 		end

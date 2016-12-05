@@ -10,6 +10,7 @@ $grey_2n:         #ccc;
 $strong_black:    #000;
 $black:           #222;
 $soft_black:      #444;
+$semi_grey:       #666;
 
 $soft_red:        #FF7F7F;
 $strong_red:      #e00;
@@ -26,6 +27,7 @@ $main_menu_active_link_text:      $strong_black;
 $main_menu_inactive_link_hover:   $soft_black;
 
 $disabled_input:                  $strong_grey;
+$disabled_input_text:             $semi_grey;
 $input_selected:                  $dark_red;
 $input_selected_inverted:         $black;
 $input_validation_error:          $soft_red;

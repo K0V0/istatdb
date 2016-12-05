@@ -40,6 +40,18 @@ class TestScriptsController < ApplicationController
 		Manufacturer.delete_all
 	end
 
+	def impexpcompany_manufacturer_fixture
+		Impexpcompany.all.each do |i|
+			manu = i.goods.includes(:manufacturers).collect(&:manufacturers).flatten.uniq
+			manu.each do |m|
+				ImpexpcompanyManufacturer.create(
+					impexpcompany_id: i.id,
+					manufacturer_id: m.id
+				)
+			end
+		end
+	end
+
 	private
 
 	def return_to_index

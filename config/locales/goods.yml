@@ -54,6 +54,7 @@ sk:
         goods_manufacturer_uom_multiplier: "Počet jednotiek"
         manufacturer_filter: "Výrobca"
         client_filter: "Klient"
+        search_both: "+ popis"
       uom:
         uom: "Hodnota"
         uom_multiplier: "Počet jednotiek"

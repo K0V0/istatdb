@@ -1,0 +1,43 @@
+<% if items.size == 0 
+
+	if (params.deep_has_key? :q, :manufacturer_filter)&&(params.deep_has_key? :q, :client_filter) 
+
+		if (!params[:q][:manufacturer_filter].blank?)&&(!params[:q][:client_filter].blank?)
+
+			res = ImpexpcompanyManufacturer.where(
+				manufacturer_id: params[:q][:manufacturer_filter],
+				impexpcompany_id: params[:q][:client_filter]
+			).first
+
+			if !res.blank? %>
+
+				<tr>
+					<td colspan="10">
+						<%= cbt :err_no_goods_found_part1 %>
+						<b> <%= res.impexpcompany.company_name %> </b>
+						<br>
+						<%= cbt :err_no_goods_found_part2 %>
+						<b> <%= res.manufacturer.name %> </b>
+						<br>
+						<%= cbt :err_no_goods_found_part3 %>
+						<br>
+						<h1> <%= num_to_kncode res.local_taric.kncode %> </h1>
+						<br>
+						<h4> <%= res.local_taric.description %> </h4>
+					</td>
+				</tr>
+
+			<% end 
+
+		end 
+		
+	end %>
+
+	<%= render(
+		'layouts/no_results', 
+		items: items,
+		err_message: :good_search_no_results,
+		colspan: true
+	) %>
+
+<% end %>

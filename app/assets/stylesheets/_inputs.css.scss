@@ -64,6 +64,14 @@ input[type=checkbox] {
 	}
 }
 
+label {
+	vertical-align:middle;
+
+	&.disabled {
+		color: $disabled_input_text;
+	}
+}
+
 div.select_wrapper {
 	@include button_transitions();
 
@@ -71,7 +79,7 @@ div.select_wrapper {
 	background-color: $white;
 	border-radius:0.25em;
 	display: inline-block;
-	margin: 0.125em 0.125em;
+	margin: 0.125em; //0.125em;
 
 	select {
 		max-height:1.5em;

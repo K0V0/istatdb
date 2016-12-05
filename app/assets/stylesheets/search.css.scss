@@ -10,6 +10,7 @@ section.search_bar {
 	}
 
 	form > div {
+		vertical-align:middle;
 		display: inline-block;
 		margin-right: 0.125em;
 
@@ -27,6 +28,23 @@ section.search_bar {
 
 		input[type=text], input[type=search] {
 			max-width: 10em;
+		}
+
+		&.search_checkbox_wrap {
+			line-height:1.5em;
+
+			input[type=checkbox] {
+				display:inline-block;
+				vertical-align: middle;
+				width:1.125em;
+				height:1.125em;
+				border-radius:1.125em;
+				margin-left:0.25em;
+			}
+
+			label {
+				margin: 0;
+			}
 		}
 	}
 }

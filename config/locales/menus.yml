@@ -27,6 +27,8 @@ en:
 
   no_results: "No results meet criteria"
 
+  total: "Total:"
+
 
 
 sk:
@@ -57,3 +59,5 @@ sk:
   footer_advertisement_creator: "Vytvoril Matej Kováč"
 
   no_results: "Požadovaným kritériám nevyhovuje žiaden záznam"
+
+  total: "Celkom:"

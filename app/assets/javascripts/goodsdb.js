@@ -102,4 +102,17 @@ $(document).ready(function() {
 		$(this).children('td.good_manufacturer_uoms_list_type').sendValTo('span.uoms_calculator_uom_type');
 	});
 
+	$(document).on('click', 'input#q_search_both', function() {
+		var chkd = $(this).is(':checked');
+		if (chkd) {
+			$('#q_description_cont').removeAttr('disabled');
+			$('#q_description_cont').siblings('label').removeClass('disabled');
+			$('#q_ident_or_description_cont').attr('name', 'q[ident_cont]');
+		} else {
+			$('#q_description_cont').attr('disabled', 'disabled');
+			$('#q_description_cont').siblings('label').addClass('disabled');
+			$('#q_ident_or_description_cont').attr('name', 'q[ident_or_description_cont]');
+		}
+	});
+
 });

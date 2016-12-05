@@ -1,14 +1,14 @@
 
-<section class="items_table">
+<section class="items_table decorated_wrap">
 
-	<table id="manufacturers">
+	<table id="manufacturers" class="rows_colored with_efects">
 
 		<thead>
 				
-		<tr>
-			<th> <%= cbt :table_cap_manufacturer %> </th>
-			<th> <%= cbt :table_cap_site %> </th>
-		</tr>
+			<tr>
+				<th> <%= cbt :table_cap_manufacturer %> </th>
+				<th> <%= cbt :table_cap_site %> </th>
+			</tr>
 
 		</thead>
 
@@ -17,6 +17,14 @@
 			<%= render 'manufacturers/manufacturerslist/item', items: @result %>
 
 		</tbody>
+
+		<tfoot>
+			<tr>
+				<td colspan="10"> 
+					<%= t :total %> <b><%= @result.size %></b> 
+				</td>
+			</tr>
+		</tfoot>
 
 	</table>
 

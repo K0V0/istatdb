@@ -10,21 +10,20 @@
 
 			<div>
 				<%= s.label :ident %>
-				<%= s.search_field :ident_cont, autocomplete: "off" %>
+				<%= s.search_field :ident_or_description_cont, autocomplete: "off" %>
 			</div>
 
-			<div>
-				<%= s.label :search_both  %>
+			<div class="search_checkbox_wrap">
 				<%= check_box_tag(
 					'q[search_both]',
 					1,
-					true
+					false
 				) %>
-			</div>
-
-			<div>
-				<%= s.label :description %>
-				<%= s.search_field :description_cont, autocomplete: "off" %>
+				<%= s.label :description, class: 'disabled' %>
+				<%= s.search_field(:description_cont,
+				 	autocomplete: "off",
+				 	disabled: true
+				) %>
 			</div>
 
 			<%= render 'goods/goodslist/search_select_client', obj: s %>
