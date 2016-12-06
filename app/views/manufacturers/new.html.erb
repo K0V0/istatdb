@@ -5,15 +5,13 @@
 
 	<%= form_for @manufacturer do |t| %>
 
-		<div>
-			<%= t.label :name %>
-			<%= t.text_field :name %>
-			<%= t.errors :name %>
-		</div>
+		<%= render 'manufacturers/new/main', t: t %>
 
-		<div>
-			<%= t.submit %>
-		</div>
+		<article class="decorated_wrap shrinked">
+			<div>
+				<%= t.submit %>
+			</div>
+		</article>
 
 	<% end %>
 
