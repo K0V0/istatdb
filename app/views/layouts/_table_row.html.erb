@@ -1,4 +1,6 @@
-<tr>
+
+<tr <%= html_class_row if (defined? html_class_row)&&(!html_class_row.nil?) %>>
+
 	<% fields.each do |field| %>
 
 		<td> 
@@ -10,4 +12,5 @@
 		</td>
 		
 	<% end %>
+
 </tr>

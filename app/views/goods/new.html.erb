@@ -9,16 +9,25 @@
 			<%= render 'goods/new/good', obj: t %>
 		</article>
 
-		<article class="decorated_wrap">
-			<%= render 'goods/new/taricnum', obj: t %>
+		<article class="decorated_wrap" id="new_taricnum_search">
+			<%= render('layouts/new_taricnum_search', 
+				obj: t,
+				results_table: 'local_taric/api/taricnum_search',
+				results_obj: @local_tarics
+			) %>
 		</article>
 
-		<article class="decorated_wrap">
-			<%= render 'goods/new/client', obj: t %>
+		<article class="decorated_wrap" id="new_client_search">
+			<%= render('layouts/new_impexpcompany_search', 
+				obj: t,
+				results_table: 'impexpcompanies/api/client_search',
+				results_obj: @impexpcompanies 
+			) %>
 		</article>
 
 		<article class="decorated_wrap">
 			<%= render 'goods/new/manufacturer', obj: t %>
+
 		</article>
 
 		<% @good.uoms.each_with_index do |uom, index| %>

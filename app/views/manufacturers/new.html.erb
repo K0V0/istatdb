@@ -5,7 +5,33 @@
 
 	<%= form_for @manufacturer do |t| %>
 
-		<%= render 'manufacturers/new/main', t: t %>
+		<article class="decorated_wrap shrinked">
+			<div>
+				<div>
+					<%= t.label :name %>
+					<%= t.text_field :name %>
+				</div>
+			</div>
+			<div class="form_errors">
+				<%= t.errors :name %>
+			</div>
+		</article>
+
+		<article class="decorated_wrap">
+			<%= render('layouts/new_impexpcompany_search', 
+				obj: t,
+				results_table: 'impexpcompanies/api/client_search',
+				results_obj: @impexpcompanies 
+			) %>
+		</article>
+
+		<article class="decorated_wrap">
+			<%= render('layouts/new_taricnum_search', 
+				obj: t,
+				results_table: 'local_taric/api/taricnum_search',
+				results_obj: @local_tarics 
+			) %>
+		</article>
 
 		<article class="decorated_wrap shrinked">
 			<div>

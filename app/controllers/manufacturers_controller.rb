@@ -4,8 +4,10 @@ class ManufacturersController < ApplicationController
       searcher_for autoshow:false 
     }
 
+    before_action :form_searchfields_vars, only: [:new, :edit, :update]
+
     before_action :new_action, only: :new
-    
+
     before_action(only: :create) { create_action permitted_pars }
 
   	def index
@@ -57,6 +59,11 @@ class ManufacturersController < ApplicationController
 
     def permitted_pars
       params[:manufacturer].permit(:name)
+    end
+
+    def form_searchfields_vars
+      @impexpcompanies = Impexpcompany.all
+      @local_tarics = LocalTaric.all
     end
 
 end

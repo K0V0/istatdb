@@ -8,5 +8,9 @@ class Manufacturer < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :name, uniqueness: true
+
+	attr_accessor :impexpcompany_company_name
+	attr_accessor :local_taric_kncode
+	attr_accessor :local_taric_description
 	
 end

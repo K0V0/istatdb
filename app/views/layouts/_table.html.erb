@@ -1,18 +1,20 @@
 
 <%
-colspan_num = fields.size if foots.size == 1 
+colspan_num = fields.size if (defined? foots)&&(foots.size == 1)
 colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe 
 %>
 
-<table>	
+<table class="<%= html_class if defined? html_class %>">	
 
-	<thead>
-		<tr>
-			<% captions.each do |caption| %>
-				<th> <%= caption %> </th>
-			<% end %>
-		</tr>
-	</thead>
+	<% if defined? captions %>
+		<thead>
+			<tr>
+				<% captions.each do |caption| %>
+					<th> <%= caption %> </th>
+				<% end %>
+			</tr>
+		</thead>
+	<% end %>
 
 	<tbody>
 		<% if object.respond_to?(:each) %>
@@ -24,14 +26,16 @@ colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe
 		<% end %>
 	</tbody>
 
-	<tfoot>
-		<tr>
-			<% foots.each do |foot| %>
-				<td <%= colspan_string %>>
-					<%= foot.html_safe %>
-				</td>
-			<% end %>
-		</tr>
-	</tfoot>
+	<% if defined? foots %>
+		<tfoot>
+			<tr>
+				<% foots.each do |foot| %>
+					<td <%= colspan_string %>>
+						<%= foot.html_safe %>
+					</td>
+				<% end %>
+			</tr>
+		</tfoot>
+	<% end %>
 
 </table>

@@ -108,6 +108,14 @@ module ApplicationHelper
 	end
 
 
+	def selected_html_class item, symsym
+		if params.deep_has_key? controller_name.singularize.to_sym, symsym
+			return "selected".html_safe if item.id == params[:good][symsym].to_i
+		end
+		""
+	end
+
+
 	def group_options obj
 		[items: obj.to_a]
 	end

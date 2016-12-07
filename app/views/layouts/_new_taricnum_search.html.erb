@@ -1,4 +1,3 @@
-
 <div>
 
 	<div>
@@ -15,7 +14,7 @@
 
 <div class="tablewrap">
 	
-	<table id="good_local_taric_kncode_results" class="rows_colored with_efects">
+	<table id="<%= controller_name.singularize %>_local_taric_kncode_results" class="rows_colored with_efects">
 
 		<thead>
 			<tr>
@@ -26,7 +25,7 @@
 		
 		<tbody>
 			
-			<%= render 'local_taric/api/taricnum_search', items: @local_tarics %>
+			<%= render results_table, items: results_obj %>
 
 		</tbody>
 
