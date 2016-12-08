@@ -32,19 +32,6 @@ Rails.application.routes.draw do
   post "goodsdb",
     to: "goods#create"
 
-  # new good creation form - for searching kncodes in LocalTaric
-  # thats why in another controller
-  post "goodsdb/new/knnumber_search",
-    to: "local_taric#new_good_knnumber_search"
-
-  # new good creation form - for searching client's company in Impexpcompany
-  post "goodsdb/new/client_search",
-    to: "impexpcompanies#new_good_client_search"
-
-  # new good creation form - for searching manufacturer's company in Manufcturer
-  post "goodsdb/new/manufacturer_search",
-    to: "manufacturers#new_good_manufacturer_search"
-
   # administration - enter index page into administration mode
   get "goodsdb/edit",
     to: "goods#administration"
@@ -134,6 +121,23 @@ Rails.application.routes.draw do
   get "settings",
     to: "settings#index",
     as: "settings" 
+
+
+
+  ### API calls
+
+  # new good creation form - for searching kncodes in LocalTaric
+  # thats why in another controller
+  post "api/knnumber_search",
+    to: "local_taric#new_good_knnumber_search"
+
+  # new good creation form - for searching client's company in Impexpcompany
+  post "api/client_search",
+    to: "impexpcompanies#new_good_client_search"
+
+  # new good creation form - for searching manufacturer's company in Manufcturer
+  post "api/manufacturer_search",
+    to: "manufacturers#new_good_manufacturer_search"
 
 
 

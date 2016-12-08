@@ -1,29 +1,6 @@
 //$(document).on('turbolinks:load', function() {
 $(document).ready(function() {
 
-	// adding new good page - searching help tables for fast picking up criterium if exist 
-	searchQuery(
-		'/goodsdb/new/knnumber_search',
-		{ 
-			good_local_taric_kncode: "kncode_start",
-			good_local_taric_description: "description_cont"
-		}
-	);
-
-	searchQuery(
-		'/goodsdb/new/client_search',
-		{ 
-			good_impexpcompany_company_name: "company_name_cont"
-		}
-	);
-
-	searchQuery(
-		'/goodsdb/new/manufacturer_search',
-		{ 
-			good_manufacturer_name: "name_cont"
-		}
-	);
-
 	searchQuery(
 		'/goodsdb/new/edit_client_search',
 		{ 
@@ -91,6 +68,14 @@ $(document).ready(function() {
 		var count = parseFloat($('input[name=uom_count]').val());
 		var result = (val * count) / multiplier;
 		$('input[name=uom_result]').val(result.toFixed(2));
+	});
+
+	$(document).on('input', 'input[name=uom_result]', function() {
+		var val = parseFloat($('input[name=uom_value]').val());
+		var multiplier = parseInt($('input[name=uom_multiplier]').val());
+		var result = parseFloat($(this).val());
+		var count = result / (val / multiplier);
+		$('input[name=uom_count]').val(Math.ceil(count));
 	});
 
 	$(document).on('click', '.good_manufacturer_uoms_list tr', function() {

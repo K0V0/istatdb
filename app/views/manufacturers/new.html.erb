@@ -6,31 +6,53 @@
 	<%= form_for @manufacturer do |t| %>
 
 		<article class="decorated_wrap shrinked">
-			<div>
-				<div>
-					<%= t.label :name %>
-					<%= t.text_field :name %>
-				</div>
-			</div>
-			<div class="form_errors">
-				<%= t.errors :name %>
-			</div>
+
+			<%= render('layouts/new_select_section', 
+				obj: t,
+				input_fields: { 
+					name: {
+						required: true,
+						autocomplete: false
+					}
+				},
+			) %>
+			
 		</article>
 
-		<article class="decorated_wrap">
-			<%= render('layouts/new_impexpcompany_search', 
+		<article class="decorated_wrap shrinked" id="new_client_search">
+
+			<%= render('layouts/new_select_section', 
 				obj: t,
+				input_fields: { 
+					impexpcompany_company_name: {
+						required: true,
+						autocomplete: false
+					}
+				},
 				results_table: 'impexpcompanies/api/client_search',
 				results_obj: @impexpcompanies 
 			) %>
+
 		</article>
 
 		<article class="decorated_wrap">
-			<%= render('layouts/new_taricnum_search', 
+
+			<%= render('layouts/new_select_section', 
 				obj: t,
+				input_fields: { 
+					local_taric_kncode: {
+						required: false,
+						autocomplete: false
+					},
+					local_taric_description: {
+						required: false,
+						autocomplete: false
+					}
+				},
 				results_table: 'local_taric/api/taricnum_search',
-				results_obj: @local_tarics 
+				results_obj: @local_tarics
 			) %>
+
 		</article>
 
 		<article class="decorated_wrap shrinked">

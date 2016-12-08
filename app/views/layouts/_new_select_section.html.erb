@@ -1,0 +1,43 @@
+<% 
+	render_element_id = "#{input_fields.keys.first.to_s}_results" if (!defined?(render_element_id)||(render_element_id.blank?))
+
+%>
+
+<div>
+
+	<%= render('layouts/input_fields',
+		obj: obj,
+		input_fields: input_fields,
+	) %>
+	
+</div>
+
+<% if defined? results_table %>
+
+	<div class="tablewrap">
+		
+		<table id="<%= render_element_id %>" class="rows_colored with_efects">
+
+			<thead>
+				<tr>
+					<th>  </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				
+				<%= render results_table, items: results_obj %>
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+<% end %>
+
+<div class="form_errors">
+	<% input_fields.each do |field, opts| %>
+		<%= obj.errors field %>
+	<% end %>
+</div>

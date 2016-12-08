@@ -37,7 +37,7 @@ function searchQuery(path, conds, other_data) {
 		});
 	});
 
-	console.log(Object.keys(conds)[0]);
+	//console.log(Object.keys(conds)[0]);
 
 	var i = 0;
 	for (var cond_key in conds) {

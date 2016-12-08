@@ -28,6 +28,10 @@ input:disabled {
 	border-color: $disabled_input;
 }
 
+input.required {
+
+}
+
 input[type=submit] {
 	padding: 0.125em 0.25em;
 	border-width: 0.125em;
@@ -70,6 +74,10 @@ label {
 	&.disabled {
 		color: $disabled_input_text;
 	}
+
+	&.required {
+		font-weight: bold;
+	}
 }
 
 div.select_wrapper {
@@ -80,6 +88,7 @@ div.select_wrapper {
 	border-radius:0.25em;
 	display: inline-block;
 	margin: 0.125em; //0.125em;
+	vertical-align:middle;
 
 	select {
 		max-height:1.5em;

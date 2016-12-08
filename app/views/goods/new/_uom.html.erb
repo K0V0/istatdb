@@ -30,26 +30,30 @@
 
 	</div>
 
-	<div class="select_wrapper">
+	<div>
 
-		<select name='good[uoms][][uom_type_id]'>
-			
-			<% UomType.all.each do |uom_type| %>
+		<div class="select_wrapper">
 
-				<option value=""> <%= cbt :uoms_empty %> </option>
+			<select name='good[uoms][][uom_type_id]'>
+				
+				<% UomType.all.each do |uom_type| %>
 
-				<option 
-				 value="<%= uom_type.id %>"
-				 <%= 'selected="selected"' if uom_type.id == obj[:uom_type_id].to_i %>
-				>
-					<%= uom_type.uom_type %>
-				</option>
+					<option value=""> <%= cbt :uoms_empty %> </option>
 
-			<% end %>
+					<option 
+					 value="<%= uom_type.id %>"
+					 <%= 'selected="selected"' if uom_type.id == obj[:uom_type_id].to_i %>
+					>
+						<%= uom_type.uom_type %>
+					</option>
 
-		</select>
+				<% end %>
 
-		<span></span>
+			</select>
+
+			<span></span>
+
+		</div>
 
 	</div>
 

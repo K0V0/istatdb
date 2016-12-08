@@ -1,0 +1,20 @@
+<% input_fields.each do |field_name, opts| %>
+
+	<% 
+		id = "#{field_name}" if (!defined?(opts[:id]))||(opts[:id].blank?)
+	%>
+
+	<div>
+		<%= obj.label(
+			field_name, 
+			class: (opts[:required] ? "required" : "")
+		) %>
+		<%= obj.text_field( 
+			field_name,
+			autocomplete: (opts[:autocomplete] ? "on" : "off"),
+			class: (opts[:required] ? "required" : ""),
+			id: id 
+		) %>
+	</div>
+
+<% end %>
