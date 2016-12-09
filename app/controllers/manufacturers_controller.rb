@@ -8,7 +8,10 @@ class ManufacturersController < ApplicationController
 
     before_action :new_action, only: :new
 
-    before_action(only: :create) { create_action permitted_pars }
+    before_action(only: :create) { 
+      reload_tables_for_select
+      create_action permitted_pars
+    }
 
   	def index
 
@@ -58,12 +61,27 @@ class ManufacturersController < ApplicationController
   	private
 
     def permitted_pars
-      params[:manufacturer].permit(:name)
+      params[:manufacturer].permit(
+        :name,
+        :impexpcompany_company_name,
+        :local_taric_kncode,
+        :local_taric_description
+      )
     end
 
     def form_searchfields_vars
       @impexpcompanies = Impexpcompany.all
       @local_tarics = LocalTaric.all
+    end
+
+    def reload_tables_for_select
+      reload_result_by_params_nested(
+        Impexpcompany: { company_name: :contains },
+        LocalTaric: {
+          kncode: :starts,
+          description: :contains
+        },
+      )
     end
 
 end

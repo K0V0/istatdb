@@ -8,7 +8,7 @@ sk:
 
     table_cap_clients: "Výskyt tovaru u klientov"
     table_cap_clients_count: "Klientov celkom: "
-    table_cap_makers: "Výrobcovia tovaru"
+    table_cap_makers: "Dodávatelia/zákazníci"
     table_cap_makers_count: "Výrobcov celkom: "
     table_cap_kngroup: "Zaradenie v systéme HS(KN)/TARIC"
     table_cap_good: "Tovar"
@@ -33,7 +33,7 @@ sk:
     uoms_count: "Počet ks."
 
     err_no_goods_found_part1: "Tovary, ktoré nakupuje/expeduje klient"
-    err_no_goods_found_part2: "od výrobcu/pre zákazníka"
+    err_no_goods_found_part2: "od dodávateľa/pre zákazníka"
     err_no_goods_found_part3: "bývajú vo všetkých alebo väčšine prípadov evidované ako:"
 
     good_search_no_results: "Nenašiel sa žiadnen tovar podla požadovaných kritérií. Ak chcete tento tovar pridať, kliknite na sprístupnenú voľbu \" Pridať\" a budete nasmerovaný na formulár"
@@ -54,8 +54,9 @@ sk:
 
   manufacturers: 
 
-    table_cap_manufacturer: "Výrobca"
-    table_cap_site: "Závod"
-    table_cap_clients: "Odoberatelia/odosielatelia"
+    table_cap_manufacturer: "Dodávateľ/zákazník"
+    table_cap_site: "Pobočka"
+    table_cap_clients: "Intrastat klient"
+    table_cap_usual_hscode: "Obvyklé zatriedenie"
     new_manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
   

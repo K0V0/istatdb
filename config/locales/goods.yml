@@ -49,10 +49,10 @@ sk:
         local_taric_kncode: "Kód KN/TARIC"
         local_taric_description: "Popis colnej skupiny"
         impexpcompany_company_name: "Klientská firma"
-        manufacturer_name: "Výrobca"
+        manufacturer_name: "Dodávateľ/zákazník"
         goods_manufacturer_uom: "Veličina"
         goods_manufacturer_uom_multiplier: "Počet jednotiek"
-        manufacturer_filter: "Výrobca"
+        manufacturer_filter: "Dodávateľ/zákazník"
         client_filter: "Klient"
         search_both: "+ popis"
       uom:
