@@ -7,6 +7,8 @@
 
 		<article class="decorated_wrap">
 
+			<%= t.object.class.name.underscore %>
+
 			<%= render('layouts/new_select_section', 
 				obj: t,
 				input_fields: { 
@@ -37,8 +39,8 @@
 						autocomplete: false
 					}
 				},
-				results_table: 'local_taric/api/taricnum_search',
-				results_obj: @local_tarics
+				results_obj: @local_tarics,
+				cols: [:kncode, :description]
 			) %>
 
 		</article>
@@ -53,8 +55,8 @@
 						autocomplete: false
 					}
 				},
-				results_table: 'impexpcompanies/api/client_search',
-				results_obj: @impexpcompanies 
+				results_obj: @impexpcompanies,
+				cols: [:company_name]
 			) %>
 
 		</article>
@@ -69,8 +71,8 @@
 						autocomplete: false
 					}
 				},
-				results_table: 'manufacturers/api/manufacturer_search',
-				results_obj: @manufacturers 
+				results_obj: @manufacturers,
+				cols: [:name] 
 			) %>
 
 		</article>

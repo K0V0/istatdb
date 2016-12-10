@@ -1,0 +1,32 @@
+<%
+model_meno = results_obj.model.name.underscore 
+new_object = instance_variable_get("@#{obj.object.class.name.underscore}")
+%>
+
+<% results_obj.each do |o| %>
+
+	<% Rails.logger.info "-----------------"
+	Rails.logger.info new_object
+	Rails.logger.info o
+
+	 %>
+
+	 <% 
+	 	cols.each do |col|
+	 		#Rails.logger.info col
+	 		#o.send(col)
+	 	end
+	 %>
+
+	<%= render('layouts/table_row',
+		o: o,
+		fields: cols,
+		#html_class_row: ("selected" if o == obj)
+	) %>
+
+<% end %>
+
+<%= render('layouts/no_results',
+	items: results_obj,
+	err_message: "new_#{model_meno}_search_no_results"
+) %>

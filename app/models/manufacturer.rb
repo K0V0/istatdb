@@ -20,18 +20,16 @@ class Manufacturer < ActiveRecord::Base
 	after_create :assignments
 
 	def associated_validations
-		assoc_validator Impexpcompany, :company_name
+		assoc_validator(Impexpcompany, :company_name) if !@impexpcompany_company_name.blank?
 		if !@local_taric_kncode.blank? || !@local_taric_description.blank?
 			assoc_validator LocalTaric, :kncode, :description
 		end
 	end
 
 	def assignments
-		@impexpcompany.manufacturers << self
+		@impexpcompany.manufacturers << self if defined? @impexpcompany
 		if defined? @local_taric 
-			#Rails.logger.info "----------------------"
 			im = self.impexpcompany_manufacturers.where(impexpcompany_id: @impexpcompany.id).first
-			#Rails.logger.info im.id
 			im.local_taric_id = @local_taric.id
 			im.save
 		end

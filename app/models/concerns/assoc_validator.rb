@@ -36,8 +36,8 @@ module AssocValidator
 					end
 				end
 			else
+				tmp.save
 				instance_variable_set(instvar_string, tmp)
-				instance_variable_get(instvar_string).send(:save)
 			end
 		end
 	end

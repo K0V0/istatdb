@@ -12,7 +12,7 @@
 	
 </div>
 
-<% if defined? results_table %>
+<% if defined? cols %>
 
 	<div class="tablewrap">
 		
@@ -26,7 +26,11 @@
 			
 			<tbody>
 				
-				<%= render results_table, items: results_obj %>
+				<%= render('layouts/results_table',
+					obj: obj,
+					results_obj: results_obj,
+					cols: cols
+				) %>
 
 			</tbody>
 
