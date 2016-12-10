@@ -7,14 +7,13 @@
 
 		<article class="decorated_wrap">
 
-			<%= t.object.class.name.underscore %>
-
 			<%= render('layouts/new_select_section', 
 				obj: t,
 				input_fields: { 
 					ident: {
 						required: true,
-						autocomplete: false
+						autocomplete: false,
+						reset_button: :all
 					},
 					description: {
 						required: false,
@@ -32,7 +31,8 @@
 				input_fields: { 
 					local_taric_kncode: {
 						required: true,
-						autocomplete: false
+						autocomplete: false, 
+						reset_button: :all
 					},
 					local_taric_description: {
 						required: true,
@@ -52,7 +52,8 @@
 				input_fields: { 
 					impexpcompany_company_name: {
 						required: true,
-						autocomplete: false
+						autocomplete: false,
+						reset_button: true
 					}
 				},
 				results_obj: @impexpcompanies,
@@ -68,7 +69,8 @@
 				input_fields: { 
 					manufacturer_name: {
 						required: true,
-						autocomplete: false
+						autocomplete: false,
+						reset_button: true
 					}
 				},
 				results_obj: @manufacturers,

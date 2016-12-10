@@ -1,5 +1,5 @@
 
-<tr <%= html_class_row if (defined? html_class_row)&&(!html_class_row.nil?) %>>
+<tr <%= ("class=#{html_class_row.to_s}") if (defined? html_class_row)&&(!html_class_row.nil?) %>>
 
 	<% fields.each do |field| %>
 

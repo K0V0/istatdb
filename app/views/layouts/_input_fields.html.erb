@@ -5,16 +5,34 @@
 	%>
 
 	<div>
+
 		<%= obj.label(
 			field_name, 
 			class: (opts[:required] ? "required" : "")
 		) %>
+
 		<%= obj.text_field( 
 			field_name,
 			autocomplete: (opts[:autocomplete] ? "on" : "off"),
 			class: (opts[:required] ? "required" : ""),
 			id: id 
 		) %>
+
+		<% if !opts[:reset_button].blank? %>
+
+			<% if opts[:reset_button] == true 
+				js = "$(\'##{id}\').val(\'\').trigger(\'input\');"
+			elsif opts[:reset_button] == :all 
+				js = "$(\'##{id}\').closest(\'article\').find(\'input[type=text]\').val(\'\').trigger(\'input\');"
+			end %>
+
+			<%= button_tag(t(:clear_search_short),
+				type: 'button',
+				onclick: js,
+				class: 'button'
+			) %>
+
+		<% end %>
 	</div>
 
 <% end %>

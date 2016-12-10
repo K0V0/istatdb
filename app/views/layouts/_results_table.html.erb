@@ -1,27 +1,29 @@
 <%
 model_meno = results_obj.model.name.underscore 
-new_object = instance_variable_get("@#{obj.object.class.name.underscore}")
+form_object = instance_variable_get("@#{obj.object.class.name.underscore}")
+
+active_field = {}
+cols.each do |col|
+	active_field[col] = form_object.send(model_meno + '_' + col.to_s)
+end
 %>
 
 <% results_obj.each do |o| %>
 
-	<% Rails.logger.info "-----------------"
-	Rails.logger.info new_object
-	Rails.logger.info o
-
-	 %>
-
-	 <% 
-	 	cols.each do |col|
-	 		#Rails.logger.info col
-	 		#o.send(col)
-	 	end
-	 %>
+	<%
+	active = true
+	cols.each do |col|
+		if o.send(col) != active_field[col]
+			active = false
+			break
+		end
+	end
+	%>
 
 	<%= render('layouts/table_row',
 		o: o,
 		fields: cols,
-		#html_class_row: ("selected" if o == obj)
+		html_class_row: ("selected" if active)
 	) %>
 
 <% end %>

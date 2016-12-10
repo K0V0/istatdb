@@ -151,6 +151,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
+      min-height: 1.5em;
   }
 
   ::-webkit-scrollbar-thumb:hover {
