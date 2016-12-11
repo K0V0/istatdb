@@ -20,10 +20,6 @@ class LocalTaricController < ApplicationController
 
   	end
 
-    def new_good_knnumber_search
-      render('local_taric/api/taricnum_search')
-    end
-
     def administration
       render 'index'
     end

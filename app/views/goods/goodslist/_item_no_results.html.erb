@@ -1,4 +1,4 @@
-<% if items.size == 0 
+<% #if items.size == 0 
 
 	if (params.deep_has_key? :q, :manufacturer_filter)&&(params.deep_has_key? :q, :client_filter) 
 
@@ -40,4 +40,4 @@
 		colspan: true
 	) %>
 
-<% end %>
+<% #end %>

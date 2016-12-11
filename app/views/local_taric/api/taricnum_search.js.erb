@@ -1,4 +1,0 @@
-
-$("#<%= params[:render_element_id] %>").children("tbody").children('tr').remove();
-
-$("#<%= params[:render_element_id] %> > tbody").append('<%= j(render "local_taric/api/taricnum_search", items: @result) %>');

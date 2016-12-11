@@ -3,7 +3,7 @@
 
 	<tr>
 		
-		<%= render 'layouts/table_checkbox', item_id: item.id %>
+		<%= render('layouts/table_checkbox', item_id: item.id) if @administrative_mode %>
 
 		<td class="good_ref"> 
 			<%= link_to item, remote: true do %>
@@ -19,11 +19,11 @@
 			<%= num_to_kncode item.local_taric.kncode %> 
 		</td>
 
-		<%= render 'layouts/table_item_operations', item_id: item.id %>
+		<%= render('layouts/table_item_operations', item_id: item.id) if @administrative_mode %>
 
 	</tr>
 
 <% end %>
 
-<%= render 'goods/goodslist/item_no_results', items: items %>
+<%= render('goods/goodslist/item_no_results', items: items) if items.length == 0 %>
 

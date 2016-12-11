@@ -26,18 +26,19 @@ function searchQuery(path, conds, other_data) {
 			request_data[conds[cond_key]] = $('#'+cond_key).val();
 		}
 
+		var field = conds[Object.keys(conds)[0]].replace(/_[a-z]+$/, "");
+		var model = Object.keys(conds)[0].replace("_"+field, "");
+
 		$.ajax({
 		  	method: "POST",
 		 	url: path,
 		  	data: { 
 		  		q: request_data,
-		  		render_element_id: Object.keys(conds)[0]+"_results",
+		  		model: model,
 		  		other_data
 		  	}
 		});
 	});
-
-	//console.log(Object.keys(conds)[0]);
 
 	var i = 0;
 	for (var cond_key in conds) {

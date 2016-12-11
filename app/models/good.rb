@@ -54,18 +54,20 @@ class Good < ActiveRecord::Base
 
 	scope :client_filter, -> (pars) { 
 		self
-		.joins(:impexpcompanies)
+		.includes(:impexpcompanies)
 		.where(impexpcompanies: { 
 			id: pars 
 		})
+		.references(:impexpcompanies)
 	}
 
 	scope :manufacturer_filter, -> (pars) { 
 		self
-		.joins(:manufacturers)
+		.includes(:manufacturers)
 		.where(manufacturers: { 
 			id: pars 
 		})
+		.references(:manufacturers)
 	}
 
 	def self.ransackable_scopes(*pars)

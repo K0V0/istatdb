@@ -21,12 +21,14 @@ class ApplicationController < ActionController::Base
     Rails.cache.write("q",params[:q])
   }
 
-  def searcher_for object: nil, autoshow: true, search_condition: nil
+  def searcher_for object: nil, autoshow: true, search_condition: nil, preload: nil
 
     object ||= controller_name.classify.constantize
     @search = object.ransack(params[:q])
     @search.sorts = search_condition if (@search.sorts.empty?&&!search_condition.nil?)
-    @result = @search.result
+    @result = @search.result if preload.nil?
+    @result = @search.result.send(:preload, preload) if !preload.nil?
+
 
     if  @result.count == 1 && !request.xhr?.nil? && autoshow
     	# if ransack searching during typing ends up showing one result,

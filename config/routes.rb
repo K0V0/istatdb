@@ -129,7 +129,7 @@ Rails.application.routes.draw do
   # new good creation form - for searching kncodes in LocalTaric
   # thats why in another controller
   post "api/knnumber_search",
-    to: "local_taric#new_good_knnumber_search"
+    to: "api#local_taric_search"
 
   # new good creation form - for searching client's company in Impexpcompany
   post "api/client_search",

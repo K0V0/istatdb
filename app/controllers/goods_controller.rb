@@ -1,6 +1,8 @@
 class GoodsController < ApplicationController
 
-	before_action :searcher_for, only: [:index, :search, :show, :administration]
+	before_action(only: [:index, :search, :show, :administration]) {
+		searcher_for(object: Good, preload: :local_taric);
+	}
 
 	before_action :searcher_load_manufacturers_by_impexpcompany, only: [:index, :search, :administration, :show]
 

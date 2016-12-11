@@ -15,7 +15,7 @@ if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
 	$('<%= j(render "goods/goodslist/item", items: @result) %>').appendTo(elem);
 }
 
-$('#total_goods_count').children('b').text('<%= @result.count %>');
+$('#total_goods_count').children('b').text('<%= @result.length %>');
 
 // renders manufacturers select field - manufacturers list is selected based on client 
 var parent = $('#q_manufacturer_filter').parent();
