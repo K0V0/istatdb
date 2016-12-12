@@ -1,6 +1,6 @@
 <% 
 	render_element_id = "#{input_fields.keys.first.to_s}_results" if (!defined?(render_element_id)||(render_element_id.blank?))
-
+	cols_highlighted ||= nil 
 %>
 
 <div>
@@ -29,7 +29,8 @@
 				<%= render('layouts/results_table',
 					obj: obj,
 					results_obj: results_obj,
-					cols: cols
+					cols: cols,
+					cols_highlighted: cols_highlighted 
 				) %>
 
 			</tbody>

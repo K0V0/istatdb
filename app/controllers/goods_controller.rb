@@ -1,7 +1,7 @@
 class GoodsController < ApplicationController
 
 	before_action(only: [:index, :search, :show, :administration]) {
-		searcher_for(object: Good, preload: :local_taric);
+		searcher_for(object: Good, preload: :local_taric, default_order: "ident asc");
 	}
 
 	before_action :searcher_load_manufacturers_by_impexpcompany, only: [:index, :search, :administration, :show]

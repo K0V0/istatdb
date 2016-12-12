@@ -29,11 +29,35 @@ end
 	<% cols.each do |field| %>
 
 		<td> 
+
 			<% if field.is_a? Symbol %>
-				<%= o.send(field) %>
+
+				<% if defined? cols_highlighted[field] %>
+
+					<% if (cols_highlighted[field].is_a? Symbol)||(cols_highlighted[field].is_a? String) %>
+
+						<%= highlight_search o, field, cols_highlighted[field] %>
+
+					<% else %>
+
+						<% cols_highlighted[field].each do |f| %>
+
+							<%= higlight_search o, field, f %>
+
+						<% end %>
+
+					<% end %>
+
+				<% else %>
+					<%= o.send(field) %>
+				<% end %>
+
 			<% else %>
+
 				<%= field.html_safe %>
+
 			<% end %>
+
 		</td>
 		
 	<% end %>

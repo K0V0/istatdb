@@ -4,4 +4,4 @@ var elem = $("#<%= params[:model] + "_" + params[:q].keys.first.sub(/_[a-z]+$/, 
 elem.children("tbody").children('tr').remove();
 
 elem.children("tbody")
-.append('<%= j(render("/layouts/results_table", results_obj: @result, cols: @stripped_params)) %>');
+.append('<%= j(render("/layouts/results_table", results_obj: @result, cols: @stripped_params, cols_highlighted: @cols_highlighted)) %>');

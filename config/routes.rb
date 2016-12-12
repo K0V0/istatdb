@@ -133,11 +133,11 @@ Rails.application.routes.draw do
 
   # new good creation form - for searching client's company in Impexpcompany
   post "api/client_search",
-    to: "impexpcompanies#new_good_client_search"
+    to: "api#client_search"
 
   # new good creation form - for searching manufacturer's company in Manufcturer
   post "api/manufacturer_search",
-    to: "manufacturers#new_good_manufacturer_search"
+    to: "api#manufacturer_search"
 
 
 

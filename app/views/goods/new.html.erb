@@ -34,7 +34,6 @@
 						required: true,
 						autocomplete: false, 
 						reset_button: :all,
-						higlight_searched: true
 					},
 					local_taric_description: {
 						required: true,
@@ -42,7 +41,11 @@
 					}
 				},
 				results_obj: @local_tarics,
-				cols: [:kncode, :description]
+				cols: [:kncode, :description], 
+				cols_highlighted: {
+					kncode: :kncode,
+					description: :description
+				}
 			) %>
 
 		</article>
