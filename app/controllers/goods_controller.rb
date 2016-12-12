@@ -27,10 +27,10 @@ class GoodsController < ApplicationController
 
 	def new
 		@good = Good.new(
-			ident: params[:good][:ident],
-			description: params[:good][:description],
-			impexpcompany_company_name: @impexpcompanies.where(id: params[:good][:client_filter]).first.try(:company_name),
-			manufacturer_name: (@manufacturers.where(id: params[:good][:manufacturer_filter]).first.try(:name))
+			ident: params[:good].try(:ident),
+			description: params[:good].try(:description),
+			impexpcompany_company_name: @impexpcompanies.where(id: params[:good].try(:client_filter)).first.try(:company_name),
+			manufacturer_name: (@manufacturers.where(id: params[:good].try(:manufacturer_filter)).first.try(:name))
 		)
 	end
 

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   }
 
   before_action(only: [:index, :show]) { 
-    params[:q] = Rails.cache.read("q")
+    #params[:q] = Rails.cache.read("q")
   }
 
   after_action(only: :search) {

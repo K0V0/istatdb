@@ -1,5 +1,5 @@
 <% 
-	if defined? pars
+	if (defined? pars)&&(params.has_key? :q)
 		try_suffix = ["_cont", "_start"]
 		parms = {}
 		pars.each do |par|
