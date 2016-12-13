@@ -31,6 +31,9 @@ gem 'i18n'
 
 gem 'ransack', git: 'https://github.com/K0V0/ransack'
 
+#gem 'ransack', path: '/home/kovo/:. GitHub/ransack'
+
+
 gem 'jquery-turbolinks'
 
 #gem 'active_link_to'

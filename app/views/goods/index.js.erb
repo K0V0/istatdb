@@ -15,6 +15,10 @@ if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
 	$('<%= j(render "goods/goodslist/item", items: @result) %>').appendTo(elem);
 }
 
+var par = $('#ident_sort_link').parent();
+par.empty();
+$('<%= j(render "layouts/sort_links", obj: @search, fields: [:ident], action: :search) %>').children('a').unwrap().appendTo(par);
+
 $('#total_goods_count').children('b').text('<%= @result.length %>');
 
 // renders manufacturers select field - manufacturers list is selected based on client 

@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/K0V0/ransack
-  revision: 352ba2cf7d7486344e5307ef6682e57c622ca442
+  revision: 54a7364e8c2ab8e090d9e8616d48311bcdf3ffcf
   specs:
     ransack (1.7.0)
       actionpack (>= 3.0)
