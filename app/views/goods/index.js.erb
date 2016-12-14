@@ -15,7 +15,18 @@ if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
 	$('<%= j(render "goods/goodslist/item", items: @result) %>').appendTo(elem);
 }
 
-$('#total_goods_count').children('b').text('<%= @result.length %>');
+<% [:ident, :local_taric_kncode].each do |f| %>
+	var par = $("#<%=j f.to_s %>_sort_link").parent();
+	par.empty();
+	$("<%=j render('layouts/sort_links', obj: @search, fields: [f], action: :search) %>").children('a').unwrap().appendTo(par);
+<% end %>
+
+$("#q_s").val('<%= params[:q][:s] if params.deep_has_key? :q, :s %>');
+
+$('#total_goods_count').children('b').text('<%= @result.total_count %>');
+
+$("#pagination").empty();
+$("<%=j paginate @result, remote: true %>").appendTo("#pagination");
 
 // renders manufacturers select field - manufacturers list is selected based on client 
 var parent = $('#q_manufacturer_filter').parent();

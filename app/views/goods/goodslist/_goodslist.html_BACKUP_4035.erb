@@ -9,11 +9,24 @@
 
 				<% if @administrative_mode %> <th> </th> <% end %>
 
+<<<<<<< HEAD
+				<th> 
+					<%= sort_link(
+						@search, 
+						:ident,
+						{ 
+							action: :search
+						},
+						remote: true
+					) %> 
+				</th>
+=======
 				<%= render('layouts/sort_links',
 					fields: [:ident],
 					obj: @search,
 					action: :search
 				) %>
+>>>>>>> 5290b0098d5c2bd32832537d200facd4fc0e10b4
 
 				<th class="good_description">
 					<%= cbt :table_cap_description %>

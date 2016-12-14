@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/K0V0/ransack
-  revision: 352ba2cf7d7486344e5307ef6682e57c622ca442
+  revision: 54a7364e8c2ab8e090d9e8616d48311bcdf3ffcf
   specs:
     ransack (1.7.0)
       actionpack (>= 3.0)
@@ -85,6 +85,9 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.3)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     localtunnel (1.0.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -182,6 +185,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  kaminari
   localtunnel
   rails (= 4.2.6)
   ransack!

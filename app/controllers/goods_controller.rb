@@ -1,20 +1,41 @@
 class GoodsController < ApplicationController
 
-	before_action(only: [:index, :search, :show, :administration]) {
-		searcher_for(object: Good, preload: :local_taric, default_order: "ident asc");
+	before_action(only: [
+		:index, 
+		:search, 
+		:show, 
+		:administration
+	]) {
+		searcher_for(
+			object: Good, 
+			preload: :local_taric,
+			default_order: "ident asc"
+		);
+		@result = @result.page(params[:page])
 	}
 
-	before_action :searcher_load_manufacturers_by_impexpcompany, only: [:index, :search, :administration, :show]
+	before_action :searcher_load_manufacturers_by_impexpcompany, only: [
+		:index, 
+		:search, 
+		:administration, 
+		:show
+	]
 
-	before_action :form_searchfields_vars, only: [:new, :edit, :update]
+	before_action :form_searchfields_vars, only: [
+		:new, 
+		:edit, 
+		:update
+	]
 
-	before_action(only: :create) { 
+	before_action(only: [
+		:create
+	]) { 
 		reload_tables_for_select
 		#create_action permitted_pars
 	}
 
 	def index
-
+		
 	end
 
 	def search

@@ -21,4 +21,4 @@
 
 <% end %>
 
-<%= render 'layouts/no_results', items: items %>
+<%= render('layouts/no_results', items: items) if items.length == 0 %>
