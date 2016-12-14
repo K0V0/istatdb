@@ -19,7 +19,11 @@
 					<%= cbt :table_cap_description %>
 				</th>
 
-				<th> <%= cbt :table_cap_knnumber %> </th>
+				<%= render('layouts/sort_links',
+					fields: [:local_taric_kncode],
+					obj: @search,
+					action: :search
+				) %>
 
 			</tr>
 
@@ -34,11 +38,22 @@
 		<tfoot>
 			
 			<tr>
-				<th colspan="6" id="total_goods_count"> 
-					<%= cbt :table_foot_goods_total %>
-					<b> <%= @result.length %> </b>
+
+				<th colspan="10">
+
+					<div id="pagination">
+						<%= paginate @result, remote: true %>
+					</div>
+
+					<div id="total_goods_count"> 
+						<%= cbt :table_foot_goods_total %>
+						<b> <%= @result.total_count %> </b>
+					</div>
+
 				</th>
+
 			</tr>
+
 
 		</tfoot>
 

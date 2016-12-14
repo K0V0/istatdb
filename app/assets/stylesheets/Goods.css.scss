@@ -11,12 +11,27 @@ table#goods {
 			width:100%;
 		}
 
-		&.kn_code {
+		&.kn_code, #local_taric_kncode_sort_link {
 			white-space: nowrap;
 		}
 
-		&.good_ref {
+		&.good_ref, #ident_sort_link {
 			white-space: nowrap;
+		}
+	}
+
+	tfoot {
+
+		tr {
+
+			th {
+				
+				div {
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 1em;
+				}
+			}
 		}
 	}
 }

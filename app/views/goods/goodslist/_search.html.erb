@@ -35,7 +35,7 @@
 				</div>
 			</div>
 
-			<%= s.hidden_field(:s, value: params[:q][:s]) if params.deep_has_key? :q, :s %>
+			<%= s.hidden_field(:s, value: (params[:q][:s] if params.deep_has_key? :q, :s)) %>
 
 			<%= hidden_field_tag :administrative_mode, @administrative_mode %>
 
