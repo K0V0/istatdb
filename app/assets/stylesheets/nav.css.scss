@@ -1,7 +1,6 @@
 @import "variables";
 
 nav {
-	overflow-x:hidden;
 
 	ul {
 		display: table;
@@ -21,6 +20,7 @@ nav {
 	}
 
 	&.main_menu {
+		//overflow-x:hidden;
 		background-color: $background_color;
 		color: $white;
 		line-height: 32px;
@@ -63,13 +63,18 @@ nav {
 	}
 
 	&.pagination {
+		margin: 0.125em 0em;
 
 		span {
-			display: inline-block;
-			height:1em;
+			display: block;
+			float:left;
 			min-width: 1em;
 			text-align: center;
 
+			a {
+				display: block;
+				white-space: nowrap;
+			}
 		}
 	}
 }

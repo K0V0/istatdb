@@ -1,0 +1,22 @@
+table.items {
+	display: block;
+	display: flex;
+	height:100%;
+	flex-direction: column;
+	align-items: stretch;
+	flex-grow:0;	
+	flex-shrink:0;
+	overflow:scroll;
+
+	thead {
+		flex: 0 1 auto;
+	}
+
+	tbody {
+		flex: 1 1 auto;
+	}
+
+	tfoot {
+		flex: 0 1 auto;
+	}
+}

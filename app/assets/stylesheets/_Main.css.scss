@@ -7,6 +7,8 @@
 }
 
 html {
+	height: 100%;
+	max-height: 100%;
 
 	body {
 		@include scrollbars();
@@ -16,6 +18,9 @@ html {
 		display: flex;
 		min-height: 100%; 
   		min-height: 100vh;
+  		height:100%;
+  		max-height: 100%;
+  		align-items: stretch;
   		flex-direction: column;
 		position:relative;
 
@@ -48,8 +53,15 @@ html {
 			border-radius: 0.25em;
 		}
 
+		nav {
+			flex: 0 1 auto;
+		}
+
 		main {
-			flex: 1;
+			flex: 1 1 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
 			padding:0.25em 0.75em;
 
 			a {
@@ -93,6 +105,15 @@ html {
 				&.form {
 					margin:0;
 				}
+
+				&.search_bar {
+					flex: 0 1 auto;
+				}
+
+				&.items_table {
+					flex: 1 1 auto;
+					//overflow-y: scroll;
+				}
 			}
 
 			h1, h2, h3, h4 {
@@ -125,6 +146,7 @@ html {
 			background-color: $background_color;
 			color: white;
 			padding: 0.25em 0.25em;
+			flex: 0 1 1em;
 
 			div {
 				display: inline-block;
