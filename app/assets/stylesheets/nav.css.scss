@@ -61,4 +61,15 @@ nav {
 			}
 		}
 	}
+
+	&.pagination {
+
+		span {
+			display: inline-block;
+			height:1em;
+			min-width: 1em;
+			text-align: center;
+
+		}
+	}
 }
