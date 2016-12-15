@@ -47,12 +47,15 @@ class GoodsController < ApplicationController
 	end
 
 	def new
-		@good = Good.new(
-			ident: params[:good].try(:ident),
-			description: params[:good].try(:description),
-			impexpcompany_company_name: @impexpcompanies.where(id: params[:good].try(:client_filter)).first.try(:company_name),
-			manufacturer_name: (@manufacturers.where(id: params[:good].try(:manufacturer_filter)).first.try(:name))
-		)
+		@good = Good.new
+		if params.has_key? :good 
+			@good.assign_attributes(
+				ident: params[:good][:ident],
+				description: params[:good][:description],
+				impexpcompany_company_name: convert_search_filter_to_assign_attr(:impexpcompany, :company_name),
+				manufacturer_name: convert_search_filter_to_assign_attr(:manufacturer, :name)
+			)
+		end
 	end
 
 	def create
@@ -60,8 +63,7 @@ class GoodsController < ApplicationController
 	    if @good.save
 	    	if params[:create_and_next]
 	    		@good = Good.new(permitted_pars)
-	    		@good.ident = ""
-	    		@good.description = ""
+	    		@good.ident, @good.description = "", ""
 	    		render "new"
 	    	else
 	     		redirect_to goods_path
@@ -126,14 +128,12 @@ class GoodsController < ApplicationController
 
 	def searcher_load_manufacturers_by_impexpcompany
 		client_id = nil
-		##client_id = params[:q][:client_filter] if params.has_key?(:q)
 		if params.has_key?(:q)
 			if !params[:q].blank?
-				client_id = params[:q][:client_filter]
+				client_id = params[:q][:impexpcompany_filter]
 			end
 		end
 		if !client_id.blank?
-			#@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).goods.includes(:manufacturers).collect(&:manufacturers).flatten.uniq
 			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).manufacturers
 		else
 			@searcher_load_manufacturers_by_impexpcompany = Manufacturer.all

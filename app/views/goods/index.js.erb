@@ -35,7 +35,7 @@ $('<%= j(render "goods/goodslist/search_select_manufacturer") %>').appendTo(pare
 
 // updates href on new good button - important to preload form with values 
 // from search fields
-var new_good_href = $('<%= j(render "layouts/action_add_new", pars: [:ident, :description, :ident_or_description, :client_filter, :manufacturer_filter]) %>').attr('href');
+var new_good_href = $('<%= j(render "layouts/action_add_new", pars: [:ident, :description, :ident_or_description, :impexpcompany_filter, :manufacturer_filter]) %>').attr('href');
 $('#new_good_from_search').attr('href', new_good_href);
 
 // remove edit item buttons when going back from show item

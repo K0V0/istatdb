@@ -1,10 +1,10 @@
 <div>
 
-	<%= obj.label :client_filter %>
+	<%= obj.label :impexpcompany_filter %>
 
 	<div class="select_wrapper">
 
-		<%= obj.collection_select :client_filter,
+		<%= obj.collection_select :impexpcompany_filter,
 			Impexpcompany.all,
 			:id,
 			:company_name,

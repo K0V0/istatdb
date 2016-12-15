@@ -55,6 +55,18 @@ module ApplicationHelper
 				p = params[:q][(k.to_sym)] if !k.blank?
 			end
 		end
+
+		contr = controller_name.singularize.underscore
+		obj_contr = obj.class.to_s.singularize.underscore
+		if params.has_key?(contr.to_sym)
+			if (contr == obj_contr)
+
+			else
+				# virtual params containig associated record(s)
+				p = params[contr.to_sym][obj_contr + '_' + param.to_s]
+			end
+		end
+
 		highlight_searched str: obj.send(param), patt: p 
 	end
 

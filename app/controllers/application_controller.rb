@@ -86,6 +86,8 @@ class ApplicationController < ActionController::Base
   # function for selecting records to controller instance variables
   # dependent on what is stored in params[:controller] attributes
   # - perform search based on attribute 
+  # - used on select tables in forms when validation failed to load most accurate
+  #   results to select table to choose from
   #
   #   field_name: {
   #   param: :<containing parameter from params>,
@@ -140,6 +142,12 @@ class ApplicationController < ActionController::Base
 
   def administrative_mode
     @administrative_mode = (params[:administrative_mode] == "true")||(action_name == "administration")
+  end
+
+  def convert_search_filter_to_assign_attr model, field_name
+    obj = instance_variable_get('@' + model.to_s.pluralize)
+    obj.where(id: params[(controller_name.singularize.to_sym)][(model.to_s + '_filter').to_sym])
+      .first.try(field_name)
   end
 
 end

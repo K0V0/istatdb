@@ -53,7 +53,7 @@ sk:
         goods_manufacturer_uom: "Veličina"
         goods_manufacturer_uom_multiplier: "Počet jednotiek"
         manufacturer_filter: "Dodávateľ/zákazník"
-        client_filter: "Klient"
+        impexpcompany_filter: "Klient"
         search_both: "+ popis"
       uom:
         uom: "Hodnota"

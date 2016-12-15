@@ -52,7 +52,7 @@ class Good < ActiveRecord::Base
 	before_update :kn_code_update
 	after_initialize :fillup_virtual_params
 
-	scope :client_filter, -> (pars) { 
+	scope :impexpcompany_filter, -> (pars) { 
 		self
 		.includes(:impexpcompanies)
 		.where(impexpcompanies: { 
@@ -71,7 +71,7 @@ class Good < ActiveRecord::Base
 	}
 
 	def self.ransackable_scopes(*pars)
-	    %i(client_filter manufacturer_filter)
+	    %i(impexpcompany_filter manufacturer_filter)
 	end
 
 	## resolve how to run from update action only - maybe run from controller

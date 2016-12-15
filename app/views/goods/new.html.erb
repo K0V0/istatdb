@@ -13,8 +13,7 @@
 					ident: {
 						required: true,
 						autocomplete: false,
-						reset_button: :all,
-						higlight_searched: true
+						reset_button: :all
 					},
 					description: {
 						required: false,
@@ -62,7 +61,10 @@
 					}
 				},
 				results_obj: @impexpcompanies,
-				cols: [:company_name]
+				cols: [:company_name],
+				cols_highlighted: {
+					company_name: :company_name
+				}
 			) %>
 
 		</article>
@@ -79,7 +81,10 @@
 					}
 				},
 				results_obj: @manufacturers,
-				cols: [:name] 
+				cols: [:name],
+				cols_highlighted: {
+					name: :name
+				}
 			) %>
 
 		</article>
