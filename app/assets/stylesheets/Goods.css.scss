@@ -8,7 +8,6 @@ table#goods {
 			word-wrap:break-all;
 			word-break: break-all;
 			white-space: normal;
-			width:100%;
 		}
 
 		&.kn_code, #local_taric_kncode_sort_link {
@@ -17,6 +16,13 @@ table#goods {
 
 		&.good_ref, #ident_sort_link {
 			white-space: nowrap;
+		}
+	}
+
+	td {
+
+		&.good_description {
+			width:100%;
 		}
 	}
 

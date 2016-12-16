@@ -98,6 +98,10 @@ table.rows_colored {
 			&:nth-child(2n) {
 				background-color: $even_table_line_color;
 			}
+
+			&:nth-child(2n-1) {
+				background-color: $odd_table_line_color;
+			}
 		}
 	}
 }

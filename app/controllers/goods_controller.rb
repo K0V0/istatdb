@@ -134,9 +134,9 @@ class GoodsController < ApplicationController
 			end
 		end
 		if !client_id.blank?
-			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).manufacturers
+			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).manufacturers.order(:name)
 		else
-			@searcher_load_manufacturers_by_impexpcompany = Manufacturer.all
+			@searcher_load_manufacturers_by_impexpcompany = Manufacturer.all.order(:name)
 		end
 	end
 

@@ -31,6 +31,12 @@ $(document).ready(function() {
 		}
 	);
 */
+	$("#goods").fixHeader();
+
+	$( window ).resize(function() {
+	  $("#goods").fixHeader();
+	});
+
 	$(document).on('click', 'button.add_uom', function() {
 		console.log('add uom');
 		var clone = $(this).closest('article').clone();

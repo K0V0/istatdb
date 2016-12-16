@@ -1,22 +1,52 @@
-table.items {
-	display: block;
+@import "variables";
+
+section.items_table {
+	flex: 0 1 auto;
 	display: flex;
-	height:100%;
 	flex-direction: column;
 	align-items: stretch;
-	flex-grow:0;	
-	flex-shrink:0;
-	overflow:scroll;
+}
 
-	thead {
-		flex: 0 1 auto;
-	}
+table.items {
+	flex: 0 1 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
 
 	tbody {
-		flex: 1 1 auto;
+		overflow-y:auto;
+		background-color: $group_background;
+	}
+
+	tfoot, thead {
+		flex: 0 1 auto;
+
+		tr {
+			display: flex;
+			flex-direction: row;
+			//align-items: stretch;
+			width:100%;
+
+			th {
+				//flex-grow: 1;
+			}
+		}
 	}
 
 	tfoot {
-		flex: 0 1 auto;
+
+		tr {
+
+			th {
+				width:100%;
+			}
+		}
+	}
+
+	thead {
+
+		tr {
+			padding:0.125em;
+		}
 	}
 }

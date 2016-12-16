@@ -20,7 +20,6 @@ nav {
 	}
 
 	&.main_menu {
-		//overflow-x:hidden;
 		background-color: $background_color;
 		color: $white;
 		line-height: 32px;
@@ -70,6 +69,10 @@ nav {
 			float:left;
 			min-width: 1em;
 			text-align: center;
+
+			&.next, &.last, &.prev, &.first {
+				font-weight: normal;
+			}
 
 			a {
 				display: block;
