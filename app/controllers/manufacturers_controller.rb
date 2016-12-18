@@ -1,5 +1,6 @@
 class ManufacturersController < ApplicationController
 
+
     before_action(only: [:index, :search, :show, :new_good_manufacturer_search]) {
       searcher_for autoshow:false 
     }

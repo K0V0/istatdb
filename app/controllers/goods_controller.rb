@@ -1,5 +1,11 @@
 class GoodsController < ApplicationController
 
+	before_action :load_q_from_mem, only: [:index]
+
+	before_action :load_q_to_mem, only: [:show, :search]
+
+	before_action :load_page_to_mem, only: [:index, :search]
+
 	before_action(only: [
 		:index, 
 		:search, 
@@ -11,31 +17,14 @@ class GoodsController < ApplicationController
 			preload: :local_taric,
 			default_order: "ident asc"
 		);
+		searcher_load_manufacturers_by_impexpcompany
 		@result = @result.page(params[:page])
 	}
 
-	before_action :searcher_load_manufacturers_by_impexpcompany, only: [
-		:index, 
-		:search, 
-		:administration, 
-		:show
-	]
-
-	before_action :form_searchfields_vars, only: [
-		:new, 
-		:edit, 
-		:update
-	]
-
-	before_action(only: [
-		:create
-	]) { 
-		reload_tables_for_select
-		#create_action permitted_pars
-	}
+	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
 	def index
-		
+
 	end
 
 	def search
@@ -48,12 +37,16 @@ class GoodsController < ApplicationController
 
 	def new
 		@good = Good.new
-		if params.has_key? :good 
+		if !@MEM.search.blank?
 			@good.assign_attributes(
-				ident: params[:good][:ident],
-				description: params[:good][:description],
-				impexpcompany_company_name: convert_search_filter_to_assign_attr(:impexpcompany, :company_name),
-				manufacturer_name: convert_search_filter_to_assign_attr(:manufacturer, :name)
+				ident: 
+					@MEM.search[:ident_cont] || @MEM.search[:ident_or_description_cont],
+				description: 
+					@MEM.search[:description_cont],
+				impexpcompany_company_name: 
+					@impexpcompanies.where(id: @MEM.search[:impexpcompany_filter]).first.try(:company_name),
+				manufacturer_name: 
+					@manufacturers.where(id: @MEM.search[:manufacturer_filter]).first.try(:name)
 			)
 		end
 	end
@@ -62,14 +55,18 @@ class GoodsController < ApplicationController
 		@good = Good.new(permitted_pars)
 	    if @good.save
 	    	if params[:create_and_next]
-	    		@good = Good.new(permitted_pars)
 	    		@good.ident, @good.description = "", ""
+	    		reload_tables_for_select
 	    		render "new"
 	    	else
-	     		redirect_to goods_path
+	    		[:ident_cont, :description_cont, :ident_or_description_cont].each { |x|
+	    			@MEM.search[x] = nil
+	    		}
+	     		redirect_to controller: 'goods', action: 'index', q: @MEM.search
 	     	end
 	    else
-	       render "new"
+	    	reload_tables_for_select
+	       	render "new"
 	    end
 	end
 

@@ -13,9 +13,13 @@ html {
 	body {
 		@include scrollbars();
 
+		&.noscroll {
+			height:100%;
+		}
+
 		margin:0;
 		background-color: $white;
-  		height:100%;
+  		min-height:100%;
 		position:relative;
 
 		display: flex;

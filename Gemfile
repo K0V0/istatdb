@@ -48,6 +48,8 @@ gem 'yaml_db'
 
 gem  'kaminari'
 
+gem 'recursive-open-struct'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

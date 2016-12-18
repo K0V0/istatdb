@@ -37,6 +37,9 @@ ActionsHandler.prototype = {
 		$(document).on('click', "#clear_search", function(e) {
 			$('section.search_bar > form').find('input[type=search]').val('');
 		});
+		$(document).on('click', "#reset_search", function(e) {
+			$('section.search_bar > form').find('input[type!=submit], select').val('');
+		});
 	},
 
 	removeAllSelected: function() {

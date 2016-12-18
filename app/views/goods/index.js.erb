@@ -28,6 +28,8 @@ $('#total_goods_count').children('b').text('<%= @result.total_count %>');
 $("#pagination").empty();
 $("<%=j paginate @result, remote: true %>").appendTo("#pagination");
 
+$("input[name=page]").val("<%=j @MEM.page %>");
+
 // renders manufacturers select field - manufacturers list is selected based on client 
 var parent = $('#q_manufacturer_filter').parent();
 parent.children().remove();
@@ -41,6 +43,10 @@ $('#new_good_from_search').attr('href', new_good_href);
 // remove edit item buttons when going back from show item
 $('#delete_good_from_search, #edit_good_from_search').remove();
 
+$('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
+
 if ('<%= @administrative_mode %>' == 'true') {
 	GOODS_ACTIONS.refresh();
 }
+
+$("#goods").fixHeader();

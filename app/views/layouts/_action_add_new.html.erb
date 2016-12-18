@@ -1,4 +1,5 @@
-<% 
+<%
+=begin
 	if (defined? pars)&&(params.has_key? :q)
 		try_suffix = ["_cont", "_start"]
 		parms = {}
@@ -20,16 +21,17 @@
 			}.compact.first
 		end
 	end
+=end
 %>
 
 <%= link_to(
 	t(:new_item_short),
 	{
 		controller: controller_name,
-		action: "new",
-		params: {
-			controller_name.singularize.to_sym => parms
-		}
+		action: "new"#,
+		#params: {
+		#	controller_name.singularize.to_sym => parms
+		#}
 	},
 	class: "button", 
 	id: "new_good_from_search"

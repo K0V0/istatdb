@@ -9,8 +9,7 @@
 			$(this).children("tbody").children("tr").first().children("td")
 			.each(function(index) {
 				var width = ($(this).width() / total_width) * 100;
-				console.log(width);
-				$(thead_ths[index]).css('width',width+'%');
+				$(thead_ths[index]).css('min-width',width+'%');
 			});
 		});
 	}

@@ -36,7 +36,9 @@
 				</div>
 			</div>
 
-			<%= s.hidden_field(:s, value: (params[:q][:s] if params.deep_has_key? :q, :s)) %>
+			<%= s.hidden_field :s, value: (params.deep_has_key?(:q, :s) ? params[:q][:s] : nil) %>
+
+			<%= hidden_field_tag :page, @MEM.page %>
 
 			<%= hidden_field_tag :administrative_mode, @administrative_mode %>
 
@@ -60,7 +62,11 @@
 					<%= t :clear_search %>
 				</button><!--
 
-				--><%= s.submit t(:search), class: "button important" %>
+				--><button id="reset_search" class="button">
+					<%= t :reset_search %>
+				</button><!--
+
+				--><%= render 'layouts/action_search_or_back', s: s %>
 
 			</div>
 

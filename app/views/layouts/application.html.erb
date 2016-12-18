@@ -10,7 +10,9 @@
 	  <%= csrf_meta_tags %>
 	</head>
 
-	<body>
+	<body
+	<%= "class=\"#{@body_class}\"".html_safe if @body_class %>
+	>
 
 		<%= yield :mainmenu if content_for? :mainmenu %>
 
@@ -22,7 +24,18 @@
 
 		</main>
 
-		<%= render 'layouts/footer' %>
+		<footer>
+
+			<div>
+				<%= t(:footer_advertisement) %>
+				<%= link_to t(:footer_advertisement_webpage), t(:footer_advertisement_webpage_link) %>
+			</div>
+
+			<div>
+				<%= t(:footer_advertisement_creator) %>
+			</div>
+			
+		</footer>
 
 	</body>
 
