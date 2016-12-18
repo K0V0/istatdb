@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include HashExtras
   include RansackSearchWrapper
   include SelectOnSearched
+  include ClassOnInputWithError
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

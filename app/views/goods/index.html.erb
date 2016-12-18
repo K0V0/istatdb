@@ -1,9 +1,26 @@
 
 <%= render 'layouts/main_menu' %>
 
-<%= render 'layouts/actions' %>
+<%= render 'layouts/actions' if @administrative_mode %>
 
 <%= render 'goods/goodslist/search' %>
 
-<%= render 'goods/goodslist/goodslist' %>
+<%= render('layouts/items_table',
+
+	fields: {
+		ident: {
+			is_sortlink: true,
+			is_highlighted: true,
+			is_link: true
+		},
+		description: {
+			is_highlighted: true
+		},
+		kncode: {
+			is_sortlink: true,
+			call_function: "num_to_kncode"
+		}
+	}
+
+) %>
 

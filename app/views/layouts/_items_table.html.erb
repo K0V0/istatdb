@@ -1,0 +1,106 @@
+<% 
+	cn = controller_name.to_s
+%>
+
+<section class="items_table decorated_wrap">
+
+	<table 	id="<%= cn %>" 
+			class="items rows_colored with_efects"
+	>
+
+		<thead>
+				
+			<tr>
+
+				<% if @administrative_mode %> <th> </th> <% end %>
+
+				<% fields.each do |field, opts| %>
+
+					<% if opts[:is_sortlink] %>
+
+						<%= render('layouts/sort_links',
+							fields: [field],
+							obj: @search,
+							action: :search
+						) %>
+
+					<% else %>
+
+						<th class="<%= "#{cn}_#{field.to_s}_cap" %>">
+							<%= cbt ("#{cn}_table_#{field.to_s}_cap") %>
+						</th>
+
+					<% end %>
+
+				<% end %>
+
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			<% @result.each do |item| %>
+
+				<tr>
+					
+					<%= render('layouts/table_checkbox', item_id: item.id) if @administrative_mode %>
+
+						<% fields.each do |field, opts| %>
+
+							<td class="<%= "#{cn.singularize}_#{field.to_s}" %>"> 
+
+								<% text = opts[:is_highlighted] ? highlight_search(item, field) : item.send(field) %>
+
+								<% if opts[:call_function] %>
+									<% text = self.send(opts[:call_function], text) %>
+								<% end %>
+
+								<% if opts[:is_link] %>
+									<%= link_to item, remote: true do %>
+										<%= text %>
+									<% end %>
+								<% else %>
+									<%= text %>
+								<% end %>
+
+							</td>
+
+						<% end %>
+
+
+					<%= render('layouts/table_item_operations', item_id: item.id) if @administrative_mode %>
+
+				</tr>
+
+			<% end %>
+
+			<%= render("#{cn}/#{cn}list/item_no_results", items: @result) if @result.length == 0 %>
+
+		</tbody>
+
+		<tfoot>
+			
+			<tr>
+
+				<th colspan="10">
+
+					<div id="pagination">
+						<%= paginate @result, remote: true %>
+					</div>
+
+					<div id="items_table_total_count"> 
+						<%= t :results_total %>
+						<b> <%= @result.total_count %> </b>
+					</div>
+
+				</th>
+
+			</tr>
+
+
+		</tfoot>
+
+	</table>
+
+</section>

@@ -6,7 +6,7 @@ if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
 	// if goods table sectione removed from document due item details showup,
 	// or if administrative mode enables
 	// recreate table
-	$('section.item_details').remove();
+	$('section.items_table').remove();
 	$('<%= j(render "goods/goodslist/goodslist") %>').appendTo('main');
 
 } else {
