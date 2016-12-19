@@ -1,47 +1,43 @@
 class ManufacturersController < ApplicationController
 
+   before_action :load_q_from_mem, only: [:index]
 
-    before_action(only: [:index, :search, :show, :new_good_manufacturer_search]) {
-      searcher_for autoshow:false 
+   before_action :load_q_to_mem, only: [:show, :search]
+
+   before_action :load_page_to_mem, only: [:index, :search]
+
+    before_action(only: [:index, :search, :show, :administration]) {
+      searcher_for(
+        autoshow:false,
+        default_order: "name asc",
+        paginate: true,
+        preload: :impexpcompanies
+      ); 
     }
 
     before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
-    before_action :new_action, only: :new
-
     before_action(only: :create) { 
-      reload_tables_for_select
-      create_action permitted_pars
+      createeeee(
+        nullize: [:name], 
+        nullize_ransack: [:name_cont]
+      )
     }
 
-  	def index
-
-  	end
-
-    def search
-
-    end
 
   	def new
-
+      @manufacturer = Manufacturer.new
+      if !@MEM.search.blank?
+        @manufacturer.assign_attributes(
+          name: 
+            @MEM.search[:name_cont],
+          impexpcompany_company_name:
+            @impexpcompanies.where(id: @MEM.search[:impexpcompany_filter]).first.try(:company_name),
+        )
+      end
   	end
 
-    def create
-
-    end
-
-    def show
-
-    end
-
-    def administration
-
-    end
-
-    def new_good_manufacturer_search
-      render('manufacturers/api/manufacturer_search')
-    end
-
+=begin   
     def edit_manufacturers_making_search
       searcher_for(
         object: Good.find(params[:other_data][:manufacturer_id]).manufacturers,
@@ -58,6 +54,7 @@ class ManufacturersController < ApplicationController
       )
         render('manufacturers/api/manufacturer_search_other')
     end
+=end
 
   	private
 

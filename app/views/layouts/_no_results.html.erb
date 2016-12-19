@@ -1,17 +1,14 @@
 
 <% colspan = false if !defined? colspan %>
 
-<%# if items.size == 0 %>
+<tr class="no_results <%= 'as_row'.html_safe if colspan %>">
 
-	<tr class="no_results <%= 'as_row'.html_safe if colspan %>">
+	<td <%= 'colspan="10"'.html_safe if colspan %>> 
 
-		<td <%= 'colspan="10"'.html_safe if colspan %>> 
+		<%= t :no_results if err_message.blank?%>
+		<%= cbt err_message.to_sym if !err_message.blank?%>
 
-			<%= t :no_results if err_message.blank?%>
-			<%= cbt err_message.to_sym if !err_message.blank?%>
+	</td>
 
-		</td>
+</tr>
 
-	</tr>
-
-<%# end %>

@@ -1,10 +1,33 @@
 
 <%= render 'layouts/main_menu' %>
 
-<%= render 'layouts/actions' %>
-
 <%= render 'manufacturers/manufacturerslist/search' %>
 
-<%= render 'manufacturers/manufacturerslist/manufacturerslist' %>
+<% if @result.length > 0 %>
 
-<%= @MEM.kokot %>
+	<%= render('layouts/items_table',
+
+		fields: {
+			name: {
+				is_sortlink: true,
+				is_highlighted: true,
+			},
+			intrastat_clients: {
+
+			}, 
+			taric_codes: {
+				
+			}
+		}
+
+	) %>
+
+<% else %>
+
+	<%= render(
+		'layouts/items_table_no_results',
+		items: @result,
+		err_message: :manufacturer_search_no_results
+	) %>
+
+<% end %>

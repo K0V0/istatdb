@@ -46,6 +46,7 @@ sk:
       good:
         ident: "Referencia"
         description: "Popis tovaru"
+        kncode: "HS/TARIC"
         local_taric_kncode: "Kód KN/TARIC"
         local_taric_description: "Popis colnej skupiny"
         impexpcompany_company_name: "Klientská firma"
@@ -54,7 +55,7 @@ sk:
         goods_manufacturer_uom_multiplier: "Počet jednotiek"
         manufacturer_filter: "Dodávateľ/zákazník"
         impexpcompany_filter: "Klient"
-        search_both: "+ popis"
+        #search_both: "+ popis"
       uom:
         uom: "Hodnota"
         uom_multiplier: "Počet jednotiek"

@@ -6,34 +6,24 @@ class GoodsController < ApplicationController
 
 	before_action :load_page_to_mem, only: [:index, :search]
 
-	before_action(only: [
-		:index, 
-		:search, 
-		:show, 
-		:administration
-	]) {
+	before_action(only: [:index, :search, :show, :administration]) {
 		searcher_for(
 			object: Good, 
 			preload: :local_taric,
-			default_order: "ident asc"
+			default_order: "ident asc",
+			paginate: true
 		);
 		searcher_load_manufacturers_by_impexpcompany
-		@result = @result.page(params[:page])
 	}
 
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
-	def index
-
-	end
-
-	def search
-		render 'index'
-	end
-
-	def show
-		
-	end
+	before_action(only: :create) {
+		createeeee(
+			nullize: [:ident, :description], 
+			nullize_ransack: [:ident_cont, :description_cont, :ident_or_description_cont]
+		)
+	}
 
 	def new
 		@good = Good.new
@@ -49,29 +39,6 @@ class GoodsController < ApplicationController
 					@manufacturers.where(id: @MEM.search[:manufacturer_filter]).first.try(:name)
 			)
 		end
-	end
-
-	def create
-		@good = Good.new(permitted_pars)
-	    if @good.save
-	    	if params[:create_and_next]
-	    		@good.ident, @good.description = "", ""
-	    		reload_tables_for_select
-	    		render "new"
-	    	else
-	    		[:ident_cont, :description_cont, :ident_or_description_cont].each { |x|
-	    			@MEM.search[x] = nil
-	    		}
-	     		redirect_to controller: 'goods', action: 'index', q: @MEM.search
-	     	end
-	    else
-	    	reload_tables_for_select
-	       	render "new"
-	    end
-	end
-
-	def administration
-		render 'index'
 	end
 
 	def edit

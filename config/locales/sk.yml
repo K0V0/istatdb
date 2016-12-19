@@ -2,9 +2,9 @@ sk:
 
   goods:
 
-    table_cap_ident: "Identifikácia"
-    table_cap_description: "Popis, doplnk. informácie"
-    table_cap_knnumber: "kód KN"
+    #goods_table_ident_cap: "Identifikácia"
+    goods_table_description_cap: "Popis, doplnk. informácie"
+    #goods_table_kncode_cap: "kód KN"
 
     table_cap_clients: "Výskyt tovaru u klientov"
     table_cap_clients_count: "Klientov celkom: "
@@ -54,11 +54,15 @@ sk:
 
   manufacturers: 
 
-    table_cap_manufacturer: "Dodávateľ/zákazník"
-    table_cap_site: "Pobočka"
-    table_cap_clients: "Intrastat klient"
-    table_cap_usual_hscode: "Obvyklé zatriedenie"
+    table_cap_manufacturers: "Dodávateľ/zákazník"
+    #table_cap_site: "Pobočka"
+    manufacturers_table_intrastat_clients_cap: "Intrastat klient"
+    manufacturers_table_taric_codes_cap: "Obvyklé zatriedenie"
     new_manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
+    manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania."
+
+    search_client_filter_none: "Spolupracujúci s každým"
+
 
 
   api:

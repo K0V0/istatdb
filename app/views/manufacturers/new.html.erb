@@ -19,45 +19,60 @@
 			
 		</article>
 
-		<article class="decorated_wrap shrinked" id="new_client_search">
+		<article class="decorated_wrap" id="new_client_search">
 
 			<%= render('layouts/new_select_section', 
 				obj: t,
 				input_fields: { 
 					impexpcompany_company_name: {
-						required: true,
-						autocomplete: false
+						autocomplete: false,
+						reset_button: true
 					}
 				},
-				results_table: 'impexpcompanies/api/client_search',
-				results_obj: @impexpcompanies 
+				results_obj: @impexpcompanies,
+				cols: [:company_name],
+				cols_highlighted: {
+					company_name: :company_name
+				}
 			) %>
 
 		</article>
 
-		<article class="decorated_wrap">
+		<article class="decorated_wrap" id="new_taricnum_search">
 
 			<%= render('layouts/new_select_section', 
 				obj: t,
 				input_fields: { 
 					local_taric_kncode: {
-						required: false,
-						autocomplete: false
+						autocomplete: false, 
+						reset_button: :all,
 					},
 					local_taric_description: {
-						required: false,
 						autocomplete: false
 					}
 				},
-				results_table: 'local_taric/api/taricnum_search',
-				results_obj: @local_tarics
+				results_obj: @local_tarics,
+				cols: [:kncode, :description], 
+				cols_highlighted: {
+					kncode: :kncode,
+					description: :description
+				}
 			) %>
 
 		</article>
 
 		<article class="decorated_wrap shrinked">
 			<div>
+
 				<%= t.submit %>
+
+				<%= submit_tag(
+					t(:create_and_next),
+					name: 'create_and_next',
+					class: "button") %>
+
+				<%= link_to t(:back), manufacturers_path, class: "button" %>
+
 			</div>
 		</article>
 

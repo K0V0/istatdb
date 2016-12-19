@@ -73,12 +73,58 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def createeeee nullize: [], nullize_ransack: []
+    var_name = ('@'+controller_name.singularize).to_sym
+    instance_variable_set(
+      var_name,
+      controller_name.classify.constantize.send(:new, permitted_pars)
+    )
+    if instance_variable_get(var_name).send(:save)
+      if params[:create_and_next]
+        nullize.each do |var|
+          instance_variable_get(var_name).send(var.to_s+"=", nil)
+        end
+        reload_tables_for_select
+          render "new"
+        else
+          nullize_ransack.each do |var|
+            @MEM.search[var] = nil
+          end
+          redirect_to controller: controller_name, action: 'index', q: @MEM.search
+      end
+    else
+      reload_tables_for_select
+          render "new"
+    end
+  end
+
   # DRY for "new" action
   def new_action
       instance_variable_set(
         '@'+controller_name.singularize,
         controller_name.classify.constantize.new
       )
+  end
+
+
+  def index
+
+  end
+
+  def search
+    render 'index'
+  end
+
+  def show
+    
+  end
+
+  def create
+    
+  end
+
+  def administration
+    render 'index'
   end
 
 end

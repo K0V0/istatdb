@@ -31,18 +31,13 @@ $(document).ready(function() {
 		}
 	);
 */
-	$("#goods").fixHeader();
-
-	$( window ).resize(function() {
-	  $("#goods").fixHeader();
-	});
-
+	
+	// new action - adding more fields for uoms 
 	$(document).on('click', 'button.add_uom', function() {
 		console.log('add uom');
 		var clone = $(this).closest('article').clone();
 		clone.find('.good_uoms_uom').val('');
 		clone.find('.good_uoms_uom_multiplier').val('1');
-		//clone.insertBefore('form > div:last-child');
 		clone.insertBefore('form > article:last-child');
 		var not_last = $(document).find('.new_good_uom').not(':last');
 		not_last.find('button.add_uom').parent().addClass('remove_uom');
@@ -52,6 +47,7 @@ $(document).ready(function() {
 		}
 	});
 
+	// new action - removing uoms fields
 	$(document).on('click', 'button.remove_uom', function() {
 		var uoms_fields = $(document).find('.new_good_uom');
 		var art = $(this).closest('article')
@@ -68,6 +64,7 @@ $(document).ready(function() {
 		}
 	});
 
+	// show action - calculate final amount giving pcs number
 	$(document).on('input', 'input[name=uom_count]', function() {
 		var val = parseFloat($('input[name=uom_value]').val());
 		var multiplier = parseInt($('input[name=uom_multiplier]').val());
@@ -76,6 +73,7 @@ $(document).ready(function() {
 		$('input[name=uom_result]').val(result.toFixed(2));
 	});
 
+	// show action - calculate pcs number from final amount
 	$(document).on('input', 'input[name=uom_result]', function() {
 		var val = parseFloat($('input[name=uom_value]').val());
 		var multiplier = parseInt($('input[name=uom_multiplier]').val());
@@ -84,6 +82,7 @@ $(document).ready(function() {
 		$('input[name=uom_count]').val(Math.ceil(count));
 	});
 
+	// show action - select uom type for uoms calculator
 	$(document).on('click', '.good_manufacturer_uoms_list tr', function() {
 		$(this).siblings().removeClass('selected');
 		$(this).addClass('selected');
@@ -93,6 +92,7 @@ $(document).ready(function() {
 		$(this).children('td.good_manufacturer_uoms_list_type').sendValTo('span.uoms_calculator_uom_type');
 	});
 
+	// index/search action - checkbox button to enable/disable second searchfield
 	$(document).on('click', 'input#q_search_both', function() {
 		var chkd = $(this).is(':checked');
 		if (chkd) {

@@ -127,3 +127,23 @@ table.with_efects {
 		}
 	}
 }
+
+table.no_results {
+
+	tbody {
+
+		tr {
+			width: 100%;
+			display:block;
+
+			&.no_results {
+				background-color: $button_danger;
+			}
+
+			td {
+				width: 100%;
+			}
+		}
+
+	}
+}

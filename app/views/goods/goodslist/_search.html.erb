@@ -38,7 +38,7 @@
 
 			<%= s.hidden_field :s, value: (params.deep_has_key?(:q, :s) ? params[:q][:s] : nil) %>
 
-			<%= hidden_field_tag :page, @MEM.page %>
+			<%#= hidden_field_tag :page, @MEM.page %>
 
 			<%= hidden_field_tag :administrative_mode, @administrative_mode %>
 
@@ -46,13 +46,7 @@
 
 			<div>
 
-				<%= render 'layouts/action_add_new', pars: [
-					:ident,
-					:description,
-					:ident_or_description,
-					:impexpcompany_filter,
-					:manufacturer_filter
-				] %><!--
+				<%= render 'layouts/action_add_new' %><!--
 
 				--><%= render 'layouts/action_go_to_administrative_mode' %><!--
 

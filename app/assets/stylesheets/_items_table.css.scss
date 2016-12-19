@@ -19,17 +19,12 @@ table.items {
 	}
 
 	tfoot, thead {
-		flex: 0 1 auto;
+		flex: 1 0 auto;
 
 		tr {
 			display: flex;
 			flex-direction: row;
-			//align-items: stretch;
 			width:100%;
-
-			th {
-				//flex-grow: 1;
-			}
 		}
 	}
 
@@ -39,6 +34,12 @@ table.items {
 
 			th {
 				width:100%;
+
+				div {
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 1em;
+				}
 			}
 		}
 	}
@@ -46,7 +47,11 @@ table.items {
 	thead {
 
 		tr {
-			padding:0.125em;
+			padding:0.125em 0.5%;
+
+			th {
+				padding:0;
+			}
 		}
 	}
 }

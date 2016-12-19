@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     to: "goods#new",
     as: "new_good"
 
+  # ransack search
   get "goodsdb/search",
     to: "goods#search",
     as: "search_goods" 
@@ -84,15 +85,25 @@ Rails.application.routes.draw do
     to: "manufacturers#new",
     as: "new_manufacturer" 
 
+  # show details
   get "manufacturersdb/:id/details",
     to: "manufacturers#show",
     as: "manufacturer" 
 
+  # create action
   post "manufacturersdb",
     to: "manufacturers#create"
   
+  # edit action
   get "manufacturersdb/edit",
     to: "manufacturers#administration"
+
+  #ransack search action
+  get "manufacturersdb/search",
+    to: "manufacturers#search",
+    as: "search_manufacturers" 
+
+
 
   ### lokalna taric databaza
 

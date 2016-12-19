@@ -1,0 +1,34 @@
+<section class="items_table decorated_wrap">
+
+	<table class="items no_results">
+
+		<thead>
+			<tr>
+				<th>
+					<%= cbt "table_cap_#{controller_name}" %>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<%= render(
+				'layouts/no_results', 
+				items: items,
+				err_message: err_message,
+				colspan: true
+			) %>
+
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>

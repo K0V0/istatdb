@@ -4,17 +4,17 @@ table#goods {
 
 	td, th {
 
-		&.good_description {
+		&.goods_description_cap {
 			word-wrap:break-all;
 			word-break: break-all;
 			white-space: normal;
 		}
 
-		&.kn_code, #local_taric_kncode_sort_link {
+		&.good_kncode, #kncode_sort_link {
 			white-space: nowrap;
 		}
 
-		&.good_ref, #ident_sort_link {
+		&.good_ident, #ident_sort_link {
 			white-space: nowrap;
 		}
 	}
@@ -23,21 +23,6 @@ table#goods {
 
 		&.good_description {
 			width:100%;
-		}
-	}
-
-	tfoot {
-
-		tr {
-
-			th {
-				
-				div {
-					display: inline-block;
-					vertical-align: middle;
-					margin-left: 1em;
-				}
-			}
 		}
 	}
 }

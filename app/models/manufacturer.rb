@@ -19,6 +19,27 @@ class Manufacturer < ActiveRecord::Base
 
 	after_create :assignments
 
+	def intrastat_clients
+		impexpcompanies.collect { |w| w.company_name }
+	end
+
+	def	taric_codes
+		impexpcompany_manufacturers.collect { |w| w.local_taric.try(:kncode) }
+	end
+
+	scope :impexpcompany_filter, -> (pars) { 
+		self
+		.includes(:impexpcompanies)
+		.where(impexpcompanies: { 
+			id: pars 
+		})
+		.references(:impexpcompanies)
+	}
+
+	def self.ransackable_scopes(*pars)
+	    %i(impexpcompany_filter)
+	end
+
 	def associated_validations
 		assoc_validator(Impexpcompany, :company_name) if !@impexpcompany_company_name.blank?
 		if !@local_taric_kncode.blank? || !@local_taric_description.blank?

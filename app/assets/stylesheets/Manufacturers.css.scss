@@ -1,12 +1,32 @@
 table#manufacturers {
 	width:100%;
 
+	thead {
+
+		tr {
+
+			th {
+
+				a {
+					//word-break: break-all;
+				}
+			}
+		}
+	}
+
 	tbody {
 
 		tr {
 
 			td {
+
+				&.manufacturer_name, &.manufacturer_taric_codes {
+					white-space: nowrap;
+				}
 				
+				&.manufacturer_intrastat_clients {
+					width:100%;
+				}
 			}
 		}
 	}

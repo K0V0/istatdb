@@ -22,6 +22,7 @@ en:
   clear_search_short: "Clean"
   new_item_short: "Add"
   back: "Go back"
+  create_and_next: "Save and Add next"
 
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
@@ -29,6 +30,7 @@ en:
   footer_advertisement_creator: "Created by Matej Kováč"
 
   no_results: "No results meet criteria"
+  results_total: "total results:"
 
   total: "Total:"
 
@@ -58,6 +60,7 @@ sk:
   clear_search_short: "Vyčistiť"
   new_item_short: "Pridať"
   back: "Naspäť!"
+  create_and_next: "Uložiť a Pridať ďalšie"
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"
@@ -65,5 +68,6 @@ sk:
   footer_advertisement_creator: "Vytvoril Matej Kováč"
 
   no_results: "Požadovaným kritériám nevyhovuje žiaden záznam"
+  results_total: "Výsledkov celkom:"
 
   total: "Celkom:"

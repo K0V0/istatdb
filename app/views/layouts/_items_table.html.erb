@@ -50,7 +50,12 @@
 
 							<td class="<%= "#{cn.singularize}_#{field.to_s}" %>"> 
 
-								<% text = opts[:is_highlighted] ? highlight_search(item, field) : item.send(field) %>
+								<% text = opts[:is_highlighted] ? highlight_search(item, field) : (
+												if (tmp = item.send(field)).is_a? Array
+													tmp = tmp.join('<br>').html_safe
+												end
+												tmp
+											) %>
 
 								<% if opts[:call_function] %>
 									<% text = self.send(opts[:call_function], text) %>
@@ -75,7 +80,7 @@
 
 			<% end %>
 
-			<%= render("#{cn}/#{cn}list/item_no_results", items: @result) if @result.length == 0 %>
+			<%= (render("#{cn}/#{cn}list/item_no_results", items: @result) if @result.length == 0) rescue nil %>
 
 		</tbody>
 

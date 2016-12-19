@@ -1,43 +1,69 @@
-<% #if items.size == 0 
 
-	if (params.deep_has_key? :q, :manufacturer_filter)&&(params.deep_has_key? :q, :client_filter) 
+<section class="items_table decorated_wrap">
 
-		if (!params[:q][:manufacturer_filter].blank?)&&(!params[:q][:client_filter].blank?)
+	<table class="items no_results">
 
-			res = ImpexpcompanyManufacturer.where(
-				manufacturer_id: params[:q][:manufacturer_filter],
-				impexpcompany_id: params[:q][:client_filter]
-			).first
+		<thead>
+			<tr>
+				<th>
+					<%= cbt :table_cap_good %>
+				</th>
+			</tr>
+		</thead>
 
-			if !res.local_taric.blank? %>
+		<tbody>
 
-				<tr>
-					<td colspan="10">
-						<%= cbt :err_no_goods_found_part1 %>
-						<b> <%= res.impexpcompany.company_name %> </b>
-						<br>
-						<%= cbt :err_no_goods_found_part2 %>
-						<b> <%= res.manufacturer.name %> </b>
-						<br>
-						<%= cbt :err_no_goods_found_part3 %>
-						<br>
-						<h1> <%= num_to_kncode res.local_taric.kncode %> </h1>
-						<br>
-						<h4> <%= res.local_taric.description %> </h4>
-					</td>
-				</tr>
+			<% if (params.deep_has_key? :q, :manufacturer_filter)&&(params.deep_has_key? :q, :client_filter) 
 
-			<% end 
+				if (!params[:q][:manufacturer_filter].blank?)&&(!params[:q][:client_filter].blank?)
 
-		end 
-		
-	end %>
+					res = ImpexpcompanyManufacturer.where(
+						manufacturer_id: params[:q][:manufacturer_filter],
+						impexpcompany_id: params[:q][:client_filter]
+					).first
 
-	<%= render(
-		'layouts/no_results', 
-		items: items,
-		err_message: :good_search_no_results,
-		colspan: true
-	) %>
+					if !res.local_taric.blank? %>
 
-<% #end %>
+						<tr>
+							<td colspan="10">
+								<%= cbt :err_no_goods_found_part1 %>
+								<b> <%= res.impexpcompany.company_name %> </b>
+								<br>
+								<%= cbt :err_no_goods_found_part2 %>
+								<b> <%= res.manufacturer.name %> </b>
+								<br>
+								<%= cbt :err_no_goods_found_part3 %>
+								<br>
+								<h1> <%= num_to_kncode res.local_taric.kncode %> </h1>
+								<br>
+								<h4> <%= res.local_taric.description %> </h4>
+							</td>
+						</tr>
+
+					<% end 
+
+				end 
+				
+			end %>
+
+			<%= render(
+				'layouts/no_results', 
+				items: items,
+				err_message: :good_search_no_results,
+				colspan: true
+			) %>
+
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>
+

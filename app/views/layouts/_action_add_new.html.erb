@@ -1,38 +1,10 @@
-<%
-=begin
-	if (defined? pars)&&(params.has_key? :q)
-		try_suffix = ["_cont", "_start"]
-		parms = {}
-		pars.each do |par|
-
-			symb = nil
-			par_str = par.to_s
-			if par_str.include? "_or_"
-				symb = par_str.split('_or_').first.to_sym
-			else
-				symb = par
-			end
-
-			parms[symb] = try_suffix.map { |ts|
-				ransack_key = (par.to_s + ts).to_sym;
-				ret = params[:q][ransack_key] if params[:q].has_key?(ransack_key);
-				ret = params[:q][par] if params[:q].has_key?(par);
-				ret
-			}.compact.first
-		end
-	end
-=end
-%>
 
 <%= link_to(
 	t(:new_item_short),
 	{
 		controller: controller_name,
-		action: "new"#,
-		#params: {
-		#	controller_name.singularize.to_sym => parms
-		#}
+		action: "new"
 	},
 	class: "button", 
-	id: "new_good_from_search"
+	id: "new_#{controller_name.singularize}_from_search"
 ) %>

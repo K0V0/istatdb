@@ -1,33 +1,38 @@
+$('section.items_table, section.item_details').remove();
 
-// goods table
-elem = $('#goods').children('tbody');
+<%
+	if @result.length > 0
+		o = render('layouts/items_table',
+			fields: {
+				ident: {
+					is_sortlink: true,
+					is_highlighted: true,
+					is_link: true
+				},
+				description: {
+					is_highlighted: true
+				},
+				kncode: {
+					is_sortlink: true,
+					call_function: "num_to_kncode"
+				}
+			}
+		) %> 
 
-if (elem.length === 0 /*|| '<%= action_name %>' == 'administration'*/) {
-	// if goods table sectione removed from document due item details showup,
-	// or if administrative mode enables
-	// recreate table
-	$('section.items_table').remove();
-	$('<%= j(render "goods/goodslist/goodslist") %>').appendTo('main');
+		$('<%=j o %>').appendTo('main');
 
-} else {
-	// no need to remove whole section, just replace lines
-	elem.children('tr').remove();
-	$('<%= j(render "goods/goodslist/item", items: @result) %>').appendTo(elem);
-}
+	<% else %>
 
-<% [:ident, :local_taric_kncode].each do |f| %>
-	var par = $("#<%=j f.to_s %>_sort_link").parent();
-	par.empty();
-	$("<%=j render('layouts/sort_links', obj: @search, fields: [f], action: :search) %>").children('a').unwrap().appendTo(par);
-<% end %>
+		$('<%=j render("goods/goodslist/item_no_results", items: @result) %>')
+		.appendTo('main');
 
+	<% end
+%>
+
+// remember sort link direction
 $("#q_s").val('<%= params[:q][:s] if params.deep_has_key? :q, :s %>');
 
-$('#total_goods_count').children('b').text('<%= @result.total_count %>');
-
-$("#pagination").empty();
-$("<%=j paginate @result, remote: true %>").appendTo("#pagination");
-
+// remember page number to go back
 $("input[name=page]").val("<%=j @MEM.page %>");
 
 // renders manufacturers select field - manufacturers list is selected based on client 
@@ -35,14 +40,11 @@ var parent = $('#q_manufacturer_filter').parent();
 parent.children().remove();
 $('<%= j(render "goods/goodslist/search_select_manufacturer") %>').appendTo(parent)
 
-// updates href on new good button - important to preload form with values 
-// from search fields
-var new_good_href = $('<%= j(render "layouts/action_add_new", pars: [:ident, :description, :ident_or_description, :impexpcompany_filter, :manufacturer_filter]) %>').attr('href');
-$('#new_good_from_search').attr('href', new_good_href);
-
 // remove edit item buttons when going back from show item
 $('#delete_good_from_search, #edit_good_from_search').remove();
 
+// change text and action of search button to back button depending on controler action 
+// you are in
 $('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
 
 if ('<%= @administrative_mode %>' == 'true') {

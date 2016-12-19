@@ -5,22 +5,30 @@
 
 <%= render 'goods/goodslist/search' %>
 
-<%= render('layouts/items_table',
+<% if @result.length > 0 %>
 
-	fields: {
-		ident: {
-			is_sortlink: true,
-			is_highlighted: true,
-			is_link: true
-		},
-		description: {
-			is_highlighted: true
-		},
-		kncode: {
-			is_sortlink: true,
-			call_function: "num_to_kncode"
+	<%= render('layouts/items_table',
+
+		fields: {
+			ident: {
+				is_sortlink: true,
+				is_highlighted: true,
+				is_link: true
+			},
+			description: {
+				is_highlighted: true
+			},
+			kncode: {
+				is_sortlink: true,
+				call_function: "num_to_kncode"
+			}
 		}
-	}
 
-) %>
+	) %>
+
+<% else %>
+	
+	<%= render "goods/goodslist/item_no_results", items: @result %>
+
+<% end %>
 
