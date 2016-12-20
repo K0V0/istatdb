@@ -80,12 +80,15 @@ class ApplicationController < ActionController::Base
       controller_name.classify.constantize.send(:new, permitted_pars)
     )
     if instance_variable_get(var_name).send(:save)
-      if params[:create_and_next]
+      if defined? params[:create_and_next]
+        Rails.logger.info "-----------------"
+         tmp = instance_variable_get(var_name)
         nullize.each do |var|
-          instance_variable_get(var_name).send(var.to_s+"=", nil)
+          tmp.send(var.to_s+"=", "")
         end
+        Rails.logger.info(tmp.ident)
         reload_tables_for_select
-          render "new"
+        render "new"
         else
           nullize_ransack.each do |var|
             @MEM.search[var] = nil

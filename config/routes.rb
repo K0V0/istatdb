@@ -31,7 +31,8 @@ Rails.application.routes.draw do
 
   # vytvorit novu
   post "goodsdb",
-    to: "goods#create"
+    to: "goods#create",
+    as: "create_good"
 
   # administration - enter index page into administration mode
   get "goodsdb/edit",

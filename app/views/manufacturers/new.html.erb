@@ -66,10 +66,7 @@
 
 				<%= t.submit %>
 
-				<%= submit_tag(
-					t(:create_and_next),
-					name: 'create_and_next',
-					class: "button") %>
+				<input name="create_and_next" type="submit" value="<%= t(:create_and_next) %>">
 
 				<%= link_to t(:back), manufacturers_path, class: "button" %>
 
