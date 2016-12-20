@@ -80,7 +80,8 @@ class ApplicationController < ActionController::Base
       controller_name.classify.constantize.send(:new, permitted_pars)
     )
     if instance_variable_get(var_name).send(:save)
-      if defined? params[:create_and_next]
+      #if defined? params[:create_and_next]
+      if !params[:create_and_next].blank?
         tmp = instance_variable_get(var_name).dup
         nullize.each do |var|
           tmp.send(var.to_s+"=", nil)

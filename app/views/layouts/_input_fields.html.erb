@@ -8,14 +8,15 @@
 
 		<%= obj.label(
 			field_name, 
-			class: (opts[:required] ? "required" : "")
+			class: (opts[:required] ? "required" : ""),
 		) %>
 
 		<%= obj.text_field( 
 			field_name,
 			autocomplete: (opts[:autocomplete] ? "on" : "off"),
 			class: (opts[:required] ? "required" : ""),
-			id: id 
+			id: id,
+			autofocus: ("autofocus" if opts[:autofocus]) 
 		) %>
 
 		<% if !opts[:reset_button].blank? %>
