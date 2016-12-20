@@ -11,7 +11,7 @@ class ManufacturersController < ApplicationController
         autoshow:false,
         default_order: "name asc",
         paginate: true,
-        preload: :impexpcompanies
+        preload: [:impexpcompanies, :impexpcompany_manufacturers]
       ); 
     }
 

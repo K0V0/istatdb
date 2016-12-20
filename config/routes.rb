@@ -93,7 +93,8 @@ Rails.application.routes.draw do
 
   # create action
   post "manufacturersdb",
-    to: "manufacturers#create"
+    to: "manufacturers#create",
+    as: "create_manufacturer"
   
   # edit action
   get "manufacturersdb/edit",

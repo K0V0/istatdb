@@ -81,19 +81,21 @@ class ApplicationController < ActionController::Base
     )
     if instance_variable_get(var_name).send(:save)
       if defined? params[:create_and_next]
-        Rails.logger.info "-----------------"
-         tmp = instance_variable_get(var_name)
+        tmp = instance_variable_get(var_name).dup
         nullize.each do |var|
-          tmp.send(var.to_s+"=", "")
+          tmp.send(var.to_s+"=", nil)
         end
-        Rails.logger.info(tmp.ident)
+        instance_variable_set(
+          var_name,
+          tmp.dup
+        )
         reload_tables_for_select
         render "new"
-        else
-          nullize_ransack.each do |var|
-            @MEM.search[var] = nil
-          end
-          redirect_to controller: controller_name, action: 'index', q: @MEM.search
+      else
+        nullize_ransack.each do |var|
+          @MEM.search[var] = nil
+        end
+        redirect_to controller: controller_name, action: 'index', q: @MEM.search
       end
     else
       reload_tables_for_select
