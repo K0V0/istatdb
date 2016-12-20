@@ -10,7 +10,7 @@
 
 			<div>
 				<%= s.label :name %>
-				<%= s.search_field :name_cont %>
+				<%= s.search_field :name_cont, autocomplete: "off" %>
 			</div>
 
 			<%= render 'manufacturers/manufacturerslist/search_select_client', obj: s %>
