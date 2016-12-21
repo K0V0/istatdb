@@ -19,10 +19,16 @@ class GoodsController < ApplicationController
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
 	before_action(only: :create) {
-		createeeee(
-			nullize: [:ident, :description], 
-			nullize_ransack: [:ident_cont, :description_cont, :ident_or_description_cont]
-		)
+		if (res = Good.where(ident: params[:ident]).first).blank?
+			createeeee(
+				nullize: [:ident, :description], 
+				nullize_ransack: [:ident_cont, :description_cont, :ident_or_description_cont]
+			)
+		else
+			# refactor after update action will be done
+			#if (lt = LocalTaric.new(kncode: params[:local_taric_kncode], description: params[:local_taric_description])
+
+		end
 	}
 
 	def new

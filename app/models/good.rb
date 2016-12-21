@@ -44,12 +44,13 @@ class Good < ActiveRecord::Base
 	belongs_to :local_taric, inverse_of: :goods
 
 	validates :ident, presence: true
-	validates :ident, uniqueness: true
-
+	#validate :unique_by_assocs
 	validate :associated_validations, on: :create
+	validate :unique_by_assocs
 
 	after_create :assignments
 	before_update :kn_code_update
+	before_save :stop_save
 	after_initialize :fillup_virtual_params
 
 	scope :impexpcompany_filter, -> (pars) { 
@@ -79,6 +80,28 @@ class Good < ActiveRecord::Base
 		#fillup_virtual :local_taric, fields: [:kncode, :description]
 	end
 
+	def stop_save
+		
+	end
+
+	def unique_by_assocs
+		res = Good.where(ident: ident).first
+		if !res.blank?
+			@skip_taric = true
+			@current = res
+			@current.assign_attributes({
+				#local_taric_kncode: local_taric_kncode,
+				#local_taric_description: local_taric_description,
+				impexpcompany_company_name: impexpcompany_company_name,
+				manufacturer_name: manufacturer_name
+			})
+			assignments
+			return false
+		else
+			@current = self
+		end
+	end
+
 	def associated_validations
 		assoc_validator LocalTaric, :kncode, :description
 		assoc_validator Impexpcompany, :company_name
@@ -87,11 +110,14 @@ class Good < ActiveRecord::Base
 	end
 
 	def assignments
-		@local_taric.goods << self
-		@impexpcompany.goods << self
-		@manufacturer.goods << self
+		#self.local_taric_id = @local_taric.id
+		#self.impexpcompanies << @impexpcompany
+		#self.manufacturers << @manufacturer
+		(@local_taric.goods << @current) if !@skip_taric
+		@impexpcompany.goods << @current
+		@manufacturer.goods << @current
 		# this search should always return unique one result 
-		gm = @manufacturer.goods_manufacturers.where(good_id: self.id).first.uoms
+		gm = @manufacturer.goods_manufacturers.where(good_id: @current.id).first.uoms
 		@uoms.each do |uom|
 			gm << Uom.new(uom)
 		end

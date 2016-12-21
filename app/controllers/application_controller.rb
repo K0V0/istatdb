@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
         render "new"
       else
         nullize_ransack.each do |var|
-          @MEM.search[var] = nil
+          @MEM.search[var] = nil if @MEM.search
         end
         redirect_to controller: controller_name, action: 'index', q: @MEM.search
       end
