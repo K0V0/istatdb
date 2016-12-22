@@ -44,14 +44,14 @@ class Good < ActiveRecord::Base
 	belongs_to :local_taric, inverse_of: :goods
 
 	validates :ident, presence: true
-	#validate :unique_by_assocs
+	#validate :unique_by_assocs, on: :create
 	validate :associated_validations, on: :create
 	validate :unique_by_assocs
 
-	after_create :assignments
+	after_initialize :fillup_virtual_params
 	before_update :kn_code_update
 	before_save :stop_save
-	after_initialize :fillup_virtual_params
+	after_create :assignments#, if: :stop_save
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
@@ -81,24 +81,32 @@ class Good < ActiveRecord::Base
 	end
 
 	def stop_save
-		
+		return !@skip_assoc_after_create
 	end
 
 	def unique_by_assocs
 		res = Good.where(ident: ident).first
-		if !res.blank?
-			@skip_taric = true
+		Rails.logger.info "---------------"
+		#Rails.logger.info res.ident
+		#Rails.logger.info self
+		if !res.nil?
+			Rails.logger.info "not nil---------------"
 			@current = res
 			@current.assign_attributes({
-				#local_taric_kncode: local_taric_kncode,
-				#local_taric_description: local_taric_description,
+				local_taric_kncode: local_taric_kncode,
+				local_taric_description: local_taric_description,
 				impexpcompany_company_name: impexpcompany_company_name,
 				manufacturer_name: manufacturer_name
 			})
+			@skip_taric = true
 			assignments
-			return false
+			@skip_assoc_after_create = true
 		else
+			
+			@skip_taric = false
+			@skip_assoc_after_create = false
 			@current = self
+			#Rails.logger.info self
 		end
 	end
 
@@ -113,7 +121,10 @@ class Good < ActiveRecord::Base
 		#self.local_taric_id = @local_taric.id
 		#self.impexpcompanies << @impexpcompany
 		#self.manufacturers << @manufacturer
-		(@local_taric.goods << @current) if !@skip_taric
+		#(@local_taric.goods << @current) if @skip_taric == false 
+		@current.local_taric_id = @local_taric.id
+		@current.save
+		#@local_taric.goods << @current
 		@impexpcompany.goods << @current
 		@manufacturer.goods << @current
 		# this search should always return unique one result 
