@@ -18,19 +18,6 @@ class GoodsController < ApplicationController
 
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
-	before_action(only: :create) {
-		#if (res = Good.where(ident: params[:ident]).first).blank?
-			createeeee(
-				nullize: [:ident, :description], 
-				nullize_ransack: [:ident_cont, :description_cont, :ident_or_description_cont]
-			)
-		#else
-			# refactor after update action will be done
-			#if (lt = LocalTaric.new(kncode: params[:local_taric_kncode], description: params[:local_taric_description])
-
-		#end
-	}
-
 	def new
 		@good = Good.new
 		if !@MEM.search.blank?
@@ -49,6 +36,29 @@ class GoodsController < ApplicationController
 
 	def edit
 		@good = Good.find(params[:id])
+	end
+
+	def create
+		if Good.exists? ident: params[:good][:ident]
+			@good = Good.new(permitted_pars)
+			add_next = !params[:create_and_next].blank?
+			if @good.valid?
+				redirect_to(controller: :goods, action: :index, q: @MEM.search) if !add_next
+				if add_next
+					@good.ident, @good.description = "", ""
+					reload_tables_for_select
+					render "new"
+				end
+			else
+				reload_tables_for_select
+				render "new"
+			end
+		else
+			createeeee(
+				nullize: [:ident, :description], 
+				nullize_ransack: [:ident_cont, :description_cont, :ident_or_description_cont]
+			)
+		end
 	end
 
 	def update

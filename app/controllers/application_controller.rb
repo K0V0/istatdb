@@ -75,12 +75,13 @@ class ApplicationController < ActionController::Base
 
   def createeeee nullize: [], nullize_ransack: []
     var_name = ('@'+controller_name.singularize).to_sym
-    instance_variable_set(
-      var_name,
-      controller_name.classify.constantize.send(:new, permitted_pars)
-    )
+    #if !defined? var_name.constantize
+      instance_variable_set(
+        var_name,
+        controller_name.classify.constantize.send(:new, permitted_pars)
+      )
+    #end
     if instance_variable_get(var_name).send(:save)
-      #if defined? params[:create_and_next]
       if !params[:create_and_next].blank?
         tmp = instance_variable_get(var_name).dup
         nullize.each do |var|
@@ -100,7 +101,7 @@ class ApplicationController < ActionController::Base
       end
     else
       reload_tables_for_select
-          render "new"
+      render "new"
     end
   end
 

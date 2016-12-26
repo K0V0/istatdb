@@ -36,22 +36,20 @@ class Good < ActiveRecord::Base
 	end
 
 	has_many :goods_manufacturers, inverse_of: :good
-	has_many :manufacturers, through: :goods_manufacturers
+	has_many :manufacturers, -> { distinct }, through: :goods_manufacturers
 
 	has_many :goods_impexpcompanies, inverse_of: :good
-	has_many :impexpcompanies, through: :goods_impexpcompanies
+	has_many :impexpcompanies, -> { distinct }, through: :goods_impexpcompanies
 
 	belongs_to :local_taric, inverse_of: :goods
 
 	validates :ident, presence: true
-	#validate :unique_by_assocs, on: :create
 	validate :associated_validations, on: :create
 	validate :unique_by_assocs
 
-	after_initialize :fillup_virtual_params
+	#after_initialize :fillup_virtual_params
 	before_update :kn_code_update
-	before_save :stop_save
-	after_create :assignments#, if: :stop_save
+	after_create :assignments
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
@@ -80,33 +78,27 @@ class Good < ActiveRecord::Base
 		#fillup_virtual :local_taric, fields: [:kncode, :description]
 	end
 
-	def stop_save
-		return !@skip_assoc_after_create
-	end
-
 	def unique_by_assocs
-		res = Good.where(ident: ident).first
-		Rails.logger.info "---------------"
-		#Rails.logger.info res.ident
-		#Rails.logger.info self
-		if !res.nil?
-			Rails.logger.info "not nil---------------"
-			@current = res
-			@current.assign_attributes({
-				local_taric_kncode: local_taric_kncode,
-				local_taric_description: local_taric_description,
-				impexpcompany_company_name: impexpcompany_company_name,
-				manufacturer_name: manufacturer_name
-			})
-			@skip_taric = true
-			assignments
-			@skip_assoc_after_create = true
-		else
-			
-			@skip_taric = false
-			@skip_assoc_after_create = false
-			@current = self
-			#Rails.logger.info self
+		if Good.exists?(ident: self.ident)
+
+			tmp = Good.where(ident: self.ident).first
+			instructs = { impexpcompany: :company_name, manufacturer: :name }
+			res = []
+
+			instructs.each do |x, y|
+				assocs = tmp.send(x.to_s.pluralize)
+				if assocs.exists?(y => instance_variable_get("@#{x.to_s}_#{y.to_s}"))
+					res << true
+				end 
+			end
+
+			if res.length == instructs.length
+				errors.add(:ident, "existuje")
+			else
+				tmp.impexpcompanies << @impexpcompany
+				tmp.manufacturers << @manufacturer
+				return true
+			end
 		end
 	end
 
@@ -118,20 +110,19 @@ class Good < ActiveRecord::Base
 	end
 
 	def assignments
-		#self.local_taric_id = @local_taric.id
-		#self.impexpcompanies << @impexpcompany
-		#self.manufacturers << @manufacturer
-		#(@local_taric.goods << @current) if @skip_taric == false 
-		@current.local_taric_id = @local_taric.id
-		@current.save
-		#@local_taric.goods << @current
-		@impexpcompany.goods << @current
-		@manufacturer.goods << @current
+		@local_taric.goods << self
+		@impexpcompany.goods << self
+		@manufacturer.goods << self
+
 		# this search should always return unique one result 
-		gm = @manufacturer.goods_manufacturers.where(good_id: @current.id).first.uoms
+		gm = @manufacturer.goods_manufacturers.where(
+			good_id: self.id
+		).first.uoms
+
 		@uoms.each do |uom|
 			gm << Uom.new(uom)
 		end
+
 		ImpexpcompanyManufacturer.create(
 			manufacturer_id: @manufacturer.id,
 			impexpcompany_id: @impexpcompany.id
