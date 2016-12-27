@@ -10,6 +10,8 @@ $(document).ready(function() {
 			good_id: $('#good_id').val()
 		}
 	);
+
+	searchQueryItem();
 /*
 	searchQuery(
 		'/manufacturersdb/new/maufacturer_search_making',

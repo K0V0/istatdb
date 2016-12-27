@@ -1,0 +1,30 @@
+var el = $("#ident").closest("article").find("div.form_errors");
+
+el.empty();
+
+<% if (@result.length > 0)&&(!params[:q][:ident_eq].blank?) %>
+
+	$("<%=j render '/goods/new/search_good_exist' %>").appendTo(el);
+
+	$("#local_taric_kncode")
+	.val("<%= @result.first.kncode %>")
+	.toHidden();
+
+	$("#local_taric_description")
+	.val("<%= @result.first.kncode_description %>")
+	.toHidden();
+
+	$("#local_taric_kncode").closest("article").addClass("disabled");
+
+<% else %>
+
+	$("#local_taric_kncode, #local_taric_description")
+		.prop("disabled", false)
+		.val("");
+
+	$("#local_taric_kncode_hidden").remove();
+	$("#local_taric_description_hidden").remove();
+
+	$("#local_taric_kncode").closest("article").removeClass("disabled");
+
+<% end %>

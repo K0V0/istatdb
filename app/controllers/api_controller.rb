@@ -25,6 +25,11 @@ class ApiController < ApplicationController
 		render('/layouts/add_edit_searchtable')
 	end
 
+	def good_search_exists
+		searcher_for object: Good, autoshow: false
+		render('/goods/new/search_good_exists')
+	end
+
 	private
 
 	def strip_ransack_from_params

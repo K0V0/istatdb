@@ -152,6 +152,9 @@ Rails.application.routes.draw do
   post "api/manufacturer_search",
     to: "api#manufacturer_search"
 
+  post "api/good_search_exists",
+    to: "api#good_search_exists"
+
 
 
   ### hidden section for testing purposes

@@ -95,9 +95,11 @@ class Good < ActiveRecord::Base
 			if res.length == instructs.length
 				errors.add(:ident, "existuje")
 			else
-				tmp.impexpcompanies << @impexpcompany
-				tmp.manufacturers << @manufacturer
-				return true
+				if ((!@impexpcompany.nil?)&&(!@manufacturer.nil?))
+					tmp.impexpcompanies << @impexpcompany 
+					tmp.manufacturers << @manufacturer 
+					return true
+				end
 			end
 		end
 	end

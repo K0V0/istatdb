@@ -11,6 +11,11 @@ section.form {
 		padding:0.25em;
 		margin: 0.5em 0;
 
+		&.disabled {
+			pointer-events:none;
+			color: $disabled_input_text;
+		}
+
 		div {
 			width: 100%;
 
