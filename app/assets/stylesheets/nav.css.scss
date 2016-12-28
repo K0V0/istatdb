@@ -85,12 +85,14 @@ nav {
 }
 
 @media only screen and (max-width: 480px) {
-   
-   nav.main_menu {
-   		padding-bottom: 0.375em;
+
+   	nav.main_menu {
    		font-size: 1em;
+   		padding-bottom:0.375em;
+   		overflow:hidden;
 
    		ul {
+   			display:none;
 
    			li {
 
@@ -100,5 +102,13 @@ nav {
    				display: inline-block;
    			}
    		}
-   } 
+
+	   	&:hover {
+
+	   		ul {
+	   			display:table;
+	   		}
+   		}
+   }
+
 }
