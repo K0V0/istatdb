@@ -3,12 +3,6 @@ $(document).ready(function() {
 
 	ACTIONS = new ActionsHandler($('section.items_table').find('table').attr('id'));
 
-	$("table.items").fixHeader();
-
-	$( window ).resize(function() {
-	  $("table.items").fixHeader();
-	});
-
 	searchQuery(
 		'/api/knnumber_search',
 		{ 

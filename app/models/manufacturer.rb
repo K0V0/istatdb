@@ -27,6 +27,10 @@ class Manufacturer < ActiveRecord::Base
 		impexpcompany_manufacturers.collect { |w| w.local_taric.try(:kncode) }
 	end
 
+	def goods_count
+		goods.length
+	end
+
 	scope :impexpcompany_filter, -> (pars) { 
 		self
 		.includes(:impexpcompanies)

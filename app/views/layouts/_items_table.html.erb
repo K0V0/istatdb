@@ -52,7 +52,9 @@
 
 								<% text = opts[:is_highlighted] ? highlight_search(item, field) : (
 												if (tmp = item.send(field)).is_a? Array
-													tmp = tmp.join('<br>').html_safe
+													#tmp = tmp.join('<br>').html_safe
+													tmp.map! { |x| ('<span>' + x + '</span>') if !x.nil? }
+													tmp = tmp.join(' ').html_safe
 												end
 												tmp
 											) %>

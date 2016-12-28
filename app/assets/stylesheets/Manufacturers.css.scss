@@ -1,32 +1,35 @@
 table#manufacturers {
-	width:100%;
 
-	thead {
+	td, th {
 
-		tr {
-
-			th {
-
-				a {
-					//word-break: break-all;
-				}
-			}
+		&.manufacturer_name, &.manufacturer_taric_codes {
+			white-space: nowrap;
+		}
+		
+		&.manufacturer_intrastat_clients {
+			width:99%;
 		}
 	}
+}
 
-	tbody {
+@media only screen and (max-width: 480px) {
+   
+   table#manufacturers {
 
-		tr {
+		td, th {
+			display: block;
 
-			td {
+			&.manufacturer_name, &.manufacturer_taric_codes {
+				font-weight: bold;
+			}
 
-				&.manufacturer_name, &.manufacturer_taric_codes {
-					white-space: nowrap;
-				}
-				
-				&.manufacturer_intrastat_clients {
-					width:100%;
-				}
+			&.manufacturer_taric_codes, &.manufacturers_taric_codes_cap {
+				font-style: italic;
+				text-align: right;
+			}
+			
+			&.manufacturer_intrastat_clients {
+				width:auto;
 			}
 		}
 	}

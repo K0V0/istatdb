@@ -1,6 +1,4 @@
 table#goods {
-	width: 100%;
-	max-width:100%;
 
 	td, th {
 
@@ -15,14 +13,33 @@ table#goods {
 		}
 
 		&.good_ident, #ident_sort_link {
-			white-space: nowrap;
+			width:50%;
 		}
 	}
+}
 
-	td {
+@media only screen and (max-width: 480px) {
+   
+   table#goods {
 
-		&.good_description {
-			width:100%;
-		}
-	}
+   		td, th {
+   			display: block;
+
+   			&.good_ident, #ident_sort_link {
+				//width:100%;
+				font-weight: bold;
+			}
+
+			&.good_kncode {
+				font-weight:bold;
+				font-style: italic;
+				text-align:right;
+			}
+
+			#kncode_sort_link {
+				float:right;
+				font-style: italic;
+			}
+   		}
+   }
 }

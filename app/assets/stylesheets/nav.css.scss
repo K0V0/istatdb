@@ -1,6 +1,7 @@
 @import "variables";
 
 nav {
+	//overflow-x:hidden;
 
 	ul {
 		display: table;
@@ -31,6 +32,7 @@ nav {
 		ul {
 
 			li {
+				cursor: pointer;
 
 				a {
 					@include menu_transitions();
@@ -80,4 +82,23 @@ nav {
 			}
 		}
 	}
+}
+
+@media only screen and (max-width: 480px) {
+   
+   nav.main_menu {
+   		padding-bottom: 0.375em;
+   		font-size: 1em;
+
+   		ul {
+
+   			li {
+
+   				a {
+   					border-radius: 0.25em;
+   				}
+   				display: inline-block;
+   			}
+   		}
+   } 
 }
