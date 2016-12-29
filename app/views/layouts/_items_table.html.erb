@@ -52,15 +52,16 @@
 
 								<% text = opts[:is_highlighted] ? highlight_search(item, field) : (
 												if (tmp = item.send(field)).is_a? Array
-													#tmp = tmp.join('<br>').html_safe
-													tmp.map! { |x| ('<span>' + x + '</span>') if !x.nil? }
+													tmp.map! { |x| ('<span>' + x + '</span>') if !x.nil? } if opts[:wrap]
 													tmp = tmp.join(' ').html_safe
 												end
 												tmp
 											) %>
 
 								<% if opts[:call_function] %>
-									<% text = self.send(opts[:call_function], text) %>
+									<% if !text.blank? %>
+										<% text = self.send(opts[:call_function], text) %>
+									<% end %>
 								<% end %>
 
 								<% if opts[:is_link] %>

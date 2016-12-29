@@ -1,7 +1,6 @@
 @import "variables";
 
 nav {
-	//overflow-x:hidden;
 
 	ul {
 		display: table;
@@ -56,10 +55,6 @@ nav {
 					}
 				}
 			}
-
-			li.dummy {
-				width: 100%;
-			}
 		}
 	}
 
@@ -89,11 +84,10 @@ nav {
    	nav.main_menu {
    		font-size: 1em;
    		padding-bottom:0.375em;
-   		overflow:hidden;
 
    		ul {
    			display:none;
-
+   			
    			li {
 
    				a {
@@ -106,9 +100,13 @@ nav {
 	   	&:hover {
 
 	   		ul {
-	   			display:table;
+	   			display:block;
 	   		}
    		}
    }
+
+   	footer {
+		display:none;
+   	}
 
 }
