@@ -30,7 +30,8 @@
 			object: @good.impexpcompanies,
 			captions: [cbt(:table_cap_clients)],
 			fields: [:company_name],
-			foots: [cbt(:table_cap_clients_count) + @good.impexpcompanies.size.to_s]
+			foots: [cbt(:table_cap_clients_count) + @good.impexpcompanies.size.to_s],
+			html_class: "rows_colored"
 		) %>
 
 	</div>

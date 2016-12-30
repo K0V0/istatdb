@@ -82,12 +82,12 @@ class Good < ActiveRecord::Base
 
 	def unique_by_assocs
 		if Good.exists?(ident: ident)
-			tmp = Good.where(ident: self.ident).first
+			@current = Good.where(ident: self.ident).first
 			instructs = { impexpcompany: :company_name, manufacturer: :name }
 			res = []
 
 			instructs.each do |x, y|
-				assocs = tmp.send(x.to_s.pluralize)
+				assocs = @current.send(x.to_s.pluralize)
 				if assocs.exists?(y => instance_variable_get("@#{x.to_s}_#{y.to_s}"))
 					res << true
 				end 
@@ -97,11 +97,13 @@ class Good < ActiveRecord::Base
 				errors.add(:ident, "existuje")
 			else
 				if ((!@impexpcompany.nil?)&&(!@manufacturer.nil?))
-					tmp.impexpcompanies << @impexpcompany 
-					tmp.manufacturers << @manufacturer 
+					assignments 
 					return true
 				end
 			end
+		else
+			@current = self
+			return true
 		end
 	end
 
@@ -113,16 +115,16 @@ class Good < ActiveRecord::Base
 	end
 
 	def assignments_before_save
-		self.local_taric_id = @local_taric.id
+		@current.local_taric_id = @local_taric.id
 	end
 
 	def assignments
-		@impexpcompany.goods << self
-		@manufacturer.goods << self
+		@impexpcompany.goods << @current
+		@manufacturer.goods << @current
 
 		# this search should always return unique one result 
 		gm = @manufacturer.goods_manufacturers.where(
-			good_id: self.id
+			good_id: @current.id
 		).first.uoms
 
 		@uoms.each do |uom|

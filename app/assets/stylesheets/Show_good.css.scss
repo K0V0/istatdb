@@ -25,14 +25,38 @@ section.item_details {
 				// values
 				td.inner_table_wrap {
 					padding-right:0;
+					background-color: inherit;
 
 					table {
 						width:100%;
+						background-color: inherit;
 
-						tr {
+						tbody {
+							background-color: inherit;
 
-							td {
-								width: 33.3%;
+							tr {
+								background-color: inherit;
+
+								&.used {
+									cursor: pointer;
+
+									&:hover {
+										background-color: $table_row_hover;
+									}
+
+									&:active, &.selected {
+										background-color: $black;
+										color: $white;
+
+										&:hover {
+											background-color: $button_selected_hover;
+										}
+									}
+								}
+
+								td {
+									width: 33.3%;
+								}
 							}
 						}
 					}
@@ -56,4 +80,27 @@ section.item_details {
 			}
 		}
 	}
+}
+
+@media only screen and (max-width: 480px) {
+   
+   table.good_manufacturers_list {
+
+   		tr {
+
+   			th, td {
+   				display: block;
+
+   				table {
+
+   					tr {
+
+   						th, td {
+   							display: table-cell;
+   						}
+   					}
+   				}
+   			}
+   		}
+   }
 }
