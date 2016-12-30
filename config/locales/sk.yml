@@ -56,13 +56,16 @@ sk:
 
     table_cap_manufacturers: "Dodávateľ/zákazník"
     #table_cap_site: "Pobočka"
+    manufacturers_table_incoterm_shortlands_cap: "Dod. podm."
     manufacturers_table_intrastat_clients_cap: "Intrastat klient"
     manufacturers_table_taric_codes_cap: "Obvyklé zatriedenie"
     new_manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
     manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania."
     manufacturers_table_goods_manufacturers_count_cap: "Poč. tovarov"
+    incoterms: "Incoterms:"
 
     search_client_filter_none: "Spolupracujúci s každým"
+
 
 
 

@@ -63,7 +63,8 @@ class ManufacturersController < ApplicationController
         :name,
         :impexpcompany_company_name,
         :local_taric_kncode,
-        :local_taric_description
+        :local_taric_description,
+        :incoterm
       )
     end
 

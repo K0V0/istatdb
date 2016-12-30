@@ -24,11 +24,9 @@ ActionsHandler.prototype = {
 		});
 		$(document).on('click', '#select_all_'+this.controller_name, function() {
 			totok.selectAll();
-			totok.refresh();
 		});
 		$(document).on('click', '#deselect_all_'+this.controller_name, function() {
 			totok.removeAllSelected();
-			totok.refresh();
 		});
 		$(document).on('input', "section.search_bar > form", function(e) {
 			totok.preserve_checked();
@@ -44,10 +42,12 @@ ActionsHandler.prototype = {
 
 	removeAllSelected: function() {
 		this.checkboxes.prop('checked', false);
+		this.refresh();
 	},
 
 	selectAll: function() {
 		this.checkboxes.prop('checked', true);
+		this.refresh();
 	},
 
 	refresh: function() {

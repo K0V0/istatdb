@@ -1,5 +1,4 @@
-//$(document).on('turbolinks:load', function() {
-$(document).ready(function() {
+var mainHandler = function() {
 
 	ACTIONS = new ActionsHandler($('section.items_table').find('table').attr('id'));
 
@@ -40,4 +39,7 @@ $(document).ready(function() {
 			}
 		}
 	);
-});
+};
+
+$(document).ready(function() { mainHandler(); });
+$(document).on("page:load", mainHandler());

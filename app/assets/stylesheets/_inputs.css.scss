@@ -87,8 +87,9 @@ div.select_wrapper {
 	background-color: $white;
 	border-radius:0.25em;
 	display: inline-block;
-	margin: 0.125em; //0.125em;
+	margin: 0.125em; 
 	vertical-align:middle;
+	width:auto !important;
 
 	select {
 		max-height:1.5em;

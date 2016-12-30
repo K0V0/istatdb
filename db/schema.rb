@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230031112) do
+ActiveRecord::Schema.define(version: 20161230141155) do
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20161230031112) do
     t.integer  "impexpcompany_id"
     t.integer  "manufacturer_id"
     t.integer  "local_taric_id"
+    t.integer  "incoterm"
   end
 
   add_index "impexpcompany_manufacturers", ["impexpcompany_id"], name: "index_impexpcompany_manufacturers_on_impexpcompany_id"

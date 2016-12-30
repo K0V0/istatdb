@@ -11,6 +11,7 @@ class Manufacturer < ActiveRecord::Base
 	attr_accessor :impexpcompany_company_name
 	attr_accessor :local_taric_kncode
 	attr_accessor :local_taric_description
+	attr_writer :incoterm
 
 	validates :name, presence: true
 	validates :name, uniqueness: true
@@ -27,9 +28,19 @@ class Manufacturer < ActiveRecord::Base
 		impexpcompany_manufacturers.collect { |w| w.local_taric.try(:kncode) }
 	end
 
-	#def goods_count
-		#goods.length
-	#end
+	def incoterm
+		#impexpcompany_manufacturers.collect { |w| "" || Incoterm.find(w.try(:incoterm)).shortland }
+		#impexpcompany_manufacturers.collect { |w| Incoterm.find(w.try(:incoterm)) }
+	end
+
+	def incoterm_shortlands
+		impexpcompany_manufacturers.collect { |w| 
+			term = Incoterm.find(w.try(:incoterm));
+			if !term.blank?
+				return term.shortland
+			end
+		}
+	end
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
@@ -38,9 +49,6 @@ class Manufacturer < ActiveRecord::Base
 			id: pars 
 		})
 		.preload(:impexpcompanies, :goods)
-		#.joins(:impexpcompany_manufacturers)
-		#.preload(:local_tarics)
-		#.references(:impexpcompanies)
 	}
 
 	def self.ransackable_scopes(*pars)
@@ -59,6 +67,11 @@ class Manufacturer < ActiveRecord::Base
 		if defined? @local_taric 
 			im = self.impexpcompany_manufacturers.where(impexpcompany_id: @impexpcompany.id).first
 			im.local_taric_id = @local_taric.id
+			im.save
+		end
+		if defined? @impexpcompany
+			im = self.impexpcompany_manufacturers.where(impexpcompany_id: @impexpcompany.id).first
+			im.incoterm = @incoterm
 			im.save
 		end
 	end

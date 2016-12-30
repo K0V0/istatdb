@@ -36,3 +36,24 @@ table.items {
 		}
 	}
 }
+
+@media only screen and (max-width: 480px) {
+
+	table.items {
+
+		td.checkbox {
+			float: left;
+
+			input {
+				display:inline-block;
+				vertical-align:middle;
+			}
+		}
+
+		td.delete_item, td.edit_item {
+			float:right;
+			margin-bottom: 0.25em;
+		}
+	}
+
+}

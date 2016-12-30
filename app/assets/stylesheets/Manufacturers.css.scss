@@ -19,7 +19,7 @@ table#manufacturers {
 		td, th {
 			display: block;
 
-			&.manufacturer_name, &.manufacturer_taric_codes {
+			&.manufacturer_name, &.manufacturer_taric_codes, &.manufacturer_incoterm_shortlands {
 				font-weight: bold;
 			}
 
