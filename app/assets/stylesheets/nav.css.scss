@@ -83,17 +83,18 @@ nav {
 
    	nav.main_menu {
    		font-size: 1em;
-   		padding-bottom:0.375em;
+   		padding: 0.375em 0.75em;
 
    		ul {
    			display:none;
    			
    			li {
+   				display: inline-block;
+   				margin: 0.125em 0;
 
    				a {
    					border-radius: 0.25em;
    				}
-   				display: inline-block;
    			}
    		}
 

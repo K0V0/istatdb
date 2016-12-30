@@ -27,17 +27,20 @@ class Manufacturer < ActiveRecord::Base
 		impexpcompany_manufacturers.collect { |w| w.local_taric.try(:kncode) }
 	end
 
-	def goods_count
-		goods.length
-	end
+	#def goods_count
+		#goods.length
+	#end
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
-		.includes(:impexpcompanies)
+		.joins(:impexpcompanies)
 		.where(impexpcompanies: { 
 			id: pars 
 		})
-		.references(:impexpcompanies)
+		.preload(:impexpcompanies, :goods)
+		#.joins(:impexpcompany_manufacturers)
+		#.preload(:local_tarics)
+		#.references(:impexpcompanies)
 	}
 
 	def self.ransackable_scopes(*pars)

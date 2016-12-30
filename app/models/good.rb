@@ -3,6 +3,7 @@ class Good < ActiveRecord::Base
 	include AssocValidator
 	include AssocValidatorUoms
 	include AssocFillup
+	include Log
 
 	# convention: <associated model name><underscore><field name in assoc model>
 	#attr_accessor :search_both
@@ -50,6 +51,7 @@ class Good < ActiveRecord::Base
 	#after_initialize :fillup_virtual_params
 	before_update :kn_code_update
 	after_create :assignments
+	before_save :assignments_before_save
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
@@ -79,8 +81,7 @@ class Good < ActiveRecord::Base
 	end
 
 	def unique_by_assocs
-		if Good.exists?(ident: self.ident)
-
+		if Good.exists?(ident: ident)
 			tmp = Good.where(ident: self.ident).first
 			instructs = { impexpcompany: :company_name, manufacturer: :name }
 			res = []
@@ -111,8 +112,11 @@ class Good < ActiveRecord::Base
 		assoc_validator_uoms @uoms
 	end
 
+	def assignments_before_save
+		self.local_taric_id = @local_taric.id
+	end
+
 	def assignments
-		@local_taric.goods << self
 		@impexpcompany.goods << self
 		@manufacturer.goods << self
 

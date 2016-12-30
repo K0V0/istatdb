@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include RansackSearchWrapper
   include SelectOnSearched
   include ClassOnInputWithError
+  include Log
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -74,7 +75,7 @@ class ApplicationController < ActionController::Base
   end
 
   def createeeee nullize: [], nullize_ransack: []
-    var_name = ('@'+controller_name.singularize).to_sym
+    var_name = '@'+controller_name.singularize
     #if !defined? var_name.constantize
       instance_variable_set(
         var_name,
@@ -83,13 +84,14 @@ class ApplicationController < ActionController::Base
     #end
     if instance_variable_get(var_name).send(:save)
       if !params[:create_and_next].blank?
-        tmp = instance_variable_get(var_name).dup
+        tmp = controller_name.classify.constantize.send(:new)
+        tmp.attributes = instance_variable_get(var_name).attributes.except('id')
         nullize.each do |var|
           tmp.send(var.to_s+"=", nil)
         end
         instance_variable_set(
           var_name,
-          tmp.dup
+          tmp
         )
         reload_tables_for_select
         render "new"

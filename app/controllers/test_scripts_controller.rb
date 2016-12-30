@@ -38,6 +38,10 @@ class TestScriptsController < ApplicationController
 		LocalTaric.delete_all
 		Impexpcompany.delete_all
 		Manufacturer.delete_all
+		ImpexpcompanyManufacturer.delete_all
+		Uom.delete_all
+		GoodsImpexpcompany.delete_all
+		GoodsManufacturer.delete_all
 	end
 
 	def impexpcompany_manufacturer_fixture
