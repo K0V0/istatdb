@@ -59,6 +59,17 @@
 
 									if res.is_a? Array 
 
+										if opts[:call_function]
+
+										end
+										if opts[:is_highlighted]
+											res.map! do |x|
+												if !x.nil?
+													patt = highlight_search(item, field, nil, true)
+													highlight_searched(x, patt)
+												end
+											end
+										end
 										if opts[:wrap]
 											res.map! { |x| (('<span>' + x + '</span>') if !x.nil?) }
 										end
@@ -66,22 +77,23 @@
 										text = res.join(' ').html_safe
 									else
 
-										text = res.to_s.html_safe 
+										if opts[:is_highlighted]
+											patt = highlight_search(item, field, nil, true)
+											text = highlight_search(item, field)
+										else
+											text = res.to_s.html_safe
+										end
 
 									end 
 									%>
 
-									<% if opts[:call_function] %>
+									<%# if opts[:call_function] %>
 
-										<% if !text.blank? %>
-											<% text = self.send(opts[:call_function], text) %>
-										<% end %>
+										<%# if !text.blank? %>
+											<%# text = self.send(opts[:call_function], text) %>
+										<%# end %>
 
-									<% end %>
-
-									<% if opts[:is_highlighted] %>
-
-									<% end %>
+									<%# end %>
 
 									<% if opts[:is_link] %>
 
