@@ -37,6 +37,7 @@ module ApplicationHelper
 				str_copy.insert pos_of_close_tag, close_tag
 			end
 		end
+		str_copy.strip!
 		str_copy.html_safe
 	end
 

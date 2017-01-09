@@ -1,32 +1,17 @@
 class LocalTaricController < ApplicationController
 
-  	before_action(only: [:index, :search, :show, :new_good_knnumber_search, :administration]) {
-      searcher_for autoshow:false 
+    before_action(only: [:index, :search, :show, :administration]) {
+      searcher_for(
+        #object: Good, 
+        #preload: :local_taric,
+        default_order: "kncode asc",
+        paginate: true
+      );
     }
 
     before_action :new_action, only: :new
 
     before_action(only: :create) { create_action permitted_pars }
-
-  	def index
-
-  	end
-
-    def search
-      
-    end
-
-  	def new
-
-  	end
-
-    def administration
-      render 'index'
-    end
-
-    def create
-
-    end
 
   	private
 

@@ -112,7 +112,12 @@ Rails.application.routes.draw do
   #index
   get "localtaricdb",
     to: "local_taric#index",
-    as: "local_tarics" 
+    as: "local_tarics"
+
+  #index
+  get "localtaricdb/search",
+    to: "local_taric#search",
+    as: "search_local_taric"  
 
   #new
   get "localtaricdb/new",

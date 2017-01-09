@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
 =end
 
   def mem
-    @MEM = Mem.new if !defined? @MEM 
+    @MEM = Mem.new(session) if !defined? @MEM 
   end
 
   def body_noscroll

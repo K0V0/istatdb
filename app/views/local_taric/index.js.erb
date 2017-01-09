@@ -1,7 +1,27 @@
 
-elem = $('#kncodes').children('tbody');
+$('section.items_table, section.item_details').remove();
 
-elem.children('tr').remove();
+<%
+	if @result.length > 0
+		o = render('layouts/items_table',
+			fields: {
+				description: {
+					is_highlighted: true
+				},
+				kncode: {
+					is_sortlink: true,
+					is_highlighted: true,
+					call_function: "num_to_kncode"
+				}
+			}
+		) %> 
 
-$('<%= j(render "local_taric/tariclist/item", items: @result) %>').appendTo(elem);
+		$('<%=j o %>').appendTo('main');
 
+	<% else %>
+
+		$('<%=j render("layouts/no_results") %>')
+		.appendTo('main');
+
+	<% end
+%>

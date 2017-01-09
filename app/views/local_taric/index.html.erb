@@ -1,8 +1,28 @@
 
 <%= render 'layouts/main_menu' %>
 
-<%= render 'layouts/actions' %>
+<%= render 'layouts/actions' if @administrative_mode %>
 
 <%= render 'local_taric/tariclist/search' %>
 
-<%= render 'local_taric/tariclist/tariclist' %>
+<% if @result.length > 0 %>
+
+	<%= render('layouts/items_table',
+
+		fields: {
+			description: {
+				is_highlighted: true
+			},
+			kncode: {
+				is_sortlink: true,
+				call_function: "num_to_kncode"
+			}
+		}
+
+	) %>
+
+<% else %>
+	
+	<%= render "goods/goodslist/item_no_results", items: @result %>
+
+<% end %>

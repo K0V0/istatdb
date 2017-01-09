@@ -5,11 +5,29 @@
 
 		<%= search_form_for @search, remote: true do |s| %> 
 
-			<%= s.search_field :kncode_start %>
+			<div>
+				<%= s.label :kncode_start %>
+				<%= s.search_field :kncode_start %>
+			</div>
 
-			<%= s.search_field :description_cont %>
+			<div>
+				<%= s.label :description_cont %>
+				<%= s.search_field :description_cont %>
+			</div>
+			
+			<div>
+				<%= render 'layouts/action_add_new' %><!--
 
-			<%= s.submit %>
+				--><%= render 'layouts/action_go_to_administrative_mode' %><!--
+
+				--><%= render 'layouts/action_edit_delete' %><!--
+
+				--><button id="clear_search" class="button">
+					<%= t :clear_search %>
+				</button><!--
+
+				--><%= render 'layouts/action_search_or_back', s: s %>
+			</div>
 
 		<% end %>
 
