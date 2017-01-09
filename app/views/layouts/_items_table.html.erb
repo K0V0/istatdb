@@ -71,13 +71,15 @@
 									end 
 									%>
 
-									
-
 									<% if opts[:call_function] %>
 
 										<% if !text.blank? %>
 											<% text = self.send(opts[:call_function], text) %>
 										<% end %>
+
+									<% end %>
+
+									<% if opts[:is_highlighted] %>
 
 									<% end %>
 
