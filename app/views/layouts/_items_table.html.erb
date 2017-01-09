@@ -52,41 +52,46 @@
 
 								<% 
 								res = item.send(field)
-								text = ""
 
-								if res.is_a? Array 
+								if !res.nil?
 
-									if opts[:wrap]
-										res.map! { |x| (('<span>' + x + '</span>') if !x.nil?) }
-									end
+									text = ""
 
-									text = res.join(' ').html_safe
-								else
+									if res.is_a? Array 
 
-									text = res.html_safe
+										if opts[:wrap]
+											res.map! { |x| (('<span>' + x + '</span>') if !x.nil?) }
+										end
 
-								end 
-								%>
+										text = res.join(' ').html_safe
+									else
 
-								
+										text = res.to_s.html_safe 
 
-								<% if opts[:call_function] %>
+									end 
+									%>
 
-									<% !text.blank? %>
-										<% text = self.send(opts[:call_function], text) %>
+									
+
+									<% if opts[:call_function] %>
+
+										<% if !text.blank? %>
+											<% text = self.send(opts[:call_function], text) %>
+										<% end %>
+
 									<% end %>
 
-								<% end %>
+									<% if opts[:is_link] %>
 
-								<% if opts[:is_link] %>
+										<%= link_to item, remote: true do %>
+											<%= text %>
+										<% end %>
 
-									<%= link_to item, remote: true do %>
+									<% else %>
+
 										<%= text %>
+
 									<% end %>
-
-								<% else %>
-
-									<%= text %>
 
 								<% end %>
 
