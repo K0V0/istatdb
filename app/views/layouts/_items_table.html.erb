@@ -66,7 +66,7 @@
 											res.map! do |x|
 												if !x.nil?
 													patt = highlight_search(item, field, nil, true)
-													highlight_searched(x, patt)
+													highlight_searched(str: x, patt: patt)
 												end
 											end
 										end
@@ -77,15 +77,19 @@
 										text = res.join(' ').html_safe
 									else
 
+										text = res.to_s
+										if opts[:call_function]
+											text = self.send(opts[:call_function], text)
+										end
 										if opts[:is_highlighted]
 											patt = highlight_search(item, field, nil, true)
-											text = highlight_search(item, field)
-										else
-											text = res.to_s.html_safe
+											text = highlight_searched(str: text, patt: patt)
 										end
 
 									end 
 									%>
+
+									<%= patt %>
 
 									<%# if opts[:call_function] %>
 
