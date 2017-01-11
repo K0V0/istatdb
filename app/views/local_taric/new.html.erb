@@ -5,26 +5,34 @@
 
 	<%= form_for @local_taric do |t| %>
 
-		<div>
-			<%= t.label :kncode %>
-			<%= t.text_field :kncode %>
-			<%= t.errors :kncode %>
-		</div>
+		<article class="decorated_wrap shrinked">
 
-		<div>
-			<%= t.label :description %>
-			<%= t.text_field :description %>
-			<%= t.errors :description %>
-		</div>
+			<div>
+				<%= t.label :kncode %>
+				<%= t.text_field :kncode %>
+				<%= t.errors :kncode %>
+			</div>
 
-		<div>
-			<%= t.label :additional_info %>
-			<%= t.text_field :additional_info %>
-		</div>
+			<div>
+				<%= t.label :description %>
+				<%= t.text_field :description %>
+				<%= t.errors :description %>
+			</div>
 
-		<div>
-			<%= t.submit %>
-		</div>
+			<div>
+				<%= t.label :additional_info %>
+				<%= t.text_field :additional_info %>
+			</div>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+
+			<div>
+				<%= t.submit %>
+			</div>
+
+		</article>
 
 	<% end %>
 
