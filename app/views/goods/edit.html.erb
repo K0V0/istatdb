@@ -7,20 +7,45 @@
 		<%= t.hidden_field :id %>
 
 		<article>
-			<%= render 'goods/edit/good', obj: t %>
+			<%= render('layouts/new_select_section', 
+				obj: t,
+				input_fields: { 
+					ident: {
+						required: true,
+						autocomplete: false,
+						reset_button: :all,
+						autofocus: true
+					},
+					description: {
+						required: false,
+						autocomplete: false
+					}
+				},
+			) %>
 		</article>
 
 		<article>
-			<%= render 'goods/edit/local_taric', obj: t %>
+			<%#= render 'goods/edit/local_taric', obj: t %>
 		</article>
 
 		<article>
 			<%= render 'goods/edit/impexpcompany', obj: t %>
 		</article>
 
-		<div>
-			<%= t.submit class: "button" %>
-		</div>
+		<article class="decorated_wrap shrinked">
+			<div>
+
+				<%= t.submit class: "button" %>
+
+				<%= submit_tag(
+					t(:create_and_next),
+					name: 'create_and_next',
+					class: "button") %>
+
+				<%= link_to t(:back), goods_path, class: "button" %>
+
+			</div>
+		</article>
 
 	<% end %>
 

@@ -1,0 +1,58 @@
+<%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @manufacturer, url: update_manufacturer_path do |t| %>
+
+		<article class="decorated_wrap shrinked">
+
+			<%= render('layouts/new_select_section', 
+				obj: t,
+				input_fields: { 
+					name: {
+						required: true,
+						autocomplete: false
+					}
+				},
+			) %>
+			
+		</article>
+
+		<article class="decorated_wrap">
+			
+			<div class="tablewrap">
+			
+					<table>
+						<tbody>
+							<%= t.collection_check_boxes(
+								:impexpcompany_ids,
+								Impexpcompany.all,
+								:id,
+								:company_name
+							) do |b| 
+								("<tr> <td>" +
+								b.check_box +
+								"</td><td>" +
+								b.label +
+								"</td></tr>").html_safe 
+							end %>
+						</tbody>
+					</table>
+				
+			</div>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+			<div>
+
+				<%= t.submit %>
+
+				<%= link_to t(:back), manufacturers_path, class: "button" %>
+
+			</div>
+		</article>
+
+	<% end %>
+
+</section>

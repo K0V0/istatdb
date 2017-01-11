@@ -1,10 +1,10 @@
 class ManufacturersController < ApplicationController
 
-   before_action :load_q_from_mem, only: [:index]
+    before_action :load_q_from_mem, only: [:index]
 
-   before_action :load_q_to_mem, only: [:show, :search]
+    before_action :load_q_to_mem, only: [:show, :search]
 
-   before_action :load_page_to_mem, only: [:index, :search]
+    before_action :load_page_to_mem, only: [:index, :search]
 
     before_action(only: [:index, :search, :show, :administration]) {
       searcher_for(
@@ -24,7 +24,6 @@ class ManufacturersController < ApplicationController
       )
     }
 
-
   	def new
       @manufacturer = Manufacturer.new
       if !@MEM.search.blank?
@@ -36,6 +35,16 @@ class ManufacturersController < ApplicationController
         )
       end
   	end
+
+    def edit
+      @manufacturer = Manufacturer.find(params[:id])
+    end
+
+    def update
+      @manufacturer = Manufacturer.find(params[:id])
+      log params
+      @manufacturer.update(permitted_pars)
+    end
 
 =begin   
     def edit_manufacturers_making_search
@@ -64,7 +73,8 @@ class ManufacturersController < ApplicationController
         :impexpcompany_company_name,
         :local_taric_kncode,
         :local_taric_description,
-        :incoterm
+        :incoterm,
+        impexpcompany_ids: []
       )
     end
 

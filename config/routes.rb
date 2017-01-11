@@ -89,7 +89,20 @@ Rails.application.routes.draw do
   # show details
   get "manufacturersdb/:id/details",
     to: "manufacturers#show",
-    as: "manufacturer" 
+    as: "manufacturer"
+
+  # show details
+  get "manufacturersdb/:id/edit",
+    to: "manufacturers#edit",
+    as: "edit_manufacturer"
+
+  patch "manufacturersdb/:id/edit",
+    to: "manufacturers#update",
+    as: "update_manufacturer"
+
+  delete "manufacturersdb/:id/delete",
+    to: "manufacturers#delete",
+    as: "delete_manufacturer"  
 
   # create action
   post "manufacturersdb",
