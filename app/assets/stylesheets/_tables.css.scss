@@ -147,3 +147,31 @@ table.no_results {
 
 	}
 }
+
+table.new_checkboxes_list {
+
+	thead {
+
+		tr {
+
+			th {
+				position: relative;
+				bottom: 0.125em;
+			}
+		}
+	}
+
+	tbody {
+
+		tr {
+
+			td:first-child {
+				width: auto;
+			}
+
+			td:last-child {
+				width:100%;
+			}
+		}
+	}
+}

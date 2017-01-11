@@ -22,7 +22,14 @@
 			
 			<div class="tablewrap">
 			
-					<table>
+					<table class="rows_colored new_checkboxes_list with_efects">
+
+						<thead>
+							<tr>
+								<th colspan="10"> turruru </th>
+							</tr>
+						</thead>
+
 						<tbody>
 							<%= t.collection_check_boxes(
 								:impexpcompany_ids,
@@ -37,6 +44,7 @@
 								"</td></tr>").html_safe 
 							end %>
 						</tbody>
+
 					</table>
 				
 			</div>
