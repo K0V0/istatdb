@@ -36,8 +36,8 @@ module ApplicationHelper
 				str_copy.insert pos_of_open_tag, open_tag 
 				str_copy.insert pos_of_close_tag, close_tag
 			end
+			str_copy.strip!
 		end
-		str_copy.strip!
 		str_copy.html_safe
 	end
 
@@ -68,7 +68,7 @@ module ApplicationHelper
 			end
 		end
 
-		return p if return_patt
+		return p if return_patt == true
 		highlight_searched str: obj.send(param), patt: p 
 	end
 

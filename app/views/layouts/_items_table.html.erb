@@ -65,7 +65,7 @@
 										if opts[:is_highlighted]
 											res.map! do |x|
 												if !x.nil?
-													patt = highlight_search(item, field, nil, true)
+													patt = highlight_search(item, field, opts[:is_multiple_with], true)
 													highlight_searched(str: x, patt: patt)
 												end
 											end
@@ -82,22 +82,12 @@
 											text = self.send(opts[:call_function], text)
 										end
 										if opts[:is_highlighted]
-											patt = highlight_search(item, field, nil, true)
+											patt = highlight_search(item, field, opts[:is_multiple_with], true)
 											text = highlight_searched(str: text, patt: patt)
 										end
 
 									end 
 									%>
-
-									<%= patt %>
-
-									<%# if opts[:call_function] %>
-
-										<%# if !text.blank? %>
-											<%# text = self.send(opts[:call_function], text) %>
-										<%# end %>
-
-									<%# end %>
 
 									<% if opts[:is_link] %>
 

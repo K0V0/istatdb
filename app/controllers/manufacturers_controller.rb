@@ -38,12 +38,19 @@ class ManufacturersController < ApplicationController
 
     def edit
       @manufacturer = Manufacturer.find(params[:id])
+      @impexpcompanies_associated = @manufacturer.impexpcompanies.order(:company_name)
+      @impexpcompanies_all = Impexpcompany.all.order(:company_name)
     end
 
     def update
       @manufacturer = Manufacturer.find(params[:id])
-      log params
       @manufacturer.update(permitted_pars)
+      if params[:edit_attrs]
+        log params
+        render "new"
+      else
+        redirect_to manufacturers_path
+      end
     end
 
 =begin   

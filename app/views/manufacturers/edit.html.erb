@@ -18,36 +18,64 @@
 			
 		</article>
 
-		<article class="decorated_wrap">
+		<article class="decorated_wrap shrinked">
 			
 			<div class="tablewrap">
 			
-					<table class="rows_colored new_checkboxes_list with_efects">
+				<table class="rows_colored new_checkboxes_list with_efects">
 
-						<thead>
-							<tr>
-								<th colspan="10"> turruru </th>
-							</tr>
-						</thead>
+					<thead>
+						<tr>
+							<th colspan="10"> turruru </th>
+						</tr>
+					</thead>
 
-						<tbody>
-							<%= t.collection_check_boxes(
-								:impexpcompany_ids,
-								Impexpcompany.all,
-								:id,
-								:company_name
-							) do |b| 
-								("<tr> <td>" +
-								b.check_box +
-								"</td><td>" +
-								b.label +
-								"</td></tr>").html_safe 
-							end %>
-						</tbody>
+					<tbody>
+						<%= t.collection_check_boxes(
+							:impexpcompany_ids,
+							@impexpcompanies_all,
+							:id,
+							:company_name
+						) do |b| 
+							("<tr> <td>" +
+							b.check_box +
+							"</td><td>" +
+							b.label +
+							"</td></tr>").html_safe 
+						end %>
+					</tbody>
 
-					</table>
+				</table>
 				
 			</div>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+
+			<div>
+				
+				<div>
+					<b>blablab bla blla blbala</b>
+				</div>
+
+				<div>
+					<%= t.label :impexpcompany_filter %>
+					<div class="select_wrapper">
+						<%= select(
+							:edit_impexpcompany_manufacturer,
+							:impexpcompany_id,
+							@impexpcompanies_associated.collect{ |p| [p.company_name, p.id] }
+						) %>
+						<span></span>
+					</div><!--
+
+					--><%= t.button :submit , name: "edit_attrs", value: "1", class: "button" %>
+				</div>
+
+			</div>
+
+			<div class="form_errors"></div>
 
 		</article>
 
