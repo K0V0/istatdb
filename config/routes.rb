@@ -100,6 +100,10 @@ Rails.application.routes.draw do
     to: "manufacturers#update",
     as: "update_manufacturer"
 
+  patch "manufacturersdb/:id/edit_details",
+    to: "manufacturers#update_details",
+    as: "update_impexpcompany_manufacturer"
+
   delete "manufacturersdb/:id/delete",
     to: "manufacturers#delete",
     as: "delete_manufacturer"  

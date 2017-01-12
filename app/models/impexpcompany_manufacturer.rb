@@ -6,4 +6,7 @@ belongs_to :local_taric
 
 validates :impexpcompany_id, uniqueness: { scope: :manufacturer_id }
 
+attr_accessor :local_taric_kncode
+attr_accessor :local_taric_description
+
 end

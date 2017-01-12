@@ -1,0 +1,56 @@
+<%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @impexpcompany_manufacturer, url: update_impexpcompany_manufacturer_path do |t| %>
+
+		<article class="decorated_wrap shrinked">
+
+			<%#= render('layouts/new_select_section', 
+				obj: t,
+				input_fields: { 
+					name: {
+						required: true,
+						autocomplete: false
+					}
+				},
+			) %>
+			
+		</article>
+
+		<article class="decorated_wrap" id="new_taricnum_search">
+
+			<%= render('layouts/new_select_section', 
+				obj: t,
+				input_fields: { 
+					local_taric_kncode: {
+						autocomplete: false, 
+						reset_button: :all,
+					},
+					local_taric_description: {
+						autocomplete: false
+					}
+				},
+				results_obj: @local_tarics,
+				cols: [:kncode, :description], 
+				cols_highlighted: {
+					kncode: :kncode,
+					description: :description
+				}
+			) %>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+			<div>
+
+				<%= t.submit %>
+
+				<%= link_to t(:back), manufacturers_path, class: "button" %>
+
+			</div>
+		</article>
+
+	<% end %>
+
+</section>

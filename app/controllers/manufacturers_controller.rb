@@ -47,10 +47,17 @@ class ManufacturersController < ApplicationController
       @manufacturer.update(permitted_pars)
       if params[:edit_attrs]
         log params
-        render "new"
+        @impexpcompany_manufacturer = @manufacturer.impexpcompany_manufacturers
+            .where(impexpcompany_id: params[:edit_impexpcompany_manufacturer][:impexpcompany_id])
+            .first
+        render "manufacturers/edit/edit_details"
       else
         redirect_to manufacturers_path
       end
+    end
+
+    def update_details
+      log params
     end
 
 =begin   
