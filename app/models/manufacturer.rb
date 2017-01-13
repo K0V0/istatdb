@@ -21,24 +21,25 @@ class Manufacturer < ActiveRecord::Base
 	after_create :assignments
 
 	def intrastat_clients
-		impexpcompanies.collect { |w| w.company_name }
+		impexpcompany_manufacturers.collect { |w|
+			w.impexpcompany.company_name
+		}
 	end
 
 	def	taric_codes
-		impexpcompany_manufacturers.collect { |w| w.local_taric.try(:kncode) }
+		impexpcompany_manufacturers.collect { |w|
+			tmp = w.local_taric.try(:kncode)
+			tmp.blank? ? "---" : tmp
+		}
 	end
 
 	def incoterm
-		#impexpcompany_manufacturers.collect { |w| "" || Incoterm.find(w.try(:incoterm)).shortland }
-		#impexpcompany_manufacturers.collect { |w| Incoterm.find(w.try(:incoterm)) }
 	end
 
 	def incoterm_shortlands
-		impexpcompany_manufacturers.collect { |w| 
+		impexpcompany_manufacturers.collect { |w|
 			term = Incoterm.find(w.try(:incoterm));
-			if !term.blank?
-				return term.shortland
-			end
+			term.blank? ? "---" : term.shortland
 		}
 	end
 

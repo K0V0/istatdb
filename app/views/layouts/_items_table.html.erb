@@ -56,11 +56,10 @@
 								if !res.nil?
 
 									text = ""
-
 									if res.is_a? Array 
 
 										if opts[:call_function]
-
+											res.map! { |x| self.send(opts[:call_function], x.to_s) }
 										end
 										if opts[:is_highlighted]
 											res.map! do |x|
@@ -70,11 +69,15 @@
 												end
 											end
 										end
+										if opts[:numbering]
+											res.map!.with_index { |x, index| "<small>#{(index+1).to_s}: </small>#{x.to_s}" if !x.nil? }
+										end
 										if opts[:wrap]
-											res.map! { |x| (('<span>' + x + '</span>') if !x.nil?) }
+											res.map! { |x| "<span>#{x.to_s}</span>" if !x.nil? }
 										end
 
-										text = res.join(' ').html_safe
+										text = res.join(', ').html_safe
+
 									else
 
 										text = res.to_s

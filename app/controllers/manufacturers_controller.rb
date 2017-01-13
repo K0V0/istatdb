@@ -15,7 +15,7 @@ class ManufacturersController < ApplicationController
       ); 
     }
 
-    before_action :form_searchfields_vars, only: [:new, :edit, :update]
+    before_action :form_searchfields_vars, only: [:new, :edit, :update, :update_details]
 
     before_action(only: :create) { 
       createeeee(
@@ -46,7 +46,6 @@ class ManufacturersController < ApplicationController
       @manufacturer = Manufacturer.find(params[:id])
       @manufacturer.update(permitted_pars)
       if params[:edit_attrs]
-        log params
         @impexpcompany_manufacturer = @manufacturer.impexpcompany_manufacturers
             .where(impexpcompany_id: params[:edit_impexpcompany_manufacturer][:impexpcompany_id])
             .first
@@ -58,26 +57,13 @@ class ManufacturersController < ApplicationController
 
     def update_details
       log params
+      @impexpcompany_manufacturer = ImpexpcompanyManufacturer.find(params[:id])
+      if @impexpcompany_manufacturer.update(permitted_pars_props)
+        redirect_to edit_manufacturer_path(@impexpcompany_manufacturer.manufacturer_id)
+      else
+         render "manufacturers/edit/edit_details"
+      end
     end
-
-=begin   
-    def edit_manufacturers_making_search
-      searcher_for(
-        object: Good.find(params[:other_data][:manufacturer_id]).manufacturers,
-        autoshow: false
-      )
-        render('manufacturers/api/manufactuer_search_making')
-    end
-
-    def edit_manufacturers_other_search
-      ids = Good.find(params[:other_data][:manufacturer_id]).manufacturers.pluck(:id)
-      searcher_for(
-        object: Manufacturer.where.not(id: ids),
-        autoshow: false
-      )
-        render('manufacturers/api/manufacturer_search_other')
-    end
-=end
 
   	private
 
@@ -89,6 +75,14 @@ class ManufacturersController < ApplicationController
         :local_taric_description,
         :incoterm,
         impexpcompany_ids: []
+      )
+    end
+
+    def permitted_pars_props
+      params[:impexpcompany_manufacturer].permit(
+        :local_taric_kncode,
+        :local_taric_description,
+        :incoterm
       )
     end
 

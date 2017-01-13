@@ -2,21 +2,7 @@
 
 <section class="form">
 
-	<%= form_for @impexpcompany_manufacturer, url: update_impexpcompany_manufacturer_path do |t| %>
-
-		<article class="decorated_wrap shrinked">
-
-			<%#= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					name: {
-						required: true,
-						autocomplete: false
-					}
-				},
-			) %>
-			
-		</article>
+	<%= form_for @impexpcompany_manufacturer, url: update_impexpcompany_manufacturer_path(@impexpcompany_manufacturer.id) do |t| %>
 
 		<article class="decorated_wrap" id="new_taricnum_search">
 
@@ -38,6 +24,27 @@
 					description: :description
 				}
 			) %>
+
+		</article>
+
+		<article class="decorated_wrap" id="incoterms">
+
+			<div>
+				<div>
+					<label>
+						<%= cbt :incoterms %>
+					</label>
+					<div class="select_wrapper">
+						<%= t.collection_select(:incoterm,
+							Incoterm.all,
+							:id,
+							:shortland, 
+							include_blank: false
+						) %>
+						<span></span>	
+					</div>
+				</div>
+			</div>
 
 		</article>
 
