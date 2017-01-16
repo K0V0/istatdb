@@ -1,5 +1,10 @@
 
 en:
+  helpers:
+    submit:
+      local_taric:
+        create: "Create HS/TARIC item"
+        update: "Save changes"
   activerecord:
     models:
       local_taric: TARIC
@@ -23,6 +28,11 @@ en:
               taken: "with this description already exists"
 
 sk:
+  helpers:
+    submit:
+      local_taric:
+        create: "Vytvoriť nový záznam"
+        update: "Uložiť zmeny"
   activerecord:
     models:
       local_taric: TARIC

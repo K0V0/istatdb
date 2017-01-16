@@ -61,6 +61,12 @@ nav {
 	&.pagination {
 		margin: 0.125em 0em;
 
+		&::after {
+			content: " ";
+			clear: both;
+			display: block;
+		}
+
 		span {
 			display: block;
 			float:left;
