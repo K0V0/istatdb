@@ -64,8 +64,11 @@ sk:
     manufacturer_search_no_results: "Žiadna položka v databáze výrobcov/odoberateľov nevyhovuje kritériam vyhľadávania."
     manufacturers_table_goods_manufacturers_count_cap: "Poč. tovarov"
     incoterms: "Incoterms:"
+    associated_to_impexpcompany: "Príslušnosť ku klientom"
+    edit_assocs_details: "Upraviť dodaciu podmienku a HS/TARIC kód vo vzťahu k jednotlivým klientom"
 
     search_client_filter_none: "Spolupracujúci s každým"
+    edit_manufacturer_details: "Prejsť na formulár"
 
 
 

@@ -19,6 +19,7 @@ sk:
     submit:
       manufacturer:
         create: "Pridať výrobcu/odberatela"
+        update: "Uložiť vykonané zmeny"
 
   activerecord:
     models:

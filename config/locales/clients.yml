@@ -1,7 +1,12 @@
 en:
+  helpers:
+    submit:
+      impexpcompany:
+        create: "Generate new client"
+        update: "Save changes"
   activerecord:
     models:
-      impexpcompany: TARIC
+      impexpcompany: Clients
     attributes:
       impexpcompany:
          company_name: Client
@@ -14,6 +19,11 @@ en:
               taken: "exists"
 
 sk:
+  helpers:
+    submit:
+      impexpcompany:
+        create: "Vygenerovať nového klienta"
+        update: "Uložiť vykonané zmeny"
   activerecord:
     models:
       impexpcompany: Klienti
