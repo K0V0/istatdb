@@ -1,6 +1,24 @@
 
 <%= render 'layouts/main_menu' %>
 
-<%= render 'layouts/actions' %>
+<%= render 'layouts/actions' if @administrative_mode %>
 
-<%= render 'impexpcompanies/impexpcompanieslist/impexpcompanylist' %>
+<%= render 'impexpcompanies/partials/search' %>
+
+<% if @result.length > 0 %>
+
+	<%= render('layouts/items_table',
+
+		fields: {
+			company_name: {
+				is_highlighted: true
+			}
+		}
+
+	) %>
+
+<% else %>
+	
+	<%= render "layouts/no_results" %>
+
+<% end %>

@@ -25,7 +25,6 @@ class ManufacturersController < ApplicationController
     }
 
   	def new
-      @manufacturer = Manufacturer.new
       if !@MEM.search.blank?
         @manufacturer.assign_attributes(
           name: 
@@ -37,7 +36,7 @@ class ManufacturersController < ApplicationController
   	end
 
     def edit
-      @manufacturer = Manufacturer.find(params[:id])
+      #@manufacturer = Manufacturer.find(params[:id])
       @impexpcompanies_associated = @manufacturer.impexpcompanies.order(:company_name)
       @impexpcompanies_all = Impexpcompany.all.order(:company_name)
     end
@@ -56,7 +55,6 @@ class ManufacturersController < ApplicationController
     end
 
     def update_details
-      log params
       @impexpcompany_manufacturer = ImpexpcompanyManufacturer.find(params[:id])
       if @impexpcompany_manufacturer.update(permitted_pars_props)
         redirect_to edit_manufacturer_path(@impexpcompany_manufacturer.manufacturer_id)

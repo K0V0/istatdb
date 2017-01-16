@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   include ClassOnInputWithError
   include Log
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   before_action :administrative_mode
@@ -17,6 +15,10 @@ class ApplicationController < ActionController::Base
   before_action :mem
 
   before_action :body_noscroll, only: [:index, :search, :administration]
+
+  before_action :new_action, only: :new
+
+  before_action :edit_action, only: :edit
 
 =begin
   before_action(only: :administration) { 
@@ -60,11 +62,16 @@ class ApplicationController < ActionController::Base
     @MEM.page = (params.has_key?(:page) ? params[:page] : nil)
   end
 
-  # some DRY for simmilar controllers
-  # DRY for "create" action
+  def new_action
+      instance_variable_set(
+        '@'+controller_name.singularize,
+        controller_name.classify.constantize.new
+      )
+  end
+
   def create_action permitted_params_obj
     instance_variable_set(
-      '@'+controller_name.singularize,
+      '@'+controller_name.singularize.underscore,
       controller_name.classify.constantize.send(:new, permitted_params_obj)
     )
     if instance_variable_get('@'+controller_name.singularize).send(:save)
@@ -74,14 +81,33 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def createeeee nullize: [], nullize_ransack: []
-    var_name = '@'+controller_name.singularize
-    #if !defined? var_name.constantize
+  def edit_action
       instance_variable_set(
-        var_name,
-        controller_name.classify.constantize.send(:new, permitted_pars)
+          '@'+controller_name.singularize.underscore,
+          controller_name.classify.constantize.send(:find, params[:id])
       )
-    #end
+  end
+
+  def update_action permitted_pars
+    tmp = edit_action
+    if tmp.update(permitted_pars)
+       redirect_to controller: controller_name, action: 'index'
+    else
+        render "new"
+    end
+  end
+
+  def delete_action
+    tmp = edit_action
+    tmp.destroy
+  end
+
+  def createeeee nullize: [], nullize_ransack: []
+    var_name = '@'+controller_name.singularize.underscore
+    instance_variable_set(
+      var_name,
+      controller_name.classify.constantize.send(:new, permitted_pars)
+    )
     if instance_variable_get(var_name).send(:save)
       if !params[:create_and_next].blank?
         tmp = controller_name.classify.constantize.send(:new)
@@ -107,14 +133,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # DRY for "new" action
-  def new_action
-      instance_variable_set(
-        '@'+controller_name.singularize,
-        controller_name.classify.constantize.new
-      )
-  end
-
 
   def index
 
@@ -128,8 +146,24 @@ class ApplicationController < ActionController::Base
     
   end
 
+  def edit
+    render "new"
+  end
+
   def create
     
+  end
+
+  def update
+
+  end
+
+  def delete
+    delete_action
+    respond_to do |format|
+      format.js { render "index" }
+      format.html { redirect_to controller_name.underscore.downcase.to_sym }
+    end
   end
 
   def administration

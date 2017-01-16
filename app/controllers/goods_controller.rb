@@ -19,7 +19,7 @@ class GoodsController < ApplicationController
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
 	def new
-		@good = Good.new
+		#@good = Good.new
 		if !@MEM.search.blank?
 			@good.assign_attributes(
 				ident: 
@@ -35,7 +35,7 @@ class GoodsController < ApplicationController
 	end
 
 	def edit
-		@good = Good.find(params[:id])
+		#@good = Good.find(params[:id])
 	end
 
 	def create

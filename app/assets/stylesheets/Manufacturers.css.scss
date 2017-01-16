@@ -2,8 +2,20 @@ table#manufacturers {
 
 	td, th {
 
-		&.manufacturer_name, &.manufacturer_taric_codes {
+		span {
+			display: inline-block;
+			margin-right: 0.125em;
+		}
+
+		&.manufacturer_name {
 			white-space: nowrap;
+		}
+
+		&.manufacturer_taric_codes, &.manufacturer_incoterm_shortlands {
+
+			span {
+				white-space: nowrap;
+			}
 		}
 		
 		&.manufacturer_intrastat_clients {

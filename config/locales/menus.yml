@@ -34,6 +34,8 @@ en:
 
   total: "Total:"
 
+  sure: "Are you sure ?"
+
 
 
 sk:
@@ -71,3 +73,5 @@ sk:
   results_total: "Výsledkov celkom:"
 
   total: "Celkom:"
+
+  sure: "Ste si istý ?"

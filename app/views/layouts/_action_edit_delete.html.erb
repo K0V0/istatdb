@@ -16,6 +16,8 @@
 		action: "delete",
 		id: params[:id]
 	},
+	data: { confirm: I18n.t("sure") },
+	method: :delete,
 	class: "button danger", 
 	id: "delete_good_from_search"
 ) if (action_name == "show")||(defined?(force)) %>

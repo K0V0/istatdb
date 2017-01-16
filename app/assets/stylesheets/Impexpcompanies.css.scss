@@ -1,0 +1,25 @@
+
+table#impexpcompanies {
+
+	td, th {
+
+		&.impexpcompany_company_name {
+			width:100%;
+		}
+	}
+
+}
+
+@media only screen and (max-width: 480px) {
+   
+   table#impexpcompanies {
+
+		td, th {
+			display: block;
+
+			&.impexpcompany_company_name {
+				width: auto;
+			}
+		}
+	}
+}

@@ -1,42 +1,16 @@
 class ImpexpcompaniesController < ApplicationController
 
-	before_action :new_action, only: :new
+	before_action(only: [:index, :search, :show, :administration, :delete]) {
+      searcher_for(
+        autoshow:false,
+        default_order: "name asc",
+        paginate: true
+      ); 
+    }
 
     before_action(only: :create) { create_action permitted_pars }
 
-    before_action(only: [:new_good_client_search, :edit_good_client_search]) {
-      searcher_for autoshow:false 
-    }
-
-	def index
-		@impexpcompanies = Impexpcompany.all
-	end
-
-	def new
-		
-	end
-
-	def create
-		
-	end
-
-	def edit
-
-	end
-
-	def update
-
-	end
-
-	def new_good_client_search
-      	render('impexpcompanies/api/client_search')
-    end
-
-    def edit_good_client_search 
-    	@good = Good.find(params[:other_data][:good_id].to_i)
-    	@impexpcompanies = @result
-    	render('impexpcompanies/api/edit_client_search')
-    end
+   	before_action(only: :update) { update_action permitted_pars }
 
 	private
 

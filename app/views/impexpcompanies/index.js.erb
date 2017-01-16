@@ -1,17 +1,11 @@
-
 $('section.items_table, section.item_details').remove();
 
 <%
 	if @result.length > 0
 		o = render('layouts/items_table',
 			fields: {
-				description: {
+				company_name: {
 					is_highlighted: true
-				},
-				kncode: {
-					is_sortlink: true,
-					#is_highlighted: true,
-					call_function: "num_to_kncode"
 				}
 			}
 		) %> 
@@ -20,7 +14,7 @@ $('section.items_table, section.item_details').remove();
 
 	<% else %>
 
-		$('<%=j render("layouts/no_results") %>')
+		$('<%=j render("layouts/no_results", items: @result) %>')
 		.appendTo('main');
 
 	<% end

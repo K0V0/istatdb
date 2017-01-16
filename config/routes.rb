@@ -70,7 +70,27 @@ Rails.application.routes.draw do
 
   #create
   post "clientsdb",
-    to: "impexpcompanies#create"
+    to: "impexpcompanies#create",
+    as: "create_impexpcompany"
+
+  # administrative mode
+  get "clientsdb/edit",
+    to: "impexpcompanies#administration"
+
+  # edit
+  get "clientsdb/:id/edit",
+    to: "impexpcompanies#edit",
+    as: "edit_impexpcompany"
+
+  patch "clientsdb/:id/update",
+    to: "impexpcompanies#update",
+    as: "update_impexpcompany"
+
+  # delete
+  delete "clientsdb/:id/delete",
+    to: "impexpcompanies#delete",
+    as: "delete_impexpcompany"
+
 
 
 
@@ -91,7 +111,7 @@ Rails.application.routes.draw do
     to: "manufacturers#show",
     as: "manufacturer"
 
-  # show details
+  # edit
   get "manufacturersdb/:id/edit",
     to: "manufacturers#edit",
     as: "edit_manufacturer"
@@ -131,22 +151,45 @@ Rails.application.routes.draw do
     to: "local_taric#index",
     as: "local_tarics"
 
-  #index
-  get "localtaricdb/search",
-    to: "local_taric#search",
-    as: "search_local_taric"  
-
   #new
   get "localtaricdb/new",
     to: "local_taric#new",
     as: "new_local_taric" 
 
-  #create - ulozi novy zaznam
-  post "localtaricdb",
-    to: "local_taric#create"
+  #show
+  get "localtaricdb/:id/details",
+    to: "local_taric#show",
+    as: "local_taric"
 
+  #edit
+  get "localtaricdb/:id/edit",
+    to: "local_taric#edit",
+    as: "edit_local_taric"
+
+  #update
+  patch "localtaricdb/:id/update",
+    to: "local_taric#update",
+    as: "update_local_taric"
+
+  #create
+  post "localtaricdb",
+    to: "local_taric#create",
+    as: "create_local_taric"
+
+  #administration
   get "localtaricdb/edit",
     to: "local_taric#administration"
+
+  #delete
+  delete "localtaricdb/:id/delete",
+    to: "local_taric#delete",
+    as: "delete_local_taric"
+
+  #index
+  get "localtaricdb/search",
+    to: "local_taric#search",
+    as: "search_local_taric"
+  
 
 
 

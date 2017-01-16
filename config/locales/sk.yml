@@ -50,6 +50,7 @@ sk:
   impexpcompanies:
 
     table_cap_client: "Klienti"
+    impexpcompanies_table_company_name_cap: "Intrastat klient"
     new_impexpcompany_search_no_results: "Žiadna položka v databáze klientov nevyhovuje kritériam vyhľadávania. Konto nového klienta bude vygenerované."
 
   manufacturers: 
