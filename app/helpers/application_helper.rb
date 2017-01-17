@@ -6,7 +6,7 @@ module ApplicationHelper
 	### here I group translations by controllers and associated views
 	### using this function in view you don't need to write too much 
 	def cbt translation_key
-		I18n.t(params[:controller] + "." + translation_key.to_s)
+		I18n.t(params[:controller] + "." + translation_key.to_s).gsub(/\\n/, "<br>").html_safe
 	end
 
 

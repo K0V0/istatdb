@@ -1,20 +1,21 @@
-function searchQueryItem() {
-	$("form#new_good").on('input', "#ident, #description", function() {
+function searchIfExists() {
 
-		console.log("kokooo");
+	var form = $('form').filter(function() {
+        return this.id.match(/^new\_/);
+    });
+
+	form.on('input', "input.check_existence", function() {
+		var field_name = $(this).attr('id');
+		var model_name = $(this).closest("form").attr('id').replace(/^new\_/, "");
+		var request_data = {};
+		request_data[field_name+"_eq"] = $.trim($(this).val());
 		
 		$.ajax({
 		  	method: "POST",
-		 	url: '/api/good_search_exists',
+		 	url: '/api/' + model_name + '_search_' + field_name + '_exists',
 		 	data: { 
-		  		q: {
-		  			//description_cont: $.trim($("#description").val()),
-		  			ident_eq: $.trim($("#ident").val())
-		  		}
-		  		//model: model,
-		  		//other_data
+		  		q: request_data
 		  	}
 		});
 	});
-
 }

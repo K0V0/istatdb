@@ -1,6 +1,9 @@
-var mainHandler = function() {
+var ACTIONS_INDEX;
 
-	ACTIONS = new ActionsHandler($('section.items_table').find('table').attr('id'));
+var mainHandler = function() {
+	console.log("page full reload");
+
+	ACTIONS_INDEX = new ActionsHandler();
 
 	searchQuery(
 		'/api/knnumber_search',
@@ -41,5 +44,17 @@ var mainHandler = function() {
 	);
 };
 
-$(document).ready(function() { mainHandler(); });
-$(document).on("page:load", mainHandler());
+var reloadHandler = function() {
+	console.log("page changed (turbolinks reload)");
+
+	ACTIONS_INDEX.reinit();
+	searchIfExists();
+}
+
+var bothHandler = function() {
+
+}
+
+$(document).ready(function() { mainHandler(); bothHandler(); });
+
+$(document).on("turbolinks:load", function() { reloadHandler(); bothHandler(); } );

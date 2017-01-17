@@ -1,0 +1,14 @@
+var el = $("#name").closest("article").find("div.form_errors");
+
+el.empty();
+
+<% if (@result.length > 0)&&(!params[:q][:name_eq].blank?) %>
+
+	$("<%=j render '/manufacturers/new/search_manufacturer_exist' %>").appendTo(el);
+	
+
+<% else %>
+
+	
+
+<% end %>

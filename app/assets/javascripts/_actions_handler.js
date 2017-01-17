@@ -1,17 +1,8 @@
 // convention: table id has controller name
 // button id that fires event is: select_all_<controller name>, deselect_all_<controller name>
-function ActionsHandler(controller_name) {
-
-	this.controller_name = controller_name;
-
-	this.select_button = $('#select_all_'+controller_name);
-	this.deselect_button = $('#deselect_all_'+controller_name);
-	this.checkboxes = [];
-	this.checkboxes_checked = [];
-	this.checked_ids = [];
-
+function ActionsHandler() {
 	this.init();
-	this.refresh();
+	this.reinit();
 }
 
 ActionsHandler.prototype = {
@@ -19,17 +10,17 @@ ActionsHandler.prototype = {
 
 	init: function() {
 		var totok = this;
-		$(document).on('change', '#'+this.controller_name+' input[type=checkbox]', function() {
+		$(document).on('change', 'table.items input[type=checkbox]', function() {
 			totok.refresh();
 		});
-		$(document).on('click', '#select_all_'+this.controller_name, function() {
+		$(document).on('click', '#select_all_items', function() {
 			totok.selectAll();
 		});
-		$(document).on('click', '#deselect_all_'+this.controller_name, function() {
+		$(document).on('click', '#deselect_all_items', function() {
 			totok.removeAllSelected();
 		});
 		$(document).on('input', "section.search_bar > form", function(e) {
-			totok.preserve_checked();
+			//totok.preserve_checked();
 		    $(this).submit();
 		});
 		$(document).on('click', "#clear_search", function(e) {
@@ -38,6 +29,15 @@ ActionsHandler.prototype = {
 		$(document).on('click', "#reset_search", function(e) {
 			$('section.search_bar > form').find('input[type!=submit], select').val('');
 		});
+	},
+
+	reinit: function() {
+		this.checkboxes = [];
+		this.checkboxes_checked = [];
+		this.checked_ids = [];
+		this.select_button = $(document).find('#select_all_items');
+		this.deselect_button = $(document).find('#deselect_all_items');
+		this.refresh();
 	},
 
 	removeAllSelected: function() {
@@ -51,8 +51,8 @@ ActionsHandler.prototype = {
 	},
 
 	refresh: function() {
-		this.checkboxes = $('#'+this.controller_name).find('input[type=checkbox]');
-		this.checkboxes_checked = $('#'+this.controller_name).find('input[type=checkbox]:checked');
+		this.checkboxes = $(document).find('table.items').find('input[type=checkbox]');
+		this.checkboxes_checked = $(document).find('table.items').find('input[type=checkbox]:checked');
 
 		var total = this.checkboxes.length;
 		var chkd = this.checkboxes_checked.length;
@@ -88,7 +88,7 @@ ActionsHandler.prototype = {
 		this.select_button.prop('disabled', false).removeClass().addClass('button');
 		this.deselect_button.prop('disabled', false).removeClass().addClass('button');
 	},
-
+	/*
 	preserve_checked: function() {
 		var totok = this;
 		this.checkboxes_checked.each(function() {
@@ -100,4 +100,5 @@ ActionsHandler.prototype = {
 		$('#preserve_checked').val(totok.checked_ids);
 		totok.checked_ids = [];
 	} 
+	*/
 }

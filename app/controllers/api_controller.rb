@@ -25,9 +25,14 @@ class ApiController < ApplicationController
 		render('/layouts/add_edit_searchtable')
 	end
 
-	def good_search_exists
+	def good_search_ident_exists
 		searcher_for object: Good, autoshow: false
 		render('/goods/new/search_good_exists')
+	end
+
+	def manufacturer_search_name_exists
+		searcher_for object: Manufacturer, autoshow: false
+		render('/manufacturers/new/search_manufacturer_exists')
 	end
 
 	private

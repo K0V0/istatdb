@@ -1,39 +1,5 @@
-//$(document).on('turbolinks:load', function() {
 $(document).ready(function() {
 
-	searchQuery(
-		'/goodsdb/new/edit_client_search',
-		{ 
-			edit_good_impexpcompany_company_name: "company_name_cont"
-		},
-		{
-			good_id: $('#good_id').val()
-		}
-	);
-
-	searchQueryItem();
-/*
-	searchQuery(
-		'/manufacturersdb/new/maufacturer_search_making',
-		{ 
-			edit_good_manufacturer_name: "name_cont"
-		},
-		{
-			manufacturer_id: $('#manufacturer_id').val()
-		}
-	);
-
-	searchQuery(
-		'/manufacturersdb/new/manufacturer_search_other',
-		{ 
-			edit_good_manufacturer_name: "name_cont"
-		},
-		{
-			manufacturer_id: $('#manufacturer_id').val()
-		}
-	);
-*/
-	
 	// new action - adding more fields for uoms 
 	$(document).on('click', 'button.add_uom', function() {
 		console.log('add uom');

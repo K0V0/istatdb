@@ -2,19 +2,21 @@
 
 	<% 
 		id = "#{field_name}" if (!defined?(opts[:id]))||(opts[:id].blank?)
+		class_string = opts[:required] ? "required " : ""
+		class_string += "check_existence" if opts[:check_existence]
 	%>
 
 	<div>
 
 		<%= obj.label(
 			field_name, 
-			class: (opts[:required] ? "required" : ""),
+			class: class_string,
 		) %>
 
 		<%= obj.text_field( 
 			field_name,
 			autocomplete: (opts[:autocomplete] ? "on" : "off"),
-			class: (opts[:required] ? "required" : ""),
+			class: class_string,
 			id: id,
 			autofocus: ("autofocus" if opts[:autofocus]) 
 		) %>

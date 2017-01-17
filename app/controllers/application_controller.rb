@@ -10,33 +10,15 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  before_action :administrative_mode
-
   before_action :mem
+
+  before_action :administrative_mode
 
   before_action :body_noscroll, only: [:index, :search, :administration]
 
   before_action :new_action, only: :new
 
   before_action :edit_action, only: :edit
-
-=begin
-  before_action(only: :administration) { 
-    #params[:q] = Rails.cache.read("q")
-  }
-
-  before_action(only: [:index, :show]) { 
-    #params[:q] = Rails.cache.read("q")
-  }
-
-  after_action(only: :search) {
-    #Rails.cache.write("q",params[:q])
-  }
-
-  after_action(only: :administration) {
-    #Rails.cache.write("q",params[:q])
-  }
-=end
 
   def mem
     @MEM = Mem.new(session) if !defined? @MEM 
@@ -47,7 +29,12 @@ class ApplicationController < ActionController::Base
   end
 
   def administrative_mode
-    @administrative_mode = (params[:administrative_mode] == "true")||(action_name == "administration")
+    @MEM.administrative_mode = true if params[:enter_administrative]
+    if params[:leave_administrative] || (@MEM.kontroler != controller_name)
+      @MEM.administrative_mode = nil 
+    end
+    @administrative_mode = @MEM.administrative_mode
+    @MEM.kontroler = controller_name
   end
 
   def load_q_from_mem

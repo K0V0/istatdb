@@ -2,7 +2,8 @@
 	t(:edit_items),
 	{
 		controller: controller_name,
-		action: "administration"
+		action: "administration",
+		enter_administrative: true
 	},
 	class: "button" 
 ) if !@administrative_mode %><!--
@@ -11,7 +12,8 @@
 	t(:edit_items_finish), 
 	{
 		controller: controller_name,
-		action: "index"
+		action: "index",
+		leave_administrative: true
 	},
 	class: "button selected" 
 ) if @administrative_mode %>

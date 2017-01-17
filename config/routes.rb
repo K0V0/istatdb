@@ -217,8 +217,11 @@ Rails.application.routes.draw do
   post "api/manufacturer_search",
     to: "api#manufacturer_search"
 
-  post "api/good_search_exists",
-    to: "api#good_search_exists"
+  post "api/good_search_ident_exists",
+    to: "api#good_search_ident_exists"
+
+  post "api/manufacturer_search_name_exists",
+    to: "api#manufacturer_search_name_exists"
 
 
 
