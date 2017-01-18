@@ -14,8 +14,8 @@
 
 			<%= render(
 				'layouts/no_results', 
-				items: items,
-				err_message: err_message,
+				#items: items,
+				err_message: self.try(:err_message),
 				colspan: true
 			) %>
 

@@ -24,6 +24,7 @@
 
 <% else %>
 	
-	<%= render "goods/goodslist/item_no_results", items: @result %>
+	<%#= render "goods/goodslist/item_no_results", items: @result %>
+	<%= render "layouts/items_table_no_results" %>
 
 <% end %>
