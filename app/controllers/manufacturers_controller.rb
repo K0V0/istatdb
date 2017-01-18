@@ -36,9 +36,7 @@ class ManufacturersController < ApplicationController
   	end
 
     def edit
-      #@manufacturer = Manufacturer.find(params[:id])
       @impexpcompanies_associated = @manufacturer.impexpcompanies.order(:company_name)
-      @impexpcompanies_all = Impexpcompany.all.order(:company_name)
     end
 
     def update
@@ -57,10 +55,18 @@ class ManufacturersController < ApplicationController
     def update_details
       @impexpcompany_manufacturer = ImpexpcompanyManufacturer.find(params[:id])
       if @impexpcompany_manufacturer.update(permitted_pars_props)
-        redirect_to edit_manufacturer_path(@impexpcompany_manufacturer.manufacturer_id)
+        if params[:go_to_index]
+          redirect_to manufacturers_path
+        else
+          redirect_to edit_manufacturer_path(@impexpcompany_manufacturer.manufacturer_id)
+        end
       else
          render "manufacturers/edit/edit_details"
       end
+    end
+
+    def csv_export
+    
     end
 
   	private

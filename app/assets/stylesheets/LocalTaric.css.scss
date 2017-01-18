@@ -3,4 +3,8 @@ table#local_taric {
 	td.local_taric_kncode {
 		white-space: nowrap;
 	}
+
+	td.edit_item, td.delete_item {
+		width:1%;
+	}
 }

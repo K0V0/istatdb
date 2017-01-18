@@ -15,6 +15,10 @@ table#goods {
 		&.good_ident, #ident_sort_link {
 			width:50%;
 		}
+
+		&.edit_item, &.delete_item {
+			width:1%;
+		}
 	}
 }
 

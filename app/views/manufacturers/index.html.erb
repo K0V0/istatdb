@@ -3,6 +3,8 @@
 
 <%= render 'manufacturers/manufacturerslist/search' %>
 
+<%= render 'layouts/actions' if @administrative_mode %>
+
 <% if @result.length > 0 %>
 
 	<%= render('layouts/items_table',

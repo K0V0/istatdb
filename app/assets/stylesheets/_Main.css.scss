@@ -39,8 +39,10 @@ html {
 			border-style: solid;
 			border-bottom-width:$border_2x_width;
 			border-right-width:$border_2x_width;
-			border-left-width:0;
-			border-top-width:0;
+			border-left-width:1px;
+			border-top-width:1px;
+			border-left-color: $wrap_border_color_2;
+			border-top-color: $wrap_border_color_2;
 			border-radius: $wrap_border_radius;
 
 			&.shrinked {
@@ -66,7 +68,7 @@ html {
 			display: flex;
 			flex-direction: column;
 			align-items: stretch;
-			padding:0.25em 0.75em;
+			padding:0.375em 0.75em;
 
 			a {
 				text-decoration: none;
@@ -108,7 +110,7 @@ html {
 			}
 
 			section {
-				margin: 0.5em 0;
+				margin: 0.375em 0;
 
 				&.form {
 					margin:0;

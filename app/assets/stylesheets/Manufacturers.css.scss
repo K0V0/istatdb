@@ -3,8 +3,7 @@ table#manufacturers {
 	td, th {
 
 		span {
-			display: inline-block;
-			margin-right: 0.125em;
+			display: block;
 		}
 
 		&.manufacturer_name {
@@ -30,6 +29,11 @@ table#manufacturers {
 
 		td, th {
 			display: block;
+
+			span {
+				display: inline-block;
+				margin-right: 0.125em;
+			}
 
 			&.manufacturer_name, &.manufacturer_taric_codes, &.manufacturer_incoterm_shortlands {
 				font-weight: bold;

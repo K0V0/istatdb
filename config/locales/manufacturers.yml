@@ -20,17 +20,25 @@ sk:
       manufacturer:
         create: "Pridať výrobcu/odberatela"
         update: "Uložiť vykonané zmeny"
+      impexpcompany_manufacturer:
+        update: "Uložiť zmeny a návrat na formulár"
 
   activerecord:
     models:
       manufacturer: "Výrobca"
     attributes:
       manufacturer:
-         name: "Výrobca / odberateľ"
-         impexpcompany_filter: "Intrastat klient"
-         local_taric_kncode: "Kód HS/TARIC"
-         local_taric_description: "Popis colnej skupiny"
-         impexpcompany_company_name: "Intrastat klient"
+        name: "Výrobca / odberateľ"
+        impexpcompany_filter: "Intrastat klient"
+        local_taric_kncode: "Kód HS/TARIC"
+        local_taric_description: "Popis colnej skupiny"
+        impexpcompany_company_name: "Intrastat klient"
+      impexpcompany_manufacturer:
+        local_taric_kncode: "HS/TARIC kód"
+        local_taric_description: "Popis colnej položky"
+        incoterm: "Dodacie podmienky (IncoTerms)"
+
+
     errors:
       models:
         manufacturer:

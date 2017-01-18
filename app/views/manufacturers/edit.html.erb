@@ -19,38 +19,16 @@
 		</article>
 
 		<article class="decorated_wrap shrinked">
+
+			<%= render('layouts/new_checkboxes_table', 
+				title: :associated_to_impexpcompany,
+				form_object: t,
+				ar_object: @impexpcompanies.order(:company_name),
+				result_of_collection: :impexpcompany_ids,
+				key: :id,
+				name: :company_name 
+			) %>
 			
-			<div class="tablewrap">
-			
-				<table class="rows_colored new_checkboxes_list with_efects">
-
-					<thead>
-						<tr>
-							<th colspan="10"> 
-								<%= cbt :associated_to_impexpcompany %>
-							</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<%= t.collection_check_boxes(
-							:impexpcompany_ids,
-							@impexpcompanies_all,
-							:id,
-							:company_name
-						) do |b| 
-							("<tr> <td>" +
-							b.check_box +
-							"</td><td>" +
-							b.label +
-							"</td></tr>").html_safe 
-						end %>
-					</tbody>
-
-				</table>
-				
-			</div>
-
 		</article>
 
 		<article class="decorated_wrap shrinked">

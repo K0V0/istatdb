@@ -12,10 +12,14 @@ class ImpexpcompaniesController < ApplicationController
 
    	before_action(only: :update) { update_action permitted_pars }
 
+  def csv_export
+    
+  end
+
 	private
 
 	def permitted_pars
-      params[:impexpcompany].permit(:company_name)
-    end
+    params[:impexpcompany].permit(:company_name)
+  end
 
 end

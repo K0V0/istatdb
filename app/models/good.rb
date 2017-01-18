@@ -45,13 +45,29 @@ class Good < ActiveRecord::Base
 	belongs_to :local_taric, inverse_of: :goods
 
 	validates :ident, presence: true
-	validate :associated_validations, on: :create
-	validate :unique_by_assocs
 
-	#after_initialize :fillup_virtual_params
+	validate :associated_validations, on: :create
+	validate :unique_by_assocs, on: :create
+
+	validate :must_have_one_or_more_impexpcompanies, on: :update
+
+	validate :is_on_create, on: :create
+	validate :is_on_update, on: :update
+
 	before_update :kn_code_update
 	after_create :assignments
 	before_save :assignments_before_save
+
+	def is_on_create
+		@model_is_in_create = true
+		return true
+	end
+
+	def is_on_update
+		#log impexpcompany_ids
+		@model_is_in_update = true
+		return true
+	end
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
@@ -77,7 +93,7 @@ class Good < ActiveRecord::Base
 
 	## resolve how to run from update action only - maybe run from controller
 	def fillup_virtual_params
-		#fillup_virtual :local_taric, fields: [:kncode, :description]
+		fillup_virtual :local_taric, fields: [:kncode, :description]
 	end
 
 	def unique_by_assocs
@@ -114,8 +130,14 @@ class Good < ActiveRecord::Base
 		assoc_validator_uoms @uoms
 	end
 
+	def must_have_one_or_more_impexpcompanies
+		if self.impexpcompany_ids.blank?
+			self.errors.add(:impexpcompany_ids, "nic")
+		end
+	end
+
 	def assignments_before_save
-		@current.local_taric_id = @local_taric.id
+		@current.local_taric_id = @local_taric.id if @model_is_in_create
 	end
 
 	def assignments

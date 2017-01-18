@@ -40,6 +40,8 @@ sk:
     #new_good_search_no_results: "Žiaden zhodný tovar nenájdený. "
     create_good_and_next: "Uložiť a pridať ďalšiu"
 
+    associated_to_impexpcompany: "Príslušnosť ku klientom"
+
   local_taric:
 
     table_cap_additional_info: "Identifikácia"
@@ -69,6 +71,8 @@ sk:
 
     search_client_filter_none: "Spolupracujúci s každým"
     edit_manufacturer_details: "Prejsť na formulár"
+    back_to_edit: "Spať na hlavný formulár"
+    back_to_list: "Uložiť a prejsť na zoznam položiek"
 
 
 

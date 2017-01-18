@@ -21,6 +21,7 @@ $background_color:                $strong_black;
 $group_background:                $base_grey;
 $table_background:                $grey_2n;
 $wrap_border_color:               $dark_grey;
+$wrap_border_color_2:             $strong_grey;
 
 $main_menu_active_link:           $white;
 $main_menu_active_link_text:      $strong_black;
@@ -165,6 +166,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
       background: $dark_grey;
       border-radius:0.5em;
       border:0.25em solid $base_grey;
+      margin: 0.25em;
   }
 
   // For Internet Explorer

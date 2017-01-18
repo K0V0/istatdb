@@ -3,7 +3,7 @@
 
 	<section class="search_bar"> 
 
-		<%= search_form_for @search, remote: true do |s| %> 
+		<%= search_form_for @search, remote: true, class: "decorated_wrap" do |s| %> 
 
 			<div>
 				<%= s.label :kncode %>

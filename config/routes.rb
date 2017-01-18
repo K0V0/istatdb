@@ -53,6 +53,9 @@ Rails.application.routes.draw do
     to: "goods#delete",
     as: "delete_good"
 
+  get "goodsdb/export",
+    to: "goods#csv_export"
+
 
 
   ### databaza klientov (objednavatelia sluzby intrastat) 
@@ -91,6 +94,8 @@ Rails.application.routes.draw do
     to: "impexpcompanies#delete",
     as: "delete_impexpcompany"
 
+  get "clientsdb/export",
+    to: "impexpcompanies#csv_export"
 
 
 
@@ -142,6 +147,9 @@ Rails.application.routes.draw do
     to: "manufacturers#search",
     as: "search_manufacturers" 
 
+  get "manufacturersdb/export",
+    to: "manufacturers#csv_export"
+
 
 
   ### lokalna taric databaza
@@ -190,6 +198,8 @@ Rails.application.routes.draw do
     to: "local_taric#search",
     as: "search_local_taric"
   
+  get "localtaricdb/export",
+    to: "local_taric#csv_export"
 
 
 

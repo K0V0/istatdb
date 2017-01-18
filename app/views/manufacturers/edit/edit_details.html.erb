@@ -4,7 +4,7 @@
 
 	<%= form_for @impexpcompany_manufacturer, url: update_impexpcompany_manufacturer_path(@impexpcompany_manufacturer.id) do |t| %>
 
-		<article class="decorated_wrap" id="new_taricnum_search">
+		<article class="decorated_wrap shrinked" id="new_taricnum_search">
 
 			<%= render('layouts/new_select_section', 
 				obj: t,
@@ -27,13 +27,11 @@
 
 		</article>
 
-		<article class="decorated_wrap" id="incoterms">
+		<article class="decorated_wrap shrinked" id="incoterms">
 
 			<div>
 				<div>
-					<label>
-						<%= cbt :incoterms %>
-					</label>
+					<%= t.label :incoterm %>
 					<div class="select_wrapper">
 						<%= t.collection_select(:incoterm,
 							Incoterm.all,
@@ -53,7 +51,18 @@
 
 				<%= t.submit %>
 
-				<%= link_to t(:back), manufacturers_path, class: "button" %>
+				<%= link_to(
+					cbt(:back_to_edit),
+					edit_manufacturer_path(params[:id]),
+					class: "button"
+				) %>
+
+				<%= t.button(
+					cbt(:back_to_list),
+					name: "go_to_index",
+					value: "1",
+					class: "button"
+				) %>
 
 			</div>
 		</article>

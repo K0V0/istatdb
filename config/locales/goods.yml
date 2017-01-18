@@ -4,6 +4,7 @@ en:
     submit:
       good:
         create: "Add good(s) item"
+        update: "Save changes"
 
   activerecord:
     models:
@@ -37,6 +38,7 @@ sk:
     submit:
       good:
         create: "Pridať tovarovú položku"
+        update: "Uložiť zmeny"
 
   activerecord:
     models:

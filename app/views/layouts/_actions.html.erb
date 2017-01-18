@@ -1,5 +1,5 @@
 
-<section class="wrapper decorated_wrap actions <%= 'administrative' if @administrative_mode %>">
+<section class="decorated_wrap actions <%= 'administrative' if @administrative_mode %>">
 	
 		<button
 		 class="button" 
@@ -43,7 +43,7 @@
 			action: "administration"
 		},
 		class: "button danger"
-	) if @administrative_mode %>
+	) %>
 
 	<%= link_to(
 		t(:delete_items_all), 
@@ -52,7 +52,26 @@
 			action: "administration"
 		},
 		class: "button danger"
-	) if @administrative_mode %>
+	) %>
+
+	<%= link_to(
+		t(:export_visible_items), 
+		{
+			controller: controller_name,
+			action: "csv_export",
+			page: params[:page]
+		},
+		class: "button"
+	) %>
+
+	<%= link_to(
+		t(:export_all_items), 
+		{
+			controller: controller_name,
+			action: "csv_export"
+		},
+		class: "button"
+	) %>
 
 </section>
 

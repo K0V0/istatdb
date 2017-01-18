@@ -19,7 +19,6 @@ class GoodsController < ApplicationController
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
 	def new
-		#@good = Good.new
 		if !@MEM.search.blank?
 			@good.assign_attributes(
 				ident: 
@@ -35,7 +34,7 @@ class GoodsController < ApplicationController
 	end
 
 	def edit
-		#@good = Good.find(params[:id])
+		@good.fillup_virtual_params
 	end
 
 	def create
@@ -62,16 +61,20 @@ class GoodsController < ApplicationController
 	end
 
 	def update
-		@good = Good.find(params[:id])
-	    if @good.update(permitted_pars)
-	      redirect_to @good
+		tmp = edit_action
+	    if tmp.update(permitted_pars)
+	       redirect_to controller: controller_name, action: 'index'
 	    else
-	      render :action => 'edit'
+	        render "edit"
 	    end
 	end
 
 	def delete
 
+	end
+
+	def csv_export
+		
 	end
 
 	private 
@@ -91,7 +94,8 @@ class GoodsController < ApplicationController
 			:local_taric_description,
 			:impexpcompany_company_name,
 			:manufacturer_name,
-			uoms: [:uom, :uom_multiplier, :uom_type_id]
+			uoms: [:uom, :uom_multiplier, :uom_type_id],
+			impexpcompany_ids: []
 		)
 	end
 

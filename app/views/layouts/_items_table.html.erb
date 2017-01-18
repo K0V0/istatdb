@@ -76,7 +76,7 @@
 											res.map! { |x| "<span>#{x.to_s}</span>" if !x.nil? }
 										end
 
-										comma = opts[:separate_with_comma] ? ", " : " "
+										comma = opts[:separate_with] || " "
 										text = res.join(comma).html_safe
 
 									else

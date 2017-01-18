@@ -12,6 +12,8 @@ en:
   delete_items_all: "Delete all found"
   select_items: "Select all"
   deselect_items: "Deselect all"
+  export_visible_items: "Export this page"
+  export_all_items: "Export all results"
 
   edit_item: "Edit"
   delete_item: "Delete"
@@ -53,6 +55,8 @@ sk:
   select_items: "Vybrať všetky"
   delete_items_all: "Zmazať všetky nájdené"
   deselect_items: "Zrušiť výber"
+  export_visible_items: "Exportovať túto stranu"
+  export_all_items: "Exportovať všetky nájdené"
 
   edit_item: "Upraviť"
   delete_item: "Odstrániť"

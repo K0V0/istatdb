@@ -23,6 +23,7 @@ section.form {
 				margin: 0em 0.25em;
 				width: auto;
 				display: inline-block;
+				line-height: 1.5em;
 
 				&.remove_uom {
 					display:none;
@@ -100,8 +101,10 @@ section.form {
 
 	article > div.tablewrap {
 		display: block;
-		width:99%;
-		margin:0.5%;
+		width:99.5%;
+		margin-left:0.5%;
+		margin-top: 0.25em;
+		margin-bottom: 0.25em;
 		max-height: 7.5em;
 		overflow-y: auto;
 		border-radius:0.25em;
@@ -111,5 +114,11 @@ section.form {
 			display:inline-block;
 			vertical-align: top;
 		}
+	}
+
+	article.shrinked > div.tablewrap {
+		width:auto;
+		margin-left:0.25em;
+		margin-right:0.25em;
 	}
 }
