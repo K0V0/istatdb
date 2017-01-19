@@ -45,7 +45,7 @@ input[type=submit] {
 input[type=checkbox] {
 	display: block;
 	border:0.25em solid $button_disabled;
-	background-color: $soft_black;
+	background-color: $soft_black !important;
 	border-radius:0.5em;
 	margin:0;
 	padding:0;
@@ -54,16 +54,15 @@ input[type=checkbox] {
 	cursor:pointer;
 
 	&:hover {
-		border-color: $button_disabled_hover;
+		border-color: $button_disabled_hover !important;
 	}
 
 	&:checked {
-		background-color: $button_danger_hover;
-		border-color: $button_selected;
+		background-color: $button_danger_hover !important;
+		border-color: $button_selected !important;
 
 		&:hover {
-			//background-color: $button_danger_hover;
-			border-color: $button_selected_hover;
+			border-color: $button_selected_hover !important;
 		}
 	}
 }

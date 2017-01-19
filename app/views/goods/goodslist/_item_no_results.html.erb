@@ -13,13 +13,13 @@
 
 		<tbody>
 
-			<% if (params.deep_has_key? :q, :manufacturer_filter)&&(params.deep_has_key? :q, :client_filter) 
+			<% if (params.deep_has_key? :q, :manufacturer_filter)&&(params.deep_has_key? :q, :impexpcompany_filter) 
 
-				if (!params[:q][:manufacturer_filter].blank?)&&(!params[:q][:client_filter].blank?)
+				if (!params[:q][:manufacturer_filter].blank?)&&(!params[:q][:impexpcompany_filter].blank?)
 
 					res = ImpexpcompanyManufacturer.where(
 						manufacturer_id: params[:q][:manufacturer_filter],
-						impexpcompany_id: params[:q][:client_filter]
+						impexpcompany_id: params[:q][:impexpcompany_filter]
 					).first
 
 					if !res.local_taric.blank? %>
@@ -34,9 +34,12 @@
 								<br>
 								<%= cbt :err_no_goods_found_part3 %>
 								<br>
+								<br>
 								<h1> <%= num_to_kncode res.local_taric.kncode %> </h1>
 								<br>
 								<h4> <%= res.local_taric.description %> </h4>
+								<br>
+								<br>
 							</td>
 						</tr>
 

@@ -6,7 +6,7 @@ module ApplicationHelper
 	### here I group translations by controllers and associated views
 	### using this function in view you don't need to write too much 
 	def cbt translation_key
-		I18n.t(params[:controller] + "." + translation_key.to_s).gsub(/\\n/, "<br>").html_safe
+		I18n.t(params[:controller] + "." + translation_key.to_s).gsub(/\n/, "<br>").html_safe
 	end
 
 
@@ -20,7 +20,7 @@ module ApplicationHelper
 		if patt.blank?
 			return str
 		else
-			str_copy = str.dup
+			str_copy = str.dup.strip
 			open_tag = "<" + tag.to_s + ">"
 			close_tag = "</" + tag.to_s + ">"
 			patt_len = patt.length
@@ -76,16 +76,41 @@ module ApplicationHelper
 	### function for formatting kncode number output 
 	# first part of HS/TARIC code is group of 4 numbers
 	# other parts are groups of 2 numbers 
-	def num_to_kncode num
-		itm = num.dup
+	# skips html added by other decoration functions
+	def num_to_kncode num, exclusive_tag="em"
+		itm = num.dup.strip
 		str_len = itm.length
 		divisions = str_len % 2 == 0 ? ((str_len / 2) - 2) : ((str_len / 2) - 1)
-		startpos = 4
+		pos_of_wraping_open_tag =  (/^(<[a-z]*>\s*)*/.match(itm))[0].length
+		pos_of_wraping_close_tag = str_len - (/(<\/[a-z]*>\s*)*$/.match(itm))[0].length
+
+		startpos = pos_of_wraping_open_tag + 4
 		for i in 0..divisions-1
-			itm.insert(startpos, " ")
-			startpos += (2 + (i + 1))
+			if (startpos < pos_of_wraping_close_tag)
+				itm.insert(startpos, " ")
+				startpos += (2 + (i + 1))
+			end
 		end	
+=begin
+		startpos = pos_of_wraping_open_tag + 4
+		counter = 0
+		semafor = false
+		for p in pos_of_wraping_open_tag..pos_of_wraping_close_tag
+			semafor = true if itm[p] == "<"
+			semafor = false if itm[p] == ">"
+			counter += 1 if !semafor
+			#tmp_counter = counter
+			if ((counter+1) % 2 == 0)
+				itm.insert(p, "|")
+				#tmp_counter
+				Rails.logger.info "cnt -------------"
+				Rails.logger.info counter
+				#pos_of_wraping_close_tag += 1
+			end
+		end
+=end
 		return itm
+
 	end
 
 

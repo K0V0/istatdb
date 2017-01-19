@@ -64,7 +64,6 @@ class Good < ActiveRecord::Base
 	end
 
 	def is_on_update
-		#log impexpcompany_ids
 		@model_is_in_update = true
 		return true
 	end
