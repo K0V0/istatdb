@@ -15,7 +15,7 @@
 			},
 			kncode: {
 				is_sortlink: true,
-				#is_highlighted: true,
+				is_highlighted: true,
 				call_function: "num_to_kncode"
 			}
 		}
@@ -24,7 +24,6 @@
 
 <% else %>
 	
-	<%#= render "goods/goodslist/item_no_results", items: @result %>
 	<%= render "layouts/items_table_no_results" %>
 
 <% end %>

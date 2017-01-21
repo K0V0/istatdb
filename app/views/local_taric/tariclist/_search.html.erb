@@ -3,7 +3,12 @@
 
 	<section class="search_bar"> 
 
-		<%= search_form_for @search, remote: true, class: "decorated_wrap" do |s| %> 
+		<%= search_form_for @search, 
+			url: search_local_taric_path,
+			remote: true,
+			class: "decorated_wrap" do |s| %> 
+
+			<%= render 'layouts/actions_remember_fields', s: s %>
 
 			<div>
 				<%= s.label :kncode %>

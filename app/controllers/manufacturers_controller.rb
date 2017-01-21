@@ -1,11 +1,5 @@
 class ManufacturersController < ApplicationController
 
-    before_action :load_q_from_mem, only: [:index]
-
-    before_action :load_q_to_mem, only: [:show, :search]
-
-    before_action :load_page_to_mem, only: [:index, :search]
-
     before_action(only: [:index, :search, :show, :administration]) {
       searcher_for(
         autoshow:false,

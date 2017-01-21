@@ -16,29 +16,13 @@ module ApplicationHelper
 	# case_insensitive - 	self-explaining
 	# tag -					wrapping html element
 	def highlight_searched str: "", patt: "", case_insensitive: true, tag: :em
-
 		if patt.blank?
 			return str
 		else
-			str_copy = str.dup.strip
-			open_tag = "<" + tag.to_s + ">"
-			close_tag = "</" + tag.to_s + ">"
-			patt_len = patt.length
-			str_len = str.length;
-			open_tag_len = open_tag.length
-			tags_len = open_tag_len + close_tag.length
-
-			positions = str_copy.enum_for(:scan, (Regexp.new patt, case_insensitive)).map { Regexp.last_match.begin(0) }
-
-			positions.each_with_index do |p, i|
-				pos_of_open_tag = p + (i * tags_len)
-				pos_of_close_tag = pos_of_open_tag + open_tag_len + patt_len 
-				str_copy.insert pos_of_open_tag, open_tag 
-				str_copy.insert pos_of_close_tag, close_tag
-			end
-			str_copy.strip!
+			patt_mod = patt.chars.map { |p| "\s?[#{p}]" } .join
+			pattern = /(#{patt_mod})/i
+			return str.gsub(pattern) { |x| "<#{tag.to_s}>#{x.strip}</#{tag.to_s}>" } .html_safe
 		end
-		str_copy.html_safe
 	end
 
 
@@ -77,43 +61,11 @@ module ApplicationHelper
 	# first part of HS/TARIC code is group of 4 numbers
 	# other parts are groups of 2 numbers 
 	# skips html added by other decoration functions
-	def num_to_kncode num, exclusive_tag="em"
-		itm = num.dup.strip
-		str_len = itm.length
-		divisions = str_len % 2 == 0 ? ((str_len / 2) - 2) : ((str_len / 2) - 1)
-		pos_of_wraping_open_tag =  (/^(<[a-z]*>\s*)*/.match(itm))[0].length
-		pos_of_wraping_close_tag = str_len - (/(<\/[a-z]*>\s*)*$/.match(itm))[0].length
-
-		startpos = pos_of_wraping_open_tag + 4
-		for i in 0..divisions-1
-			if (startpos < pos_of_wraping_close_tag)
-				itm.insert(startpos, " ")
-				startpos += (2 + (i + 1))
-			end
-		end	
-=begin
-		startpos = pos_of_wraping_open_tag + 4
-		counter = 0
-		semafor = false
-		for p in pos_of_wraping_open_tag..pos_of_wraping_close_tag
-			semafor = true if itm[p] == "<"
-			semafor = false if itm[p] == ">"
-			counter += 1 if !semafor
-			#tmp_counter = counter
-			if ((counter+1) % 2 == 0)
-				itm.insert(p, "|")
-				#tmp_counter
-				Rails.logger.info "cnt -------------"
-				Rails.logger.info counter
-				#pos_of_wraping_close_tag += 1
-			end
-		end
-=end
-		return itm
-
+	def num_to_kncode num
+		return num.gsub(/.{2}/).with_index {|x, i| i > 0 ? "#{x} " : "#{x}" } .strip
 	end
 
-
+#=begin
 	### function for yelding content saved in content_for 
 	# symb - 			same as first parameter of content_for function, symbol to your content
 	# wrap tag - 		if specified, wraps content with this tag(s)
@@ -138,7 +90,7 @@ module ApplicationHelper
 		html_string = start_tag + (content_for(symb) || " --- ") + end_tag
 		html_string.html_safe
 	end
-
+#=end
 
 	def return_selected_class_if_in_new_obj_attrs item, symsym
 		if params.deep_has_key? controller_name.singularize.to_sym, symsym

@@ -1,8 +1,10 @@
 
 $('section.items_table, section.item_details').remove();
 
+
 <%
 	if @result.length > 0
+
 		o = render('layouts/items_table',
 			fields: {
 				description: {
@@ -10,7 +12,7 @@ $('section.items_table, section.item_details').remove();
 				},
 				kncode: {
 					is_sortlink: true,
-					#is_highlighted: true,
+					is_highlighted: true,
 					call_function: "num_to_kncode"
 				}
 			}

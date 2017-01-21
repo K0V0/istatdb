@@ -8,6 +8,8 @@
 			remote: true,
 			class: "decorated_wrap" do |s| %> 
 
+			<%= render 'layouts/actions_remember_fields', s: s %>
+
 			<div>
 				<%= s.label :ident %>
 				<%= s.search_field :ident_or_description_cont, autocomplete: "off", autofocus: "autofocus" %>
@@ -35,14 +37,6 @@
 					<%= render 'goods/goodslist/search_select_manufacturer', obj: s %>
 				</div>
 			</div>
-
-			<%= s.hidden_field :s, value: (params.deep_has_key?(:q, :s) ? params[:q][:s] : nil) %>
-
-			<%#= hidden_field_tag :page, @MEM.page %>
-
-			<%= hidden_field_tag :administrative_mode, @administrative_mode %>
-
-			<%= hidden_field_tag(:preserve_checked, "") if @administrative_mode %>
 
 			<div>
 

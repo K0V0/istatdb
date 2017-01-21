@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
 
   before_action :edit_action, only: :edit
 
+  before_action :load_q_from_mem, only: [:index, :administration]
+
+  before_action :load_q_to_mem, only: [:search, :show]
+
+  before_action :load_page_to_mem, only: [:index, :search]
+
   def mem
     @MEM = Mem.new(session) if !defined? @MEM 
   end
@@ -48,6 +54,10 @@ class ApplicationController < ActionController::Base
   def load_page_to_mem
     @MEM.page = (params.has_key?(:page) ? params[:page] : nil)
   end
+
+  #def load_page_from_mem
+  #  params.merge(page: @MEM.page)
+  #end
 
   def new_action
       instance_variable_set(
