@@ -1,9 +1,12 @@
 var ACTIONS_INDEX;
+var UOMS_CALCULATOR;
 
 var mainHandler = function() {
 	console.log("page full reload");
 
 	ACTIONS_INDEX = new ActionsHandler();
+
+	UOMS_CALCULATOR = new UomsCalculator();
 
 	$(document).on('click', '#search_good_on_google', function() {
 		var q = $('#q_ident_or_description_cont').val();

@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	// new action - adding more fields for uoms 
 	$(document).on('click', 'button.add_uom', function() {
-		console.log('add uom');
+		//console.log('add uom');
 		var clone = $(this).closest('article').clone();
 		clone.find('.good_uoms_uom').val('');
 		clone.find('.good_uoms_uom_multiplier').val('1');
@@ -32,32 +32,15 @@ $(document).ready(function() {
 		}
 	});
 
-	// show action - calculate final amount giving pcs number
-	$(document).on('input', 'input[name=uom_count]', function() {
-		var val = parseFloat($('input[name=uom_value]').val());
-		var multiplier = parseInt($('input[name=uom_multiplier]').val());
-		var count = parseFloat($('input[name=uom_count]').val());
-		var result = (val * count) / multiplier;
-		$('input[name=uom_result]').val(result.toFixed(2));
-	});
-
-	// show action - calculate pcs number from final amount
-	$(document).on('input', 'input[name=uom_result]', function() {
-		var val = parseFloat($('input[name=uom_value]').val());
-		var multiplier = parseInt($('input[name=uom_multiplier]').val());
-		var result = parseFloat($(this).val());
-		var count = result / (val / multiplier);
-		$('input[name=uom_count]').val(Math.ceil(count));
-	});
-
 	// show action - select uom type for uoms calculator
 	$(document).on('click', '.good_manufacturer_uoms_list tr', function() {
 		$(this).siblings().removeClass('selected');
 		$(this).addClass('selected');
-
-		$(this).children('td.good_manufacturer_uoms_list_val').sendValTo('input[name=uom_value]');
-		$(this).children('td.good_manufacturer_uoms_list_multiplier').sendValTo('input[name=uom_multiplier]');
-		$(this).children('td.good_manufacturer_uoms_list_type').sendValTo('span.uoms_calculator_uom_type');
+		UOMS_CALCULATOR.setVals(
+			parseFloat($(this).children('td.good_manufacturer_uoms_list_val').first().text()),
+			parseFloat($(this).children('td.good_manufacturer_uoms_list_multiplier').first().text()),
+			$(this).children('td.good_manufacturer_uoms_list_type').first().text()
+		);
 	});
 
 	// index/search action - checkbox button to enable/disable second searchfield

@@ -21,7 +21,13 @@ module ApplicationHelper
 		else
 			patt_mod = patt.chars.map { |p| "\s?[#{p}]" } .join
 			pattern = /(#{patt_mod})/i
-			return str.gsub(pattern) { |x| "<#{tag.to_s}>#{x.strip}</#{tag.to_s}>" } .html_safe
+			tmp = str.gsub(pattern) do |x| 
+				if x =~ /^\s/
+					" <#{tag.to_s}>#{x.strip}</#{tag.to_s}>"
+				else 
+					"<#{tag.to_s}>#{x}</#{tag.to_s}>"
+				end 
+			end .html_safe
 		end
 	end
 
