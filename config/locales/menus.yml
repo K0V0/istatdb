@@ -26,6 +26,7 @@ en:
   new_item_short: "Add"
   back: "Go back"
   create_and_next: "Save and Add next"
+  add_to_mem: "Add to memory"
 
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
@@ -69,6 +70,7 @@ sk:
   new_item_short: "Pridať"
   back: "Naspäť!"
   create_and_next: "Uložiť a Pridať ďalšie"
+  add_to_mem: "Vložiť do pamäti"
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"

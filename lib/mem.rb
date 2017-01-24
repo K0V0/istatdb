@@ -20,6 +20,8 @@ class Mem
 	  			end
 	  			@session["MEM"] = Marshal::dump(tmp)
 	  		end
+	  	else
+	  		# zistit ci << nebude v arguments
 	  	end
 	end
 

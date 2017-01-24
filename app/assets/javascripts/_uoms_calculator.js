@@ -20,6 +20,9 @@ UomsCalculator.prototype = {
 		$(document).on('input', 'input[name=uom_result]', function() {
 			totok.calculateQuantity();
 		});
+		$(document).on('click', 'button#add_to_calculator_memory', function() {
+			totok.sendToMem();
+		});
 	},
 
 	calculateResult: function() {
@@ -41,6 +44,7 @@ UomsCalculator.prototype = {
 	getValsFromFields: function() {
 		this.val = parseFloat($('input[name=uom_value]').val());
 		this.multiplier = parseInt($('input[name=uom_multiplier]').val());
+		this.uom_type = $.trim($('span.uoms_calculator_uom_type').text());
 	},
 
 	setVals(val=null, multiplier=null, uom_type=null) {
@@ -55,6 +59,22 @@ UomsCalculator.prototype = {
 		} else if (this.last_calculated_was_quantity === true) {
 			this.calculateQuantity();
 		} 
+	},
+
+	sendToMem: function() {
+		var totok = this;
+		$.ajax({
+		  	method: "POST",
+		 	url: 'api/add_to_uoms_calculator',
+		  	data: { 
+		  		good_name: $(document).find('h1').text(),
+		  		uom: totok.val,
+		  		multiplier: totok.multiplier,
+		  		uom_type: totok.uom_type,
+		  		count: totok.count,
+		  		result: totok.result 
+		  	}
+		});
 	}
 
 }

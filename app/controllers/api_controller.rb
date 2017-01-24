@@ -35,6 +35,28 @@ class ApiController < ApplicationController
 		render('/manufacturers/new/search_manufacturer_exists')
 	end
 
+	def add_to_calculator_mem
+		tmp = @MEM.uomscalc
+		log tmp
+ 		@MEM.uomscalc = [] if @MEM.uomscalc.nil?
+ 		tmp = @MEM.uomscalc
+ 		log tmp
+ 		tmp << params
+ 		log tmp
+ 		@MEM.uomscalc = tmp
+ 		log @MEM.uomscalc
+		#@MEM.kokot = "pica"
+		#log @MEM.kokot.nil?
+		#log @MEM.uomscalc
+		#@MEM.uomscalc ||= []
+		#vals = @MEM.uomscalc
+		#log params
+		#vals ||= [] 
+		#vals << params
+		#@MEM.uomscalc = vals
+		#log @MEM.uomscalc.nil?
+	end
+
 	private
 
 	def strip_ransack_from_params

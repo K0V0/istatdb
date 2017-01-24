@@ -233,6 +233,9 @@ Rails.application.routes.draw do
   post "api/manufacturer_search_name_exists",
     to: "api#manufacturer_search_name_exists"
 
+  post "api/add_to_uoms_calculator",
+    to: "api#add_to_calculator_mem"
+
 
 
   ### hidden section for testing purposes

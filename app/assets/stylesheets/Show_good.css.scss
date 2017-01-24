@@ -11,8 +11,8 @@ section.item_details {
 		table.uom_calculator {
 
 			tbody {
-				border-top: 0.25em solid transparent;
-				border-bottom: 0.25em solid transparent;
+				display: block;
+				padding: 0.25em 0;
 				background-color: $table_background;
 			}
 			
