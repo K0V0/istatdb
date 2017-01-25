@@ -36,25 +36,11 @@ class ApiController < ApplicationController
 	end
 
 	def add_to_calculator_mem
-		tmp = @MEM.uomscalc
-		log tmp
  		@MEM.uomscalc = [] if @MEM.uomscalc.nil?
  		tmp = @MEM.uomscalc
- 		log tmp
- 		tmp << params
- 		log tmp
+ 		tmp.push(params)
  		@MEM.uomscalc = tmp
- 		log @MEM.uomscalc
-		#@MEM.kokot = "pica"
-		#log @MEM.kokot.nil?
-		#log @MEM.uomscalc
-		#@MEM.uomscalc ||= []
-		#vals = @MEM.uomscalc
-		#log params
-		#vals ||= [] 
-		#vals << params
-		#@MEM.uomscalc = vals
-		#log @MEM.uomscalc.nil?
+ 		render('/layouts/calculator_list')
 	end
 
 	private

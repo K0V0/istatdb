@@ -50,6 +50,8 @@ gem  'kaminari'
 
 gem 'recursive-open-struct'
 
+gem 'activerecord-session_store'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

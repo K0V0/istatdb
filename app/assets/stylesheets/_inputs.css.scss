@@ -20,7 +20,8 @@ input:hover, select:hover {
 }
 
 input:focus, select:focus {
-	border-color: $input_selected
+	border-color: $input_selected;
+	background-color: $superwhite;
 }
 
 input:disabled {

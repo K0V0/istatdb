@@ -8,3 +8,27 @@ table#local_taric {
 		width:1%;
 	}
 }
+
+@media only screen and (max-width: 480px) {
+   
+   table#local_taric {
+
+		td, th {
+			display: block;
+
+			&.local_taric_kncode {
+				text-align: right;
+				font-weight: bold;
+				font-style: italic;
+			}
+
+			a#kncode_sort_link {
+				float: right;
+			}
+
+			&.edit_item, &.delete_item {
+				width: auto;
+			}
+		}
+	}
+}
