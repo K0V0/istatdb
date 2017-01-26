@@ -31,6 +31,7 @@ sk:
     uoms_result_short: "Výsledok"
     uoms_calculator_cap: "Kalkulačka"
     uoms_count: "Počet ks."
+    uoms_calculator_mem_cap: "Pamäť kalkulačky"
 
     err_no_goods_found_part1: "Tovary, ktoré nakupuje/expeduje klient"
     err_no_goods_found_part2: "od dodávateľa/pre zákazníka"

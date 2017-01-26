@@ -1,0 +1,60 @@
+
+<br>
+
+<div class="tablewrap decorated_wrap">
+
+	<table class="rows_colored" id="uomscalc_list">
+
+		<caption> 
+			<%= cbt :uoms_calculator_mem_cap %>
+		</caption>
+		
+		<thead>
+			<tr>
+				<th class="uomscalc_mem_good"> 
+					<%= cbt :table_cap_good %>
+				</th>
+				<th class="uomscalc_mem_uom">
+					<%= cbt :uoms_uom %>
+				</th>
+				<th class="uomscalc_mem_count"> 
+					<%= cbt :uoms_count %>
+				</th>
+				<th class="uomscalc_mem_result"> 
+					<%= cbt :uoms_result_short %>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<% @MEM.uomscalc.each do |calc| %>
+				<tr>
+					<td class="uomscalc_mem_good"> 
+						<%= calc[:good_name] %> 
+					</td>
+					<td class="uomscalc_mem_uom">
+						<%= "#{calc[:uom]} #{calc[:uom_type]} / #{calc[:multiplier]} #{t(:pcs)}" %>
+					</td>
+					<td class="uomscalc_mem_count">
+						<%= "#{calc[:count]} #{t(:pieces)}" %>
+					</td>
+					<td class="uomscalc_mem_result"> 
+						<%= "#{calc[:result]} #{calc[:uom_type]}" %>
+					</td>
+				</tr>
+			<% end %>
+
+		</tbody>
+
+		<tfoot>
+			<% @MEM.uomscalc_results.each do |k, v| %>
+				<tr>
+					<td> <%= "#{k}: " %> <strong> <%= "#{v}" %> </strong> </td>
+				</tr>
+			<% end %>
+		</tfoot>
+
+	</table>
+
+</div>

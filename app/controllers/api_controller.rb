@@ -40,6 +40,8 @@ class ApiController < ApplicationController
  		tmp = @MEM.uomscalc
  		tmp.push(params)
  		@MEM.uomscalc = tmp
+ 		calculate_results tmp
+ 		
  		render('/layouts/calculator_list')
 	end
 
@@ -57,6 +59,22 @@ class ApiController < ApplicationController
 		if params.deep_has_key? :other_data, :cols_highlighted
 			@cols_highlighted = params[:other_data][:cols_highlighted]
 		end
+	end
+
+	def calculate_results obj
+		@MEM.uomscalc_results = [] if (@MEM.uomscalc_results.nil?)||(!@MEM.uomscalc_results.is_a?(Array))
+		types = []
+		result = {}
+		obj.each do |o|
+			types << o[:uom_type] if !(types.include? o[:uom_type])
+		end
+		types.each do |type|
+			result[type.to_sym] = 0 
+		end
+		obj.each do |o|
+			result[(o[:uom_type].to_sym)] += o[:result].to_f
+		end
+		@MEM.uomscalc_results = result
 	end
 
 end

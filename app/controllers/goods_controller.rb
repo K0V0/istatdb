@@ -12,6 +12,14 @@ class GoodsController < ApplicationController
 
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]
 
+	def show
+		@makers = @good.manufacturers
+		if @makers.size == 1
+			uoms = @good.goods_manufacturers.first.uoms 
+			@autoset_uom = (uoms.size == 1)&&(!uoms.first.uom.blank?) ? uoms.first : nil
+		end
+	end
+
 	def new
 		if !@MEM.search.blank?
 			@good.assign_attributes(

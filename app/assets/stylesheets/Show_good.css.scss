@@ -79,12 +79,47 @@ section.item_details {
 				}
 			}
 		}
+
+		table#uomscalc_list {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+
+			td, th {
+
+				&.uomscalc_mem_good {
+					white-space: nowrap;
+					font-weight: bold;
+				}
+
+				&.uomscalc_mem_result {
+					font-weight: bold;
+				}
+			}
+			
+			thead {
+				font-weight: normal;
+			}
+
+			tfoot {
+
+				tr {
+					line-height: 1.25em;
+
+					td {
+
+						strong {
+							font-size: 1.25em;
+						}
+					}
+				}	
+			}
+		}
 	}
 }
 
 @media only screen and (max-width: 480px) {
    
-   table.good_manufacturers_list {
+   	table.good_manufacturers_list {
 
    		tr {
 
@@ -102,5 +137,30 @@ section.item_details {
    				}
    			}
    		}
-   }
+   	}
+
+   	table#uomscalc_list {
+
+   		thead {
+
+   			tr {
+
+   				th {
+   					font-weight: normal;
+   				}
+   			}
+		}
+		
+		tr {
+
+			th, td {
+				display: block;
+
+				&.uomscalc_mem_result {
+					font-style: italic;
+					text-align:right;
+				}
+			}
+		}
+	}
 }

@@ -37,6 +37,8 @@ en:
   results_total: "total results:"
 
   total: "Total:"
+  pcs: "pcs."
+  pieces: "pcs."
 
   sure: "Are you sure ?"
 
@@ -81,5 +83,7 @@ sk:
   results_total: "Výsledkov celkom:"
 
   total: "Celkom:"
+  pcs: "kus."
+  pieces: "kusov"
 
   sure: "Ste si istý ?"

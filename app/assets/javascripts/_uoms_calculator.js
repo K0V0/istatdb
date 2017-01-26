@@ -6,6 +6,7 @@ function UomsCalculator(val=null, multiplier=null, uom_type=null) {
 	this.count = 0;
 	this.result = 0;
 	this.last_calculated_was_quantity = null;
+	this.valid = false;
 	this.init();
 }
 
@@ -16,13 +17,29 @@ UomsCalculator.prototype = {
 		var totok = this
 		$(document).on('input', 'input[name=uom_count]', function() {
 			totok.calculateResult();
+			totok.validate();
 		});
 		$(document).on('input', 'input[name=uom_result]', function() {
 			totok.calculateQuantity();
+			totok.validate();
 		});
 		$(document).on('click', 'button#add_to_calculator_memory', function() {
 			totok.sendToMem();
 		});
+	},
+
+	validate: function() {
+		if (
+			(this.count == 0 || isNaN(this.count)) ||
+			(this.result == 0 || isNaN(this.result))
+		) {
+			$('button#add_to_calculator_memory').addClass('disabled');
+			this.valid = false;
+		} 
+		else {
+			$('button#add_to_calculator_memory').removeClass('disabled');
+			this.valid = true;
+		}
 	},
 
 	calculateResult: function() {
