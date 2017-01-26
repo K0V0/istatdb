@@ -24,6 +24,9 @@
 
 		<tbody>
 
+			<% Rails.logger.info "=========" %>
+			<% Rails.logger.info @makers %>
+
 			<% makers.each do |maker| %>
 
 				<% gm = maker.goods_manufacturers.where(good_id: @good.id).first %>
