@@ -32,6 +32,8 @@ class ApplicationController < ActionController::Base
 
   before_action :index_action, only: :index
 
+  before_action :search_action, only: :search
+
   before_action :new_action, only: :new
 
   before_action :show_action, only: :show
@@ -44,6 +46,10 @@ class ApplicationController < ActionController::Base
       @ivp_name,
       @model.all
     )
+  end
+
+  def search_action
+    
   end
 
   def new_action
