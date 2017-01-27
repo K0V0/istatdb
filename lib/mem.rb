@@ -3,34 +3,52 @@ class Mem
 	def initialize session
 		@session = session
 		@session["MEM"] ||= Marshal::dump(MemData.new)
+		@totok = nil
+		@matches = nil
 	end
 
 	def method_missing(method_sym, *arguments, &block)
-	  	if (method_sym =~ /^(\w*)=$/)
-	  		tmp = Marshal::load(@session["MEM"])
-	  		tmp[method_sym.to_s.sub("=", "").to_sym] = arguments[0]
-	  		@session["MEM"] = Marshal::dump(tmp)
+	  	if (@matches = /^(\w*)=$/.match method_sym)
+	  		load
+	  		@totok[@matches[1].to_sym] = arguments[0]
+	  		set
 	  	elsif (method_sym =~ /^(\w+)$/)
-	  		return Marshal::load(@session["MEM"])[method_sym]
+	  		load
+	  		return @totok[method_sym]
 	  	elsif (method_sym =~ /^=$/)
 	  		if arguments[0].is_a? Hash
-	  			tmp = Marshal::load(@session["MEM"])
+	  			load
 	  			arguments[0].each do |arg, val|
-	  				tmp[arg] = val
+	  				@totok[arg] = val
 	  			end
-	  			@session["MEM"] = Marshal::dump(tmp)
+	  			set
 	  		end
+=begin
+	  	elsif (@matches = /^(\w+)\[[\:|\"]{1}(\w+)\"?\]$/.match method_sym)
+	  		load
+	  		Rails.logger.info "========= kokoooot"
+	  		return @totok[@matches[1]][@matches[2]]
+	  		#return @totok[@matches[1]]
+	  	elsif (matches = /^(\w+)\[[\:|\"]{1}(\w+)\"?\]=$/.match method_sym)
+	  		load
+	  		@totok[@matches[1]][@matches[2]] = arguments[0]
+	  		#@totok[@matches[1]] = { @matches2.to_sym => arguments[0] }
+	  		#@totok
+	  		set
+=end
 	  	else
 	  		#
 	  	end
 	end
 
-	def data 
-		Marshal::load(@session["MEM"])
+	private
+
+	def load
+		@totok = Marshal::load(@session["MEM"])
 	end
 
-	def clear
-		@session["MEM"] = Marshal::dump(MemData.new)
+	def set
+		@session["MEM"] = Marshal::dump(@totok)
 	end
 
 end

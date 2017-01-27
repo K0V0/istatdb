@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get "goodsdb/edit",
     to: "goods#administration"
 
+  get "goodsdb/leave_administrative",
+    to: "goods#leave_administration"
+
   get "goodsdb/:id/edit",
     to: "goods#edit",
     as: "edit_good"
@@ -79,6 +82,9 @@ Rails.application.routes.draw do
   # administrative mode
   get "clientsdb/edit",
     to: "impexpcompanies#administration"
+
+  get "clientsdb/leave_administrative",
+    to: "impexpcompanies#leave_administration"
 
   # edit
   get "clientsdb/:id/edit",
@@ -142,6 +148,9 @@ Rails.application.routes.draw do
   get "manufacturersdb/edit",
     to: "manufacturers#administration"
 
+  get "manufacturersdb/leave_administrative",
+    to: "manufactuers#leave_administration"
+
   #ransack search action
   get "manufacturersdb/search",
     to: "manufacturers#search",
@@ -187,6 +196,9 @@ Rails.application.routes.draw do
   #administration
   get "localtaricdb/edit",
     to: "local_taric#administration"
+
+  get "localtaricdb/leave_administrative",
+    to: "local_taric#leave_administration"
 
   #delete
   delete "localtaricdb/:id/delete",

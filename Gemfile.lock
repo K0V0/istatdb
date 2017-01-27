@@ -16,6 +16,23 @@ GIT
       i18n
       polyamorous (~> 1.2)
 
+GIT
+  remote: https://github.com/kaminari/kaminari
+  revision: 011cd6c783d5165e0e542c2b3c1a9e0018631aab
+  specs:
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -91,9 +108,6 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.3)
-    kaminari (0.17.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     localtunnel (1.0.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -193,7 +207,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-  kaminari
+  kaminari!
   localtunnel
   rails (= 4.2.6)
   ransack!

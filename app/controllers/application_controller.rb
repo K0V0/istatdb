@@ -10,68 +10,62 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  before_action :mem
+  before_action() {
 
-  before_action :administrative_mode
+    @ivp_name = "@#{controller_name.pluralize.underscore}"
+    @ivs_name = "@#{controller_name.singularize.underscore}"
+    @model = controller_name.classify.constantize
 
-  before_action :body_noscroll, only: [:index, :search, :administration]
+    @MEM = Mem.new(session) if !defined? @MEM
+
+    @administrative_mode = controller_mem_get :administrative
+
+    remember_param :page    ## page number
+    remember_param :q       ## search
+    remember_sortlink       ## sort link direction
+
+  }
+
+  before_action(only: [:index, :search, :administration]) {
+     @body_class = "noscroll"
+  }
+
+  before_action :index_action, only: :index
 
   before_action :new_action, only: :new
 
+  before_action :show_action, only: :show
+
   before_action :edit_action, only: :edit
 
-  before_action :load_q_from_mem, only: [:index, :administration]
-
-  before_action :load_q_to_mem, only: [:search, :show]
-
-  before_action :load_page_to_mem, only: [:index, :search]
-
-  def mem
-    @MEM = Mem.new(session) if !defined? @MEM 
+  
+  def index_action
+    instance_variable_set(
+      @ivp_name,
+      @model.all
+    )
   end
-
-  def body_noscroll
-    @body_class = "noscroll"
-  end
-
-  def administrative_mode
-    @MEM.administrative_mode = true if params[:enter_administrative]
-    if params[:leave_administrative] || (@MEM.kontroler != controller_name)
-      @MEM.administrative_mode = nil 
-    end
-    @administrative_mode = @MEM.administrative_mode
-    @MEM.kontroler = controller_name
-  end
-
-  def load_q_from_mem
-    params[:q] = @MEM.search
-  end
-
-  def load_q_to_mem
-    @MEM.search = (params[:q] if params.has_key?(:q))
-  end
-
-  def load_page_to_mem
-    @MEM.page = (params.has_key?(:page) ? params[:page] : nil)
-  end
-
-  #def load_page_from_mem
-  #  params.merge(page: @MEM.page)
-  #end
 
   def new_action
       instance_variable_set(
-        '@'+controller_name.singularize,
-        controller_name.classify.constantize.new
+        @ivs_name,
+        @model.new
       )
+  end
+
+  def show_action
+    instance_variable_set(
+      @ivs_name, 
+      @model.find(params[:id])
+    )
   end
 
   def create_action permitted_params_obj
     instance_variable_set(
-      '@'+controller_name.singularize.underscore,
-      controller_name.classify.constantize.send(:new, permitted_params_obj)
+      @ivs_name,
+      @model.new(permitted_params_obj)
     )
-    if instance_variable_get('@'+controller_name.singularize).send(:save)
+    if instance_variable_get(@ivs_name).save
       redirect_to public_send("#{controller_name.pluralize}_path")
     else
        render "new"
@@ -80,8 +74,8 @@ class ApplicationController < ActionController::Base
 
   def edit_action
       instance_variable_set(
-          '@'+controller_name.singularize.underscore,
-          controller_name.classify.constantize.send(:find, params[:id])
+          @ivs_name,
+          @model.find(params[:id])
       )
   end
 
@@ -100,20 +94,19 @@ class ApplicationController < ActionController::Base
   end
 
   def createeeee nullize: [], nullize_ransack: []
-    var_name = '@'+controller_name.singularize.underscore
     instance_variable_set(
-      var_name,
-      controller_name.classify.constantize.send(:new, permitted_pars)
+      @ivs_name,
+      @model.new(permitted_pars)
     )
-    if instance_variable_get(var_name).send(:save)
+    if instance_variable_get(@ivs_name).save
       if !params[:create_and_next].blank?
-        tmp = controller_name.classify.constantize.send(:new)
-        tmp.attributes = instance_variable_get(var_name).attributes.except('id')
+        tmp = @model.new
+        tmp.attributes = instance_variable_get(@ivs_name).attributes.except('id')
         nullize.each do |var|
           tmp.send(var.to_s+"=", nil)
         end
         instance_variable_set(
-          var_name,
+          @ivs_name,
           tmp
         )
         reload_tables_for_select
@@ -122,7 +115,7 @@ class ApplicationController < ActionController::Base
         nullize_ransack.each do |var|
           @MEM.search[var] = nil if @MEM.search
         end
-        redirect_to controller: controller_name, action: 'index', q: @MEM.search
+        redirect_to controller: controller_name, action: 'index' #, q: @MEM.search
       end
     else
       reload_tables_for_select
@@ -164,7 +157,44 @@ class ApplicationController < ActionController::Base
   end
 
   def administration
+    administrative_set true
     render 'index'
+  end
+
+  def leave_administration
+    administrative_set false
+    redirect_to controller_name.underscore.downcase.to_sym
+  end
+
+  private
+
+  def remember_param param
+    controller_mem_set(param, params[param]) if params.has_key? param
+    params[param] = controller_mem_get(param)
+  end
+
+  def remember_sortlink
+    if params.deep_has_key? :q, :s
+      controller_mem_set :s, params[:q][:s]
+    elsif params.has_key? :q
+      params[:q].merge!({ s: controller_mem_get(:s) })
+    end
+  end
+
+  def administrative_set bool
+    controller_mem_set :administrative, bool
+    @administrative_mode = bool
+  end
+
+  def controller_mem_set prefix, val
+    @MEM.send(
+      "#{prefix.to_s}_#{controller_name.singularize.underscore}=",
+      val
+    )
+  end
+
+  def controller_mem_get prefix
+    @MEM.send("#{prefix.to_s}_#{controller_name.singularize.underscore}")
   end
 
 end

@@ -8,8 +8,6 @@
 			remote: true,
 			class: "decorated_wrap" do |s| %> 
 
-			<%= render 'layouts/actions_remember_fields', s: s %>
-
 			<div>
 				<%= s.label :ident %>
 				<%= s.search_field :ident_or_description_cont, autocomplete: "off", autofocus: "autofocus" %>

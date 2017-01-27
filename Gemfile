@@ -46,7 +46,7 @@ gem 'localtunnel'
 
 gem 'yaml_db'
 
-gem  'kaminari'
+gem 'kaminari', git: 'https://github.com/kaminari/kaminari'
 
 gem 'recursive-open-struct'
 

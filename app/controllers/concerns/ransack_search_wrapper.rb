@@ -10,34 +10,10 @@ module RansackSearchWrapper
 	    @result = @search.result.send(:preload, preload) if !preload.nil?
 	    @result = @result.page(params[:page]) if !paginate.nil?
 
-
 	    if  @result.count == 1 && !request.xhr?.nil? && autoshow
-	    	# if ransack searching during typing ends up showing one result,
-	    	# and if request is not first page load (request.xhr?.nil? will return nil first time, then only false)
-	    	# and if option enabled (default yes)
-	    	# show it in detailed view
-	    	# set this single result as instance variable (singular form) 
-	    	# for controller "show" action, then render templates defined for "show" action
-	    	instance_variable_set('@'+controller_name.singularize, @result.first)
-	      	params[:id] = @result.first.id
-	    	action_respond_to "show", :js
-	    else
-	    	# when item is manually selected
-	    	# only for show controller actions
-	    	if !params[:id].nil? && action_name == 'show' 
-	    		instance_variable_set('@'+controller_name.singularize, @result.find(params[:id]))
-	    	end	
+	    	func = "#{controller_name.singularize.underscore}_path".to_sym
+	    	redirect_to public_send(func, @result.first.id)
 	    end
     end
-
-    def action_respond_to action, *responses
-	    respond_to do |format|
-		    responses.each do |response|
-		        format.send(response) {
-		          	render action
-		        }
-		    end
-	    end
-	end
 
 end

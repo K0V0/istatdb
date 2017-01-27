@@ -18,11 +18,16 @@
 
 					<% if opts[:is_sortlink] %>
 
-						<%= render('layouts/sort_links',
-							fields: [field],
-							obj: @search,
-							action: :search
-						) %>
+						<th> 
+							<%= sort_link(
+								@search, 
+								field,
+								{ 
+									action: :search
+								},
+								remote: true
+							) %> 
+						</th>
 
 					<% else %>
 
