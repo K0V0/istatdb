@@ -8,7 +8,6 @@ class GoodsController < ApplicationController
 			default_order: "ident asc",
 			paginate: true
 		);
-		#searcher_load_manufacturers_by_impexpcompany
 	}
 
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]

@@ -8,7 +8,7 @@
 			remote: true,
 			class: "decorated_wrap" do |s| %> 
 
-			<%#= hidden_field :page, :reset, 1 %>
+			<%= hidden_field_tag :reset_to_first_page, false %>
 
 			<div>
 				<%= s.label :ident %>

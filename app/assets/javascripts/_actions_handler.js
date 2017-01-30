@@ -20,7 +20,7 @@ ActionsHandler.prototype = {
 			totok.removeAllSelected();
 		});
 		$(document).on('input', "section.search_bar > form", function(e) {
-			//totok.preserve_checked();
+		    $(this).find('input#reset_to_first_page').val('true');
 		    $(this).submit();
 		});
 		$(document).on('click', "#clear_search", function(e) {

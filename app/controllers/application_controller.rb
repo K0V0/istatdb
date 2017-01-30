@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
 
     @administrative_mode = controller_mem_get :administrative
 
+    params[:page] = 1 if params[:reset_to_first_page] == 'true'
+    params[:reset_to_first_page] = 'false'
+
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
@@ -182,7 +185,7 @@ class ApplicationController < ActionController::Base
   def remember_sortlink
     if params.deep_has_key? :q, :s
       controller_mem_set :s, params[:q][:s]
-    elsif params.has_key? :q
+    elsif params.has_key? :q && !params[:q].blank?
       params[:q].merge!({ s: controller_mem_get(:s) })
     end
   end
