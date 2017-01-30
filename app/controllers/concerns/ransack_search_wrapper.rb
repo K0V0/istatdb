@@ -10,9 +10,12 @@ module RansackSearchWrapper
 	    @result = @search.result.send(:preload, preload) if !preload.nil?
 	    @result = @result.page(params[:page]) if !paginate.nil?
 
-	    if  @result.count == 1 && !request.xhr?.nil? && autoshow
-	    	func = "#{controller_name.singularize.underscore}_path".to_sym
-	    	redirect_to public_send(func, @result.first.id)
+	    if @result.count == 1 && !request.xhr?.nil? && autoshow
+	    	#func = "#{controller_name.singularize.underscore}_url".to_sym
+	    	#redirect_to public_send(func, @result.first.id) and return
+
+	    	#redirect_to :show
+	    	#redirect_to controller: controller_name, action: "show", id: @result.first.id
 	    end
     end
 

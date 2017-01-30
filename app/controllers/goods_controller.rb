@@ -1,13 +1,14 @@
 class GoodsController < ApplicationController
 
 	before_action(only: [:index, :search, :show, :administration]) {
+		searcher_load_manufacturers_by_impexpcompany
 		searcher_for(
 			object: Good, 
 			preload: :local_taric,
 			default_order: "ident asc",
 			paginate: true
 		);
-		searcher_load_manufacturers_by_impexpcompany
+		#searcher_load_manufacturers_by_impexpcompany
 	}
 
 	before_action :form_searchfields_vars, only: [:new, :edit, :update]

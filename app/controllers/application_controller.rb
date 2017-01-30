@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search_action
-    
+
   end
 
   def new_action
