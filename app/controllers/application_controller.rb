@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
 
     @administrative_mode = controller_mem_get :administrative
 
+    params[:page] = 1 if params[:reset_to_first_page] == 'true'
+    params[:reset_to_first_page] = 'false'
+
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
