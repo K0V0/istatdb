@@ -1,16 +1,26 @@
 class GoodsController < ApplicationController
 
 	before_action(only: [:index, :search, :show, :administration]) {
+
 		searcher_load_manufacturers_by_impexpcompany
+
 		searcher_for(
 			object: Good, 
 			preload: :local_taric,
-			default_order: "ident asc",
+			#default_order: "ident asc",
 			paginate: true
 		);
 	}
 
-	before_action :form_searchfields_vars, only: [:new, :edit, :update]
+	before_action(only: [:new, :edit, :update]) {
+
+		load_associated_all(
+			:local_tarics,
+			:impexpcompanies,
+			:manufacturers,
+			:uom_types
+		)
+	}
 
 	def show
 		@makers = @good.manufacturers
@@ -21,16 +31,17 @@ class GoodsController < ApplicationController
 	end
 
 	def new
-		if !@MEM.search.blank?
+		# speed up adding new good(s) - preload fields in form with values from search window, for example adding searched item that was not found (not in database yet)
+		if !@MEM.q_good.blank?
 			@good.assign_attributes(
 				ident: 
-					@MEM.search[:ident_cont] || @MEM.search[:ident_or_description_cont],
+					@MEM.q_good[:ident_cont] || @MEM.q_good[:ident_or_description_cont],
 				description: 
-					@MEM.search[:description_cont],
+					@MEM.q_good[:description_cont],
 				impexpcompany_company_name: 
-					@impexpcompanies.where(id: @MEM.search[:impexpcompany_filter]).first.try(:company_name),
+					@impexpcompanies.where(id: @MEM.q_good[:impexpcompany_filter]).first.try(:company_name),
 				manufacturer_name: 
-					@manufacturers.where(id: @MEM.search[:manufacturer_filter]).first.try(:name)
+					@manufacturers.where(id: @MEM.q_good[:manufacturer_filter]).first.try(:name)
 			)
 		end
 	end
@@ -41,13 +52,15 @@ class GoodsController < ApplicationController
 
 	def create
 		if Good.exists? ident: params[:good][:ident]
+			# if good(s) exists, offer option to assign them to another intrastat client or importer/exporter
 			@good = Good.new(permitted_pars)
 			add_next = !params[:create_and_next].blank?
+
 			if @good.valid?
 				redirect_to(controller: :goods, action: :index, q: @MEM.search) if !add_next
 				if add_next
 					@good.ident, @good.description = "", ""
-					reload_tables_for_select
+					#reload_tables_for_select
 					render "new"
 				end
 			else
@@ -81,13 +94,6 @@ class GoodsController < ApplicationController
 
 	private 
 
-	def form_searchfields_vars 
-		@local_tarics = LocalTaric.all
-		@impexpcompanies = Impexpcompany.all
-		@manufacturers = Manufacturer.all
-		@uom_types = UomType.all
-	end
-
 	def permitted_pars
 		params.require(:good).permit(
 			:ident, 
@@ -102,6 +108,7 @@ class GoodsController < ApplicationController
 	end
 
 	def reload_tables_for_select
+		# reloads select tables giving more accurate results to select from after failed validation or when adding another record with simmilar or same associations
 		reload_result_by_params_nested(
 			LocalTaric: {
 				kncode: :starts,
@@ -113,17 +120,16 @@ class GoodsController < ApplicationController
 	end
 
 	def searcher_load_manufacturers_by_impexpcompany
-		client_id = nil
-		if params.has_key?(:q)
-			if !params[:q].blank?
-				client_id = params[:q][:impexpcompany_filter]
+		# select good(s) importers/exporters to choose from in importer/exporter dropdown menu of search window based on previously selected intrastat client 
+		if params.deep_has_key?(:q, :impexpcompany_filter)
+			if !(client_id = params[:q][:impexpcompany_filter]).blank?
+				@searcher_load_manufacturers_by_impexpcompany = (
+					Impexpcompany.find(client_id).manufacturers.order(:name)
+				)
 			end
 		end
-		if !client_id.blank?
-			@searcher_load_manufacturers_by_impexpcompany = Impexpcompany.find(client_id).manufacturers.order(:name)
-		else
-			@searcher_load_manufacturers_by_impexpcompany = Manufacturer.all.order(:name)
-		end
+		# in case of no intrastat client selected, load all
+		@searcher_load_manufacturers_by_impexpcompany ||= Manufacturer.all.order(:name)
 	end
 
 end

@@ -68,6 +68,8 @@ class Good < ActiveRecord::Base
 		return true
 	end
 
+	default_scope { order(ident: :asc) }
+
 	scope :impexpcompany_filter, -> (pars) { 
 		self
 		.includes(:impexpcompanies)

@@ -20,6 +20,8 @@ class Manufacturer < ActiveRecord::Base
 
 	after_create :assignments
 
+	default_scope { order(name: :asc) }
+
 	def intrastat_clients
 		impexpcompany_manufacturers.collect { |w|
 			w.impexpcompany.company_name

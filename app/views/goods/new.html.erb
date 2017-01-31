@@ -29,7 +29,9 @@
 		<article class="decorated_wrap" id="new_taricnum_search">
 
 			<%= render('layouts/new_select_section', 
+				# reference to form object
 				obj: t,
+				# input fields and options
 				input_fields: { 
 					local_taric_kncode: {
 						required: true,
@@ -41,9 +43,13 @@
 						autocomplete: false
 					}
 				},
+				# activerecord object with records to choose from
 				results_obj: @local_tarics,
-				cols: [:kncode, :description], 
+				# which columns to display
+				cols: [:kncode, :description],
+				# in which columns to highlight matches 
 				cols_highlighted: {
+					# defining input field source for matching for each column
 					kncode: :kncode,
 					description: :description
 				}

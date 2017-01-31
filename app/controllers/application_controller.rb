@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     @ivp_name = "@#{controller_name.pluralize.underscore}"
     @ivs_name = "@#{controller_name.singularize.underscore}"
-    @model = controller_name.classify.constantize
+    @model = controller_name.classify.constantize rescue nil
 
     @MEM = Mem.new(session) if !defined? @MEM
 
@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
       instance_variable_set(
         @ivs_name,
         @model.new
-      )
+      ) 
   end
 
   def show_action
@@ -102,6 +102,12 @@ class ApplicationController < ActionController::Base
     tmp.destroy
   end
 
+  def load_associated_all *tables
+    tables.each do |table|
+      instance_variable_set("@#{table.to_s}", table.to_s.classify.constantize.all)
+    end
+  end
+
   def createeeee nullize: [], nullize_ransack: []
     instance_variable_set(
       @ivs_name,
@@ -118,7 +124,7 @@ class ApplicationController < ActionController::Base
           @ivs_name,
           tmp
         )
-        reload_tables_for_select
+        #reload_tables_for_select
         render "new"
       else
         nullize_ransack.each do |var|

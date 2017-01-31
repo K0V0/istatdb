@@ -9,4 +9,6 @@ class Impexpcompany < ActiveRecord::Base
 	validates :company_name, presence: true
 	validates_uniqueness_of :company_name, scope: :affiliated_office
 
+	default_scope { order(company_name: :asc) }
+
 end
