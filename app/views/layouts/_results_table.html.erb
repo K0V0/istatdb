@@ -1,72 +1,61 @@
-<%
-model_meno = results_obj.model.name.underscore 
 
+<% 
 if defined? obj
-	form_object = instance_variable_get("@#{obj.object.class.name.underscore}")
-	active_field = {}
-	cols.each do |col|
-		active_field[col] = form_object.send(model_meno + '_' + col.to_s)
-	end
+	parent_instvar = instance_variable_get("@#{obj.object.class.name.underscore}") 
+#else
+	#parent_instvar = @search.try(:object).try(:model_name)
 end
 %>
 
-<% results_obj.each do |o| %>
+<% results_obj.each do |row| %>
 
-	<%
-	if !form_object.blank?
-		active = true
-		cols.each do |col|
-			if o.send(col) != active_field[col]
-				active = false
-				break
-			end
-		end
+	<% 
+	active = results_obj.length == 1 
+	if defined? obj
+		true_array = []
+		cols.each do |field| 
+			assoc_from_parent_obj = parent_instvar.send("#{results_obj.model_name.to_s.underscore}_#{field.to_s}")
+			assoc_from_assocs = row.send(field)
+			assoc_from_assocs == assoc_from_parent_obj ? (true_array << true) : (true_array << false)
+		end 
+		active = !true_array.include?(false)
 	end
+	#active = results_obj.length == 1 
 	%>
 
 	<tr <%= "class=selected".html_safe if active %>>
 
-	<% cols.each do |field| %>
+		<% cols.each do |field| %>
 
-		<td> 
+			<td> 
 
-			<% if field.is_a? Symbol %>
+				<% if field.is_a? Symbol %>
 
-				<% if defined? cols_highlighted[field] %>
-
-					<% if (cols_highlighted[field].is_a? Symbol)||(cols_highlighted[field].is_a? String) %>
-
-						<%= highlight_search o, field, cols_highlighted[field] %>
-
-					<% else %>
-
-						<% cols_highlighted[field].each do |f| %>
-
-							<%= higlight_search o, field, f %>
-
+					<% if defined? cols_highlighted[field] %>
+						<% if cols_highlighted[field].is_a? Array %>
+							<% cols_highlighted[field].each do |f| %>
+								<%= higlight_search row, field, f %>
+							<% end %>
+						<% else %>
+							<%= highlight_search row, field, cols_highlighted[field] %>
 						<% end %>
-
 					<% end %>
 
 				<% else %>
-					<%= o.send(field) %>
+
+					<%= field.html_safe %>
+
 				<% end %>
 
-			<% else %>
+			</td>
+			
+		<% end %>
 
-				<%= field.html_safe %>
-
-			<% end %>
-
-		</td>
-		
-	<% end %>
-
-</tr>
+	</tr>
 
 <% end %>
 
-<%= render(
+<%#= render(
 	'layouts/no_results',
 	err_message: "new_#{model_meno}_search_no_results"
 ) if results_obj.length == 0 %>

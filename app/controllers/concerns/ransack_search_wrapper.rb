@@ -1,6 +1,6 @@
 module RansackSearchWrapper
 
-	def searcher_for object: nil, autoshow: true, default_order: nil, preload: nil, joins: nil, paginate: nil
+	def searcher_for object: nil, autoshow: true, default_order: nil, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false
 
 	    object ||= controller_name.classify.constantize
 	    @search = object.ransack(params[:q]) if joins.nil?
@@ -10,8 +10,12 @@ module RansackSearchWrapper
 	    @result = @search.result.send(:preload, preload) if !preload.nil?
 	    @result = @result.page(params[:page]) if !paginate.nil?
 
-	    if  @result.count == 1 && !request.xhr?.nil? && autoshow && action_name == "search"
+	    if @result.count == 1 && !request.xhr?.nil? && autoshow && action_name == "search"
 	    	redirect_to controller: controller_name, action: :show, id: @result.first.id
+	    end
+
+	    if @result.count == 1 && generate_single_result_var
+	    	@result1 = @result.first
 	    end
     end
 

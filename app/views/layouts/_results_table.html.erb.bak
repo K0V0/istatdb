@@ -1,0 +1,80 @@
+<%
+model_meno = results_obj.model.name.underscore 
+%>
+
+
+	<%#= instance_variable_get("@#{obj.object.class.name.underscore}") %>
+	<%#= cols %>
+	<%#= @result1 %>
+
+<%
+if defined? obj
+	# get attributes from instance varibles
+	form_object = instance_variable_get("@#{obj.object.class.name.underscore}")
+	active_field = {}
+	cols.each do |col|
+		active_field[col] = form_object.send(model_meno + '_' + col.to_s)
+	end
+end
+%>
+
+<% results_obj.each do |o| %>
+
+	<%
+	if !form_object.blank?
+		active = true
+		cols.each do |col|
+			if o.send(col) != active_field[col]
+				active = false
+				break
+			end
+		end
+	end
+	%>
+
+	<tr <%= "class=selected".html_safe if active %>>
+
+	<% cols.each do |field| %>
+
+		<td> 
+
+			<% if field.is_a? Symbol %>
+
+				<% if defined? cols_highlighted[field] %>
+
+					<% if (cols_highlighted[field].is_a? Symbol)||(cols_highlighted[field].is_a? String) %>
+
+						<%= highlight_search o, field, cols_highlighted[field] %>
+
+					<% else %>
+
+						<% cols_highlighted[field].each do |f| %>
+
+							<%= higlight_search o, field, f %>
+
+						<% end %>
+
+					<% end %>
+
+				<% else %>
+					<%= o.send(field) %>
+				<% end %>
+
+			<% else %>
+
+				<%= field.html_safe %>
+
+			<% end %>
+
+		</td>
+		
+	<% end %>
+
+</tr>
+
+<% end %>
+
+<%= render(
+	'layouts/no_results',
+	err_message: "new_#{model_meno}_search_no_results"
+) if results_obj.length == 0 %>
