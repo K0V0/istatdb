@@ -102,9 +102,19 @@ class ApplicationController < ActionController::Base
     tmp.destroy
   end
 
-  def load_associated_all *tables
-    tables.each do |table|
+  def load_associated_all **tables
+    tables.each do |table, opts|
       instance_variable_set("@#{table.to_s}", table.to_s.classify.constantize.all)
+      if !opts.blank?
+        if !(a = opts[:place_first]).blank?
+          log a
+          first = table.to_s.classify.constantize.find(a)
+            #instance_variable_set(
+              #{}"@#{table.to_s}",
+              #instance_variable_get("@#{table.to_s}")
+            #)
+        end
+      end
     end
   end
 

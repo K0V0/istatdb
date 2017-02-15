@@ -7,7 +7,6 @@ class GoodsController < ApplicationController
 		searcher_for(
 			object: Good, 
 			preload: :local_taric,
-			#default_order: "ident asc",
 			paginate: true
 		);
 	}
@@ -15,10 +14,15 @@ class GoodsController < ApplicationController
 	before_action(only: [:new, :edit, :update]) {
 
 		load_associated_all(
-			:local_tarics,
-			:impexpcompanies,
-			:manufacturers,
-			:uom_types
+			local_tarics: {},
+			## give a id of record
+			impexpcompanies: {
+				place_first: @MEM.q_good[:impexpcompany_filter]
+			}, 
+			manufacturers: {
+				place_first: @MEM.q_good[:manufacturer_filter]
+			}, 
+			uom_types: {}
 		)
 	}
 
