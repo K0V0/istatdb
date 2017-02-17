@@ -1,4 +1,4 @@
-class LocalTaricController < ApplicationController
+class LocalTaricsController < ApplicationController
 
     before_action(only: [:index, :search, :show, :administration]) {
       searcher_for(

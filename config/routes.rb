@@ -149,7 +149,7 @@ Rails.application.routes.draw do
     to: "manufacturers#administration"
 
   get "manufacturersdb/leave_administrative",
-    to: "manufactuers#leave_administration"
+    to: "manufacturers#leave_administration"
 
   #ransack search action
   get "manufacturersdb/search",
@@ -165,53 +165,53 @@ Rails.application.routes.draw do
 
   #index
   get "localtaricdb",
-    to: "local_taric#index",
+    to: "local_tarics#index",
     as: "local_tarics"
 
   #new
   get "localtaricdb/new",
-    to: "local_taric#new",
+    to: "local_tarics#new",
     as: "new_local_taric" 
 
   #show
   get "localtaricdb/:id/details",
-    to: "local_taric#show",
+    to: "local_tarics#show",
     as: "local_taric"
 
   #edit
   get "localtaricdb/:id/edit",
-    to: "local_taric#edit",
+    to: "local_tarics#edit",
     as: "edit_local_taric"
 
   #update
   patch "localtaricdb/:id/update",
-    to: "local_taric#update",
+    to: "local_tarics#update",
     as: "update_local_taric"
 
   #create
   post "localtaricdb",
-    to: "local_taric#create",
+    to: "local_tarics#create",
     as: "create_local_taric"
 
   #administration
   get "localtaricdb/edit",
-    to: "local_taric#administration"
+    to: "local_tarics#administration"
 
   get "localtaricdb/leave_administrative",
-    to: "local_taric#leave_administration"
+    to: "local_tarics#leave_administration"
 
   #delete
   delete "localtaricdb/:id/delete",
-    to: "local_taric#delete",
+    to: "local_tarics#delete",
     as: "delete_local_taric"
 
   #index
   get "localtaricdb/search",
-    to: "local_taric#search",
+    to: "local_tarics#search",
     as: "search_local_taric"
   
   get "localtaricdb/export",
-    to: "local_taric#csv_export"
+    to: "local_tarics#csv_export"
 
 
 

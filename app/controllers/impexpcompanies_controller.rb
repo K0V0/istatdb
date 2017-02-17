@@ -1,6 +1,6 @@
 class ImpexpcompaniesController < ApplicationController
 
-	before_action(only: [:index, :search, :show, :administration, :delete]) {
+	  before_action(only: [:index, :search, :show, :administration, :delete]) {
       searcher_for(
         autoshow:false,
         paginate: true
