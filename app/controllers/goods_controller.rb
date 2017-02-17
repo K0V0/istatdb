@@ -5,7 +5,6 @@ class GoodsController < ApplicationController
 		searcher_load_manufacturers_by_impexpcompany
 
 		searcher_for(
-			object: Good, 
 			preload: :local_taric,
 			paginate: true
 		);

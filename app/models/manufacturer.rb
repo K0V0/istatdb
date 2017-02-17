@@ -1,5 +1,8 @@
 class Manufacturer < ActiveRecord::Base
 
+	extend OrderAsSpecified
+
+	include Defaults
 	include AssocValidator
 
 	has_many :goods_manufacturers, inverse_of: :manufacturer
@@ -20,7 +23,9 @@ class Manufacturer < ActiveRecord::Base
 
 	after_create :assignments
 
-	default_scope { order(name: :asc) }
+	scope :default_order, -> { 
+		order(name: :asc)
+	}
 
 	def intrastat_clients
 		impexpcompany_manufacturers.collect { |w|

@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   def index_action
     instance_variable_set(
       @ivp_name,
-      @model.all
+      @model.all.try(:default_order)
     )
   end
 
@@ -104,17 +104,23 @@ class ApplicationController < ActionController::Base
 
   def load_associated_all **tables
     tables.each do |table, opts|
-      instance_variable_set("@#{table.to_s}", table.to_s.classify.constantize.all)
+      load_to_instance_var = true
+      
       if !opts.blank?
         if !(a = opts[:place_first]).blank?
-          log a
-          first = table.to_s.classify.constantize.find(a)
-            #instance_variable_set(
-              #{}"@#{table.to_s}",
-              #instance_variable_get("@#{table.to_s}")
-            #)
+          instance_variable_set(
+            "@#{table.to_s}",
+            table.to_s.classify.constantize.order_this_id_first(a)
+          )
+          load_to_instance_var = false
         end
       end
+
+      instance_variable_set(
+        "@#{table.to_s}",
+        table.to_s.classify.constantize.all.try(:default_order)
+      ) if load_to_instance_var == true
+
     end
   end
 

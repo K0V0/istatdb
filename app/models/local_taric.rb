@@ -1,5 +1,9 @@
 class LocalTaric < ActiveRecord::Base
 
+	extend OrderAsSpecified
+
+	include Defaults
+
 	has_many :goods, inverse_of: :local_taric
 
 	validates :kncode, presence: true
@@ -9,12 +13,14 @@ class LocalTaric < ActiveRecord::Base
 	validates :description, presence: true
 	validates_uniqueness_of :kncode, scope: :description
 	
-	default_scope { order(kncode: :asc) }	
-
 	def kncode_length_valid
 		if !(kncode.length == 8 || kncode.length == 10)
 			errors.add(:kncode, :exactly)
 		end
 	end
+
+	scope :default_order, -> { 
+		order(kncode: :asc)
+	}
 	
 end

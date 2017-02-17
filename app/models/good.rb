@@ -1,5 +1,8 @@
 class Good < ActiveRecord::Base
 
+	extend OrderAsSpecified
+
+	include Defaults
 	include AssocValidator
 	include AssocValidatorUoms
 	include AssocFillup
@@ -68,7 +71,9 @@ class Good < ActiveRecord::Base
 		return true
 	end
 
-	default_scope { order(ident: :asc) }
+	scope :default_order, -> { 
+		order(ident: :asc)
+	}
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self

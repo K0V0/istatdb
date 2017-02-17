@@ -3,7 +3,6 @@ class ImpexpcompaniesController < ApplicationController
 	before_action(only: [:index, :search, :show, :administration, :delete]) {
       searcher_for(
         autoshow:false,
-        default_order: "name asc",
         paginate: true
       ); 
     }

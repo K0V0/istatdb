@@ -3,7 +3,6 @@ class ManufacturersController < ApplicationController
     before_action(only: [:index, :search, :show, :administration]) {
       searcher_for(
         autoshow:false,
-        default_order: "name asc",
         paginate: true,
         preload: [:impexpcompanies, :impexpcompany_manufacturers]
       ); 

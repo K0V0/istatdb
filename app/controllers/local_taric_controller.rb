@@ -2,7 +2,6 @@ class LocalTaricController < ApplicationController
 
     before_action(only: [:index, :search, :show, :administration]) {
       searcher_for(
-        default_order: "kncode asc",
         paginate: true,
         autoshow: false
       )
