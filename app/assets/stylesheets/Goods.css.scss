@@ -10,6 +10,7 @@ table#goods {
 
 		&.good_kncode, #kncode_sort_link {
 			white-space: nowrap;
+			width:1%;
 		}
 
 		&.good_ident, #ident_sort_link {
@@ -28,6 +29,11 @@ table#goods {
 
    		td, th {
    			display: block;
+   			width: auto !important;
+
+   			a {
+   				width: auto !important;
+   			}
 
    			&.good_ident, #ident_sort_link {
 				font-weight: bold;
