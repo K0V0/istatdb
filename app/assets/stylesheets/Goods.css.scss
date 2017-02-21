@@ -16,10 +16,6 @@ table#goods {
 		&.good_ident, #ident_sort_link {
 			width:50%;
 		}
-
-		&.edit_item, &.delete_item {
-			width:1%;
-		}
 	}
 }
 
@@ -28,12 +24,6 @@ table#goods {
    table#goods {
 
    		td, th {
-   			display: block;
-   			width: auto !important;
-
-   			a {
-   				width: auto !important;
-   			}
 
    			&.good_ident, #ident_sort_link {
 				font-weight: bold;

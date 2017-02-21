@@ -44,6 +44,9 @@ $('#delete_good_from_search, #edit_good_from_search').remove();
 $('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
 
 if ('<%= @administrative_mode %>' == 'true') {
+
+	$('section.actions').css({ 'display':'block' });
+
 	ACTIONS.refresh();
 }
 

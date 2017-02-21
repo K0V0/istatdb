@@ -1,24 +1,19 @@
-table#local_taric {
+table#local_tarics {
 
 	tbody {
 
 		td.local_taric_kncode {
 			white-space: nowrap;
 		}
-
-		td.edit_item, td.delete_item {
-			width:1%;
-		}
 	}
 }
 
 @media only screen and (max-width: 480px) {
    
-   table#local_taric {
+   table#local_tarics {
 
 		td, th {
-			display: block;
-
+			
 			&.local_taric_kncode {
 				text-align: right;
 				font-weight: bold;
@@ -27,10 +22,6 @@ table#local_taric {
 
 			a#kncode_sort_link {
 				float: right;
-			}
-
-			&.edit_item, &.delete_item {
-				width: auto;
 			}
 		}
 	}

@@ -43,10 +43,10 @@ sk:
 
     associated_to_impexpcompany: "Príslušnosť ku klientom"
 
-  local_taric:
+  local_tarics:
 
     table_cap_additional_info: "Identifikácia"
-    local_taric_table_description_cap: "Popis, doplnk. informácie"
+    local_tarics_table_description_cap: "Popis, doplnk. informácie"
     table_cap_knnumber: "kód KN"
     new_local_taric_search_no_results: "Žiadna položka lokálnej databázy Nomenklatúrnych kódov nevyhovuje kritériam vyhľadávania. Nová položka bude vygenerovaná."
 

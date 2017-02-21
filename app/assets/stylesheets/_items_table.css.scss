@@ -11,6 +11,13 @@ section.items_table {
 
 table.items {
 	width:100%;
+
+	td, th {
+
+		&.edit_item, &.delete_item {
+			width:1%;
+		}
+	}
 	
 	tfoot {
 
@@ -40,6 +47,15 @@ table.items {
 @media only screen and (max-width: 480px) {
 
 	table.items {
+
+		td, th {
+			display: block;
+			width: auto !important;
+
+			a {
+				width: auto !important;
+			}
+		}
 
 		td.checkbox {
 			float: left;
