@@ -1946,7 +1946,7 @@ goods:
     - ''
     - '2017-01-17 08:56:35.078860'
     - '2017-01-17 08:56:35.078860'
-    - 10
+    - 3
   - - 327
     - DT06-12SSD-P012
     - ''
@@ -3267,6 +3267,120 @@ goods:
     - '2017-02-16 10:02:12.003390'
     - '2017-02-16 10:02:12.003390'
     - 3
+  - - 547
+    - KL-273R-12-008a
+    - fibro-punch special
+    - '2017-02-20 10:04:33.584498'
+    - '2017-02-20 10:04:33.584498'
+    - 52
+  - - 548
+    - 350690-3
+    - contact pin
+    - '2017-02-22 11:12:49.893590'
+    - '2017-02-22 11:12:49.893590'
+    - 3
+  - - 549
+    - t1pofti63508
+    - terminal
+    - '2017-02-22 11:17:15.867925'
+    - '2017-02-22 11:17:15.867925'
+    - 3
+  - - 550
+    - 3-929080-1
+    - ''
+    - '2017-02-23 08:59:08.027565'
+    - '2017-02-23 08:59:08.027565'
+    - 4
+  - - 551
+    - 12124582-L
+    - ''
+    - '2017-02-23 09:52:14.314813'
+    - '2017-02-23 09:52:14.314813'
+    - 3
+  - - 552
+    - '180908'
+    - ''
+    - '2017-02-23 10:03:57.696198'
+    - '2017-02-23 10:03:57.696198'
+    - 4
+  - - 553
+    - sms4p1
+    - ''
+    - '2017-02-23 10:07:33.795895'
+    - '2017-02-23 10:07:33.795895'
+    - 4
+  - - 554
+    - sm16m11tk6
+    - ''
+    - '2017-02-23 10:08:37.473807'
+    - '2017-02-23 10:08:37.473807'
+    - 3
+  - - 555
+    - 1544334-1
+    - ''
+    - '2017-02-23 10:09:36.581346'
+    - '2017-02-23 10:09:36.581346'
+    - 4
+  - - 556
+    - sms12R1
+    - ''
+    - '2017-02-23 10:10:32.925212'
+    - '2017-02-23 10:10:32.925212'
+    - 4
+  - - 557
+    - '323680'
+    - ''
+    - '2017-02-23 10:11:45.773022'
+    - '2017-02-23 10:11:45.773022'
+    - 3
+  - - 558
+    - 1-480586-0
+    - ''
+    - '2017-02-23 11:01:15.299586'
+    - '2017-02-23 11:01:15.299586'
+    - 4
+  - - 559
+    - 163301-6
+    - ''
+    - '2017-02-23 11:09:54.220641'
+    - '2017-02-23 11:09:54.220641'
+    - 3
+  - - 560
+    - 275r16v
+    - ''
+    - '2017-02-24 14:09:36.298803'
+    - '2017-02-24 14:09:36.298803'
+    - 3
+  - - 561
+    - 926901-1
+    - ''
+    - '2017-02-24 14:24:46.218537'
+    - '2017-02-24 14:24:46.218537'
+    - 3
+  - - 562
+    - SUB-FT033
+    - ''
+    - '2017-02-24 14:29:55.419074'
+    - '2017-02-24 14:29:55.419074'
+    - 3
+  - - 563
+    - SUB-FT035
+    - ''
+    - '2017-02-24 14:31:26.875149'
+    - '2017-02-24 14:31:26.875149'
+    - 3
+  - - 564
+    - SUB-FT029
+    - ''
+    - '2017-02-24 14:35:29.517028'
+    - '2017-02-24 14:35:29.517028'
+    - 3
+  - - 565
+    - sub-gr011
+    - husqvarna grommet used on p1 project
+    - '2017-02-24 14:54:40.567448'
+    - '2017-02-24 14:54:40.567448'
+    - 13
 
 ---
 goods_impexpcompanies:
@@ -6037,6 +6151,101 @@ goods_impexpcompanies:
     - 3
     - '2017-02-16 10:02:12.010837'
     - '2017-02-16 10:02:12.010837'
+  - - 553
+    - 547
+    - 3
+    - '2017-02-20 10:04:33.632798'
+    - '2017-02-20 10:04:33.632798'
+  - - 554
+    - 548
+    - 3
+    - '2017-02-22 11:12:49.925231'
+    - '2017-02-22 11:12:49.925231'
+  - - 555
+    - 549
+    - 3
+    - '2017-02-22 11:17:15.873958'
+    - '2017-02-22 11:17:15.873958'
+  - - 556
+    - 550
+    - 3
+    - '2017-02-23 08:59:08.033490'
+    - '2017-02-23 08:59:08.033490'
+  - - 557
+    - 551
+    - 3
+    - '2017-02-23 09:52:14.320970'
+    - '2017-02-23 09:52:14.320970'
+  - - 558
+    - 552
+    - 3
+    - '2017-02-23 10:03:57.702364'
+    - '2017-02-23 10:03:57.702364'
+  - - 559
+    - 553
+    - 3
+    - '2017-02-23 10:07:33.802087'
+    - '2017-02-23 10:07:33.802087'
+  - - 560
+    - 554
+    - 3
+    - '2017-02-23 10:08:37.480248'
+    - '2017-02-23 10:08:37.480248'
+  - - 561
+    - 555
+    - 3
+    - '2017-02-23 10:09:36.587372'
+    - '2017-02-23 10:09:36.587372'
+  - - 562
+    - 556
+    - 3
+    - '2017-02-23 10:10:32.932558'
+    - '2017-02-23 10:10:32.932558'
+  - - 563
+    - 557
+    - 3
+    - '2017-02-23 10:11:45.779004'
+    - '2017-02-23 10:11:45.779004'
+  - - 564
+    - 558
+    - 3
+    - '2017-02-23 11:01:15.305957'
+    - '2017-02-23 11:01:15.305957'
+  - - 565
+    - 559
+    - 3
+    - '2017-02-23 11:09:54.227339'
+    - '2017-02-23 11:09:54.227339'
+  - - 566
+    - 560
+    - 3
+    - '2017-02-24 14:09:36.306508'
+    - '2017-02-24 14:09:36.306508'
+  - - 567
+    - 561
+    - 3
+    - '2017-02-24 14:24:46.224658'
+    - '2017-02-24 14:24:46.224658'
+  - - 568
+    - 562
+    - 3
+    - '2017-02-24 14:29:55.425722'
+    - '2017-02-24 14:29:55.425722'
+  - - 569
+    - 563
+    - 3
+    - '2017-02-24 14:31:26.881325'
+    - '2017-02-24 14:31:26.881325'
+  - - 570
+    - 564
+    - 3
+    - '2017-02-24 14:35:29.524334'
+    - '2017-02-24 14:35:29.524334'
+  - - 571
+    - 565
+    - 3
+    - '2017-02-24 14:54:40.574007'
+    - '2017-02-24 14:54:40.574007'
 
 ---
 goods_manufacturers:
@@ -8807,6 +9016,101 @@ goods_manufacturers:
     - 4
     - '2017-02-16 10:02:12.017898'
     - '2017-02-16 10:02:12.017898'
+  - - 553
+    - 547
+    - 248
+    - '2017-02-20 10:04:33.694624'
+    - '2017-02-20 10:04:33.694624'
+  - - 554
+    - 548
+    - 174
+    - '2017-02-22 11:12:49.942212'
+    - '2017-02-22 11:12:49.942212'
+  - - 555
+    - 549
+    - 116
+    - '2017-02-22 11:17:15.880101'
+    - '2017-02-22 11:17:15.880101'
+  - - 556
+    - 550
+    - 171
+    - '2017-02-23 08:59:08.039572'
+    - '2017-02-23 08:59:08.039572'
+  - - 557
+    - 551
+    - 173
+    - '2017-02-23 09:52:14.327064'
+    - '2017-02-23 09:52:14.327064'
+  - - 558
+    - 552
+    - 173
+    - '2017-02-23 10:03:57.709093'
+    - '2017-02-23 10:03:57.709093'
+  - - 559
+    - 553
+    - 173
+    - '2017-02-23 10:07:33.808300'
+    - '2017-02-23 10:07:33.808300'
+  - - 560
+    - 554
+    - 173
+    - '2017-02-23 10:08:37.528618'
+    - '2017-02-23 10:08:37.528618'
+  - - 561
+    - 555
+    - 173
+    - '2017-02-23 10:09:36.593678'
+    - '2017-02-23 10:09:36.593678'
+  - - 562
+    - 556
+    - 173
+    - '2017-02-23 10:10:32.942078'
+    - '2017-02-23 10:10:32.942078'
+  - - 563
+    - 557
+    - 173
+    - '2017-02-23 10:11:45.785055'
+    - '2017-02-23 10:11:45.785055'
+  - - 564
+    - 558
+    - 174
+    - '2017-02-23 11:01:15.312389'
+    - '2017-02-23 11:01:15.312389'
+  - - 565
+    - 559
+    - 174
+    - '2017-02-23 11:09:54.234163'
+    - '2017-02-23 11:09:54.234163'
+  - - 566
+    - 560
+    - 3
+    - '2017-02-24 14:09:36.312765'
+    - '2017-02-24 14:09:36.312765'
+  - - 567
+    - 561
+    - 174
+    - '2017-02-24 14:24:46.230998'
+    - '2017-02-24 14:24:46.230998'
+  - - 568
+    - 562
+    - 5
+    - '2017-02-24 14:29:55.479779'
+    - '2017-02-24 14:29:55.479779'
+  - - 569
+    - 563
+    - 5
+    - '2017-02-24 14:31:26.887578'
+    - '2017-02-24 14:31:26.887578'
+  - - 570
+    - 564
+    - 5
+    - '2017-02-24 14:35:29.530301'
+    - '2017-02-24 14:35:29.530301'
+  - - 571
+    - 565
+    - 223
+    - '2017-02-24 14:54:40.580528'
+    - '2017-02-24 14:54:40.580528'
 
 ---
 impexpcompanies:
@@ -10573,6 +10877,13 @@ impexpcompany_manufacturers:
     - 247
     - 
     - 
+  - - 248
+    - '2017-02-20 10:04:33.749655'
+    - '2017-02-20 10:05:18.476834'
+    - 3
+    - 248
+    - 
+    - 14
 
 ---
 local_tarics:
@@ -10682,11 +10993,11 @@ local_tarics:
     - '2016-12-01 10:19:13.885651'
     - '2016-12-01 10:19:13.885651'
   - - 19
-    - '84799080'
+    - '84799070'
     - "Časti pre špeciálne zariadenia inde neuvedené"
     - 
     - '2016-12-01 11:05:35.622702'
-    - '2016-12-01 11:05:35.622702'
+    - '2017-02-23 08:27:28.174764'
   - - 20
     - '39172900'
     - Sústavy tvarovaných neohybných polyamidových rúrok, BEZ príslušenstva
@@ -11487,7 +11798,7 @@ manufacturers:
     - 
     - '2016-11-29 08:27:36.554529'
     - '2016-11-29 08:27:36.554529'
-    - 7
+    - 8
   - - 4
     - Tesla Jihlava/CZ
     - 
@@ -11499,7 +11810,7 @@ manufacturers:
     - 
     - '2016-11-29 10:33:33.407663'
     - '2016-11-29 10:33:33.407663'
-    - 1
+    - 4
   - - 6
     - Techno Vyškov/CZ
     - 
@@ -12165,7 +12476,7 @@ manufacturers:
     - 
     - '2016-12-19 13:54:52.937346'
     - '2016-12-19 13:54:52.937346'
-    - 
+    - 1
   - - 117
     - Miroslav Perúžek/CZ
     - 
@@ -12495,7 +12806,7 @@ manufacturers:
     - 
     - '2016-12-20 10:13:47.809908'
     - '2016-12-20 10:13:47.809908'
-    - 
+    - 1
   - - 172
     - TechSpeed/PL
     - 
@@ -12507,13 +12818,13 @@ manufacturers:
     - 
     - '2016-12-20 10:37:22.111643'
     - '2016-12-20 10:37:22.111643'
-    - 22
+    - 29
   - - 174
     - Farnell/GB
     - 
     - '2016-12-20 13:46:16.850412'
     - '2016-12-20 13:46:16.850412'
-    - 61
+    - 65
   - - 175
     - Keyence/DE
     - 
@@ -12801,7 +13112,7 @@ manufacturers:
     - 
     - '2017-01-17 10:41:17.753278'
     - '2017-01-17 12:30:16.555353'
-    - 19
+    - 20
   - - 224
     - Zanker & Dittrich/DE
     - 
@@ -12946,6 +13257,12 @@ manufacturers:
     - '2017-02-15 09:09:34.005414'
     - '2017-02-15 09:09:34.005414'
     - 26
+  - - 248
+    - Fibro/DE
+    - 
+    - '2017-02-20 10:04:33.512214'
+    - '2017-02-20 10:04:33.512214'
+    - 1
 
 ---
 sessions:
@@ -12959,41 +13276,63 @@ sessions:
   - - 1
     - 7ac477f6ae9da0ad9b95370baeefc7d7
     - |
-      BAh7B0kiCE1FTQY6BkVUIgKgAgQIVToMTWVtRGF0YXsROhhhZG1pbmlzdHJh
+      BAh7B0kiCE1FTQY6BkVUIgLDAgQIVToMTWVtRGF0YXsSOhhhZG1pbmlzdHJh
       dGl2ZV9tb2RlMDoOa29udHJvbGVySSISbWFudWZhY3R1cmVycwY6BkVGOglw
       YWdlSSIABjsIVDoLc2VhcmNoSUM6IUFjdGlvbkNvbnRyb2xsZXI6OlBhcmFt
       ZXRlcnN7CEkiBnMGOwhUSSIABjsIVEkiDm5hbWVfY29udAY7CFRJIghuZXgG
       OwhUSSIZaW1wZXhwY29tcGFueV9maWx0ZXIGOwhUSSIABjsIVAY6D0BwZXJt
       aXR0ZWRGOgtxX2dvb2RJQzsLewhJIh5pZGVudF9vcl9kZXNjcmlwdGlvbl9j
-      b250BjsIVEkiAAY7CFRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CFRJIgAG
-      OwhUSSIYbWFudWZhY3R1cmVyX2ZpbHRlcgY7CFRJIgAGOwhUBjsMRjoTcV9t
-      YW51ZmFjdHVyZXJJQzsLewdJIg5uYW1lX2NvbnQGOwhUSSIABjsIVEkiGWlt
-      cGV4cGNvbXBhbnlfZmlsdGVyBjsIVEkiAAY7CFQGOwxGOhJxX2xvY2FsX3Rh
-      cmljSUM7C3sHSSIRa25jb2RlX3N0YXJ0BjsIVEkiAAY7CFRJIhVkZXNjcmlw
-      dGlvbl9jb250BjsIVEkiCnN0cm9qBjsIVAY7DEY6DnBhZ2VfZ29vZGkGOgpx
-      X2FwaUlDOwt7B0kiEWtuY29kZV9zdGFydAY7CFRJIgs4NTM2OTAGOwhUSSIV
-      ZGVzY3JpcHRpb25fY29udAY7CFRJIgAGOwhUBjsMRjoYYWRtaW5pc3RyYXRp
-      dmVfZ29vZEY6H2FkbWluaXN0cmF0aXZlX2xvY2FsX3RhcmljVDoLc19nb29k
-      SSIOaWRlbnQgYXNjBjsIVEkiEF9jc3JmX3Rva2VuBjsARkkiMUNJQmwyakVx
-      Z0FaQnJmbzlRNVY4MllBU1pURUE3Nlo4Z1FORFdmMTUwbm89BjsARg==
+      b250BjsIVEkiAAY7CFRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CFRJIgYz
+      BjsIVEkiGG1hbnVmYWN0dXJlcl9maWx0ZXIGOwhUSSIABjsIVAY7DEY6E3Ff
+      bWFudWZhY3R1cmVySUM7C3sHSSIObmFtZV9jb250BjsIVEkiEW1pY3JvdGVj
+      aG5pYwY7CFRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CFRJIgAGOwhUBjsM
+      RjoScV9sb2NhbF90YXJpY0lDOwt7B0kiEWtuY29kZV9zdGFydAY7CFRJIgAG
+      OwhUSSIVZGVzY3JpcHRpb25fY29udAY7CFRJIghrw6EGOwhUBjsMRjoOcGFn
+      ZV9nb29kaQY6CnFfYXBpSUM7C3sHSSIRa25jb2RlX3N0YXJ0BjsIVEkiCTM5
+      MjYGOwhUSSIVZGVzY3JpcHRpb25fY29udAY7CFRJIgAGOwhUBjsMRjoYYWRt
+      aW5pc3RyYXRpdmVfZ29vZEY6H2FkbWluaXN0cmF0aXZlX2xvY2FsX3Rhcmlj
+      RjoLc19nb29kSSIOaWRlbnQgYXNjBjsIVDoVcGFnZV9sb2NhbF90YXJpY0ki
+      BjEGOwhUSSIQX2NzcmZfdG9rZW4GOwBGSSIxQ0lCbDJqRXFnQVpCcmZvOVE1
+      VjgyWUFTWlRFQTc2WjhnUU5EV2YxNTBubz0GOwBG
     - '2017-01-25 07:15:23.403383'
-    - '2017-02-16 13:50:50.437298'
+    - '2017-02-24 14:59:51.089715'
   - - 2
     - d34614d8b81c7c0653020cba3b764bc5
     - |
-      BAh7B0kiCE1FTQY6BkVUIgKIAQQIVToMTWVtRGF0YXsLOhhhZG1pbmlzdHJh
+      BAh7B0kiCE1FTQY6BkVUIgLKAgQIVToMTWVtRGF0YXsSOhhhZG1pbmlzdHJh
       dGl2ZV9tb2RlMDoOa29udHJvbGVySSIKZ29vZHMGOgZFRjoJcGFnZUkiAAY7
       CFQ6C3NlYXJjaElDOiFBY3Rpb25Db250cm9sbGVyOjpQYXJhbWV0ZXJzewlJ
       IgZzBjsIVEkiAAY7CFRJIh5pZGVudF9vcl9kZXNjcmlwdGlvbl9jb250BjsI
       VEkiAAY7CFRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CFRJIgAGOwhUSSIY
       bWFudWZhY3R1cmVyX2ZpbHRlcgY7CFRJIgAGOwhUBjoPQHBlcm1pdHRlZEY6
       C3FfZ29vZElDOwt7CEkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwhU
-      SSIJdGVzdAY7CFRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CFRJIgY0BjsI
-      VEkiGG1hbnVmYWN0dXJlcl9maWx0ZXIGOwhUSSIABjsIVAY7DEY6DnBhZ2Vf
-      Z29vZGkGSSIQX2NzcmZfdG9rZW4GOwBGSSIxOUtJZ1FpaTNTSXBrTWhBTm5E
-      NDNOQVpOQkJQQ0djbEVkWVRST2dyQjFVQT0GOwBG
+      SSIABjsIVEkiGWltcGV4cGNvbXBhbnlfZmlsdGVyBjsIVEkiAAY7CFRJIhht
+      YW51ZmFjdHVyZXJfZmlsdGVyBjsIVEkiAAY7CFQGOwxGOg5wYWdlX2dvb2Rp
+      BjofYWRtaW5pc3RyYXRpdmVfbG9jYWxfdGFyaWNGOiFhZG1pbmlzdHJhdGl2
+      ZV9pbXBleHBjb21wYW55RjoYYWRtaW5pc3RyYXRpdmVfZ29vZEY6IGFkbWlu
+      aXN0cmF0aXZlX21hbnVmYWN0dXJlckY6E3FfbWFudWZhY3R1cmVySUM7C3sH
+      SSIObmFtZV9jb250BjsIVEkiAAY7CFRJIhlpbXBleHBjb21wYW55X2ZpbHRl
+      cgY7CFRJIgAGOwhUBjsMRjoScV9sb2NhbF90YXJpY0lDOwt7B0kiEWtuY29k
+      ZV9zdGFydAY7CFRJIgAGOwhUSSIVZGVzY3JpcHRpb25fY29udAY7CFRJIghy
+      YXoGOwhUBjsMRjoKcV9hcGlJQzsLewZJIg5uYW1lX2NvbnQGOwhUSSINRmli
+      cm8vREUGOwhUBjsMRkkiEF9jc3JmX3Rva2VuBjsARkkiMTlLSWdRaWkzU0lw
+      a01oQU5uRDQzTkFaTkJCUENHY2xFZFlUUk9nckIxVUE9BjsARg==
     - '2017-01-26 08:56:16.611617'
-    - '2017-02-15 07:55:46.818346'
+    - '2017-02-20 13:13:16.234579'
+  - - 3
+    - 36d316facbbfc8230c1be00b4dd53629
+    - |
+      BAh7B0kiCE1FTQY6BkVUIgIuAQQIVToMTWVtRGF0YXsJOg5wYWdlX2dvb2Rp
+      BjoLcV9nb29kSUM6IUFjdGlvbkNvbnRyb2xsZXI6OlBhcmFtZXRlcnN7CEki
+      HmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOgZFVEkiAAY7CVRJIhlpbXBl
+      eHBjb21wYW55X2ZpbHRlcgY7CVRJIgYzBjsJVEkiGG1hbnVmYWN0dXJlcl9m
+      aWx0ZXIGOwlUSSIABjsJVAY6D0BwZXJtaXR0ZWRGOhNxX21hbnVmYWN0dXJl
+      cklDOwh7B0kiGWltcGV4cGNvbXBhbnlfZmlsdGVyBjsJVEkiBjQGOwlUSSIO
+      bmFtZV9jb250BjsJVEkiAAY7CVQGOwpGOhZwYWdlX21hbnVmYWN0dXJlckki
+      BjEGOwlUSSIQX2NzcmZfdG9rZW4GOwBGSSIxOXMyZHYyMmFuMVZLNHlHclBm
+      MFk3S0xIZEJkclJ4SUpNbHFyZTVtQ3J1OD0GOwBG
+    - '2017-02-23 08:49:28.571895'
+    - '2017-02-23 08:51:41.804761'
 
 ---
 uom_types:
@@ -16848,3 +17187,136 @@ uoms:
     - '2017-02-16 10:02:12.034292'
     - 1
     - 552
+  - - 548
+    - 
+    - 1
+    - '2017-02-20 10:04:33.725350'
+    - '2017-02-20 10:04:33.725350'
+    - 
+    - 553
+  - - 549
+    - 
+    - 1
+    - '2017-02-22 11:12:49.962872'
+    - '2017-02-22 11:12:49.962872'
+    - 
+    - 554
+  - - 550
+    - 
+    - 1
+    - '2017-02-22 11:17:15.889369'
+    - '2017-02-22 11:17:15.889369'
+    - 
+    - 555
+  - - 551
+    - 
+    - 1
+    - '2017-02-23 08:59:08.049004'
+    - '2017-02-23 08:59:08.049004'
+    - 
+    - 556
+  - - 552
+    - 
+    - 1
+    - '2017-02-23 09:52:14.336633'
+    - '2017-02-23 09:52:14.336633'
+    - 
+    - 557
+  - - 553
+    - 
+    - 1
+    - '2017-02-23 10:03:57.724987'
+    - '2017-02-23 10:03:57.724987'
+    - 
+    - 558
+  - - 554
+    - 
+    - 1
+    - '2017-02-23 10:07:33.817890'
+    - '2017-02-23 10:07:33.817890'
+    - 
+    - 559
+  - - 555
+    - 
+    - 1
+    - '2017-02-23 10:08:37.539246'
+    - '2017-02-23 10:08:37.539246'
+    - 
+    - 560
+  - - 556
+    - 
+    - 1
+    - '2017-02-23 10:09:36.603137'
+    - '2017-02-23 10:09:36.603137'
+    - 
+    - 561
+  - - 557
+    - 
+    - 1
+    - '2017-02-23 10:10:32.959393'
+    - '2017-02-23 10:10:32.959393'
+    - 
+    - 562
+  - - 558
+    - 
+    - 1
+    - '2017-02-23 10:11:45.794275'
+    - '2017-02-23 10:11:45.794275'
+    - 
+    - 563
+  - - 559
+    - 
+    - 1
+    - '2017-02-23 11:01:15.322364'
+    - '2017-02-23 11:01:15.322364'
+    - 
+    - 564
+  - - 560
+    - 
+    - 1
+    - '2017-02-23 11:09:54.243923'
+    - '2017-02-23 11:09:54.243923'
+    - 
+    - 565
+  - - 561
+    - 4.93
+    - 1
+    - '2017-02-24 14:09:36.322209'
+    - '2017-02-24 14:09:36.322209'
+    - 1
+    - 566
+  - - 562
+    - 
+    - 1
+    - '2017-02-24 14:24:46.240611'
+    - '2017-02-24 14:24:46.240611'
+    - 
+    - 567
+  - - 563
+    - 17.82
+    - 1000
+    - '2017-02-24 14:29:55.496279'
+    - '2017-02-24 14:29:55.496279'
+    - 1
+    - 568
+  - - 564
+    - 19.31
+    - 1000
+    - '2017-02-24 14:31:26.897018'
+    - '2017-02-24 14:31:26.897018'
+    - 1
+    - 569
+  - - 565
+    - 2.86
+    - 1000
+    - '2017-02-24 14:35:29.539754'
+    - '2017-02-24 14:35:29.539754'
+    - 1
+    - 570
+  - - 566
+    - 
+    - 1
+    - '2017-02-24 14:54:40.591080'
+    - '2017-02-24 14:54:40.591080'
+    - 
+    - 571
