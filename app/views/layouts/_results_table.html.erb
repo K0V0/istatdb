@@ -10,9 +10,9 @@ end
 <% results_obj.each do |row| %>
 
 	<% 
-	active = results_obj.length == 1 
+	## runs if new item section first loaded
+	true_array = []
 	if defined? obj
-		true_array = []
 		cols.each do |field| 
 			assoc_from_parent_obj = parent_instvar.send("#{results_obj.model_name.to_s.underscore}_#{field.to_s}")
 			assoc_from_assocs = row.send(field)
@@ -20,7 +20,15 @@ end
 		end 
 		active = !true_array.include?(false)
 	end
-	#active = results_obj.length == 1 
+	## running only whne response to JS
+	if results_obj.length == 1
+		field = cols.first
+		["_cont", "_start"].each do |postfix|
+			if params.deep_has_key?(:q, "#{field.to_s}#{postfix}")
+				active = (params[:q]["#{field.to_s}#{postfix}"] == row.send(field))
+			end
+		end
+	end
 	%>
 
 	<tr <%= "class=selected".html_safe if active %>>
@@ -55,7 +63,7 @@ end
 
 <% end %>
 
-<%#= render(
+<%= render(
 	'layouts/no_results',
-	err_message: "new_#{model_meno}_search_no_results"
+	err_message: "new_#{results_obj.model.name.underscore}_search_no_results"
 ) if results_obj.length == 0 %>

@@ -67,7 +67,7 @@ class GoodsController < ApplicationController
 					render "new"
 				end
 			else
-				reload_tables_for_select
+				#reload_tables_for_select
 				render "new"
 			end
 		else
@@ -111,6 +111,7 @@ class GoodsController < ApplicationController
 	end
 
 	def reload_tables_for_select
+		# runs on page reload eg submit and validation fail
 		# reloads select tables giving more accurate results to select from after failed validation or when adding another record with simmilar or same associations
 		reload_result_by_params_nested(
 			LocalTaric: {

@@ -51,7 +51,7 @@ table {
 
 			&.no_results {
 				pointer-events: none !important;
-				background-color: $group_background;
+				background-color: $group_background !important;
 
 				td {
 					display: inline-block;
