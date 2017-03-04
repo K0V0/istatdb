@@ -8,6 +8,8 @@
 			class: "decorated_wrap",
 			remote: true do |s| %> 
 
+			<%= hidden_field_tag :reset_to_first_page, false %>
+
 			<div>
 				<%= s.label :name %>
 				<%= s.search_field :name_cont, autocomplete: "off" %>

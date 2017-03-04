@@ -1,6 +1,6 @@
 <%= render 'layouts/main_menu' %>
 
-<%= render 'layouts/actions' %>
+<%= render 'layouts/actions' if @administrative_mode %>
 
 <%= render 'goods/goodslist/search' %>
 
