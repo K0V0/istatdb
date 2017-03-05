@@ -5,7 +5,11 @@
 
 		<td> 
 			<% if field.is_a? Symbol %>
-				<%= o.send(field) %>
+				<% if (res = o.send(field)).blank? %>
+					<%= "---" %>
+				<% else %>
+					<%= res %>
+				<% end %>
 			<% else %>
 				<%= field.html_safe %>
 			<% end %>

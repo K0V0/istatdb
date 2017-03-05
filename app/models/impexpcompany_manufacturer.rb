@@ -23,6 +23,18 @@ def local_taric_description
 	self.local_taric.try(:description)
 end
 
+def impexpcompany_company_name
+	self.impexpcompany.company_name
+end
+
+def manufacturer_name
+	self.manufacturer.name
+end
+
+def incoterm_human
+	Incoterm.find(self.incoterm).try(:shortland)
+end
+
 def assoc_validation
 	assoc_validator(LocalTaric, :kncode, :description) if !@local_taric_kncode.blank?
 end

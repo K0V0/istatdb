@@ -17,6 +17,12 @@ class ManufacturersController < ApplicationController
       )
     }
 
+    def show
+      #if 
+      @manufacturer_goods = @manufacturer.goods.joins(:impexpcompanies).preload(:impexpcompanies)#.where("impexpcompanies.id = ?", 4)
+
+    end
+
   	def new
       if !@MEM.search.blank?
         @manufacturer.assign_attributes(

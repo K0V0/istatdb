@@ -1,0 +1,58 @@
+
+<section class="item_details">
+	
+	<div class="tablewrap decorated_wrap">
+		<%= render('layouts/table', 
+			object: @manufacturer,
+			captions: [cbt(:table_cap_manufacturers)],
+			fields: ["<h1>#{@manufacturer.name}</h1>"],
+			foots: [" --- "]
+		) %>
+	</div>
+
+	<div class="tablewrap decorated_wrap">
+		<%= render('layouts/table', 
+			object: @manufacturer.impexpcompany_manufacturers,
+			captions: [
+				cbt(:manufacturers_table_intrastat_clients_cap),
+				cbt(:manufacturers_table_taric_codes_cap),
+				"",
+				cbt(:incoterms)
+				#cbt(:manufacturers_table_goods_manufacturers_count_cap)
+			],
+			fields: [
+				:impexpcompany_company_name,
+				:local_taric_kncode,
+				:local_taric_description,
+				:incoterm_human
+			],
+			foots: [
+				"#{cbt(:manufacturer_impexpcompanies_count)}: <b>#{@manufacturer.impexpcompanies.size}</b>"
+			]
+		) %>
+	</div>
+
+	<br>
+
+	<div class="tablewrap decorated_wrap">
+		<%= render('layouts/table', 
+			object: @manufacturer_goods,
+			captions: [
+				cbt(:manufacturer_goods),
+				""
+			],
+			fields: [
+				:ident,
+				:description,
+				#{}"#{ @manufacturer_goods }"
+				#:intrastat_clients
+				#:impexpcompanies
+				
+			],
+			foots: [
+				"---"
+			]
+		) %>
+	</div>
+
+</section>

@@ -69,11 +69,14 @@ sk:
     incoterms: "Incoterms:"
     associated_to_impexpcompany: "Príslušnosť ku klientom"
     edit_assocs_details: "Upraviť dodaciu podmienku a HS/TARIC kód vo vzťahu k jednotlivým klientom"
+    manufacturer_impexpcompanies_count: "Počet intrastat klientov"
 
     search_client_filter_none: "Spolupracujúci s každým"
     edit_manufacturer_details: "Prejsť na formulár"
     back_to_edit: "Spať na hlavný formulár"
     back_to_list: "Uložiť a prejsť na zoznam položiek"
+
+    manufacturer_goods: "Tovary"
 
 
 

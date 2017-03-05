@@ -39,6 +39,10 @@ class Good < ActiveRecord::Base
 		local_taric.description
 	end
 
+	#def impexpcompany_name
+	#	self.impexpcompanies.
+	#end
+
 	has_many :goods_manufacturers, inverse_of: :good
 	has_many :manufacturers, -> { distinct }, through: :goods_manufacturers
 
