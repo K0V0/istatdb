@@ -23,6 +23,13 @@ table#manufacturers {
 	}
 }
 
+table.manufacturer_local_tarics {
+
+	td:first-child {
+		white-space: nowrap;
+	}
+}
+
 @media only screen and (max-width: 480px) {
    
    table#manufacturers {
