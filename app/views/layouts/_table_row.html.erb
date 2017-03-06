@@ -1,18 +1,55 @@
 
 <tr <%= ("class=#{html_class_row.to_s}") if (defined? html_class_row)&&(!html_class_row.nil?) %>>
 
-	<% fields.each do |field| %>
+	<% fields.each do |field| 
+		out = ["---"] 
+		field_name = "" %>
 
 		<td> 
-			<% if field.is_a? Symbol %>
-				<% if (res = o.send(field)).blank? %>
-					<%= "---" %>
-				<% else %>
-					<%= res %>
-				<% end %>
-			<% else %>
-				<%= field.html_safe %>
-			<% end %>
+
+			<% if field.is_a? Symbol 
+
+				out[0] = output(o.send(field))
+				field_name = field.to_s 
+
+			elsif field.is_a? Hash
+
+				field.each do |k, v|
+					if !(res = o.send(k)).blank? 
+						if res.respond_to? :each
+							out = []
+							res.each do |r|
+								out << output(r.send(v))
+							end
+						else
+							out[0] = output(res.send(v))
+						end
+						field_name = "#{k.to_s}_#{v.to_s}" 
+					end
+				end
+
+			else
+
+				out[0] = field.html_safe
+
+			end 
+
+			if !decorators.blank?
+				decorators.each do |decorator|
+					decorator.each do |field_to_decorate, fx|
+						if field_to_decorate.to_s == field_name.to_s
+							out.each_with_index do |str, index|
+								out[index] = public_send(fx, str)
+							end
+						end
+					end
+				end
+			end
+
+			%>
+
+			<%= out.join('<br>').html_safe %>
+
 		</td>
 		
 	<% end %>

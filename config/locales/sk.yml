@@ -77,6 +77,8 @@ sk:
     back_to_list: "Uložiť a prejsť na zoznam položiek"
 
     manufacturer_goods: "Tovary"
+    manufacturer_goods_kncode: "Zatriedenie HS/TARIC"
+    manufacturer_goods_kncode_count: "Colných skupín celkom"
 
 
 

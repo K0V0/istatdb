@@ -117,4 +117,12 @@ module ApplicationHelper
 		[items: obj.to_a]
 	end
 
+	def output input
+		if input.blank? 
+			return "---"
+		else 
+			return input			
+		end
+	end
+
 end

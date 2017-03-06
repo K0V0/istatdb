@@ -15,10 +15,8 @@
 			object: @manufacturer.impexpcompany_manufacturers,
 			captions: [
 				cbt(:manufacturers_table_intrastat_clients_cap),
-				cbt(:manufacturers_table_taric_codes_cap),
-				"",
+				{ cbt(:manufacturers_table_taric_codes_cap) => 2 },
 				cbt(:incoterms)
-				#cbt(:manufacturers_table_goods_manufacturers_count_cap)
 			],
 			fields: [
 				:impexpcompany_company_name,
@@ -28,7 +26,33 @@
 			],
 			foots: [
 				"#{cbt(:manufacturer_impexpcompanies_count)}: <b>#{@manufacturer.impexpcompanies.size}</b>"
-			]
+			],
+			html_class: "rows_colored"
+		) %>
+	</div>
+
+	<br>
+
+	<div class="tablewrap decorated_wrap">
+		<%= render('layouts/table', 
+			object: @manufacturer_local_tarics,
+			captions: [
+				{ cbt(:manufacturer_goods_kncode) => 2 }
+			],
+			fields: [
+				:kncode,
+				:description
+			],
+			foots: [
+				"
+					#{cbt(:manufacturer_goods_kncode_count)}: <b>#{@manufacturer_local_tarics.size}</b>
+					
+				"
+			],
+			decorators: [
+				{ kncode: :num_to_kncode }
+			],
+			html_class: "rows_colored"
 		) %>
 	</div>
 
@@ -39,19 +63,24 @@
 			object: @manufacturer_goods,
 			captions: [
 				cbt(:manufacturer_goods),
-				""
+				"",
+				cbt(:manufacturers_table_intrastat_clients_cap),
+				{ cbt(:manufacturer_goods_kncode) => 2 }
 			],
 			fields: [
 				:ident,
 				:description,
-				#{}"#{ @manufacturer_goods }"
-				#:intrastat_clients
-				#:impexpcompanies
-				
+				{ impexpcompanies: :company_name },
+				{ local_taric: :kncode },
+				{ local_taric: :description }
 			],
 			foots: [
 				"---"
-			]
+			],
+			decorators: [
+				{ local_taric_kncode: :num_to_kncode }
+			],
+			html_class: "rows_colored"
 		) %>
 	</div>
 

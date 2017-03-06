@@ -19,8 +19,16 @@ class ManufacturersController < ApplicationController
 
     def show
       #if 
-      @manufacturer_goods = @manufacturer.goods.joins(:impexpcompanies).preload(:impexpcompanies)#.where("impexpcompanies.id = ?", 4)
-
+      @manufacturer_goods = @manufacturer.goods
+        .joins(:impexpcompanies)
+        .preload(:impexpcompanies)
+        #.where("impexpcompanies.id = ?", 4)
+      @manufacturer_local_tarics = @manufacturer.goods
+        .joins(:impexpcompanies, :local_taric)
+        .includes(:local_taric)
+        .order('local_tarics.kncode ASC')
+        .collect(&:local_taric)
+        .uniq
     end
 
   	def new

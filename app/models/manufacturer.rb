@@ -27,14 +27,6 @@ class Manufacturer < ActiveRecord::Base
 		order(name: :asc)
 	}
 
-	#scope :goods, -> {
-
-	#}
-
-	#def manufacturer_goods
-	#	self.goods.joins(:impexpcompanies).preload(:impexpcompanies)
-	#end
-
 	def intrastat_clients
 		impexpcompany_manufacturers.collect { |w|
 			w.impexpcompany.company_name

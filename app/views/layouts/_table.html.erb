@@ -1,7 +1,12 @@
 
 <%
 colspan_num = fields.size if (defined? foots)&&(foots.size == 1)
-colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe 
+colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe
+if defined? decorators
+	d = decorators
+else
+	d = nil
+end
 %>
 
 <table class="<%= html_class if defined? html_class %>">	
@@ -10,7 +15,15 @@ colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe
 		<thead>
 			<tr>
 				<% captions.each do |caption| %>
-					<th> <%= caption %> </th>
+					<% if caption.is_a? String %>
+						<th> <%= caption %> </th>
+					<% elsif caption.is_a? Hash %>
+						<% caption.each do |k, v| %>
+							<th colspan="<%= v %>">
+								<%= k %>
+							</th>
+						<% end %>
+					<% end %>
 				<% end %>
 			</tr>
 		</thead>
@@ -19,10 +32,10 @@ colspan_string = colspan_num.nil? ? "" : "colspan=\"#{colspan_num}\"".html_safe
 	<tbody>
 		<% if object.respond_to?(:each) %>
 			<% object.each do |o| %>
-				<%= render 'layouts/table_row', o: o, fields: fields %>
+				<%= render 'layouts/table_row', o: o, fields: fields, decorators: d %>
 			<% end %>
 		<% else %>
-			<%= render 'layouts/table_row', o: object, fields: fields %>
+			<%= render 'layouts/table_row', o: object, fields: fields, decorators: d %>
 		<% end %>
 	</tbody>
 
