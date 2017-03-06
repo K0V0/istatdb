@@ -30,6 +30,53 @@ table.manufacturer_local_tarics {
 	}
 }
 
+table.manufacturer_goods {
+
+	td:first-child, td:nth-child(4) {
+		white-space: nowrap;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+
+
+	table.manufacturer_goods {
+
+		td, th {
+			display: block;
+			//clear: both;
+		}
+
+		td:first-child {
+			float: left;
+			//clear: both;
+			//clear: right;
+			//text-align:right;
+		}
+		
+		td:nth-child(2) {
+			float: left;
+			//clear: both;
+		}
+
+		td:nth-child(3) {
+			float: right;
+			//clear: right;
+		}
+
+		td:nth-child(4) {
+			//display: inline;
+			clear: both;
+		}
+
+		td:nth-child(3)::after {
+			//content:"\a";
+    		//white-space: pre;
+    		//clear: both;
+		}
+	}	
+}
+
 @media only screen and (max-width: 480px) {
    
    table#manufacturers {
