@@ -3,6 +3,8 @@ $('section.items_table').remove();
 
 $('section.item_details').remove();
 
+$('section.calculator_list').remove();
+
 $('section.actions').css({ 'display':'none' });
 
 $('<%= j(render "goods/goodslist/item_details") %>').appendTo('main');

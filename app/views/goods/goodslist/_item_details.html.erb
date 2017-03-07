@@ -45,7 +45,6 @@
 <section class="calculator_list">
 
 	<%= render 'layouts/calculator_list' if !@MEM.uomscalc.blank? %>
+	<input type="hidden" name="good_id" id="good_id" value="<%= @good.id %>">
 	
 </section>
-
-<input type="hidden" name="good_id" id="good_id" value="<%= @good.id %>">
