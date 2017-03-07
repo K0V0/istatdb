@@ -42,6 +42,13 @@ en:
 
   sure: "Are you sure ?"
 
+  uomscalc_list_clear: "Clear memory"
+  uomscalc_list_good: "Reference"
+  uomscalc_list_uom: "UOM"
+  uomscalc_list_count: "Value"
+  uomscalc_list_short: "Result"
+  uomscalc_list_cap: "Calculator memory"
+
 
 
 sk:
@@ -87,3 +94,10 @@ sk:
   pieces: "kusov"
 
   sure: "Ste si istý ?"
+
+  uomscalc_list_clear: "Vymazať pamäť kalkulačky"
+  uomscalc_list_good: "Referencia"
+  uomscalc_list_uom: "Merná jednotka"
+  uomscalc_list_count: "Počet"
+  uomscalc_list_short: "Výsledok"
+  uomscalc_list_cap: "Pamäť kalkulačky"

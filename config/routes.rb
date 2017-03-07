@@ -248,6 +248,17 @@ Rails.application.routes.draw do
   post "api/add_to_uoms_calculator",
     to: "api#add_to_calculator_mem"
 
+  post "api/clear_uoms_calculator",
+    to: "api#clear_calculator_mem"
+
+  post "api/delete_from_uoms_calculator/:id",
+    to: "api#remove_calculator_mem",
+    as: "calculator_remove"
+
+  post "api/edit_in_uoms_calculator/:id",
+    to: "api#edit_rec_in_calculator_mem", 
+    as: "calculator_edit"
+
 
 
   ### hidden section for testing purposes

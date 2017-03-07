@@ -1,0 +1,44 @@
+table#uomscalc_list {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+
+	td, th {
+
+		&.uomscalc_mem_good {
+			white-space: nowrap;
+			font-weight: bold;
+		}
+
+		&.uomscalc_mem_result {
+			font-weight: bold;
+			text-align:right;
+		}
+
+		&.uomscalc_mem_count {
+			text-align:right;
+		}
+	}
+	
+	thead {
+		font-weight: normal;
+	}
+
+	tfoot {
+
+		tr {
+			line-height: 1.25em;
+
+			td {
+
+				&.uomscalc_list_cp {
+					text-align:right;
+					padding-bottom: 0.25em;
+				}
+
+				strong {
+					font-size: 1.25em;
+				}
+			}
+		}	
+	}
+}

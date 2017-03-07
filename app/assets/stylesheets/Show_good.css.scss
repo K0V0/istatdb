@@ -79,41 +79,6 @@ section.item_details {
 				}
 			}
 		}
-
-		table#uomscalc_list {
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-
-			td, th {
-
-				&.uomscalc_mem_good {
-					white-space: nowrap;
-					font-weight: bold;
-				}
-
-				&.uomscalc_mem_result {
-					font-weight: bold;
-				}
-			}
-			
-			thead {
-				font-weight: normal;
-			}
-
-			tfoot {
-
-				tr {
-					line-height: 1.25em;
-
-					td {
-
-						strong {
-							font-size: 1.25em;
-						}
-					}
-				}	
-			}
-		}
 	}
 }
 

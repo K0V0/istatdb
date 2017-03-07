@@ -36,11 +36,31 @@ class ApiController < ApplicationController
 	def add_to_calculator_mem
  		@MEM.uomscalc = [] if @MEM.uomscalc.nil?
  		tmp = @MEM.uomscalc
- 		tmp.push(params)
+ 		next_id = tmp.blank? ? 1 : (tmp.last)[:id].to_i + 1
+ 		tmp.push(params.merge({ id: next_id }))
  		@MEM.uomscalc = tmp
  		calculate_results tmp
- 		
  		render('/layouts/calculator_list')
+	end
+
+	def clear_calculator_mem
+		@MEM.uomscalc = nil
+		@MEM.uomscalc_results = nil
+		render('/layouts/calculator_list')
+	end
+
+	def remove_from_calculator_mem
+		tmp = @MEM.uomscalc
+		pos = 0
+		tmp.each do |t|
+			
+		end
+
+		render('/layouts/calculator_list')
+	end
+
+	def edit_rec_in_calculator_mem
+		render('/layouts/calculator_list')
 	end
 
 	private

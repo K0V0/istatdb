@@ -26,6 +26,10 @@ UomsCalculator.prototype = {
 		$(document).on('click', 'button#add_to_calculator_memory', function() {
 			totok.sendToMem();
 		});
+		$(document).on('click', 'button#clear_uomscalc_list', function() {
+			totok.clearMem();
+		});
+
 	},
 
 	validate: function() {
@@ -64,7 +68,7 @@ UomsCalculator.prototype = {
 		this.uom_type = $.trim($('span.uoms_calculator_uom_type').text());
 	},
 
-	setVals(val=null, multiplier=null, uom_type=null) {
+	setVals: function(val=null, multiplier=null, uom_type=null) {
 		this.val = val;
 		this.multiplier = multiplier;
 		this.uom_type = uom_type;
@@ -80,18 +84,31 @@ UomsCalculator.prototype = {
 
 	sendToMem: function() {
 		var totok = this;
+		if (totok.valid) {
+			$.ajax({
+			  	method: "POST",
+			 	url: 'http://' + window.location.host + '/api/add_to_uoms_calculator',
+			  	data: { 
+			  		good_name: $(document).find('h1').text(),
+			  		uom: totok.val,
+			  		multiplier: totok.multiplier,
+			  		uom_type: totok.uom_type,
+			  		count: totok.count,
+			  		result: totok.result,
+			  		good_id: $(document).find('input#good_id').val()
+			  	}
+			});
+		}
+	},
+
+	clearMem: function() {
 		$.ajax({
 		  	method: "POST",
-		 	url: 'api/add_to_uoms_calculator',
+		 	url: 'http://' + window.location.host + '/api/clear_uoms_calculator',
 		  	data: { 
-		  		good_name: $(document).find('h1').text(),
-		  		uom: totok.val,
-		  		multiplier: totok.multiplier,
-		  		uom_type: totok.uom_type,
-		  		count: totok.count,
-		  		result: totok.result 
+		  		 
 		  	}
 		});
-	}
+	},
 
 }
