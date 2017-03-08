@@ -1,6 +1,8 @@
 
 <section class="item_details">
 
+	<input type="hidden" name="good_id" id="good_id" value="<%= @good.id %>">
+
 	<% desc = @good.description.blank? ? " --- " : @good.description %>
 	<div class="tablewrap decorated_wrap">
 		<%= render('layouts/table', 
@@ -45,6 +47,5 @@
 <section class="calculator_list">
 
 	<%= render 'layouts/calculator_list' if !@MEM.uomscalc.blank? %>
-	<input type="hidden" name="good_id" id="good_id" value="<%= @good.id %>">
 	
 </section>
