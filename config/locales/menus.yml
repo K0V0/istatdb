@@ -3,7 +3,7 @@ en:
   clientsdb: "Our clients"
   manufacturersdb: "Manufacturers/consumers"
   localtaricdb: "Local TARIC database"
-  settings: "Settings"
+  settings_section: "Settings"
 
   new_item: "Add item"
   edit_items: "Edit/Delete item(s)"
@@ -27,6 +27,7 @@ en:
   back: "Go back"
   create_and_next: "Save and Add next"
   add_to_mem: "Add to memory"
+  update: "Update!"
 
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
@@ -49,14 +50,14 @@ en:
   uomscalc_list_short: "Result"
   uomscalc_list_cap: "Calculator memory"
 
-
+  or: "or"
 
 sk:
   goodsdb: "Tovary"
   clientsdb: "Klienti"
   manufacturersdb: "Výrobcovia odberatelia"
   localtaricdb: "Lokálny TARIC"
-  settings: "Nastavenia"
+  settings_section: "Nastavenia"
 
   new_item: "Pridať položku"
   edit_items: "Spravovať položky"
@@ -80,6 +81,7 @@ sk:
   back: "Naspäť!"
   create_and_next: "Uložiť a Pridať ďalšie"
   add_to_mem: "Vložiť do pamäti"
+  update: "Aktualizovať!"
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"
@@ -101,3 +103,5 @@ sk:
   uomscalc_list_count: "Počet"
   uomscalc_list_short: "Výsledok"
   uomscalc_list_cap: "Pamäť kalkulačky"
+
+  or: "alebo"

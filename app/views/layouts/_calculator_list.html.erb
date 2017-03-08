@@ -1,5 +1,5 @@
 
-<% if !@MEM.uomscalc.nil? %>
+<% if !@MEM.uomscalc.nil? && !@MEM.uomscalc.blank? %>
 
 	<div class="tablewrap decorated_wrap shrinked">
 
@@ -43,10 +43,10 @@
 							<%= "#{calc[:result].to_f.round(4)} #{calc[:uom_type]}" %>
 						</td>
 						<td class="uomscalc_mem_edit">
-							<%= link_to "&#9998;".html_safe, calculator_edit_path(calc[:good_id]), method: :post, remote: true %>
+							<%= link_to "&#9998;".html_safe, calculator_edit_path(calc[:id]), method: :post, remote: true %>
 						</td>
 						<td class="uomscalc_mem_delete">
-							<%= link_to "&#x2716;".html_safe, calculator_remove_path(calc[:good_id]), method: :post, remote: :true %>
+							<%= link_to "&#x2716;".html_safe, calculator_remove_path(calc[:id]), method: :post, remote: :true %>
 						</td>
 					</tr>
 				<% end %>

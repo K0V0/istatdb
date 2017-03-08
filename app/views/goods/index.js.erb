@@ -1,5 +1,7 @@
 $('section.items_table, section.item_details').remove();
 
+$("section.calculator_list").remove();
+
 <%
 	if @result.length > 0
 		o = render('layouts/items_table',

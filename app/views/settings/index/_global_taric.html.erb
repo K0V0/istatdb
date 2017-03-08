@@ -1,0 +1,51 @@
+
+<div class="tablewrap decorated_wrap shrinked">
+	
+	<table class="global_taric_update">
+
+		<thead>
+			<tr>
+				<th colspan="10"> <%= cbt :global_taric_update_cap %> </th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr>
+				<td>
+					<%= cbt :global_taric_choose_file %>:
+				</td>
+				<td>
+					<%= form_tag({controller: :global_tarics, action: :upload_xml}) do %>
+					  <%= file_field_tag 'global_taric_xml' %>
+					  <%= submit_tag t(:update) %>
+					<% end %>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="10"> <b> <%= t :or %> </b> </td>
+			</tr>
+
+			<tr>
+				<td>
+					<%= cbt :global_taric_choose_url %>
+				</td>
+				<td>
+					<%= form_tag({controller: :global_tarics, action: :xml_from_url}) do %>
+					  <%= text_field_tag 'global_taric_url' %>
+					  <%= submit_tag t(:update) %>
+					<% end %>
+				</td>
+			</tr>
+
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th colspan="10"> blablalbla b df fgdfg </th>
+			</tr>
+		</tfoot>
+	</table>
+
+</div>

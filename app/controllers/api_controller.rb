@@ -51,10 +51,13 @@ class ApiController < ApplicationController
 
 	def remove_from_calculator_mem
 		tmp = @MEM.uomscalc
-		pos = 0
-		tmp.each do |t|
-			
+		tmp.each_with_index do |t, index|
+			if params[:id] == t[:id].to_s
+				tmp.delete_at(index)
+			end
 		end
+		calculate_results tmp
+		@MEM.uomscalc = tmp
 
 		render('/layouts/calculator_list')
 	end

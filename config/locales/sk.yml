@@ -80,8 +80,13 @@ sk:
     manufacturer_goods_kncode: "Zatriedenie HS/TARIC"
     manufacturer_goods_kncode_count: "Colných skupín celkom"
 
+  settings:
 
-
+    global_taric_update_cap: "Aktualizácia/import globálnej TARIC databázy"
+    global_taric_choose_file: "Vybrať XML súbor"
+    global_taric_choose_url: "Nahrať súbor z URL"
+    uoms_cp_cap: "Merné jednotky"
+    uoms_add_new: "Pridať novú mernú jednotku"
 
   api:
 

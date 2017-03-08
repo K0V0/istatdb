@@ -252,12 +252,27 @@ Rails.application.routes.draw do
     to: "api#clear_calculator_mem"
 
   post "api/delete_from_uoms_calculator/:id",
-    to: "api#remove_calculator_mem",
+    to: "api#remove_from_calculator_mem",
     as: "calculator_remove"
 
   post "api/edit_in_uoms_calculator/:id",
     to: "api#edit_rec_in_calculator_mem", 
     as: "calculator_edit"
+
+
+  ### settings section
+
+  post "global_tarics/upload_xml",
+    to: "global_tarics#upload_xml", 
+    as: "upload_global_taric_xml"
+
+  post "global_tarics/xml_from_url",
+    to: "global_tarics#xml_from_url", 
+    as: "global_taric_xml_from_url"
+
+  get "uom_types/new_uom",
+    to: "uom_types#new", 
+    as: "new_uom_type"
 
 
 
