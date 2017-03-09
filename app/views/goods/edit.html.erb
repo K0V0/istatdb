@@ -69,6 +69,12 @@
 
 		<article class="decorated_wrap shrinked">
 
+			<%= render 'goods/edit/uoms', obj: t%>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+
 			<div>
 				<%= t.submit class: "button" %>
 				<%= link_to t(:back), goods_path, class: "button" %>
