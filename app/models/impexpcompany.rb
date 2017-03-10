@@ -10,6 +10,8 @@ class Impexpcompany < ActiveRecord::Base
 	has_many :impexpcompany_manufacturers, inverse_of: :impexpcompany
 	has_many :manufacturers, through: :impexpcompany_manufacturers
 
+	has_many :uoms, inverse_of: :impexpcompany
+
 	validates :company_name, presence: true
 	validates_uniqueness_of :company_name, scope: :affiliated_office
 

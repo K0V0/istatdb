@@ -1,5 +1,7 @@
 class TestScriptsController < ApplicationController
 
+	skip_filter *_process_action_callbacks.map(&:filter)
+
 	after_action :return_to_index, except: [:index]
 
 	def index
@@ -52,6 +54,20 @@ class TestScriptsController < ApplicationController
 					impexpcompany_id: i.id,
 					manufacturer_id: m.id
 				)
+			end
+		end
+	end
+
+	def uoms_table_fixture
+		Uom.all.each do |uom|
+			if !uom.uom.blank?
+				gm = GoodsManufacturer.find(uom.goods_manufacturer_id)
+				uom.assign_attributes({
+					good_id: gm.good_id,
+					manufacturer_id: gm.manufacturer_id,
+					impexpcompany_id: Good.find(gm.good_id).impexpcompanies.first.id
+				})
+				uom.save 
 			end
 		end
 	end

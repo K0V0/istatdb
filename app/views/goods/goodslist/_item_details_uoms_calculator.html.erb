@@ -17,7 +17,7 @@
 				</td>
 
 				<td>
-					<input type="text" name="uom_value" value="<%= @autoset_uom.uom %>"
+					<input type="text" name="uom_value" value="<%= @uom_forever_alone.uom %>"
 					disabled="disabled">
 				</td>
 			</tr>
@@ -27,7 +27,7 @@
 					<label> <%= cbt :uoms_uom_multiplier2 %> </label>
 				</td>
 				<td>
-					<input type="text" name="uom_multiplier" value="<%= @autoset_uom.uom_multiplier %>" disabled="disabled">
+					<input type="text" name="uom_multiplier" value="<%= @uom_forever_alone.uom_multiplier %>" disabled="disabled">
 				</td>
 			</tr>
 
@@ -65,7 +65,7 @@
 				<td colspan="10"> 
 					<%= cbt :uoms_uom_type_short %>: 
 					<span class="uoms_calculator_uom_type">
-						<%= @autoset_uom.type %> 
+						<%= @uom_forever_alone.type %> 
 					</span>
 				</td>
 			</tr>

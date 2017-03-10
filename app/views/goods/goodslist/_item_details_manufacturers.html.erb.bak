@@ -1,10 +1,12 @@
+
 <div class="tablewrap decorated_wrap">
 
 	<table class="good_manufacturers_list rows_colored">
 
 		<thead>
+
 			<tr>
-				<th><%= cbt :table_cap_makers %></th>
+				<th> <%= cbt :table_cap_makers %> </th>
 				<th class="inner_table_wrap"> 
 					<table>
 						<thead>
@@ -12,50 +14,62 @@
 								<th><%= cbt :uoms_uom_short %></th>
 								<th> <%= cbt :uoms_uom_multiplier_short %> </th>
 								<th> <%= cbt :uoms_uom_type_short %> </th>
-								<th> <%= cbt :uoms_for_client %> </th>
 							</tr>
 						</thead>
 					</table> 
 				</th>
 			</tr>
+
 		</thead>
 
 		<tbody>
-			
+
+			<% Rails.logger.info "=========" %>
+			<% Rails.logger.info @makers %>
+
 			<% makers.each do |maker| %>
 
-				<tr>
-					
+				<% gm = maker.goods_manufacturers.where(good_id: @good.id).first %>
+
+				<tr <%= 'class="selected"'.html_safe if (@search.manufacturer_filter.to_i == maker.id) %>>
+
 					<td>
 						<%= maker.name %>
 					</td>
 
-					<td class="inner_table_wrap">
+					<td colspan="3" class="inner_table_wrap">
 
-						<% if !maker.uoms.blank? %>
+						<% if (!gm.uoms.blank?)and(!gm.uoms.first.uom.blank?) %>
 
 							<table class="good_manufacturer_uoms_list with_efects">
-								<% maker.uoms.where(good_id: @good.id).each do |uom| %>
-									<tr class="used <%= "selected" if @uom_forever_alone.id == uom.id %>">
-										<td class="good_manufacturer_uoms_list_val"> <%= uom.uom %> </td>
-										<td class="good_manufacturer_uoms_list_multiplier"> <%= uom.uom_multiplier %> </td>
-										<td class="good_manufacturer_uoms_list_type"> <%= uom.type %> </td>
-										<td> <%= uom.impexpcompany.company_name %> </td>
+
+								<% gm.uoms.each do |uom| %>
+									<tr class="used">
+										<td class="good_manufacturer_uoms_list_val">
+											<%= uom.uom %> 
+										</td>
+										<td class="good_manufacturer_uoms_list_multiplier">
+											<%= uom.uom_multiplier %> 
+										</td>
+										<td class="good_manufacturer_uoms_list_type">
+											<%= uom.type %> 
+										</td>
 									</tr>
 								<% end %>
+
 							</table>
 
 						<% else %>
 
 							<table>
-								<tr>
-									<td> - </td> <td> - </td> <td> - </td> <td> - </td>
+								<tr> 
+									<td>---</td><td>---</td><td>---</td>
 								</tr>
 							</table>
 
 						<% end %>
 
-					</td>
+					</td>				
 
 				</tr>
 
@@ -64,6 +78,7 @@
 		</tbody>
 
 		<tfoot>
+			
 			<tr>
 				<td colspan="10"> 
 					<%= cbt :table_cap_makers_count %>
@@ -72,8 +87,9 @@
 					</span> 
 				</td>
 			</tr>
+
 		</tfoot>
 
 	</table>
 
-</div>	
+</div>

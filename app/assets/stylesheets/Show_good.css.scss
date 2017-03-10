@@ -22,6 +22,22 @@ section.item_details {
 
 			tr {
 
+				th.inner_table_wrap {
+
+					table {
+
+						thead {
+
+							tr {
+
+								th {
+									width: 25%;
+								}
+							}
+						}
+					}
+				}
+
 				// values
 				td.inner_table_wrap {
 					padding-right:0;
@@ -55,7 +71,7 @@ section.item_details {
 								}
 
 								td {
-									width: 33.3%;
+									width: 25%;
 								}
 							}
 						}

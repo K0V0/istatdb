@@ -294,6 +294,10 @@ Rails.application.routes.draw do
     to: "test_scripts#impexpcompany_manufacturer_fixture",
     as: "test_dbfixture1"
 
+  get "test_scripts/uoms_fixture_fillup",
+    to: "test_scripts#uoms_table_fixture",
+    as: "test_dbfixture2"
+
 
 
 

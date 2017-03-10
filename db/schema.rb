@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309095252) do
+ActiveRecord::Schema.define(version: 20170310004330) do
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170309095252) do
     t.string   "uom_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "full_name"
   end
 
   create_table "uoms", force: :cascade do |t|
@@ -122,9 +123,15 @@ ActiveRecord::Schema.define(version: 20170309095252) do
     t.datetime "updated_at",            null: false
     t.integer  "uom_type_id"
     t.integer  "goods_manufacturer_id"
+    t.integer  "good_id"
+    t.integer  "manufacturer_id"
+    t.integer  "impexpcompany_id"
   end
 
+  add_index "uoms", ["good_id"], name: "index_uoms_on_good_id"
   add_index "uoms", ["goods_manufacturer_id"], name: "index_uoms_on_goods_manufacturer_id"
+  add_index "uoms", ["impexpcompany_id"], name: "index_uoms_on_impexpcompany_id"
+  add_index "uoms", ["manufacturer_id"], name: "index_uoms_on_manufacturer_id"
   add_index "uoms", ["uom_type_id"], name: "index_uoms_on_uom_type_id"
 
 end

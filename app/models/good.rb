@@ -23,9 +23,9 @@ class Good < ActiveRecord::Base
 	# here can be added independently from other places in app and validations 
 	# on both sides causes circular dependency error
 
-	def uoms
-		 @uoms ||= [{ uom: "", uom_multiplier: "1", uom_type_id: "" }]
-	end
+	#def uoms
+	#	 @uoms ||= [{ uom: "", uom_multiplier: "1", uom_type_id: "" }]
+	#end
 
 	def uoms=(par)
 		@uoms = par
@@ -44,6 +44,8 @@ class Good < ActiveRecord::Base
 
 	has_many :goods_impexpcompanies, inverse_of: :good
 	has_many :impexpcompanies, -> { distinct }, through: :goods_impexpcompanies
+
+	has_many :uoms, inverse_of: :good
 
 	belongs_to :local_taric, inverse_of: :goods
 
@@ -151,12 +153,22 @@ class Good < ActiveRecord::Base
 		@manufacturer.goods << @current
 
 		# this search should always return unique one result 
-		gm = @manufacturer.goods_manufacturers.where(
-			good_id: @current.id
-		).first.uoms
+		#gm = @manufacturer.goods_manufacturers.where(
+		#	good_id: @current.id
+		#).first.uoms
 
-		@uoms.each do |uom|
-			gm << Uom.new(uom)
+		#@uoms.each do |uom|
+		#	gm << Uom.new(uom)
+		#end
+
+		@uoms.each do |uom|	
+			tmp = Uom.new(uom)
+			tmp.manufacturer_id = @manufacturer.id
+			tmp.impexpcompany_id = @impexpcompany.id
+			tmp.good_id = @current.id
+			tmp.save
+			#log @current.id
+			#tmp.good << @current
 		end
 
 		ImpexpcompanyManufacturer.create(

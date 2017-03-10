@@ -11,6 +11,8 @@ class Manufacturer < ActiveRecord::Base
 	has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
 	has_many :impexpcompanies, through: :impexpcompany_manufacturers 
 
+	has_many :uoms, inverse_of: :manufacturer
+
 	attr_accessor :impexpcompany_company_name
 	attr_accessor :local_taric_kncode
 	attr_accessor :local_taric_description

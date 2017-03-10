@@ -26,11 +26,7 @@ class GoodsController < ApplicationController
 	}
 
 	def show
-		@makers = @good.manufacturers
-		if @makers.size == 1
-			uoms = @good.goods_manufacturers.first.uoms 
-			@autoset_uom = (uoms.size == 1)&&(!uoms.first.uom.blank?) ? uoms.first : nil
-		end
+		@uom_forever_alone = @good.uoms.length == 1 ? @good.uoms.first : Uom.new
 	end
 
 	def new
@@ -47,6 +43,7 @@ class GoodsController < ApplicationController
 					@manufacturers.where(id: @MEM.q_good[:manufacturer_filter]).first.try(:name)
 			)
 		end
+		@uoms = @good.uoms.blank? ? [Uom.new] : @good.uoms
 	end
 
 	def edit
