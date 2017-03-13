@@ -68,6 +68,22 @@
 		</article>
 
 		<article class="decorated_wrap shrinked">
+			<%= link_to(
+				cbt(:create_new_client),
+				new_impexpcompany_path,
+				class: "button"
+			) %>
+		</article>
+
+		<article class="decorated_wrap shrinked">
+			<%= link_to(
+				cbt(:create_new_manufacturer),
+				new_manufacturer_path,
+				class: "button"
+			) %>
+		</article>
+
+		<article class="decorated_wrap shrinked">
 
 			<%= render 'goods/edit/uoms', obj: t%>
 

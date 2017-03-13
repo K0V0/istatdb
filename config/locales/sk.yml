@@ -13,6 +13,9 @@ sk:
     table_cap_kngroup: "Zaradenie v systéme HS(KN)/TARIC"
     table_cap_good: "Tovar"
 
+    create_new_client: "Vytvoriť nového intrastat klienta"
+    create_new_manufacturer: "Vytvoriť nového výrobcu/odberateľa pre tovar"
+
     search_client_filter_none: "Tovar všetkých klientov"
     search_manufacturers_filter_none: "Všetci výrobcovia"
 

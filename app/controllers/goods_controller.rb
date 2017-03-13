@@ -118,6 +118,7 @@ class GoodsController < ApplicationController
 			Impexpcompany: { company_name: :contains },
 			Manufacturer: { name: :contains }
 		)
+		@uoms = @good.uoms
 	end
 
 	def searcher_load_manufacturers_by_impexpcompany

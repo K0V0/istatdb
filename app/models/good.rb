@@ -23,9 +23,16 @@ class Good < ActiveRecord::Base
 	# here can be added independently from other places in app and validations 
 	# on both sides causes circular dependency error
 
-	#def uoms
-	#	 @uoms ||= [{ uom: "", uom_multiplier: "1", uom_type_id: "" }]
-	#end
+	def uoms
+		 u = super
+		 if u.blank?
+		 	if !@uoms.blank?
+		 		return @uoms
+		 	end
+		 else
+		 	return u
+		 end
+	end
 
 	def uoms=(par)
 		@uoms = par
