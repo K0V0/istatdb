@@ -26,7 +26,9 @@ class GoodsController < ApplicationController
 	}
 
 	def show
-		@uom_forever_alone = @good.uoms.length == 1 ? @good.uoms.first : Uom.new
+		if !@good.uoms.blank?
+			@uom_forever_alone = @good.uoms.length == 1 ? @good.uoms.first : Uom.new
+		end
 	end
 
 	def new
