@@ -5,6 +5,9 @@ en:
   localtaricdb: "Local TARIC database"
   settings_section: "Settings"
 
+  client: "Intrastat client"
+  manufacturer: "Manufacturer/consumer"
+
   new_item: "Add item"
   edit_items: "Edit/Delete item(s)"
   edit_items_finish: "Finish operations"
@@ -28,6 +31,7 @@ en:
   create_and_next: "Save and Add next"
   add_to_mem: "Add to memory"
   update: "Update!"
+  select: "Select..."
 
   footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
   footer_advertisement_webpage: "www.roulage.sk/en"
@@ -59,6 +63,9 @@ sk:
   localtaricdb: "Lokálny TARIC"
   settings_section: "Nastavenia"
 
+  client: "Intrastat klient"
+  manufacturer: "Výrobca/odberateľ"
+
   new_item: "Pridať položku"
   edit_items: "Spravovať položky"
   edit_items_finish: "Ukončiť správcu položiek"
@@ -82,6 +89,7 @@ sk:
   create_and_next: "Uložiť a Pridať ďalšie"
   add_to_mem: "Vložiť do pamäti"
   update: "Aktualizovať!"
+  select: "Vybrať..."
 
   footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
   footer_advertisement_webpage: "www.roulage.sk"

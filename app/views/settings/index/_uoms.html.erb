@@ -1,45 +1,66 @@
 
-<div class="tablewrap decorated_wrap shrinked">
-	
-	<table class="uoms_types_settings rows_colored">
+<section class="uoms_settings">
 
-		<thead>
-			<tr>
-				<th colspan="10"> <%= cbt :uoms_cp_cap %> </th>
-			</tr>
-		</thead>
+	<div class="tablewrap decorated_wrap shrinked">
+		
+		<table class="uoms_types_settings rows_colored">
 
-		<tbody>
-
-			<% UomType.all.each do |ut| %>
-
+			<thead>
 				<tr>
-					<td>
-						<%= ut.uom_type %>
-					</td>
-					<td>
-						<%= ut.full_name %>
-					</td>
-					<td>
-						
+					<th colspan="10"> <%= cbt :uoms_cp_cap %> </th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<% UomType.all.each do |ut| %>
+
+					<tr>
+						<td>
+							<%= ut.uom_type %>
+						</td>
+						<td>
+							<%= ut.full_name %>
+						</td>
+						<td>
+							<%= link_to(
+								"&#9998;".html_safe,
+								edit_uom_type_path(ut)
+							) %>
+						</td>
+						<td>
+							<%= link_to(
+								"&#x2716;".html_safe,
+								delete_uom_type_path(ut)
+							) %>
+						</td>
+					</tr>
+
+				<% end %>
+
+			</tbody>
+
+			<tfoot>
+				<tr>
+					<td colspan="10">
+						---
 					</td>
 				</tr>
+			</tfoot>
+		</table>
 
-			<% end %>
+	</div>
 
-		</tbody>
+</section>
 
-		<tfoot>
-			<tr>
-				<td colspan="10">
-					<%= link_to(
-						cbt(:uoms_add_new),
-						new_uom_type_path,
-						class: "button"
-					) %>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+<section class="decorated_wrap actions shrinked">
 
-</div>
+		<%= link_to(
+			cbt(:uoms_add_new),
+			new_uom_type_path,
+			class: "button"
+		) %>
+
+	</div>
+
+</section>

@@ -15,14 +15,24 @@ class Uom < ActiveRecord::Base
 
 	before_save :set_fallback_multiplier
 
+	after_initialize :set_default_pcs_to_one
+
 	def set_fallback_multiplier
 		if !self.uom.blank? && self.uom_multiplier.blank?
 			self.uom_multiplier = 1
 		end
 	end
 
+	def set_default_pcs_to_one
+		self.uom_multiplier ||= 1
+	end
+
 	def type
 		uom_type.try(:uom_type)
+	end
+
+	def type_fullname
+		uom_type.try(:full_name)
 	end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310004330) do
+ActiveRecord::Schema.define(version: 20170313211857) do
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"
@@ -111,9 +111,10 @@ ActiveRecord::Schema.define(version: 20170310004330) do
 
   create_table "uom_types", force: :cascade do |t|
     t.string   "uom_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "full_name"
+    t.string   "description"
   end
 
   create_table "uoms", force: :cascade do |t|

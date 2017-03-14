@@ -270,10 +270,31 @@ Rails.application.routes.draw do
     to: "global_tarics#xml_from_url", 
     as: "global_taric_xml_from_url"
 
+  get "uom_types",
+    to: "uom_types#index", 
+    as: "uom_types"
+
+  get "uom_type/:id",
+    to: "uom_types#show",
+    as: "uom_type"
+
+  post "uom_types",
+    to: "uom_types#create" 
+
+  patch  "uom_type/:id",
+    to: "uom_types#update"
+
   get "uom_types/new_uom",
     to: "uom_types#new", 
     as: "new_uom_type"
 
+  get "uom_types/edit_uom/:id",
+    to: "uom_types#edit", 
+    as: "edit_uom_type"
+
+  delete "uom_types/delete_uom/:id",
+    to: "uom_types#delete", 
+    as: "delete_uom_type"
 
 
   ### hidden section for testing purposes

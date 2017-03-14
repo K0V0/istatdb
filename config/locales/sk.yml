@@ -46,6 +46,7 @@ sk:
     create_good_and_next: "Uložiť a pridať ďalšiu"
 
     associated_to_impexpcompany: "Príslušnosť ku klientom"
+    uoms_associated_to_client_and_manufacturer: "Merné jednotky príslušné pre pár Intrastak klient <-> dodávateľ/odberateľ"
 
   local_tarics:
 

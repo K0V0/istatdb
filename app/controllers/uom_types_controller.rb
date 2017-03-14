@@ -1,13 +1,17 @@
 class UomTypesController < ApplicationController
 
-	skip_filter *_process_action_callbacks.map(&:filter)
+	before_action(only: :create) { create_action permitted_pars }
+
+    before_action(only: :update) { update_action permitted_pars }
 
 	def index
-		#@uom_types = UomType.all
+		redirect_to settings_path
 	end
 
-	def new
-		
+	private
+
+	def permitted_pars
+		 params[:uom_type].permit(:uom_type, :full_name, :description)
 	end
 
 end

@@ -11,6 +11,17 @@ class LocalTaricsController < ApplicationController
 
     before_action(only: :update) { update_action permitted_pars }
 
+    def new
+      if !@MEM.q_local_taric.blank?
+        @local_taric.assign_attributes(
+          kncode: 
+            @MEM.q_local_taric[:kncode_start],
+          description:
+             @MEM.q_local_taric[:description_cont],
+        )
+      end
+    end
+
     def csv_export
     
     end

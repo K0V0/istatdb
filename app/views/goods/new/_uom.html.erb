@@ -35,10 +35,10 @@
 		<div class="select_wrapper">
 
 			<select name='good[uoms][][uom_type_id]'>
+
+				<option value=""> <%= cbt :uoms_empty %> </option>
 				
 				<% UomType.all.each do |uom_type| %>
-
-					<option value=""> <%= cbt :uoms_empty %> </option>
 
 					<option 
 					 value="<%= uom_type.id %>"

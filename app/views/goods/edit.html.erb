@@ -83,11 +83,19 @@
 			) %>
 		</article>
 
-		<article class="decorated_wrap shrinked">
+		<% if !@good.uoms.blank? %>
+			<article class="decorated_wrap shrinked">
 
-			<%= render 'goods/edit/uoms', obj: t%>
+				<%= render(
+					'goods/edit/uoms',
+					obj: t,
+					impexpcompanies: @uoms_impexpcompanies,
+					manufacturers: @uoms_manufacturers,
+					uoms: @good.uoms
+				) %>
 
-		</article>
+			</article>
+		<% end %>
 
 		<article class="decorated_wrap shrinked">
 

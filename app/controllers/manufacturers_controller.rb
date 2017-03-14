@@ -32,12 +32,12 @@ class ManufacturersController < ApplicationController
     end
 
   	def new
-      if !@MEM.search.blank?
+      if !@MEM.q_manufacturer.blank?
         @manufacturer.assign_attributes(
           name: 
-            @MEM.search[:name_cont],
+            @MEM.q_manufacturer[:name_cont],
           impexpcompany_company_name:
-            @impexpcompanies.where(id: @MEM.search[:impexpcompany_filter]).first.try(:company_name),
+            @impexpcompanies.where(id: @MEM.q_manufacturer[:impexpcompany_filter]).first.try(:company_name),
         )
       end
   	end
