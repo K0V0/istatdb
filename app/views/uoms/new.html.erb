@@ -21,6 +21,56 @@
 				},
 			) %>
 
+			<div>
+				<div>
+					<%= label_tag :uom_type_id %>
+					<div class="select_wrapper">
+						<%= t.collection_select(
+							:uom_type_id,
+							UomType.all,
+							:id,
+							:uom_type
+						) %>
+						<span></span>
+					</div>
+				</div>
+				<div>
+					<%= label_tag :uom_impexpcompany_id, t(:client) %>
+					<div class="select_wrapper">
+						<%= t.collection_select(
+							:impexpcompany_id,
+							@impexpcompanies,
+							:id,
+							:company_name
+						) %>
+						<span></span>
+					</div>
+				</div>
+				<div>
+					<%= label_tag :uom_manufacturer_id, t(:manufacturer) %>
+					<div class="select_wrapper">
+						<%= t.collection_select(
+							:manufacturer_id,
+							@manufacturers,
+							:id,
+							:name
+						) %>
+						<span></span>
+					</div>
+				</div>
+			</div>
+			
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+			<div>
+
+				<%= t.submit class: "button" %>
+
+				<%= link_to t(:back), edit_good_path(@good), class: "button" %>
+
+			</div>
 		</article>
 
 	<% end %>

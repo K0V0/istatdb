@@ -98,6 +98,18 @@
 		<% end %>
 
 		<article class="decorated_wrap shrinked">
+			<%= link_to(
+				cbt(:create_new_uom),
+				{
+					controller: :uoms,
+					action: :new,
+					good_id: @good.id 
+				},
+				class: "button"
+			) %>
+		</article>
+
+		<article class="decorated_wrap shrinked">
 
 			<div>
 				<%= t.submit class: "button" %>

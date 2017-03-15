@@ -63,6 +63,10 @@ Rails.application.routes.draw do
 
   ### goods edit section - uoms
 
+  get "uoms",
+    to: "uom#index",
+    as: "uoms"
+
   get "uom/:id",
     to: "uom#show",
     as: "uom"
@@ -70,6 +74,11 @@ Rails.application.routes.draw do
   get "uoms/:id/edit",
     to: "uoms#edit",
     as: "edit_uom"
+
+  get "uoms/new",
+    to: "uoms#new",
+    as: "new_uom"
+
 
   delete "uoms/:id/delete",
     to: "uoms#delete",

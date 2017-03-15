@@ -8,10 +8,29 @@ class UomsController < ApplicationController
 		#redirect_to settings_path
 	end
 
+	def new
+		@good = Good.find(params[:good_id])
+		@uom = @good.uoms.new
+		load_assocs
+	end
+
+	def edit
+		@good = @uom.good
+		load_assocs
+		super
+	end
+
 	private
 
 	def permitted_pars
-		 #params[:uom_type].permit(:uom_type, :full_name, :description)
+		 params[:uom].permit(:uom_type_id, :uom, :uom_multiplier, :manufacturer_id, :impexpcompany_id)
+	end
+
+	def load_assocs
+		@manufacturers = @good.manufacturers
+		@impexpcompanies = @good.impexpcompanies
+		@impexpcompany = @uom.impexpcompany
+		@manufacturer = @uom.manufacturer
 	end
 
 end
