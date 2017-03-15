@@ -50,8 +50,18 @@
 					<td> <%= uom.uom_multiplier %> </td>
 					<td> <%= uom.manufacturer.name %> </td>
 					<td> <%= uom.impexpcompany.company_name %> </td>
-					<td></td>
-					<td></td>
+					<td>
+						<%= link_to(
+							"&#9998;".html_safe,
+						 	edit_uom_path(uom)
+						) %>
+					</td>
+					<td>
+						<%= link_to(
+							"&#x2716;".html_safe,
+							delete_uom_path(uom)
+						) %>
+					</td>
 				</tr>
 			<% end %>
 		</tbody>

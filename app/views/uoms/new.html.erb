@@ -1,0 +1,28 @@
+<%= render 'layouts/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @uom do |t| %>
+
+		<article class="decorated_wrap shrinked">
+
+			<%= render('layouts/new_select_section', 
+				obj: t,
+				input_fields: { 
+					uom: {
+						required: true,
+						autocomplete: false,
+						autofocus: true
+					},
+					uom_multiplier: {
+						required: true,
+						autocomplete: false,
+					}
+				},
+			) %>
+
+		</article>
+
+	<% end %>
+
+</section>

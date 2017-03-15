@@ -61,6 +61,22 @@ Rails.application.routes.draw do
 
 
 
+  ### goods edit section - uoms
+
+  get "uom/:id",
+    to: "uom#show",
+    as: "uom"
+
+  get "uoms/:id/edit",
+    to: "uoms#edit",
+    as: "edit_uom"
+
+  delete "uoms/:id/delete",
+    to: "uoms#delete",
+    as: "delete_uom"
+
+
+
   ### databaza klientov (objednavatelia sluzby intrastat) 
   ### dovozcovia a vyvozcovia
 
