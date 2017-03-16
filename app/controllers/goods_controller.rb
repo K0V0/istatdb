@@ -25,6 +25,8 @@ class GoodsController < ApplicationController
 		)
 	}
 
+	before_action :delete_action, only: :delete
+
 	def show
 		if !@good.uoms.blank?
 			@uom_forever_alone = @good.uoms.length == 1 ? @good.uoms.first : Uom.new
@@ -88,10 +90,6 @@ class GoodsController < ApplicationController
 	    else
 	        render "edit"
 	    end
-	end
-
-	def delete
-
 	end
 
 	def csv_export
