@@ -24,7 +24,8 @@
 		<% elsif opts[:type] == :textarea %>
 			<%= obj.text_area(
 				field_name,
-				rows: 1
+				rows: 1,
+				id: field_name.to_s
 			) %>
 		<% end %>
 
