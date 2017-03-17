@@ -13,13 +13,19 @@
 			class: class_string,
 		) %>
 
-		<%= obj.text_field( 
-			field_name,
-			autocomplete: (opts[:autocomplete] ? "on" : "off"),
-			class: class_string,
-			id: id,
-			autofocus: ("autofocus" if opts[:autofocus]) 
-		) %>
+		<% if opts[:type].nil? || opts[:type] == :field %>
+			<%= obj.text_field( 
+				field_name,
+				autocomplete: (opts[:autocomplete] ? "on" : "off"),
+				class: class_string,
+				id: id,
+				autofocus: ("autofocus" if opts[:autofocus]) 
+			) %>
+		<% elsif opts[:type] == :textarea %>
+			<%= obj.text_area(
+				field_name
+			) %>
+		<% end %>
 
 		<% if !opts[:reset_button].blank? %>
 
