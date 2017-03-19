@@ -1,3 +1,4 @@
+
 class GoodsManufacturer < ActiveRecord::Base
 
 	belongs_to :manufacturer, inverse_of: :goods_manufacturers, counter_cache: true

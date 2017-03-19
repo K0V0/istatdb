@@ -46,11 +46,17 @@ class Good < ActiveRecord::Base
 		local_taric.description
 	end
 
-	has_many :goods_manufacturers, inverse_of: :good
-	has_many :manufacturers, -> { distinct }, through: :goods_manufacturers
+	#has_many :goods_manufacturers, inverse_of: :good
+	#has_many :manufacturers, -> { distinct }, through: :goods_manufacturers
 
-	has_many :goods_impexpcompanies, inverse_of: :good
-	has_many :impexpcompanies, -> { distinct }, through: :goods_impexpcompanies
+	has_many :intertables, inverse_of: :good
+
+	has_many :manufacturers, -> { distinct }, through: :intertables
+
+	has_many :impexpcompanies, -> { distinct }, through: :intertables
+
+	#has_many :goods_impexpcompanies, inverse_of: :good
+	#has_many :impexpcompanies, -> { distinct }, through: :goods_impexpcompanies
 
 	has_many :uoms, inverse_of: :good
 

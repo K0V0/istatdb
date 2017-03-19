@@ -1,6 +1,6 @@
 <div class="tablewrap">
 
-	<table>
+	<table class="edit_good_select_manufactuers_list rows_colored">
 
 		<thead>
 
@@ -35,8 +35,21 @@
 					</td>
 					<td>
 						<% man.impexpcompanies.each_with_index do |client, index| %>
-							<span> <%= "#{index+1}: #{client.company_name}" %> </span>	
+							<span> 
+								<small><%= "#{index+1}:" %></small> 
+								<%= "#{client.company_name}" %> 
+							</span>	
 						<% end %>
+					</td>
+					<td>
+						<%= link_to(
+							"&#9998;".html_safe,
+						 	{
+						 		controller: :impexpcompany_manufacturers,
+						 		action: :edit,
+						 		manufacturer_id: man.id
+						 	}
+						) %>
 					</td>
 				</tr>
 			<% end %>

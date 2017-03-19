@@ -35,6 +35,23 @@ section.edit_good_select_manufactuers {
 	}
 }
 
+table.edit_good_select_manufactuers_list {
+
+	tbody {
+
+		tr {
+
+			td {
+
+				span{
+					display: block;
+				}
+			} 
+		}
+	}
+}
+
+
 @media only screen and (max-width: 480px) {
    
    table#goods {

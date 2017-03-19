@@ -59,8 +59,6 @@ Rails.application.routes.draw do
   get "goodsdb/export",
     to: "goods#csv_export"
 
-
-
   ### goods edit section - uoms
 
   get "uoms",
@@ -79,10 +77,15 @@ Rails.application.routes.draw do
     to: "uoms#new",
     as: "new_uom"
 
-
   delete "uoms/:id/delete",
     to: "uoms#delete",
     as: "delete_uom"
+
+  ### goods edit section - manufacturers <-> impexcompanies
+
+  get "clientandmanufacturer/:id/edit",
+    to: "impexpcompany_manufacturers#edit",
+    as: "edit_cam"
 
 
 
