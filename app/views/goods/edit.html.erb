@@ -75,6 +75,37 @@
 			) %>
 		</article>
 
+		<section class="edit_good_select_manufactuers">
+			<article class="decorated_wrap shrinked">
+
+				<%= render(
+					'goods/edit/manufacturers',
+					obj: t,
+					manufacturers: @manufacturers
+				) %>
+
+			</article>
+
+			<article class="decorated_wrap shrinked">
+				<%= render('layouts/new_select_section', 
+					obj: t,
+					input_fields: { 
+						manufacturer_name: {
+							required: true,
+							autocomplete: false,
+							reset_button: true
+						}
+					},
+					results_obj: Manufacturer.all,
+					cols: [:name],
+					cols_highlighted: {
+						name: :name
+					}
+				) %>
+			</article>
+			<br class="clear">
+		</section>
+			
 		<article class="decorated_wrap shrinked">
 			<%= link_to(
 				cbt(:create_new_manufacturer),

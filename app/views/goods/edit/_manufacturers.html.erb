@@ -1,0 +1,48 @@
+<div class="tablewrap">
+
+	<table>
+
+		<thead>
+
+			<tr>
+				<th colspan="10">  </th>
+			</tr>
+
+			<tr>
+				<th colspan="10">
+					
+				</th>
+			</tr>
+
+		</thead>
+			
+		<tbody>
+			<% manufacturers.each do |man| %>
+				<tr>
+					<td> 
+						<%= check_box_tag(
+							"good[manufacturer_ids]",
+							"#{man.id}",
+							"checked",
+							id: "good_manufactuer_ids_#{man.id}"
+						) %>
+					</td>
+					<td>
+						<%= label_tag(
+							:good_manufactuer_ids,
+							"#{man.name}"
+						) %>
+					</td>
+					<td>
+						<% man.impexpcompanies.each_with_index do |client, index| %>
+							<span> <%= "#{index+1}: #{client.company_name}" %> </span>	
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+
+</div>
+
