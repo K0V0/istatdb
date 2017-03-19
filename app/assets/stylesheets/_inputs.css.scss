@@ -1,6 +1,6 @@
 @import "variables";
 
-input, select {
+input, select, textarea {
 	@include reset_input_browser_styles();
 	@include all_transitions();
 	
@@ -14,12 +14,19 @@ input, select {
 	line-height:1em;
 }
 
-input:hover, select:hover {
+textarea {
+	display: inline-block;
+	vertical-align:middle;
+	font-family: inherit;
+    font-size: inherit;
+}
+
+input:hover, select:hover, textarea:hover {
 	background-color: $superwhite;
 	border-color: $superwhite;
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
 	border-color: $input_selected;
 	background-color: $superwhite;
 }
