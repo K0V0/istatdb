@@ -1,0 +1,61 @@
+<div class="tablewrap">
+
+	<table class="edit_good_select_manufactuers_list rows_colored">
+
+		<thead>
+
+			<tr>
+				<th colspan="10">  </th>
+			</tr>
+
+			<tr>
+				<th colspan="10">
+					
+				</th>
+			</tr>
+
+		</thead>
+			
+		<tbody>
+			<% manufacturers.each do |man| %>
+				<tr>
+					<td> 
+						<%= check_box_tag(
+							"good[manufacturer_ids]",
+							"#{man.id}",
+							"checked",
+							id: "good_manufactuer_ids_#{man.id}"
+						) %>
+					</td>
+					<td>
+						<%= label_tag(
+							:good_manufactuer_ids,
+							"#{man.name}"
+						) %>
+					</td>
+					<td>
+						<% man.impexpcompanies.each_with_index do |client, index| %>
+							<span> 
+								<small><%= "#{index+1}:" %></small> 
+								<%= "#{client.company_name}" %> 
+							</span>	
+						<% end %>
+					</td>
+					<td>
+						<%= link_to(
+							"&#9998;".html_safe,
+						 	{
+						 		controller: :impexpcompany_manufacturers,
+						 		action: :edit,
+						 		manufacturer_id: man.id
+						 	}
+						) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+
+</div>
+

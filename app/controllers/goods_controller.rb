@@ -52,6 +52,7 @@ class GoodsController < ApplicationController
 
 	def edit
 		@good.fillup_virtual_params
+		@manufacturers = @good.manufacturers
 		if !@good.uoms.blank?
 			@uoms_impexpcompanies = @good.uoms.collect { |w| w.impexpcompany }
 			@uoms_manufacturers = @good.uoms.collect { |w| w.manufacturer }
