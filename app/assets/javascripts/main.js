@@ -1,5 +1,6 @@
 var ACTIONS_INDEX;
 var UOMS_CALCULATOR;
+var CLIPBOARD;
 
 var mainHandler = function() {
 	console.log("page full reload");
@@ -54,6 +55,9 @@ var mainHandler = function() {
 
 var reloadHandler = function() {
 	console.log("page changed (turbolinks reload)");
+
+	CLIPBOARD = new Clipboard('.copy_to_clipboard');
+	console.log(CLIPBOARD);
 
 	ACTIONS_INDEX.reinit();
 	searchIfExists();

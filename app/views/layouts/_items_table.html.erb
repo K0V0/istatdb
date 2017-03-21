@@ -45,15 +45,19 @@
 
 		<tbody>
 
-			<% @result.each do |item| %>
+			<% @result.each_with_index do |item, index| %>
 
-				<tr>
+				<% row_id = "#{cn}_row_#{index+1}" %>
+
+				<tr id="<%= row_id %>">
 					
 					<%= render('layouts/table_checkbox', item_id: item.id) if @administrative_mode %>
 
 						<% fields.each do |field, opts| %>
 
-							<td class="<%= "#{cn.singularize}_#{field.to_s}" %>"> 
+							<% field_class = "#{cn.singularize}_#{field.to_s}" %>
+
+							<td class="<%= field_class %>"> 
 
 								<% 
 								res = item.send(field)
@@ -74,11 +78,14 @@
 												end
 											end
 										end
+										if opts[:clipboard_button]
+											res.map!.with_index { |x, index| "<span class=\"to_clipboard\" id=\"#{row_id}_#{field_class}_#{index}\">#{x.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{row_id}_#{field_class}_#{index}\">&#9986</b>" if !x.nil? }
+										end
 										if opts[:numbering]
 											res.map!.with_index { |x, index| "<small>#{(index+1).to_s}: </small>#{x.to_s}" if !x.nil? }
 										end
 										if opts[:wrap]
-											res.map! { |x| "<span>#{x.to_s}</span>" if !x.nil? }
+											res.map! { |x| "<span>#{x.to_s}</span>" if !x.nil? } 
 										end
 
 										comma = opts[:separate_with] || " "

@@ -54,6 +54,8 @@ gem 'activerecord-session_store'
 
 gem 'order_as_specified'
 
+gem 'clipboard-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
