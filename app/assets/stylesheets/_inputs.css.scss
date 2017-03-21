@@ -135,3 +135,19 @@ div.select_wrapper {
 		background-color: $superwhite;
 	}
 }
+
+.copy_to_clipboard {
+	margin: 0 0.25em;
+	cursor: pointer;
+	font-weight: normal;
+	display: inline-block;
+	transition: 0.2s ease-in-out;
+
+	&:hover {
+		transform: rotate(-45deg); 
+	}
+}
+
+span.to_clipboard {
+	display: inline !important;
+}
