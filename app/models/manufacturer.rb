@@ -5,8 +5,11 @@ class Manufacturer < ActiveRecord::Base
 	include Defaults
 	include AssocValidator
 
-	has_many :goods_manufacturers, inverse_of: :manufacturer
-	has_many :goods, through: :goods_manufacturers
+	#has_many :goods_manufacturers, inverse_of: :manufacturer
+	#has_many :goods, through: :goods_manufacturers
+
+	has_many :intertables, inverse_of: :manufacturer
+	has_many :goods, through: :intertables
 
 	has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
 	has_many :impexpcompanies, through: :impexpcompany_manufacturers 

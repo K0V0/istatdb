@@ -4,8 +4,8 @@ class Impexpcompany < ActiveRecord::Base
 
 	include Defaults
 
-	has_many :goods_impexpcompanies, inverse_of: :impexpcompany 
-	has_many :goods, through: :goods_impexpcompanies
+	has_many :intertables, inverse_of: :impexpcompany 
+	has_many :goods, through: :intertables
 
 	has_many :impexpcompany_manufacturers, inverse_of: :impexpcompany
 	has_many :manufacturers, through: :impexpcompany_manufacturers
