@@ -101,6 +101,9 @@
 											patt = highlight_search(item, field, opts[:is_multiple_with], true)
 											text = highlight_searched(str: text, patt: patt)
 										end
+										if opts[:clipboard_button]
+											text = "<span class=\"to_clipboard\" id=\"#{row_id}_#{field_class}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{row_id}_#{field_class}\">&#9986</b>".html_safe
+										end
 
 									end 
 									%>

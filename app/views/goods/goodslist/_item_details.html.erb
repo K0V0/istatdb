@@ -18,7 +18,7 @@
 		<%= render('layouts/table', 
 			object: @good,
 			captions: [cbt(:table_cap_kngroup)],
-			fields: ["<h2>#{num_to_kncode(@good.kncode)}</h2><br><h3>#{@good.kncode_description}</h3>"],
+			fields: ["<h2><span class=\"to_clipboard\" id=\"show_good_local_taric_kncode\">#{num_to_kncode(@good.kncode)}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"#show_good_local_taric_kncode\">✂</b></h2><br><h3>#{@good.kncode_description}</h3>"],
 			foots: [" --- "]
 		) %>
 
