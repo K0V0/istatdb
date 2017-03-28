@@ -29,22 +29,22 @@
 				) %>
 			</div>
 
-			<%= render 'goods/goodslist/search_select_client', obj: s %>
+			<%#= render 'goods/goodslist/search_select_client', obj: s %>
 
 			<div>
 				<%= s.label :manufacturer_filter %>
 				<div class="select_wrapper">
-					<%= render 'goods/goodslist/search_select_manufacturer', obj: s %>
+					<%#= render 'goods/goodslist/search_select_manufacturer', obj: s %>
 				</div>
 			</div>
 
 			<div>
 
-				<%= render 'layouts/action_add_new' %><!--
+				<%#= render 'layouts/action_add_new' %><!--
 
-				--><%= render 'layouts/action_go_to_administrative_mode' %><!--
+				--><%#= render 'layouts/action_go_to_administrative_mode' %><!--
 
-				--><%= render 'layouts/action_edit_delete' %><!--
+				--><%#= render 'layouts/action_edit_delete' %><!--
 
 				--><button id="clear_search" class="button">
 					<%= t :clear_search %>
@@ -58,7 +58,7 @@
 					<%= t :google_search %>
 				</button><!--
 
-				--><%= render 'layouts/action_search_or_back', s: s %>
+				--><%#= render 'layouts/action_search_or_back', s: s %>
 
 			</div>
 

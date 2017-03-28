@@ -1,30 +1,36 @@
 
-<%= render 'layouts/main_menu' %>
+<%= render 'layouts/base/main_menu' %>
 
-<%= render 'layouts/actions' if @administrative_mode %>
+<%= render 'layouts/shared/items_actions' if @administrative_mode %>
 
 <%= render 'goods/goodslist/search' %>
 
 <% if @result.length > 0 %>
 
-	<%= render('layouts/items_table',
+	<%= render('layouts/shared/items_table',
 
-		fields: {
+		fields: [
 			ident: {
 				is_sortlink: true,
 				is_highlighted: true,
-				is_link: true
+				is_link: {
+					remote: true
+				}
 			},
 			description: {
 				is_highlighted: true,
 				is_multiple_with: :ident
 			},
-			kncode: {
-				is_sortlink: true,
-				call_function: "num_to_kncode",
-				clipboard_button: true
-			}
-		}
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: true
+				},
+				description: {
+					
+				}
+			]
+		]
 
 	) %>
 

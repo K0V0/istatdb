@@ -4,7 +4,7 @@
 obj_name = "#{obj.class.name.underscore}"
 
 # coll - passed in collection to select from
-coll_name = "#{coll.name.underscore}"
+coll_name = "#{coll.name.underscore}_id"
 
 # val_method - method to call on collection objects to get value
 val_method = val_method || "id"
@@ -36,11 +36,23 @@ text_method = text_method || val_method
 					<% if text_method.is_a? Array %>
 						<% text_method.each do |l| %>
 							<td>
-								<%= c.send(l) %>
+								<%= label(
+									obj_name,
+									coll_name,
+									c.send(l),
+									value: c.id
+								) %>
 							</td>
 						<% end %>
 					<% else %>
-						<td> <%= c.send(val_method) %> </td>
+						<td> 
+							<%= label(
+								obj_name,
+								coll_name,
+								c.send(val_method),
+								value: c.id
+							) %>
+						</td>
 					<% end %>
 
 				</tr>

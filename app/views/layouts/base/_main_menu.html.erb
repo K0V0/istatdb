@@ -1,0 +1,32 @@
+<% content_for :mainmenu do %>
+	
+	<nav class="main_menu">
+
+		<ul>
+
+			<li>
+				<%= active_link_to t("top_menu.goods"), goods_path %>
+			</li>
+
+			<li>
+				<%= active_link_to t("top_menu.companies"), manufacturers_path %>
+			</li>
+
+			<li>
+				<%= active_link_to t("top_menu.local_taric"), local_tarics_path %>
+			</li>
+
+			<li>
+				<%= active_link_to t("top_menu.clients"), impexpcompanies_path %>
+			</li>
+
+			<li>
+				<%= active_link_to t("top_menu.settings"), settings_path %>
+			</li>
+
+		</ul>
+
+	</nav>
+	
+
+<% end %>

@@ -1,115 +1,32 @@
 en:
-  goodsdb: "Goods"
-  clientsdb: "Our clients"
-  manufacturersdb: "Manufacturers/consumers"
-  localtaricdb: "Local TARIC database"
-  settings_section: "Settings"
+  top_menu:
+    goods: Goods
+    clients: Intratat clients
+    companies: Buyers, sellers
+    local_taric: Local TARIC
+    settings: Settings
+    global_taric: Official TARIC
+  footer:
+    created_by: created by
+    creator: Matej Kováč
+    year: "2017"
+    link: "http://roulage.sk/en"
+    link_text: "www.roulage.sk"
+    text: Customs services, forwarding, Intrastat, consulting - Roulage-sk
 
-  client: "Intrastat client"
-  manufacturer: "Manufacturer/consumer"
-
-  new_item: "Add item"
-  edit_items: "Edit/Delete item(s)"
-  edit_items_finish: "Finish operations"
-  delete_items: "Delete selected"
-  delete_items_all: "Delete all found"
-  select_items: "Select all"
-  deselect_items: "Deselect all"
-  export_visible_items: "Export this page"
-  export_all_items: "Export all results"
-
-  edit_item: "Edit"
-  delete_item: "Delete"
-
-  search: "Search!"
-  clear_search: "Clean"
-  reset_search: "Reset"
-  google_search: "Search on google"
-  clear_search_short: "Clean"
-  new_item_short: "Add"
-  back: "Go back"
-  create_and_next: "Save and Add next"
-  add_to_mem: "Add to memory"
-  update: "Update!"
-  select: "Select..."
-
-  footer_advertisement: "Customs, forwarding, intrastat - Roulage SK"
-  footer_advertisement_webpage: "www.roulage.sk/en"
-  footer_advertisement_webpage_link: "http://roulage.sk/en"
-  footer_advertisement_creator: "Created by Matej Kováč"
-
-  no_results: "No results meet criteria"
-  results_total: "total results:"
-
-  total: "Total:"
-  pcs: "pcs."
-  pieces: "pcs."
-
-  sure: "Are you sure ?"
-
-  uomscalc_list_clear: "Clear memory"
-  uomscalc_list_good: "Reference"
-  uomscalc_list_uom: "UOM"
-  uomscalc_list_count: "Value"
-  uomscalc_list_short: "Result"
-  uomscalc_list_cap: "Calculator memory"
-
-  or: "or"
-
+    
 sk:
-  goodsdb: "Tovary"
-  clientsdb: "Klienti"
-  manufacturersdb: "Výrobcovia odberatelia"
-  localtaricdb: "Lokálny TARIC"
-  settings_section: "Nastavenia"
-
-  client: "Intrastat klient"
-  manufacturer: "Výrobca/odberateľ"
-
-  new_item: "Pridať položku"
-  edit_items: "Spravovať položky"
-  edit_items_finish: "Ukončiť správcu položiek"
-  delete_items: "Zmazať označené"
-  select_items: "Vybrať všetky"
-  delete_items_all: "Zmazať všetky nájdené"
-  deselect_items: "Zrušiť výber"
-  export_visible_items: "Exportovať túto stranu"
-  export_all_items: "Exportovať všetky nájdené"
-
-  edit_item: "Upraviť"
-  delete_item: "Odstrániť"
-
-  search: "Vyhľadať!"
-  clear_search: "Vyčistiť polia"
-  reset_search: "Reset"
-  google_search: "Vyhľadať cez Google"
-  clear_search_short: "Vyčistiť"
-  new_item_short: "Pridať"
-  back: "Naspäť!"
-  create_and_next: "Uložiť a Pridať ďalšie"
-  add_to_mem: "Vložiť do pamäti"
-  update: "Aktualizovať!"
-  select: "Vybrať..."
-
-  footer_advertisement: "Colné konanie, zasielateľstvo, intrastat - Roulage SK s.r.o."
-  footer_advertisement_webpage: "www.roulage.sk"
-  footer_advertisement_webpage_link: "http://roulage.sk"
-  footer_advertisement_creator: "Vytvoril Matej Kováč"
-
-  no_results: "Požadovaným kritériám nevyhovuje žiaden záznam"
-  results_total: "Výsledkov celkom:"
-
-  total: "Celkom:"
-  pcs: "kus."
-  pieces: "kusov"
-
-  sure: "Ste si istý ?"
-
-  uomscalc_list_clear: "Vymazať pamäť kalkulačky"
-  uomscalc_list_good: "Referencia"
-  uomscalc_list_uom: "Merná jednotka"
-  uomscalc_list_count: "Počet"
-  uomscalc_list_short: "Výsledok"
-  uomscalc_list_cap: "Pamäť kalkulačky"
-
-  or: "alebo"
+  top_menu:
+    goods: Tovary
+    clients: Spravodajské jednotky
+    companies: Výrobcovia, odberatelia
+    local_taric: Lokálny TARIC
+    settings: Nastavenia
+    global_taric: Oficiálny TARIC
+  footer:
+    created_by: vytvoril
+    creator: Matej Kováč
+    year: "2017"
+    link: "http://roulage.sk/en"
+    link_text: "www.roulage.sk"
+    text: Colné služby, zasielateľstvo, Intrastat, poradenstvo - Roulage-sk

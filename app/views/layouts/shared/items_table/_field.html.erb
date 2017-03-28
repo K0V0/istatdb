@@ -1,0 +1,33 @@
+<% fields.each do |field| %>
+
+	<% field.each do |field_name, options| %>
+
+		<% if options.is_a? Array %>
+
+			<%= render('layouts/shared/items_table/field',
+				obj: obj.send(field_name),
+				fields: options
+			) %>
+
+		<% else %>
+
+			<td>
+				<% 
+					result = obj.send(field_name)
+					text = ""
+					if result.is_a? Array
+						result.each do |res|
+
+						end
+					else
+						text = items_table_field_decorator(result.to_s, options, obj, field_name)
+					end
+				%>
+				<%= text %>
+			</td>
+
+		<% end %>
+
+	<% end %>
+
+<% end %>

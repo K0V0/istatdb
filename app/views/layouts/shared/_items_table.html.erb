@@ -1,0 +1,31 @@
+<%
+cn = controller_name.to_s
+%>
+
+<section class="items_table decorated_wrap">
+
+	<table class="items rows_colored with_efects" id="<%= cn %>">
+
+		<%= render('layouts/shared/items_table/head') %>
+
+		<tbody>
+			
+			<% @result.each do |item| %>
+
+				<tr>
+					
+					<%= render('layouts/shared/items_table/field', obj: item, fields: fields) %>
+
+				</tr>
+
+			<% end %>
+
+		</tbody>
+
+		<%= render('layouts/shared/items_table/foot') %>
+
+	</table>
+
+</section>
+
+

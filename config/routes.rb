@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     to: "goods#new",
     as: "new_good"
 
+   # vytvorit novy tovar
+  post 'goodsdb',
+    to: "goods#create"
+
   # ransack search
   get "goodsdb/search",
     to: "goods#search",

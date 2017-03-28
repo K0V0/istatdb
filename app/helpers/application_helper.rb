@@ -1,10 +1,11 @@
 module ApplicationHelper
 
 	### cbt - controller based translation
-	### helpful if you trying to keep discipline in YML files
-	### by grouping translations into multiple keys and logical hierarchy
-	### here I group translations by controllers and associated views
-	### using this function in view you don't need to write too much 
+	### trying to keep transtations organized, imagine you have t(:foo) somewhere in views
+	### associated to GoodsController, in YML file you write:
+	### <your lang>:
+	###   goods:
+	###     foo: BAR
 	def cbt translation_key
 		I18n.t(params[:controller] + "." + translation_key.to_s).gsub(/\n/, "<br>").html_safe
 	end
@@ -66,63 +67,8 @@ module ApplicationHelper
 	### function for formatting kncode number output 
 	# first part of HS/TARIC code is group of 4 numbers
 	# other parts are groups of 2 numbers 
-	# skips html added by other decoration functions
 	def num_to_kncode num
 		return num.gsub(/.{2}/).with_index {|x, i| i > 0 ? "#{x} " : "#{x}" } .strip
-	end
-
-#=begin
-	### function for yelding content saved in content_for 
-	# symb - 			same as first parameter of content_for function, symbol to your content
-	# wrap tag - 		if specified, wraps content with this tag(s)
-	# html_options -	for wrapping element if defined, html attributes like class, id, etc...
-	def content_yelder symb, wrap_tag=nil, html_options={}
-		end_tag, start_tag = "", ""
-
-		if !wrap_tag.nil?
-			start_tag = '<' + wrap_tag.to_s + '>'
-			end_tag = start_tag.dup
-			end_tag.insert(1, '/')
-		end
-
-		if !html_options.blank?
-			options_string = ""
-			html_options.each do |k, v|
-				options_string += ' ' + k.to_s + '="' + v.to_s + '"'
-			end
-			start_tag.insert(start_tag.length-1, options_string)
-		end
-
-		html_string = start_tag + (content_for(symb) || " --- ") + end_tag
-		html_string.html_safe
-	end
-#=end
-
-	def return_selected_class_if_in_new_obj_attrs item, symsym
-		if params.deep_has_key? controller_name.singularize.to_sym, symsym
-			return 'class="selected"'.html_safe if item.id == params[:good][symsym].to_i
-		end
-	end
-
-
-	def selected_html_class item, symsym
-		if params.deep_has_key? controller_name.singularize.to_sym, symsym
-			return "selected".html_safe if item.id == params[:good][symsym].to_i
-		end
-		""
-	end
-
-
-	def group_options obj
-		[items: obj.to_a]
-	end
-
-	def output input
-		if input.blank? 
-			return "---"
-		else 
-			return input			
-		end
 	end
 
 end
