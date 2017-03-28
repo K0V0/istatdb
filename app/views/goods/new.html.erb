@@ -3,112 +3,47 @@
 
 <section class="form">
 
-	<%= form_for @good, url: create_good_path do |t| %>
+	<%= form_for @good do |t| %>
 
-		<article class="decorated_wrap">
+		<article class="decorated_wrap shrinked">
 
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					ident: {
-						required: true,
-						autocomplete: false,
-						reset_button: :all,
-						autofocus: true,
-						check_existence: true
-					},
-					description: {
-						required: false,
-						autocomplete: false,
-						type: :textarea
-					}
-				},
+			<div>
+				<div>
+					<%= t.label :ident %>
+					<%= t.text_field :ident %>
+				</div>
+				<div>
+					<%= t.label :description %>
+					<%= t.text_area :description %>
+				</div>
+			</div>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+
+			<div>
+				<%= t.fields_for :local_taric, @local_taric do |lt| %>
+					<div>
+						<%= lt.label :kncode %>
+						<%= lt.text_field :kncode %>
+					</div>
+					<div>
+						<%= lt.label :description %>
+						<%= lt.text_area :description %>
+					</div>
+				<% end %>
+			</div>
+
+			<%= render('/layouts/elements/table_list_radio_buttons',
+				obj: @good,
+				coll: @local_tarics,
+				text_method: [:kncode, :description]
 			) %>
 
 		</article>
 
-		<article class="decorated_wrap" id="new_taricnum_search">
-
-			<%= render('layouts/new_select_section', 
-				# reference to form object
-				obj: t,
-				# input fields and options
-				input_fields: { 
-					local_taric_kncode: {
-						required: true,
-						autocomplete: false, 
-						reset_button: :all,
-					},
-					local_taric_description: {
-						required: true,
-						autocomplete: false,
-						type: :textarea
-					}
-				},
-				# activerecord object with records to choose from
-				results_obj: @local_tarics,
-				# which columns to display
-				cols: [:kncode, :description],
-				# in which columns to highlight matches 
-				cols_highlighted: {
-					# defining input field source for matching for each column
-					kncode: :kncode,
-					description: :description
-				}
-			) %>
-
-		</article>
-
-		<article class="decorated_wrap" id="new_client_search">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					impexpcompany_company_name: {
-						required: true,
-						autocomplete: false,
-						reset_button: true
-					}
-				},
-				results_obj: @impexpcompanies,
-				cols: [:company_name],
-				cols_highlighted: {
-					company_name: :company_name
-				}
-			) %>
-
-		</article>
-
-		<article class="decorated_wrap" id="new_manufactuer_search">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					manufacturer_name: {
-						required: true,
-						autocomplete: false,
-						reset_button: true
-					}
-				},
-				results_obj: @manufacturers,
-				cols: [:name],
-				cols_highlighted: {
-					name: :name
-				}
-			) %>
-
-		</article>
-
-		<% @uoms.each_with_index do |uom, index| %>
-
-			<article class="new_good_uom decorated_wrap">
-
-				<%= render 'goods/new/uom', obj: uom, index: index %>
-
-			</article>
-
-		<% end %>
-
+		
 		<article class="decorated_wrap shrinked">
 			<div>
 

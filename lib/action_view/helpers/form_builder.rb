@@ -1,6 +1,7 @@
 class ActionView::Helpers::FormBuilder
 
   	def errors(field, continue: false)
+
 	    if !@object.errors[field].blank? 
 	    	err = ""
 	    	if continue

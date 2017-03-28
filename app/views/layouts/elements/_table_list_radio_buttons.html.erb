@@ -1,0 +1,56 @@
+
+<% 
+# obj - passsed in AR object
+obj_name = "#{obj.class.name.underscore}"
+
+# coll - passed in collection to select from
+coll_name = "#{coll.name.underscore}"
+
+# val_method - method to call on collection objects to get value
+val_method = val_method || "id"
+
+# text_method - method(s) to call on collection to get label(s) text
+text_method = text_method || val_method
+%>
+
+<div class="tablewrap">
+
+	<table class="rows_colored with_efects">
+
+		<thead><tr><th></th></tr></thead>
+
+		<tbody>
+
+			<% coll.each do |c| %>
+
+				<tr>
+
+					<td>
+						<%= radio_button(
+							obj_name,
+							coll_name,
+							c.send(val_method)
+						) %>
+					</td>
+
+					<% if text_method.is_a? Array %>
+						<% text_method.each do |l| %>
+							<td>
+								<%= c.send(l) %>
+							</td>
+						<% end %>
+					<% else %>
+						<td> <%= c.send(val_method) %> </td>
+					<% end %>
+
+				</tr>
+
+			<% end %>
+
+		</tbody>
+
+		<tfoot><tr><th></th></tr></tfoot>
+
+	</table>
+
+</div>

@@ -11,7 +11,7 @@ class GoodsController < ApplicationController
 	}
 
 	before_action(only: [:new, :edit, :update]) {
-
+=begin
 		load_associated_all(
 			local_tarics: {},
 			## give a id of record
@@ -23,6 +23,7 @@ class GoodsController < ApplicationController
 			}, 
 			uom_types: {}
 		)
+=end
 	}
 
 	before_action :delete_action, only: :delete
@@ -34,6 +35,10 @@ class GoodsController < ApplicationController
 	end
 
 	def new
+		@local_tarics = LocalTaric.all
+		@local_taric = @good.build_local_taric
+
+=begin
 		# speed up adding new good(s) - preload fields in form with values from search window, for example adding searched item that was not found (not in database yet)
 		if !@MEM.q_good.blank?
 			@good.assign_attributes(
@@ -48,6 +53,7 @@ class GoodsController < ApplicationController
 			)
 		end
 		@uoms = @good.uoms.blank? ? [Uom.new] : @good.uoms
+=end
 	end
 
 	def edit
@@ -115,6 +121,7 @@ class GoodsController < ApplicationController
 	def reload_tables_for_select
 		# runs on page reload eg submit and validation fail
 		# reloads select tables giving more accurate results to select from after failed validation or when adding another record with simmilar or same associations
+=begin
 		reload_result_by_params_nested(
 			LocalTaric: {
 				kncode: :starts,
@@ -124,6 +131,7 @@ class GoodsController < ApplicationController
 			Manufacturer: { name: :contains }
 		)
 		@uoms = @good.uoms
+=end
 	end
 
 	def searcher_load_manufacturers_by_impexpcompany

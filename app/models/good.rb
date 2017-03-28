@@ -3,18 +3,18 @@ class Good < ActiveRecord::Base
 	extend OrderAsSpecified
 
 	include Defaults
-	include AssocValidator
-	include AssocValidatorUoms
-	include AssocFillup
+	#include AssocValidator
+	#include AssocValidatorUoms
+	#include AssocFillup
 	include Log
 
 	# convention: <associated model name><underscore><field name in assoc model>
 	#attr_accessor :search_both
-	attr_accessor :local_taric_kncode
-	attr_accessor :local_taric_description
-	attr_accessor :impexpcompany_company_name
-	attr_accessor :impexpcompany_affiliated_office
-	attr_accessor :manufacturer_name
+	#attr_accessor :local_taric_kncode
+	#attr_accessor :local_taric_description
+	#attr_accessor :impexpcompany_company_name
+	#attr_accessor :impexpcompany_affiliated_office
+	#attr_accessor :manufacturer_name
 
 	# cannot use accept_nested_attributes_for due to fact that when user in this model 
 	# writes something that is in database I want to associate it only
@@ -22,7 +22,7 @@ class Good < ActiveRecord::Base
 	# cannot use second solution to validate on parent model because each association 
 	# here can be added independently from other places in app and validations 
 	# on both sides causes circular dependency error
-
+=begin
 	def uoms
 		 u = super
 		 if u.blank?
@@ -37,7 +37,7 @@ class Good < ActiveRecord::Base
 	def uoms=(par)
 		@uoms = par
 	end
-
+=end
 	def kncode
 		local_taric.kncode
 	end
@@ -55,27 +55,32 @@ class Good < ActiveRecord::Base
 
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
 
+	#has_one :goods_local_taric, inverse_of: :good
+	#has_one :local_taric, through: :goods_local_taric
+	belongs_to :local_taric, inverse_of: :goods
+	accepts_nested_attributes_for :local_taric
+
 	#has_many :goods_impexpcompanies, inverse_of: :good
 	#has_many :impexpcompanies, -> { distinct }, through: :goods_impexpcompanies
 
-	has_many :uoms, inverse_of: :good
+	#has_many :uoms, inverse_of: :good
 
-	belongs_to :local_taric, inverse_of: :goods
+	#belongs_to :local_taric, inverse_of: :goods
 
-	validates :ident, presence: true
+	#validates :ident, presence: true
 
-	validate :associated_validations, on: :create
-	validate :unique_by_assocs, on: :create
+	#validate :associated_validations, on: :create
+	#validate :unique_by_assocs, on: :create
 
-	validate :must_have_one_or_more_impexpcompanies, on: :update
+	#validate :must_have_one_or_more_impexpcompanies, on: :update
 
-	validate :is_on_create, on: :create
-	validate :is_on_update, on: :update
+	#validate :is_on_create, on: :create
+	#validate :is_on_update, on: :update
 
-	before_update :kn_code_update
-	after_create :assignments
-	before_save :assignments_before_save
-
+	#before_update :kn_code_update
+	#after_create :assignments
+	#before_save :assignments_before_save
+=begin
 	def is_on_create
 		@model_is_in_create = true
 		return true
@@ -85,7 +90,7 @@ class Good < ActiveRecord::Base
 		@model_is_in_update = true
 		return true
 	end
-
+=end
 	scope :default_order, -> { 
 		order(ident: :asc)
 	}
@@ -112,6 +117,7 @@ class Good < ActiveRecord::Base
 	    %i(impexpcompany_filter manufacturer_filter)
 	end
 
+=begin
 	## resolve how to run from update action only - maybe run from controller
 	def fillup_virtual_params
 		fillup_virtual :local_taric, fields: [:kncode, :description]
@@ -198,5 +204,5 @@ class Good < ActiveRecord::Base
 			self.local_taric = l
 		end
 	end
-
+=end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319224237) do
+ActiveRecord::Schema.define(version: 20170327210901) do
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 20170319224237) do
 
   add_index "goods_impexpcompanies", ["good_id"], name: "index_goods_impexpcompanies_on_good_id"
   add_index "goods_impexpcompanies", ["impexpcompany_id"], name: "index_goods_impexpcompanies_on_impexpcompany_id"
+
+  create_table "goods_local_tarics", force: :cascade do |t|
+    t.integer  "goods_local_tarics_id"
+    t.integer  "good_id"
+    t.integer  "local_taric_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "goods_local_tarics", ["good_id"], name: "index_goods_local_tarics_on_good_id"
+  add_index "goods_local_tarics", ["goods_local_tarics_id"], name: "index_goods_local_tarics_on_goods_local_tarics_id"
+  add_index "goods_local_tarics", ["local_taric_id"], name: "index_goods_local_tarics_on_local_taric_id"
 
   create_table "goods_manufacturers", force: :cascade do |t|
     t.integer  "good_id"
