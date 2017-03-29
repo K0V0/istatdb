@@ -5,35 +5,39 @@
 
 <%= render 'goods/goodslist/search' %>
 
-<% if @result.length > 0 %>
+<%= render('layouts/shared/items_table',
 
-	<%= render('layouts/shared/items_table',
-
-		fields: [
-			ident: {
-				is_sortlink: true,
-				is_highlighted: true,
-				is_link: {
-					remote: true
-				}
-			},
-			description: {
-				is_highlighted: true,
-				is_multiple_with: :ident
-			},
-			local_taric: [
-				kncode: {
-					call_decorator: :num_to_kncode,
-					is_link: true
-				}
-			]
+	fields: [
+		ident: {
+			is_sortlink: true,
+			is_highlighted: true,
+			is_link: {
+				remote: true
+			}
+		},
+		description: {
+			is_highlighted: true,
+			is_multiple_with: :ident
+		},
+		local_taric: [
+			kncode: {
+				call_decorator: :num_to_kncode,
+				is_link: true
+			}
 		]
+	],
 
-	) %>
+	errors: [
+		no_results: {
+			partial: "goods/index/no_results"
+		}
+	], 
 
-<% else %>
-	
-	<%= render "goods/goodslist/item_no_results", items: @result %>
+	options: [
+		#head: true,
+		foot: true
+	]
 
-<% end %>
+) %>
+
 

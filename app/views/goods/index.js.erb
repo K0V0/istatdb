@@ -2,41 +2,46 @@ $('section.items_table, section.item_details').remove();
 
 $("section.calculator_list").remove();
 
-<%
-	if @result.length > 0
-		o = render('layouts/shared/items_table',
+<% o = render('layouts/shared/items_table',
 
-			fields: [
-				ident: {
-					is_sortlink: true,
-					is_highlighted: true,
-					is_link: {
-						remote: true
-					}
-				},
-				description: {
-					is_highlighted: true,
-					is_multiple_with: :ident
-				},
-				local_taric: [
-					kncode: {
-						call_decorator: :num_to_kncode,
-						is_link: true
-					}
-				]
-			]
+	fields: [
+		ident: {
+			is_sortlink: true,
+			is_highlighted: true,
+			is_link: {
+				remote: true
+			}
+		},
+		description: {
+			is_highlighted: true,
+			is_multiple_with: :ident
+		},
+		local_taric: [
+			kncode: {
+				call_decorator: :num_to_kncode,
+				is_link: true
+			}
+		]
+	],
 
-		) %>
+	errors: [
+		no_results: {
+			partial: "goods/index/no_results"
+		}
+	], 
 
-		$('<%=j o %>').appendTo('main');
+	options: [
+		head: true,
+		foot: true
+	]
 
-	<% else %>
+) %>
 
-		$('<%=j render("goods/goodslist/item_no_results", items: @result) %>')
-		.appendTo('main');
+$('<%=j o %>').appendTo('main');
 
-	<% end
-%>
+	
+
+		
 
 // renders manufacturers select field - manufacturers list is selected based on client 
 //var parent = $('#q_manufacturer_filter').parent();

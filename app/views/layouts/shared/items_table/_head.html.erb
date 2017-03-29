@@ -1,0 +1,22 @@
+<% fields.each do |field| %>
+
+	<% field.each do |field_name, options| %>
+
+		<% if options.is_a? Array %>
+
+			<%= render('layouts/shared/items_table/field',
+				obj: obj,
+				fields: options
+			) %>
+
+		<% else %>
+
+			<th>
+				
+			</th>
+
+		<% end %>
+
+	<% end %>
+
+<% end %>

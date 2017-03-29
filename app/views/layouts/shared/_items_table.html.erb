@@ -6,7 +6,25 @@ cn = controller_name.to_s
 
 	<table class="items rows_colored with_efects" id="<%= cn %>">
 
-		<%= render('layouts/shared/items_table/head') %>
+		<% if defined? options %>
+
+			<% if options[0][:head] %>
+
+				<thead>
+
+					<tr>
+						<%= render('layouts/shared/items_table/head',
+							obj: @result, 
+							fields: fields#, 
+							#preferences: o
+						) %>
+					</tr>
+					
+				</thead>
+
+			<% end %>
+
+		<% end %>
 
 		<tbody>
 			
@@ -20,9 +38,33 @@ cn = controller_name.to_s
 
 			<% end %>
 
+			<% if defined? errors %>
+
+				<%= items_table_errors_handler(errors[0], @result) %>
+
+			<% end %>
+
 		</tbody>
 
-		<%= render('layouts/shared/items_table/foot') %>
+		<% if defined? options %>
+
+			<% if options[0][:foot] %>
+
+				<thead>
+
+					<tr>
+						<%= render('layouts/shared/items_table/foot',
+							obj: @result, 
+							fields: fields#,
+							#preferences: o
+						) %>
+					</tr>
+					
+				</thead>
+
+			<% end %>
+
+		<% end %>
 
 	</table>
 

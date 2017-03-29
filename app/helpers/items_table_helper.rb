@@ -40,4 +40,25 @@ module ItemsTableHelper
 		return text
 	end
 
+	### function to support errors on items table
+	# errors - list of defined errors to respond to and option
+	# object - passed plural AR object
+	#
+	
+	def items_table_errors_handler(errors, object)
+		ret = ""
+
+		if errors[:no_results]
+			if object.length == 0
+				if part = errors[:no_results].try(:partial)
+					ret = render(part, object)
+				else
+					ret = render('layouts/shared/items_table/no_results')
+				end
+			end
+		end
+
+		return ret
+	end
+
 end
