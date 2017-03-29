@@ -4,25 +4,29 @@ $("section.calculator_list").remove();
 
 <%
 	if @result.length > 0
-		o = render('layouts/items_table',
-			fields: {
+		o = render('layouts/shared/items_table',
+
+			fields: [
 				ident: {
 					is_sortlink: true,
 					is_highlighted: true,
-					is_link: true
+					is_link: {
+						remote: true
+					}
 				},
 				description: {
 					is_highlighted: true,
 					is_multiple_with: :ident
-
 				},
-				kncode: {
-					is_sortlink: true,
-					call_function: "num_to_kncode",
-					clipboard_button: true
-				}
-			}
-		) %> 
+				local_taric: [
+					kncode: {
+						call_decorator: :num_to_kncode,
+						is_link: true
+					}
+				]
+			]
+
+		) %>
 
 		$('<%=j o %>').appendTo('main');
 
@@ -35,21 +39,21 @@ $("section.calculator_list").remove();
 %>
 
 // renders manufacturers select field - manufacturers list is selected based on client 
-var parent = $('#q_manufacturer_filter').parent();
-parent.children().remove();
-$('<%= j(render "goods/goodslist/search_select_manufacturer") %>').appendTo(parent)
+//var parent = $('#q_manufacturer_filter').parent();
+//parent.children().remove();
+//$('<%= j(render "goods/goodslist/search_select_manufacturer") %>').appendTo(parent)
 
 // remove edit item buttons when going back from show item
-$('#delete_good_from_search, #edit_good_from_search').remove();
+//$('#delete_good_from_search, #edit_good_from_search').remove();
 
 // change text and action of search button to back button depending on controler action 
 // you are in
-$('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
+//$('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
 
-if ('<%= @administrative_mode %>' == 'true') {
+//if ('<%= @administrative_mode %>' == 'true') {
 
-	$('section.actions').css({ 'display':'block' });
+	//$('section.actions').css({ 'display':'block' });
 
-	ACTIONS.refresh();
-}
+	//ACTIONS.refresh();
+//}
 

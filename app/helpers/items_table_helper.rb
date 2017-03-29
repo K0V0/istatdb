@@ -37,7 +37,7 @@ module ItemsTableHelper
 			end
 		end
 
-		text
+		return text
 	end
 
 end

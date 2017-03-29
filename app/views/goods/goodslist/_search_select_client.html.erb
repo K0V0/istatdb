@@ -5,7 +5,7 @@
 	<div class="select_wrapper">
 
 		<%= obj.collection_select :impexpcompany_filter,
-			Impexpcompany.all.order(:company_name),
+			@impexpcompanies,
 			:id,
 			:company_name,
 			include_blank: cbt(:search_client_filter_none)

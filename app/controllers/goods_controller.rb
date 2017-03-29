@@ -2,18 +2,21 @@ class GoodsController < ApplicationController
 
 	before_action(only: [:index, :search, :show, :administration]) {
 
-		#searcher_load_manufacturers_by_impexpcompany
-
 		searcher_for(
 			preload: :local_taric,
 			paginate: true
 		);
 	}
 
-
 	def index
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
+	end
+
+	def search
+		@impexpcompanies = Impexpcompany.all
+		@manufacturers = Manufacturer.all
+		super
 	end
 
 	def new
@@ -24,7 +27,6 @@ class GoodsController < ApplicationController
 		@local_taric = @good.build_local_taric
 		@impexpcompany = @good.impexpcompanies.build
 		@manufacturer = @good.manufacturers.build
-
 	end
 		
 	private 
