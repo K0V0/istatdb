@@ -43,6 +43,24 @@
 
 		</article>
 
+		<article class="decorated_wrap shrinked">
+
+			<div>
+				<%= t.fields_for :impexpcompany, @impexpcompany do |i| %>
+					<div>
+						<%= i.label :company_name %>
+						<%= i.text_field :company_name %>
+					</div>
+				<% end %>
+			</div>
+
+			<%= render('/layouts/elements/table_list_checkboxes',
+				obj: @good,
+				coll: @impexpcompanies,
+				text_method: [:company_name]
+			) %>
+
+		</article>
 		
 		<article class="decorated_wrap shrinked">
 			<div>

@@ -10,6 +10,7 @@ class Good < ActiveRecord::Base
 	has_many :manufacturers, -> { distinct }, through: :intertables
 
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
+	accepts_nested_attributes_for :impexpcompanies
 
 	belongs_to :local_taric, inverse_of: :goods
 	accepts_nested_attributes_for :local_taric, reject_if: :local_taric_selected
