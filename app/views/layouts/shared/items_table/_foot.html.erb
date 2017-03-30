@@ -1,5 +1,11 @@
 
 <th colspan="99">
-	<%= @result.length %>
+	<div id="pagination">
+		<%= paginate @result, remote: true %>
+	</div>
+
+	<div id="items_table_total_count"> 
+		<%= "#{t('items_table.results_count')}: <b>#{@result.total_count}</b>".html_safe %>
+	</div>
 </th>
 

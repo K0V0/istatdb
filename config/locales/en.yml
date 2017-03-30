@@ -1,6 +1,19 @@
 en:
+  search:
+    clear: Clear fields
+    reset: Reset form
+
+  actions:
+    add: Add
+    edit: Edit 
+    delete: Delete
+
   items_table:
-    results_count: "results count"
+    results_count: results count
   
+  goods_search:
+    impexpcompany_prompt: do NOT apply...
+    manufacturer_prompt: Everyone...
+    google: Search on Google
 
  

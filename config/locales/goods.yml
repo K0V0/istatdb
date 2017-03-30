@@ -4,8 +4,12 @@ en:
       good: Goods
     attributes:
       good:
-        ident: "Reference"
-        description: "Description of goods"
+        ident: Reference
+        description: Description of goods
+        impexpcompany_filter: Filter by intrastat subject
+        manufacturer_filter: Filter by consumer/manufacturer
+  
+
 
 sk:
   activerecord:
@@ -13,5 +17,8 @@ sk:
       good: Tovary
     attributes:
       good:
-        ident: "Referencia"
-        description: "Popis tovaru"
+        ident: Referencia
+        description: Popis tovaru
+        impexpcompany_filter: Spravodajská jednotka
+        manufacturer_filter: Výrobca/odberateľ
+  

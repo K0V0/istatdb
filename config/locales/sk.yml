@@ -1,4 +1,18 @@
 sk:
+  search:
+    clear: Vymazať polia
+    reset: Resetovať formulár
+
+  actions:
+    add: Pridať
+    edit: Upraviť 
+    delete: Odstrániť
+
   items_table:
     results_count: "počet výsledkov"
+
+  goods_search:
+    impexpcompany_prompt: "nefiltrovať..."
+    manufacturer_prompt: "všetci..."
+    google: Vyhľadať cez Google
     
