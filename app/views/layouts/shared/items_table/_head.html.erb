@@ -5,14 +5,14 @@
 		<% if options.is_a? Array %>
 
 			<%= render('layouts/shared/items_table/head',
-				obj: obj,
+				obj: field_name.to_s.classify.constantize,
 				fields: options
 			) %>
 
 		<% else %>
 
 			<th>
-				
+				<%= items_table_caption_decorator(options, obj, field_name) %>
 			</th>
 
 		<% end %>

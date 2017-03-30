@@ -1,11 +1,4 @@
 en:
-
-  helpers:
-    submit:
-      good:
-        create: "Add good(s) item"
-        update: "Save changes"
-
   activerecord:
     models:
       good: Goods
@@ -13,68 +6,12 @@ en:
       good:
         ident: "Reference"
         description: "Description of goods"
-        local_taric_kncode: "HS/TARIC code"
-        local_taric_description: "Description of group"
-        impexpcompany_company_name: "Client"
-        manufacturer_name: "Manufacturer"
-
-    errors:
-      models:
-        good:
-          attributes:
-            ident:
-              blank: "left blank."
-            description:
-        goods_manufacturer:
-          attributes:
-            uom:
-              not_a_number: "is not a number"
-            uom_multiplier: 
-              not_a_number: "can only be integer non-negative number, bigger than zero"
 
 sk:
-
-  helpers:
-    submit:
-      good:
-        create: "Pridať tovarovú položku"
-        update: "Uložiť zmeny"
-
   activerecord:
     models:
       good: Tovary
-      uom: ""
     attributes:
       good:
         ident: "Referencia"
         description: "Popis tovaru"
-        kncode: "HS/TARIC"
-        local_taric_kncode: "Kód KN/TARIC"
-        local_taric_description: "Popis colnej skupiny"
-        impexpcompany_company_name: "Klientská firma"
-        manufacturer_name: "Dodávateľ/zákazník"
-        goods_manufacturer_uom: "Veličina"
-        goods_manufacturer_uom_multiplier: "Počet jednotiek"
-        manufacturer_filter: "Dodávateľ/zákazník"
-        impexpcompany_filter: "Klient"
-        #search_both: "+ popis"
-      uom:
-        uom: "Hodnota"
-        uom_multiplier: "Počet jednotiek"
-    errors:
-      models:
-        good:
-          attributes:
-            ident:
-              blank: "ostala nevyplnená"
-            description:
-        uom:
-          attributes:
-            uom:
-              not_a_number: "Hodnota môže byť len kladné celé alebo desatinné číslo"
-            uom_multiplier: 
-              not_a_number: "Počet jednotiek môže byť len celé kladné číslo väčšie ako nula. Ak nechané prázdne, hodnota sa nastaví na 1"
-            uom_type_id: 
-              blank: "Vyberte jednotku v ktorej je veličina meraná"
-
-

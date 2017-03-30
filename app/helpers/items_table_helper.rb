@@ -40,11 +40,24 @@ module ItemsTableHelper
 		return text
 	end
 
+	### something like above but for table header
+	#
+	
+	def items_table_caption_decorator(opts, object, field)
+		ret = object.human_attribute_name(field)
+
+		if opts[:is_sortlink]
+			ret = sort_link(@search, field, { action: :search }, remote: true)  
+		end
+
+		return ret
+	end
+
 	### function to support errors on items table
 	# errors - list of defined errors to respond to and option
 	# object - passed plural AR object
 	#
-	
+
 	def items_table_errors_handler(errors, object)
 		ret = ""
 
