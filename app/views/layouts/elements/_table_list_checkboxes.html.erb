@@ -4,7 +4,7 @@
 obj_name = "#{obj.class.name.underscore}"
 
 # coll - passed in collection to select from
-coll_name = "#{coll.name.underscore}_id"
+coll_name = "#{coll.name.underscore}_ids"
 
 # val_method - method to call on collection objects to get value
 val_method = val_method || "id"
@@ -26,10 +26,9 @@ text_method = text_method || val_method
 				<tr>
 
 					<td>
-						<%= radio_button(
+						<%= check_box(
 							obj_name,
-							coll_name,
-							c.send(val_method)
+							coll_name
 						) %>
 					</td>
 
