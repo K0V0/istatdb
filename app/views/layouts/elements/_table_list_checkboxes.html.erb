@@ -28,14 +28,17 @@ text_method = text_method || val_method
 					<td>
 						<%= check_box(
 							obj_name,
-							coll_name
+							coll_name,
+							{ multiple: true },
+							"",
+							c.id
 						) %>
 					</td>
 
 					<% if text_method.is_a? Array %>
 						<% text_method.each do |l| %>
 							<td>
-								<%= label(
+								<%#= label(
 									obj_name,
 									coll_name,
 									c.send(l),
@@ -45,7 +48,7 @@ text_method = text_method || val_method
 						<% end %>
 					<% else %>
 						<td> 
-							<%= label(
+							<%#= label(
 								obj_name,
 								coll_name,
 								c.send(val_method),

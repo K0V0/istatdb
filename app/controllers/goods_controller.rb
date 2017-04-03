@@ -36,6 +36,8 @@ class GoodsController < ApplicationController
 			:ident, 
 			:description,
 			:local_taric_id,
+			:impexpcompany,
+			impexpcompany_ids: [],
 			local_taric_attributes: [:kncode, :description]
 		)
 	end
