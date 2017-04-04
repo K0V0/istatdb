@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      manufacturer: Consumers/manufacturers
+    attributes:
+      manufacturer:
+        name: Consumer/manufacturer name
+
+sk:
+  activerecord:
+    models:
+      manufacturer: Výrobcovia/odberatelia
+    attributes:
+      manufacturer:
+        name: Výrobca/odberateľ
+        

@@ -18,6 +18,10 @@
 				</div>
 			</div>
 
+			<div class="form_errors">
+				<%= @good.errors[:ident].first %>
+			</div>
+
 		</article>
 
 		<article class="decorated_wrap shrinked">
@@ -41,6 +45,11 @@
 				text_method: [:kncode, :description]
 			) %>
 
+			<div class="form_errors">
+				<%= @local_taric.errors[:kncode].first %>
+				<%= @local_taric.errors[:description].first %>
+			</div>
+
 		</article>
 
 		<article class="decorated_wrap shrinked">
@@ -58,6 +67,29 @@
 				obj: @good,
 				coll: @impexpcompanies,
 				text_method: [:company_name]
+			) %>
+
+			<div class="form_errors">
+				<%= @impexpcompany.errors[:company_name].first %>
+			</div>
+
+		</article>
+
+		<article class="decorated_wrap shrinked">
+
+			<div>
+				<%= t.fields_for :manufacturer, @manufacturer do |m| %>
+					<div>
+						<%= m.label :name %>
+						<%= m.text_field :name %>
+					</div>
+				<% end %>
+			</div>
+
+			<%= render('/layouts/elements/table_list_checkboxes',
+				obj: @good,
+				coll: @manufacturers,
+				text_method: [:name]
 			) %>
 
 		</article>

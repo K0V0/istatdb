@@ -8,6 +8,8 @@ class GoodsController < ApplicationController
 		);
 	}
 
+	before_action :load_vars, only: [:new, :create]
+
 	def index
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
@@ -19,26 +21,32 @@ class GoodsController < ApplicationController
 		super
 	end
 
-	def new
+	private 
+
+	def load_vars
 		@local_tarics = LocalTaric.all
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
-
-		@local_taric = @good.build_local_taric
-		@impexpcompany = @good.impexpcompanies.build
-		@manufacturer = @good.manufacturers.build
 	end
-		
-	private 
+
+	def around_new
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers
+	end
+
+	def around_create_after_save
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers
+	end
 
 	def permitted_params
 		params.require(:good).permit(
 			:ident, 
 			:description,
 			:local_taric_id,
-			:impexpcompany,
+			local_taric_attributes: [:id, :kncode, :description],
+			impexpcompanies_attributes: [:id, :company_name],
 			impexpcompany_ids: [],
-			local_taric_attributes: [:kncode, :description]
+			manufacturers_attributes: [:id, :name],
+			manufacturer_ids: []
 		)
 	end
 end

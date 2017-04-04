@@ -7,6 +7,16 @@ en:
         kncode: "Nomenclature"
         description: "Description"
         additional_info: "Additional informations"
+    errors:
+      models:
+        local_taric:
+          attributes:
+            kncode:
+              blank: Nomenclature code field is blank
+              not_a_number: Nomenclature code consists only from eight or ten numbers
+              not_exactly_8_or_10: Nomenclature code length is 8 or 10 numbers
+            description:
+              blank: Text describing nomenclature is blank
 
 sk:
   activerecord:
@@ -14,6 +24,17 @@ sk:
       local_taric: TARIC
     attributes:
       local_taric:
-        kncode: "Kód"
+        kncode: "Kód nomenklatúry"
         description: "Popis položky"
         additional_info: "Dodatočné informácie"
+    errors:
+      models:
+        local_taric:
+          attributes:
+            kncode:
+              blank: Kód nomenklatúry ostal nevyplnený
+              not_a_number: Nepovolené znaky - kód nomenklatúry pozostáva iba z 8 alebo 10 čísel, bez medzier
+              not_exactly_8_or_10: Nesprávna dĺžka, kód nomenklatúry zadávajte ako 8 alebo 10 číselný kód
+            description:
+              blank: Popis skupiny ostal nevyplnený
+              

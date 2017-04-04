@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      impexpcompany: Intrastat clients
+    attributes:
+      impexpcompany:
+        company_name: Client name
+    errors:
+      models:
+        impexpcompany:
+          attributes:
+            company_name:
+              blank: Enter name of Intrastat client or choose at least one from list
+
+sk:
+  activerecord:
+    models:
+      impexpcompany: Spravodajské jednotky
+    attributes:
+      impexpcompany:
+        company_name: Spravodajská jednotka
+    errors:
+      models:
+        impexpcompany:
+          attributes:
+            company_name:
+              blank: Zadajte názov spravodajskej jednotky alebo vyberte aspoň jednu zo zoznamu
+        

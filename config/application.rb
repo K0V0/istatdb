@@ -32,6 +32,10 @@ module Taric
 
     require 'action_view/helpers/form_builder'
 
+    #require 'hash_extras'
+
+    require 'string'
+
   end
 
 end

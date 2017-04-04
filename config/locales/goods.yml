@@ -8,6 +8,13 @@ en:
         description: Description of goods
         impexpcompany_filter: Filter by intrastat subject
         manufacturer_filter: Filter by consumer/manufacturer
+    errors:
+      models:
+        good:
+          attributes:
+            ident:
+              blank: Item name/reference field is blank
+            
   
 
 
@@ -21,4 +28,10 @@ sk:
         description: Popis tovaru
         impexpcompany_filter: Spravodajská jednotka
         manufacturer_filter: Výrobca/odberateľ
+    errors:
+      models:
+        good:
+          attributes:
+            ident:
+              blank: pole Názov tovaru/referencia je prázdne
   

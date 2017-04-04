@@ -4,17 +4,23 @@ module Defaults
 	def self.included(base)
 	  base.instance_eval do 
 
-	  	#scope :default_order, -> { 
-		#	order(id: :asc)
-		#}
-
 	  	scope :order_this_id_first, -> (pars) { 
 			order_as_specified(id: [pars])
 			.default_order
 		}
 
+		scope :persisted, -> { 
+			where "#{model_name.plural}.id IS NOT NULL"
+		}
+
 	  end
 	end
 	
+	def nested_selected_or_created_any?(assoc, field)
+		a = self.send("#{assoc.to_s}_attributes").map { |k,v| v[field] }
+		(!self.send("#{assoc.to_s.singularize}_ids").any?)&&(a.all?(&:empty?))
+	end
 
 end
+
+
