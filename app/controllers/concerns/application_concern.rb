@@ -27,20 +27,20 @@ module ApplicationConcern
 
 	def build_if_empty(*assocs)
 		assocs.each do |a|
-			tmp = instance_variable_get(@singular_varname)
+			#tmp = instance_variable_get(@singular_varname)
 			assoc_var_name = "@#{a.to_s.singularize}"
 			build_command = a.to_s.is_singular? ? "build_#{a.to_s}" : "build"
 
 			if (a.to_s.is_singular?)
-				if tmp.has_attribute? "#{a.to_s}_id"
-					if tmp.send(a).nil?
-						instance_variable_set(assoc_var_name, tmp.send(build_command))
+				if @record.has_attribute? "#{a.to_s}_id"
+					if @record.send(a).nil?
+						instance_variable_set(assoc_var_name, @record.send(build_command))
 					else
-						instance_variable_set(assoc_var_name, tmp.send(a))
+						instance_variable_set(assoc_var_name, @record.send(a))
 					end
 				end
 			else
-				if (iv = tmp.send(a)).length == 0
+				if (iv = @record.send(a)).length == 0
 					instance_variable_set(assoc_var_name, iv.send(build_command))
 				elsif (iv.length != iv.persisted)
 					instance_variable_set(assoc_var_name, iv.send(build_command))

@@ -1,0 +1,12 @@
+
+<% 
+	if defined? obj
+		object = obj.object
+	else
+		object = assoc
+	end
+%>
+
+<% fields.each do |field_name, opts| %>
+	<%= object.errors[field_name].first %>
+<% end %>

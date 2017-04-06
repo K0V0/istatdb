@@ -1,15 +1,13 @@
 class ApplicationController < ActionController::Base
 
   include ApplicationConcern
-  include BeforeRender
+  #include BeforeRender
   include RansackSearchWrapper
 
   protect_from_forgery with: :exception
 
   def initialize
     super
-    @singular_varname = "@#{controller_name.singularize}"
-    @plural_varname = "@#{controller_name.pluralize}"
     @model = model_exist?
   end
 
@@ -61,31 +59,25 @@ class ApplicationController < ActionController::Base
   private
 
   def index_action
-    instance_variable_set(@plural_varname, @model.all) if @model
+    @collection = @model.all if @model
   end
 
   def show_action
-    instance_variable_set(
-      @singular_varname,
-      @model.find(params[:id])
-    )
+    @record = @model.find(params[:id])
   end
 
   def new_action
-    instance_variable_set(@singular_varname, @model.new) if @model
+    @record = @model.new
     around_new
   end
 
   def create_action 
-    instance_variable_set(
-      @singular_varname,
-      @model.new(permitted_params)
-    )
+    @record = @model.new(permitted_params)
     around_create
   end
 
   def create_action_2
-    saved = instance_variable_get(@singular_varname).save
+    saved = @record.save
     around_create_after_save
     if saved
       redirect_to public_send("#{controller_name.pluralize}_path")
@@ -95,16 +87,13 @@ class ApplicationController < ActionController::Base
   end
 
   def edit_action
-    instance_variable_set(
-      @singular_varname,
-      @model.find(params[:id])
-    )
+    show_action
     around_edit
   end
 
   def update_action_2
     around_update
-    saved = instance_variable_get(@singular_varname).update(permitted_params)
+    saved = @record.update(permitted_params)
     around_update_after_save
     if saved
       redirect_to controller: controller_name, action: 'index'

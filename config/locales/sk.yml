@@ -7,6 +7,7 @@ sk:
     add: Pridať
     edit: Upraviť 
     delete: Odstrániť
+    back: Naspäť
 
   items_table:
     results_count: "počet výsledkov"

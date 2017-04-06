@@ -1,0 +1,14 @@
+<div>
+	<%= obj.label field_name %>
+
+	<% if !opts[:type] || opts[:type] == :input %>
+
+		<%= obj.text_field(field_name) %>
+
+	<% elsif opts[:type] == :text_area %>
+
+		<%= obj.text_area(field_name) %>
+
+	<% end %>
+
+</div>

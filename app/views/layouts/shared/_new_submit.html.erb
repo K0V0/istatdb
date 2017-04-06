@@ -1,0 +1,16 @@
+<% 
+	act = @administrative_mode ? :administration : :index
+%>
+
+
+<article class="decorated_wrap shrinked">
+
+	<div>
+
+		<%= obj.submit class: "button" %>
+
+		<%= link_to t(:back), { controller: controller_name, action: act }, class: "button" %>
+
+	</div>
+
+</article>

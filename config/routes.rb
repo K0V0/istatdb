@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     to: "goods#new",
     as: "new_good"
 
-   # vytvorit novy tovar
+  # vytvorit novy tovar
   post 'goodsdb',
     to: "goods#create"
 

@@ -4,7 +4,6 @@ class Good < ActiveRecord::Base
 
 	include Defaults
 	include NestedAttributesGetterConcern
-	include Log
 
 	has_many :intertables, inverse_of: :good
 
@@ -68,7 +67,7 @@ class Good < ActiveRecord::Base
 
 	def at_least_one_manufacturer_selected
 		if nested_selected_or_created_any?(:manufacturers, :name)
-			self.errors.add(:impexpcompanies_attributes, :not_selected_or_created)
+			self.errors.add(:manufacturers_attributes, :not_selected_or_created)
 		end
 	end
 

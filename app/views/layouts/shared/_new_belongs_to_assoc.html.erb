@@ -1,0 +1,36 @@
+<% 
+	single = instance_variable_get("@#{assoc.to_s}")
+	coll = instance_variable_get("@#{assoc.to_s.pluralize}")
+%>
+
+<article class="decorated_wrap shrinked">
+
+	<div>
+		<%= obj.fields_for assoc.to_sym, single do |a| %>
+
+			<% fields.each do |field_name, opts| %>
+				<%= render('layouts/elements/input_text',
+					field_name: field_name,
+					obj: a,
+					opts: opts
+				) %>
+			<% end %>
+
+		<% end %>
+	</div>
+
+	<%= render('/layouts/elements/table_list_radio_buttons',
+		obj: obj.object,
+		coll: coll,
+		text_method: fields.keys
+	) %>
+
+	<div class="form_errors">
+		<%= render('layouts/elements/input_fields_error',
+			fields: fields,
+			assoc: single
+		) %>
+		<%= obj.object.errors["#{assoc.to_s}_attributes"].first %>
+	</div>
+
+</article>

@@ -7,6 +7,7 @@ en:
     add: Add
     edit: Edit 
     delete: Delete
+    back: Back
 
   items_table:
     results_count: results count

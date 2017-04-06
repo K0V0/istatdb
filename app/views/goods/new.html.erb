@@ -3,111 +3,48 @@
 
 <section class="form">
 
-	<%= form_for @good do |t| %>
+	<%= form_for @record do |t| %>
 
-		<article class="decorated_wrap shrinked">
+		<%= render('layouts/shared/new_main',
+			obj: t,
+			fields: {
+				ident: {  },
+				description: { 
+					type: :text_area
+				}
+			}
+		) %>
 
-			<div>
-				<div>
-					<%= t.label :ident %>
-					<%= t.text_field :ident %>
-				</div>
-				<div>
-					<%= t.label :description %>
-					<%= t.text_area :description %>
-				</div>
-			</div>
+		<%= render('layouts/shared/new_belongs_to_assoc',
+			obj: t,
+			assoc: :local_taric,
+			fields: {
+				kncode: {  },
+				description: { 
+					type: :text_area
+				}
+			}
+		) %>
 
-			<div class="form_errors">
-				<%= @good.errors[:ident].first %>
-			</div>
+		<%= render('layouts/shared/new_has_many_assoc',
+			obj: t,
+			assoc: :impexpcompanies,
+			fields: {
+				company_name: {  }
+			}
+		) %>
 
-		</article>
+		<%= render('layouts/shared/new_has_many_assoc',
+			obj: t,
+			assoc: :manufacturers,
+			fields: {
+				name: {  }
+			}
+		) %>
 
-		<article class="decorated_wrap shrinked">
-
-			<div>
-				<%= t.fields_for :local_taric, @local_taric do |lt| %>
-					<div>
-						<%= lt.label :kncode %>
-						<%= lt.text_field :kncode %>
-					</div>
-					<div>
-						<%= lt.label :description %>
-						<%= lt.text_area :description %>
-					</div>
-				<% end %>
-			</div>
-
-			<%= render('/layouts/elements/table_list_radio_buttons',
-				obj: @good,
-				coll: @local_tarics,
-				text_method: [:kncode, :description]
-			) %>
-
-			<div class="form_errors">
-				<%= @local_taric.errors[:kncode].first %>
-				<%= @local_taric.errors[:description].first %>
-			</div>
-
-		</article>
-
-		<article class="decorated_wrap shrinked">
-
-			<div>
-				<%= t.fields_for :impexpcompany, @impexpcompany do |i| %>
-					<div>
-						<%= i.label :company_name %>
-						<%= i.text_field :company_name %>
-					</div>
-				<% end %>
-			</div>
-
-			<%= render('/layouts/elements/table_list_checkboxes',
-				obj: @good,
-				coll: @impexpcompanies,
-				text_method: [:company_name]
-			) %>
-
-			<div class="form_errors">
-				<%= @impexpcompany.errors[:company_name].first %>
-			</div>
-
-		</article>
-
-		<article class="decorated_wrap shrinked">
-
-			<div>
-				<%= t.fields_for :manufacturer, @manufacturer do |m| %>
-					<div>
-						<%= m.label :name %>
-						<%= m.text_field :name %>
-					</div>
-				<% end %>
-			</div>
-
-			<%= render('/layouts/elements/table_list_checkboxes',
-				obj: @good,
-				coll: @manufacturers,
-				text_method: [:name]
-			) %>
-
-		</article>
-		
-		<article class="decorated_wrap shrinked">
-			<div>
-
-				<%= t.submit class: "button" %>
-
-				<%= submit_tag(
-					t(:create_and_next),
-					name: 'create_and_next',
-					class: "button") %>
-
-				<%= link_to t(:back), goods_path, class: "button" %>
-
-			</div>
-		</article>
+		<%= render('layouts/shared/new_submit',
+			obj: t
+		) %>
 
 	<% end %>
 

@@ -32,9 +32,15 @@ module Taric
 
     require 'action_view/helpers/form_builder'
 
-    #require 'hash_extras'
+    require 'mem'
+
+    require 'log'
+
+    require 'hash'
 
     require 'string'
+
+    require 'class_on_input_with_error'
 
   end
 
