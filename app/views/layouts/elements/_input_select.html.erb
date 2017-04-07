@@ -1,0 +1,11 @@
+<% 
+	klass = "disabled" if opts[1].nil? || !opts[1].collect(&:id).any?
+%>
+
+<div>
+	<%= obj.label opts.first %>
+	<div class="select_wrapper <%= klass %>">
+		<%= obj.collection_select *opts %>
+		<span></span>
+	</div>
+</div>

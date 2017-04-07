@@ -8,4 +8,8 @@ class UomType < ActiveRecord::Base
 		I18n.t("uom_types.#{super.to_s}", default: "#{super.to_s}")
 	end
 
+	def name_for_form_input
+		"#{self.full_name} [#{self.uom_type}]"
+	end
+
 end

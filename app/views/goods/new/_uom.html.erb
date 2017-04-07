@@ -1,78 +1,56 @@
-<% err = @good.errors[('uoms_'+index.to_s).to_sym] %>
 
-<div>
-
-	<div>
-
-		<label>	<%= cbt :uoms_uom %> </label>
-
-		<input type="text"
-		 name='good[uoms][][uom]'
-		 value='<%= obj[:uom] %>'
-		 id='good_uoms_uom_<%= index %>'
-		 autocomplete='off'
-		 class='good_uoms_uom'
-		>
-		
-	</div>
-
-	<div>
-		
-		<label>	<%= cbt :uoms_uom_multiplier %> </label>
-
-		<input type="text"
-		 name='good[uoms][][uom_multiplier]'
-		 value='<%= obj[:uom_multiplier] %>'
-		 id='good_uoms_uom_multiplier_<%= index %>'
-		 autocomplete='off'
-		 class='good_uoms_uom_multiplier'
-		>
-
-	</div>
+<article class="decorated_wrap shrinked">
 
 	<div>
 
-		<div class="select_wrapper">
-
-			<select name='good[uoms][][uom_type_id]'>
-
-				<option value=""> <%= cbt :uoms_empty %> </option>
-				
-				<% UomType.all.each do |uom_type| %>
-
-					<option 
-					 value="<%= uom_type.id %>"
-					 <%= 'selected="selected"' if uom_type.id == obj[:uom_type_id].to_i %>
-					>
-						<%= uom_type.uom_type %>
-					</option>
-
-				<% end %>
-
-			</select>
-
-			<span></span>
-
+		<div>
+			<%= obj.label :uom %>
+			<%= obj.text_field(:uom) %>
 		</div>
 
+		<div>
+			<%= obj.label :uom_multiplier %>
+			<%= obj.text_field(:uom_multiplier) %>
+		</div>
+
+		<%= render('layouts/elements/input_select',
+			obj: obj,
+			opts: [
+				:uom_type,
+				@uom_types,
+				:id,
+				:name_for_form_input
+			]
+		) %>
+
+		<%= render('layouts/elements/input_select',
+			obj: obj,
+			opts: [
+				:impexpcompany_id,
+				@impexpcompanies_for_uoms,
+				:id,
+				:company_name,
+				include_blank: select_blank_message(
+					@impexpcompanies_for_uoms,
+					cbt('new_form_texts.uom_cannot_select_impexpcompany')
+				)
+			]
+		) %>
+
+		<%= render('layouts/elements/input_select',
+			obj: obj,
+			opts: [
+				:manufacturer_id,
+				@manufacturers_for_uoms,
+				:id,
+				:name,
+				include_blank: select_blank_message(
+					@manufacturers_for_uoms,
+					cbt('new_form_texts.uom_cannot_select_manufacturer')
+				)
+			]
+		) %>
+
 	</div>
-
-	<div class="remove_uom">
-		<button class="button remove_uom" type="button"> 
-			<%= cbt :uoms_remove %> 
-		</button>
-	</div><!--
-
-	--><div class="add_uom">
-		<button class="button add_uom" type="button"> 
-			<%= cbt :uoms_add %> 
-		</button>
-	</div>
-
-</div>
-
-<div class="form_errors">
-	<% err.each do |e| %>
-		<span> <%= e %> </span>
-	<% end %>
-</div>
+	
+</article>

@@ -1,0 +1,23 @@
+sk: 
+  activerecord:
+    models:
+      uom: Merné jednotky
+    attributes:
+      uom:
+        uom: Hodnota
+        uom_multiplier: Koeficient
+        uom_type: Merná jednotka
+        impexpcompany_id: Spravodajská jednotka
+        manufacturer_id: Výrobca/odberateľ
+
+en: 
+  activerecord:
+    models:
+      uom: Units of measurement
+    attributes:
+      uom:
+        uom: Value
+        uom_multiplier: per units
+        uom_type: Unit of measurement
+        impexpcompany_id: Intrastat client
+        manufacturer_id: Manufacturer/consumer

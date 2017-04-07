@@ -27,14 +27,17 @@ class GoodsController < ApplicationController
 		@local_tarics = LocalTaric.all
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
+		@uom_types = UomType.all
+		@impexpcompanies_for_uoms = @record.impexpcompanies
+		@manufacturers_for_uoms = @record.manufacturers
 	end
 
 	def around_new
-		build_if_empty :local_taric, :impexpcompanies, :manufacturers
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
 	def around_create_after_save
-		build_if_empty :local_taric, :impexpcompanies, :manufacturers
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
 	def permitted_params
@@ -42,7 +45,7 @@ class GoodsController < ApplicationController
 			:ident, 
 			:description,
 			:local_taric_id,
-			local_taric_attributes: [:id, :kncode, :description],
+			local_taric_attributes: [:kncode, :description],
 			impexpcompanies_attributes: [:id, :company_name],
 			impexpcompany_ids: [],
 			manufacturers_attributes: [:id, :name],

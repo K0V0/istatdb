@@ -8,13 +8,25 @@ class Good < ActiveRecord::Base
 	has_many :intertables, inverse_of: :good
 
 	has_many :manufacturers, -> { distinct }, through: :intertables
-	accepts_nested_attributes_for :manufacturers
+	accepts_nested_attributes_for(
+		:manufacturers,
+		reject_if: lambda { |c| c[:name].blank? } 
+	)
 
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
-	accepts_nested_attributes_for :impexpcompanies#, reject_if: :at_least_one_impexpcompany_selected
+	accepts_nested_attributes_for(
+		:impexpcompanies,
+		reject_if: lambda { |c| c[:company_name].blank? }
+	) 
 
 	belongs_to :local_taric, inverse_of: :goods
-	accepts_nested_attributes_for :local_taric, reject_if: :local_taric_selected
+	accepts_nested_attributes_for(
+		:local_taric, 
+		reject_if: :local_taric_selected
+	)
+
+	has_many :uoms, inverse_of: :good
+	accepts_nested_attributes_for :uoms 
 
 	nested_attrs_getter_for :manufacturers, :impexpcompanies
 	## monkey patch for having <associated>_attributes getter and instance variable

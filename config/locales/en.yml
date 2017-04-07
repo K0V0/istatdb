@@ -8,6 +8,8 @@ en:
     edit: Edit 
     delete: Delete
     back: Back
+    select: Select
+    nothing_to_select: Nothing to select
 
   items_table:
     results_count: results count

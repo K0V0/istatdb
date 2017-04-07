@@ -8,6 +8,8 @@ sk:
     edit: Upraviť 
     delete: Odstrániť
     back: Naspäť
+    select: Vybrať
+    nothing_to_select: Nie je čo vybrať
 
   items_table:
     results_count: "počet výsledkov"

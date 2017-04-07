@@ -7,7 +7,7 @@ module ApplicationHelper
 	###   goods:
 	###     foo: BAR
 	def cbt translation_key
-		I18n.t(params[:controller] + "." + translation_key.to_s).gsub(/\n/, "<br>").html_safe
+		I18n.t("#{params[:controller].to_s}.#{translation_key.to_s}")#.gsub(/\n/, "<br>").html_safe
 	end
 
 

@@ -42,6 +42,15 @@
 			}
 		) %>
 
+		<aside>
+			<%= t.fields_for :uoms, @uom do |u| %>
+				<%= render('goods/new/uom',
+					obj: u
+				) %>
+			<% end %>
+		</aside>
+		
+
 		<%= render('layouts/shared/new_submit',
 			obj: t
 		) %>
