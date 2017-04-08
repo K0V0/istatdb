@@ -11,6 +11,11 @@ val_method = val_method || "id"
 
 # text_method - method(s) to call on collection to get label(s) text
 text_method = text_method || val_method
+
+# this loads associations of passed in obj to match checked checkboxes later
+associated_records = obj.send("#{coll.name.pluralize.underscore}")
+# this checks for params hash to catch if unsaved 
+pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 %>
 
 <div class="tablewrap">
@@ -29,7 +34,10 @@ text_method = text_method || val_method
 						<%= check_box(
 							obj_name,
 							coll_name,
-							{ multiple: true },
+							{ 
+								multiple: true,
+								checked: (associated_records.exists?(id: c.id))||(pars.include?(c.id.to_s))
+							},
 							c.id,
 							""
 						) %>

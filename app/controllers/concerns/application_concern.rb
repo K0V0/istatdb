@@ -26,8 +26,7 @@ module ApplicationConcern
 	end
 
 	def build_if_empty(*assocs)
-		assocs.each do |a|
-			#tmp = instance_variable_get(@singular_varname)
+		assocs.each do |a, opts|
 			assoc_var_name = "@#{a.to_s.singularize}"
 			build_command = a.to_s.is_singular? ? "build_#{a.to_s}" : "build"
 
@@ -40,11 +39,17 @@ module ApplicationConcern
 					end
 				end
 			else
+				# if associated has not been build yet
 				if (iv = @record.send(a)).length == 0
 					instance_variable_set(assoc_var_name, iv.send(build_command))
-				elsif (iv.length != iv.persisted)
-					instance_variable_set(assoc_var_name, iv.send(build_command))
 				else
+					# if has been built
+					# if empty field leave after reload for example after failed association
+					# due to reject_if option of accept_nested_attributes_for
+					# create and append one to associations (record with empty id)
+					if !iv.collect(&:id).any? { |a| a.nil? }
+						iv << a.to_s.singularize.classify.constantize.send(:new)
+					end
 					instance_variable_set(assoc_var_name, iv)
 				end
 			end

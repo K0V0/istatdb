@@ -16,7 +16,7 @@ class Good < ActiveRecord::Base
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:impexpcompanies,
-		reject_if: lambda { |c| c[:company_name].blank? }
+		reject_if: lambda { |c| c[:company_name].blank? } 
 	) 
 
 	belongs_to :local_taric, inverse_of: :goods
@@ -58,6 +58,7 @@ class Good < ActiveRecord::Base
 		})
 		.references(:manufacturers)
 	}
+
 
 	def self.ransackable_scopes(*pars)
 	    %i(impexpcompany_filter manufacturer_filter)

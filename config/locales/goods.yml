@@ -19,6 +19,11 @@ en:
             manufacturers_attributes:
               not_selected_or_created: Good(s) must have at least one manufacturer/consumer. Write or choose at least one from list.
 
+  helpers:
+    submit:
+      good:
+        create: Add good(s)
+
   goods:
     new_form_texts:
       uom_cannot_select_impexpcompany: Select min 1 Intrastat cl. 1st
@@ -45,6 +50,11 @@ sk:
               not_selected_or_created: Zadajte alebo vyberte zo zoznamu aspoň jednu spravodajskú jednotku ku ktorej daný tovar prislúcha.
             manufacturers_attributes:
               not_selected_or_created: Tovar musí mať aspoň jedného odberateľa/výrobcu. Zadajte nového alebo vyberte zo zoznamu.
+
+  helpers:
+    submit:
+      good:
+        create: Pridať tovarovú položku
 
   goods:
     new_form_texts:

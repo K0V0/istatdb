@@ -1,5 +1,7 @@
 class Uom < ActiveRecord::Base
 
+	include Defaults
+
 	#belongs_to :goods_manufacturer, inverse_of: :uoms
 
 	belongs_to :uom_type, inverse_of: :uoms

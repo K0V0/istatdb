@@ -8,5 +8,7 @@
 %>
 
 <% fields.each do |field_name, opts| %>
-	<%= object.errors[field_name].first %>
+	<% if object.respond_to? :errors %>
+		<%= object.errors[field_name].first %>
+	<% end %>
 <% end %>
