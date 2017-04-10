@@ -50,7 +50,7 @@ input[type=submit] {
 	}
 }
 
-input[type=checkbox] {
+input[type=checkbox], input[type=radio] {
 	display: block;
 	border:0.25em solid $button_disabled;
 	background-color: $soft_black !important;

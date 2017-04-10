@@ -158,18 +158,7 @@ table.no_results {
 	}
 }
 
-table.new_checkboxes_list {
-
-	thead {
-
-		tr {
-
-			th {
-				position: relative;
-				bottom: 0.125em;
-			}
-		}
-	}
+table.checkboxes_list, table.radio_buttons_list {
 
 	tbody {
 
