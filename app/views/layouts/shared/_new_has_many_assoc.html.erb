@@ -30,13 +30,11 @@
 		coll: coll,
 		text_method: fields.keys
 	) %>
-
-	<div class="form_errors">
-		<%= render('layouts/elements/input_fields_error',
-			fields: fields,
-			assoc: single
-		) %>
-		<%= obj.object.errors["#{assoc.to_s}_attributes"].first %>
-	</div>
+	
+	<%= render('layouts/elements/input_fields_error',
+		obj: obj,
+		fields: fields,
+		assoc: single
+	) %>
 
 </article>

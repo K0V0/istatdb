@@ -1,14 +1,37 @@
 
 <% 
-	if defined? obj
-		object = obj.object
-	else
+	if defined? assoc
+		# if association
 		object = assoc
+		parent_errs = obj.object.errors["#{object.class.to_s.downcase.pluralize}_attributes"]
+	else
+		# if straight model
+		object = obj.object
 	end
 %>
 
-<% fields.each do |field_name, opts| %>
-	<% if object.respond_to? :errors %>
-		<%= object.errors[field_name].first %>
-	<% end %>
+<% if (object.errors.any?)||(parent_errs.any?) %>
+
+	<div class="form_errors">
+
+		<% if object.respond_to? :errors %>
+			<% fields.each do |field_name, opts| %>
+				<% if object.errors[field_name].any? %>
+					<span>
+						<%= object.errors[field_name].first %>
+					</span>
+				<% end %>
+			<% end %>
+		<% end %>
+
+		<% if !parent_errs.nil? %>
+			<% parent_errs.each do |err| %>
+				<span>
+					  <%= err %>
+				</span>
+			<% end %>
+		<% end %>
+
+	</div>
+
 <% end %>
