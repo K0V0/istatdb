@@ -7,9 +7,9 @@ class LocalTaricsController < ApplicationController
       )
     }
 
-    before_action(only: :create) { create_action permitted_pars }
+    #before_action(only: :create) { create_action permitted_pars }
 
-    before_action(only: :update) { update_action permitted_pars }
+    #before_action(only: :update) { update_action permitted_pars }
 
     def new
       if !@MEM.q_local_taric.blank?
@@ -20,6 +20,10 @@ class LocalTaricsController < ApplicationController
              @MEM.q_local_taric[:description_cont],
         )
       end
+    end
+
+    def new_search
+
     end
 
     def csv_export

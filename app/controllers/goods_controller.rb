@@ -38,7 +38,6 @@ class GoodsController < ApplicationController
 
 	def around_create_after_save
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
-		#@uom = @record.uoms
 	end
 
 	def permitted_params

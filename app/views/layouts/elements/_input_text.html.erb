@@ -1,13 +1,27 @@
+<% 
+if (defined? id)&&(!id.blank?)
+	html_id = id
+else
+	html_id = "#{obj.object.class.name.underscore}_#{field_name}"
+end
+%>
+
 <div>
 	<%= obj.label field_name %>
 
 	<% if !opts[:type] || opts[:type] == :input %>
 
-		<%= obj.text_field(field_name) %>
+		<%= obj.text_field(
+			field_name,
+			id: html_id
+		) %>
 
 	<% elsif opts[:type] == :text_area %>
 
-		<%= obj.text_area(field_name) %>
+		<%= obj.text_area(
+			field_name,
+			id: html_id
+		) %>
 
 	<% end %>
 
