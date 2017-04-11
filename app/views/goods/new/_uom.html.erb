@@ -51,10 +51,9 @@
 			]
 		) %>
 
-		<%#= render('layouts/elements/input_fields_error',
+		<%= render('layouts/elements/input_fields_error',
 			obj: obj,
-			fields: fields,
-			assoc: single
+			fields: { uom: {}, uom_multiplier: {} }
 		) %>
 
 	</div>

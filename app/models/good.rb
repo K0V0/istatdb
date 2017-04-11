@@ -26,7 +26,10 @@ class Good < ActiveRecord::Base
 	)
 
 	has_many :uoms, inverse_of: :good
-	accepts_nested_attributes_for :uoms 
+	accepts_nested_attributes_for(
+		:uoms,
+		reject_if: lambda { |c| c[:uom].blank? }
+	)
 
 	nested_attrs_getter_for :manufacturers, :impexpcompanies
 	## monkey patch for having <associated>_attributes getter and instance variable

@@ -7,6 +7,7 @@
 	else
 		# if straight model
 		object = obj.object
+		parent_errs = []
 	end
 %>
 
@@ -14,17 +15,15 @@
 
 	<div class="form_errors">
 
-		<% if object.respond_to? :errors %>
-			<% fields.each do |field_name, opts| %>
-				<% if object.errors[field_name].any? %>
-					<span>
-						<%= object.errors[field_name].first %>
-					</span>
-				<% end %>
+		<% fields.each do |field_name, opts| %>
+			<% if object.errors[field_name].any? %>
+				<span>
+					<%= object.errors[field_name].first %>
+				</span>
 			<% end %>
 		<% end %>
 
-		<% if !parent_errs.nil? %>
+		<% if parent_errs.any? %>
 			<% parent_errs.each do |err| %>
 				<span>
 					  <%= err %>
