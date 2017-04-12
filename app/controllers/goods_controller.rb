@@ -21,6 +21,8 @@ class GoodsController < ApplicationController
 		super
 	end
 
+	
+
 	private 
 
 	def load_vars

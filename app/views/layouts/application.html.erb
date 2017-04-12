@@ -13,6 +13,8 @@
 
 	<body
 	<%= "class=\"#{@body_class}\"".html_safe if @body_class %>
+	<%= "data-controller_name=#{controller_name}" %>
+	<%= "data-controller_name_singular=#{controller_name.singularize}" %>
 	>
 
 		<%= yield :mainmenu if content_for? :mainmenu %>

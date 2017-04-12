@@ -1,0 +1,34 @@
+
+// search-select section (widget)
+var mainElem = $(document).find("#<%= params[:model] %>_select");
+
+// table rows
+var rows = mainElem.find("div.tablewrap").children("table").children("tbody").children("tr");
+
+// for later use remember ids (vals) of buttons to avoid duplicates on refresh
+var checked_btns_vals = []
+
+// let checked values be there
+rows.each(function() {
+	var radio_btn = $(this).children("td").children("input[type=radio]");
+
+	if (radio_btn.is(":checked")) {
+		checked_btns_vals.push(radio_btn.val());
+	} else {
+		$(this).remove();
+	}
+});
+
+<% Rails.logger.info "---------------------" %>
+
+<% Rails.logger.info controller_name %>
+
+<% template = render('layouts/elements/table_list_radio_buttons/row',
+	obj_name: params[:source_controller],
+	coll_name: "#{params[:model]}_id",
+	val_method: :id,
+	label_method: text_method,
+	obj: c
+) %>
+
+var results = $("<%= j(template) %>");

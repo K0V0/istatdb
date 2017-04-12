@@ -56,6 +56,10 @@ module ApplicationConcern
 		end
 	end
 
+	def apicall_render(type_of_assoc)
+		render("layouts/shared/new_#{type_of_assoc.to_s}_assoc")
+	end
+
 	module ClassMethods
 
 	end

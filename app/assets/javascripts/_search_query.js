@@ -9,6 +9,7 @@ function searchQuery(path, conds, other_data) {
 	var request_data = {};
 	var conds_count = Object.keys(conds).length;
 
+	// generate list of elements to attach input event on
 	var i = 0;
 	for (var cond_key in conds) {
 		elem_string += ('#' + cond_key);
@@ -17,6 +18,8 @@ function searchQuery(path, conds, other_data) {
 	}
 
 	$(document).on('input', elem_string, function(e) {
+
+		console.log("searching...")
 
 		$(this).removeClass('error');
 		$(this).closest('article').find('div.form_errors').empty();
@@ -28,6 +31,7 @@ function searchQuery(path, conds, other_data) {
 
 		var field = conds[Object.keys(conds)[0]].replace(/_[a-z]+$/, "");
 		var model = Object.keys(conds)[0].replace("_"+field, "");
+		var source_controller = $("body").data("controller_name_singular");
 
 		$.ajax({
 		  	method: "POST",
@@ -35,6 +39,7 @@ function searchQuery(path, conds, other_data) {
 		  	data: { 
 		  		q: request_data,
 		  		model: model,
+		  		source_controller: source_controller,
 		  		other_data
 		  	}
 		});

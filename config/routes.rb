@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   root to: 'goods#index'
 
 
+  ### searchery
+  post "local_taric/new_select_search",
+    to: "local_tarics#new_select_search"
+   
+
+
 
   ### hlavna stranka - databaza tovarov
 

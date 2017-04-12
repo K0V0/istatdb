@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
 
   before_action :load_vars, only: [:new, :edit, :update, :create]
 
+  before_action :apicall_search_action, only: :new_select_search
+
   def index
   end
 
@@ -54,6 +56,9 @@ class ApplicationController < ActionController::Base
   end
 
   def destroy
+  end
+
+  def new_select_search
   end
 
   private
@@ -105,6 +110,10 @@ class ApplicationController < ActionController::Base
   def destroy_action
     @model.find(params[:id]).destroy
     redirect_to controller: controller_name, action: 'index'
+  end
+
+  def apicall_search_action
+    searcher_for(autoshow: false)
   end
 
   def around_new

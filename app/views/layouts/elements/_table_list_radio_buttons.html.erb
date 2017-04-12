@@ -1,7 +1,8 @@
 
 <% 
 # obj - passsed in AR object
-obj_name = "#{obj.class.name.underscore}"
+obj_name = "#{obj.class.name.underscore}" if !defined? parent_model_name
+obj_name = parent_model_name if defined? parent_model_name
 
 # coll - passed in collection to select from
 coll_name = "#{coll.name.underscore}_id"
@@ -23,39 +24,15 @@ text_method = text_method || val_method
 
 			<% coll.each do |c| %>
 
-				<tr>
+				<%= val_method %>
 
-					<td>
-						<%= radio_button(
-							obj_name,
-							coll_name,
-							c.send(val_method)
-						) %>
-					</td>
-
-					<% if text_method.is_a? Array %>
-						<% text_method.each do |l| %>
-							<td>
-								<%= label(
-									obj_name,
-									coll_name,
-									c.send(l),
-									value: c.id
-								) %>
-							</td>
-						<% end %>
-					<% else %>
-						<td> 
-							<%= label(
-								obj_name,
-								coll_name,
-								c.send(val_method),
-								value: c.id
-							) %>
-						</td>
-					<% end %>
-
-				</tr>
+				<%= render('layouts/elements/table_list_radio_buttons/row',
+					obj_name: obj_name,
+					coll_name: coll_name,
+					val_method: val_method,
+					label_method: text_method,
+					obj: c
+				) %>
 
 			<% end %>
 

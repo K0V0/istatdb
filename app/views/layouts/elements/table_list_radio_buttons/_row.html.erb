@@ -1,0 +1,33 @@
+<tr>
+
+	<td>
+		<%= radio_button(
+			obj_name,
+			coll_name,
+			obj.send(val_method)
+		) %>
+	</td>
+
+	<% if label_method.is_a? Array %>
+		<% label_method.each do |l| %>
+			<td>
+				<%= label(
+					obj_name,
+					coll_name,
+					obj.send(l),
+					value: obj.id
+				) %>
+			</td>
+		<% end %>
+	<% else %>
+		<td> 
+			<%= label(
+				obj_name,
+				coll_name,
+				obj.send(val_method),
+				value: obj.id
+			) %>
+		</td>
+	<% end %>
+
+</tr>
