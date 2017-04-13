@@ -27,8 +27,9 @@
 
 	<%= render('/layouts/elements/table_list_radio_buttons',
 		obj: obj.object,
-		# main instance variable
+		# main controller singleton instance variable
 		coll: coll,
+		# collection of all from associated model
 		text_method: fields.keys
 	) %>
 

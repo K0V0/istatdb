@@ -6,4 +6,10 @@ module NewFormsHelper
 		collection.collect(&:id).any? ? msg_if_any : msg_if_blank
 	end
 
+	def get_fields_from_ransack_params
+    	if params.has_key? :q
+    		return params[:q].map { |k, v| k.to_s.sub(/_[a-z]+$/, '') }
+    	end
+    end
+
 end

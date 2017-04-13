@@ -1,10 +1,10 @@
 
 // search-select section (widget)
 var mainElem = $(document).find("#<%= params[:model] %>_select");
-
+// table body
+var tBody = mainElem.find("div.tablewrap").children("table").children("tbody");
 // table rows
-var rows = mainElem.find("div.tablewrap").children("table").children("tbody").children("tr");
-
+var rows = tBody.children("tr");
 // for later use remember ids (vals) of buttons to avoid duplicates on refresh
 var checked_btns_vals = []
 
@@ -19,16 +19,28 @@ rows.each(function() {
 	}
 });
 
-<% Rails.logger.info "---------------------" %>
+<% 
+	template = []
+	@result.each do |r|
+		template << render('layouts/elements/table_list_radio_buttons/row',
+			obj_name: params[:source_controller],
+			coll_name: "#{params[:model]}_id",
+			val_method: :id,
+			label_method: get_fields_from_ransack_params,
+			obj: r
+		)
+	end
+%>
 
-<% Rails.logger.info controller_name %>
+var results = jQuery.parseHTML("<%=j template.join('').html_safe %>");
 
-<% template = render('layouts/elements/table_list_radio_buttons/row',
-	obj_name: params[:source_controller],
-	coll_name: "#{params[:model]}_id",
-	val_method: :id,
-	label_method: text_method,
-	obj: c
-) %>
+// remove duplicates from results set, only append not duplicated
+$(results).each(function() {
+	var radio_btn = $(this).children("td").children("input[type=radio]");
 
-var results = $("<%= j(template) %>");
+	if (checked_btns_vals.indexOf(radio_btn.val()) == -1) {
+		tBody.append($(this));
+	} 
+});
+
+
