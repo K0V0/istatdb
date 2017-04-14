@@ -19,8 +19,6 @@ function searchQuery(path, conds, other_data) {
 
 	$(document).on('input', elem_string, function(e) {
 
-		console.log("searching...")
-
 		$(this).removeClass('error');
 		$(this).closest('article').find('div.form_errors').empty();
 

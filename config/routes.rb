@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
-
   ### nastavenie domovskej stranky
-
   root to: 'goods#index'
+
 
 
   ### searchery
   post "local_taric/new_select_search",
     to: "local_tarics#new_select_search"
-   
+
+  post "impexpcompanies/new_select_search",
+    to: "impexpcompanies#new_select_search"
+
+  post "manufacturers/new_select_search",
+    to: "manufacturers#new_select_search"
 
 
 

@@ -11,15 +11,15 @@ class Manufacturer < ActiveRecord::Base
 	has_many :intertables, inverse_of: :manufacturer
 	has_many :goods, through: :intertables
 
-	has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
-	has_many :impexpcompanies, through: :impexpcompany_manufacturers 
+	#has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
+	#has_many :impexpcompanies, through: :impexpcompany_manufacturers 
 
-	has_many :uoms, inverse_of: :manufacturer
+	#has_many :uoms, inverse_of: :manufacturer
 
-	attr_accessor :impexpcompany_company_name
-	attr_accessor :local_taric_kncode
-	attr_accessor :local_taric_description
-	attr_writer :incoterm
+	#attr_accessor :impexpcompany_company_name
+	#attr_accessor :local_taric_kncode
+	#attr_accessor :local_taric_description
+	#attr_writer :incoterm
 
 	validates :name, presence: true
 	validates :name, uniqueness: true
@@ -33,26 +33,26 @@ class Manufacturer < ActiveRecord::Base
 	}
 
 	def intrastat_clients
-		impexpcompany_manufacturers.collect { |w|
-			w.impexpcompany.company_name
-		}
+		#impexpcompany_manufacturers.collect { |w|
+		#	w.impexpcompany.company_name
+		#}
 	end
 
 	def	taric_codes
-		impexpcompany_manufacturers.collect { |w|
-			tmp = w.local_taric.try(:kncode)
-			tmp.blank? ? "---" : tmp
-		}
+		#impexpcompany_manufacturers.collect { |w|
+		#	tmp = w.local_taric.try(:kncode)
+		#	tmp.blank? ? "---" : tmp
+		#}
 	end
 
 	def incoterm
 	end
 
 	def incoterm_shortlands
-		impexpcompany_manufacturers.collect { |w|
-			term = Incoterm.find(w.try(:incoterm));
-			term.blank? ? "---" : term.shortland
-		}
+		#impexpcompany_manufacturers.collect { |w|
+		#	term = Incoterm.find(w.try(:incoterm));
+		#	term.blank? ? "---" : term.shortland
+		#}
 	end
 
 	scope :impexpcompany_filter, -> (pars) { 

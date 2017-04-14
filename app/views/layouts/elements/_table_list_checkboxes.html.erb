@@ -28,44 +28,14 @@ pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] :
 
 			<% coll.each do |c| %>
 
-				<tr>
-
-					<td>
-						<%= check_box(
-							obj_name,
-							coll_name,
-							{ 
-								multiple: true,
-								checked: (associated_records.exists?(id: c.id))||(pars.include?(c.id.to_s))
-							},
-							c.id,
-							""
-						) %>
-					</td>
-
-					<% if text_method.is_a? Array %>
-						<% text_method.each do |l| %>
-							<td>
-								<%= label(
-									obj_name,
-									coll_name,
-									c.send(l),
-									value: c.id
-								) %>
-							</td>
-						<% end %>
-					<% else %>
-						<td> 
-							<%#= label(
-								obj_name,
-								coll_name,
-								c.send(val_method),
-								value: c.id
-							) %>
-						</td>
-					<% end %>
-
-				</tr>
+				<%= render('layouts/elements/table_list_checkboxes/row',
+					obj_name: obj_name,
+					coll_name: coll_name,
+					val_method: val_method,
+					label_method: text_method,
+					obj: c, 
+					checked: (associated_records.exists?(id: obj.id))||(pars.include?(obj.id.to_s))
+				) %>
 
 			<% end %>
 

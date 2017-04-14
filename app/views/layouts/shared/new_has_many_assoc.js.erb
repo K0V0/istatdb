@@ -1,0 +1,43 @@
+// search-select section (widget)
+var mainElem = $(document).find("#<%= params[:model] %>_select");
+// table body
+var tBody = mainElem.find("div.tablewrap").children("table").children("tbody");
+// table rows
+var rows = tBody.children("tr");
+// for later use remember ids (vals) of buttons to avoid duplicates on refresh
+var checked_btns_vals = []
+
+// let checked values be there
+rows.each(function() {
+	var checkbox = $(this).children("td").children("input[type=checkbox]");
+
+	if (checkbox.is(":checked")) {
+		checked_btns_vals.push(checkbox.val());
+	} else {
+		$(this).remove();
+	}
+});
+
+<% 
+	template = []
+	@result.each do |r|
+		template << render('layouts/elements/table_list_checkboxes/row',
+			obj_name: params[:source_controller],
+			coll_name: "#{params[:model]}_ids",
+			val_method: :id,
+			label_method: get_fields_from_ransack_params,
+			obj: r
+		)
+	end
+%>
+
+var results = jQuery.parseHTML("<%=j template.join('').html_safe %>");
+
+// remove duplicates from results set, only append not duplicated
+$(results).each(function() {
+	var checkbox = $(this).children("td").children("input[type=checkbox]");
+
+	if (checked_btns_vals.indexOf(checkbox.val()) == -1) {
+		tBody.append($(this));
+	} 
+});

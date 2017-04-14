@@ -30,9 +30,9 @@ var mainHandler = function() {
 			}
 		}		
 	);
-/*
+
 	searchQuery(
-		'/api/client_search',
+		'/impexpcompanies/new_select_search',
 		{ 
 			impexpcompany_company_name: "company_name_cont"
 		},
@@ -44,7 +44,7 @@ var mainHandler = function() {
 	);
 
 	searchQuery(
-		'/api/manufacturer_search',
+		'/manufacturers/new_select_search',
 		{ 
 			manufacturer_name: "name_cont"
 		},
@@ -54,7 +54,7 @@ var mainHandler = function() {
 			}
 		}
 	);
-	*/
+	
 };
 
 var reloadHandler = function() {

@@ -7,12 +7,16 @@ class ImpexpcompaniesController < ApplicationController
       ); 
     }
 
-    before_action(only: :create) { create_action permitted_pars }
+    #before_action(only: :create) { create_action permitted_pars }
 
-   	before_action(only: :update) { update_action permitted_pars }
+   	#before_action(only: :update) { update_action permitted_pars }
 
   def csv_export
     
+  end
+
+  def new_select_search
+    apicall_render(:has_many)
   end
 
 	private

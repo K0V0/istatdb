@@ -3,19 +3,19 @@ class ManufacturersController < ApplicationController
     before_action(only: [:index, :search, :show, :administration]) {
       searcher_for(
         autoshow:false,
-        paginate: true,
-        preload: [:impexpcompanies, :impexpcompany_manufacturers]
+        paginate: true#,
+        #preload: [:impexpcompanies, :impexpcompany_manufacturers]
       ); 
     }
 
-    before_action :form_searchfields_vars, only: [:new, :edit, :update, :update_details]
+    #before_action :form_searchfields_vars, only: [:new, :edit, :update, :update_details]
 
-    before_action(only: :create) { 
-      createeeee(
-        nullize: [:name], 
-        nullize_ransack: [:name_cont]
-      )
-    }
+   #before_action(only: :create) { 
+      #createeeee(
+       # nullize: [:name], 
+      #  nullize_ransack: [:name_cont]
+      #)
+    #}
 
     def show
       #if 
@@ -74,6 +74,10 @@ class ManufacturersController < ApplicationController
 
     def csv_export
     
+    end
+
+    def new_select_search
+      apicall_render(:has_many)
     end
 
   	private

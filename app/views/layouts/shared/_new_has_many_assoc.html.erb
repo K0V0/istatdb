@@ -1,10 +1,16 @@
-
 <% 
 	single = instance_variable_get("@#{assoc.to_s.singularize}")
 	coll = instance_variable_get("@#{assoc.to_s}")
+
+	## be always singular due to js api targetting elements
+	if (defined? id)&&(!id.blank?)
+		html_id = id
+	else
+		html_id = "#{assoc.to_s.singularize}_select"
+	end
 %>
 
-<article class="decorated_wrap shrinked">
+<article class="decorated_wrap shrinked" id="<%= html_id %>">
 
 	<div>
 		<%= obj.fields_for assoc.to_sym, single do |a| %>

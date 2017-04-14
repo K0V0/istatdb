@@ -1,0 +1,43 @@
+
+<% 
+	checked = false if !defined? checked
+%>
+
+<tr>
+
+	<td>
+		<%= check_box(
+			obj_name,
+			coll_name,
+			{ 
+				multiple: true,
+				checked: checked
+			},
+			obj.id,
+			""
+		) %>
+	</td>
+
+	<% if label_method.is_a? Array %>
+		<% label_method.each do |l| %>
+			<td>
+				<%= label(
+					obj_name,
+					coll_name,
+					obj.send(l),
+					value: obj.id
+				) %>
+			</td>
+		<% end %>
+	<% else %>
+		<td> 
+			<%#= label(
+				obj_name,
+				coll_name,
+				obj.send(val_method),
+				value: obj.id
+			) %>
+		</td>
+	<% end %>
+
+</tr>
