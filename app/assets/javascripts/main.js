@@ -61,7 +61,6 @@ var reloadHandler = function() {
 	console.log("page changed (turbolinks reload)");
 
 	CLIPBOARD = new Clipboard('.copy_to_clipboard');
-	//console.log(CLIPBOARD);
 
 	ACTIONS_INDEX.reinit();
 	searchIfExists();

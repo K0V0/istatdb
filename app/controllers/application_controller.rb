@@ -87,7 +87,8 @@ class ApplicationController < ActionController::Base
     if saved
       redirect_to public_send("#{controller_name.pluralize}_path")
     else
-       render "new"
+      around_create_after_save_failed
+      render "new"
     end
   end
 
@@ -126,6 +127,9 @@ class ApplicationController < ActionController::Base
   end
 
   def around_create_after_save
+  end
+
+  def around_create_after_save_failed
   end
 
   def around_update

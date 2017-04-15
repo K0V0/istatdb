@@ -38,7 +38,7 @@ class GoodsController < ApplicationController
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
-	def around_create_after_save
+	def around_create_after_save_failed
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 

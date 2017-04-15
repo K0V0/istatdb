@@ -6,6 +6,7 @@ class Good < ActiveRecord::Base
 	include NestedAttributesGetterConcern
 
 	has_many :intertables, inverse_of: :good
+	accepts_nested_attributes_for(:intertables)
 
 	has_many :manufacturers, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
