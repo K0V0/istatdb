@@ -9,16 +9,22 @@
 		object = obj.object
 		parent_errs = []
 	end
+
+	if object.respond_to? :errors
+		obj_errs = object.errors
+	else
+		obj_errs = []
+	end
 %>
 
-<% if (object.errors.any?)||(parent_errs.any?) %>
+<% if (obj_errs.any?)||(parent_errs.any?) %>
 
 	<div class="form_errors">
 
 		<% fields.each do |field_name, opts| %>
-			<% if object.errors[field_name].any? %>
+			<% if obj_errs[field_name].any? %>
 				<span>
-					<%= object.errors[field_name].first %>
+					<%= obj_errs[field_name].first %>
 				</span>
 			<% end %>
 		<% end %>

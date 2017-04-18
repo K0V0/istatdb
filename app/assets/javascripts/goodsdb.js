@@ -1,6 +1,15 @@
 $(document).ready(function() {
 
+	// function to add/remove intrastat clients and manufacturers from
+	// dropdown menus in units (uom) sections based on checked clients and manufacturers
+	changeUomsFieldsToMatchAssocs([
+		"impexpcompany_select",
+		"manufacturer_select"
+	]);
+
+
 	// new action - adding more fields for uoms 
+	/*
 	$(document).on('click', 'button.add_uom', function() {
 		//console.log('add uom');
 		var clone = $(this).closest('article').clone();
@@ -14,8 +23,10 @@ $(document).ready(function() {
 			$(document).find('.new_good_uom').last().find('button.remove_uom').parent().removeClass('remove_uom');
 		}
 	});
+	*/
 
 	// new action - removing uoms fields
+	/*
 	$(document).on('click', 'button.remove_uom', function() {
 		var uoms_fields = $(document).find('.new_good_uom');
 		var art = $(this).closest('article')
@@ -31,6 +42,7 @@ $(document).ready(function() {
 			art.find('select').children('option').removeAttr('selected');
 		}
 	});
+	*/
 
 	// show action - select uom type for uoms calculator
 	$(document).on('click', '.good_manufacturer_uoms_list tr', function() {

@@ -34,7 +34,8 @@
 					@impexpcompanies_for_uoms,
 					cbt('new_form_texts.uom_cannot_select_impexpcompany')
 				)
-			]
+			],
+			html_class: "uoms_impexpcompany_select"
 		) %>
 
 		<%= render('layouts/elements/input_select',
@@ -48,7 +49,8 @@
 					@manufacturers_for_uoms,
 					cbt('new_form_texts.uom_cannot_select_manufacturer')
 				)
-			]
+			],
+			html_class: "uoms_manufacturer_select"
 		) %>
 
 		<%= render('layouts/elements/input_fields_error',
