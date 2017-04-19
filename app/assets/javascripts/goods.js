@@ -1,11 +1,50 @@
-$(document).ready(function() {
-
+function GOODS_onready() {
+	
 	// function to add/remove intrastat clients and manufacturers from
 	// dropdown menus in units (uom) sections based on checked clients and manufacturers
-	changeUomsFieldsToMatchAssocs([
+	UOMS_DROPDOWNS_ADAPT = new changeUomsFieldsToMatchAssocs();
+	UOMS_DROPDOWNS_ADAPT.init([
 		"impexpcompany_select",
 		"manufacturer_select"
 	]);
+
+	searchQuery(
+		'/local_taric/new_select_search',
+		{ 
+			local_taric_kncode: "kncode_start",
+			local_taric_description: "description_cont"
+		},
+		{
+			cols_highlighted: {
+				kncode: "kncode",
+				description: "description"
+			}
+		}		
+	);
+
+	searchQuery(
+		'/impexpcompanies/new_select_search',
+		{ 
+			impexpcompany_company_name: "company_name_cont"
+		},
+		{
+			cols_highlighted: {
+				company_name: "company_name"
+			}
+		}
+	);
+
+	searchQuery(
+		'/manufacturers/new_select_search',
+		{ 
+			manufacturer_name: "name_cont"
+		},
+		{
+			cols_highlighted: {
+				name: "name"
+			}
+		}
+	);
 
 
 	// new action - adding more fields for uoms 
@@ -69,4 +108,4 @@ $(document).ready(function() {
 		}
 	});
 
-});
+}
