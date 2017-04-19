@@ -55,13 +55,16 @@ changeUomsFieldsToMatchAssocs.prototype = {
 		var checked_ids = this.HELPER.getIDs(this.enabled_data[selector]);
 
 
-		// if selected is in checked ids
+		// if selected is not in checked ids
+			// error class, notification to user
 
-		// remove items not in checked ids
+		// remove items not in checked ids and not selected
 
 		// add items not in dropdowns
 
-		// if everything unchecked 
+		// if everything unchecked return please select message
+
+
 
 		// remove everything that is not selected
 		//dropdowns.children('option').filter(':not(:selected)').remove();
