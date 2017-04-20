@@ -18,7 +18,6 @@ changeUomsFieldsToMatchAssocs.prototype = {
 			// if something change
 			$(document).on('change', '#' + elem_name + ' > div > table > tbody > tr > td > input', function() {
 				TOTOK.fillup_list_with_enabled_data(this, elem_name);
-				//TOTOK.remeber_selected_opts_on_dropdowns(elem_name);
 				TOTOK.update_dropdowns(elem_name);	
 			});
 		});
@@ -42,68 +41,56 @@ changeUomsFieldsToMatchAssocs.prototype = {
 			.text();
 		this.zero_text[selector] = txt;
 	},
-/*
-	remeber_selected_opts_on_dropdowns: function(selector) {
-		$(document).find("div.uoms_" + selector).children('select').each(function() {
-			$(this).data("selected", $(this).children('option:selected').val());
-		});
-	},
-*/
+
 	update_dropdowns: function(selector) {
 		var TOTOK = this;
 		var dropdowns = $(document).find("div.uoms_" + selector).children('select');
 		var checked_ids = this.HELPER.getIDs(this.enabled_data[selector]);
 
+		dropdowns.each(function() {
+			var options = $(this).children('option');
 
-		// if selected is not in checked ids
-			// error class, notification to user
-
-		// remove items not in checked ids and not selected
-
-		// add items not in dropdowns
-
-		// if everything unchecked return please select message
-
-
-
-		// remove everything that is not selected
-		//dropdowns.children('option').filter(':not(:selected)').remove();
-
-		// remove selected that are obsolete after change
-		//dropdowns.children('option').filter(':selected').each(function(obj) {
-			//if () {
-
-			//}
-		//});
-
-		//dropdowns.children('option').each(function() {
-
-		//});
-/*
-		TOTOK.enabled_data[selector].forEach(function(obj) {
-			dropdowns.each(function() {
-				// if in this loop, at least one checkbox is checked
-				$(this).find("option[value='']").remove();
-
-				if ($(this).find("option[value=" + obj.val + "]").length > 0) {
-					// do not add, same item found in dropdown (selected that persisted for example)
-				} else {
-					// add if item not found
-					var elem = "<option value=\"" + obj.val + "\">" + obj.text + "</option>";
-					$(this).append(elem);
+			options.each(function() {
+				if (checked_ids.indexOf($(this).val()) == -1) {
+					// if selectbox option should not be there
+					if ($(this).is(':selected')) {
+						if ($(this).val() != "") {
+							// if is selected but not more in source data
+							//--------- give advice to user to resolve conflict
+							$(this).parent().addClass('error');
+							// if user decide later to resolve conflic by selecting deselected source data
+							$(this).parent().data("blocked_to_removed_option", $(this).val());
+							$(this).val("");
+							$(this).text("Zdrojové dáta boli zmenené");
+						}
+					} else {
+						// is not important, remove
+						$(this).remove();
+					}
 				}
 			});
+
 		});
 
-		// in case of everything deselected
-		if (TOTOK.enabled_data[selector].length < 1) {
-			dropdowns.empty();
-			var elem = "<option value=\"\">" + TOTOK.zero_text[selector] + "</option>";
-			dropdowns.append(elem);
-		}
-*/
-	}
+		// append new options that are not in dropdowns
+		this.enabled_data[selector].forEach(function(data) {
+			// do not duplicate
+			if (dropdowns.find("option[value=" + data.val + "]").length == 0) {
+				var elem = "<option value=\"" + data.val + "\">" + data.text + "</option>";
+				dropdowns.append(elem);
+			}
+		});
 
+		// if there are no options (everything deselected)
+		dropdowns.each(function() {
+			var options = $(this).children('option');
+			// if there is zero options or one with empty value (error/validation text)
+			//--------- give advice to user to resolve conflict
+			if (options.length == 0 || (options.length == 1 && options.first().val() == "")) {
+				options.first().text(TOTOK.zero_text[selector]);
+			}
+		});
+	}
 }
 
 
