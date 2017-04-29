@@ -81,14 +81,34 @@ changeUomsFieldsToMatchAssocs.prototype = {
 			}
 		});
 
+
+
 		// if there are no options (everything deselected)
 		dropdowns.each(function() {
 			var options = $(this).children('option');
 			// if there is zero options or one with empty value (error/validation text)
 			//--------- give advice to user to resolve conflict
-			if (options.length == 0 || (options.length == 1 && options.first().val() == "")) {
+			console.log($(this).val());
+			if (options.length == 0) {
+				console.log('0 options');
+				//$(this).removeClass('error');
+			} else if (options.length == 1 && options.first().val() == "") {
 				options.first().text(TOTOK.zero_text[selector]);
+			} else {
+				console.log('kokoooot');
+				if (!$(this).hasClass('error')) {
+					$(this).find("option[value=\"\"]").remove();
+				}
+
+				//$(this).find("option[value=\"\"]").remove();
 			}
+			/*else if (options.length >= 1 && options.first().val() == "") {
+				$(this).find("option[value=\"\"]").remove();
+			}*/
+			/*else if (options.length >= 1 && (typeof $(this).data('blocked_to_removed_option') === 'undefined')) {
+				console.log($(this).data('blocked_to_removed_option'));
+				$(this).find("option[value=\"\"]").remove();
+			}*/	
 		});
 	}
 }

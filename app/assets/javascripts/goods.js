@@ -2,11 +2,16 @@ function GOODS_onready() {
 	
 	// function to add/remove intrastat clients and manufacturers from
 	// dropdown menus in units (uom) sections based on checked clients and manufacturers
+	/*
 	UOMS_DROPDOWNS_ADAPT = new changeUomsFieldsToMatchAssocs();
 	UOMS_DROPDOWNS_ADAPT.init([
 		"impexpcompany_select",
 		"manufacturer_select"
 	]);
+	*/
+
+	UD_MANUFACTURER = new uomsManufacturerImpexpcompanyOptionsHandler('manufacturer');
+	UD_IMPEXPCOMPANY = new uomsManufacturerImpexpcompanyOptionsHandler('impexpcompany');
 
 	searchQuery(
 		'/local_taric/new_select_search',
