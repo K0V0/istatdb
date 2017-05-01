@@ -42,10 +42,8 @@ uomsManufacturerImpexpcompanyOptionsHandler_helper.prototype = {
 	},
 
 	getData: function(){
-		//var TOTOK = this;
 		this.selected_checkboxes = $('#' + this.elem_name).find('table').find('input[type=checkbox]').filter(':checked');
 		var data = [];
-		//console.log(selected_checkboxes);
 		this.selected_checkboxes.each(function() {
 			var val = $(this).val();
 			var text = $(this).parent().siblings().children('label').text();

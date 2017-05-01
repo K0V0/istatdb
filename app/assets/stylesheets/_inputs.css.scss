@@ -109,6 +109,17 @@ div.select_wrapper {
 		cursor: pointer;
 	}
 
+	&.disabled {
+
+		select {
+
+		}
+	}
+
+	&.error {
+		background-color: $input_validation_error;
+	}
+
 	span {
 		//@include button_transitions();
 		position: absolute;

@@ -10,6 +10,11 @@ class GoodsController < ApplicationController
 
 	before_action :load_vars, only: [:new, :create]
 
+	def new
+		#@impexpcompanies_for_uoms.first.company_name = t('goods.new_form_texts.uom_cannot_select_impexpcompany');
+		#@manufacturers_for_uoms.first.name = t('goods.new_form_texts.uom_cannot_select_manufacturer');
+	end
+
 	def index
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
