@@ -42,14 +42,17 @@ uomsManufacturerImpexpcompanyOptionsDropdowns.prototype = {
 			TOTO_SELECTS.removeClass('error');
 
 			TOTO_SELECTS.children('option').each(function() {
-				// cleaning dropdown menu
 				if ($(this).val() != $(this).parent().data('selected_by_hand')) {
 					$(this).remove();
-				} else {
-					// if data that no exists more are selected
-					$(this).parent().parent().addClass('error');
-				}
+				} 
 			});
+
+			if (TOTO_SELECTS.val() != null) {
+				var a = TOTO.HELPER.controlValidationReparation(TOTO_SELECTS); 
+				if (!a) {
+					$(this).parent().addClass('error');
+				}
+			}
 			
 			TOTO.data.forEach(function(data) {
 				// append only if not exists
@@ -92,11 +95,12 @@ uomsManufacturerImpexpcompanyOptionsDropdowns_helper.prototype = {
 	},
 
 	controlValidationReparation: function(ref) {
-		this.MAINCLASS.data.some(function(data) {
-			if (data.value == ref.val()) {
+		return this.MAINCLASS.data.some(function(data) {
+			var is_here = data.value == ref.val();
+			if (is_here) {
 				ref.parent().removeClass('error');
-				return true;
 			}
+			return is_here;
 		});
 	}
 }
