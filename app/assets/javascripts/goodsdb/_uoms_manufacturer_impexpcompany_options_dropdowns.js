@@ -23,7 +23,12 @@ uomsManufacturerImpexpcompanyOptionsDropdowns.prototype = {
 			// this handler should run only on user interaction with dropdown
 			$(this).data('selected_by_hand', $(this).val());
 			// if some source data were removed, then control if user selected available
-			TOTO.HELPER.controlValidationReparation($(this));
+			var a = TOTO.HELPER.controlValidationReparation($(this));
+			if (a) {
+				// if user selects another options that is available (valid),
+				// rerender dropdowns to remove orphaned options
+				TOTO.rerender();
+			}
 		});
 	},
 

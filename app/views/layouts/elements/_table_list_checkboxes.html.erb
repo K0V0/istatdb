@@ -34,7 +34,7 @@ pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] :
 					val_method: val_method,
 					label_method: text_method,
 					obj: c, 
-					checked: (associated_records.exists?(id: obj.id))||(pars.include?(obj.id.to_s))
+					checked: (associated_records.exists?(id: c.id))||(pars.include?(c.id.to_s))
 				) %>
 
 			<% end %>

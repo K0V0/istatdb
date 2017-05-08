@@ -15,41 +15,35 @@
 
 		<%= render('layouts/elements/input_select',
 			obj: obj,
-			opts: [
-				:uom_type_id,
-				@uom_types,
-				:id,
-				:name_for_form_input
-			]
+			collection: @uom_types,
+			method_to_get_vals: :id,
+			method_to_get_texts: :name_for_form_input,
+			send_parameters_name: :uom_type_id,
 		) %>
 
 		<%= render('layouts/elements/input_select',
 			obj: obj,
-			opts: [
-				:impexpcompany_id,
+			collection: @impexpcompanies_for_uoms,
+			method_to_get_vals: :id,
+			method_to_get_texts: :company_name,
+			send_parameters_name: :impexpcompany_id,
+			blank_text: select_blank_message(
 				@impexpcompanies_for_uoms,
-				:id,
-				:company_name,
-				include_blank: select_blank_message(
-					@impexpcompanies_for_uoms,
-					cbt('new_form_texts.uom_cannot_select_impexpcompany')
-				)
-			],
+				cbt('new_form_texts.uom_cannot_select_impexpcompany')
+			),
 			html_class: "uoms_impexpcompany_select"
 		) %>
 
 		<%= render('layouts/elements/input_select',
 			obj: obj,
-			opts: [
-				:manufacturer_id,
+			collection: @manufacturers_for_uoms,
+			method_to_get_vals: :id,
+			method_to_get_texts: :name,
+			send_parameters_name: :manufacturer_id,
+			blank_text: select_blank_message(
 				@manufacturers_for_uoms,
-				:id,
-				:name,
-				include_blank: select_blank_message(
-					@manufacturers_for_uoms,
-					cbt('new_form_texts.uom_cannot_select_manufacturer')
-				)
-			],
+				cbt('new_form_texts.uom_cannot_select_manufacturer')
+			),
 			html_class: "uoms_manufacturer_select"
 		) %>
 
