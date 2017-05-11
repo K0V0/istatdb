@@ -58,10 +58,7 @@ uomsManufacturerImpexpcompanyOptionsDropdowns.prototype = {
 				var a = TOTO.HELPER.controlValidationReparation(TOTO_SELECTS); 
 				if (!a) {
 					// if selected option is no more in source data
-					$(this).parent().addClass('error');
-					//if (TOTO_SELECTS.children('option').length == 1) {
-					//	console.log('kkt');
-					//}
+					TOTO_SELECTS.parent().addClass('error');
 				}
 			}
 			
@@ -73,11 +70,18 @@ uomsManufacturerImpexpcompanyOptionsDropdowns.prototype = {
 				}
 			});
 
-			if (TOTO_SELECTS.children('option').length == 0) {
-				// if everyting deselected, disable dropdowns
+			var opts_count = TOTO_SELECTS.children('option').length;
+			if (opts_count == 0) {
+				// if everyting deselected (source data), disable dropdowns
 				TOTO_SELECTS.append("<option value=\"\">" + TOTO.default_text_nothing_to_select + "</option>");
 				TOTO.HELPER.disableSelect(TOTO_SELECTS);
-			}
+			} else if (opts_count == 1 && TOTO_SELECTS.parent().hasClass('error')) {
+				// if everything deselected (in source data), but dropdown optioń selected by hand
+				// rezists deletion because is error and is only option in dropdow 
+				TOTO_SELECTS.children('option').val('');
+				//var old_text = TOTO_SELECTS.children('option').first().text();
+				//TOTO_SELECTS.children('option').text(TOTO.default_text_nothing_to_select + '(predtým: ' + old_text + ')');
+			} 
 		});
 	}, 
 
