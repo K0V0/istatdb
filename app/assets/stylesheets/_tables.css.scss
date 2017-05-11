@@ -175,6 +175,14 @@ table.checkboxes_list, table.radio_buttons_list {
 			td:last-child {
 				width:100%;
 			}
+
+			td {
+
+				label {
+					display: block;
+					width: 100%;
+				}
+			}
 		}
 	}
 }

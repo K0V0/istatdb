@@ -47,15 +47,21 @@ uomsManufacturerImpexpcompanyOptionsDropdowns.prototype = {
 			TOTO_SELECTS.removeClass('error');
 
 			TOTO_SELECTS.children('option').each(function() {
+				// remove if was not selected by choosing from actual dropdown
 				if ($(this).val() != $(this).parent().data('selected_by_hand')) {
 					$(this).remove();
 				} 
 			});
 
 			if (TOTO_SELECTS.val() != null) {
+				// after removal, only selected options perzists
 				var a = TOTO.HELPER.controlValidationReparation(TOTO_SELECTS); 
 				if (!a) {
+					// if selected option is no more in source data
 					$(this).parent().addClass('error');
+					//if (TOTO_SELECTS.children('option').length == 1) {
+					//	console.log('kkt');
+					//}
 				}
 			}
 			
