@@ -1,8 +1,9 @@
 function GOODS_onready() {
 	
-	UD_MANUFACTURER = new uomsManufacturerImpexpcompanyOptionsHandler('manufacturer');
-	UD_IMPEXPCOMPANY = new uomsManufacturerImpexpcompanyOptionsHandler('impexpcompany');
+	var UOMS = new uoms();
 
+
+	
 	searchQuery(
 		'/local_taric/new_select_search',
 		{ 

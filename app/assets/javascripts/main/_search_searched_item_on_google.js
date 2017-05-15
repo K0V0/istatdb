@@ -1,4 +1,6 @@
-function searchSearchedItemOnGoogle() {
+function searchSearchedItemOnGoogle(button_id, field_id) {
+	this.button_id = button_id;
+	this.field_id = field_id;
 
 	this.init();
 }
@@ -8,8 +10,9 @@ searchSearchedItemOnGoogle.prototype = {
 
 	init: function() {
 		// opens new tab passing searched item to google search
-		$(document).on('click', '#search_good_on_google', function() {
-			var q = $('#q_ident_or_description_cont').val();
+		var TOTO = this;
+		$(document).on('click', '#'+TOTO.button_id , function() {
+			var q = $('#'+TOTO.field_id).val();
 			window.open('http://google.com/search?q=' + q);
 		});
 	}
