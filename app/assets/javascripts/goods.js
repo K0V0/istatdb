@@ -2,7 +2,7 @@ function GOODS_onready() {
 	
 	var UOMS = new uoms();
 
-
+	var GOOGLE_SEARCH = new searchSearchedItemOnGoogle('search_good_on_google', 'q_ident_or_description_cont');
 	
 	searchQuery(
 		'/local_taric/new_select_search',
