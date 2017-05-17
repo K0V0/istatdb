@@ -3,6 +3,10 @@ function GOODS_onready() {
 	var UOMS = new uoms();
 
 	var GOOGLE_SEARCH = new searchSearchedItemOnGoogle('search_good_on_google', 'q_ident_or_description_cont');
+
+	var QUERY_TARICLIST = new generateSearchQueryForSelectForm ('local_taric', { kncode: 'start', description: 'cont' });
+
+	var QUERY_MANUFACTURERSLIST = new generateSearchQueryForSelectForm ('manufacturer', { name: 'cont' });
 	
 	searchQuery(
 		'/local_taric/new_select_search',

@@ -17,6 +17,8 @@ function searchQuery(path, conds, other_data) {
 		i++;
 	}
 
+	console.log(elem_string);
+
 	$(document).on('input', elem_string, function(e) {
 
 		$(this).removeClass('error');
