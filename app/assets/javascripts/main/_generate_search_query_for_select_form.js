@@ -3,9 +3,9 @@ function generateSearchQueryForSelectForm (model_name, fields) {
 	this.model_name = model_name;
 	this.fields = fields;
 
+	this.source_controller = '';
 	this.model_name_plu = '';
 	this.path = '';
-	//this.inputs_to_listen = ''
 
 	this.init();
 }
@@ -17,9 +17,21 @@ generateSearchQueryForSelectForm.prototype = {
 		var TOTO = this;
 		this.model_name_plu = this.HELPER.toPlural(this.model_name);
 		this.path = '/' + this.model_name_plu + '/new_select_search';
+		this.source_controller = $("body").data("controller_name_singular");
 
 		$(document).on('input', this.generateInputsIdsList(), function(e) {
 			TOTO.removeErros(this);
+
+			$.ajax({
+			  	method: "POST",
+			 	url: TOTO.path,
+			  	data: { 
+			  		q: TOTO.generateAjaxDataObj(),
+			  		model: TOTO.model_name,
+			  		source_controller: TOTO.source_controller/*,
+			  		other_data*/
+			  	}
+			});
 		});
 	},
 
@@ -32,7 +44,16 @@ generateSearchQueryForSelectForm.prototype = {
 			if (i < keys_length-1) { elem_string += ', '; } 
 		}
 		return elem_string;
-	}, 
+	},
+
+	generateAjaxDataObj: function() {
+		var request_data = {};
+		var keys = Object.keys(this.fields);
+		for (var i=0; i<keys.length; i++) {
+			request_data[keys[i] + '_' + this.fields[keys[i]]] = $('#'+this.model_name+'_'+keys[i]).val();
+		}
+		return request_data;
+	},
 
 	removeErros: function(ref) {
 		$(ref).removeClass('error');

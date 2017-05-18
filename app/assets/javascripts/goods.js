@@ -7,46 +7,9 @@ function GOODS_onready() {
 	var QUERY_TARICLIST = new generateSearchQueryForSelectForm ('local_taric', { kncode: 'start', description: 'cont' });
 
 	var QUERY_MANUFACTURERSLIST = new generateSearchQueryForSelectForm ('manufacturer', { name: 'cont' });
+
+	var QUERY_IMPEXPCOMPANIESLIST = new generateSearchQueryForSelectForm ('impexpcompany', { company_name: 'cont' });
 	
-	searchQuery(
-		'/local_taric/new_select_search',
-		{ 
-			local_taric_kncode: "kncode_start",
-			local_taric_description: "description_cont"
-		},
-		{
-			cols_highlighted: {
-				kncode: "kncode",
-				description: "description"
-			}
-		}		
-	);
-
-	searchQuery(
-		'/impexpcompanies/new_select_search',
-		{ 
-			impexpcompany_company_name: "company_name_cont"
-		},
-		{
-			cols_highlighted: {
-				company_name: "company_name"
-			}
-		}
-	);
-
-	searchQuery(
-		'/manufacturers/new_select_search',
-		{ 
-			manufacturer_name: "name_cont"
-		},
-		{
-			cols_highlighted: {
-				name: "name"
-			}
-		}
-	);
-
-
 	// new action - adding more fields for uoms 
 	/*
 	$(document).on('click', 'button.add_uom', function() {

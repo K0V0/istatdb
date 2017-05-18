@@ -1,1 +1,3 @@
+function MANUFACTURERS_onready() {
 
+}

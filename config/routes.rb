@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   ### searchery
-  post "local_taric/new_select_search",
+  post "local_tarics/new_select_search",
     to: "local_tarics#new_select_search"
 
   post "impexpcompanies/new_select_search",
