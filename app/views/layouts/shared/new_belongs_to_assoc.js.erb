@@ -27,7 +27,8 @@ rows.each(function() {
 			coll_name: "#{params[:model]}_id",
 			val_method: :id,
 			label_method: get_fields_from_ransack_params,
-			obj: r
+			obj: r,
+			opts: { is_highlighted: true }
 		)
 	end
 %>

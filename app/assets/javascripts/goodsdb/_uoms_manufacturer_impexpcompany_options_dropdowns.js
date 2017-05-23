@@ -82,6 +82,7 @@ uomsManufacturerImpexpcompanyOptionsDropdowns.prototype = {
 				//var old_text = TOTO_SELECTS.children('option').first().text();
 				//TOTO_SELECTS.children('option').text(TOTO.default_text_nothing_to_select + '(predtým: ' + old_text + ')');
 			} 
+
 		});
 	}, 
 

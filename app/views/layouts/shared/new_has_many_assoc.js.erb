@@ -1,3 +1,4 @@
+
 // search-select section (widget)
 var mainElem = $(document).find("#<%= params[:model] %>_select");
 // table body
@@ -26,7 +27,8 @@ rows.each(function() {
 			coll_name: "#{params[:model]}_ids",
 			val_method: :id,
 			label_method: get_fields_from_ransack_params,
-			obj: r
+			obj: r,
+			opts: { is_highlighted: true }
 		)
 	end
 %>

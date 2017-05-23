@@ -28,8 +28,7 @@ generateSearchQueryForSelectForm.prototype = {
 			  	data: { 
 			  		q: TOTO.generateAjaxDataObj(),
 			  		model: TOTO.model_name,
-			  		source_controller: TOTO.source_controller/*,
-			  		other_data*/
+			  		source_controller: TOTO.source_controller
 			  	}
 			});
 		});

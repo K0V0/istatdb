@@ -109,13 +109,6 @@ div.select_wrapper {
 		cursor: pointer;
 	}
 
-	&.disabled {
-
-		select {
-
-		}
-	}
-
 	&.error {
 		background-color: $input_validation_error;
 	}
@@ -144,6 +137,21 @@ div.select_wrapper {
 
 	&:hover {
 		background-color: $superwhite;
+	}
+
+	&.disabled {
+
+		select:hover + span, span:hover {
+			background-image: url(select_dropdown_arrow.png);
+		}
+
+		select {
+			border-color: $white;
+		}
+
+		&:hover {
+			background-color: $white;
+		}
 	}
 }
 

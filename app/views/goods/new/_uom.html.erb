@@ -1,16 +1,22 @@
 
-<article class="decorated_wrap shrinked">
+<article class="decorated_wrap shrinked uoms">
 
 	<div>
 
 		<div>
 			<%= obj.label :uom %>
-			<%= obj.text_field(:uom) %>
+			<%= obj.text_field(
+				:uom,
+				class: "uom_val"
+			) %>
 		</div>
 
 		<div>
 			<%= obj.label :uom_multiplier %>
-			<%= obj.text_field(:uom_multiplier) %>
+			<%= obj.text_field(
+				:uom_multiplier,
+				class: "uom_multiplier"
+			) %>
 		</div>
 
 		<%= render('layouts/elements/input_select',
@@ -51,6 +57,10 @@
 			obj: obj,
 			fields: { uom: {}, uom_multiplier: {} }
 		) %>
+
+		<button class="button add_uom" type="button" disabled="disabled">
+			<%= t 'actions.add_next' %>
+		</button>
 
 	</div>
 	

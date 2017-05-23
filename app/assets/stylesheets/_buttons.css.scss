@@ -74,7 +74,7 @@
 		}
 	}
 
-	&.disabled {
+	&.disabled, &:disabled {
 		background-color: $button_disabled;
 		color: $button_disabled_text;
 	}

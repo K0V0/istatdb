@@ -16,7 +16,9 @@
 					coll_name,
 					obj.send(l),
 					value: obj.id
-				) %>
+				) do %>
+					<%= items_table_field_decorator(obj.send(l), opts, obj, l) %>
+				<% end %>
 			</td>
 		<% end %>
 	<% else %>
@@ -26,7 +28,9 @@
 				coll_name,
 				obj.send(val_method),
 				value: obj.id
-			) %>
+			) do %>
+				<%= obj.send(val_method) %>
+			<% end %>
 		</td>
 	<% end %>
 

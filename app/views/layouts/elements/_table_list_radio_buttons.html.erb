@@ -12,6 +12,10 @@ val_method = val_method || "id"
 
 # text_method - method(s) to call on collection to get label(s) text
 text_method = text_method || val_method
+
+if !defined? opts
+	opts = {}
+end
 %>
 
 <div class="tablewrap">
@@ -29,7 +33,8 @@ text_method = text_method || val_method
 					coll_name: coll_name,
 					val_method: val_method,
 					label_method: text_method,
-					obj: c
+					obj: c,
+					opts: opts
 				) %>
 
 			<% end %>

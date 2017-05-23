@@ -5,6 +5,7 @@ sk:
 
   actions:
     add: Pridať
+    add_next: Pridať dalšie
     edit: Upraviť 
     delete: Odstrániť
     back: Naspäť

@@ -5,6 +5,7 @@ en:
 
   actions:
     add: Add
+    add_next: Add next
     edit: Edit 
     delete: Delete
     back: Back
