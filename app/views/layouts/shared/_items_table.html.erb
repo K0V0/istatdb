@@ -1,10 +1,22 @@
 <%
 cn = controller_name.to_s
+html_class_main = "items_table decorated_wrap"
+html_class_table = "items rows_colored with_efects"
+
+if !defined? object
+	object = @result
+end
+if defined? options
+	if o = options[0].try(:[], :html_options) 
+		html_class_main += " #{o[:main_class]}" if o.try(:[], :main_class)
+		html_class_table += " #{o[:table_class]}" if o.try(:[], :table_class)
+	end
+end
 %>
 
-<section class="items_table decorated_wrap">
+<section class="<%= html_class_main %>">
 
-	<table class="items rows_colored with_efects" id="<%= cn %>">
+	<table class="<%= html_class_table %>" id="<%= cn %>">
 
 		<% if defined? options %>
 
@@ -15,14 +27,14 @@ cn = controller_name.to_s
 					<% if o.try(:[], :caption) %>
 						<tr>
 							<th colspan="99">
-								<%= @result.model.model_name.human %>
+								<%= object.model.model_name.human %>
 							</th>
 						</tr>
 					<% end %>
 
 					<tr>
 						<%= render('layouts/shared/items_table/head',
-							obj: @result.model.name.constantize, 
+							obj: object.model.name.constantize, 
 							fields: fields
 						) %>
 					</tr>
@@ -35,7 +47,7 @@ cn = controller_name.to_s
 
 		<tbody>
 			
-			<% @result.each do |item| %>
+			<% object.each do |item| %>
 
 				<tr>
 					
@@ -47,7 +59,7 @@ cn = controller_name.to_s
 
 			<% if defined? errors %>
 
-				<%= items_table_errors_handler(errors[0], @result) %>
+				<%= items_table_errors_handler(errors[0], object) %>
 
 			<% end %>
 
@@ -61,7 +73,7 @@ cn = controller_name.to_s
 
 					<tr>
 						<%= render('layouts/shared/items_table/foot',
-							obj: @result, 
+							obj: object, 
 							fields: fields
 						) %>
 					</tr>

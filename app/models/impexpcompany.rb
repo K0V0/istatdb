@@ -7,6 +7,7 @@ class Impexpcompany < ActiveRecord::Base
 	has_many :intertables, inverse_of: :impexpcompany 
 	has_many :goods, through: :intertables
 	has_many :manufacturers, through: :intertables
+	has_many :uoms, inverse_of: :impexpcompany
 
 	#has_many :impexpcompany_manufacturers, inverse_of: :impexpcompany
 	#has_many :manufacturers, through: :impexpcompany_manufacturers

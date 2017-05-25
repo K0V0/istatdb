@@ -1,7 +1,0 @@
-
-var elem = $("#<%= params[:model] + "_" + params[:q].keys.first.sub(/_[a-z]+$/, '') + '_results' %>");
-
-elem.children("tbody").children('tr').remove();
-
-elem.children("tbody")
-.append('<%= j(render("/layouts/results_table", results_obj: @result, cols: @cols, cols_highlighted: @cols_highlighted)) %>');

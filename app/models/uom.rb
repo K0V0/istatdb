@@ -5,9 +5,9 @@ class Uom < ActiveRecord::Base
 	#belongs_to :goods_manufacturer, inverse_of: :uoms
 
 	belongs_to :uom_type, inverse_of: :uoms
-	#belongs_to :impexpcompany, inverse_of: :uoms
+	belongs_to :impexpcompany, inverse_of: :uoms
 	belongs_to :good, inverse_of: :uoms
-	#belongs_to :manufacturer, inverse_of: :uoms
+	belongs_to :manufacturer, inverse_of: :uoms
 
 	validates :uom, numericality: true#, allow_blank: true
 
@@ -35,6 +35,14 @@ class Uom < ActiveRecord::Base
 
 	def type_fullname
 		uom_type.try(:full_name)
+	end
+
+	def manufacturer_name
+		self.manufacturer.name
+	end
+
+	def impexpcompany_name
+		self.impexpcompany.company_name
 	end
 
 end

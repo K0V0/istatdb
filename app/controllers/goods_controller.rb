@@ -26,6 +26,12 @@ class GoodsController < ApplicationController
 		super
 	end
 
+	def show
+		@impexpcompanies = Impexpcompany.all
+		@manufacturers = Manufacturer.all
+		super
+	end
+
 	
 
 	private 

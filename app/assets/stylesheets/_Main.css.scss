@@ -38,6 +38,14 @@ html {
 			text-align: right;
 		}
 
+		.float-right {
+			float: right;
+		}
+
+		.float-left {
+			float: left;
+		}
+
 		.decorated_wrap {
 			border-color:$wrap_border_color;
 			border-style: solid;

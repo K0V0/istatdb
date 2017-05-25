@@ -1,7 +1,70 @@
-<%= render 'layouts/main_menu' %>
 
-<%= render 'layouts/actions' if @administrative_mode %>
+<%= render 'layouts/base/main_menu' %>
 
-<%= render 'goods/goodslist/search' %>
+<%= render 'goods/shared/search' %>
 
-<%= render 'goods/goodslist/item_details' %>
+<%#= render 'layouts/shared/items_actions' if @administrative_mode %>
+
+<article class="show_good">
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.impexpcompanies,
+
+		fields: [
+			company_name: {}
+		],
+
+		options: [
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			}
+		]
+
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.manufacturers,
+
+		fields: [
+			name: {}
+		],
+
+		options: [
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			}
+		]
+
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.uoms,
+
+		fields: [
+			uom: {},
+			uom_multiplier: {},
+			type: {},
+			manufacturer_name: {},
+			impexpcompany_name: {}
+		],
+
+		options: [
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			}
+		]
+
+	) %>
+
+</article>
+
+

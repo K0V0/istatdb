@@ -11,6 +11,7 @@ class Manufacturer < ActiveRecord::Base
 	has_many :intertables, inverse_of: :manufacturer
 	has_many :goods, through: :intertables
 	has_many :impexpcompanies, through: :intertables
+	has_many :uoms, inverse_of: :manufacturer
 
 	#has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
 	#has_many :impexpcompanies, through: :impexpcompany_manufacturers 
