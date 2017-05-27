@@ -28,6 +28,8 @@ en:
     new_form_texts:
       uom_cannot_select_impexpcompany: Select min 1 Intrastat cl. 1st
       uom_cannot_select_manufacturer: Select min 1 manuf./consum. 1st
+    show_details:
+      good: "Item"
        
 
 sk:
@@ -60,3 +62,5 @@ sk:
     new_form_texts:
       uom_cannot_select_manufacturer: Vyberte najskôr min 1 výr./odb.
       uom_cannot_select_impexpcompany: Vyberte najskôr min 1 SJ
+    show_details:
+      good: "Tovar"

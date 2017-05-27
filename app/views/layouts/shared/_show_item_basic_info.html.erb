@@ -1,0 +1,43 @@
+<% 
+if !defined? object
+	object = @record
+end
+%>
+
+<section class="decorated_wrap">
+
+	<table class="rows_colored">
+
+		<thead>
+			<tr>
+				<th>
+					<%= object.model_name.human %>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% fields.each do |section| %>
+				<tr>
+					<td>
+						<% section.each_with_index do |row, index| %>
+							<h<%= index+1 %>> 
+								<%= get_content_for(object, row) %> 
+							</h<%= index+1 %>>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>
