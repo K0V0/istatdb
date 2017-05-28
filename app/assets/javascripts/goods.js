@@ -1,4 +1,6 @@
 function GOODS_onready() {
+
+	var SEARCH = new searchItemActions();
 	
 	var UOMS = new uoms();
 

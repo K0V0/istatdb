@@ -33,10 +33,12 @@ end
 					<% end %>
 
 					<tr>
-						<%= render('layouts/shared/items_table/head',
+						<%#= render('layouts/shared/items_table/head',
 							obj: object.model.name.constantize, 
 							fields: fields
 						) %>
+
+						<%= items_table_head(object.model.name.constantize, fields) %>
 					</tr>
 					
 				</thead>
@@ -51,7 +53,9 @@ end
 
 				<tr>
 					
-					<%= render('layouts/shared/items_table/field', obj: item, fields: fields) %>
+					<%#= render('layouts/shared/items_table/field', obj: item, fields: fields) %>
+
+					<%= items_table_fields(item, fields) %>
 
 				</tr>
 

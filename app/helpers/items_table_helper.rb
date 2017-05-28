@@ -74,4 +74,41 @@ module ItemsTableHelper
 		return ret
 	end
 
+	def items_table_fields(obj, fields)
+		output = ""
+		fields.each do |field|
+			field.each do |field_name, options|
+				if options.is_a? Array
+					output += items_table_fields(obj.send(field_name), options)
+				else
+					output += "<td>"
+					result = obj.send(field_name)
+					if result.is_a? Array
+						result.each do |res|
+
+						end
+					else
+						output += items_table_field_decorator(result.to_s, options, obj, field_name)
+					end
+					output += "</td>"
+				end 
+			end
+		end
+		return output.html_safe 
+	end
+
+	def items_table_head(obj, fields)
+		output = ""
+		fields.each do |field| 
+			field.each do |field_name, options| 
+		 		if options.is_a? Array 
+		 			output += items_table_head(field_name.to_s.classify.constantize, options)
+		 		else 
+					output += "<th> #{items_table_caption_decorator(options, obj, field_name)} </th>" 
+				end 
+			end 
+		end 
+		return output.html_safe
+	end
+
 end
