@@ -9,32 +9,18 @@ class GoodsController < ApplicationController
 	}
 
 	before_action :load_vars, only: [:new, :create]
-
-	def new
-		#@impexpcompanies_for_uoms.first.company_name = t('goods.new_form_texts.uom_cannot_select_impexpcompany');
-		#@manufacturers_for_uoms.first.name = t('goods.new_form_texts.uom_cannot_select_manufacturer');
-	end
-
-	def index
-		@impexpcompanies = Impexpcompany.all
-		@manufacturers = Manufacturer.all
-	end
-
-	def search
-		@impexpcompanies = Impexpcompany.all
-		@manufacturers = Manufacturer.all
-		super
-	end
-
-	def show
-		@impexpcompanies = Impexpcompany.all
-		@manufacturers = Manufacturer.all
-		super
-	end
-
-	
+	before_action :loads_for_search_panel, only: [:index, :search, :show]
 
 	private 
+
+	def loads_for_search_panel
+		@impexpcompanies = Impexpcompany.all.default_order
+		if params[:impexpcompany_filter].blank?
+			@manufacturers = Manufacturer.all.default_order
+		else
+			@manufacturers = @impexpcompanies.find(params[:impexpcompany_filter]).manufacturers.default_order
+		end
+	end
 
 	def load_vars
 		@local_tarics = LocalTaric.all

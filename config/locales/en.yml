@@ -2,6 +2,7 @@ en:
   search:
     clear: Clear fields
     reset: Reset form
+    submit: Search!
 
   actions:
     add: Add

@@ -1,68 +1,39 @@
 table#goods {
 
-	td, th {
+	th {
 
-		&.goods_description_cap {
+		&.good_description {
 			word-wrap:break-all;
 			word-break: break-all;
 			white-space: normal;
+			width:100%;
 		}
+	}
 
-		&.good_kncode, #kncode_sort_link {
+	td {
+
+		&.localtaric_kncode {
 			white-space: nowrap;
 			width:1%;
 		}
 
-		&.good_ident, #ident_sort_link {
-			width:50%;
+		&.good_ident {
+			width:1%;
 		}
 	}
 }
-
-section.edit_good_select_manufactuers {
-
-	article {
-		float: left;
-		margin: 0 0.25em !important;
-
-		&:first-child {
-			margin-left: 0 !important; 
-		}
-
-		&:last-child {
-			margin-right:0 !important;
-		}
-	}
-}
-
-table.edit_good_select_manufactuers_list {
-
-	tbody {
-
-		tr {
-
-			td {
-
-				span{
-					display: block;
-				}
-			} 
-		}
-	}
-}
-
 
 @media only screen and (max-width: 480px) {
    
    table#goods {
 
-   		td, th {
+   		td {
 
-   			&.good_ident, #ident_sort_link {
+   			&.good_ident {
 				font-weight: bold;
 			}
 
-			&.good_kncode {
+			&.localtaric_kncode {
 				font-weight:bold;
 				font-style: italic;
 				text-align:right;
@@ -73,5 +44,5 @@ table.edit_good_select_manufactuers_list {
 				font-style: italic;
 			}
    		}
-   }
+   	}
 }

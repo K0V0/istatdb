@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
     @model = model_exist?
   end
 
+  before_action() {
+    @MEM = Mem.new(session) if !defined? @MEM
+
+    remember_param :page    ## page number
+    remember_param :q       ## search
+    remember_sortlink       ## sort link direction
+  }
+
   before_action :index_action, only: :index
 
   before_action :show_action, only: :show
@@ -145,6 +153,30 @@ class ApplicationController < ActionController::Base
   end
 
   def load_create_update_vars
+  end
+
+  def remember_param param
+    controller_mem_set(param, params[param]) if params.has_key? param
+    params[param] = controller_mem_get(param)
+  end
+
+  def remember_sortlink
+    if params.deep_has_key? :q, :s
+      controller_mem_set :s, params[:q][:s]
+    elsif params.has_key? :q && !params[:q].blank?
+      params[:q].merge!({ s: controller_mem_get(:s) })
+    end
+  end
+
+  def controller_mem_set prefix, val
+    @MEM.send(
+      "#{prefix.to_s}_#{controller_name.singularize.underscore}=",
+      val
+    )
+  end
+
+  def controller_mem_get prefix
+    @MEM.send("#{prefix.to_s}_#{controller_name.singularize.underscore}")
   end
 
 end

@@ -14,6 +14,24 @@ en:
     link_text: "www.roulage.sk"
     text: Customs services, forwarding, Intrastat, consulting - Roulage-sk
 
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+
+
     
 sk:
   top_menu:
@@ -30,3 +48,22 @@ sk:
     link: "http://roulage.sk/en"
     link_text: "www.roulage.sk"
     text: Colné služby, zasielateľstvo, Intrastat, poradenstvo - Roulage-sk
+
+  views:
+    pagination:
+      first: "&laquo; Prvá"
+      last: "Posledná &raquo;"
+      previous: "&lsaquo; Predchádzajúca"
+      next: "Nasledujúca &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+
+

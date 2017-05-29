@@ -2,6 +2,7 @@ sk:
   search:
     clear: Vymazať polia
     reset: Resetovať formulár
+    submit: Hľadať!
 
   actions:
     add: Pridať

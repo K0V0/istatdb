@@ -33,11 +33,6 @@ end
 					<% end %>
 
 					<tr>
-						<%#= render('layouts/shared/items_table/head',
-							obj: object.model.name.constantize, 
-							fields: fields
-						) %>
-
 						<%= items_table_head(object.model.name.constantize, fields) %>
 					</tr>
 					
@@ -52,11 +47,7 @@ end
 			<% object.each do |item| %>
 
 				<tr>
-					
-					<%#= render('layouts/shared/items_table/field', obj: item, fields: fields) %>
-
 					<%= items_table_fields(item, fields) %>
-
 				</tr>
 
 			<% end %>

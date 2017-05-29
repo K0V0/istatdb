@@ -15,7 +15,6 @@ module ItemsTableHelper
 	# 				 	input true, false or options hash
 	# 					options: remote - if link is remoted (true/false)  
 	#			
-
 	def items_table_field_decorator(text, opts, object, field)
 		
 		if opts[:call_decorator]
@@ -42,7 +41,6 @@ module ItemsTableHelper
 
 	### something like above but for table header
 	#
-	
 	def items_table_caption_decorator(opts, object, field)
 		ret = object.human_attribute_name(field)
 
@@ -57,7 +55,6 @@ module ItemsTableHelper
 	# errors - list of defined errors to respond to and option
 	# object - passed plural AR object
 	#
-
 	def items_table_errors_handler(errors, object)
 		ret = ""
 
@@ -74,6 +71,10 @@ module ItemsTableHelper
 		return ret
 	end
 
+	### function to render row in a table
+	# obj - one row from AR result set
+	# fields - named columns to display, work recursively when some column have association(s)
+	#
 	def items_table_fields(obj, fields)
 		output = ""
 		fields.each do |field|
@@ -81,7 +82,7 @@ module ItemsTableHelper
 				if options.is_a? Array
 					output += items_table_fields(obj.send(field_name), options)
 				else
-					output += "<td>"
+					output += "<td class=\"#{obj.class.name.downcase}_#{field_name}\">"
 					result = obj.send(field_name)
 					if result.is_a? Array
 						result.each do |res|
@@ -97,6 +98,8 @@ module ItemsTableHelper
 		return output.html_safe 
 	end
 
+	### same purpose as above, but for table header
+	#
 	def items_table_head(obj, fields)
 		output = ""
 		fields.each do |field| 
@@ -104,7 +107,7 @@ module ItemsTableHelper
 		 		if options.is_a? Array 
 		 			output += items_table_head(field_name.to_s.classify.constantize, options)
 		 		else 
-					output += "<th> #{items_table_caption_decorator(options, obj, field_name)} </th>" 
+					output += "<th class=\"#{obj.model_name.name.downcase}_#{field_name}\"> #{items_table_caption_decorator(options, obj, field_name)} </th>" 
 				end 
 			end 
 		end 
