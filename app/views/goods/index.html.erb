@@ -5,39 +5,41 @@
 
 <%= render 'goods/shared/search' %>
 
-<%= render('layouts/shared/items_table',
+<article class="index goods">
+	<%= render('layouts/shared/items_table',
 
-	fields: [
-		ident: {
-			is_sortlink: true,
-			is_highlighted: true,
-			is_link: {
-				remote: true
+		fields: [
+			ident: {
+				is_sortlink: true,
+				is_highlighted: true,
+				is_link: {
+					remote: true
+				}
+			},
+			description: {
+				is_highlighted: true,
+				is_multiple_with: :ident
+			},
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: true
+				}
+			]
+		],
+
+		errors: [
+			no_results: {
+				partial: "goods/index/no_results"
 			}
-		},
-		description: {
-			is_highlighted: true,
-			is_multiple_with: :ident
-		},
-		local_taric: [
-			kncode: {
-				call_decorator: :num_to_kncode,
-				is_link: true
-			}
+		], 
+
+		options: [
+			head: true,
+			foot: true
 		]
-	],
 
-	errors: [
-		no_results: {
-			partial: "goods/index/no_results"
-		}
-	], 
-
-	options: [
-		head: true,
-		foot: true
-	]
-
-) %>
+	) %>
+</article>
 
 

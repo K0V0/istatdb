@@ -1,10 +1,11 @@
 
-<%= obj.collection_select :manufacturer_filter,
-	@manufacturers,
-	:id,
-	:name,
-	include_blank: t('goods_search.manufacturer_prompt')
-%>
+<%= select(
+	:q,
+	:manufacturer_filter,
+	@manufacturers.collect { |m| [m.name, m.id] },
+	include_blank: t('goods_search.manufacturer_prompt'),
+	selected: params[:q][:manufacturer_filter]
+) %>
 
 <span></span>
 

@@ -1,8 +1,9 @@
-$('section.items_table, section.item_details').remove();
+$('main > article').empty();
+$('#search_items_select_manufacturer').empty();
 
-$("section.calculator_list").remove();
 
-<% o = render('layouts/shared/items_table',
+<% 
+items_table = render('layouts/shared/items_table',
 
 	fields: [
 		ident: {
@@ -34,7 +35,11 @@ $("section.calculator_list").remove();
 		head: true,
 		foot: true
 	]
+) 
 
-) %>
+search_bar_manufacturers_dropdown = render('goods/shared/search/select_manufacturer_dropdown')
+%>
 
-$('<%=j o %>').appendTo('main');
+
+$('<%=j items_table %>').appendTo('main > article');
+$('<%=j search_bar_manufacturers_dropdown %>').appendTo('#search_items_select_manufacturer');

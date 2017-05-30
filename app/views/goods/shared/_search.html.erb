@@ -8,8 +8,6 @@
 			remote: true,
 			class: "decorated_wrap" do |s| %> 
 
-			<%= hidden_field_tag :reset_to_first_page, false %>
-
 			<div>
 				<%= s.label :ident %>
 				<%= s.search_field :ident_or_description_cont, autocomplete: "off", autofocus: "autofocus" %>
@@ -33,8 +31,8 @@
 
 			<div>
 				<%= s.label :manufacturer_filter %>
-				<div class="select_wrapper">
-					<%= render 'goods/shared/search/select_manufacturer_dropdown', obj: s %>
+				<div class="select_wrapper" id="search_items_select_manufacturer">
+					<%= render 'goods/shared/search/select_manufacturer_dropdown' %>
 				</div>
 			</div>
 
