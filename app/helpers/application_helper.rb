@@ -71,4 +71,9 @@ module ApplicationHelper
 		return num.gsub(/.{2}/).with_index {|x, i| i > 0 ? "#{x} " : "#{x}" } .strip
 	end
 
+	def log something="log", var=nil
+		Rails.logger.info "-------------- " + something.to_s
+		Rails.logger.info var
+	end
+
 end

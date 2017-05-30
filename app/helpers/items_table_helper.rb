@@ -31,7 +31,7 @@ module ItemsTableHelper
 		end
 
 		if opts[:is_link]
-			text = link_to object, remote: opts[:is_link].try(:remote) do
+			text = link_to object, remote: opts[:is_link].try(:[], :remote) do
 				text
 			end
 		end

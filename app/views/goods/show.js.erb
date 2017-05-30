@@ -1,18 +1,18 @@
 
-$('section.items_table').remove();
+$('main > article').empty();
 
-$('section.item_details').remove();
+<%
+show_good = render 'goods/show/show'
+%>
 
-$('section.calculator_list').remove();
 
-$('section.actions').css({ 'display':'none' });
+//$('section.calculator_list').remove();
 
-$('<%= j(render "goods/goodslist/item_details") %>').appendTo('main');
+//$('section.actions').css({ 'display':'none' });
 
-$('#edit_good_from_search, #delete_good_from_search').remove();
+$('<%=j show_good %>').appendTo('main > article');
 
-$('<%= j(render("layouts/action_edit_delete", force: "true")) %>').insertBefore('button#clear_search');
+//$('#edit_good_from_search, #delete_good_from_search').remove();
 
-$('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
 
 
