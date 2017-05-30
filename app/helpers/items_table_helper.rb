@@ -1,12 +1,14 @@
 module ItemsTableHelper
 
 	### function to format output of field in items tables based on passed options
+	#
 	# text - text to proccess
 	# opts - passed in array with named options
 	# object - singular activerecord object, one result (row) from set
 	# field - field name callable to AR object
 
 	### options list
+	#
 	# call_decorator 	pass text to function
 	# 					input is defined function name
 	# is_higlighted  	is connected with ransack searcher, highlights matched parts of searched text
@@ -14,6 +16,8 @@ module ItemsTableHelper
 	# is_link			creates link to show action, detemined from passed AR object
 	# 				 	input true, false or options hash
 	# 					options: remote - if link is remoted (true/false)  
+	# clipboard_button	creates small scissors icon next to item, by clicking it related content will
+	# 					be copied to clipboard	
 	#			
 	def items_table_field_decorator(text, opts, object, field)
 		
@@ -52,6 +56,7 @@ module ItemsTableHelper
 	end
 
 	### function to support errors on items table
+	#
 	# errors - list of defined errors to respond to and option
 	# object - passed plural AR object
 	#
@@ -72,6 +77,7 @@ module ItemsTableHelper
 	end
 
 	### function to render row in a table
+	#
 	# obj - one row from AR result set
 	# fields - named columns to display, work recursively when some column have association(s)
 	#
