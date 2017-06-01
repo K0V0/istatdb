@@ -15,11 +15,10 @@ class GoodsController < ApplicationController
 
 	def loads_for_search_panel
 		@impexpcompanies = Impexpcompany.all.default_order
-		#if params.deep_has_key? :q, :impexpcompany_filter
-		if params[:q][:impexpcompany_filter].blank?
-			@manufacturers = Manufacturer.all.default_order
-		else
+		if (params.deep_has_key?(:q, :impexpcompany_filter))&&(!params[:q][:impexpcompany_filter].blank?)
 			@manufacturers = @impexpcompanies.find(params[:q][:impexpcompany_filter]).manufacturers.default_order
+		else
+			@manufacturers = Manufacturer.all.default_order
 		end
 	end
 

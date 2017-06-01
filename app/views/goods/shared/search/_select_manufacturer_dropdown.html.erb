@@ -1,10 +1,14 @@
 
+<% 
+	manufacturer_selected = params.deep_has_key?(:q, :manufacturer_filter) ? params[:q][:impexpcompany_filter] : nil
+%>
+
 <%= select(
 	:q,
 	:manufacturer_filter,
 	@manufacturers.collect { |m| [m.name, m.id] },
 	include_blank: t('goods_search.manufacturer_prompt'),
-	selected: params[:q][:manufacturer_filter]
+	selected: manufacturer_selected
 ) %>
 
 <span></span>
