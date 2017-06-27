@@ -1,12 +1,5 @@
 
 <% 
-# obj - passsed in AR object
-#obj_name = "#{obj.class.name.underscore}"
-
-# coll - passed in collection to select from
-#coll_name = "#{coll.name.underscore}_ids"
-#coll_name = "#{coll.name}"
-
 # val_method - method to call on collection objects to get value
 val_method = val_method || "id"
 
@@ -16,11 +9,6 @@ text_method = text_method || val_method
 if !defined? opts
 	opts = {}
 end
-
-# this loads associations of passed in obj to match checked checkboxes later
-#associated_records = obj.send("#{coll.name.pluralize.underscore}")
-# this checks for params hash to catch if unsaved 
-#pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 %>
 
 <div class="tablewrap">
@@ -31,27 +19,13 @@ end
 
 		<tbody>
 
-			<%# coll.each do |c| %>
-
-				<%#= render('layouts/elements/table_list_checkboxes/row',
-					obj_name: obj_name,
-					coll_name: coll_name,
-					val_method: val_method,
-					label_method: text_method,
-					obj: c, 
-					checked: (associated_records.exists?(id: c.id))||(pars.include?(c.id.to_s)),
-					opts: opts
-				) %>
-
-				<%= new_form_has_many_select(
-					obj,
-					coll,
-					val_method,
-					text_method,
-					opts
-				) %>
-
-			<%# end %>
+			<%= new_form_has_many_select(
+				obj,
+				coll,
+				val_method,
+				text_method,
+				opts
+			) %>
 
 		</tbody>
 

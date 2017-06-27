@@ -12,8 +12,12 @@ module NestedAttributesGetterConcern
 				method_name = "#{a.to_s}_attributes"
 
 				define_method "#{method_name}=" do |arg|
+					# monkey fix - when in second and other form input repeat after validation fail
+					# the attributes with deselected ids are passed into nested_attributes
+					tmp = Hash.new
+					tmp["0"] = arg.to_a.last[1]
 					instance_variable_set("@#{method_name}", arg)
-					super arg
+					super tmp
 				end
 
 				define_method method_name do

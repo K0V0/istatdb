@@ -26,9 +26,9 @@ end
 
 		<tbody>
 
-			<% coll.each do |c| %>
+			<%# coll.each do |c| %>
 
-				<%= render('layouts/elements/table_list_radio_buttons/row',
+				<%#= render('layouts/elements/table_list_radio_buttons/row',
 					obj_name: obj_name,
 					coll_name: coll_name,
 					val_method: val_method,
@@ -37,7 +37,16 @@ end
 					opts: opts
 				) %>
 
-			<% end %>
+			<%# end %>
+
+			<%= new_form_has_one_select(
+				obj,
+				obj_name,
+				coll,
+				val_method,
+				text_method,
+				opts
+			) %>
 
 		</tbody>
 
