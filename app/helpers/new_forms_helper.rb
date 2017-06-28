@@ -111,7 +111,7 @@ module NewFormsHelper
 			output_first += output if checked
             output_other += output if !checked
     	end
-    	output_first.html_safe
+    	(output_first + output_other).html_safe
     end
 
 end
