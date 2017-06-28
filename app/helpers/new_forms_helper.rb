@@ -94,20 +94,22 @@ module NewFormsHelper
 
     	coll.each do |c|
     		output = ""
+            checked = c.send(val_method).to_s == pars
     		#output += pars.to_s
     		output += "<tr><td>"
 				output += radio_button(
 					obj_name,
 					coll_name,
 					c.send(val_method),
-					checked: (c.send(val_method).to_s == pars)
+					checked: checked
 				) 
 				output += "</td>"
 				output += generate_labels_for_select_table(c, obj_name, coll_name, text_method, opts)
 
 			output += "</tr>"
-
-			output_first += output	
+            
+			output_first += output if checked
+            output_other += output if !checked
     	end
     	output_first.html_safe
     end
