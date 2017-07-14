@@ -4,9 +4,13 @@ module Defaults
 	def self.included(base)
 	  base.instance_eval do 
 
-	  	scope :order_this_id_first, -> (pars) { 
-			order_as_specified(id: [pars])
-			.default_order
+	  	scope :order_this_id_first, -> (pars) {
+	  		if !pars.blank? 
+				order_as_specified(id: [pars])
+				.default_order
+			else
+				default_order
+			end
 		}
 
 		scope :persisted, -> { 

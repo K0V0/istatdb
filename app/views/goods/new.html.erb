@@ -8,9 +8,12 @@
 		<%= render('layouts/shared/new_main',
 			obj: t,
 			fields: {
-				ident: {  },
+				ident: { 
+					prefill_from_mem_param: [:ident_or_description_cont, :ident_cont]
+				},
 				description: { 
-					type: :text_area
+					type: :text_area,
+					prefill_from_mem_param: [:ident_or_description_cont, :description_cont]
 				}
 			}
 		) %>
