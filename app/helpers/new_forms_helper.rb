@@ -114,4 +114,28 @@ module NewFormsHelper
     	(output_first + output_other).html_safe
     end
 
+    # simple input text field generation
+    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, id: nil, default_val:nil)
+        output = ""
+        type = :text_field if type.nil?
+        id = "#{obj.object.class.name.underscore}_#{field_name}" if id.nil?
+
+        output += default_val.nil? ? obj.send(type, field) : obj.send(type, field, value: default_val)
+        output.html_safe
+    end
+
+    # for simple input text field generation - prefill with content of search field on main page
+    # when adding sometning new
+    def prefill_from_search_field(pars) 
+        if (!pars.nil?)&&(action_name == 'new')
+            search_params = @MEM.send("q_#{controller_name.singularize.underscore}")
+            pars.each do |par|
+                if !(res = search_params[par]).blank?
+                    return res
+                end
+            end
+        end
+        return nil
+    end
+
 end
