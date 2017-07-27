@@ -49,11 +49,12 @@ Rails.application.routes.draw do
     as: "create_good"
 
   # administration - enter index page into administration mode
-  get "goodsdb/edit",
-    to: "goods#administration"
+  get "goodsdb/administrative",
+    to: "goods#administrative"
 
-  get "goodsdb/leave_administrative",
-    to: "goods#leave_administration"
+  # administration - return from
+  get "goodsdb/end_administrative",
+    to: "goods#end_administrative"
 
   get "goodsdb/:id/edit",
     to: "goods#edit",

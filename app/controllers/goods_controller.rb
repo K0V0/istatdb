@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
 
-	before_action(only: [:index, :search, :show, :administration]) {
+	before_action(only: [:index, :search, :show, :administrative]) {
 
 		searcher_for(
 			preload: :local_taric,
@@ -9,7 +9,7 @@ class GoodsController < ApplicationController
 	}
 
 	before_action :load_vars, only: [:new, :create]
-	before_action :loads_for_search_panel, only: [:index, :search, :show]
+	before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
 
 	private 
 

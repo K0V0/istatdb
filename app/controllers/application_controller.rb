@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
 
   before_action :index_action, only: :index
 
+  before_action :administrative_action, only: :administrative
+
+  before_action :end_administrative_action, only: :end_administrative
+
   before_action :show_action, only: :show
 
   before_action :new_action, only: :new
@@ -70,10 +74,27 @@ class ApplicationController < ActionController::Base
   def new_select_search
   end
 
+  def administrative
+  	render "index"
+  end
+
+  def end_administrative
+  	redirect_to action: "index"
+  end
+
   private
 
   def index_action
     @collection = @model.all if @model
+  end
+
+  def administrative_action
+  	@MEM.is_in_administrative = true
+  	@collection = @model.all if @model
+  end
+
+  def end_administrative_action
+  	@MEM.is_in_administrative = false
   end
 
   def show_action

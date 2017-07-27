@@ -16,7 +16,7 @@ module NewFormsHelper
     def get_selected_filter_obj_id_from_mem(association_name)
     	# only run when entering new form from list with items, 
     	# not on repeat after validation failed
-    	if action_name = "new"
+    	if action_name == "new"
     		# params are restored from mem on page load if not new are set
     		if params.deep_has_key?(:q, "#{association_name}_filter".to_sym)
     			return params[:q]["#{association_name}_filter".to_sym].to_i

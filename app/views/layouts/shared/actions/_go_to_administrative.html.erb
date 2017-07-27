@@ -1,0 +1,26 @@
+
+<% if @MEM.is_in_administrative == false %>
+
+	<%= link_to(
+		t('actions.administrative'),
+		{
+			controller: controller_name,
+			action: "administrative"
+		},
+		class: "button", 
+		id: "#{controller_name.singularize}_administration_from_search"
+	) %>
+
+<% else %>
+
+	<%= link_to(
+		t('actions.end_administrative'),
+		{
+			controller: controller_name,
+			action: "end_administrative"
+		},
+		class: "button selected", 
+		id: "#{controller_name.singularize}_administration_from_search"
+	) %>
+
+<% end %>

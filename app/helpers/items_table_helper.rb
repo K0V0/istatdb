@@ -104,6 +104,35 @@ module ItemsTableHelper
 		return output.html_safe 
 	end
 
+	### function to render edit and delete buttons in table row
+	#
+	# obj - one row from AR result set
+	#
+	def items_table_row_administrative_buttons(obj)
+		output = "<td>"
+			output += link_to(
+				t('actions.edit'),
+				{
+					controller: controller_name,
+					action: "edit",
+					id: obj.id
+				},
+				class: "button"
+			)
+		output += "</td><td>"
+			output += link_to(
+				t('actions.delete'),
+				{
+					controller: controller_name,
+					action: "delete",
+					id: obj.id
+				},
+				class: "button danger"
+			)
+		output += "</td>"
+		return output.html_safe
+	end
+
 	### same purpose as above, but for table header
 	#
 	def items_table_head(obj, fields)

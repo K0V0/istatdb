@@ -12,6 +12,8 @@ en:
     back: Back
     select: Select
     nothing_to_select: Nothing to select
+    administrative: Edit item(s)
+    end_administrative: End administration
 
   items_table:
     results_count: results count

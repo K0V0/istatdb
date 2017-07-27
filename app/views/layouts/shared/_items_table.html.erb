@@ -48,6 +48,9 @@ end
 
 				<tr>
 					<%= items_table_fields(item, fields) %>
+					<% if @MEM.is_in_administrative %>
+						<%= items_table_row_administrative_buttons(item) %>
+					<% end %>
 				</tr>
 
 			<% end %>
