@@ -117,7 +117,7 @@ module ItemsTableHelper
 					action: "edit",
 					id: obj.id
 				},
-				class: "button"
+				class: "button edit_item"
 			)
 		output += "</td><td>"
 			output += link_to(
@@ -127,7 +127,7 @@ module ItemsTableHelper
 					action: "delete",
 					id: obj.id
 				},
-				class: "button danger"
+				class: "button danger delete_item"
 			)
 		output += "</td>"
 		return output.html_safe

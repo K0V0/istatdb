@@ -8,7 +8,8 @@ class GoodsController < ApplicationController
 		);
 	}
 
-	before_action :load_vars, only: [:new, :create]
+	before_action :load_vars, only: [:new, :create, :edit, :update]
+	#before_action :load_vars_edit, only: [:edit, :update]
 	before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
 
 	private 
@@ -31,6 +32,15 @@ class GoodsController < ApplicationController
 		@manufacturers_for_uoms = @record.manufacturers
 	end
 
+	#def load_vars_edit
+		#@local_tarics = LocalTaric.all
+		#@impexpcompanies = Impexpcompany.all
+		#@manufacturers = Manufacturer.all
+		#@uom_types = UomType.all
+		#@impexpcompanies_for_uoms = @record.impexpcompanies
+		#@manufacturers_for_uoms = @record.manufacturers
+	#end
+
 	def around_new
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
@@ -39,8 +49,17 @@ class GoodsController < ApplicationController
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
+	#def around_update
+		#build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
+	#end
+
+	#def around_update_after_save_failed
+		#build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
+	#end
+
 	def permitted_params
 		params.require(:good).permit(
+			:id,
 			:ident, 
 			:description,
 			:local_taric_id,

@@ -38,16 +38,6 @@ Rails.application.routes.draw do
     to: "goods#search",
     as: "search_goods" 
 
-  # zobrazit detaily o polozke
-  get "goodsdb/:id/details",
-    to: "goods#show",
-    as: "good"
-
-  # vytvorit novu
-  post "goodsdb",
-    to: "goods#create",
-    as: "create_good"
-
   # administration - enter index page into administration mode
   get "goodsdb/administrative",
     to: "goods#administrative"
@@ -56,11 +46,21 @@ Rails.application.routes.draw do
   get "goodsdb/end_administrative",
     to: "goods#end_administrative"
 
+  # zobrazit detaily o polozke
+  get "goodsdb/:id",
+    to: "goods#show",
+    as: "good"
+
+  # vytvorit novu
+  post "goodsdb",
+    to: "goods#create",
+    as: "create_good"
+
   get "goodsdb/:id/edit",
     to: "goods#edit",
     as: "edit_good"
 
-  patch "goodsdb/:id/edit",
+  patch "goodsdb/:id",
     to: "goods#update",
     as: "update_good"
 

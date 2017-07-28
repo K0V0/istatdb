@@ -1,157 +1,40 @@
-<%= render 'layouts/main_menu' %>
+<%= render 'layouts/base/main_menu' %>
 
-<section class="form">
+<%= render 'goods/shared/search' %>
 
-	<%= form_for @good, url: update_good_path do |t| %>
+<article class="index goods">
+	<%= render('layouts/shared/items_table',
 
-		<%#= t.hidden_field :id %>
-
-		<%= hidden_field_tag :rerender, '' %>
-
-		<article class="decorated_wrap shrinked">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					ident: {
-						required: true,
-						autocomplete: false,
-						reset_button: true,
-						autofocus: true
-					},
-					description: {
-						required: false,
-						autocomplete: false,
-						reset_button: true,
-						type: :textarea
-					}
-				},
-			) %>
-
-		</article>
-
-		<article class="decorated_wrap shrinked">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					local_taric_kncode: {
-						required: true,
-						reset_button: :all,
-						autocomplete: false
-					},
-					local_taric_description: {
-						required: true,
-						autocomplete: false,
-						type: :textarea
-					}
-				},
-				results_obj: @local_tarics,
-				cols: [:kncode, :description], 
-				cols_highlighted: {
-					kncode: :kncode,
-					description: :description
+		fields: [
+			ident: {
+				is_sortlink: true,
+				is_highlighted: true,
+				is_link: {
+					remote: true
 				}
-			) %>
+			},
+			description: {
+				is_highlighted: true,
+				is_multiple_with: :ident
+			},
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: true
+				}
+			]
+		],
 
-		</article>
+		errors: [
+			no_results: {
+				partial: "goods/index/no_results"
+			}
+		], 
 
-		<article class="decorated_wrap shrinked">
+		options: [
+			head: true,
+			foot: true
+		]
 
-			<%= render('layouts/new_checkboxes_table', 
-				title: :associated_to_impexpcompany,
-				form_object: t,
-				ar_object: @impexpcompanies.order(:company_name),
-				result_of_collection: :impexpcompany_ids,
-				key: :id,
-				name: :company_name 
-			) %>
-			
-		</article>
-
-		<article class="decorated_wrap shrinked">
-			<%= link_to(
-				cbt(:create_new_client),
-				new_impexpcompany_path,
-				class: "button"
-			) %>
-		</article>
-
-		<section class="edit_good_select_manufactuers">
-			<article class="decorated_wrap shrinked">
-
-				<%= render(
-					'goods/edit/manufacturers',
-					obj: t,
-					manufacturers: @manufacturers,
-					good: @good
-				) %>
-
-			</article>
-
-			<article class="decorated_wrap shrinked">
-				<%= render('layouts/new_select_section', 
-					obj: t,
-					input_fields: { 
-						manufacturer_name: {
-							required: true,
-							autocomplete: false,
-							reset_button: true
-						}
-					},
-					results_obj: Manufacturer.all,
-					cols: [:name],
-					cols_highlighted: {
-						name: :name
-					}
-				) %>
-			</article>
-			<br class="clear">
-		</section>
-			
-		<article class="decorated_wrap shrinked">
-			<%= link_to(
-				cbt(:create_new_manufacturer),
-				new_manufacturer_path,
-				class: "button"
-			) %>
-		</article>
-
-		<% if !@good.uoms.blank? %>
-			<article class="decorated_wrap shrinked">
-
-				<%= render(
-					'goods/edit/uoms',
-					obj: t,
-					impexpcompanies: @uoms_impexpcompanies,
-					manufacturers: @uoms_manufacturers,
-					uoms: @good.uoms
-				) %>
-
-			</article>
-		<% end %>
-
-		<article class="decorated_wrap shrinked">
-			<%= link_to(
-				cbt(:create_new_uom),
-				{
-					controller: :uoms,
-					action: :new,
-					good_id: @good.id 
-				},
-				class: "button"
-			) %>
-		</article>
-
-		<article class="decorated_wrap shrinked">
-
-			<div>
-				<%= t.submit class: "button" %>
-				<%= link_to t(:back), goods_path, class: "button" %>
-			</div>
-
-		</article>
-
-	<% end %>
-
-</section>
+	) %>
+</article>

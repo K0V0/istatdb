@@ -134,6 +134,7 @@ class ApplicationController < ActionController::Base
     if saved
       redirect_to controller: controller_name, action: 'index'
     else
+      around_update_after_save_failed
       render "new"
     end
   end
@@ -166,6 +167,9 @@ class ApplicationController < ActionController::Base
   end
 
   def around_update_after_save
+  end
+
+  def around_update_after_save_failed
   end
 
   def load_vars
