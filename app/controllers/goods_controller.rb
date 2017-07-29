@@ -33,6 +33,7 @@ class GoodsController < ApplicationController
 	end
 
 	#def load_vars_edit
+
 		#@local_tarics = LocalTaric.all
 		#@impexpcompanies = Impexpcompany.all
 		#@manufacturers = Manufacturer.all
@@ -49,13 +50,25 @@ class GoodsController < ApplicationController
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
+	def around_edit
+		#build_if_empty :impexpcompanies, :manufacturers
+		@record.impexpcompanies.build
+		@record.manufacturers.build
+		#@record.uoms.build
+		#@record.uoms.build
+	end
+
 	#def around_update
 		#build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	#end
 
-	#def around_update_after_save_failed
-		#build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
-	#end
+	def around_update_after_save_failed
+		#build_if_empty :impexpcompanies, :manufacturers
+		@record.impexpcompanies.build
+		@record.manufacturers.build
+		#@record.uoms.build
+		#@record.uoms.build
+	end
 
 	def permitted_params
 		params.require(:good).permit(
@@ -63,7 +76,7 @@ class GoodsController < ApplicationController
 			:ident, 
 			:description,
 			:local_taric_id,
-			local_taric_attributes: [:kncode, :description],
+			local_taric_attributes: [:kncode, :description, :id],
 			impexpcompanies_attributes: [:id, :company_name],
 			impexpcompany_ids: [],
 			manufacturers_attributes: [:id, :name],

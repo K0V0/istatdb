@@ -26,33 +26,48 @@ module ApplicationConcern
 	end
 
 	def build_if_empty(*assocs)
-		assocs.each do |a, opts|
-			assoc_var_name = "@#{a.to_s.singularize}"
-			build_command = a.to_s.is_singular? ? "build_#{a.to_s}" : "build"
+		
+		if action_name == "new" || action_name == "create"
 
-			if (a.to_s.is_singular?)
-				if @record.has_attribute? "#{a.to_s}_id"
-					if @record.send(a).nil?
-						instance_variable_set(assoc_var_name, @record.send(build_command))
-					else
-						instance_variable_set(assoc_var_name, @record.send(a))
+			assocs.each do |a, opts|
+				assoc_var_name = "@#{a.to_s.singularize}"
+				build_command = a.to_s.is_singular? ? "build_#{a.to_s}" : "build"
+
+				if (a.to_s.is_singular?)
+					if @record.has_attribute? "#{a.to_s}_id"
+						if @record.send(a).nil?
+							instance_variable_set(assoc_var_name, @record.send(build_command))
+						else
+							instance_variable_set(assoc_var_name, @record.send(a))
+						end
 					end
-				end
-			else
-				# if associated has not been build yet
-				if (iv = @record.send(a)).length == 0
-					instance_variable_set(assoc_var_name, iv.send(build_command))
 				else
-					# if has been built
-					# if empty field leave after reload for example after failed association
-					# due to reject_if option of accept_nested_attributes_for
-					# create and append one to associations (record with empty id)
-					if !iv.collect(&:id).any? { |a| a.nil? }
-						iv << a.to_s.singularize.classify.constantize.send(:new)
+					# if associated has not been build yet
+					if (iv = @record.send(a)).length == 0
+						instance_variable_set(assoc_var_name, iv.send(build_command))
+					else
+						# if has been built
+						# if empty field leave after reload for example after failed association
+						# due to reject_if option of accept_nested_attributes_for
+						# create and append one to associations (record with empty id)
+						if !iv.collect(&:id).any? { |a| a.nil? }
+							iv << a.to_s.singularize.classify.constantize.send(:new)
+						end
+						instance_variable_set(assoc_var_name, iv)
 					end
-					instance_variable_set(assoc_var_name, iv)
 				end
 			end
+
+		elsif action_name == "edit" || action_name == "update"
+			
+			assocs.each do |a, opts|
+				if (a.to_s.is_singular?)
+
+				else
+					@record.send(a).send(:build)
+				end
+			end
+
 		end
 	end
 

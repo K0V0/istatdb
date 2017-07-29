@@ -22,7 +22,7 @@ module Defaults
 	
 	def nested_selected_or_created_any?(assoc, field)
 		a = self.send("#{assoc.to_s}_attributes").map { |k,v| v[field] }
-		(!self.send("#{assoc.to_s.singularize}_ids").any?)&&(a.all?(&:empty?))
+		(!self.send("#{assoc.to_s.singularize}_ids").any?)&&(a.all?(&:blank?))
 	end
 
 end

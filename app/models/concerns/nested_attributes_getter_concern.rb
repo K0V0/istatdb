@@ -24,24 +24,25 @@ module NestedAttributesGetterConcern
 					# monkey fix - when in second and other form input repeat after validation fail
 					# the attributes with deselected ids are passed into nested_attributes
 					# params hash example: {"0"=>{"id"=>"5"}, "1"=>{"id"=>"6"}}
+					if self.id.blank?
+						tmp = Hash.new
+						tmp["0"] = arg.to_a.last[1]
+						instance_variable_set("@#{attrs_method_name}", arg)
+						super tmp
+					else
+						ids_checked = instance_variable_get("@#{ids_method_name}")
 
-					#keys_not_included = []
-					#ids_checked = instance_variable_get("@#{ids_method_name}")
-
-					#arg.each do |a|
-					#	if !ids_checked.include? a[1][:id]
-					#		arg.except!(a[0])
-					#	end
-					#end
-
-					tmp = Hash.new
-					tmp["0"] = arg.to_a.last[1]
-
-					Rails.logger.info "----------------------"
-					Rails.logger.info tmp
-
-					instance_variable_set("@#{attrs_method_name}", arg)
-					super tmp
+						arg.each do |k, v|
+							if v.keys.first.to_s == "id"
+								if !ids_checked.include? v[:id]
+									arg.except!(k)
+								end
+							end
+						end
+						
+						instance_variable_set("@#{attrs_method_name}", arg)
+						super arg
+					end
 				end
 
 				define_method attrs_method_name do
