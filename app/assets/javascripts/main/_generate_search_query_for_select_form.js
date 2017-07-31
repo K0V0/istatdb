@@ -14,12 +14,14 @@ generateSearchQueryForSelectForm.prototype = {
 	constructor: generateSearchQueryForSelectForm,
 
 	init: function() {
+		//console.log("generateSearchQueryForSelectForm() init()");
 		var TOTO = this;
 		this.model_name_plu = this.HELPER.toPlural(this.model_name);
 		this.path = '/' + this.model_name_plu + '/new_select_search';
 		this.source_controller = $("body").data("controller_name_singular");
 
 		$(document).on('input', this.generateInputsIdsList(), function(e) {
+			//console.log("generateSearchQueryForSelectForm() onInput()");
 			TOTO.removeErros(this);
 
 			$.ajax({

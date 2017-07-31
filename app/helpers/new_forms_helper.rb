@@ -90,12 +90,12 @@ module NewFormsHelper
     	output_first = ""
     	output_other = ""
     	coll_name = "#{coll.name.underscore}_id"
+    	checked_id = obj.send(coll.name.underscore).id
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
     	coll.each do |c|
     		output = ""
-            checked = c.send(val_method).to_s == pars
-    		#output += pars.to_s
+            checked = (c.send(val_method).to_s == pars)||(checked_id == c.id)
     		output += "<tr><td>"
 				output += radio_button(
 					obj_name,
@@ -120,7 +120,7 @@ module NewFormsHelper
         type = :text_field if type.nil?
         id = "#{obj.object.class.name.underscore}_#{field_name}" if id.nil?
 
-        output += default_val.nil? ? obj.send(type, field) : obj.send(type, field, value: default_val)
+        output += default_val.nil? ? obj.send(type, field, id: id) : obj.send(type, field, value: default_val, id: id)
         output.html_safe
     end
 
