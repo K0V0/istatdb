@@ -52,6 +52,10 @@
 				) %>
 			<% end %>
 		</aside>
+
+		<% if !@record.uoms.any? %>
+			<%= render('goods/shared/add_uoms_button') %>
+		<% end %>
 		
 
 		<%= render('layouts/shared/new_submit',

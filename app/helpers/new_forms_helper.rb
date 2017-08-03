@@ -129,9 +129,11 @@ module NewFormsHelper
     def prefill_from_search_field(pars) 
         if (!pars.nil?)&&(action_name == 'new')
             search_params = @MEM.send("q_#{controller_name.singularize.underscore}")
-            pars.each do |par|
-                if !(res = search_params[par]).blank?
-                    return res
+            if !search_params.nil?
+                pars.each do |par|
+                    if !(res = search_params[par]).blank?
+                        return res
+                    end
                 end
             end
         end
