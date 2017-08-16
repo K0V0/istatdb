@@ -1,5 +1,5 @@
 <% 
-	act = @administrative_mode ? :administration : :index
+	#act = @administrative_mode ? :administration : :index
 %>
 
 
@@ -9,7 +9,7 @@
 
 		<%= obj.submit class: "button" %>
 
-		<%= link_to t('actions.back'), { controller: controller_name, action: act }, class: "button" %>
+		<%= link_to t('actions.back'), { controller: controller_name, action: :index }, class: "button" %>
 
 	</div>
 
