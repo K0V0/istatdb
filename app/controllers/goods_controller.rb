@@ -12,6 +12,10 @@ class GoodsController < ApplicationController
 	#before_action :load_vars_edit, only: [:edit, :update]
 	before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
 
+	#def add_uom
+	#	render ""
+	#end
+
 	private 
 
 	def loads_for_search_panel
@@ -54,7 +58,8 @@ class GoodsController < ApplicationController
 		#build_if_empty :impexpcompanies, :manufacturers
 		@record.impexpcompanies.build
 		@record.manufacturers.build
-		#@record.uoms.build
+		#@uom = @record.uoms.build if !@record.uoms.any?
+		@uom = Uom.new if !@record.uoms.any?
 		#@record.uoms.build
 	end
 
