@@ -1,5 +1,6 @@
 
 function UomsCalculator(val=null, multiplier=null, uom_type=null) {
+	this.H = new UomsCalculatorHelper();
 	this.val = val;
 	this.multiplier = multiplier;
 	this.uom_type = uom_type;
@@ -29,7 +30,15 @@ UomsCalculator.prototype = {
 		$(document).on('click', 'button#clear_uomscalc_list', function() {
 			totok.clearMem();
 		});
-
+		$(document).on('click', '.calc_uom_select tr', function() {
+			$(this).siblings().removeClass('selected');
+			$(this).addClass('selected');
+			totok.setVals(
+				parseFloat($(this).children('td.uom_uom').first().text()),
+				parseFloat($(this).children('td.uom_uom_multiplier').first().text()),
+				$(this).children('td.uom_type').first().text()
+			);
+		});
 	},
 
 	validate: function() {
@@ -49,7 +58,7 @@ UomsCalculator.prototype = {
 	calculateResult: function() {
 		this.last_calculated_was_quantity = false;
 		this.getValsFromFields();
-		this.count = parseFloat($('input[name=uom_count]').val());
+		this.count = parseFloat(this.H.sanitizeComma($('input[name=uom_count]').val()));
 		this.result = (this.val * this.count) / this.multiplier;
 		$('input[name=uom_result]').val(this.result.toFixed(2));
 	},
@@ -57,7 +66,7 @@ UomsCalculator.prototype = {
 	calculateQuantity: function() {
 		this.last_calculated_was_quantity = true;
 		this.getValsFromFields();
-		this.result = parseFloat($('input[name=uom_result]').val());
+		this.result = parseFloat(this.H.sanitizeComma($('input[name=uom_result]').val()));
 		this.count = this.result / (this.val / this.multiplier);
 		$('input[name=uom_count]').val(Math.ceil(this.count));
 	},
@@ -87,9 +96,9 @@ UomsCalculator.prototype = {
 		if (totok.valid) {
 			$.ajax({
 			  	method: "POST",
-			 	url: 'http://' + window.location.host + '/api/add_to_uoms_calculator',
+			 	url: 'http://' + window.location.host + '/goodsdb/add_to_uoms_calculator',
 			  	data: { 
-			  		good_name: $(document).find('h1').text(),
+			  		good_name: $(document).find('h1').first().text(),
 			  		uom: totok.val,
 			  		multiplier: totok.multiplier,
 			  		uom_type: totok.uom_type,
@@ -104,11 +113,23 @@ UomsCalculator.prototype = {
 	clearMem: function() {
 		$.ajax({
 		  	method: "POST",
-		 	url: 'http://' + window.location.host + '/api/clear_uoms_calculator',
+		 	url: 'http://' + window.location.host + '/goodsdb/clear_uoms_calculator',
 		  	data: { 
 		  		 
 		  	}
 		});
 	},
 
+}
+
+function UomsCalculatorHelper() {
+
+}
+
+UomsCalculatorHelper.prototype = {
+	constructor: UomsCalculatorHelper,
+
+	sanitizeComma: function(text) {
+		return text.replace(/\,/gi,".");
+	}
 }

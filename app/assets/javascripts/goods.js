@@ -11,18 +11,9 @@ function GOODS_onready() {
 	var QUERY_MANUFACTURERSLIST = new generateSearchQueryForSelectForm ('manufacturer', { name: 'cont' });
 
 	var QUERY_IMPEXPCOMPANIESLIST = new generateSearchQueryForSelectForm ('impexpcompany', { company_name: 'cont' });
-	
-	// show action - select uom type for uoms calculator
-	$(document).on('click', '.good_manufacturer_uoms_list tr', function() {
-		$(this).siblings().removeClass('selected');
-		$(this).addClass('selected');
-		UOMS_CALCULATOR.setVals(
-			parseFloat($(this).children('td.good_manufacturer_uoms_list_val').first().text()),
-			parseFloat($(this).children('td.good_manufacturer_uoms_list_multiplier').first().text()),
-			$(this).children('td.good_manufacturer_uoms_list_type').first().text()
-		);
-	});
 
+	var UOMS_CALCULATOR = new UomsCalculator();
+	
 	// index/search action - checkbox button to enable/disable second searchfield
 	$(document).on('click', 'input#q_search_both', function() {
 		var chkd = $(this).is(':checked');

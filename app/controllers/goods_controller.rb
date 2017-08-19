@@ -1,5 +1,7 @@
 class GoodsController < ApplicationController
 
+	include UomsCalcMem
+
 	before_action(only: [:index, :search, :show, :administrative]) {
 
 		searcher_for(
@@ -15,6 +17,10 @@ class GoodsController < ApplicationController
 	#def add_uom
 	#	render ""
 	#end
+
+	def show
+		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
+	end
 
 	private 
 

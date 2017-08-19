@@ -33,6 +33,23 @@ en:
       add_uom: Add unit(s) of measurement
     show_details:
       good: "Item"
+    uoms_calculator:
+      cap: Units of measurement calculator
+      price_per: Value per batch
+      per_count: Items in batch
+      count: Count of items
+      price: Resulting value
+      add: Add to memory
+      clear: Clear fields
+      type: Units
+    calc_mem_list:
+      cap: Calculator memory
+      name: Goods
+      uom: Value per item(s)
+      count: Quantity
+      result_per_item: Result
+      uom_suffix: item(s)
+      clear_all: Clear memory
        
 
 sk:
@@ -70,3 +87,20 @@ sk:
       add_uom: Pridajte mernú jednotku
     show_details:
       good: "Tovar"
+    uoms_calculator:
+      cap: Kalkulácia množstvo <-> hodnota
+      price_per: Hodnota za sadu
+      per_count: Počet jednotiek v sade
+      count: Počet jednotiek
+      price: Celková hodnota
+      add: Vložiť do pamäti
+      clear: Vyčistiť polia
+      type: Jednotky
+    calc_mem_list:
+      cap: Pamäť kalkulačky
+      name: Tovar
+      uom: Hodnota/počet jednotiek
+      count: Množstvo
+      result_per_item: Výsledok
+      uom_suffix: jedn.
+      clear_all: Vymazať pamäť

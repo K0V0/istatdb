@@ -29,7 +29,8 @@
 			foot: true,
 			html_options: {
 				main_class: "shrinked"
-			}
+			},
+			not_editable: true
 		]
 
 	) %>
@@ -47,12 +48,14 @@
 			foot: true,
 			html_options: {
 				main_class: "shrinked"
-			}
+			},
+			not_editable: true
 		]
 
 	) %>
 
 	<% if @record.uoms.any? %>
+
 		<%= render('layouts/shared/items_table',
 
 			object: @record.uoms,
@@ -69,11 +72,20 @@
 				head: true,
 				foot: true,
 				html_options: {
-					main_class: "shrinked"
-				}
+					main_class: "shrinked",
+					table_class: "calc_uom_select"
+				},
+				not_editable: true
 			]
 
 		) %>
+
+		<%= render('goods/show/uom_input') %>
+
+		<input type="hidden" id="good_id" value="<%= @record.id %>">
+
 	<% end %>
+
+	<%= render('/goods/show/calculator_list') %>
 
 </article>

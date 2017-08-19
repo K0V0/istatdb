@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
   ### nastavenie domovskej stranky
+
   root to: 'goods#index'
 
 
 
   ### searchery
+
   post "local_tarics/new_select_search",
     to: "local_tarics#new_select_search"
 
@@ -55,52 +57,71 @@ Rails.application.routes.draw do
   post "goodsdb",
     to: "goods#create",
     as: "create_good"
-
+ 
+  # sekcia upravy - nacitanie polozky
   get "goodsdb/:id/edit",
     to: "goods#edit",
     as: "edit_good"
 
+  # sekcia upravy - uprava
   patch "goodsdb/:id",
     to: "goods#update",
     as: "update_good"
 
-  post "goodsdb/new/edit_client_search",
-    to: "impexpcompanies#edit_good_client_search"
-
+  # odstranit
   delete "goodsdb/:id/delete",
     to: "goods#delete",
     as: "delete_good"
 
-  get "goodsdb/export",
-    to: "goods#csv_export"
+  ## pamet kalkulacky
+
+  # vlozit hodnotu
+  post "goodsdb/add_to_uoms_calculator",
+    to: "goods#add_to_calculator_mem"
+
+  post "goodsdb/clear_uoms_calculator",
+    to: "goods#clear_calculator_mem"
+
+  post "goodsdb/delete_from_uoms_calculator/:id",
+    to: "goods#remove_from_calculator_mem",
+    as: "calculator_remove"
+
+  post "goodsdb/edit_in_uoms_calculator/:id",
+    to: "goods#edit_rec_in_calculator_mem", 
+    as: "calculator_edit"
+
+
+
+  #get "goodsdb/export",
+  #  to: "goods#csv_export"
 
   ### goods edit section - uoms
 
-  get "uoms",
-    to: "uom#index",
-    as: "uoms"
+  #get "uoms",
+   # to: "uom#index",
+  #  as: "uoms"
 
-  get "uom/:id",
-    to: "uom#show",
-    as: "uom"
+  #get "uom/:id",
+   # to: "uom#show",
+   # as: "uom"
 
-  get "uoms/:id/edit",
-    to: "uoms#edit",
-    as: "edit_uom"
+  #get "uoms/:id/edit",
+   # to: "uoms#edit",
+   # as: "edit_uom"
 
-  get "uoms/new",
-    to: "uoms#new",
-    as: "new_uom"
+  #get "uoms/new",
+   # to: "uoms#new",
+   # as: "new_uom"
 
-  delete "uoms/:id/delete",
-    to: "uoms#delete",
-    as: "delete_uom"
+  #delete "uoms/:id/delete",
+   # to: "uoms#delete",
+   # as: "delete_uom"
 
   ### goods edit section - manufacturers <-> impexcompanies
 
-  get "clientandmanufacturer/:id/edit",
-    to: "impexpcompany_manufacturers#edit",
-    as: "edit_cam"
+  #get "clientandmanufacturer/:id/edit",
+   # to: "impexpcompany_manufacturers#edit",
+   # as: "edit_cam"
 
 
 
@@ -271,38 +292,24 @@ Rails.application.routes.draw do
 
   # new good creation form - for searching kncodes in LocalTaric
   # thats why in another controller
-  post "api/knnumber_search",
-    to: "api#local_taric_search"
+  #post "api/knnumber_search",
+  #  to: "api#local_taric_search"
 
   # new good creation form - for searching client's company in Impexpcompany
-  post "api/client_search",
-    to: "api#impexpcompany_search"
+ # post "api/client_search",
+  #  to: "api#impexpcompany_search"
 
   # new good creation form - for searching manufacturer's company in Manufcturer
-  post "api/manufacturer_search",
-    to: "api#manufacturer_search"
+  #post "api/manufacturer_search",
+  #  to: "api#manufacturer_search"
 
-  post "api/good_search_ident_exists",
-    to: "api#good_search_ident_exists"
+  #post "api/good_search_ident_exists",
+  #  to: "api#good_search_ident_exists"
 
-  post "api/manufacturer_search_name_exists",
-    to: "api#manufacturer_search_name_exists"
+  #post "api/manufacturer_search_name_exists",
+  #  to: "api#manufacturer_search_name_exists"
 
-  post "api/add_to_uoms_calculator",
-    to: "api#add_to_calculator_mem"
-
-  post "api/clear_uoms_calculator",
-    to: "api#clear_calculator_mem"
-
-  post "api/delete_from_uoms_calculator/:id",
-    to: "api#remove_from_calculator_mem",
-    as: "calculator_remove"
-
-  post "api/edit_in_uoms_calculator/:id",
-    to: "api#edit_rec_in_calculator_mem", 
-    as: "calculator_edit"
-
-
+  
   ### settings section
 
   post "global_tarics/upload_xml",

@@ -2,6 +2,7 @@
 cn = controller_name.to_s
 html_class_main = "items_table decorated_wrap"
 html_class_table = "items rows_colored with_efects"
+editable = true
 
 if !defined? object
 	object = @result
@@ -11,6 +12,7 @@ if defined? options
 		html_class_main += " #{o[:main_class]}" if o.try(:[], :main_class)
 		html_class_table += " #{o[:table_class]}" if o.try(:[], :table_class)
 	end
+	editable = false if options[0].try(:[], :not_editable)
 end
 %>
 
@@ -48,7 +50,7 @@ end
 
 				<tr>
 					<%= items_table_fields(item, fields) %>
-					<% if @MEM.is_in_administrative %>
+					<% if @MEM.is_in_administrative&&editable %>
 						<%= items_table_row_administrative_buttons(item) %>
 					<% end %>
 				</tr>
