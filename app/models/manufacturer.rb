@@ -11,6 +11,7 @@ class Manufacturer < ActiveRecord::Base
 	has_many :intertables, inverse_of: :manufacturer
 	has_many :goods, through: :intertables
 	has_many :impexpcompanies, through: :intertables
+
 	has_many :uoms, inverse_of: :manufacturer
 
 	#has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
@@ -30,14 +31,20 @@ class Manufacturer < ActiveRecord::Base
 
 	#after_create :assignments
 
+
 	scope :default_order, -> { 
 		order(name: :asc)
 	}
 
+	default_scope { 
+		Manufacturer.preload(goods: [:impexpcompanies])
+	}
+
 	def intrastat_clients
-		#impexpcompany_manufacturers.collect { |w|
-		#	w.impexpcompany.company_name
-		#}
+		self.goods.uniq.collect { |w| w.impexpcompanies.collect { |q| q.company_name } }.flatten.uniq
+	end
+
+	def goods_count
 	end
 
 	def	taric_codes

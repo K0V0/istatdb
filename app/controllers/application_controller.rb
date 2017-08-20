@@ -89,12 +89,12 @@ class ApplicationController < ActionController::Base
   end
 
   def administrative_action
-  	@MEM.is_in_administrative = true
+  	controller_mem_set("is_in_administrative", true)
   	@collection = @model.all if @model
   end
 
   def end_administrative_action
-  	@MEM.is_in_administrative = false
+  	controller_mem_set("is_in_administrative", false)
   end
 
   def show_action

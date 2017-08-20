@@ -50,7 +50,7 @@ end
 
 				<tr>
 					<%= items_table_fields(item, fields) %>
-					<% if @MEM.is_in_administrative&&editable %>
+					<% if @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}")&&editable %>
 						<%= items_table_row_administrative_buttons(item) %>
 					<% end %>
 				</tr>

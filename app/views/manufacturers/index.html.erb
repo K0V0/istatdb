@@ -1,46 +1,39 @@
 
-<%= render 'layouts/main_menu' %>
+<%= render 'layouts/base/main_menu' %>
 
-<%= render 'manufacturers/manufacturerslist/search' %>
+<%= render 'manufacturers/shared/search' %>
 
-<%= render 'layouts/actions' if @administrative_mode %>
+<article class="index manufacturers">
+	<%= render('layouts/shared/items_table',
 
-<% if @result.length > 0 %>
-
-	<%= render('layouts/items_table',
-
-		fields: {
+		fields: [
 			name: {
 				is_sortlink: true,
-				is_highlighted: true,
-				is_link: true
-			},
-			taric_codes: {
-				numbering: true,
-				wrap: true,
-				call_function: "num_to_kncode",
-				clipboard_button: true
-			},
-			goods_manufacturers_count: {
-
+				#is_highlighted: true,
+				is_link: {
+					remote: true
+				}
 			},
 			intrastat_clients: {
-				wrap: true,
-				numbering: true
-			}, 
-			incoterm_shortlands: {
-				wrap: true,
-				numbering: true
+
 			}
-		}
+			#description: {
+				#is_highlighted: true,
+				#is_multiple_with: :ident
+			#}
+			
+		],
+
+		#errors: [
+		#	no_results: {
+		#		partial: "goods/index/no_results"
+		#	}
+		#], 
+
+		options: [
+			head: true,
+			foot: true
+		]
+
 	) %>
-
-<% else %>
-
-	<%= render(
-		'layouts/items_table_no_results',
-		items: @result,
-		err_message: :manufacturer_search_no_results
-	) %>
-
-<% end %>
+</article>

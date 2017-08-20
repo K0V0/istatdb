@@ -92,7 +92,9 @@ module ItemsTableHelper
 					result = obj.send(field_name)
 					if result.is_a? Array
 						result.each do |res|
-
+							#output += ""
+							output += items_table_field_decorator(res.to_s, options, obj, field_name)
+							output += "<br>"
 						end
 					else
 						output += items_table_field_decorator(result.to_s, options, obj, field_name)

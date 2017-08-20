@@ -79,53 +79,91 @@ Rails.application.routes.draw do
   post "goodsdb/add_to_uoms_calculator",
     to: "goods#add_to_calculator_mem"
 
+  # vymaze vsetky
   post "goodsdb/clear_uoms_calculator",
     to: "goods#clear_calculator_mem"
 
+  # vymazat jednu
   post "goodsdb/delete_from_uoms_calculator/:id",
     to: "goods#remove_from_calculator_mem",
     as: "calculator_remove"
 
+  # upravit hodnotu
   post "goodsdb/edit_in_uoms_calculator/:id",
     to: "goods#edit_rec_in_calculator_mem", 
     as: "calculator_edit"
 
 
 
-  #get "goodsdb/export",
-  #  to: "goods#csv_export"
+  ### databaza vyrobcov/odoberatelov tovarov
 
-  ### goods edit section - uoms
+  # index
+  get "manufacturersdb",
+    to: "manufacturers#index",
+    as: "manufacturers" 
 
-  #get "uoms",
-   # to: "uom#index",
-  #  as: "uoms"
+  get "manufacturersdb/search",
+    to: "manufacturers#search",
+    as: "search_manufacturers"
 
-  #get "uom/:id",
-   # to: "uom#show",
-   # as: "uom"
+  # administration - enter index page into administration mode
+  get "manufacturersdb/administrative",
+    to: "manufacturers#administrative"
 
-  #get "uoms/:id/edit",
-   # to: "uoms#edit",
-   # as: "edit_uom"
+  # administration - return from
+  get "manufacturersdb/end_administrative",
+    to: "manufacturers#end_administrative"
 
-  #get "uoms/new",
-   # to: "uoms#new",
-   # as: "new_uom"
+  # novy vyrobca/odoberatel
+  get "manufacturersdb/new",
+    to: "manufacturers#new",
+    as: "new_manufacturer" 
 
-  #delete "uoms/:id/delete",
-   # to: "uoms#delete",
-   # as: "delete_uom"
+  # show details
+  get "manufacturersdb/:id/details",
+    to: "manufacturers#show",
+    as: "manufacturer"
 
-  ### goods edit section - manufacturers <-> impexcompanies
+  #edit
+  get "manufacturersdb/:id/edit",
+    to: "manufacturers#edit",
+    as: "edit_manufacturer"
 
-  #get "clientandmanufacturer/:id/edit",
-   # to: "impexpcompany_manufacturers#edit",
-   # as: "edit_cam"
+  #patch "manufacturersdb/:id/edit",
+   # to: "manufacturers#update",
+   # as: "update_manufacturer"
+
+  #patch "manufacturersdb/:id/edit_details",
+   # to: "manufacturers#update_details",
+   # as: "update_impexpcompany_manufacturer"
+
+  delete "manufacturersdb/:id/delete",
+    to: "manufacturers#delete",
+    as: "delete_manufacturer"  
+
+  # create action
+  #post "manufacturersdb",
+   # to: "manufacturers#create",
+   # as: "create_manufacturer"
+  
+  # edit action
+  #get "manufacturersdb/edit",
+   # to: "manufacturers#administration"
+
+  #get "manufacturersdb/leave_administrative",
+   # to: "manufacturers#leave_administration"
+
+  #ransack search action
+  #get "manufacturersdb/search",
+   # to: "manufacturers#search",
+    #as: "search_manufacturers" 
+
+  #get "manufacturersdb/export",
+   # to: "manufacturers#csv_export"
 
 
 
-  ### databaza klientov (objednavatelia sluzby intrastat) 
+### databaza klientov (objednavatelia sluzby intrastat) 
   ### dovozcovia a vyvozcovia
 
   # index
@@ -166,62 +204,6 @@ Rails.application.routes.draw do
 
   get "clientsdb/export",
     to: "impexpcompanies#csv_export"
-
-
-
-  ### databaza vyrobcov/odoberatelov tovarov
-
-  # index
-  get "manufacturersdb",
-    to: "manufacturers#index",
-    as: "manufacturers" 
-
-  # novy vyrobca/odoberatel
-  get "manufacturersdb/new",
-    to: "manufacturers#new",
-    as: "new_manufacturer" 
-
-  # show details
-  get "manufacturersdb/:id/details",
-    to: "manufacturers#show",
-    as: "manufacturer"
-
-  # edit
-  get "manufacturersdb/:id/edit",
-    to: "manufacturers#edit",
-    as: "edit_manufacturer"
-
-  patch "manufacturersdb/:id/edit",
-    to: "manufacturers#update",
-    as: "update_manufacturer"
-
-  patch "manufacturersdb/:id/edit_details",
-    to: "manufacturers#update_details",
-    as: "update_impexpcompany_manufacturer"
-
-  delete "manufacturersdb/:id/delete",
-    to: "manufacturers#delete",
-    as: "delete_manufacturer"  
-
-  # create action
-  post "manufacturersdb",
-    to: "manufacturers#create",
-    as: "create_manufacturer"
-  
-  # edit action
-  get "manufacturersdb/edit",
-    to: "manufacturers#administration"
-
-  get "manufacturersdb/leave_administrative",
-    to: "manufacturers#leave_administration"
-
-  #ransack search action
-  get "manufacturersdb/search",
-    to: "manufacturers#search",
-    as: "search_manufacturers" 
-
-  get "manufacturersdb/export",
-    to: "manufacturers#csv_export"
 
 
 

@@ -1,5 +1,5 @@
 
-<% if @MEM.is_in_administrative == false %>
+<% if @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}") == false %>
 
 	<%= link_to(
 		t('actions.administrative'),
