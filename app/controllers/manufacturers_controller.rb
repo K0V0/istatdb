@@ -2,7 +2,8 @@ class ManufacturersController < ApplicationController
 
     before_action(only: [:index, :search, :show, :administrative]) {
       searcher_for(
-        autoshow:false,
+      	object: Manufacturer.preload_items.default_order,
+        autoshow: false,
         paginate: true#,
         #preload: [:impexpcompanies, :impexpcompany_manufacturers]
       ); 
@@ -13,6 +14,10 @@ class ManufacturersController < ApplicationController
     end
 
   	private
+
+  	def index_action
+	  @collection = Manufacturer.preload_items.default_order
+	end
 
     def permitted_pars
       params[:manufacturer].permit(

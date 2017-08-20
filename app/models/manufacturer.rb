@@ -36,7 +36,7 @@ class Manufacturer < ActiveRecord::Base
 		order(name: :asc)
 	}
 
-	default_scope { 
+	scope :preload_items, -> { 
 		Manufacturer.preload(goods: [:impexpcompanies])
 	}
 
