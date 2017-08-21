@@ -6,8 +6,12 @@ class Impexpcompany < ActiveRecord::Base
 
 	has_many :intertables, inverse_of: :impexpcompany 
 	has_many :goods, through: :intertables
-	has_many :manufacturers, -> { distinct }, through: :intertables
+	#has_many :manufacturers, -> { distinct }, through: :intertables
+	
 	has_many :uoms, inverse_of: :impexpcompany
+
+	has_many :impexpcompany_manufacturers, inverse_of: :impexpcompany
+	has_many :manufacturers, through: :impexpcompany_manufacturers
 
 	validates :company_name, presence: true
 	validates_uniqueness_of :company_name, scope: :affiliated_office

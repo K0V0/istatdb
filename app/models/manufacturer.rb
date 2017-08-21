@@ -14,8 +14,8 @@ class Manufacturer < ActiveRecord::Base
 
 	has_many :uoms, inverse_of: :manufacturer
 
-	#has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
-	#has_many :impexpcompanies, through: :impexpcompany_manufacturers 
+	has_many :impexpcompany_manufacturers, inverse_of: :manufacturer
+	has_many :impexpcompanies, through: :impexpcompany_manufacturers 
 
 	#has_many :uoms, inverse_of: :manufacturer
 

@@ -44,6 +44,8 @@ class Good < ActiveRecord::Base
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
 
+	after_save :update_manufacturer_impexpcompany_relationships
+
 	scope :default_order, -> { 
 		order(ident: :asc)
 	}
@@ -65,7 +67,6 @@ class Good < ActiveRecord::Base
 		})
 		.references(:manufacturers)
 	}
-
 
 	def self.ransackable_scopes(*pars)
 	    %i(impexpcompany_filter manufacturer_filter)
@@ -89,6 +90,40 @@ class Good < ActiveRecord::Base
 		if nested_selected_or_created_any?(:manufacturers, :name)
 			self.errors.add(:manufacturers_attributes, :not_selected_or_created)
 		end
+	end
+
+	def update_manufacturer_impexpcompany_relationships
+		mans = Manufacturer.preload(goods: [:impexpcompanies])
+
+		self.manufacturers.each do |m|
+			x = mans.find(m.id).goods.uniq.collect { |w| w.impexpcompany_ids }.flatten.uniq
+			Rails.logger.info "--------------"
+			Rails.logger.info x
+		end
+
+=begin
+		Rails.logger.info "--------------"
+		Rails.logger.info self.manufacturers
+
+		self.manufacturers.each do |man|
+			# manufacturer should exist, if main is saved asssociations also new should be
+			self.impexpcompanies.each do |impexp|
+				# if manufacturer is not associated with impexpcompany, do it
+				if !man.impexpcompanies.exists?(impexp.id)
+					man.impexpcompanies << impexp
+				end
+			end
+			man.impexpcompanies.each do |impexp|
+				if !self.impexpcompanies.exists?(impexp.id)
+					Rails.logger.info "--------------"
+					Rails.logger.info "impexpcompany does not exist here anymore"
+					if impexp.goods.size == 0 || man.goods.size == 0
+						man.impexpcompanies.delete(impexp)
+					end
+				end
+			end
+		end
+=end
 	end
 
 end
