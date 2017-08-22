@@ -93,37 +93,18 @@ class Good < ActiveRecord::Base
 	end
 
 	def update_manufacturer_impexpcompany_relationships
+		# update relationship table between impexpcompanies and manufacturers
+		# based on goods they are conected with
+		# TODO : manufacturer.goods > 0; impexpcompany.goods >= 0
 		mans = Manufacturer.preload(goods: [:impexpcompanies])
-
 		self.manufacturers.each do |m|
+			#m.impexpcompanies.delete_all
 			x = mans.find(m.id).goods.uniq.collect { |w| w.impexpcompany_ids }.flatten.uniq
-			Rails.logger.info "--------------"
-			Rails.logger.info x
-		end
-
-=begin
-		Rails.logger.info "--------------"
-		Rails.logger.info self.manufacturers
-
-		self.manufacturers.each do |man|
-			# manufacturer should exist, if main is saved asssociations also new should be
-			self.impexpcompanies.each do |impexp|
-				# if manufacturer is not associated with impexpcompany, do it
-				if !man.impexpcompanies.exists?(impexp.id)
-					man.impexpcompanies << impexp
-				end
-			end
-			man.impexpcompanies.each do |impexp|
-				if !self.impexpcompanies.exists?(impexp.id)
-					Rails.logger.info "--------------"
-					Rails.logger.info "impexpcompany does not exist here anymore"
-					if impexp.goods.size == 0 || man.goods.size == 0
-						man.impexpcompanies.delete(impexp)
-					end
-				end
+			#m.impexpcompanies << Impexpcompany.find(x)
+			m.impexpcompanies.each do |i|
+				
 			end
 		end
-=end
 	end
 
 end
