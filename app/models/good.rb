@@ -5,7 +5,7 @@ class Good < ActiveRecord::Base
 	include Defaults
 	include NestedAttributesGetterConcern
 
-	has_many :intertables, inverse_of: :good
+	has_many :intertables, inverse_of: :good, dependent: :destroy
 	accepts_nested_attributes_for(
 		:intertables,
 		reject_if: lambda { |c| (c[:manufacturer_id].blank?&&c[:impexpcompany_id].blank?) } 
@@ -95,15 +95,27 @@ class Good < ActiveRecord::Base
 	def update_manufacturer_impexpcompany_relationships
 		# update relationship table between impexpcompanies and manufacturers
 		# based on goods they are conected with
-		# TODO : manufacturer.goods > 0; impexpcompany.goods >= 0
-		mans = Manufacturer.preload(goods: [:impexpcompanies])
-		self.manufacturers.each do |m|
-			#m.impexpcompanies.delete_all
-			x = mans.find(m.id).goods.uniq.collect { |w| w.impexpcompany_ids }.flatten.uniq
-			#m.impexpcompanies << Impexpcompany.find(x)
-			m.impexpcompanies.each do |i|
-				
+		mans = self.manufacturers.preload(goods: [:impexpcompanies])#.preload(:impexpcompanies)
+		mans.each do |man|
+			x = man.goods.uniq.collect { |w| w.impexpcompany_ids }.flatten.uniq
+			x.each do |impexp_id|
+				# create relationship impexpcompany <> manufacturer if not exist
+				if !man.impexpcompanies.where(id: impexp_id).exists?
+					man.impexpcompanies << Impexpcompany.find(impexp_id)
+				end
 			end
+		end
+
+		# table cleanup after changes
+		# find manufacturers that have no goods, but skip those added by user using manuf. section
+		man_no_goods = Manufacturer
+						.includes(:intertables, :impexpcompany_manufacturers)
+						.where( :intertables => { :manufacturer_id => nil } )
+						.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil }) 
+
+		man_no_goods.each do |man|
+			# destroy relationship of manufacturer with no goods
+			# but leave manufacturer and impexpcompany untouched
 		end
 	end
 

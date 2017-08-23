@@ -129,6 +129,8 @@ module ItemsTableHelper
 					action: "delete",
 					id: obj.id
 				},
+				data: { confirm: t('actions.ru_sure_delete') },
+				method: :delete,
 				class: "button danger delete_item"
 			)
 		output += "</td>"

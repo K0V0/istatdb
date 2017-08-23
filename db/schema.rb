@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327210901) do
+ActiveRecord::Schema.define(version: 20170823191819) do
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"
@@ -71,12 +71,13 @@ ActiveRecord::Schema.define(version: 20170327210901) do
   end
 
   create_table "impexpcompany_manufacturers", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "impexpcompany_id"
     t.integer  "manufacturer_id"
     t.integer  "local_taric_id"
     t.integer  "incoterm"
+    t.boolean  "added_or_modded_by_user"
   end
 
   add_index "impexpcompany_manufacturers", ["impexpcompany_id"], name: "index_impexpcompany_manufacturers_on_impexpcompany_id"
@@ -124,6 +125,18 @@ ActiveRecord::Schema.define(version: 20170327210901) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+
+  create_table "units", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "good_id"
+    t.integer  "manufacturer_id"
+    t.integer  "impexpcompany_id"
+  end
+
+  add_index "units", ["good_id"], name: "index_units_on_good_id"
+  add_index "units", ["impexpcompany_id"], name: "index_units_on_impexpcompany_id"
+  add_index "units", ["manufacturer_id"], name: "index_units_on_manufacturer_id"
 
   create_table "uom_types", force: :cascade do |t|
     t.string   "uom_type"

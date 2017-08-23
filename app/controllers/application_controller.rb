@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   before_action :edit_action, only: [:edit, :update]
 
-  before_action :destroy_action, only: :destroy
+  before_action :destroy_action, only: [:destroy, :delete]
 
   before_action :load_vars, only: [:new, :edit, :update, :create]
 
