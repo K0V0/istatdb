@@ -108,14 +108,46 @@ class Good < ActiveRecord::Base
 
 		# table cleanup after changes
 		# find manufacturers that have no goods, but skip those added by user using manuf. section
-		man_no_goods = Manufacturer
-						.includes(:intertables, :impexpcompany_manufacturers)
-						.where( :intertables => { :manufacturer_id => nil } )
-						.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil }) 
+		Manufacturer
+			.includes(:intertables, :impexpcompany_manufacturers)
+			.where( :intertables => { :manufacturer_id => nil } )
+			.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil })
+			.each do |man|
+				# destroy relationship of manufacturer with no goods
+				# but leave manufacturer and impexpcompany untouched
+				man.impexpcompanies.delete_all
+			end
 
-		man_no_goods.each do |man|
-			# destroy relationship of manufacturer with no goods
-			# but leave manufacturer and impexpcompany untouched
+		#mans2 = Manufacturer.preload(:impexpcompanies, goods: [:impexpcompanies])
+		#mans.each do |man|
+			# from ImpexpcompanyManufacturer model
+		#	x = man.impexpcompanies.collect { |w| w.id }
+			# by going through goods and their impexpcompanies
+		#	y = man.goods.collect { |w| w.impexpcompanies.collect { |q| q.id } }.flatten.uniq
+		#	Rails.logger.info "--------------------------"
+		#	Rails.logger.info x
+		#	Rails.logger.info y
+		#end
+
+		# cleanup ImpexpcompanyManufacturer model
+		# gopnik patch because before_ and after_destroy not working on Intertable model
+		# when using collections (rails mistake by design)
+		impexps = Impexpcompany.preload(:manufacturers, goods: [:manufacturers])
+		impexps.each do |impexp|
+			# from ImpexpcompanyManufacturer model
+			x = impexp.manufacturers.collect { |w| w.id }
+			# by going through goods and their impexpcompanies
+			y = impexp.goods.collect { |w| w.manufacturers.collect { |q| q.id } }.flatten.uniq
+			Rails.logger.info "--------------------------"
+			Rails.logger.info x
+			Rails.logger.info y
+			Rails.logger.info "~~~~~~~~~~~"
+			missing_new_manufacturers = y - x
+			manufacturers_deselected = x - y
+			Rails.logger.info missing_new_manufacturers
+			Rails.logger.info manufacturers_deselected
+			
+
 		end
 	end
 

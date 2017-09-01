@@ -4,6 +4,8 @@ class Intertable < ActiveRecord::Base
 	belongs_to :manufacturer, inverse_of: :intertables
 	belongs_to :impexpcompany, inverse_of: :intertables
 
+	#before_destroy :do_cleanup_on_impexpcompany_manufacturers
+
 	def save *arg
 		# hack to prevent unexcepted behaviour when on edit records with empty
 		# keys are saved into table
@@ -12,5 +14,12 @@ class Intertable < ActiveRecord::Base
 		end
 		return true
 	end
+
+	private
+
+	#def do_cleanup_on_impexpcompany_manufacturers
+	#	Rails.logger.info "-----------------"
+	#	Rails.logger.info self.id
+	#end
 
 end
