@@ -85,17 +85,24 @@ module ItemsTableHelper
 		output = ""
 		fields.each do |field|
 			field.each do |field_name, options|
+				Rails.logger.info options
 				if options.is_a? Array
 					output += items_table_fields(obj.send(field_name), options)
 				else
 					output += "<td class=\"#{obj.class.name.downcase}_#{field_name}\">"
-					result = obj.send(field_name)
-					if result.is_a? Array
-						result.each do |res|
+					Rails.logger.info "=============="
+					#Rails.logger.info
+					Rails.logger.info obj.class.name
+					result = obj.try(field_name)
+					#if result.is_a? Array
+					if obj.is_a? ActiveRecord::Associations::CollectionProxy
+						Rails.logger.info "=============="
+						Rails.logger.info "is array"
+						#result.each do |res|
 							#output += ""
-							output += items_table_field_decorator(res.to_s, options, obj, field_name)
-							output += "<br>"
-						end
+						#	output += items_table_field_decorator(res.to_s, options, obj, field_name)
+						#	output += "<br>"
+						#end
 					else
 						output += items_table_field_decorator(result.to_s, options, obj, field_name)
 					end

@@ -33,9 +33,9 @@ class Manufacturer < ActiveRecord::Base
 		Manufacturer.preload(goods: [:impexpcompanies])
 	}
 
-	def intrastat_clients
-		self.goods.uniq.collect { |w| w.impexpcompanies.collect { |q| q.company_name } }.flatten.uniq
-	end
+	#def intrastat_clients
+		#self.goods.uniq.collect { |w| w.impexpcompanies.collect { |q| q.company_name } }.flatten.uniq
+	#end
 
 	def goods_count
 	end

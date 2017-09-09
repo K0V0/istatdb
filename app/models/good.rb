@@ -104,14 +104,8 @@ class Good < ActiveRecord::Base
 			x = impexp.manufacturers.collect { |w| w.id }
 			# by going through goods and their impexpcompanies
 			y = impexp.goods.collect { |w| w.manufacturers.collect { |q| q.id } }.flatten.uniq
-			#Rails.logger.info "--------------------------"
-			#Rails.logger.info x
-			#Rails.logger.info y
-			#Rails.logger.info "~~~~~~~~~~~"
 			missing_new_manufacturers = y - x
 			manufacturers_deselected = x - y
-			#Rails.logger.info missing_new_manufacturers
-			#Rails.logger.info manufacturers_deselected
 			# create association if not exist
 			impexp.manufacturers << Manufacturer.find(missing_new_manufacturers)
 			# remove association if Intrastat client no more have any bussines with supplier/consumer
@@ -123,7 +117,6 @@ class Good < ActiveRecord::Base
 				.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil })
 				.distinct
 				.ids
-			#Rails.logger.info obsolete_mans_ids
 			impexp.manufacturers.delete(*obsolete_mans_ids)
 		end
 	end
