@@ -9,6 +9,10 @@ class Manufacturer < ActiveRecord::Base
 
 	has_many :impexpcompany_manufacturers, inverse_of: :manufacturer, dependent: :destroy
 	has_many :impexpcompanies, through: :impexpcompany_manufacturers 
+	accepts_nested_attributes_for(
+		:impexpcompanies,
+		reject_if: lambda { |c| c[:company_name].blank? } 
+	) 
 
 	has_many :uoms, inverse_of: :manufacturer
 

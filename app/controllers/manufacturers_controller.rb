@@ -10,10 +10,7 @@ class ManufacturersController < ApplicationController
     }
 
     before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
-
-    def new_select_search
-      apicall_render(:has_many)
-    end
+    before_action :load_vars, only: [:new, :create, :edit, :update]
 
   	private
 
@@ -21,9 +18,11 @@ class ManufacturersController < ApplicationController
 	  @collection = Manufacturer.preload_items.default_order
 	end
 
-    def permitted_pars
+    def permitted_params
       params[:manufacturer].permit(
         :name,
+        impexpcompanies_attributes: [:id, :company_name],
+        impexpcompany_ids: []
         #:impexpcompany_company_name,
         #:local_taric_kncode,
         #:local_taric_description,
@@ -34,6 +33,20 @@ class ManufacturersController < ApplicationController
 
     def loads_for_search_panel
 		@impexpcompanies = Impexpcompany.all.default_order
+	end
+
+	def load_vars
+		@impexpcompanies = Impexpcompany.all
+	end
+
+	def around_new
+		build_if_empty :impexpcompanies
+	end
+
+	def around_create_after_save
+		@record.impexpcompany_manufacturers.each do |r|
+			r.added_or_modded_by_user = 
+		end
 	end
 
 end

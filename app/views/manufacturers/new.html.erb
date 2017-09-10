@@ -1,99 +1,30 @@
 
-<%= render 'layouts/main_menu' %>
+<%= render 'layouts/base/main_menu' %>
 
 <section class="form">
 
-	<%= form_for @manufacturer, url: create_manufacturer_path do |t| %>
+	<%= form_for @record do |t| %>
 
-		<article class="decorated_wrap shrinked">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					name: {
-						required: true,
-						autocomplete: false,
-						autofocus: true,
-						check_existence: true
-					}
-				},
-			) %>
-			
-		</article>
-
-		<article class="decorated_wrap shrinked" id="new_client_search">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					impexpcompany_company_name: {
-						autocomplete: false,
-						reset_button: true
-					}
-				},
-				results_obj: @impexpcompanies,
-				cols: [:company_name],
-				cols_highlighted: {
-					company_name: :company_name
+		<%= render('layouts/shared/new_main',
+			obj: t,
+			fields: {
+				name: { 
+					prefill_from_mem_param: [:name_cont]
 				}
-			) %>
+			}
+		) %>
 
-		</article>
+		<%= render('layouts/shared/new_has_many_assoc',
+			obj: t,
+			assoc: :impexpcompanies,
+			fields: {
+				company_name: {  }
+			}
+		) %>
 
-		<article class="decorated_wrap shrinked" id="new_taricnum_search">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					local_taric_kncode: {
-						autocomplete: false, 
-						reset_button: :all,
-					},
-					local_taric_description: {
-						autocomplete: false,
-						type: :textarea
-					}
-				},
-				results_obj: @local_tarics,
-				cols: [:kncode, :description], 
-				cols_highlighted: {
-					kncode: :kncode,
-					description: :description
-				}
-			) %>
-
-		</article>
-
-		<article class="decorated_wrap shrinked" id="incoterms">
-			<div>
-				<div>
-					<label>
-						<%= cbt :incoterms %>
-					</label>
-					<div class="select_wrapper">
-						<%= t.collection_select(:incoterm,
-							Incoterm.all,
-							:id,
-							:shortland, 
-							include_blank: false
-						) %>
-						<span></span>	
-					</div>
-				</div>
-			</div>
-		</article>
-
-		<article class="decorated_wrap shrinked">
-			<div>
-
-				<%= t.submit %>
-
-				<input name="create_and_next" type="submit" value="<%= t(:create_and_next) %>">
-
-				<%= link_to t(:back), manufacturers_path, class: "button" %>
-
-			</div>
-		</article>
+		<%= render('layouts/shared/new_submit',
+			obj: t
+		) %>
 
 	<% end %>
 

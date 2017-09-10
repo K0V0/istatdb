@@ -31,10 +31,6 @@ Rails.application.routes.draw do
     to: "goods#new",
     as: "new_good"
 
-  # vytvorit novy tovar
-  post 'goodsdb',
-    to: "goods#create"
-
   # ransack search
   get "goodsdb/search",
     to: "goods#search",
@@ -128,6 +124,10 @@ Rails.application.routes.draw do
   get "manufacturersdb/:id/edit",
     to: "manufacturers#edit",
     as: "edit_manufacturer"
+
+  post "manufacturersdb",
+    to: "manufacturers#create",
+    as: "create_manufacturer"
 
   #patch "manufacturersdb/:id/edit",
    # to: "manufacturers#update",
