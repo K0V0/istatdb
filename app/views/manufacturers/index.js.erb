@@ -11,13 +11,26 @@ items_table = render('layouts/shared/items_table',
 				remote: true
 			}
 		},
-		intrastat_clients: {
+		impexpcompanies: [
+			company_name: {
 
-		}
-		#description: {
-			#is_highlighted: true,
-			#is_multiple_with: :ident
-		#}
+			}
+		],
+		impexpcompany_manufacturers: [
+			local_taric: [
+				kncode: {
+					a: true
+				},
+				description: {
+					a: true
+				}
+			],
+			incoterm: [
+				shortland: {
+
+				}
+			]
+		]
 	],
 
 	#errors: [

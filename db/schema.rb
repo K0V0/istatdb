@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823191819) do
+ActiveRecord::Schema.define(version: 20170910173540) do
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"
@@ -76,13 +76,21 @@ ActiveRecord::Schema.define(version: 20170823191819) do
     t.integer  "impexpcompany_id"
     t.integer  "manufacturer_id"
     t.integer  "local_taric_id"
-    t.integer  "incoterm"
     t.boolean  "added_or_modded_by_user"
+    t.boolean  "invoices_correct"
+    t.integer  "incoterm_id"
   end
 
   add_index "impexpcompany_manufacturers", ["impexpcompany_id"], name: "index_impexpcompany_manufacturers_on_impexpcompany_id"
+  add_index "impexpcompany_manufacturers", ["incoterm_id"], name: "index_impexpcompany_manufacturers_on_incoterm_id"
   add_index "impexpcompany_manufacturers", ["local_taric_id"], name: "index_impexpcompany_manufacturers_on_local_taric_id"
   add_index "impexpcompany_manufacturers", ["manufacturer_id"], name: "index_impexpcompany_manufacturers_on_manufacturer_id"
+
+  create_table "incoterms", force: :cascade do |t|
+    t.text     "shortland"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "intertables", force: :cascade do |t|
     t.integer  "intertables_id"

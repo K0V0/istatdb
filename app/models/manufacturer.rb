@@ -12,50 +12,16 @@ class Manufacturer < ActiveRecord::Base
 
 	has_many :uoms, inverse_of: :manufacturer
 
-	#attr_accessor :impexpcompany_company_name
-	#attr_accessor :local_taric_kncode
-	#attr_accessor :local_taric_description
-	#attr_writer :incoterm
-
 	validates :name, presence: true
 	validates :name, uniqueness: true
-
-	#validate :associated_validations, on: :create
-
-	#after_create :assignments
-
 
 	scope :default_order, -> { 
 		order(name: :asc)
 	}
 
 	scope :preload_items, -> { 
-		Manufacturer.preload(goods: [:impexpcompanies])
+		Manufacturer.preload(goods: [:impexpcompanies], impexpcompany_manufacturers: [:incoterm])
 	}
-
-	#def intrastat_clients
-		#self.goods.uniq.collect { |w| w.impexpcompanies.collect { |q| q.company_name } }.flatten.uniq
-	#end
-
-	def goods_count
-	end
-
-	def	taric_codes
-		#impexpcompany_manufacturers.collect { |w|
-		#	tmp = w.local_taric.try(:kncode)
-		#	tmp.blank? ? "---" : tmp
-		#}
-	end
-
-	def incoterm
-	end
-
-	def incoterm_shortlands
-		#impexpcompany_manufacturers.collect { |w|
-		#	term = Incoterm.find(w.try(:incoterm));
-		#	term.blank? ? "---" : term.shortland
-		#}
-	end
 
 	scope :impexpcompany_filter, -> (pars) { 
 		self
@@ -63,13 +29,11 @@ class Manufacturer < ActiveRecord::Base
 		.where(impexpcompanies: { 
 			id: pars 
 		})
-		.preload(:impexpcompanies, :goods)
+		.preload(:impexpcompanies)
 	}
 
 	def self.ransackable_scopes(*pars)
 	    %i(impexpcompany_filter)
 	end
-
-	
 	
 end

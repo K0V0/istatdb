@@ -81,32 +81,40 @@ module ItemsTableHelper
 	# obj - one row from AR result set
 	# fields - named columns to display, work recursively when some column have association(s)
 	#
-	def items_table_fields(obj, fields)
+	def items_table_fields(obj, fields, no_wrap=false)
 		output = ""
 		fields.each do |field|
 			field.each do |field_name, options|
-				Rails.logger.info options
+				obj_is_collection = obj.is_a? ActiveRecord::Associations::CollectionProxy
 				if options.is_a? Array
-					output += items_table_fields(obj.send(field_name), options)
-				else
-					output += "<td class=\"#{obj.class.name.downcase}_#{field_name}\">"
-					Rails.logger.info "=============="
-					#Rails.logger.info
-					Rails.logger.info obj.class.name
-					result = obj.try(field_name)
-					#if result.is_a? Array
-					if obj.is_a? ActiveRecord::Associations::CollectionProxy
-						Rails.logger.info "=============="
-						Rails.logger.info "is array"
-						#result.each do |res|
-							#output += ""
-						#	output += items_table_field_decorator(res.to_s, options, obj, field_name)
-						#	output += "<br>"
-						#end
+					# for deeper nested associations
+					if obj_is_collection
+						options[0].each do |k, v|
+							output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}-#{k.to_s}\">"
+							obj.each do |res|
+								output += items_table_fields(res.send(field_name), [{k => v}], true)
+							end
+							output += "</td>"
+						end
 					else
-						output += items_table_field_decorator(result.to_s, options, obj, field_name)
+						output += items_table_fields(obj.try(field_name), options, no_wrap)
 					end
-					output += "</td>"
+				else
+					output += "<td class=\"#{obj.class.name.downcase}_#{field_name}\">" if !no_wrap&&!obj_is_collection
+					output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}\">" if !no_wrap&&obj_is_collection
+					# if is many-type association
+					if obj_is_collection
+						obj.each do |res|
+							result = res.send(field_name).to_s
+							output += items_table_field_decorator(result, options, obj, field_name)
+							output += "<br>"
+						end
+					# if is has-one type association
+					else
+						result = obj.try(field_name).to_s
+						output += items_table_field_decorator(result, options, obj, field_name)
+					end
+					output += "</td>" if !no_wrap
 				end 
 			end
 		end

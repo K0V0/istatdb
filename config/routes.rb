@@ -120,7 +120,7 @@ Rails.application.routes.draw do
     as: "new_manufacturer" 
 
   # show details
-  get "manufacturersdb/:id/details",
+  get "manufacturersdb/:id",
     to: "manufacturers#show",
     as: "manufacturer"
 

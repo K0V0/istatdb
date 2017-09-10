@@ -6,6 +6,8 @@ class LocalTaric < ActiveRecord::Base
 
 	has_many :goods, inverse_of: :local_taric
 
+	has_many :impexpcompany_manufacturers, inverse_of: :local_taric
+
 	validates :kncode, presence: true
 	validates :kncode, numericality: { only_integer: true }
 	validate :kncode_length_valid
