@@ -125,6 +125,11 @@ Rails.application.routes.draw do
     to: "manufacturers#edit",
     as: "edit_manufacturer"
 
+  #edit associated details on impexpcompany_manufacturers table
+  get "manufacturersdb/:id/edit_details",
+    to: "manufacturers#edit_details",
+    as: "edit_details_manufacturer"
+
   post "manufacturersdb",
     to: "manufacturers#create",
     as: "create_manufacturer"

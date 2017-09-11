@@ -115,7 +115,8 @@ class ApplicationController < ActionController::Base
     saved = @record.save
     around_create_after_save
     if saved
-      redirect_to public_send("#{controller_name.pluralize}_path")
+      continue = around_create_after_save_ok
+      redirect_to public_send("#{controller_name.pluralize}_path") if continue != false
     else
       around_create_after_save_failed
       render "new"
@@ -158,6 +159,9 @@ class ApplicationController < ActionController::Base
   end
 
   def around_create_after_save
+  end
+
+  def around_create_after_save_ok
   end
 
   def around_create_after_save_failed

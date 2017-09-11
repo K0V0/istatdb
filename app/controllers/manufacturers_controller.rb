@@ -12,6 +12,13 @@ class ManufacturersController < ApplicationController
     before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
     before_action :load_vars, only: [:new, :create, :edit, :update]
 
+    def edit_details
+    	@record = Manufacturer.find(params[:id])
+    	@impexp_mans = @record.impexpcompany_manufacturers
+    	#@impexp_mans = @record.impexpcompany_manufacturers.build
+    	render 'manufacturers/shared/edit_details'
+    end
+
   	private
 
   	def index_action
@@ -20,6 +27,7 @@ class ManufacturersController < ApplicationController
 
     def permitted_params
       params[:manufacturer].permit(
+      	:id,
         :name,
         impexpcompanies_attributes: [:id, :company_name],
         impexpcompany_ids: []
@@ -43,10 +51,13 @@ class ManufacturersController < ApplicationController
 		build_if_empty :impexpcompanies
 	end
 
-	def around_create_after_save
+	def around_create_after_save_ok
 		@record.impexpcompany_manufacturers.each do |r|
-			r.added_or_modded_by_user = 
+			r.added_or_modded_by_user = true
+			r.save
 		end
+		redirect_to(edit_details_manufacturer_path(@record.id))
+		return false
 	end
 
 end

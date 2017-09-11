@@ -1,0 +1,18 @@
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @record do |t| %>
+
+
+		<%= t.fields_for :impexpcompany_manufacturers, @impexp_mans do |im| %>
+
+			<%= im %>
+
+			<div>kokot</div>
+
+		<% end %>
+
+	<% end %>
+
+</section>
