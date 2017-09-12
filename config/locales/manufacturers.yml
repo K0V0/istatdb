@@ -6,6 +6,12 @@ en:
       manufacturer:
         name: Consumer/manufacturer name
 
+  helpers:
+    submit:
+      manufacturer:
+        create: Add goods manufacturer/consumer
+        update: Save manufacturer/consumer changes
+
 sk:
   activerecord:
     models:
@@ -13,4 +19,10 @@ sk:
     attributes:
       manufacturer:
         name: Výrobca/odberateľ
+
+  helpers:
+    submit:
+      manufacturer:
+        create: Pridať výrobcu/odberateľa
+        update: Uložiť zmeny
         

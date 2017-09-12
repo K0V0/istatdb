@@ -24,6 +24,14 @@
 						opts: opts
 					) %>
 				<% end %>
+
+				<div>
+					<%= a.label(
+						"allow_search_as_new",
+						t('search.search_as_new')
+					) %>
+					<%= a.check_box :allow_search_as_new, {}, 1, 0 %>
+				</div>
 				
 			<% end %>
 

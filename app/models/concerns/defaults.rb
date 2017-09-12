@@ -17,6 +17,8 @@ module Defaults
 			where "#{model_name.plural}.id IS NOT NULL"
 		}
 
+		attr_accessor :allow_search_as_new
+
 	  end
 	end
 	

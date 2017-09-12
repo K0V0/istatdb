@@ -3,6 +3,7 @@ en:
     clear: Clear fields
     reset: Reset form
     submit: Search!
+    search_as_new: Searched text as new item 
 
   actions:
     add: Add
@@ -15,6 +16,7 @@ en:
     administrative: Edit item(s)
     end_administrative: End administration
     ru_sure_delete: Are You sure you want to delete this item ?
+    edit_other: Edit other related informations
 
   items_table:
     results_count: results count

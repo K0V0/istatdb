@@ -134,9 +134,9 @@ Rails.application.routes.draw do
     to: "manufacturers#create",
     as: "create_manufacturer"
 
-  #patch "manufacturersdb/:id/edit",
-   # to: "manufacturers#update",
-   # as: "update_manufacturer"
+  patch "manufacturersdb/:id",
+    to: "manufacturers#update",
+    as: "update_manufacturer"
 
   #patch "manufacturersdb/:id/edit_details",
    # to: "manufacturers#update_details",

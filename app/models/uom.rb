@@ -2,17 +2,16 @@ class Uom < ActiveRecord::Base
 
 	include Defaults
 
-	#belongs_to :goods_manufacturer, inverse_of: :uoms
-
 	belongs_to :uom_type, inverse_of: :uoms
 	belongs_to :impexpcompany, inverse_of: :uoms
 	belongs_to :good, inverse_of: :uoms
 	belongs_to :manufacturer, inverse_of: :uoms
 
-	validates :uom, numericality: true#, allow_blank: true
-
+	validates :impexpcompany, presence: true
+	validates :manufacturer, presence: true
+	validates :uom, numericality: true, presence: true
 	validates :uom_multiplier, numericality: { only_integer: true, greater_than: 0 }
-
+	
 	validates_presence_of :uom_type_id, if: :uom?
 
 	before_save :set_fallback_multiplier

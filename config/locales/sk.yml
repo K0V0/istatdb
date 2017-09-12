@@ -3,6 +3,7 @@ sk:
     clear: Vymazať polia
     reset: Resetovať formulár
     submit: Hľadať!
+    search_as_new: Pridať ako novú položku
 
   actions:
     add: Pridať
@@ -15,6 +16,7 @@ sk:
     administrative: Spravovať položky
     end_administrative: Ukončiť úpravy
     ru_sure_delete: Ste si istý že chcete odstrániť túto položku ?
+    edit_other: Upraviť ďalšie súvisiace informácie
 
   items_table:
     results_count: "počet výsledkov"

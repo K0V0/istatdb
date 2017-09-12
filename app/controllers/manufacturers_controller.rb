@@ -10,12 +10,15 @@ class ManufacturersController < ApplicationController
     }
 
     before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
-    before_action :load_vars, only: [:new, :create, :edit, :update]
+
+    before_action :load_vars, only: [:new, :create, :edit, :update, :edit_details]
 
     def edit_details
     	@record = Manufacturer.find(params[:id])
-    	@impexp_mans = @record.impexpcompany_manufacturers
-    	#@impexp_mans = @record.impexpcompany_manufacturers.build
+    	# association needs to be builded before use in form
+    	# using nested attributes in model
+    	#@record.impexpcompany_manufacturers.build
+    	#build_if_empty :local_taric
     	render 'manufacturers/shared/edit_details'
     end
 
@@ -30,9 +33,9 @@ class ManufacturersController < ApplicationController
       	:id,
         :name,
         impexpcompanies_attributes: [:id, :company_name],
-        impexpcompany_ids: []
-        #:impexpcompany_company_name,
-        #:local_taric_kncode,
+        impexpcompany_ids: [],
+        #impexpcompany_manufacturers_attributes: [:id, :impexpcompany_id, :manufacturer_id],
+        #impexpcompany_manufacturer_ids: []
         #:local_taric_description,
         #:incoterm,
         #impexpcompany_ids: []
@@ -45,10 +48,8 @@ class ManufacturersController < ApplicationController
 
 	def load_vars
 		@impexpcompanies = Impexpcompany.all
-	end
-
-	def around_new
-		build_if_empty :impexpcompanies
+		@incoterms = Incoterm.all
+		@local_tarics = LocalTaric.all
 	end
 
 	def around_create_after_save_ok

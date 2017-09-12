@@ -44,6 +44,7 @@ class Good < ActiveRecord::Base
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
 
+	#before_save :check_if_search_as_new_allowed
 	after_save :update_manufacturer_impexpcompany_relationships
 
 	scope :default_order, -> { 

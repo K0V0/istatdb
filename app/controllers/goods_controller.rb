@@ -62,9 +62,9 @@ class GoodsController < ApplicationController
 			:description,
 			:local_taric_id,
 			local_taric_attributes: [:kncode, :description, :id],
-			impexpcompanies_attributes: [:id, :company_name],
+			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
 			impexpcompany_ids: [],
-			manufacturers_attributes: [:id, :name],
+			manufacturers_attributes: [:id, :name, :allow_search_as_new],
 			manufacturer_ids: [],
 			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id]
 		)
