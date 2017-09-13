@@ -3,6 +3,7 @@ class Impexpcompany < ActiveRecord::Base
 	extend OrderAsSpecified
 
 	include Defaults
+	include SkipNotAllowedSearchfield
 
 	has_many :intertables, inverse_of: :impexpcompany, dependent: :destroy
 	has_many :goods, through: :intertables

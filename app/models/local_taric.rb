@@ -3,6 +3,7 @@ class LocalTaric < ActiveRecord::Base
 	extend OrderAsSpecified
 
 	include Defaults
+	include SkipNotAllowedSearchfield
 
 	has_many :goods, inverse_of: :local_taric
 

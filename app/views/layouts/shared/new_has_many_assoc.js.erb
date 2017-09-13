@@ -7,6 +7,8 @@ var tBody = mainElem.find("div.tablewrap").children("table").children("tbody");
 var rows = tBody.children("tr");
 // for later use remember ids (vals) of buttons to avoid duplicates on refresh
 var checked_btns_vals = []
+// button that allows saving content of searchfields as new records
+var alower = $(document).find("#<%= params[:model] %>_allow_add_new");
 
 // let checked values be there
 rows.each(function() {
@@ -18,6 +20,14 @@ rows.each(function() {
 		$(this).remove();
 	}
 });
+
+<% allow_new = @result.size > 0 ? "0" : "1" %>
+
+if ("<%= allow_new %>" == "1") {
+	alower.prop('checked', true);
+} else {
+	alower.prop('checked', false);
+}
 
 <% 
 	template = []

@@ -9,9 +9,8 @@ class ManufacturersController < ApplicationController
       ); 
     }
 
-    before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
-
     before_action :load_vars, only: [:new, :create, :edit, :update, :edit_details]
+    before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
 
     def edit_details
     	@record = Manufacturer.find(params[:id])

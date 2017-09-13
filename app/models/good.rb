@@ -4,6 +4,7 @@ class Good < ActiveRecord::Base
 
 	include Defaults
 	include NestedAttributesGetterConcern
+	include SkipNotAllowedSearchfield
 
 	has_many :intertables, inverse_of: :good, dependent: :destroy
 	accepts_nested_attributes_for(
@@ -44,7 +45,7 @@ class Good < ActiveRecord::Base
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
 
-	#before_save :check_if_search_as_new_allowed
+	before_save :check_if_search_as_new_allowed
 	after_save :update_manufacturer_impexpcompany_relationships
 
 	scope :default_order, -> { 
@@ -71,6 +72,12 @@ class Good < ActiveRecord::Base
 
 	def self.ransackable_scopes(*pars)
 	    %i(impexpcompany_filter manufacturer_filter)
+	end
+
+	def check_if_search_as_new_allowed
+		# skips saving data in searchfields in select sections
+		# if not button to allow this is checked
+		skip_deactivated_fields_for :manufacturers, :impexpcompanies
 	end
 
 	def local_taric_selected

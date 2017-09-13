@@ -30,7 +30,12 @@
 						"allow_search_as_new",
 						t('search.search_as_new')
 					) %>
-					<%= a.check_box :allow_search_as_new, {}, 1, 0 %>
+					<%= a.check_box(
+						:allow_search_as_new,
+						{ id: "#{assoc.to_s.singularize}_allow_add_new" },
+						1,
+						0
+					) %>
 				</div>
 				
 			<% end %>
