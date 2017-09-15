@@ -15,7 +15,7 @@ generateSearchQueryForSelectForm.prototype = {
 	constructor: generateSearchQueryForSelectForm,
 
 	init: function() {
-		//console.log("generateSearchQueryForSelectForm() init()");
+		console.log("generateSearchQueryForSelectForm() init()");
 		var TOTO = this;
 		this.model_name_plu = this.HELPER.toPlural(this.model_name);
 		this.path = '/' + this.model_name_plu + '/new_select_search';
@@ -24,7 +24,7 @@ generateSearchQueryForSelectForm.prototype = {
 		console.log(this.assoc_type);
 
 		$(document).on('input', this.generateInputsIdsList(), function(e) {
-			//console.log("generateSearchQueryForSelectForm() onInput()");
+			console.log("generateSearchQueryForSelectForm() onInput()");
 			TOTO.removeErros(this);
 
 			$.ajax({
@@ -48,6 +48,7 @@ generateSearchQueryForSelectForm.prototype = {
 			elem_string += ('#' + this.model_name + '_' + keys[i]);
 			if (i < keys_length-1) { elem_string += ', '; } 
 		}
+		console.log(elem_string);
 		return elem_string;
 	},
 

@@ -3,7 +3,7 @@
 	coll = instance_variable_get("@#{assoc.to_s.pluralize}")
 
 	if (defined? id)&&(!id.blank?)
-		html_id = id
+		html_id = id.to_s
 	else
 		html_id = "#{assoc.to_s}_select"
 	end
