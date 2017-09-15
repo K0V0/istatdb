@@ -72,6 +72,11 @@ class ApplicationController < ActionController::Base
   end
 
   def new_select_search
+  	if params.has_key? :association_type
+  		apicall_render(params[:association_type])
+  	else
+  		head :ok
+  	end
   end
 
   def administrative

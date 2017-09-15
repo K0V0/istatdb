@@ -11,6 +11,8 @@
 
 <article class="decorated_wrap shrinked" id=<%= html_id %>>
 
+	<input type="hidden" name="assoc-type" value="belongs_to">
+
 	<div>
 		<%= obj.fields_for assoc.to_sym, single do |a| %>
 
@@ -33,12 +35,10 @@
 		text_method: fields.keys
 	) %>
 
-	
 	<%= render('layouts/elements/input_fields_error',
 		obj: obj,
 		fields: fields,
 		assoc: single
 	) %>
-	
 
 </article>

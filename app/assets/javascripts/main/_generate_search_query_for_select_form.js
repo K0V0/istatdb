@@ -6,6 +6,7 @@ function generateSearchQueryForSelectForm (model_name, fields) {
 	this.source_controller = '';
 	this.model_name_plu = '';
 	this.path = '';
+	this.assoc_type = '';
 
 	this.init();
 }
@@ -19,6 +20,8 @@ generateSearchQueryForSelectForm.prototype = {
 		this.model_name_plu = this.HELPER.toPlural(this.model_name);
 		this.path = '/' + this.model_name_plu + '/new_select_search';
 		this.source_controller = $("body").data("controller_name_singular");
+		this.assoc_type = $(document).find("#" + this.model_name + "_select").children("input[name=assoc-type]").first().val();
+		console.log(this.assoc_type);
 
 		$(document).on('input', this.generateInputsIdsList(), function(e) {
 			//console.log("generateSearchQueryForSelectForm() onInput()");
@@ -30,7 +33,8 @@ generateSearchQueryForSelectForm.prototype = {
 			  	data: { 
 			  		q: TOTO.generateAjaxDataObj(),
 			  		model: TOTO.model_name,
-			  		source_controller: TOTO.source_controller
+			  		source_controller: TOTO.source_controller,
+			  		association_type: TOTO.assoc_type
 			  	}
 			});
 		});

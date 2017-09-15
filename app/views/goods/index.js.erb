@@ -1,7 +1,6 @@
 $('main > article').empty();
 $('#search_items_select_manufacturer').empty();
 
-
 <% 
 items_table = render('layouts/shared/items_table',
 
@@ -39,7 +38,6 @@ items_table = render('layouts/shared/items_table',
 
 search_bar_manufacturers_dropdown = render('goods/shared/search/select_manufacturer_dropdown')
 %>
-
 
 $('<%=j items_table %>').appendTo('main > article');
 $('<%=j search_bar_manufacturers_dropdown %>').appendTo('#search_items_select_manufacturer');

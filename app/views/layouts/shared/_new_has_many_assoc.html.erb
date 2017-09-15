@@ -12,6 +12,8 @@
 
 <article class="decorated_wrap shrinked" id="<%= html_id %>">
 
+	<input type="hidden" name="assoc-type" value="has_many">
+
 	<div>
 		<%= obj.fields_for assoc.to_sym, single do |a| %>
 
