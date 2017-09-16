@@ -22,11 +22,13 @@ rows.each(function() {
 });
 
 <% allow_new = @result.size > 0 ? "0" : "1" %>
-
-if ("<%= allow_new %>" == "1") {
-	alower.prop('checked', true);
-} else {
-	alower.prop('checked', false);
+			
+if (alower.data('user-choosed') === undefined) { 
+	if ("<%= allow_new %>" == "1") {
+		alower.prop('checked', true);
+	} else {
+		alower.prop('checked', false);
+	}
 }
 
 <% 

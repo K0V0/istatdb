@@ -73,6 +73,18 @@ class ApplicationController < ActionController::Base
 
   def new_select_search
   	if params.has_key? :association_type
+  		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
+  		#preload_type = params[:association_type] == "has_many" ? "pluralize" : "singularize"
+  		instance_variable_set(
+  			"@#{params[:source_controller]}",
+  			(
+  				params[:source_controller].classify.constantize
+  				.find(parent_rec_id)
+  				#.joins(params[:model].send(preload_type))
+  			)
+  		)
+  		#Rails.logger.info "---------------------"
+  		#Rails.logger.info instance_variable_get("@#{params[:source_controller]}")
   		apicall_render(params[:association_type])
   	else
   		head :ok

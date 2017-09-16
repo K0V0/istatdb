@@ -3,7 +3,6 @@
 	coll = instance_variable_get("@#{assoc.to_s}")
 
 	## be always singular due to js api targetting elements
-
 	if (defined? html_class)&&(!html_class.blank?)
 		klass = html_class.to_s
 	else

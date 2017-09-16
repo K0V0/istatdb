@@ -42,7 +42,7 @@ module NewFormsHelper
 		output
     end
 
-    def new_form_has_many_select(obj, coll, val_method, text_method, opts)
+    def new_form_has_many_select(obj, coll, val_method, text_method, opts = {})
     	output_first = ""
     	output_other = ""
     	# obj - passsed in AR object
@@ -51,7 +51,7 @@ module NewFormsHelper
 		mem_param_name = "#{coll.name.underscore}"
 		coll_name = "#{mem_param_name}_ids"
     	# this loads associations of passed in obj to match checked checkboxes later
-		associated_records = obj.send("#{coll.name.pluralize.underscore}")
+		associated_records = obj.try("#{coll.name.pluralize.underscore}")
 		# this checks for params hash to catch if unsaved 
 		pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 		# id of association that is search limited (filtered) by
@@ -59,7 +59,7 @@ module NewFormsHelper
 
     	coll.each do |c|
     		output = ""
-    		record_is_in_associated = !(associated_records.where(id: c.id).length == 0)
+    		record_is_in_associated = !associated_records.find_by_id(c.id).nil?
     		record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
     		was_selected_in_search_bar_filter = id_from_search_filter == c.id
     		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter
