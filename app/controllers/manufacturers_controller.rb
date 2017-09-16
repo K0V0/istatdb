@@ -16,6 +16,9 @@ class ManufacturersController < ApplicationController
     	@record = Manufacturer.find(params[:id])
     	# association needs to be builded before use in form
     	# using nested attributes in model
+    	@record.impexpcompany_manufacturers.each do |im|
+    		im.build_local_taric if im.local_taric.nil?
+    	end
     	render 'manufacturers/shared/edit_details'
     end
 

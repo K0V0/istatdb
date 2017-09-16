@@ -3,14 +3,20 @@
 	coll = instance_variable_get("@#{assoc.to_s}")
 
 	## be always singular due to js api targetting elements
-	if (defined? id)&&(!id.blank?)
-		html_id = id
+
+	if (defined? html_class)&&(!html_class.blank?)
+		klass = html_class.to_s
 	else
-		html_id = "#{assoc.to_s.singularize}_select"
+		klass = "#{assoc.to_s.singularize}_select"
 	end
+
+	html_id = "#{klass}_#{(obj.object.try(:id) || 0).to_s}"
 %>
 
-<article class="decorated_wrap shrinked" id="<%= html_id %>">
+<article 
+ class="decorated_wrap shrinked <%= klass %>"
+ id="<%= html_id %>"
+>
 
 	<input type="hidden" name="assoc-type" value="has_many">
 
@@ -34,7 +40,10 @@
 					) %>
 					<%= a.check_box(
 						:allow_search_as_new,
-						{ id: "#{assoc.to_s.singularize}_allow_add_new" },
+						{ 
+							id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
+							class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new"
+						},
 						1,
 						0
 					) %>

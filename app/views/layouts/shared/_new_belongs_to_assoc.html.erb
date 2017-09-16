@@ -2,14 +2,19 @@
 	single = instance_variable_get("@#{assoc.to_s}")
 	coll = instance_variable_get("@#{assoc.to_s.pluralize}")
 
-	if (defined? id)&&(!id.blank?)
-		html_id = id.to_s
+	if (defined? html_class)&&(!html_class.blank?)
+		klass = html_class.to_s
 	else
-		html_id = "#{assoc.to_s}_select"
+		klass = "#{assoc.to_s}_select"
 	end
+
+	html_id = "#{klass}_#{(obj.object.try(:id) || 0).to_s}"
 %>
 
-<article class="decorated_wrap shrinked" id=<%= html_id %>>
+<article 
+ class="decorated_wrap shrinked <%= klass %>"
+ id="<%= html_id %>"
+>
 
 	<input type="hidden" name="assoc-type" value="belongs_to">
 
@@ -23,6 +28,22 @@
 					opts: opts
 				) %>
 			<% end %>
+
+			<div>
+				<%= a.label(
+					"allow_search_as_new",
+					t('search.search_as_new')
+				) %>
+				<%= a.check_box(
+					:allow_search_as_new,
+					{ 
+						id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
+						class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new"
+					},
+					1,
+					0
+				) %>
+			</div>
 
 		<% end %>
 	</div>

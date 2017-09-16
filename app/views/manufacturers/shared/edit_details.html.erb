@@ -10,7 +10,7 @@
 
 				<aside class="impexpcompany_manufacturers_details">
 
-					<% im.object.build_local_taric %>
+					<% @local_taric = im.object.local_taric %>
 
 					<%= render('layouts/shared/new_belongs_to_assoc',
 						obj: im,
@@ -20,7 +20,8 @@
 							description: { 
 								type: :text_area
 							}
-						}
+						}#,
+						#id: "local_taric_select_#{im.object.id.to_s}"
 					) %>
 
 					<article class="decorated_wrap shrinked">

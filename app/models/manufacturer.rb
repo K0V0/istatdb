@@ -26,7 +26,7 @@ class Manufacturer < ActiveRecord::Base
 	validates :name, presence: true
 	validates :name, uniqueness: true
 
-	nested_attrs_getter_for :impexpcompanies
+	nested_attrs_getter_for :impexpcompanies, :local_taric
 	# for some reason needs to be present when editing manufacturer
 	# i do not remember why i do this monkey patch 
 	# and removing one or more impexpcompanies (associations) from it 

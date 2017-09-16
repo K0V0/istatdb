@@ -15,49 +15,51 @@ generateSearchQueryForSelectForm.prototype = {
 	constructor: generateSearchQueryForSelectForm,
 
 	init: function() {
-		console.log("generateSearchQueryForSelectForm() init()");
+		//console.log("generateSearchQueryForSelectForm() init()");
 		var TOTO = this;
 		this.model_name_plu = this.HELPER.toPlural(this.model_name);
 		this.path = '/' + this.model_name_plu + '/new_select_search';
 		this.source_controller = $("body").data("controller_name_singular");
-		this.assoc_type = $(document).find("#" + this.model_name + "_select").children("input[name=assoc-type]").first().val();
-		console.log(this.assoc_type);
+		this.assoc_type = $(document).find("." + this.model_name + "_select").children("input[name=assoc-type]").first().val();
+		//console.log(this.assoc_type);
 
-		$(document).on('input', this.generateInputsIdsList(), function(e) {
-			console.log("generateSearchQueryForSelectForm() onInput()");
+		$(document).on('input', this.generateInputsClassesList(), function(e) {
+			//console.log("generateSearchQueryForSelectForm() onInput()");
 			TOTO.removeErros(this);
-
+			var window_id = $(this).closest('article').attr('id');
 			$.ajax({
 			  	method: "POST",
 			 	url: TOTO.path,
 			  	data: { 
-			  		q: TOTO.generateAjaxDataObj(),
+			  		q: TOTO.generateAjaxDataObj(window_id),
 			  		model: TOTO.model_name,
 			  		source_controller: TOTO.source_controller,
-			  		association_type: TOTO.assoc_type
+			  		association_type: TOTO.assoc_type,
+			  		window_id: window_id
 			  	}
 			});
 		});
 	},
 
-	generateInputsIdsList: function() {
+	generateInputsClassesList: function() {
 		var elem_string = '';
 		var keys = Object.keys(this.fields);
 		var keys_length = keys.length;
 		for (var i=0; i<keys_length; i++) {
-			elem_string += ('#' + this.model_name + '_' + keys[i]);
+			elem_string += ('.' + this.model_name + '_' + keys[i]);
 			if (i < keys_length-1) { elem_string += ', '; } 
 		}
-		console.log(elem_string);
+		//console.log(elem_string);
 		return elem_string;
 	},
 
-	generateAjaxDataObj: function() {
+	generateAjaxDataObj: function(window_id) {
 		var request_data = {};
 		var keys = Object.keys(this.fields);
 		for (var i=0; i<keys.length; i++) {
-			request_data[keys[i] + '_' + this.fields[keys[i]]] = $('#'+this.model_name+'_'+keys[i]).val();
+			request_data[keys[i] + '_' + this.fields[keys[i]]] = $(document).find('#'+window_id).find('.'+this.model_name+'_'+keys[i]).first().val();
 		}
+		//console.log(request_data);
 		return request_data;
 	},
 
@@ -89,3 +91,5 @@ generateSearchQueryForSelectForm_helper.prototype = {
 		}
 	}
 }
+
+

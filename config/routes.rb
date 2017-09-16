@@ -125,11 +125,6 @@ Rails.application.routes.draw do
     to: "manufacturers#edit",
     as: "edit_manufacturer"
 
-  #edit associated details on impexpcompany_manufacturers table
-  get "manufacturersdb/:id/edit_details",
-    to: "manufacturers#edit_details",
-    as: "edit_details_manufacturer"
-
   post "manufacturersdb",
     to: "manufacturers#create",
     as: "create_manufacturer"
@@ -144,7 +139,12 @@ Rails.application.routes.draw do
 
   delete "manufacturersdb/:id/delete",
     to: "manufacturers#delete",
-    as: "delete_manufacturer"  
+    as: "delete_manufacturer"
+
+  #edit associated details on impexpcompany_manufacturers table
+  get "manufacturersdb/:id/edit_details",
+    to: "manufacturers#edit_details",
+    as: "edit_details_manufacturer"  
 
   # create action
   #post "manufacturersdb",

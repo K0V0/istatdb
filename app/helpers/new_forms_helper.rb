@@ -115,12 +115,12 @@ module NewFormsHelper
     end
 
     # simple input text field generation
-    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, id: nil, default_val:nil)
+    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil)
         output = ""
         type = :text_field if type.nil?
-        id = "#{obj.object.class.name.underscore}_#{field_name}" if id.nil?
+        klass = "#{obj.object.class.name.underscore}_#{field.to_s}"
 
-        output += default_val.nil? ? obj.send(type, field, id: id) : obj.send(type, field, value: default_val, id: id)
+        output += default_val.nil? ? obj.send(type, field, class: klass) : obj.send(type, field, value: default_val, class: klass)
         output.html_safe
     end
 

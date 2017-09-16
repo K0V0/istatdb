@@ -9,12 +9,11 @@ end
 <div>
 	<%= obj.label field_name %>
 
-		<%= new_form_plain_textfield(
-			obj: obj,
-			field: field_name,
-			type: opts[:type],
-			id: html_id,
-			default_val: prefill_from_search_field(opts[:prefill_from_mem_param])
-		) %>
+	<%= new_form_plain_textfield(
+		obj: obj,
+		field: field_name,
+		type: opts[:type],
+		default_val: prefill_from_search_field(opts[:prefill_from_mem_param])
+	) %>
 
 </div>
