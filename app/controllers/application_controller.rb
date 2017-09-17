@@ -38,7 +38,11 @@ class ApplicationController < ActionController::Base
 
   before_action :load_vars, only: [:new, :edit, :update, :create]
 
+  before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
+
   before_action :apicall_search_action, only: :new_select_search
+
+  before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create]
 
   def index
   end
@@ -74,17 +78,15 @@ class ApplicationController < ActionController::Base
   def new_select_search
   	if params.has_key? :association_type
   		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
-  		#preload_type = params[:association_type] == "has_many" ? "pluralize" : "singularize"
-  		instance_variable_set(
+  		if parent_rec_id != 0
+	  		parent_obj = params[:source_controller].classify.constantize.find(parent_rec_id)
+	  	else
+	  		parent_obj = params[:source_controller].classify.constantize.new
+	  	end
+	  	instance_variable_set(
   			"@#{params[:source_controller]}",
-  			(
-  				params[:source_controller].classify.constantize
-  				.find(parent_rec_id)
-  				#.joins(params[:model].send(preload_type))
-  			)
+  			parent_obj
   		)
-  		#Rails.logger.info "---------------------"
-  		#Rails.logger.info instance_variable_get("@#{params[:source_controller]}")
   		apicall_render(params[:association_type])
   	else
   		head :ok
@@ -196,6 +198,9 @@ class ApplicationController < ActionController::Base
   def load_vars
   end
 
+  def loads_for_search_panel
+  end
+
   def load_new_edit_vars
   end
 
@@ -213,6 +218,21 @@ class ApplicationController < ActionController::Base
     elsif params.has_key? :q && !params[:q].blank?
       params[:q].merge!({ s: controller_mem_get(:s) })
     end
+  end
+
+  def remember_allow_search_as_new
+  	if action_name == "new"
+
+  	elsif action_name == "create"
+		Rails.logger.info "----------------"
+		parent_obj_id = instance_variable_get("@#{controller_name.singularize}")
+		pars = params[controller_name.singularize]
+	  	Rails.logger.info parent_obj_id
+	  	nested_attrs_keys = pars.keys.select { |i| i[/([a-z_]+)_attributes/] }
+	  	nested_attrs_keys.each do |na|
+	  		 Rails.logger.info pars[na]
+  		end
+  	end
   end
 
   def controller_mem_set prefix, val

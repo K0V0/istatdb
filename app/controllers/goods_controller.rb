@@ -9,9 +9,6 @@ class GoodsController < ApplicationController
 		);
 	}
 
-	before_action :load_vars, only: [:new, :create, :edit, :update]
-	before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
-
 	def show
 		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
 	end
@@ -61,7 +58,7 @@ class GoodsController < ApplicationController
 			:ident, 
 			:description,
 			:local_taric_id,
-			local_taric_attributes: [:kncode, :description, :id],
+			local_taric_attributes: [:kncode, :description, :id, :allow_search_as_new],
 			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
 			impexpcompany_ids: [],
 			manufacturers_attributes: [:id, :name, :allow_search_as_new],

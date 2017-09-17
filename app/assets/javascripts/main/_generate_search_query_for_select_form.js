@@ -23,8 +23,8 @@ generateSearchQueryForSelectForm.prototype = {
 		this.assoc_type = $(document).find("." + this.model_name + "_select").children("input[name=assoc-type]").first().val();
 		//console.log(this.assoc_type);
 
-		$(document).on('input', this.generateInputsClassesList(), function(e) {
-			//console.log("generateSearchQueryForSelectForm() onInput()");
+		$(document).onNotTooOften('input', 350, this.generateInputsClassesList(), function() {
+			//console.log($(this));
 			TOTO.removeErros(this);
 			var window_id = $(this).closest('article').attr('id');
 			$.ajax({

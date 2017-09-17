@@ -21,7 +21,9 @@ rows.each(function() {
 	}
 });
 
-<% allow_new = @result.size > 0 ? "0" : "1" %>
+<% 
+	allow_new = @result.size > 0 ? "0" : "1" 
+%>
 
 if (alower.data('user-choosed') === undefined) { 
 	if ("<%= allow_new %>" == "1") {
@@ -32,38 +34,13 @@ if (alower.data('user-choosed') === undefined) {
 }
 
 <%
-template = render('/layouts/elements/table_list_checkboxes',
-	obj: instance_variable_get("@#{params[:source_controller]}"),
-	coll: @result,
-	text_method: get_fields_from_ransack_params
-)
-%>
-
-<%
-
-template = new_form_has_many_select(
-	instance_variable_get("@#{params[:source_controller]}"),
-	@result,
-	:id,
-	get_fields_from_ransack_params
-) 
-
-%>
-
-<% 
-=begin
-	template = []
-	@result.each do |r|
-		template << render('layouts/elements/table_list_checkboxes/row',
-			obj_name: params[:source_controller],
-			coll_name: "#{params[:model]}_ids",
-			val_method: :id,
-			label_method: get_fields_from_ransack_params,
-			obj: r,
-			opts: { is_highlighted: true }
-		)
-	end
-=end
+	template = new_form_has_many_select(
+		instance_variable_get("@#{params[:source_controller]}"),
+		@result,
+		:id,
+		get_fields_from_ransack_params,
+		{ is_highlighted: true }
+	) 
 %>
 
 var results = jQuery.parseHTML("<%=j template.html_safe %>");
