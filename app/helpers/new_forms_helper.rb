@@ -104,7 +104,7 @@ module NewFormsHelper
     	coll_name = "#{coll.name.underscore}_id"
         obj_name = "#{obj.class.name.underscore}"
 
-    	checked_id = obj.try(coll.name.underscore).try(:id)
+    	checked_id = obj.try(coll.name.underscore).try(:id) #
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
     	coll.each do |c|
