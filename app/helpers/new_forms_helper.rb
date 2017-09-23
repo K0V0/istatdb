@@ -12,6 +12,18 @@ module NewFormsHelper
     	end
     end
 
+    # genrerates hash that is passed to rendering fuction only from variables
+    # in arguments list that have been also defined in view where is called
+    def generate_params_for_render_helper(local_assigns, *args)
+        args_hash = {}
+        args.each do |arg|
+            if !(var_content = local_assigns[arg]).nil?
+                args_hash[arg] = var_content
+            end
+        end
+        return args_hash
+    end
+
     # gets selected item (associated record id) from search bar filters 
     def get_selected_filter_obj_id_from_mem(association_name)
     	# only run when entering new form from list with items, 
@@ -86,11 +98,13 @@ module NewFormsHelper
     	(output_first + output_other).html_safe
     end
 
-    def new_form_has_one_select(obj, obj_name, coll, val_method, text_method, opts)
+    def new_form_has_one_select(obj: nil, coll: nil, val_method: :id, text_method: :id, opts: {})
     	output_first = ""
     	output_other = ""
     	coll_name = "#{coll.name.underscore}_id"
-    	checked_id = obj.send(coll.name.underscore).id
+        obj_name = "#{obj.class.name.underscore}"
+
+    	checked_id = obj.try(coll.name.underscore).try(:id)
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
     	coll.each do |c|

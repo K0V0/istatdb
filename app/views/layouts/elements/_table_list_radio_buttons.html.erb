@@ -1,21 +1,12 @@
+<%
+# REQUIRED_PARAMS:
+# obj - 		passsed in AR object
+# coll - 		passed in collection of AR objects to select from
 
-<% 
-# obj - passsed in AR object
-obj_name = "#{obj.class.name.underscore}" if !defined? parent_model_name
-obj_name = parent_model_name if defined? parent_model_name
-
-# coll - passed in collection to select from
-coll_name = "#{coll.name.underscore}_id"
-
-# val_method - method to call on collection objects to get value
-val_method = val_method || "id"
-
+# OPTIONAL_PARAMS:
+# val_method - 	method to call on collection objects to get value
 # text_method - method(s) to call on collection to get label(s) text
-text_method = text_method || val_method
-
-if !defined? opts
-	opts = {}
-end
+# opts -		various options for decorating functions
 %>
 
 <div class="tablewrap">
@@ -27,12 +18,7 @@ end
 		<tbody>
 
 			<%= new_form_has_one_select(
-				obj,
-				obj_name,
-				coll,
-				val_method,
-				text_method,
-				opts
+				generate_params_for_render_helper(local_assigns, :obj, :coll, :val_method, :text_method, :opts)
 			) %>
 
 		</tbody>

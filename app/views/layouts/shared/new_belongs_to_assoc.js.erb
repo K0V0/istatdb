@@ -1,3 +1,6 @@
+<%
+parent_object = instance_variable_get("@#{params[:source_controller]}")
+%>
 
 // search-select section (widget)
 var mainElem = $(document).find("#<%= params[:window_id] %>");
@@ -32,20 +35,16 @@ if (alower.data('user-choosed') === undefined) {
 }
 
 <% 
-	template = []
-	@result.each do |r|
-		template << render('layouts/elements/table_list_radio_buttons/row',
-			obj_name: params[:source_controller],
-			coll_name: "#{params[:model]}_id",
-			val_method: :id,
-			label_method: get_fields_from_ransack_params,
-			obj: r,
-			opts: { is_highlighted: true }
-		)
-	end
+	template = new_form_has_one_select(
+		obj: parent_object,
+		coll: @result,
+		text_method: get_fields_from_ransack_params,
+		opts: { is_highlighted: true }
+	)
+	
 %>
 
-var results = jQuery.parseHTML("<%=j template.join('').html_safe %>");
+var results = jQuery.parseHTML("<%=j template.html_safe %>");
 
 // remove duplicates from results set, only append not duplicated
 $(results).each(function() {

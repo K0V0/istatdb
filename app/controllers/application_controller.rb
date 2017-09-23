@@ -79,9 +79,16 @@ class ApplicationController < ActionController::Base
   	if params.has_key? :association_type
   		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
   		if parent_rec_id != 0
+  			# is in edit action
 	  		parent_obj = params[:source_controller].classify.constantize.find(parent_rec_id)
 	  	else
+	  		# is in new action
 	  		parent_obj = params[:source_controller].classify.constantize.new
+	  		if params[:association_type] == "belongs_to"
+		  		parent_obj.send("build_#{params[:model]}")
+		  	else
+
+		  	end
 	  	end
 	  	instance_variable_set(
   			"@#{params[:source_controller]}",
