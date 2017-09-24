@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   post "manufacturers/new_select_search",
     to: "manufacturers#new_select_search"
 
-
+  #post "impexpcompany_manufacturers/new_select_search",
+  #  to: "impexpcompany_manufacturers#new_select_search"
 
   ### hlavna stranka - databaza tovarov
 

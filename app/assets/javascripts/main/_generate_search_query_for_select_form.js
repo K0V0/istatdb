@@ -15,16 +15,16 @@ generateSearchQueryForSelectForm.prototype = {
 	constructor: generateSearchQueryForSelectForm,
 
 	init: function() {
-		//console.log("generateSearchQueryForSelectForm() init()");
+		console.log("generateSearchQueryForSelectForm() init()");
 		var TOTO = this;
 		this.model_name_plu = this.HELPER.toPlural(this.model_name);
 		this.path = '/' + this.model_name_plu + '/new_select_search';
 		this.source_controller = $("body").data("controller_name_singular");
 		this.assoc_type = $(document).find("." + this.model_name + "_select").children("input[name=assoc-type]").first().val();
-		//console.log(this.assoc_type);
+		console.log(this.model_name_plu);
 
 		$(document).onNotTooOften('input', 350, this.generateInputsClassesList(), function() {
-			//console.log($(this));
+			console.log($(this));
 			TOTO.removeErros(this);
 			var window_id = $(this).closest('article').attr('id');
 			$.ajax({
@@ -49,7 +49,7 @@ generateSearchQueryForSelectForm.prototype = {
 			elem_string += ('.' + this.model_name + '_' + keys[i]);
 			if (i < keys_length-1) { elem_string += ', '; } 
 		}
-		//console.log(elem_string);
+		console.log(elem_string);
 		return elem_string;
 	},
 
