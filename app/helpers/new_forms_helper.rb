@@ -54,7 +54,7 @@ module NewFormsHelper
 		output
     end
 
-    def new_form_has_many_select(obj, coll, val_method, text_method, opts = {})
+    def new_form_has_many_select(obj: nil, coll: nil, val_method: :id, text_method: :id, opts: {})
     	output_first = ""
     	output_other = ""
     	# obj - passsed in AR object
@@ -104,7 +104,7 @@ module NewFormsHelper
     	coll_name = "#{coll.name.underscore}_id"
         obj_name = "#{obj.class.name.underscore}"
 
-    	checked_id = obj.try(coll.name.underscore).try(:id) #
+    	checked_id = obj.try(coll.name.underscore).try(:id) 
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
     	coll.each do |c|

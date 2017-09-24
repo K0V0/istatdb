@@ -228,16 +228,30 @@ class ApplicationController < ActionController::Base
   end
 
   def remember_allow_search_as_new
-  	if action_name == "new"
+  	regex_to_get_assoc_model = /([a-z_]+)_attributes/
+  	singular_controller_name = controller_name.singularize
+  	pars = params[singular_controller_name]
 
+  	if action_name == "new"
+  		# clear mem to not have turned on buttons on new forms
+  		@MEM.send("allow_add_new=", {})
   	elsif action_name == "create"
-		Rails.logger.info "----------------"
-		parent_obj_id = instance_variable_get("@#{controller_name.singularize}")
-		pars = params[controller_name.singularize]
-	  	Rails.logger.info parent_obj_id
-	  	nested_attrs_keys = pars.keys.select { |i| i[/([a-z_]+)_attributes/] }
+  		nested_attrs_keys = pars.keys.select { |i| i[regex_to_get_assoc_model] }
 	  	nested_attrs_keys.each do |na|
-	  		 Rails.logger.info pars[na]
+	  		if pars[na].keys.first == "0"
+	  		 	# is has_many association
+	  		 	to_mem = @MEM.allow_add_new
+	  		 	pars[na].each do |par|
+	  		 		if par[1].key? :allow_search_as_new
+	  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, '')
+	  		 			is_adding_allowed = par[1][:allow_search_as_new] == "1"
+	  		 			to_mem[assoc_model_name] = is_adding_allowed
+	  		 		end
+	  		 	end
+	  		 	@MEM.send("allow_add_new=", to_mem)
+	  		 else
+	  		 	# is single association
+	  		 end
   		end
   	end
   end

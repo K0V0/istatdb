@@ -143,8 +143,13 @@ Rails.application.routes.draw do
 
   #edit associated details on impexpcompany_manufacturers table
   get "manufacturersdb/:id/edit_details",
-    to: "manufacturers#edit_details",
-    as: "edit_details_manufacturer"  
+    to: "impexpcompany_manufacturers#edit_details",
+    as: "edit_details_manufacturer"
+
+  put "manufacturersdb/:id/update_details",
+    to: "impexpcompany_manufacturers#update_details",
+    as: "update_details_manufacturer"
+  
 
   # create action
   #post "manufacturersdb",

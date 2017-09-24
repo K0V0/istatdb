@@ -40,8 +40,9 @@
 					<%= a.check_box(
 						:allow_search_as_new,
 						{ 
-							id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
-							class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new"
+							#id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
+							class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new",
+							checked: (@MEM.allow_add_new)["#{assoc.to_s}"]
 						},
 						1,
 						0

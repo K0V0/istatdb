@@ -1,3 +1,13 @@
+<% 
+	allow_new = @result.size > 0 ? "0" : "1" 
+
+	template = new_form_has_many_select(
+		obj: instance_variable_get("@#{params[:source_controller]}"),
+		coll: @result,
+		text_method: get_fields_from_ransack_params,
+		opts: { is_highlighted: true }
+	) 
+%>
 
 // search-select section (widget)
 var mainElem = $(document).find("#<%= params[:window_id] %>");
@@ -21,10 +31,6 @@ rows.each(function() {
 	}
 });
 
-<% 
-	allow_new = @result.size > 0 ? "0" : "1" 
-%>
-
 if (alower.data('user-choosed') === undefined) { 
 	if ("<%= allow_new %>" == "1") {
 		alower.prop('checked', true);
@@ -32,16 +38,6 @@ if (alower.data('user-choosed') === undefined) {
 		alower.prop('checked', false);
 	}
 }
-
-<%
-	template = new_form_has_many_select(
-		instance_variable_get("@#{params[:source_controller]}"),
-		@result,
-		:id,
-		get_fields_from_ransack_params,
-		{ is_highlighted: true }
-	) 
-%>
 
 var results = jQuery.parseHTML("<%=j template.html_safe %>");
 

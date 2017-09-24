@@ -1,14 +1,14 @@
-
 <% 
-# val_method - method to call on collection objects to get value
-val_method = val_method || "id"
+# REQUIRED PARMAS:
 
-# text_method - method(s) to call on collection to get label(s) text
-text_method = text_method || val_method
+# obj 			- passed in parent AR object
+# coll 			- collection of associations to select from 		
 
-if !defined? opts
-	opts = {}
-end
+# OPTIONAL PARAMS:
+
+# val_method 	- method to call on collection objects to get value
+# text_method 	- method(s) to call on collection to get label(s) text
+# opts 			- various options for decorator functions
 %>
 
 <div class="tablewrap">
@@ -20,11 +20,7 @@ end
 		<tbody>
 
 			<%= new_form_has_many_select(
-				obj,
-				coll,
-				val_method,
-				text_method,
-				opts
+				generate_params_for_render_helper(local_assigns, :obj, :coll, :val_method, :text_method, :opts)
 			) %>
 
 		</tbody>

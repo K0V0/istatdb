@@ -1,15 +1,25 @@
-<% 
-	#act = @administrative_mode ? :administration : :index
-%>
-
-
 <article class="decorated_wrap shrinked">
 
 	<div>
 
-		<%= obj.submit class: "button" %>
+		<% if !defined?(obj)||obj.nil? %>
 
-		<%= link_to t('actions.back'), { controller: controller_name, action: :index }, class: "button" %>
+			<%= submit_tag "submit", class: "button" %>
+
+		<% else %>
+
+			<%= obj.submit class: "button" %>
+
+			<%= link_to(
+				t('actions.back'),
+				{ 
+					controller: controller_name,
+					action: :index
+				},
+				class: "button"
+			) %>
+
+		<% end %>
 
 	</div>
 
