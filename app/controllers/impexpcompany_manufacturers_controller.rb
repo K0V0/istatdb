@@ -2,23 +2,34 @@ class ImpexpcompanyManufacturersController < ApplicationController
 
 	#skip_filter *_process_action_callbacks.map(&:filter)
 
-	#def edit
-	#	@manufacturer = Manufacturer.find(params[:manufacturer_id])
-	#end
-
-	def edit_details
+	def edit_multiple
 		@details = ImpexpcompanyManufacturer.where(manufacturer_id: params[:id])
-		@incoterms = Incoterm.all
-		@local_tarics = LocalTaric.all
+		#@incoterms = Incoterm.all
+		#@local_tarics = LocalTaric.all
 		@details.each do |im|
     		im.build_local_taric if im.local_taric.nil?
     	end
-    	@details << ImpexpcompanyManufacturer.new
+    	#@details << ImpexpcompanyManufacturer.new
 		#@local_taric = 
 	end
 
-	def update_details
+	def update_multiple
 		
+	end
+
+	private
+
+	def load_vars
+		@incoterms = Incoterm.all
+		@local_tarics = LocalTaric.all
+	end
+
+	def permitted_params
+		params.require(:impexpcompany_manufacturer).permit(
+			:id,
+			:local_taric_id,
+			local_taric_attributes: [:kncode, :description, :id, :allow_search_as_new]
+		)
 	end
 
 end

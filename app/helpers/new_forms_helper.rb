@@ -98,11 +98,12 @@ module NewFormsHelper
     	(output_first + output_other).html_safe
     end
 
-    def new_form_has_one_select(obj: nil, coll: nil, val_method: :id, text_method: :id, opts: {})
+    def new_form_has_one_select(obj: nil, coll: nil, val_method: :id, text_method: :id, opts: {}, multiedit: false)
     	output_first = ""
     	output_other = ""
     	coll_name = "#{coll.name.underscore}_id"
         obj_name = "#{obj.class.name.underscore}"
+        obj_name += "[#{obj.try(:id).to_s}]" if multiedit
 
     	checked_id = obj.try(coll.name.underscore).try(:id) 
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []

@@ -2,7 +2,7 @@
 
 <section class="form">
 
-	<%= form_tag update_details_manufacturer_path, { method: :put } do |t| %>
+	<%= form_tag(update_details_manufacturer_path, method: :patch) do |t| %>
 
 		<% for detail in @details %>
 
@@ -35,6 +35,7 @@
 					<%= render('layouts/shared/new_belongs_to_assoc',
 						obj: d,
 						assoc: :local_taric,
+						multiedit: true,
 						fields: {
 							kncode: {  },
 							description: { 
@@ -49,7 +50,9 @@
 
 		<% end %>
 
-		<%= render('layouts/shared/new_submit') %>
+		<%#= render('layouts/shared/new_submit') %>
+
+		<%= submit_tag("kokot") %>
 
 	<% end %>
 

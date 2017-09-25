@@ -143,12 +143,16 @@ Rails.application.routes.draw do
     as: "delete_manufacturer"
 
   #edit associated details on impexpcompany_manufacturers table
-  get "manufacturersdb/:id/edit_details",
-    to: "impexpcompany_manufacturers#edit_details",
+  get "manufacturer_details/:id/edit_multiple",
+    to: "impexpcompany_manufacturers#edit_multiple",
     as: "edit_details_manufacturer"
 
-  put "manufacturersdb/:id/update_details",
-    to: "impexpcompany_manufacturers#update_details",
+  #post "manufacturer_details",
+   # to: "impexpcompany_manufacturers#create"
+    #as: ""
+
+  patch "manufacturer_details/:id/update_multiple",
+    to: "impexpcompany_manufacturers#update_multiple",
     as: "update_details_manufacturer"
   
 

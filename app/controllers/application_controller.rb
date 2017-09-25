@@ -36,7 +36,8 @@ class ApplicationController < ActionController::Base
 
   before_action :destroy_action, only: [:destroy, :delete]
 
-  before_action :load_vars, only: [:new, :edit, :update, :create]
+  before_action :load_vars, only: [:new, :edit, :edit_multiple, :update, 
+  :update_multiple, :create]
 
   before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
 

@@ -54,7 +54,8 @@
 		# main controller singleton instance variable
 		coll: coll,
 		# collection of all from associated model
-		text_method: fields.keys
+		text_method: fields.keys,
+		multiedit: defined?(multiedit) 
 	) %>
 
 	<%= render('layouts/elements/input_fields_error',
