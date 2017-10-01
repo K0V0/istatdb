@@ -103,7 +103,8 @@ module NewFormsHelper
     	output_other = ""
     	coll_name = "#{coll.name.underscore}_id"
         obj_name = "#{obj.class.name.underscore}"
-        obj_name += "[#{obj.try(:id).to_s}]" if multiedit
+        #obj_name.pluralize! if multiedit
+        obj_name = "#{obj_name.pluralize}[#{obj.try(:id).to_s}]" if multiedit
 
     	checked_id = obj.try(coll.name.underscore).try(:id) 
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
@@ -133,7 +134,7 @@ module NewFormsHelper
     def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil)
         output = ""
         type = :text_field if type.nil?
-        klass = "#{obj.object.class.name.underscore}_#{field.to_s}"
+        klass = "#{obj.object.class.name.underscore}_#{field.to_s}" #if obj.is_a? ActionView::Helpers::FormBuilder
 
         output += default_val.nil? ? obj.send(type, field, class: klass) : obj.send(type, field, value: default_val, class: klass)
         output.html_safe
