@@ -4,8 +4,9 @@ class ManufacturersController < ApplicationController
       searcher_for(
       	object: Manufacturer.preload_items,
         autoshow: false,
-        paginate: true,
-        preload: [:impexpcompanies, :impexpcompany_manufacturers]
+        paginate: true#,
+        #preload: [:impexpcompanies, :impexpcompany_manufacturers]
+        #preload: [:impexpcompany_manufacturers]
       ); 
     }
 

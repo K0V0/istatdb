@@ -92,7 +92,9 @@ module ItemsTableHelper
 						options[0].each do |k, v|
 							output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}-#{k.to_s}\">"
 							obj.each do |res|
+								output += "<span class=\"itemstable_subitem r#{res.id.to_s}\">"
 								output += items_table_fields(res.send(field_name), [{k => v}], true)
+								output += "</span>"
 							end
 							output += "</td>"
 						end
@@ -101,19 +103,21 @@ module ItemsTableHelper
 					end
 				else
 					output += "<td class=\"#{obj.class.name.downcase}_#{field_name}\">" if !no_wrap&&!obj_is_collection
-					output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}\">" if !no_wrap&&obj_is_collection
+					#output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}\">" if !no_wrap&&obj_is_collection
 					# if is many-type association
-					if obj_is_collection
-						obj.each do |res|
-							result = res.send(field_name).to_s
-							output += items_table_field_decorator(result, options, obj, field_name)
-							output += "<br>"
-						end
+					#if obj_is_collection
+						#obj.each do |res|
+						#	result = res.send(field_name).to_s
+						#	output += items_table_field_decorator(result, options, obj, field_name)
+						#	output += "<br>"
+						#end
 					# if is has-one type association
-					else
+					#else
+						output += "<span class=\"itemstable_item\">" if !no_wrap
 						result = obj.try(field_name).to_s
 						output += items_table_field_decorator(result, options, obj, field_name)
-					end
+						output += "</span>" if !no_wrap
+					#end
 					output += "</td>" if !no_wrap
 				end 
 			end
@@ -126,7 +130,7 @@ module ItemsTableHelper
 	# obj - one row from AR result set
 	#
 	def items_table_row_administrative_buttons(obj)
-		output = "<td>"
+		output = "<td><span>"
 			output += link_to(
 				t('actions.edit'),
 				{
@@ -136,7 +140,7 @@ module ItemsTableHelper
 				},
 				class: "button edit_item"
 			)
-		output += "</td><td>"
+		output += "</span></td><td><span>"
 			output += link_to(
 				t('actions.delete'),
 				{
@@ -148,7 +152,7 @@ module ItemsTableHelper
 				method: :delete,
 				class: "button danger delete_item"
 			)
-		output += "</td>"
+		output += "</span></td>"
 		return output.html_safe
 	end
 

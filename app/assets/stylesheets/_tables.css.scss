@@ -5,16 +5,31 @@ table {
 	border-radius: 0.25em;
 	border-collapse: collapse;
 
-	td, th {
+	th {
 		padding: 0 0.25em;
 	}
 
+	td {
+		padding: 0;
+
+		span {
+			display: block;
+			padding: 0 0.25em;
+		}
+	}
+
 	td:first-child {
-		padding-left:0.375em;
+
+		span {
+			padding-left:0.375em;
+		}
 	}
 
 	td:last-child {
-		padding-right:0.375em;
+
+		span {
+			padding-right:0.375em;
+		}
 	}
 
 	td.checkbox {
@@ -77,6 +92,20 @@ table {
 					font-size:0.75em;
 					display: block;
 					margin: 0;
+				}
+
+				span.itemstable_subitem {
+					//@include button_transitions();
+
+					&.hovered {
+						background-color: #000;
+						color: #EEE;
+					}
+				}
+
+				span.itemstable_subitem:after {
+					content: '.';
+    				visibility: hidden;
 				}
 			}
 		}

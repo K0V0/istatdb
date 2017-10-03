@@ -36,7 +36,8 @@ class Manufacturer < ActiveRecord::Base
 	}
 
 	scope :preload_items, -> { 
-		Manufacturer.preload(goods: [:impexpcompanies], impexpcompany_manufacturers: [:incoterm])
+		#Manufacturer.preload(goods: [:impexpcompanies], impexpcompany_manufacturers: [:incoterm, :local_taric, :impexpcompany])
+		Manufacturer.preload(impexpcompany_manufacturers: [:incoterm, :local_taric, :impexpcompany])
 	}
 
 	scope :impexpcompany_filter, -> (pars) { 
