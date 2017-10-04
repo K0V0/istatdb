@@ -134,8 +134,7 @@ module NewFormsHelper
     def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil)
         output = ""
         type = :text_field if type.nil?
-        klass = "#{obj.object.class.name.underscore}_#{field.to_s}" #if obj.is_a? ActionView::Helpers::FormBuilder
-
+        klass = "#{obj.object.class.name.underscore}_#{field.to_s}"
         output += default_val.nil? ? obj.send(type, field, class: klass) : obj.send(type, field, value: default_val, class: klass)
         output.html_safe
     end

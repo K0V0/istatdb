@@ -50,6 +50,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 	def load_vars
 		@incoterms = Incoterm.all
 		@local_tarics = LocalTaric.all
+		@local_taric = LocalTaric.new
 	end
 
 	def permitted_pars pars

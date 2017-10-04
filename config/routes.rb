@@ -134,10 +134,6 @@ Rails.application.routes.draw do
     to: "manufacturers#update",
     as: "update_manufacturer"
 
-  #patch "manufacturersdb/:id/edit_details",
-   # to: "manufacturers#update_details",
-   # as: "update_impexpcompany_manufacturer"
-
   delete "manufacturersdb/:id/delete",
     to: "manufacturers#delete",
     as: "delete_manufacturer"
@@ -147,35 +143,10 @@ Rails.application.routes.draw do
     to: "impexpcompany_manufacturers#edit_multiple",
     as: "edit_details_manufacturer"
 
-  #post "manufacturer_details",
-   # to: "impexpcompany_manufacturers#create"
-    #as: ""
-
   patch "manufacturer_details/:id/update_multiple",
     to: "impexpcompany_manufacturers#update_multiple",
     as: "update_details_manufacturer"
   
-
-  # create action
-  #post "manufacturersdb",
-   # to: "manufacturers#create",
-   # as: "create_manufacturer"
-  
-  # edit action
-  #get "manufacturersdb/edit",
-   # to: "manufacturers#administration"
-
-  #get "manufacturersdb/leave_administrative",
-   # to: "manufacturers#leave_administration"
-
-  #ransack search action
-  #get "manufacturersdb/search",
-   # to: "manufacturers#search",
-    #as: "search_manufacturers" 
-
-  #get "manufacturersdb/export",
-   # to: "manufacturers#csv_export"
-
 
 
 ### databaza klientov (objednavatelia sluzby intrastat) 

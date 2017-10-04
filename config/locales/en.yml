@@ -12,6 +12,7 @@ en:
     delete: Delete
     back: Back
     select: Select
+    save: Uložiť
     nothing_to_select: Nothing to select
     administrative: Edit item(s)
     end_administrative: End administration
