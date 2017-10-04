@@ -1,30 +1,32 @@
+$('main > article').empty();
 
-$('section.items_table, section.item_details').remove();
+<% 
+items_table = render('layouts/shared/items_table',
 
+	fields: [
+		kncode: {
+			call_decorator: :num_to_kncode,
+			is_highlighted: true,
+			is_link: true
+		},
+		description: {
+			is_highlighted: true
+		}
+	],
 
-<%
-	if @result.length > 0
+	#errors: [
+	#	no_results: {
+	#		partial: "goods/index/no_results"
+	#	}
+	#], 
 
-		o = render('layouts/items_table',
-			fields: {
-				description: {
-					is_highlighted: true
-				},
-				kncode: {
-					is_sortlink: true,
-					is_highlighted: true,
-					call_function: "num_to_kncode",
-					clipboard_button: true
-				}
-			}
-		) %> 
+	options: [
+		head: true,
+		foot: true
+	]
+) 
 
-		$('<%=j o %>').appendTo('main');
-
-	<% else %>
-
-		$('<%=j render("layouts/items_table_no_results") %>')
-		.appendTo('main');
-
-	<% end
 %>
+
+
+$('<%=j items_table %>').appendTo('main > article');

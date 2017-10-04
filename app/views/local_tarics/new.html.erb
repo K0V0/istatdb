@@ -1,41 +1,27 @@
 
-<%= render 'layouts/main_menu' %>
+<%= render 'layouts/base/main_menu' %>
 
 <section class="form">
 
-	<%  url = update_local_taric_path if action_name == "edit"
-		url = create_local_taric_path if action_name == "new" %>
+	<%= form_for @record do |t| %>
 
-	<%= form_for @local_taric, url: url do |t| %>
-
-		<article class="decorated_wrap shrinked">
-
-			<%= render('layouts/new_select_section', 
-				obj: t,
-				input_fields: { 
-					kncode: {
-						required: true,
-						autocomplete: false,
-						reset_button: :all,
-						autofocus: true
-					},
-					description: {
-						required: false,
-						autocomplete: false,
-						type: :textarea
-					}
+		<%= render('layouts/shared/new_main',
+			obj: t,
+			fields: {
+				kncode: { 
+					prefill_from_mem_param: [:kncode_start],
+					autofocus: true
 				},
-			) %>
+				description: { 
+					prefill_from_mem_param: [:description_cont],
+					type: :text_area
+				}
+			}
+		) %>
 
-		</article>
-
-		<article class="decorated_wrap shrinked">
-
-			<div>
-				<%= t.submit %>
-			</div>
-
-		</article>
+		<%= render('layouts/shared/new_submit',
+			obj: t
+		) %>
 
 	<% end %>
 

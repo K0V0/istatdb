@@ -149,50 +149,6 @@ Rails.application.routes.draw do
   
 
 
-### databaza klientov (objednavatelia sluzby intrastat) 
-  ### dovozcovia a vyvozcovia
-
-  # index
-  get "clientsdb",
-    to: "impexpcompanies#index",
-    as: "impexpcompanies"
-
-  # novy klient
-  get "clientsdb/new",
-    to: "impexpcompanies#new",
-    as: "new_impexpcompany"
-
-  #create
-  post "clientsdb",
-    to: "impexpcompanies#create",
-    as: "create_impexpcompany"
-
-  # administrative mode
-  get "clientsdb/edit",
-    to: "impexpcompanies#administration"
-
-  get "clientsdb/leave_administrative",
-    to: "impexpcompanies#leave_administration"
-
-  # edit
-  get "clientsdb/:id/edit",
-    to: "impexpcompanies#edit",
-    as: "edit_impexpcompany"
-
-  patch "clientsdb/:id/update",
-    to: "impexpcompanies#update",
-    as: "update_impexpcompany"
-
-  # delete
-  delete "clientsdb/:id/delete",
-    to: "impexpcompanies#delete",
-    as: "delete_impexpcompany"
-
-  get "clientsdb/export",
-    to: "impexpcompanies#csv_export"
-
-
-
   ### lokalna taric databaza
 
   #index
@@ -200,13 +156,26 @@ Rails.application.routes.draw do
     to: "local_tarics#index",
     as: "local_tarics"
 
+  #search
+  get "localtaricdb",
+    to: "local_tarics#search",
+    as: "search_local_tarics"
+
+   # administration - enter index page into administration mode
+  get "localtaricdb/administrative",
+    to: "local_tarics#administrative"
+
+  # administration - return from
+  get "localtaricdb/end_administrative",
+    to: "local_tarics#end_administrative"
+
   #new
   get "localtaricdb/new",
     to: "local_tarics#new",
     as: "new_local_taric" 
 
   #show
-  get "localtaricdb/:id/details",
+  get "localtaricdb/:id",
     to: "local_tarics#show",
     as: "local_taric"
 
@@ -216,21 +185,14 @@ Rails.application.routes.draw do
     as: "edit_local_taric"
 
   #update
-  patch "localtaricdb/:id/update",
-    to: "local_tarics#update",
-    as: "update_local_taric"
+  #patch "localtaricdb/:id/update",
+  # to: "local_tarics#update",
+   # as: "update_local_taric"
 
   #create
-  post "localtaricdb",
-    to: "local_tarics#create",
-    as: "create_local_taric"
-
-  #administration
-  get "localtaricdb/edit",
-    to: "local_tarics#administration"
-
-  get "localtaricdb/leave_administrative",
-    to: "local_tarics#leave_administration"
+  #post "localtaricdb",
+   # to: "local_tarics#create",
+   # as: "create_local_taric"
 
   #delete
   delete "localtaricdb/:id/delete",
@@ -238,13 +200,21 @@ Rails.application.routes.draw do
     as: "delete_local_taric"
 
   #index
-  get "localtaricdb/search",
-    to: "local_tarics#search",
-    as: "search_local_taric"
+  #get "localtaricdb/search",
+   # to: "local_tarics#search",
+   # as: "search_local_taric"
   
-  get "localtaricdb/export",
-    to: "local_tarics#csv_export"
+  #get "localtaricdb/export",
+  #  to: "local_tarics#csv_export"
 
+
+
+  #### spravodajske jednotky
+
+  #index
+  get "clientsdb",
+    to: "impexpcompanies#index",
+    as: "impexpcompanies"
 
 
   ### Nastavenia

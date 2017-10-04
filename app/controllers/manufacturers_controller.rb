@@ -4,25 +4,13 @@ class ManufacturersController < ApplicationController
       searcher_for(
       	object: Manufacturer.preload_items,
         autoshow: false,
-        paginate: true#,
-        #preload: [:impexpcompanies, :impexpcompany_manufacturers]
-        #preload: [:impexpcompany_manufacturers]
+        paginate: true
       ); 
     }
 
-    before_action :load_vars, only: [:new, :create, :edit, :update, :edit_details]
+    before_action :load_vars, only: [:new, :create, :edit, :update]
     before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
-
-    def edit_details
-    	@record = Manufacturer.find(params[:id])
-    	# association needs to be builded before use in form
-    	# using nested attributes in model
-    	@record.impexpcompany_manufacturers.each do |im|
-    		im.build_local_taric if im.local_taric.nil?
-    	end
-    	render 'manufacturers/shared/edit_details'
-    end
-
+    
   	private
 
   	def index_action
@@ -34,12 +22,7 @@ class ManufacturersController < ApplicationController
       	:id,
         :name,
         impexpcompanies_attributes: [:id, :company_name],
-        impexpcompany_ids: [],
-        #impexpcompany_manufacturers_attributes: [:id, :impexpcompany_id, :manufacturer_id],
-        #impexpcompany_manufacturer_ids: []
-        #:local_taric_description,
-        #:incoterm,
-        #impexpcompany_ids: []
+        impexpcompany_ids: []
       )
     end
 
@@ -61,5 +44,7 @@ class ManufacturersController < ApplicationController
 		redirect_to(edit_details_manufacturer_path(@record.id))
 		return false
 	end
+
+	# spravit aroud update tiez oznacit riadky v tabulke ako spraveny zasah pouzivatelom
 
 end

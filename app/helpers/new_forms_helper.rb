@@ -131,11 +131,16 @@ module NewFormsHelper
     end
 
     # simple input text field generation
-    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil)
+    #
+    # obj 			- FormBuilder object
+    # field 		- column in table (AR) that is field related to
+    # type 			- type of textfield (like text_area, search_field)
+    # default_val 	- default value if field has no value
+    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false)
         output = ""
         type = :text_field if type.nil?
         klass = "#{obj.object.class.name.underscore}_#{field.to_s}"
-        output += default_val.nil? ? obj.send(type, field, class: klass) : obj.send(type, field, value: default_val, class: klass)
+        output += default_val.nil? ? obj.send(type, field, class: klass, autofocus: autofocus) : obj.send(type, field, value: default_val, class: klass, autofocus: autofocus)
         output.html_safe
     end
 

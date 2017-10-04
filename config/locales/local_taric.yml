@@ -1,4 +1,5 @@
 en:
+
   activerecord:
     models:
       local_taric: TARIC
@@ -18,7 +19,14 @@ en:
             description:
               blank: Text describing nomenclature is blank
 
+  helpers:
+    submit:
+      local_taric:
+        create: Add HS/TARIC code
+        update: Save changes
+
 sk:
+
   activerecord:
     models:
       local_taric: TARIC
@@ -37,4 +45,10 @@ sk:
               not_exactly_8_or_10: Nesprávna dĺžka, kód nomenklatúry zadávajte ako 8 alebo 10 číselný kód
             description:
               blank: Popis skupiny ostal nevyplnený
+
+  helpers:
+    submit:
+      local_taric:
+        create: Pridať kód HS/TARIC
+        update: Uložiť zmeny
               
