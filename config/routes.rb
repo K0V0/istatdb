@@ -161,7 +161,7 @@ Rails.application.routes.draw do
     to: "local_tarics#search",
     as: "search_local_tarics"
 
-   # administration - enter index page into administration mode
+  # administration - enter index page into administration mode
   get "localtaricdb/administrative",
     to: "local_tarics#administrative"
 
@@ -184,37 +184,68 @@ Rails.application.routes.draw do
     to: "local_tarics#edit",
     as: "edit_local_taric"
 
-  #update
-  #patch "localtaricdb/:id/update",
-  # to: "local_tarics#update",
-   # as: "update_local_taric"
-
   #create
-  #post "localtaricdb",
-   # to: "local_tarics#create",
-   # as: "create_local_taric"
+  post "localtaricdb",
+    to: "local_tarics#create",
+    as: "create_local_taric"
+
+  #update
+  patch "localtaricdb/:id",
+   to: "local_tarics#update",
+    as: "update_local_taric"
 
   #delete
-  delete "localtaricdb/:id/delete",
+  delete "localtaricdb/:id",
     to: "local_tarics#delete",
     as: "delete_local_taric"
 
-  #index
-  #get "localtaricdb/search",
-   # to: "local_tarics#search",
-   # as: "search_local_taric"
-  
-  #get "localtaricdb/export",
-  #  to: "local_tarics#csv_export"
 
 
-
-  #### spravodajske jednotky
+  ### spravodajske jednotky
 
   #index
   get "clientsdb",
     to: "impexpcompanies#index",
     as: "impexpcompanies"
+
+  #new
+  get "clientsdb/new",
+    to: "impexpcompanies#new",
+    as: "new_impexpcompany"
+
+  # administration
+  get "clientsdb/administrative",
+    to: "impexpcompanies#administrative"
+
+  # end administration
+  get "clientsdb/end_administrative",
+    to: "impexpcompanies#end_administrative"
+
+  #show
+  get "clientsdb/:id",
+    to: "impexpcompanies#show",
+    as: "impexpcompany"
+
+  #create
+  post "clientsdb",
+    to: "impexpcompanies#create",
+    as: "create_impexpcompany"
+
+  #edit
+  get "clientsdb/:id/edit",
+    to: "impexpcompanies#edit",
+    as: "edit_impexpcompany"
+
+  #update
+  patch "clientsdb/:id",
+    to: "impexpcompanies#update",
+    as: "update_impexpcompany"
+
+  #delete
+  delete "clientsdb/:id",
+    to: "impexpcompanies#delete",
+    as: "delete_impexpcompany"
+
 
 
   ### Nastavenia
@@ -224,144 +255,4 @@ Rails.application.routes.draw do
     to: "settings#index",
     as: "settings" 
 
-
-
-  ### API calls
-
-  # new good creation form - for searching kncodes in LocalTaric
-  # thats why in another controller
-  #post "api/knnumber_search",
-  #  to: "api#local_taric_search"
-
-  # new good creation form - for searching client's company in Impexpcompany
- # post "api/client_search",
-  #  to: "api#impexpcompany_search"
-
-  # new good creation form - for searching manufacturer's company in Manufcturer
-  #post "api/manufacturer_search",
-  #  to: "api#manufacturer_search"
-
-  #post "api/good_search_ident_exists",
-  #  to: "api#good_search_ident_exists"
-
-  #post "api/manufacturer_search_name_exists",
-  #  to: "api#manufacturer_search_name_exists"
-
-  
-  ### settings section
-
-  post "global_tarics/upload_xml",
-    to: "global_tarics#upload_xml", 
-    as: "upload_global_taric_xml"
-
-  post "global_tarics/xml_from_url",
-    to: "global_tarics#xml_from_url", 
-    as: "global_taric_xml_from_url"
-
-  get "uom_types",
-    to: "uom_types#index", 
-    as: "uom_types"
-
-  get "uom_type/:id",
-    to: "uom_types#show",
-    as: "uom_type"
-
-  post "uom_types",
-    to: "uom_types#create" 
-
-  patch  "uom_type/:id",
-    to: "uom_types#update"
-
-  get "uom_types/new_uom",
-    to: "uom_types#new", 
-    as: "new_uom_type"
-
-  get "uom_types/edit_uom/:id",
-    to: "uom_types#edit", 
-    as: "edit_uom_type"
-
-  delete "uom_types/delete_uom/:id",
-    to: "uom_types#delete", 
-    as: "delete_uom_type"
-
-
-  ### hidden section for testing purposes
-
-  get "test_scripts",
-    to: "test_scripts#index",
-    as: "test_scripts"
-
-  get "test_scripts/add_fake_data",
-    to: "test_scripts#add_fake_data",
-    as: "test_add_fake_data"
-
-  get "test_scripts/remove_everything",
-    to: "test_scripts#remove_all",
-    as: "test_remove_everything"
-
-  get "test_scripts/impexpmanudb_fixture_fillup",
-    to: "test_scripts#impexpcompany_manufacturer_fixture",
-    as: "test_dbfixture1"
-
-  get "test_scripts/uoms_fixture_fillup",
-    to: "test_scripts#uoms_table_fixture",
-    as: "test_dbfixture2"
-
-
-
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

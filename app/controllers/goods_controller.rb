@@ -2,18 +2,16 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
-	before_action(only: [:index, :search, :show, :administrative]) {
-		searcher_for(
-			preload: :local_taric,
-			paginate: true
-		);
-	}
-
 	def show
 		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
+		#super
 	end
 
 	private 
+
+	def searcher_settings
+		{ preload: :local_taric, paginate: true }
+	end
 
 	def loads_for_search_panel
 		@impexpcompanies = Impexpcompany.all.default_order

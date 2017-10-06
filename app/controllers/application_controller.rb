@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
     remember_sortlink       ## sort link direction
   }
 
+  before_action(only: [:index, :search, :show, :administrative]) {
+    searcher_for(
+    	searcher_settings
+    )
+  }
+
   before_action :index_action, only: :index
 
   before_action :administrative_action, only: :administrative
@@ -110,6 +116,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def searcher_settings
+	{ paginate: true }
+  end
 
   def index_action
     @collection = @model.all if @model

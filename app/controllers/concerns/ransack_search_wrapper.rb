@@ -1,6 +1,8 @@
 module RansackSearchWrapper
 
-	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false
+	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false
+
+		params[:q] = [] if disabled
 
 	    object ||= controller_name.classify.constantize.try(:default_order)
 	    @search = object.ransack(params[:q]) if joins.nil?

@@ -1,15 +1,12 @@
 class ImpexpcompaniesController < ApplicationController
 
-	before_action(only: [:index, :search, :show, :administration, :delete]) {
-    searcher_for(
-        autoshow:false,
-        paginate: true
-      ); 
-    }
-
 	private
 
-	def permitted_pars
+	def searcher_settings
+		{ disabled: true, paginate: true }
+	end
+
+	def permitted_params
    		params[:impexpcompany].permit(:company_name)
  	end
 

@@ -1,24 +1,28 @@
 
-<%= render 'layouts/main_menu' %>
+<%= render 'layouts/base/main_menu' %>
 
-<%= render 'layouts/actions' if @administrative_mode %>
+<section class="search_bar">
+	<form class="decorated_wrap">
 
-<%= render 'impexpcompanies/partials/search' %>
+		<%= render "/layouts/shared/actions/add_new_button" %>
+		<%= render "/layouts/shared/actions/go_to_administrative" %>
 
-<% if @result.length > 0 %>
+	</form>
+</section>
 
-	<%= render('layouts/items_table',
+<article class="index impexpcompanies">
+	<%= render('layouts/shared/items_table',
 
-		fields: {
+		fields: [
 			company_name: {
-				is_highlighted: true
+				
 			}
-		}
+		],
+
+		options: [
+			head: true,
+			foot: true
+		]
 
 	) %>
-
-<% else %>
-	
-	<%= render "layouts/no_results" %>
-
-<% end %>
+</article>

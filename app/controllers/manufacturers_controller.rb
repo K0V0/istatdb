@@ -1,17 +1,14 @@
 class ManufacturersController < ApplicationController
 
-    before_action(only: [:index, :search, :show, :administrative]) {
-      searcher_for(
-      	object: Manufacturer.preload_items,
-        autoshow: false,
-        paginate: true
-      ); 
-    }
-
-    before_action :load_vars, only: [:new, :create, :edit, :update]
-    before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
-    
   	private
+
+  	def searcher_settings
+  		{ 
+  			object: Manufacturer.preload_items,
+        	autoshow: false,
+        	paginate: true
+        }
+  	end
 
   	def index_action
 	  @collection = Manufacturer.preload_items.default_order
