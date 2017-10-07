@@ -40,4 +40,9 @@ search_bar_manufacturers_dropdown = render('goods/shared/search/select_manufactu
 %>
 
 $('<%=j items_table %>').appendTo('main > article');
+
 $('<%=j search_bar_manufacturers_dropdown %>').appendTo('#search_items_select_manufacturer');
+
+$(document).find("section.search_bar").find('input[autofocus]')
+	.focus(function() {})
+	.trigger('focus');

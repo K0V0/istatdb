@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
   end
 
   def end_administrative
-  	redirect_to action: "#{@render_command_prepend}index"
+  	redirect_to action: "index"
   end
 
   private

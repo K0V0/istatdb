@@ -1,0 +1,20 @@
+<tr class="no_results">
+	
+	<td colspan="10">
+		<h4> <%= t 'goods.nothing_found.text1' %> </h4>
+	</td>
+ 	
+</tr>
+
+<tr class="solution"> 
+	<td colspan="10"> 
+		<h4> <%= t 'goods.nothing_found.text2' %>: </h4>
+		<ul>
+			<li> 
+				<%= link_to t('goods.nothing_found.text3'), new_good_path, class: "button" %> 
+				<%= t('goods.nothing_found.text4') %>
+			</li>
+		</ul>
+	</td>
+</tr>
+

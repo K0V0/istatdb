@@ -104,3 +104,8 @@ sk:
       result_per_item: Výsledok
       uom_suffix: jedn.
       clear_all: Vymazať pamäť
+    nothing_found:
+      text1: Podľa zadaných kritérií nebol nájdený žiaden tovar.
+      text2: Ďalšie možnosti
+      text3: Pridať
+      text4: túto položku

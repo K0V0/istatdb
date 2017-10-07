@@ -1,18 +1,11 @@
-
 $('main > article').empty();
+$('#search_items_select_manufacturer').empty();
 
 <%
-show_good = render 'goods/show/show'
+	show_good = render 'goods/show/show'
+	search_bar_manufacturers_dropdown = render('goods/shared/search/select_manufacturer_dropdown')
 %>
-
-
-//$('section.calculator_list').remove();
-
-//$('section.actions').css({ 'display':'none' });
 
 $('<%=j show_good %>').appendTo('main > article');
 
-//$('#edit_good_from_search, #delete_good_from_search').remove();
-
-
-
+$('<%=j search_bar_manufacturers_dropdown %>').appendTo('#search_items_select_manufacturer');
