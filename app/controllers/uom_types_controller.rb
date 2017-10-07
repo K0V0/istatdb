@@ -1,16 +1,12 @@
 class UomTypesController < ApplicationController
 
-	before_action(only: :create) { create_action permitted_pars }
-
-    before_action(only: :update) { update_action permitted_pars }
-
-	def index
-		redirect_to settings_path
+	before_action do 
+		is_subsection_of(parent_controller: :settings)
 	end
 
 	private
 
-	def permitted_pars
+	def permitted_params
 		 params[:uom_type].permit(:uom_type, :full_name, :description)
 	end
 

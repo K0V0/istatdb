@@ -27,6 +27,10 @@ $main_menu_active_link:           $white;
 $main_menu_active_link_text:      $strong_black;
 $main_menu_inactive_link_hover:   $soft_black;
 
+$sub_menu_background:			  $base_grey;
+$sub_menu_inactive_link_text:     $black;
+$sub_menu_inactive_link_text_hover: $white;
+
 $disabled_input:                  $strong_grey;
 $disabled_input_text:             $semi_grey;
 $input_selected:                  $dark_red;
@@ -90,7 +94,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
 }
 
 @mixin menu_transitions() {
-	@include transition(background-color $main_menu_mouse_actions_transition_time ease);
+	@include transition(background-color $main_menu_mouse_actions_transition_time ease, color $main_menu_mouse_actions_transition_time ease);
 }
 
 @mixin inputs_transitions() {

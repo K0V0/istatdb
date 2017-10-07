@@ -4,6 +4,9 @@ module RansackSearchWrapper
 
 		params[:q] = [] if disabled
 
+		#Rails.logger.info "------------------------"
+		#Rails.logger.info controller_name.classify.constantize
+
 	    object ||= controller_name.classify.constantize.try(:default_order)
 	    @search = object.ransack(params[:q]) if joins.nil?
 	    @search = object.joins(joins).ransack(params[:q]) if !joins.nil?

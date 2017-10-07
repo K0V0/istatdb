@@ -1,0 +1,9 @@
+en:
+  settings:
+    sections: 
+      uom_types: UOMs
+
+sk:
+  settings:
+    sections: 
+      uom_types: Merné jednotky

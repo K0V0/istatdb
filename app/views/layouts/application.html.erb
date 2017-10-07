@@ -19,6 +19,8 @@
 
 		<%= yield :mainmenu if content_for? :mainmenu %>
 
+		<%= yield :submenu if content_for? :submenu %>
+
 		<main>
 
 			<%= yield :search_bar if content_for? :search_bar %>

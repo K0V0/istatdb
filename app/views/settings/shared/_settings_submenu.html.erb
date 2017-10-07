@@ -1,0 +1,26 @@
+<% content_for :submenu do %>
+
+	<nav class="top_menu sub">
+
+		<ul>
+
+			<li>
+				<%= active_link_to(
+					t("top_menu.settings"),
+					settings_path,
+					active: :exclusive
+				) %>
+			</li>
+
+			<li>
+				<%= active_link_to(
+					t("settings.sections.uom_types"),
+					uom_types_path
+				) %>
+			</li>
+
+		</ul>
+
+	</nav>
+
+<% end %>

@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
+
+    is_subsection_of
   }
 
   before_action(only: [:index, :search, :show, :administrative]) {
@@ -52,16 +54,19 @@ class ApplicationController < ActionController::Base
   before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create]
 
   def index
+  	render "#{@render_command_prepend}index"
   end
 
   def search
-    render "index"
+    render "#{@render_command_prepend}index"
   end
 
   def show
+  	render "#{@render_command_prepend}show"
   end
 
   def new 
+  	render "#{@render_command_prepend}new"
   end
 
   def create
@@ -69,7 +74,7 @@ class ApplicationController < ActionController::Base
   end
 
   def edit
-    render "new"
+    render "#{@render_command_prepend}new"
   end
 
   def update
@@ -108,17 +113,21 @@ class ApplicationController < ActionController::Base
   end
 
   def administrative
-  	render "index"
+  	render "#{@render_command_prepend}index"
   end
 
   def end_administrative
-  	redirect_to action: "index"
+  	redirect_to action: "#{@render_command_prepend}index"
   end
 
   private
 
+  def is_subsection_of(parent_controller: nil)
+	@render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
+  end
+
   def searcher_settings
-	{ paginate: true }
+    { paginate: true, disabled: true }
   end
 
   def index_action
@@ -156,7 +165,7 @@ class ApplicationController < ActionController::Base
       redirect_to public_send("#{controller_name.pluralize}_path") if continue != false
     else
       around_create_after_save_failed
-      render "new"
+      render "#{@render_command_prepend}new"
     end
   end
 
@@ -173,7 +182,7 @@ class ApplicationController < ActionController::Base
       redirect_to controller: controller_name, action: 'index'
     else
       around_update_after_save_failed
-      render "new"
+      render "#{@render_command_prepend}new"
     end
   end
 

@@ -139,11 +139,11 @@ Rails.application.routes.draw do
     as: "delete_manufacturer"
 
   #edit associated details on impexpcompany_manufacturers table
-  get "manufacturer_details/:id/edit_multiple",
+  get "manufacturersdb/:id/edit_details",
     to: "impexpcompany_manufacturers#edit_multiple",
     as: "edit_details_manufacturer"
 
-  patch "manufacturer_details/:id/update_multiple",
+  patch "manufacturersdb/:id/update_details",
     to: "impexpcompany_manufacturers#update_multiple",
     as: "update_details_manufacturer"
   
@@ -253,6 +253,26 @@ Rails.application.routes.draw do
   #index
   get "settings",
     to: "settings#index",
-    as: "settings" 
+    as: "settings"
+
+
+  # uom_types
+  get "settings/uom_types",
+    to: "uom_types#index",
+    as: "uom_types"
+
+  # uom_types
+  get "settings/uom_types/new",
+    to: "uom_types#new",
+    as: "new_uom_type"
+
+  # administration
+  get "settings/uom_types/administrative",
+    to: "uom_types#administrative"
+
+  # end administration
+  get "settings/uom_types/end_administrative",
+    to: "uom_types#end_administrative"
+
 
 end

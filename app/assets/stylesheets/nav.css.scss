@@ -19,9 +19,7 @@ nav {
 		}
 	}
 
-	&.main_menu {
-		background-color: $background_color;
-		color: $white;
+	&.top_menu {
 		line-height: 32px;
 		padding: 0 0.5em;
 		padding-top: 0.375em;
@@ -40,24 +38,85 @@ nav {
 					border-top-right-radius: 0.25em;
 					text-decoration:none;
 					word-wrap: break-word;
-					
-					&.active {
-						background-color: $main_menu_active_link;
-						color: $main_menu_active_link_text;
-					}
+				}
+			}
+		}
 
-					&:hover {
-						background-color: $main_menu_inactive_link_hover;
-					}
+		&.main {
+			background-color: $background_color;
+			color: $white;
 
-					&.active:hover {
-						background-color: $main_menu_active_link;
+			ul {
+
+				li {
+
+					a {
+
+						&.active {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
+						}
+
+						&:hover {
+							background-color: $main_menu_inactive_link_hover;
+						}
+
+						&.active:hover {
+							background-color: $main_menu_active_link;
+						}
+					}
+				}
+			}
+
+			&.has_submenu {
+
+				ul {
+
+					li {
+
+						a {
+
+							&.active {
+								background-color: $sub_menu_background;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.sub {
+			background-color: $sub_menu_background;
+			color: $sub_menu_inactive_link_text;
+			@include menu_transitions();
+
+			
+			ul {
+
+				li {
+
+					a {
+						
+						&.active {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
+						}
+
+						&:hover {
+							background-color: $main_menu_inactive_link_hover;
+							color: $sub_menu_inactive_link_text_hover;
+						}
+
+						&.active:hover {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
+						}
 					}
 				}
 			}
 		}
 	}
-
+	
 	&.pagination {
 		margin: 0.125em 0em;
 
