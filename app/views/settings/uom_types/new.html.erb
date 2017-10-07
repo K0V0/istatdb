@@ -1,0 +1,30 @@
+<%= render 'settings/shared/settings_submenu' %>
+
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @record do |t| %>
+
+		<%= render('layouts/shared/new_main',
+			obj: t,
+			fields: {
+				uom_type: { 
+					autofocus: true
+				},
+				full_name: {
+
+				},
+				description: {
+					type: :text_area
+				}
+			}
+		) %>
+
+		<%= render('layouts/shared/new_submit',
+			obj: t
+		) %>
+
+	<% end %>
+
+</section>

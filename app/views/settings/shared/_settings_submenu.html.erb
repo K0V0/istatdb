@@ -6,7 +6,7 @@
 
 			<li>
 				<%= active_link_to(
-					t("top_menu.settings"),
+					t("settings.sections.general"),
 					settings_path,
 					active: :exclusive
 				) %>
@@ -16,6 +16,13 @@
 				<%= active_link_to(
 					t("settings.sections.uom_types"),
 					uom_types_path
+				) %>
+			</li>
+
+			<li>
+				<%= active_link_to(
+					t("settings.sections.incoterms"),
+					incoterms_path
 				) %>
 			</li>
 

@@ -256,12 +256,14 @@ Rails.application.routes.draw do
     as: "settings"
 
 
-  # uom_types
+  ### Nastavenia - uoms
+
+  # index
   get "settings/uom_types",
     to: "uom_types#index",
     as: "uom_types"
 
-  # uom_types
+  # new
   get "settings/uom_types/new",
     to: "uom_types#new",
     as: "new_uom_type"
@@ -274,5 +276,75 @@ Rails.application.routes.draw do
   get "settings/uom_types/end_administrative",
     to: "uom_types#end_administrative"
 
+  # show
+  get "settings/uom_types/:id",
+    to: "uom_types#show",
+    as: "uom_type"
+
+  # create
+  post "settings/uom_types",
+    to: "uom_types#create",
+    as: "create_uom_type"
+
+  # edit
+  get "settings/uom_types/:id/edit",
+    to: "uom_types#edit",
+    as: "edit_uom_type"
+
+  # update
+  patch "settings/uom_types/:id",
+    to: "uom_types#update",
+    as: "update_uom_type"
+
+  # delete
+  delete "settings/uom_types/:id",
+    to: "uom_types#delete",
+    as: "delete_uom_type"
+
+
+  ### Nastavenia - incoterms
+
+  # index
+  get "settings/incoterms",
+    to: "incoterms#index",
+    as: "incoterms"
+
+  # new
+  get "settings/incoterms/new",
+    to: "incoterms#new",
+    as: "new_incoterm"
+
+  # administration
+  get "settings/incoterms/administrative",
+    to: "incoterms#administrative"
+
+  # end administration
+  get "settings/incoterms/end_administrative",
+    to: "incoterms#end_administrative"
+
+  # show
+  get "settings/incoterms/:id",
+    to: "incoterms#show",
+    as: "incoterm"
+
+  # create
+  post "settings/incoterms",
+    to: "incoterms#create",
+    as: "create_incoterm"
+
+  # edit
+  get "settings/incoterms/:id/edit",
+    to: "incoterms#edit",
+    as: "edit_incoterm"
+
+  # update
+  patch "settings/incoterms/:id",
+    to: "incoterms#update",
+    as: "update_incoterm"
+
+  # delete
+  delete "settings/incoterms/:id",
+    to: "incoterms#delete",
+    as: "delete_incoterm"
 
 end

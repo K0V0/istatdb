@@ -1,0 +1,24 @@
+<%= render 'settings/shared/settings_submenu' %>
+
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @record do |t| %>
+
+		<%= render('layouts/shared/new_main',
+			obj: t,
+			fields: {
+				shortland: {
+					autofocus: true
+				}
+			}
+		) %>
+
+		<%= render('layouts/shared/new_submit',
+			obj: t
+		) %>
+
+	<% end %>
+
+</section>

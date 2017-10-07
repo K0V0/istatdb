@@ -1,9 +1,13 @@
 en:
   settings:
-    sections: 
+    sections:
+      general: General
       uom_types: UOMs
+      incoterms: Incoterms
 
 sk:
   settings:
     sections: 
+      general: Všeobecné
       uom_types: Merné jednotky
+      incoterms: Dodacie podmienky
