@@ -109,3 +109,17 @@ sk:
       text2: Ďalšie možnosti
       text3: Pridať
       text4: túto položku
+      text5: Skúsiť
+      text6: Vyhľadať na internete 
+      text7: informácie podľa názvu/referencie/popisu tovaru
+      text8: Skúsiť hľadať v sekcii
+      text9: či položky na danom doklade nemajú uvedenú správnu nomenklatúru a preto sa údaje o tomto tovare v databáze nenachádzajú, prípadne či výrobca/odberateľ neobchoduje so spravodajskou jednotkou len s jedným druhom tovaru.  
+      text10a: Odoslať spravodajskej jednotke prichádzajúcej do kontaktu s tovarom
+      text10b: Žiadosť o poskytnutie informácií
+      text10c: potrebných pre charakterizovanie tovaru prostredníctvom elektronickej pošty 
+      text11: V sekcii
+      text12: pozrieť
+      text13: Podrobnosti o výrobcovi/odberateľovi
+      text14: kde sa nachádza portfólio daného výrobcu/odberateľa a určiť zaradenie tovaru na základe podobnosti/podobnej charakteristiky s inými tovarmi z portfólia
+      text15: kde sa môže nachádzať explicitná informácia o tom, že doklady týkajúce sa tohoto subjektu obsahujú potrebné a pravdivé informácie ohľadom tovaru a teda nie je potrebné jeho zaradenie do databázy 
+      text16: kde sa môže nachádzať explicitná informácia o tom, že predmetný subjekt vyrába/odoberá len jeden druh tovarov a teda všetky dokumenty so všetkými položkami vždy patria pod jednu nomenklatúru 

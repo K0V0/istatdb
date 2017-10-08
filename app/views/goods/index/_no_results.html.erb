@@ -8,12 +8,64 @@
 
 <tr class="solution"> 
 	<td colspan="10"> 
+
 		<h4> <%= t 'goods.nothing_found.text2' %>: </h4>
+
 		<ul>
+
 			<li> 
 				<%= link_to t('goods.nothing_found.text3'), new_good_path, class: "button" %> 
 				<%= t('goods.nothing_found.text4') %>
 			</li>
+
+			<li>
+				<%= t('goods.nothing_found.text5') %>
+				<button id="search_good_on_google_2" class="button">
+					<%= t('goods.nothing_found.text6') %>
+				</button>
+				<%= t('goods.nothing_found.text7') %>
+			</li>
+
+			<li>
+				<% if params[:q][:manufacturer_filter].blank? %>
+
+					<%= t('goods.nothing_found.text8') %>
+					<%= link_to t('top_menu.companies'), manufacturers_path, class: "button" %> 
+					<%= t('goods.nothing_found.text9') %>
+
+				<% else %>
+
+					<%= t('goods.nothing_found.text11') %>
+					"<%= t('top_menu.companies') %>"
+					<%= t('goods.nothing_found.text12') %>
+					<%= link_to(
+						t('goods.nothing_found.text13'),
+						manufacturer_path(params[:q][:manufacturer_filter]),
+						class: "button"
+					) %> 
+					<ul> 
+						<li> 
+							<%= t('goods.nothing_found.text15') %>
+						</li>
+						<li> 
+							<%= t('goods.nothing_found.text16') %>
+						</li>
+						<li> 
+							<%= t('goods.nothing_found.text14') %>
+						</li>
+					</ul>
+
+				<% end %>
+			</li>
+
+			<li> 
+				<%= t('goods.nothing_found.text10a') %>
+				<button id="good_send_request_email" class="button">
+					<%= t('goods.nothing_found.text10b') %>
+				</button>
+				<%= t('goods.nothing_found.text10c') %>
+			</li>
+
 		</ul>
 	</td>
 </tr>

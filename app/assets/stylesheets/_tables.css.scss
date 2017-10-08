@@ -191,13 +191,17 @@ table.no_results {
 				td {
 					padding: 0.5em 1em;
 
-					a {
+					.button {
 						pointer-events: auto;
 						cursor: pointer;
 					}
 
 					ul {
 						margin:0.5em;
+
+						li {
+							margin: 0.125em 0;
+						}
 					}
 				}
 			}
