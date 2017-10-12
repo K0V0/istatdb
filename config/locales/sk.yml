@@ -20,7 +20,8 @@ sk:
     edit_other: Upraviť ďalšie súvisiace informácie
 
   items_table:
-    results_count: "počet výsledkov"
+    results_count: počet výsledkov
+    nothing_found: Podľa zadaných kritérií nebola nájdená žiadna položka 
 
   goods_search:
     impexpcompany_prompt: "nefiltrovať..."

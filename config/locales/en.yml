@@ -21,6 +21,7 @@ en:
 
   items_table:
     results_count: results count
+    nothing_found: No item(s) met the search criteria
   
   goods_search:
     impexpcompany_prompt: do NOT apply...

@@ -1,7 +1,8 @@
+<% 
+output = ""
 
-<% if @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").blank? %>
-
-	<%= link_to(
+if @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").blank? 
+	output = link_to(
 		t('actions.administrative'),
 		{
 			controller: controller_name,
@@ -9,11 +10,11 @@
 		},
 		class: "button", 
 		id: "#{controller_name.singularize}_administration_from_search"
-	) %>
+	) 
 
-<% else %>
+else
 
-	<%= link_to(
+	output = link_to(
 		t('actions.end_administrative'),
 		{
 			controller: controller_name,
@@ -21,6 +22,8 @@
 		},
 		class: "button selected", 
 		id: "#{controller_name.singularize}_administration_from_search"
-	) %>
+	)
 
-<% end %>
+end 
+%>
+<%= output %>

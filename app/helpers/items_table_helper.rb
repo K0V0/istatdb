@@ -82,13 +82,19 @@ module ItemsTableHelper
 	#
 	def items_table_fields(obj, fields, no_wrap=false)
 		output = ""
+		#output += "#{obj.class}"
 		fields.each do |field|
+			#output += "#{field.to_s}"
 			field.each do |field_name, options|
 				obj_is_collection = obj.is_a? ActiveRecord::Associations::CollectionProxy
 				if options.is_a? Array
 					# for deeper nested associations
+					#output += "#{field.to_s} <br><br>"
 					if obj_is_collection
+						#output += "#{obj.class} #{field.to_s} <br><br>"
 						options[0].each do |k, v|
+							#output += "#{k} #{v} #{obj.class} #{field.to_s} <br><br>"
+							#output += "#{obj.class} #{field.to_s} <br><br>"
 							output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}-#{k.to_s}\">"
 							obj.each do |res|
 								output += "<span class=\"itemstable_subitem r#{res.id.to_s}\">"
@@ -98,6 +104,7 @@ module ItemsTableHelper
 							output += "</td>"
 						end
 					else
+						#output += "#{obj.class} #{field.to_s} <br><br>"
 						output += items_table_fields(obj.try(field_name), options, no_wrap)
 					end
 				else
@@ -112,6 +119,8 @@ module ItemsTableHelper
 						#end
 					# if is has-one type association
 					#else
+					#output += "#{fields}"
+					#output += "#{no_wrap}"
 						output += "<span class=\"itemstable_item\">" if !no_wrap
 						result = obj.try(field_name).to_s
 						output += items_table_field_decorator(result, options, obj, field_name)

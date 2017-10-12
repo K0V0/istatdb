@@ -20,9 +20,6 @@ items_table = render('layouts/shared/items_table',
 			local_taric: [
 				kncode: {
 					
-				},
-				description: {
-					
 				}
 			],
 			incoterm: [
@@ -30,23 +27,22 @@ items_table = render('layouts/shared/items_table',
 
 				}
 			],
+			invoices_correct: {
+			
+			}
 		]
 	],
 
-	#errors: [
-	#	no_results: {
-	#		partial: "goods/index/no_results"
-	#	}
-	#], 
+	errors: [
+		no_results: {}
+	], 
 
 	options: [
 		head: true,
 		foot: true
 	]
 ) 
-
 %>
-
 
 $('<%=j items_table %>').appendTo('main > article');
 
