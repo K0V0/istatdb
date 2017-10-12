@@ -6,7 +6,7 @@
 <article class="index goods">
 	<%= render('layouts/shared/items_table',
 
-		fields: [
+		fields: {
 			ident: {
 				is_sortlink: true,
 				is_highlighted: true,
@@ -24,7 +24,7 @@
 					is_link: true
 				}
 			]
-		],
+		},
 
 		errors: [
 			no_results: {

@@ -80,6 +80,97 @@ module ItemsTableHelper
 	# obj - one row from AR result set
 	# fields - named columns to display, work recursively when some column have association(s)
 	#
+
+=begin
+	def items_table_fields(obj, fields, no_wrap=false, recurse_deep_level=1)
+		output = ""
+
+		fields.each do |field, content|
+			prependix = ""
+			recurse_deep_level.times do 
+				prependix += " - "
+			end
+
+			if content.is_a? Hash
+				# is on current model attribute
+				output += "#{prependix} #{field.to_s} <br>"
+				output += "#{prependix} #{content.to_s}<br>"
+				render_field(obj.send(field), content)
+
+			elsif content.is_a? Array
+				# is on associated model
+				output += "#{prependix} #{field.to_s} <br>"
+
+				if field.to_s.is_singular?
+					# 1 to 1 or 1 to X assoc
+					if !(f = obj.try(field)).nil?
+						output += items_table_fields(f, content[0], no_wrap, recurse_deep_level+1)
+					end
+				else
+					# has_many assoc
+					obj.send(field).each do |f|
+						output += items_table_fields(f, content[0], no_wrap, recurse_deep_level+1)
+					end
+				end
+			end
+		end
+
+		output += "<br>"
+		return output.html_safe 
+	end
+=end
+#=begin
+	def items_table_fields(obj, fields, is_inner=false)
+		output = ""
+		fields.each do |field, content|
+
+			if content.is_a? Hash
+				# is on current model attribute
+				# last recursion level happens here
+				output += render_field(obj.send(field), content) if !is_inner
+
+			elsif content.is_a? Array
+				# is on associated model
+				if field.to_s.is_singular?
+					# 1 to 1 or 1 to X assoc
+					if !(f = obj.try(field)).nil?
+						output += items_table_fields(f, content[0], is_inner)
+					else
+						# do not leave empty fields - every row should have equal number of columns 
+						output += "<td></td>"
+					end
+				else
+					# has_many assoc
+					output += "<td><table><tbody>"
+					obj.send(field).each do |f|
+						output += "<tr>"
+						output += items_table_fields(f, content[0], is_inner)
+						output += "</tr>"
+					end
+					output += "</tbody></table></td>"
+				end
+			end
+
+		end
+		return output.html_safe 
+	end
+#=end
+	def render_field(obj, options)
+		output = "<td>"
+		output += "#{obj.to_s}"
+		#output += items_table_field_decorator(result, options, obj, field_name)
+		output += "</td>"
+		return output
+	end
+
+	#def render_inner_table(cells: "")
+	#	output = "<td><table><tbody>"
+	#	output += cells
+	#	output += "</tbody></table></td>"
+	#	return output
+	#end
+
+=begin
 	def items_table_fields(obj, fields, no_wrap=false)
 		output = ""
 		#output += "#{obj.class}"
@@ -132,6 +223,7 @@ module ItemsTableHelper
 		end
 		return output.html_safe 
 	end
+=end
 
 	### function to render edit and delete buttons in table row
 	#
@@ -179,5 +271,7 @@ module ItemsTableHelper
 		end 
 		return output.html_safe
 	end
+
+	private :render_field
 
 end
