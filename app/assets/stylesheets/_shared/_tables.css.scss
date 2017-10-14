@@ -5,31 +5,16 @@ table {
 	border-radius: 0.25em;
 	border-collapse: collapse;
 
-	th {
+	th, td {
 		padding: 0 0.25em;
 	}
 
-	td {
-		padding: 0;
-
-		span {
-			display: block;
-			padding: 0 0.25em;
-		}
-	}
-
 	td:first-child {
-
-		span {
-			padding-left:0.375em;
-		}
+		padding-left:0.375em;
 	}
 
 	td:last-child {
-
-		span {
-			padding-right:0.375em;
-		}
+		padding-right:0.375em;
 	}
 
 	td.checkbox {
@@ -38,7 +23,7 @@ table {
 
 	caption {
 		border-top-left-radius: 0.25em;
-		border-bottom-right-raduis: 0.25em;
+		border-top-right-raduis: 0.25em;
 		text-align:left;
 		background-color: inherit;
 		padding: 0 0.25em;
@@ -63,12 +48,7 @@ table {
 		tr {
 			@include button_transitions();
 			line-height:1.25em;
-			/*
-			&.no_results, &.solution { 
-				pointer-events: none !important;
-				background-color: $group_background !important;
-			}
-			*/
+			
 			td {
 				vertical-align: middle;
 
@@ -78,37 +58,7 @@ table {
 					display: block;
 					margin: 0;
 				}
-
-				span.itemstable_subitem {
-
-					&.hovered {
-						background-color: #000;
-						color: #EEE;
-					}
-				}
-
-				span.itemstable_subitem:after {
-					content: '.';
-    				visibility: hidden;
-				}
 			}
-			/*
-			&.no_results {
-
-				td {
-					padding:0.125em 0.25em;
-					background-color: $button_danger;
-					color: white;
-				}
-			}
-
-			&.solution {
-
-				td {
-					padding: 16px !important;
-				}
-			}
-			*/
 		}
 	}
 
@@ -170,6 +120,10 @@ table.with_efects {
 
 table.no_results {
 
+	thead {
+		display: none;
+	}
+
 	tbody {
 
 		tr {
@@ -181,7 +135,7 @@ table.no_results {
 				color: $white;
 
 				td {
-					padding:0.125em 0.25em;
+					padding:0.25em 0.5em;
 				}
 			}
 
@@ -244,3 +198,80 @@ table.checkboxes_list, table.radio_buttons_list {
 		}
 	}
 }
+
+td.inner_table {
+	pointer-events:none !important;
+	transition: color 0s !important;
+}
+
+table.inner_table {
+	z-index: 99;
+	background-color: transparent !important;
+	transition: color 0s !important;
+	//pointer-events: auto !important;
+
+	tbody {
+		background-color: transparent !important;
+		transition: color 0s !important;
+		//pointer-events: auto !important;
+
+		tr {
+			background-color: transparent !important;
+			transition: color 0s !important;
+			//pointer-events: auto !important;
+			
+			
+			&:hover {
+				background-color: $black !important;
+				color: $white;
+			}
+			
+			/*
+			&:active, &.selected {
+				background-color: $black;
+				color: $white;
+
+				&:hover {
+					background-color: $button_selected_hover;
+				}
+			}
+			*/
+
+			td {
+				//background-color: transparent !important;
+				//pointer-events:none !important;
+				pointer-events: auto !important;
+			}
+		}
+	}
+}
+/*
+table {
+
+	&.rows_colored, &.with_efects {
+
+		thead, tbody {
+
+			tr {
+
+				th, td {
+
+					table.inner_table {
+						background-color: transparent;
+						tbody {
+							background-color: transparent;
+							tr {
+								background-color: transparent;
+
+								td, th {
+									background-color: transparent;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+*/

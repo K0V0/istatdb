@@ -7,7 +7,9 @@ editable = true
 if !defined? object
 	object = @result
 end
+
 html_class_table += " no_results" if object.length == 0 
+
 if defined? options
 	if o = options[0].try(:[], :html_options) 
 		html_class_main += " #{o[:main_class]}" if o.try(:[], :main_class)
@@ -36,7 +38,7 @@ end
 					<% end %>
 
 					<tr>
-						<%#= items_table_head(object.model.name.constantize, fields) %>
+						<%= items_table_head(fields) %>
 					</tr>
 					
 				</thead>

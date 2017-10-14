@@ -5,30 +5,22 @@ section.search_bar {
 
 	form {
 		background-color: #bbb;
-		padding: 0.25em 0.25em;
-		display:table;
-		text-align: left;
+		padding: 0.25em;
 	}
 
 	form > div {
+		max-width:100%;
+		box-sizing: border-box;
 		vertical-align:middle;
 		display: inline-block;
-		margin-right: 0.125em;
-
-		&:last-child {
-			margin-right: 0;
-
-			& > * {
-				float:left;
-			}
-		}
 
 		label {
 			margin-left: 0.25em;
+			vertical-align: middle;
 		}
 
 		input[type=text], input[type=search] {
-			max-width: 10em;
+			max-width: 12em;
 		}
 
 		&.search_checkbox_wrap {

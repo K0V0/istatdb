@@ -4,7 +4,7 @@ $('#search_items_select_manufacturer').empty();
 <% 
 items_table = render('layouts/shared/items_table',
 
-	fields: [
+	fields: {
 		ident: {
 			is_sortlink: true,
 			is_highlighted: true,
@@ -22,7 +22,7 @@ items_table = render('layouts/shared/items_table',
 				is_link: true
 			}
 		]
-	],
+	},
 
 	errors: [
 		no_results: {

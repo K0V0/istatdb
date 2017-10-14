@@ -43,187 +43,12 @@ module ItemsTableHelper
 		return text
 	end
 
-	### something like above but for table header
-	#
-	def items_table_caption_decorator(opts, object, field)
-		ret = object.human_attribute_name(field)
-
-		if opts[:is_sortlink]
-			ret = sort_link(@search, field, { action: :search }, remote: true)  
-		end
-
-		return ret
-	end
-
-	### function to support errors on items table
-	#
-	# errors - list of defined errors to respond to and option
-	# object - passed plural AR object
-	#
-	def items_table_errors_handler(errors, object)
-		ret = ""
-		# if nothing found
-		if errors[:no_results]
-			if object.length == 0
-				if errors[:no_results].has_key? :partial
-					ret = render(errors[:no_results][:partial], obj: object)
-				else
-					ret = render('layouts/shared/items_table/no_results')
-				end
-			end
-		end
-		return ret
-	end
-
-	### function to render row in a table
-	#
-	# obj - one row from AR result set
-	# fields - named columns to display, work recursively when some column have association(s)
-	#
-
-=begin
-	def items_table_fields(obj, fields, no_wrap=false, recurse_deep_level=1)
-		output = ""
-
-		fields.each do |field, content|
-			prependix = ""
-			recurse_deep_level.times do 
-				prependix += " - "
-			end
-
-			if content.is_a? Hash
-				# is on current model attribute
-				output += "#{prependix} #{field.to_s} <br>"
-				output += "#{prependix} #{content.to_s}<br>"
-				render_field(obj.send(field), content)
-
-			elsif content.is_a? Array
-				# is on associated model
-				output += "#{prependix} #{field.to_s} <br>"
-
-				if field.to_s.is_singular?
-					# 1 to 1 or 1 to X assoc
-					if !(f = obj.try(field)).nil?
-						output += items_table_fields(f, content[0], no_wrap, recurse_deep_level+1)
-					end
-				else
-					# has_many assoc
-					obj.send(field).each do |f|
-						output += items_table_fields(f, content[0], no_wrap, recurse_deep_level+1)
-					end
-				end
-			end
-		end
-
-		output += "<br>"
-		return output.html_safe 
-	end
-=end
-#=begin
-	def items_table_fields(obj, fields, is_inner=false)
-		output = ""
-		fields.each do |field, content|
-
-			if content.is_a? Hash
-				# is on current model attribute
-				# last recursion level happens here
-				output += render_field(obj.send(field), content) if !is_inner
-
-			elsif content.is_a? Array
-				# is on associated model
-				if field.to_s.is_singular?
-					# 1 to 1 or 1 to X assoc
-					if !(f = obj.try(field)).nil?
-						output += items_table_fields(f, content[0], is_inner)
-					else
-						# do not leave empty fields - every row should have equal number of columns 
-						output += "<td></td>"
-					end
-				else
-					# has_many assoc
-					output += "<td><table><tbody>"
-					obj.send(field).each do |f|
-						output += "<tr>"
-						output += items_table_fields(f, content[0], is_inner)
-						output += "</tr>"
-					end
-					output += "</tbody></table></td>"
-				end
-			end
-
-		end
-		return output.html_safe 
-	end
-#=end
-	def render_field(obj, options)
-		output = "<td>"
-		output += "#{obj.to_s}"
-		#output += items_table_field_decorator(result, options, obj, field_name)
+	def render_field(obj, field, options)
+		output = "<td class=\"#{obj.class.to_s.underscore.pluralize}-#{field}\">"
+		output += items_table_field_decorator(obj.send(field).to_s, options, obj, field)
 		output += "</td>"
 		return output
 	end
-
-	#def render_inner_table(cells: "")
-	#	output = "<td><table><tbody>"
-	#	output += cells
-	#	output += "</tbody></table></td>"
-	#	return output
-	#end
-
-=begin
-	def items_table_fields(obj, fields, no_wrap=false)
-		output = ""
-		#output += "#{obj.class}"
-		fields.each do |field|
-			#output += "#{field.to_s}"
-			field.each do |field_name, options|
-				obj_is_collection = obj.is_a? ActiveRecord::Associations::CollectionProxy
-				if options.is_a? Array
-					# for deeper nested associations
-					#output += "#{field.to_s} <br><br>"
-					if obj_is_collection
-						#output += "#{obj.class} #{field.to_s} <br><br>"
-						options[0].each do |k, v|
-							#output += "#{k} #{v} #{obj.class} #{field.to_s} <br><br>"
-							#output += "#{obj.class} #{field.to_s} <br><br>"
-							output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}-#{k.to_s}\">"
-							obj.each do |res|
-								output += "<span class=\"itemstable_subitem r#{res.id.to_s}\">"
-								output += items_table_fields(res.send(field_name), [{k => v}], true)
-								output += "</span>"
-							end
-							output += "</td>"
-						end
-					else
-						#output += "#{obj.class} #{field.to_s} <br><br>"
-						output += items_table_fields(obj.try(field_name), options, no_wrap)
-					end
-				else
-					output += "<td class=\"#{obj.class.name.downcase}_#{field_name}\">" if !no_wrap&&!obj_is_collection
-					#output += "<td class=\"#{obj.first.class.name.downcase}-#{field_name}\">" if !no_wrap&&obj_is_collection
-					# if is many-type association
-					#if obj_is_collection
-						#obj.each do |res|
-						#	result = res.send(field_name).to_s
-						#	output += items_table_field_decorator(result, options, obj, field_name)
-						#	output += "<br>"
-						#end
-					# if is has-one type association
-					#else
-					#output += "#{fields}"
-					#output += "#{no_wrap}"
-						output += "<span class=\"itemstable_item\">" if !no_wrap
-						result = obj.try(field_name).to_s
-						output += items_table_field_decorator(result, options, obj, field_name)
-						output += "</span>" if !no_wrap
-					#end
-					output += "</td>" if !no_wrap
-				end 
-			end
-		end
-		return output.html_safe 
-	end
-=end
 
 	### function to render edit and delete buttons in table row
 	#
@@ -256,20 +81,96 @@ module ItemsTableHelper
 		return output.html_safe
 	end
 
-	### same purpose as above, but for table header
+	### function to render row in a table
 	#
-	def items_table_head(obj, fields)
+	# obj - one row from AR result set
+	# fields - named columns to display, work recursively when some column have association(s)
+	#
+	def items_table_fields(obj, fields)
 		output = ""
-		fields.each do |field| 
-			field.each do |field_name, options| 
-		 		if options.is_a? Array 
-		 			output += items_table_head(field_name.to_s.classify.constantize, options)
-		 		else 
-					output += "<th class=\"#{obj.model_name.name.downcase}_#{field_name}\"> #{items_table_caption_decorator(options, obj, field_name)} </th>" 
-				end 
-			end 
-		end 
+		fields.each do |field, content|
+
+			if content.is_a? Hash
+				# is on current model attribute
+				# last recursion level happens here
+				output += render_field(obj, field, content)
+
+			elsif content.is_a? Array
+				# is on associated model
+				if field.to_s.is_singular?
+					# 1 to 1 or 1 to X assoc
+					if !(f = obj.try(field)).nil?
+						output += items_table_fields(f, content[0])
+					else
+						# do not leave empty fields - every row should have equal number of columns 
+						output += "<td></td>"
+					end
+				else
+					# has_many assoc
+					output += "<td class=\"inner_table\"><table class=\"inner_table\"><tbody>"
+					obj.send(field).each do |f|
+						output += "<tr>"
+						output += items_table_fields(f, content[0])
+						output += "</tr>"
+					end
+					output += "</tbody></table></td>"
+				end
+			end
+
+		end
+		return output.html_safe 
+	end
+
+	def items_table_caption_decorator(opts, object, field)
+		ret = object.human_attribute_name(field)
+
+		if opts[:is_sortlink]
+			ret = sort_link(@search, field, { action: :search }, remote: true)  
+		end
+
+		return ret
+	end
+
+	def items_table_head(fields, model=controller_name.classify.constantize)
+
+		output = ""
+		fields.each do |field, content|
+
+			if content.is_a? Hash
+				# is on current model attribute
+				output += "<th>"
+				output += items_table_caption_decorator(content, model, field)
+				output += "</th>"
+
+			elsif content.is_a? Array
+				# is inside associated
+				output += "<th class=\"inner_table\"><table class=\"inner_table\"><thead>"
+				output += items_table_head(content[0], field.to_s.classify.constantize)
+				output += "</thead></table></th>"
+			end
+		end
+
 		return output.html_safe
+	end
+
+	### function to support errors on items table
+	#
+	# errors - list of defined errors to respond to and option
+	# object - passed plural AR object
+	#
+	def items_table_errors_handler(errors, object)
+		ret = ""
+		# if nothing found
+		if errors[:no_results]
+			if object.length == 0
+				if errors[:no_results].has_key? :partial
+					ret = render(errors[:no_results][:partial], obj: object)
+				else
+					ret = render('layouts/shared/items_table/no_results')
+				end
+			end
+		end
+		return ret
 	end
 
 	private :render_field
