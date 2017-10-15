@@ -1,8 +1,8 @@
 <% content_for :submenu do %>
 
-	<nav class="top_menu sub">
+	<div class="sub">
 
-		<ul>
+		<ul class="top_menu sub">
 
 			<li>
 				<%= active_link_to(
@@ -26,8 +26,15 @@
 				) %>
 			</li>
 
+			<li>
+				<%= active_link_to(
+					t("settings.sections.trade_types"),
+					trade_types_path
+				) %>
+			</li>
+
 		</ul>
 
-	</nav>
+	</div>
 
 <% end %>

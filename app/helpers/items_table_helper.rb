@@ -138,7 +138,7 @@ module ItemsTableHelper
 
 			if content.is_a? Hash
 				# is on current model attribute
-				output += "<th>"
+				output += "<th class=\"#{model.name.pluralize.underscore}-#{field.to_s}\">"
 				output += items_table_caption_decorator(content, model, field)
 				output += "</th>"
 

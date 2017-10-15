@@ -347,4 +347,12 @@ Rails.application.routes.draw do
     to: "incoterms#delete",
     as: "delete_incoterm"
 
+
+  ### Nastavenia - druhy obchodu
+
+  # index
+  get "settings/trade_types",
+    to: "trade_types#index",
+    as: "trade_types"
+
 end

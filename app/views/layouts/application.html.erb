@@ -17,9 +17,13 @@
 	<%= "data-controller_name_singular=#{controller_name.singularize}" %>
 	>
 
-		<%= yield :mainmenu if content_for? :mainmenu %>
+		<nav>
 
-		<%= yield :submenu if content_for? :submenu %>
+			<%= yield :mainmenu if content_for? :mainmenu %>
+
+			<%= yield :submenu if content_for? :submenu %>
+
+		</nav>
 
 		<main>
 

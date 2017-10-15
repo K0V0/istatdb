@@ -1,0 +1,33 @@
+table#goods {
+
+	td {
+
+		&.local_tarics-kncode {
+			white-space: nowrap;
+			width:1%;
+		}
+
+		&.goods-ident {
+			width:1%;
+			white-space: nowrap;
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+   
+   table#goods {
+
+   		td, th {
+
+   			&.goods-ident {
+				font-weight: bold;
+			}
+
+			&.local_tarics-kncode {
+				text-align: right;
+				font-style: italic;
+			}
+   		}
+   	}
+}

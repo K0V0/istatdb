@@ -1,0 +1,54 @@
+@import "variables";
+
+@media only screen and (max-width: 480px) {
+
+	nav {
+
+		div {
+
+			&.main, &.sub {
+				margin:0;
+				padding:0.125em;
+			}
+
+			ul {
+
+				&.top_menu {
+					@include rotate_cancel();
+
+					li {
+						@include rotate_cancel();
+						display: block;
+
+						&, &:first-child, &:last-child {
+							padding:0.125em;
+						}
+
+						a {
+							border-radius:0.25em;
+							padding:0.125em;
+							padding-left: 0.25em;
+						}
+					}
+
+					&.main {
+
+					}
+
+					&.sub {
+
+						li {
+
+							a {
+								&.active:hover {
+									background-color: $sub_menu_active_link;
+									//color: $main_menu_active_link_text;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

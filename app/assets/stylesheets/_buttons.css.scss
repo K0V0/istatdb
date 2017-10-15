@@ -7,7 +7,7 @@
 		background-color $buttons_mouse_actions_transition_time ease,
 		color $main_menu_mouse_actions_transition_time ease
 	);
-	@include transitions(border-color color);
+	//@include transitions(border-color color);
 
 	cursor: pointer;
 	color: $button_text;

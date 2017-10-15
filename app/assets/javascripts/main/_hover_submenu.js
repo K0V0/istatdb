@@ -1,13 +1,16 @@
 function hoverSubmenu() {
 	
-	var elems = $(document).find('nav.top_menu.sub, nav.top_menu.main > ul > li > a.active');
+	var elems = $(document).find(
+		'nav > div.sub,' +
+		'nav > div > ul.top_menu.main > li > a.active'
+	);
 
 	elems
 		.mouseenter(function() {
-			elems.css('background-color', '#CCC');
+			elems.css('background-color', '#AAA');
 		})
 		.mouseleave(function() {
 			elems.css('background-color', '#BBB');
 		});
-
+		
 }
