@@ -1,65 +1,44 @@
 
-<% content_for :search_bar do %>
+<%= render(
+		layout: 'layouts/shared/search',
+		locals: {
+			main_fields: { 
+				ident: :ident_or_description_cont
+			},
+			actions: [
+				:add,
+				:clear_fields,
+				:clear_all,
+				:administrative,
+				:google_search
+			]
+		}
+	) do %>
+	
 
-	<section class="search_bar"> 
+	<div class="search_checkbox_wrap">
+		<%= check_box_tag(
+			'q[search_both]',
+			1,
+			false
+		) %>
+		<%= @s.label :description, class: 'disabled' %>
+		<%= @s.search_field(
+			:description_cont,
+		 	autocomplete: "off",
+		 	disabled: true
+		) %>
+	</div>
 
-		<%= search_form_for @search, 
-			url: search_goods_path,
-			remote: true,
-			class: "decorated_wrap" do |s| %> 
+	<%= render 'goods/shared/search/select_client_dropdown', obj: @s %>
 
-			<div>
-				<%= s.label :ident %>
-				<%= s.search_field :ident_or_description_cont, autocomplete: "off", autofocus: "autofocus" %>
-			</div>
+	<div>
+		<%= @s.label :manufacturer_filter %>
+		<div class="select_wrapper" id="search_items_select_manufacturer">
+			<%= render 'goods/shared/search/select_manufacturer_dropdown' %>
+		</div>
+	</div>
 
-			<div class="search_checkbox_wrap">
-				<%= check_box_tag(
-					'q[search_both]',
-					1,
-					false
-				) %>
-				<%= s.label :description, class: 'disabled' %>
-				<%= s.search_field(
-					:description_cont,
-				 	autocomplete: "off",
-				 	disabled: true
-				) %>
-			</div>
-
-			<%= render 'goods/shared/search/select_client_dropdown', obj: s %>
-
-			<div>
-				<%= s.label :manufacturer_filter %>
-				<div class="select_wrapper" id="search_items_select_manufacturer">
-					<%= render 'goods/shared/search/select_manufacturer_dropdown' %>
-				</div>
-			</div>
-
-			<div>
-
-				<%= render 'layouts/shared/actions/add_new_button' %><!--
-
-				--><button id="clear_search" class="button">
-					<%= t 'search.clear' %>
-				</button><!--
-
-				--><button id="reset_search" class="button">
-					<%= t 'search.reset' %>
-				</button><!--
-
-				--><%= render 'layouts/shared/actions/go_to_administrative' %><!--
-
-				--><button id="search_good_on_google" class="button">
-					<%= t 'goods_search.google' %>
-				</button><!--
-
-				--><%= render('layouts/shared/actions/search_or_back_button', s: s) %>
-
-			</div>
-
-		<% end %>
-
-	</section>
 
 <% end %>
+

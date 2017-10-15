@@ -1,0 +1,63 @@
+
+<% content_for :search_bar do %>
+
+	<section class="search_bar"> 
+
+		<%= search_form_for @search, 
+			remote: true,
+			class: "decorated_wrap" do |s| %> 
+
+			<% 
+				@s = s 
+				main_fields_cnt = main_fields.size
+			%>
+
+			<% main_fields.each_with_index do |(k, v), index| %>
+				<div class="searchform_main_fields">
+					<%= s.label k %>
+					<%= s.search_field(
+						v,
+						autocomplete: "off",
+						autofocus: index == 0 ? "autofocus" : false
+					) %>
+					<% if index+1 == main_fields_cnt  %>
+					
+					<% end %>
+				</div>
+			<% end %>
+
+			<%= yield %>
+
+			<div class="searchform_actions">
+
+				<%= render 'layouts/shared/actions/add_new_button' if actions.include? :add %><!--
+
+				--><% if actions.include? :clear_fields %><!--
+					--><button id="clear_search" class="button">
+						<%= t 'search.clear' %>
+					</button><!--
+				--><% end %><!--
+
+				--><% if actions.include? :clear_all %><!--
+					--><button id="reset_search" class="button">
+						<%= t 'search.reset' %>
+					</button><!--
+				--><% end %><!--
+
+				--><%= render 'layouts/shared/actions/go_to_administrative' if actions.include? :administrative %><!--
+
+				--><% if actions.include? :google_search %><!--
+					--><button id="search_good_on_google" class="button">
+						<%= t 'goods_search.google' %>
+					</button><!--
+				--><% end %><!--
+
+				--><%= render('layouts/shared/actions/search_or_back_button', s: s) %>
+				
+			</div>
+
+		<% end %>
+
+	</section>
+
+<% end %>

@@ -1,3 +1,4 @@
+@import "variables";
 
 section.search_bar {
 
@@ -6,37 +7,92 @@ section.search_bar {
 	form {
 		background-color: #bbb;
 		padding: 0.25em;
-	}
 
-	form > div {
-		max-width:100%;
-		box-sizing: border-box;
-		vertical-align:middle;
-		display: inline-block;
-
-		label {
-			margin-left: 0.25em;
-			vertical-align: middle;
-		}
-
-		input[type=text], input[type=search] {
-			max-width: 12em;
-		}
-
-		&.search_checkbox_wrap {
-			line-height:1.5em;
-
-			input[type=checkbox] {
-				display:inline-block;
-				vertical-align: middle;
-				width:1.125em;
-				height:1.125em;
-				border-radius:1.125em;
-				margin-left:0.25em;
-			}
+		div {
+			max-width:100%;
+			box-sizing: border-box;
+			vertical-align:middle;
+			display: inline-block;
+			overflow: hidden;
 
 			label {
-				margin: 0;
+				margin-left: 0.25em;
+				vertical-align: middle;
+			}
+
+			input[type=text], input[type=search] {
+				max-width: 12em;
+			}
+
+			&.search_checkbox_wrap {
+				line-height:1.5em;
+
+				input[type=checkbox] {
+					display:inline-block;
+					vertical-align: middle;
+					width:1.125em;
+					height:1.125em;
+					border-radius:1.125em;
+					margin-left:0.25em;
+				}
+
+				label {
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+
+	section.search_bar {
+
+		form {
+
+			div {
+				//visibility: hidden;
+				//height: 0;
+				display: none;
+
+				&.searchform_main_fields /*, &.searchform_actions*/ {
+					//visibility: visible;
+					//height:auto;
+					//display: flex;
+					//vertical-align: middle;
+					display: table;
+					width:100%;
+
+					input, label {
+						display: table-cell;
+						//box-sizing: border-box;
+						//display: inline-flex;
+					}
+
+					label {
+						width:1%;
+						padding-right: 0.25em;
+					}
+
+					input {
+						max-width: 100%;
+						width:100%;
+						margin:0;
+						//width:100%;
+					}
+				}
+				/*
+				&.searchform_actions {
+
+					* {
+						display: none;
+					}
+
+					input[type=submit] {
+						display: inline-block;
+					}
+				}	
+				*/			
 			}
 		}
 	}

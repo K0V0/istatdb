@@ -94,6 +94,9 @@ button, a.button {
 	border-style: solid;
 	border-width: 0.125em;
 	display: inline-block;
+	//display: inline-table;
+	//display: table-cell;
+	//display: flex;
 
 	&:after {
 		display: none;

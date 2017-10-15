@@ -17,11 +17,18 @@
 	<%= "data-controller_name_singular=#{controller_name.singularize}" %>
 	>
 
+		<input type="checkbox" id="show_topmenu" role="button">
+
 		<nav>
 
-			<%= yield :mainmenu if content_for? :mainmenu %>
+			<div id="top_menu_container">
 
-			<%= yield :submenu if content_for? :submenu %>
+				<%= yield :mainmenu if content_for? :mainmenu %>
+
+				<%= yield :submenu if content_for? :submenu %>
+			</div>
+
+			<label for="show_topmenu" class="show_topmenu"> &#9776; </label>
 
 		</nav>
 

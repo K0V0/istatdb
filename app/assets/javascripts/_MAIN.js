@@ -1,4 +1,13 @@
 var CONTROLLER_NAME;
+var EXCLUSIVE_HANDLER_RUNS;
+
+var bothHandler = function() {
+	console.log("page changed or reloaded");
+
+	CONTROLLER_NAME = $('body').data("controller_name");
+
+	call_controller_specific("onboth");
+}
 
 var mainHandler = function() {
 	console.log("page full reload");
@@ -16,15 +25,16 @@ var reloadHandler = function() {
 	call_on_all_controllers("after", "onload");
 }
 
-var bothHandler = function() {
-	console.log("page changed or reloaded");
+var onExclusiveHandler = function() {
+	if (EXCLUSIVE_HANDLER_RUNS === undefined) {
+		EXCLUSIVE_HANDLER_RUNS = true;
+		console.log("onExclusiveHandler() runs");
 
-	CONTROLLER_NAME = $('body').data("controller_name");
-
-	call_controller_specific("onboth");
+		call_controller_specific("onexclusive");
+	}
 }
 
 
-$(document).ready(function() { bothHandler(); mainHandler(); });
+$(document).ready(function() { bothHandler(); mainHandler(); onExclusiveHandler(); });
 
-$(document).on("turbolinks:load", function() { bothHandler(); reloadHandler(); } );
+$(document).on("turbolinks:load", function() { bothHandler(); reloadHandler(); onExclusiveHandler(); } );
