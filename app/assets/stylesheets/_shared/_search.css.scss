@@ -61,21 +61,31 @@ section.search_bar {
 
 			& > div { 
 				width:100%;
-				display: table-cell;
+				height:100%;
+				//display: table;
 				vertical-align: middle;
 
 				label {
-					float: left;
+					//float: left;
+					display: table-cell;
+					height:100%;
+					padding-right: 0.25em;
+					//vertical-align: bottom;
 				}
 
 				& > span {
 
-					display: block;
+					display: table-cell;
+					width:100%;
 					overflow: hidden;
+					//box-sizing:border-box;
+					//width: 100%;
 
 					input[type=text], input[type=search] {
 						width: 100%;
 						max-width: 100%;
+						margin:0;
+						//padding:0.125em;
     					box-sizing:border-box;
 					}
 				}
