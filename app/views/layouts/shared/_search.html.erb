@@ -15,15 +15,16 @@
 			<% main_fields.each_with_index do |(k, v), index| %>
 				<div class="searchform_main_fields">
 					
-						<%= s.label k %>
+					<span> <%= s.label k %> </span>
 					
-					<span>
+					<span class="searchform_inputfield_wrap">
 						<%= s.search_field(
 							v,
 							autocomplete: "off",
 							autofocus: index == 0 ? "autofocus" : false
 						) %>
 					</span>
+
 					<% if index+1 == main_fields_cnt %>
 					
 					<% end %>

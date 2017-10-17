@@ -17,26 +17,36 @@
 	
 
 	<div class="search_checkbox_wrap">
-		<%= check_box_tag(
-			'q[search_both]',
-			1,
-			false
-		) %>
-		<%= @s.label :description, class: 'disabled' %>
-		<%= @s.search_field(
-			:description_cont,
-		 	autocomplete: "off",
-		 	disabled: true
-		) %>
+		<span>
+			<%= check_box_tag(
+				'q[search_both]',
+				1,
+				false
+			) %>
+		</span>
+		<span>
+			<%= @s.label :description, class: 'disabled' %>
+		</span>
+		<span class="searchform_inputfield_wrap">
+			<%= @s.search_field(
+				:description_cont,
+			 	autocomplete: "off",
+			 	disabled: true
+			) %>
+		</span>
 	</div>
 
 	<%= render 'goods/shared/search/select_client_dropdown', obj: @s %>
 
 	<div>
-		<%= @s.label :manufacturer_filter %>
-		<div class="select_wrapper" id="search_items_select_manufacturer">
-			<%= render 'goods/shared/search/select_manufacturer_dropdown' %>
-		</div>
+		<span>
+			<%= @s.label :manufacturer_filter %>
+		</span>
+		<span>
+			<div class="select_wrapper" id="search_items_select_manufacturer">
+				<%= render 'goods/shared/search/select_manufacturer_dropdown' %>
+			</div>
+		</span>
 	</div>
 
 
