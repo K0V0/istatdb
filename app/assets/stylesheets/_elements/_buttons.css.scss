@@ -7,7 +7,6 @@
 		background-color $buttons_mouse_actions_transition_time ease,
 		color $main_menu_mouse_actions_transition_time ease
 	);
-	//@include transitions(border-color color);
 
 	cursor: pointer;
 	color: $button_text;
@@ -84,7 +83,7 @@
 	}
 }
 
-button, a.button {
+button, .button {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0.125em;
 	font-size: 1em;
@@ -94,15 +93,9 @@ button, a.button {
 	border-style: solid;
 	border-width: 0.125em;
 	display: inline-block;
-	//display: inline-table;
-	//display: table-cell;
-	//display: flex;
+	vertical-align:middle;
 
 	&:after {
 		display: none;
 	}
-}
-
-button.button {
-	//vertical-align:middle;
 }

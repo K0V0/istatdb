@@ -23,7 +23,10 @@ section.search_bar {
 			margin: 0.125em 0;
 			box-sizing: border-box;
 			overflow: hidden;
-			//line-height: 1em;
+
+			&.searchform_actions {
+				margin:0
+			}
 
 			label {
 				white-space: nowrap;
@@ -31,12 +34,11 @@ section.search_bar {
 			}
 
 			& > span {
-				//display: table-cell;
 				display: inline-block;
 				vertical-align: middle;
 				overflow: hidden;
 				padding: 0 0.125em;
-				box-sizing:border-box;
+				max-width:100%;
 
 				label {
 					white-space: nowrap;
@@ -84,6 +86,7 @@ section.search_bar {
 
 				& > span {
 					float:left;
+					box-sizing:border-box;
 
 					input[type=text], input[type=search] {
 						min-width: 8em;
@@ -94,7 +97,6 @@ section.search_bar {
 						display: block;
 						float:none;
 					}
-					
 				}
 			}
 		}
