@@ -20,12 +20,14 @@ section.search_bar {
 			height:100%;
 			vertical-align: middle;
 			padding-right:0.375em;
-			margin: 0.125em 0;
+			//margin: 0.125em 0;
+			padding: 0.125em 0;
 			box-sizing: border-box;
 			overflow: hidden;
 
 			&.searchform_actions {
-				margin:0
+				margin:0;
+				padding: 0.0625em 0;
 			}
 
 			label {
@@ -59,8 +61,8 @@ section.search_bar {
 				}
 
 				select {
-					max-height:1.625em;
-					height:1.625em;
+					//max-height:1.625em;
+					//height:1.625em;
 					overflow: hidden;
 				}
 
