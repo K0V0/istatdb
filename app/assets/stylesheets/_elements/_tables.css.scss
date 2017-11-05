@@ -54,14 +54,17 @@ table {
 			td {
 				vertical-align: middle;
 
-				a.edit_item, a.delete_item {
-					line-height:1em;
-					font-size:0.75em;
-					display: block;
-					margin: 0;
-					word-break: initial;
-					border-width:0;
-					height: 100%;
+				&.edit_item, &.delete_item {
+
+					a {
+						line-height:1em;
+						font-size:0.75em;
+						display: block;
+						margin: 0;
+						word-break: initial;
+						border-width:0;
+						height: 100%;
+					}
 				}
 			}
 		}
