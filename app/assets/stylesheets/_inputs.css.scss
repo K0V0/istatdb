@@ -12,6 +12,7 @@ input, select, textarea {
 	border-radius:0.25em;
 	background-color: $white;
 	line-height:1em;
+	box-sizing:border-box;
 }
 
 textarea {
@@ -19,6 +20,11 @@ textarea {
 	vertical-align:middle;
 	font-family: inherit;
     font-size: inherit;
+}
+
+input[type=text], input[type=search], select {
+	margin:0;
+	height: 1.625em;
 }
 
 input:hover, select:hover, textarea:hover {
@@ -38,6 +44,10 @@ input:disabled {
 
 input.required {
 
+}
+
+input.hidden {
+	display: none !important;
 }
 
 input[type=submit] {
@@ -77,6 +87,10 @@ input[type=checkbox], input[type=radio] {
 
 label {
 	vertical-align:middle;
+	white-space: nowrap;
+	height: 1.625em;
+	line-height: 1.625em;
+	display: inline-block;
 
 	&.disabled {
 		color: $disabled_input_text;
@@ -94,25 +108,22 @@ div.select_wrapper {
 	background-color: $white;
 	border-radius: 0.5em;
 	display: inline-block;
-	/*padding: 0.125em; */
-	/*margin: 0.125em; */
-	border: 0.125em solid #BBB;
+	//border: 0.125em solid #BBB;
 	vertical-align: middle;
 	width: auto !important;
 	max-width: 100%;
 	box-sizing: border-box;
 
 	select {
-		max-height:1.5em;
 		margin:0em;
 		padding-right: 1.25em;
 		background: transparent;
 		position: relative;
 		z-index: 3;
-		min-height: 22px;
 		cursor: pointer;
 		max-width: 100%;
 		box-sizing: border-box;
+		overflow: hidden;
 	}
 
 	&.error {
@@ -120,7 +131,6 @@ div.select_wrapper {
 	}
 
 	span {
-		//@include button_transitions();
 		position: absolute;
 		top:0;
 		bottom:0;

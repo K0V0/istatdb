@@ -55,7 +55,7 @@ module ItemsTableHelper
 	# obj - one row from AR result set
 	#
 	def items_table_row_administrative_buttons(obj)
-		output = "<td><span>"
+		output = "<td>"
 			output += link_to(
 				t('actions.edit'),
 				{
@@ -65,7 +65,7 @@ module ItemsTableHelper
 				},
 				class: "button edit_item"
 			)
-		output += "</span></td><td><span>"
+		output += "</td><td>"
 			output += link_to(
 				t('actions.delete'),
 				{
@@ -77,7 +77,7 @@ module ItemsTableHelper
 				method: :delete,
 				class: "button danger delete_item"
 			)
-		output += "</span></td>"
+		output += "</td>"
 		return output.html_safe
 	end
 

@@ -87,13 +87,14 @@ button, .button {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0.125em;
 	font-size: 1em;
-	line-height:1em;
 	padding: 0.125em 0.25em;
 	border-radius: 0.25em;
 	border-style: solid;
 	border-width: 0.125em;
 	display: inline-block;
 	vertical-align:middle;
+	box-sizing: border-box;
+	height:1.625em;
 
 	&:after {
 		display: none;
