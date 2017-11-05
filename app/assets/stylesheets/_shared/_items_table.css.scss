@@ -33,6 +33,7 @@ section.items_table {
    				display: block;
 
    				tr {
+   					@include clearfix();
    					display: block;
 
    					th  {
@@ -42,6 +43,11 @@ section.items_table {
    					td, th {
 		   				display: block;
 		   				width: auto !important;
+		   			}
+
+		   			td.edit_item, td.delete_item {
+		   				float: right;
+		   				margin: 0.25em 0;
 		   			}
    				}
    			}

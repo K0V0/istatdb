@@ -245,3 +245,11 @@ $main_menu_mouse_actions_transition_time: 0.30s;
     -ms-transform:rotateX(0deg);
     -webkit-transform:rotateX(0deg);  
 }
+
+@mixin clearfix() {
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
