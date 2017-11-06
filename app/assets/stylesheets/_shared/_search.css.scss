@@ -39,6 +39,10 @@ section.search_bar {
 					padding: 0 0.125em;
 					max-width:100%;
 
+					input[type=text], input[type=search], select {
+						margin:0;
+					}
+
 					input[type=text], input[type=search] {
 						min-width: 14em;
 					}

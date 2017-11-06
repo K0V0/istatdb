@@ -34,25 +34,25 @@ UomsCalculator.prototype = {
 			$(this).siblings().removeClass('selected');
 			$(this).addClass('selected');
 			totok.setVals(
-				parseFloat($(this).children('td.uom_uom').first().text()),
-				parseFloat($(this).children('td.uom_uom_multiplier').first().text()),
-				$(this).children('td.uom_type').first().text()
+				parseFloat($(this).children('td.uoms-uom').first().text()),
+				parseFloat($(this).children('td.uoms-uom_multiplier').first().text()),
+				$(this).children('td.uoms-type').first().text()
 			);
 		});
 	},
 
 	validate: function() {
-		if (
-			(this.count == 0 || isNaN(this.count)) ||
-			(this.result == 0 || isNaN(this.result))
-		) {
-			$('button#add_to_calculator_memory').addClass('disabled');
+		// all conditions must fail if is valid
+		this.valid = true;
+		if (this.count == 0 || this.result == 0) {
+			this.H.handleZeroError();
 			this.valid = false;
 		} 
-		else {
-			$('button#add_to_calculator_memory').removeClass('disabled');
-			this.valid = true;
+		if (isNaN(this.count) || isNaN(this.result)) {
+			this.H.handleNanError();
+			this.valid = false;
 		}
+		this.H.blockAddButton(!(this.valid));
 	},
 
 	calculateResult: function() {
@@ -131,5 +131,25 @@ UomsCalculatorHelper.prototype = {
 
 	sanitizeComma: function(text) {
 		return text.replace(/\,/gi,".");
+	},
+
+	handleNanError: function() {
+
+	},
+
+	handleZeroError: function() {
+
+	},
+
+	blockAddButton: function(block) {
+		if (block === true) {
+			$('button#add_to_calculator_memory')
+				.addClass('disabled')
+				.attr('disabled', 'disabled');
+		} else {
+			$('button#add_to_calculator_memory')
+				.removeClass('disabled')
+				.attr('disabled', false);
+		}
 	}
 }

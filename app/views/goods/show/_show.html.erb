@@ -20,9 +20,9 @@
 
 		object: @record.impexpcompanies,
 
-		fields: [
+		fields: {
 			company_name: {}
-		],
+		},
 
 		options: [
 			head: true,
@@ -39,9 +39,9 @@
 
 		object: @record.manufacturers,
 
-		fields: [
+		fields: {
 			name: {}
-		],
+		},
 
 		options: [
 			head: true,
@@ -60,13 +60,13 @@
 
 			object: @record.uoms,
 
-			fields: [
+			fields: {
 				uom: {},
 				uom_multiplier: {},
 				type: {},
 				manufacturer_name: {},
 				impexpcompany_name: {}
-			],
+			},
 
 			options: [
 				head: true,

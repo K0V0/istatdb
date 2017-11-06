@@ -76,6 +76,8 @@
 	&.disabled, &:disabled {
 		background-color: $button_disabled;
 		color: $button_disabled_text;
+		cursor: not-allowed;
+		border-color: $button_disabled;
 	}
 
 	&.important {

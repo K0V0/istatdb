@@ -19,6 +19,25 @@ section.items_table {
 				}
 			}
 		}
+
+		tfoot {
+
+			tr {
+
+				th {
+
+					div#items_table_total_count {
+						font-size:0.75em;
+						margin-bottom: 0.125em;
+						margin-top: 0.25em;
+
+						b {
+							font-size:1.125em;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
