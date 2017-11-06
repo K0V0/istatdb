@@ -1,60 +1,17 @@
-<% content_for :search_bar do %>
-
-	<section class="search_bar"> 
-
-		<%= search_form_for @search, 
-			url: search_manufacturers_path,
-			remote: true,
-			class: "decorated_wrap" do |s| %> 
-
-			<div>
-				<%= s.label :name %>
-				<%= s.search_field :name_cont, autocomplete: "off", autofocus: "autofocus" %>
-			</div>
-
-			<div>
-
-				<%= s.label :impexpcompany_filter %>
-
-				<div class="select_wrapper">
-
-					<%= s.collection_select :impexpcompany_filter,
-						@impexpcompanies,
-						:id,
-						:company_name,
-						include_blank: t('goods_search.impexpcompany_prompt')
-					%>
-
-					<span></span>
-
-				</div>
-
-			</div>
-
-			<div>
-
-				<%= render 'layouts/shared/actions/add_new_button' %><!--
-
-				--><button id="clear_search" class="button">
-					<%= t 'search.clear' %>
-				</button><!--
-
-				--><button id="reset_search" class="button">
-					<%= t 'search.reset' %>
-				</button><!--
-
-				--><%= render 'layouts/shared/actions/go_to_administrative' %><!--
-
-				--><button id="search_good_on_google" class="button">
-					<%= t 'goods_search.google' %>
-				</button><!--
-
-				--><%= render('layouts/shared/actions/search_or_back_button', s: s) %>
-
-			</div>
-
-		<% end %>
-
-	</section>
+<%= render(
+	layout: 'layouts/shared/search',
+	locals: {
+		main_fields: { 
+			name: :name_cont
+		},
+		actions: [
+			:add,
+			:clear_fields,
+			:clear_all,
+			:administrative,
+			:google_search
+		]
+	}
+) do %>
 
 <% end %>
