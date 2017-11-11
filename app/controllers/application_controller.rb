@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   before_action() {
     @MEM = Mem.new(session) if !defined? @MEM
 
-    @body_class = "noscroll" if action_name == 'index'
+    @body_class = action_name
+    @body_class += " noscroll" if action_name == 'index'
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction

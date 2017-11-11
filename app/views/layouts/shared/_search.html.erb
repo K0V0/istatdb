@@ -17,7 +17,7 @@
 				<% main_fields.each_with_index do |(k, v), index| %>
 					<div>
 						
-						<span> <%= s.label k %> </span>
+						<span> <%= s.label v %> </span>
 						
 						<span class="searchform_inputfield_wrap">
 							<%= s.search_field(
@@ -48,7 +48,7 @@
 				<% main_fields.each_with_index do |(k, v), index| %>
 					<div class="disable_on_smallscreen">
 						
-						<span> <%= s.label k %> </span>
+						<span> <%= s.label v %> </span>
 						
 						<span class="searchform_inputfield_wrap">
 							<%= s.search_field(
