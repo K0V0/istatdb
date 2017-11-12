@@ -8,6 +8,7 @@ section.items_table {
 	overflow-y: auto;
 	background-color: $group_background;
 	box-sizing: border-box;
+	//text-overflow: ellipsis;
 
 	table {
 
@@ -62,8 +63,9 @@ section.items_table {
    					}
 
    					td, th {
-		   				display: block;
-		   				width: auto !important;
+   						box-sizing: border-box;
+		   				display: inline-block;
+		   				//width: auto !important;
 		   			}
 
 		   			td.edit_item, td.delete_item {

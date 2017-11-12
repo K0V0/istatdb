@@ -1,0 +1,59 @@
+@import "variables";
+
+article.goods { 
+
+	section {
+
+		table#uoms_calculator_input {
+
+   			tbody {
+   				display: block;
+   				background-color: $grey_2n;
+
+   				tr {
+   					display: block;
+   					padding: 0.25em 0;
+   					@include clearfix();
+
+   					&:last-child {
+   						
+   						td {
+   							width: 100%;
+   						}
+   					}
+
+   					td {
+   						display: block;
+   						box-sizing: border-box;
+
+   						input {
+   							width: 100%;
+   							height:1.625em;
+   							margin:0;
+   							text-align: right;
+   						}
+
+   						label {
+   							height:1.625em;
+   						}
+   					}
+
+	   				td:first-child {
+						float: left;
+					}
+
+					td:last-child {
+						min-width: 8em;
+					}
+				}
+   			}
+		}
+
+		@media only screen and (max-width: 480px) { 
+
+			table#uoms_calculator_input {
+				
+			}
+		}
+	}
+}

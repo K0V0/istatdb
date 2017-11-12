@@ -1,34 +1,41 @@
 
-table#goods {
+article.goods { 
 
-	td {
+	section {
 
-		&.local_tarics-kncode {
-			white-space: nowrap;
-			width:1%;
+		table#goods {
+
+			td {
+
+				&.local_tarics-kncode {
+					white-space: nowrap;
+					width:1%;
+				}
+
+				&.goods-ident {
+					width:1%;
+					white-space: nowrap;
+				}
+			}
 		}
 
-		&.goods-ident {
-			width:1%;
-			white-space: nowrap;
+		@media only screen and (max-width: 480px) {
+		   
+		   table#goods {
+
+		   		td, th {
+		   			width: 100% !important;
+
+		   			&.goods-ident {
+						font-weight: bold;
+					}
+
+					&.local_tarics-kncode {
+						text-align: right;
+						font-style: italic;
+					}
+		   		}
+		   	}
 		}
 	}
-}
-
-@media only screen and (max-width: 480px) {
-   
-   table#goods {
-
-   		td, th {
-
-   			&.goods-ident {
-				font-weight: bold;
-			}
-
-			&.local_tarics-kncode {
-				text-align: right;
-				font-style: italic;
-			}
-   		}
-   	}
 }

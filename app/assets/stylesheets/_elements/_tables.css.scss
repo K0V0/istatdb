@@ -9,6 +9,8 @@ table {
 
 	th, td {
 		padding: 0 0.25em;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 
 	td:first-child {
@@ -99,6 +101,23 @@ table.rows_colored {
 
 			&:nth-child(2n-1) {
 				background-color: $odd_table_line_color;
+			}
+		}
+	}
+
+	&.darker {
+
+		tbody {
+
+			tr {
+
+				&:nth-child(2n) {
+					background-color: $base_grey;
+				}
+
+				&:nth-child(2n-1) {
+					background-color: $even_table_line_color;
+				}
 			}
 		}
 	}

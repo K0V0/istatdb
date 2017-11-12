@@ -42,17 +42,3 @@ table#uomscalc_list {
 		}	
 	}
 }
-
-table.uom_calculator {
-
-	tbody {
-		border-top: 0.375em solid transparent;
-		border-bottom: 0.375em solid transparent;
-		background-color: #CCC;
-
-		tr:last-child {
-			border-top: 0.25em solid transparent;
-			border-bottom: 0.375em solid transparent;
-		}
-	}
-}

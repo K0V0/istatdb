@@ -3,4 +3,94 @@
 
 <%= render 'goods/shared/search' %>
 
-<%= render 'goods/show/show' %>
+<article class="goods">
+
+	<%= render('layouts/shared/show_item_basic_info', 
+		fields: [
+			[:ident, :description],
+			[
+				[
+					:local_taric,
+					kncode: {
+						call_decorator: :num_to_kncode,
+						is_link: true
+					}
+				],
+				[:local_taric, :description]
+			]
+		]
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.impexpcompanies,
+
+		fields: {
+			company_name: {}
+		},
+
+		options: [
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true
+		]
+
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.manufacturers,
+
+		fields: {
+			name: {}
+		},
+
+		options: [
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true
+		]
+
+	) %>
+
+	<% if @record.uoms.any? %>
+
+		<%= render('layouts/shared/items_table',
+
+			object: @record.uoms,
+
+			fields: {
+				uom: {},
+				uom_multiplier: {},
+				type: {},
+				manufacturer_name: {},
+				impexpcompany_name: {}
+			},
+
+			options: [
+				head: true,
+				foot: true,
+				html_options: {
+					main_class: "shrinked",
+					table_class: "calc_uom_select"
+				},
+				not_editable: true
+			]
+
+		) %>
+
+		<%= render('goods/show/uom_input') %>
+
+		<input type="hidden" id="good_id" value="<%= @record.id %>">
+
+	<% end %>
+
+	<%= render('/goods/show/calculator_list') %>
+
+</article>

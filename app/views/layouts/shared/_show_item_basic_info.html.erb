@@ -2,11 +2,12 @@
 if !defined? object
 	object = @record
 end
+cn = "#{controller_name}-baseinfo"
 %>
 
 <section class="decorated_wrap shrinked">
 
-	<table class="rows_colored">
+	<table class="rows_colored" id="<%= cn %>">
 
 		<thead>
 			<tr>

@@ -1,5 +1,4 @@
 <%
-cn = controller_name.to_s
 html_class_main = "items_table decorated_wrap"
 html_class_table = "items rows_colored with_efects"
 editable = true
@@ -8,6 +7,8 @@ if !defined? object
 	object = @result
 end
 
+cn = controller_name.to_s
+cn += "-#{object.first.class.name.underscore}" if action_name != 'index' 
 html_class_table += " no_results" if object.length == 0 
 
 if defined? options
@@ -38,7 +39,7 @@ end
 					<% end %>
 
 					<tr>
-						<%= items_table_head(fields) %>
+						<%= items_table_head(fields, object.model) %>
 					</tr>
 					
 				</thead>

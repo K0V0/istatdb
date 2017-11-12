@@ -1,6 +1,6 @@
-<section class="decorated_wrap shrinked">
+<section class="decorated_wrap shrinked items_table">
 
-	<table class="uom_calculator">
+	<table id="uoms_calculator_input" class="rows_colored">
 
 		<thead>
 			<tr>
@@ -32,7 +32,9 @@
 
 			<tr>
 				<td>
-					<label> <%= t('goods.uoms_calculator.count') %> </label>
+					<label for="uom_count">
+						<%= t('goods.uoms_calculator.count') %>
+					</label>
 				</td>
 
 				<td>
@@ -42,7 +44,9 @@
 
 			<tr>
 				<td>
-					<label> <%= t('goods.uoms_calculator.price') %> </label>
+					<label for="uom_result">
+						<%= t('goods.uoms_calculator.price') %>
+					</label>
 				</td>
 
 				<td>

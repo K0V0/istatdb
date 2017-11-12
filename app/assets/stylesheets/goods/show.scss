@@ -1,9 +1,39 @@
 @import "variables";
 
-article.show_good {
+@media only screen and (max-width: 480px) {
 
-	section {
-		margin-right: 0.75em;
-		float: left;
+	article.goods {
+
+		section {
+
+			table#goods-impexpcompany, table#goods-manufacturer {
+
+				th {
+					font-weight: bold;
+				}
+			}
+
+			table#goods-uom {
+
+				th, td {
+
+					&.uoms-uom, &.uoms-uom_multiplier, &.uoms-type  {
+						width:33.33%;
+					}
+
+					&.uoms-manufacturer_name, &.uoms-impexpcompany_name {
+						width:50%;
+					}
+
+					&.uoms-uom, &.uoms-uom_multiplier {
+						font-weight: bold;
+					}
+
+					&.uoms-manufacturer_name, &.uoms-impexpcompany_name {
+						font-style: italic;
+					}
+				}
+			}
+		}
 	}
 }
