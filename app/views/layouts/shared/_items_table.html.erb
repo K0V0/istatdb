@@ -8,7 +8,12 @@ if !defined? object
 end
 
 cn = controller_name.to_s
-cn += "-#{object.first.class.name.underscore}" if action_name != 'index' 
+case action_name
+	when 'index', 'administrative', 'end_administrative'
+		
+	else
+		cn += "-#{object.first.class.name.underscore}"
+	end 
 html_class_table += " no_results" if object.length == 0 
 
 if defined? options

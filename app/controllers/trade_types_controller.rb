@@ -1,10 +1,10 @@
 class TradeTypesController < ApplicationController
 
-    private
+	before_action do 
+		is_subsection_of(parent_controller: :settings)
+	end
 
-    def searcher_settings
-    	{ paginate: true, autoshow: false }
-    end
+    private
 
     def permitted_params
       params[:trade_type].permit(:id, :type, :description)

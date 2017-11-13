@@ -2,7 +2,7 @@
 
 table {
 	background-color: $group_background;
-	border-radius: 0.25em;
+	border-radius: 0.5em;
 	border-collapse: collapse;
 	position: relative;
 	z-index: 0;
@@ -26,13 +26,16 @@ table {
 	}
 
 	caption {
-		border-top-left-radius: 0.25em;
-		border-top-right-raduis: 0.25em;
 		text-align:left;
-		background-color: inherit;
-		padding: 0 0.25em;
+		padding: 0 0.5em;
 		font-weight: bold;
-		line-height: 1.25em;
+		box-sizing: border-box;
+		border-top-left-radius: 0.4375em;
+		border-top-right-radius: 0.4375em;
+		width:100%;
+		line-height: 1.5em;
+		border-bottom: 0.125em solid $wrap_border_color;
+		background-color: $wrap_border_color_2;
 	}
 
 	thead {

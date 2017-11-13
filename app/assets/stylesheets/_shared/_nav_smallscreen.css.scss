@@ -26,36 +26,45 @@
 			@include menu_open_smallscreen_transitions();
 			max-height: 0;
 			overflow: hidden;
+			background-color: $background-color;
 
 			div {
 
 				&.main, &.sub {
 					margin:0;
-					padding:0.125em;
+					padding:0 0.375em;
+					padding-top: 0.375em;
+				}
+
+				&.sub {
+					margin-top: 0.375em;
+					padding-bottom: 0.375em;
+
 				}
 
 				ul {
 
 					&.top_menu {
 						@include rotate_cancel();
+						padding:0;
 
 						li {
 							@include rotate_cancel();
 							display: block;
-
-							&, &:first-child, &:last-child {
-								padding:0.125em;
-							}
+							height: auto;
+							padding: 0;
 
 							a {
+								line-height: 1em;
 								border-radius:0.25em;
 								padding: 0.125em 0.25em;
-								display: table;
+								margin: 0.1em;
+								display: inline-block;
 							}
 						}
 
 						&.main {
-
+							
 						}
 
 						&.sub {

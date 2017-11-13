@@ -1,0 +1,89 @@
+table#uomscalc_list {
+
+	td, th {
+
+		&.uomscalc_mem_good {
+			white-space: nowrap;
+			font-weight: bold;
+		}
+
+		&.uomscalc_mem_result {
+			font-weight: bold;
+			text-align:right;
+		}
+
+		&.uomscalc_mem_count {
+			text-align:right;
+		}
+	}
+	
+	thead {
+		font-weight: normal;
+	}
+
+	tfoot {
+
+		tr {
+			line-height: 1.25em;
+
+			td {
+
+				&.uomscalc_list_cp {
+					text-align:right;
+					padding-bottom: 0.25em;
+				}
+
+				strong {
+					font-size: 1.25em;
+				}
+			}
+		}	
+	}
+
+	@media only screen and (max-width: 480px) { 
+
+		td, th {
+
+			&.uomscalc_mem_good {
+				width: 100%
+			}
+
+			&.uomscalc_mem_result {
+				width: 50%;
+				float:right;
+			}
+
+			&.uomscalc_mem_count, &.uomscalc_mem_uom {
+				width:50%;
+			}
+
+			&.uomscalc_mem_count, &.uomscalc_mem_uom {
+				width:50%;
+			}
+
+			&.uomscalc_mem_uom {
+				float: left;
+				font-style: italic;
+			}
+		}
+
+		tfoot {
+			display: block;
+			width: 100%;
+
+			tr {
+				display: block;
+				width: 100%;
+
+				&:first-child {
+					text-align: left;
+				}
+
+				td {
+					display: block;
+				}
+			}
+		}
+	}
+}
+

@@ -24,7 +24,14 @@ article.goods {
 		   table#goods {
 
 		   		td, th {
-		   			width: 100% !important;
+
+		   			&.inner_table {
+		   				width: 100%;
+		   			}
+
+		   			&.goods-ident, &.local_tarics-kncode, &.goods-description {
+		   				width: 100%;
+		   			}
 
 		   			&.goods-ident {
 						font-weight: bold;
