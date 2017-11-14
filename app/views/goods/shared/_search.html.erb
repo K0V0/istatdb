@@ -3,7 +3,7 @@
 		layout: 'layouts/shared/search',
 		locals: {
 			main_fields: { 
-				ident: :ident_or_description_cont
+				ident: [:ident_or_description_cont, :ident_cont]
 			},
 			actions: [
 				:add,
@@ -21,17 +21,20 @@
 			<%= check_box_tag(
 				'q[search_both]',
 				1,
-				false
+				params[:q].has_key?("search_both")
 			) %>
 		</span>
 		<span>
-			<%= @s.label :description_cont %>
+			<%= @s.label(
+				:description_cont,
+				class: params[:q].has_key?("search_both") ? "" : "disabled"
+			) %>
 		</span>
 		<span class="searchform_inputfield_wrap">
 			<%= @s.search_field(
 				:description_cont,
 			 	autocomplete: "off",
-			 	disabled: true
+			 	disabled: !params[:q].has_key?("search_both")
 			) %>
 		</span>
 	</div>

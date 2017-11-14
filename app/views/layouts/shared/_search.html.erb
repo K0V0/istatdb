@@ -15,20 +15,12 @@
 			<div class="searchform_main_fields disable_on_bigscreen">
 
 				<% main_fields.each_with_index do |(k, v), index| %>
+
 					<div>
-						
-						<span> <%= s.label v %> </span>
-						
-						<span class="searchform_inputfield_wrap">
-							<%= s.search_field(
-								v,
-								autocomplete: "off",
-								autofocus: index == 0 ? "autofocus" : false
-							) %>
-						</span>
+
+						<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
 
 						<% if index+1 == main_fields_cnt %>
-
 							<label 
 								class="button" 
 								for="show_searchpanel_opts" 
@@ -36,8 +28,8 @@
 							>
 								&#9776;
 							</label>
-
 						<% end %>
+
 					</div>
 				<% end %>
 
@@ -47,16 +39,8 @@
 
 				<% main_fields.each_with_index do |(k, v), index| %>
 					<div class="disable_on_smallscreen">
-						
-						<span> <%= s.label v %> </span>
-						
-						<span class="searchform_inputfield_wrap">
-							<%= s.search_field(
-								v,
-								autocomplete: "off",
-								autofocus: index == 0 ? "autofocus" : false
-							) %>
-						</span>
+
+						<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
 
 					</div>
 				<% end %>
