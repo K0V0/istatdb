@@ -247,3 +247,40 @@ table.inner_table {
 		}
 	}
 }
+
+table.for_nontabular {
+
+	caption {
+		display: block;
+		border-top-right-radius: 0.25em;
+	}
+
+	tbody, thead {
+		display: block;
+		background-color: $grey_2n;
+
+		tr {
+			display: block;
+			padding: 0.25em 0;
+   			@include clearfix();
+
+			td {
+				display: block;
+				box-sizing: border-box;
+
+				&:first-child {
+					float: left;
+				}
+
+				&:last-child {
+					min-width: 2em;
+				}
+			}
+		}
+	}
+
+	tbody {
+		border-bottom-right-radius: 0.25em;
+		border-bottom-left-radius: 0.25em;
+	}
+}

@@ -2,4 +2,27 @@
 
 <%= render 'layouts/base/main_menu' %>
 
+<%= form_tag settings_path do %>
+
+	<section class="decorated_wrap shrinked">
+
+		<table class="for_nontabular">
+
+			<caption> 
+				<%= t('settings.general.gui_section') %>
+			</caption>
+
+			<tbody>
+				<tr> <%= render 'settings/misc/per_page' %> </tr>
+				<tr> <%= render 'settings/misc/show_footer' %> </tr>
+			</tbody>
+
+		</table>
+
+	</section>
+
+<% end %>
+
+
+
 

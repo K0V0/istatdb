@@ -7,13 +7,8 @@ article.goods {
 		table#uoms_calculator_input {
 
    			tbody {
-   				display: block;
-   				background-color: $grey_2n;
 
    				tr {
-   					display: block;
-   					padding: 0.25em 0;
-   					@include clearfix();
 
    					&:last-child {
    						
@@ -23,8 +18,10 @@ article.goods {
    					}
 
    					td {
-   						display: block;
-   						box-sizing: border-box;
+
+   						&:last-child {
+							min-width: 8em;
+						}
 
    						input {
    							width: 100%;
@@ -37,14 +34,6 @@ article.goods {
    							height:1.625em;
    						}
    					}
-
-	   				td:first-child {
-						float: left;
-					}
-
-					td:last-child {
-						min-width: 8em;
-					}
 				}
    			}
 		}
