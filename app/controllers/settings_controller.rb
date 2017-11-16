@@ -9,6 +9,10 @@ class SettingsController < ApplicationController
 	end	
 
 	def update_settings
+		Rails.logger.info "======================"
+		Rails.logger.info params[:settings].keys
+		a = Setting.where(k: params[:settings].keys)
+		Rails.logger.info a
 		render :index
 	end
 
