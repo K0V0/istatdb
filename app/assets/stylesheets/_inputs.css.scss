@@ -64,12 +64,17 @@ input[type=checkbox], input[type=radio] {
 	display: block;
 	border:0.25em solid $button_disabled;
 	background-color: $soft_black !important;
-	border-radius:0.5em;
+	border-radius:0.625em;
 	margin:0;
 	padding:0;
 	width:0.875em;
 	height:0.875em;
 	cursor:pointer;
+
+	&.big {
+		width:1.125em;
+		height:1.125em;
+	}
 
 	&:hover {
 		border-color: $button_disabled_hover !important;

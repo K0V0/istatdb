@@ -21,7 +21,8 @@
 			<%= check_box_tag(
 				'q[search_both]',
 				1,
-				params[:q].has_key?("search_both")
+				params[:q].has_key?("search_both"),
+				class: "big"
 			) %>
 		</span>
 		<span>

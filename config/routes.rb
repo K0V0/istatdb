@@ -255,6 +255,10 @@ Rails.application.routes.draw do
     to: "settings#index",
     as: "settings"
 
+  #ulozenie nastaveni
+  post "settings",
+    to: "settings#update_settings"
+
 
   ### Nastavenia - uoms
 

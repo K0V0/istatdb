@@ -2,26 +2,30 @@
 
 <%= render 'layouts/base/main_menu' %>
 
-<%= form_tag settings_path do %>
+<article class="settings">
 
-	<section class="decorated_wrap shrinked">
+	<%= form_tag settings_path, remote: true do %>
 
-		<table class="for_nontabular">
+		<section class="decorated_wrap shrinked">
 
-			<caption> 
-				<%= t('settings.general.gui_section') %>
-			</caption>
+			<table class="for_nontabular">
 
-			<tbody>
-				<tr> <%= render 'settings/misc/per_page' %> </tr>
-				<tr> <%= render 'settings/misc/show_footer' %> </tr>
-			</tbody>
+				<caption> 
+					<%= t('settings.general.gui_section') %>
+				</caption>
 
-		</table>
+				<tbody>
+					<tr> <%= render 'settings/misc/per_page' %> </tr>
+					<tr> <%= render 'settings/misc/show_footer' %> </tr>
+				</tbody>
 
-	</section>
+			</table>
 
-<% end %>
+		</section>
+
+	<% end %>
+
+</article>
 
 
 

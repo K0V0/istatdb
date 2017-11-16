@@ -11,17 +11,7 @@ class ApplicationController < ActionController::Base
     @model = model_exist?
   end
 
-  before_action() {
-    @MEM = Mem.new(session) if !defined? @MEM
-
-    @body_class = action_name
-    @body_class += " noscroll" if action_name == 'index'
-    remember_param :page    ## page number
-    remember_param :q       ## search
-    remember_sortlink       ## sort link direction
-
-    is_subsection_of
-  }
+  before_action :inits
 
   before_action(only: [:index, :search, :show, :administrative]) {
     searcher_for(
@@ -122,6 +112,20 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def inits
+  	@MEM = Mem.new(session) if !defined? @MEM
+
+    @body_class = action_name
+    @body_class += " noscroll" if action_name == 'index'
+    remember_settings
+    remember_param :page    ## page number
+    remember_param :per if @MEM.settings.per_page != nil ## results per page
+    remember_param :q       ## search
+    remember_sortlink       ## sort link direction
+
+    is_subsection_of
+  end
 
   def is_subsection_of(parent_controller: nil)
 	@render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
@@ -233,59 +237,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_create_update_vars
-  end
-
-  def remember_param param
-    controller_mem_set(param, params[param]) if params.has_key? param
-    params[param] = controller_mem_get(param)
-  end
-
-  def remember_sortlink
-    if params.deep_has_key? :q, :s
-      controller_mem_set :s, params[:q][:s]
-    elsif params.has_key? :q && !params[:q].blank?
-      params[:q].merge!({ s: controller_mem_get(:s) })
-    end
-  end
-
-  def remember_allow_search_as_new
-  	regex_to_get_assoc_model = /([a-z_]+)_attributes/
-  	singular_controller_name = controller_name.singularize
-  	pars = params[singular_controller_name]
-
-  	if action_name == "new"
-  		# clear mem to not have turned on buttons on new forms
-  		@MEM.send("allow_add_new=", {})
-  	elsif action_name == "create"
-  		nested_attrs_keys = pars.keys.select { |i| i[regex_to_get_assoc_model] }
-	  	nested_attrs_keys.each do |na|
-	  		if pars[na].keys.first == "0"
-	  		 	# is has_many association
-	  		 	to_mem = @MEM.allow_add_new
-	  		 	pars[na].each do |par|
-	  		 		if par[1].key? :allow_search_as_new
-	  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, '')
-	  		 			is_adding_allowed = par[1][:allow_search_as_new] == "1"
-	  		 			to_mem[assoc_model_name] = is_adding_allowed
-	  		 		end
-	  		 	end
-	  		 	@MEM.send("allow_add_new=", to_mem)
-	  		 else
-	  		 	# is single association
-	  		 end
-  		end
-  	end
-  end
-
-  def controller_mem_set prefix, val
-    @MEM.send(
-      "#{prefix.to_s}_#{controller_name.singularize.underscore}=",
-      val
-    )
-  end
-
-  def controller_mem_get prefix
-    @MEM.send("#{prefix.to_s}_#{controller_name.singularize.underscore}")
   end
 
 end

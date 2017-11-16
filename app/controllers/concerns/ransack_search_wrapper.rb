@@ -4,9 +4,6 @@ module RansackSearchWrapper
 
 		params[:q] = [] if disabled
 
-		#Rails.logger.info "------------------------"
-		#Rails.logger.info controller_name.classify.constantize
-
 	    object ||= controller_name.classify.constantize.try(:default_order)
 	    if !object.nil?
 		    @search = object.ransack(params[:q]) if joins.nil?
@@ -14,6 +11,7 @@ module RansackSearchWrapper
 		    @result = @search.result if preload.nil?
 		    @result = @search.result.send(:preload, preload) if !preload.nil?
 		    @result = @result.page(params[:page]) if !paginate.nil?
+		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
 
 		    if @result.count == 1 && !request.xhr?.nil? && autoshow && action_name == "search"
 		    	redirect_to controller: controller_name, action: :show, id: @result.first.id
