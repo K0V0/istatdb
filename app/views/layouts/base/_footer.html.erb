@@ -1,12 +1,16 @@
 <footer>
 
-	<div>
-		<%= t('footer.text') %>
-		<%= link_to t('footer.link_text'), t('footer.link') %>
-	</div>
+	<% if @MEM.settings.show_footer == "1" %>
+		<section class="ads">
+			<div>
+				<%= t('footer.text') %>
+				<%= link_to t('footer.link_text'), t('footer.link') %>
+			</div>
 
-	<div>
-		<%= "#{t('footer.created_by')} #{t('footer.creator')}" %>
-	</div>
+			<div>
+				<%= "#{t('footer.created_by')} #{t('footer.creator')}" %>
+			</div>
+		</section>
+	<% end %>
 	
 </footer>

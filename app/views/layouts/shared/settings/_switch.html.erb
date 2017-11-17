@@ -1,0 +1,12 @@
+<td> 
+
+	<input type="hidden" name="settings[<%= name %>]" value="0">
+
+	<input 
+		type="checkbox" 
+		name="settings[<%= name %>]" 
+		value="1" 
+		class="big settings"
+		<%= "checked" if @MEM.settings.send(name) == "1" %>
+	>
+</td>

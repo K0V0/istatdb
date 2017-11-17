@@ -72,7 +72,7 @@ module ApplicationConcern
 	end
 
 	def apicall_render(type_of_assoc)
-		render("layouts/shared/new_#{type_of_assoc.to_s}_assoc")
+		render("layouts/shared/new_edit_form/#{type_of_assoc.to_s}")
 	end
 
 	def remember_param param

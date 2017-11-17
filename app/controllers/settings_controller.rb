@@ -9,10 +9,12 @@ class SettingsController < ApplicationController
 	end	
 
 	def update_settings
-		Rails.logger.info "======================"
-		Rails.logger.info params[:settings].keys
-		a = Setting.where(k: params[:settings].keys)
-		Rails.logger.info a
+		settings = Setting.where(k: params[:settings].keys)
+		settings.each do |setting|
+			setting.v = params[:settings][setting.k]
+			setting.save
+		end
+		@MEM.settings = Setting.load
 		render :index
 	end
 

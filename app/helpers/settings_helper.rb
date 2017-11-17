@@ -2,16 +2,16 @@ module SettingsHelper
 
 	# keys in input hash - actual value for option
 	# values - option texts 
-	def get_options_from_options(valshash)
+	def get_options_from_options(valshash: {}, setting_name: "")
 
 		output = ""
 		valshash.each do |k, v|
-			stringified_key = k.to_s
-			is_selected = @MEM.settings.send(stringified_key) == stringified_key
+			
+			is_selected = @MEM.settings.send(setting_name) == k.to_s
 
 			output += "<option 
-				value=\"#{stringified_key}\"
-				selected=\"#{is_selected}\"
+				value=\"#{k.to_s}\"
+				#{('selected=\"selected\"' if is_selected)}
 				>
 				#{v}
 				</option>"

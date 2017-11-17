@@ -6,7 +6,7 @@ en:
       incoterms: Incoterms
 
     general:
-      gui_section: Graphical interface settings
+      gui_section_window_title: Graphical interface settings
       per_page: Number of results to be shown
       show_footer: Show footer (bottom strip with ads)
 
@@ -18,6 +18,6 @@ sk:
       incoterms: Dodacie podmienky
 
     general:
-      gui_section: Grafické rozhranie
+      gui_section_window_title: Grafické rozhranie
       per_page: Počet výsledkov zobrazených na jednu stránku
       show_footer: Zobraziť pätu (spodný pruh s reklamou)

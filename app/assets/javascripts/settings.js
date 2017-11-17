@@ -1,4 +1,4 @@
-function SETTINGS_onready() {
+function SETTINGS_onexclusive() {
 
 	var SUBMIT_SETTINGS = new submitOnChange();
 	

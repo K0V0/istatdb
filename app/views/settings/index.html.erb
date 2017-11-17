@@ -6,22 +6,27 @@
 
 	<%= form_tag settings_path, remote: true do %>
 
-		<section class="decorated_wrap shrinked">
+		<%= settings(
+			section: :gui,
 
-			<table class="for_nontabular">
+			settings: {
 
-				<caption> 
-					<%= t('settings.general.gui_section') %>
-				</caption>
+				per_page: {
+					type: :select,
+					options: {
+						10 => "10",
+						20 => "20",
+						25 => "25",
+						50 => "50",
+						100 => "100"
+					}
+				},
 
-				<tbody>
-					<tr> <%= render 'settings/misc/per_page' %> </tr>
-					<tr> <%= render 'settings/misc/show_footer' %> </tr>
-				</tbody>
-
-			</table>
-
-		</section>
+				show_footer: {
+					type: :switch
+				}
+			}
+		) %>
 
 	<% end %>
 

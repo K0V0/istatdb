@@ -5,7 +5,7 @@
 
 	<%= form_for @record do |t| %>
 
-		<%= render('layouts/shared/new_main',
+		<%= new_edit(
 			obj: t,
 			fields: {
 				ident: { 
@@ -19,7 +19,7 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_belongs_to_assoc',
+		<%= new_edit(
 			obj: t,
 			assoc: :local_taric,
 			fields: {
@@ -30,7 +30,7 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_has_many_assoc',
+		<%= new_edit(
 			obj: t,
 			assoc: :impexpcompanies,
 			fields: {
@@ -38,7 +38,7 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_has_many_assoc',
+		<%= new_edit(
 			obj: t,
 			assoc: :manufacturers,
 			fields: {
@@ -54,9 +54,7 @@
 			<% end %>
 		</aside>
 
-		<%= render('layouts/shared/new_submit',
-			obj: t
-		) %>
+		<%= new_edit(obj: t, type: :submit) %>
 
 	<% end %>
 

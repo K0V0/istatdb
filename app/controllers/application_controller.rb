@@ -119,8 +119,8 @@ class ApplicationController < ActionController::Base
     @body_class = action_name
     @body_class += " noscroll" if action_name == 'index'
     remember_settings
+    params[:per] = @MEM.settings.per_page
     remember_param :page    ## page number
-    remember_param :per if @MEM.settings.per_page != nil ## results per page
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
 

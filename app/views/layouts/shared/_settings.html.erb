@@ -1,0 +1,32 @@
+
+<section class="decorated_wrap shrinked">
+
+	<table class="for_nontabular">
+
+		<caption> 
+			<%= t("settings.general.#{section.to_s}_section_window_title") %>
+		</caption>
+
+		<tbody>
+			<% settings.each do |setting_name, options| %>
+
+				<tr>
+					<td>
+						<label for="settings_<%= setting_name %>">
+							<%= t("settings.general.#{setting_name}") %>
+						</label>
+					</td>
+
+					<%= render(
+						"layouts/shared/settings/#{options[:type].to_s}",
+						name: setting_name.to_s,
+						options: options
+					) %>
+				</tr>
+
+			<% end %>
+		</tbody>
+
+	</table>
+
+</section>
