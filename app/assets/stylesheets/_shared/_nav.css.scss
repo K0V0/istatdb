@@ -4,136 +4,132 @@ nav {
 	flex: 0 1 auto;
 	z-index: 999;
 
-		label.show_topmenu {
-			display: none;
+	label.show_topmenu {
+		display: none;
+	}
+
+	div#top_menu_container {
+
+		div {
+
+			&.main, &.sub {
+				padding-top:0.25em;
+			}
+
+			&.main {
+				@include scrollbar_top_menu_main();
+				background-color: $background_color;
+				color: $white;
+				margin-top:0.125em;
+			}
+
+			&.sub {
+				@include scrollbar_top_menu_sub();
+				@include menu_transitions();
+				background-color: $sub_menu_background;
+				color: $sub_menu_inactive_link_text;
+
+				&:hover {
+					@include scrollbar_top_menu_sub_hover();
+				}
+			}
 		}
+	}
 
-		div#top_menu_container {
+	ul {
+		margin: 0em;
+		padding: 0;
+		font-family:amsans;
+		font-size: 1.25em;
 
-			div {
+		li {
+			display: table-cell;
 
-				&.main, &.sub {
-					padding-top:0.25em;
+			a {
+				@include menu_transitions();
+				color: inherit;
+				display: block;
+				text-decoration:none;
+
+				&:hover {
+					background-color: $main_menu_inactive_link_hover;
 				}
-
-				&.main {
-					@include scrollbar_top_menu_main();
-					background-color: $background_color;
-					color: $white;
-					margin-top:0.125em;
-				}
-
-				&.sub {
-					@include scrollbar_top_menu_sub();
-					@include menu_transitions();
-					background-color: $sub_menu_background;
-					color: $sub_menu_inactive_link_text;
-
+				&.active {
+					background-color: $main_menu_active_link;
+					color: $main_menu_active_link_text;
 					&:hover {
-						@include scrollbar_top_menu_sub_hover();
+						background-color: $main_menu_active_link;
 					}
 				}
 			}
 		}
 
-		ul {
-			margin: 0em;
-			padding: 0;
-			font-family:amsans;
-			font-size: 1.25em;
+		&.top_menu {
+			@include rotate_upside_down(); /*scrollbar on top hack*/
+			overflow-x: auto;
+			padding-bottom: 0.125em; /* aplied to top */
 
 			li {
-				display: table-cell;
+				@include rotate_upside_down();
+				vertical-align: bottom;
+
+				&:first-child {
+					padding-left: 0.5em;
+				}
+
+				&:last-child {
+					padding-right: 0.5em;
+				}
 
 				a {
-					color: inherit;
-					display: block;
-					text-decoration:none;
+					@include menu_transitions();
+					padding: 0 0.25em;
+					padding-top: 0.25em;
+					padding-bottom: 0.125em;
+					border-top-right-radius: 0.25em;
+					border-top-left-radius: 0.25em;
 				}
 			}
 
-			&.top_menu {
-				@include rotate_upside_down(); /*scrollbar on top hack*/
-				overflow-x: auto;
-				padding-bottom: 0.125em; /* aplied to top */
+			&.main {
+				
+				&.has_submenu {
+
+					li {
+
+						a {
+							&.active {
+								background-color: $sub_menu_background;
+								&:hover {
+									background-color: $main_menu_2_submenu_active_link_hover;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.sub {
 
 				li {
-					@include rotate_upside_down();
-					vertical-align: bottom;
-
-					&:first-child {
-						padding-left: 0.5em;
-					}
-
-					&:last-child {
-						padding-right: 0.5em;
-					}
 
 					a {
-						@include menu_transitions();
-						padding: 0 0.25em;
-						padding-top: 0.25em;
-						padding-bottom: 0.125em;
-						border-top-right-radius: 0.25em;
-						border-top-left-radius: 0.25em;
-					}
-				}
-
-				&.main {
-					
-					li {
-
-						a {
+						&:hover {
+							background-color: $sub_menu_inactive_link_hover;
+							color: $sub_menu_inactive_link_text_hover;
+						}
+						&.active {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
 							&:hover {
-								background-color: $main_menu_inactive_link_hover;
-							}
-							&.active {
 								background-color: $main_menu_active_link;
 								color: $main_menu_active_link_text;
-								&:hover {
-									background-color: $main_menu_active_link;
-								}
-							}
-						}
-					}
-
-					&.has_submenu {
-
-						li {
-
-							a {
-								&.active {
-									background-color: $sub_menu_background;
-									&:hover {
-										background-color: $main_menu_2_submenu_active_link_hover;
-									}
-								}
-							}
-						}
-					}
-				}
-
-				&.sub {
-
-					li {
-
-						a {
-							&:hover {
-								background-color: $sub_menu_inactive_link_hover;
-								color: $sub_menu_inactive_link_text_hover;
-							}
-							&.active {
-								background-color: $main_menu_active_link;
-								color: $main_menu_active_link_text;
-								&:hover {
-									background-color: $main_menu_active_link;
-									color: $main_menu_active_link_text;
-								}
 							}
 						}
 					}
 				}
 			}
 		}
+	}
 }
 

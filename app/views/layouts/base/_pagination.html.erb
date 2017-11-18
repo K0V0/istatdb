@@ -1,3 +1,5 @@
-<div id="pagination">
-	<%= paginate(@result, remote: true) %>
-</div>
+<% if !@result.nil? %>
+	
+		<%= paginate(@result, remote: true) %>
+	
+<% end %>

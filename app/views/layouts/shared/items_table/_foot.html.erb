@@ -2,9 +2,6 @@
 <th colspan="99">
 	<% if action_name != 'show' %>
 
-		<div id="pagination">
-			<%= paginate(obj, remote: true) %>
-		</div>
 		<div id="items_table_total_count"> 
 			<%= "#{t('items_table.results_count')}: <b>#{obj.total_count}</b>".html_safe %>
 		</div>

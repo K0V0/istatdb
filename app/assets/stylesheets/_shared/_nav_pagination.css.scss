@@ -1,0 +1,48 @@
+@import "variables";
+
+nav.pagination {
+	color: $white;
+
+	ul {
+		text-align: center;
+		font-size:1em;
+		margin: 0 auto;
+		display: table;
+		width: 100%;
+
+		div.wrap {
+			display: table-cell;
+			vertical-align: top;
+			
+			li {
+
+				a {
+					height:1em;
+					min-width:1em;
+					padding:0.25em;
+					margin-bottom: 0.25em;
+					border-bottom-left-radius: 0.25em; 
+					border-bottom-right-radius: 0.25em; 
+					white-space: nowrap;
+				}
+			}
+
+			&.left, &.right {
+
+				li {
+					display: inline-block;
+
+					a {
+						border-radius: 0.25em;
+						margin: 0.25em 0.125em;
+						padding:0.125em;
+					}
+				}
+			}
+
+			&.center {
+				width:1%;
+			}
+		}
+	}
+}
