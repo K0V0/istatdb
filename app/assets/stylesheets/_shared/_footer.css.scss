@@ -5,20 +5,25 @@ footer {
 	color: $white;
 	flex: 0 1 auto;
 
-	div {
-		display: inline-block;
+	section {
+		padding:0.125em 0.375em;
+		@include clearfix();
 
-		a {
-			font-weight: bold;
-			color: $dark_red;
-		}
+		div {
+			display: inline-block;
 
-		&:first-child {
-			float:left;
-		}
+			a {
+				font-weight: bold;
+				color: $dark_red;
+			}
 
-		&:last-child {
-			float:right;
+			&:first-child {
+				float:left;
+			}
+
+			&:last-child {
+				float:right;
+			}
 		}
 	}
 }

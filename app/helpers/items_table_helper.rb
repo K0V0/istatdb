@@ -176,6 +176,12 @@ module ItemsTableHelper
 		return ret
 	end
 
+	def visible_results_stats(res_on_actual_page, page_num, res_per_page)
+		res_first = res_per_page.to_i * (page_num.to_i - 1) + 1
+		res_last = (page_num.to_i - 1) * res_per_page.to_i + res_on_actual_page
+		"#{t('actions.i_am_showing')} #{t('actions.items')} <b>#{res_first}</b> - <b>#{res_last}</b>".html_safe
+	end
+
 	private :render_field
 
 end

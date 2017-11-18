@@ -4,9 +4,10 @@
 <%= render 'local_tarics/shared/search' %>
 
 <article class="index local_tarics">
+
 	<%= render('layouts/shared/items_table',
 
-		fields: [
+		fields: {
 			kncode: {
 				call_decorator: :num_to_kncode,
 				is_highlighted: true,
@@ -15,7 +16,7 @@
 			description: {
 				
 			}
-		],
+		},
 
 		#errors: [
 		#	no_results: {
@@ -29,4 +30,5 @@
 		]
 
 	) %>
+	
 </article>

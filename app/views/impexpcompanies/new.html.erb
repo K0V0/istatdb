@@ -4,7 +4,7 @@
 
 	<%= form_for @record do |t| %>
 
-		<%= render('layouts/shared/new_main',
+		<%= new_edit(
 			obj: t,
 			fields: {
 				company_name: { 
@@ -13,8 +13,9 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_submit',
-			obj: t
+		<%= new_edit(
+			obj: t,
+			type: :submit
 		) %>
 
 	<% end %>

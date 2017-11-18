@@ -3,7 +3,8 @@
 	<% if action_name != 'show' %>
 
 		<div id="items_table_total_count"> 
-			<%= "#{t('items_table.results_count')}: <b>#{obj.total_count}</b>".html_safe %>
+			<%= "#{t('items_table.results_count')}: <b>#{obj.total_count}</b>,".html_safe %>
+			<%= visible_results_stats(@result.length, params[:page], params[:per]) %>
 		</div>
 
 	<% else %>

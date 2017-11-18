@@ -15,19 +15,6 @@ module LayoutsHelper
 		)
 	end
 
-	def new_edit_multiple(title: nil, form_object: nil, ar_object: nil, result_of_collection: nil, key: :id, name: nil)
-
-		render('layouts/new_checkboxes_table', 
-			title: title,
-			form_object: form_object,
-			ar_object: ar_object,
-			result_of_collection: result_of_collection,
-			key: key,
-			name: name 
-		) 
-
-	end
-
 	def settings(section: :main, settings: {})
 		render(
 			"layouts/shared/settings",

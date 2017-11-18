@@ -1,32 +1,31 @@
-$('main > article').empty();
 
-<% 
-items_table = render('layouts/shared/items_table',
+<% content_for :items_table do
 
-	fields: [
-		kncode: {
-			call_decorator: :num_to_kncode,
-			is_highlighted: true,
-			is_link: true
+	render('layouts/shared/items_table',
+
+		fields: {
+			kncode: {
+				call_decorator: :num_to_kncode,
+				is_highlighted: true,
+				is_link: true
+			},
+			description: {
+				is_highlighted: true
+			}
 		},
-		description: {
-			is_highlighted: true
-		}
-	],
 
-	#errors: [
-	#	no_results: {
-	#		partial: "goods/index/no_results"
-	#	}
-	#], 
+		#errors: [
+		#	no_results: {
+		#		partial: "goods/index/no_results"
+		#	}
+		#], 
 
-	options: [
-		head: true,
-		foot: true
-	]
-) 
+		options: [
+			head: true,
+			foot: true
+		]
+	) 
 
-%>
+end %>
 
 
-$('<%=j items_table %>').appendTo('main > article');

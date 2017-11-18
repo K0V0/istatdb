@@ -18,6 +18,8 @@ en:
     end_administrative: End administration
     ru_sure_delete: Are You sure you want to delete this item ?
     edit_other: Edit other related informations
+    i_am_showing: showing
+    items: items
 
   items_table:
     results_count: results count

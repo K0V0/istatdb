@@ -18,6 +18,8 @@ sk:
     end_administrative: Ukončiť úpravy
     ru_sure_delete: Ste si istý že chcete odstrániť túto položku ?
     edit_other: Upraviť ďalšie súvisiace informácie
+    i_am_showing: zobrazujem
+    items: položky
 
   items_table:
     results_count: počet výsledkov

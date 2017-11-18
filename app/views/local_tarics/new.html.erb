@@ -5,7 +5,7 @@
 
 	<%= form_for @record do |t| %>
 
-		<%= render('layouts/shared/new_main',
+		<%= new_edit(
 			obj: t,
 			fields: {
 				kncode: { 
@@ -19,8 +19,9 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_submit',
-			obj: t
+		<%= new_edit(
+			obj: t,
+			type: :submit
 		) %>
 
 	<% end %>
