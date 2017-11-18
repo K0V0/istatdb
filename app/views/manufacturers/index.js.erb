@@ -1,7 +1,7 @@
-$('main > article').empty();
 
-<% 
-items_table = render('layouts/shared/items_table',
+<% content_for :items_table do 
+
+ render('layouts/shared/items_table',
 
 	fields: {
 		name: {
@@ -42,7 +42,7 @@ items_table = render('layouts/shared/items_table',
 		foot: true
 	]
 ) 
-%>
+ 
+end %>
 
-$('<%=j items_table %>').appendTo('main > article');
 

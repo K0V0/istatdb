@@ -49,6 +49,11 @@ html {
 		}
 
 		.decorated_wrap {
+			background-color: $base_grey;
+ 			background: -webkit-linear-gradient(135deg, $base_grey, $base_grey_grad); 
+ 			background: -o-linear-gradient(135deg, $base_grey, $base_grey_grad); 
+ 			background: -moz-linear-gradient(135deg, $base_grey, $base_grey_grad);
+ 			background: linear-gradient(135deg, $base_grey, $base_grey_grad); 
 			border-color:$wrap_border_color;
 			border-style: solid;
 			border-bottom-width:$border_2x_width;

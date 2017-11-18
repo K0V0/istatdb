@@ -1,11 +1,11 @@
-$('main > article').empty();
+
+<% content_for :items_table do 
+
+	render 'goods/show/show'
+
+end %>
+
 $('#search_items_select_manufacturer').empty();
 
-<%
-	show_good = render 'goods/show/show'
-	search_bar_manufacturers_dropdown = render('goods/shared/search/select_manufacturer_dropdown')
-%>
-
-$('<%=j show_good %>').appendTo('main > article');
-
-$('<%=j search_bar_manufacturers_dropdown %>').appendTo('#search_items_select_manufacturer');
+$("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
+.appendTo('#search_items_select_manufacturer');

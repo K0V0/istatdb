@@ -4,13 +4,17 @@ $white:           #eee;
 $dark_grey:       #999;
 $strong_grey:     #aaa;
 $base_grey:       #bbb;
+$base_grey_grad:  #b0b0b0;
 $grey_2n-1:       #ddd;
+$grey_2n-1_grad:  #d0d0d0;
 $grey_2n:         #ccc;
+$grey_2n_grad:    #c0c0c0;
 
 $strong_black:    #000;
 $black:           #222;
 $soft_black:      #444;
 $semi_grey:       #666;
+$halftone:		  #888;
 
 $soft_red:        #FF7F7F;
 $strong_red:      #e00;
@@ -20,7 +24,7 @@ $dark_red:        #8E0000;
 $background_color:                        $strong_black;
 $group_background:                        $base_grey;
 $table_background:                        $grey_2n;
-$wrap_border_color:                       $dark_grey;
+$wrap_border_color:                       $halftone;
 $wrap_border_color_2:                     $strong_grey;
 
 $main_menu_active_link:                   $white;
@@ -28,7 +32,7 @@ $main_menu_active_link_text:              $strong_black;
 $main_menu_inactive_link_hover:           $soft_black;
 $main_menu_2_submenu_active_link_hover:   $strong_grey;
 
-$sub_menu_background:			                $base_grey;
+$sub_menu_background:			          $base_grey;
 $sub_menu_active_link:                    $superwhite;
 $sub_menu_inactive_link_text:             $black;
 $sub_menu_inactive_link_hover:            $semi_grey;

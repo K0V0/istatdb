@@ -5,7 +5,7 @@
 
 	<%= form_for @record do |t| %>
 
-		<%= render('layouts/shared/new_main',
+		<%= new_edit(
 			obj: t,
 			fields: {
 				name: { 
@@ -15,7 +15,7 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_has_many_assoc',
+		<%= new_edit(
 			obj: t,
 			assoc: :impexpcompanies,
 			fields: {
@@ -35,7 +35,7 @@
 			</article>
 		<% end %>
 
-		<%= render('layouts/shared/new_submit',
+		<%= new_edit(
 			obj: t
 		) %>
 

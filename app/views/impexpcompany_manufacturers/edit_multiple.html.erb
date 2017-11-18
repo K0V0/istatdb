@@ -32,7 +32,7 @@
 
 					</article>
 
-					<%= render('layouts/shared/new_belongs_to_assoc',
+					<%= new_edit(
 						obj: d,
 						assoc: :local_taric,
 						multiedit: true,
@@ -50,9 +50,7 @@
 
 		<% end %>
 
-		<%= render('layouts/shared/new_submit') %>
-
-		<%#= submit_tag("kokot") %>
+		<%= new_edit(type: :submit) %>
 
 	<% end %>
 

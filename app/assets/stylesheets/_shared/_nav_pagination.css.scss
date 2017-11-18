@@ -24,6 +24,11 @@ nav.pagination {
 					border-bottom-left-radius: 0.25em; 
 					border-bottom-right-radius: 0.25em; 
 					white-space: nowrap;
+
+					&.inactive {
+						pointer-events: none;
+						color: $semi_grey;
+					}
 				}
 			}
 

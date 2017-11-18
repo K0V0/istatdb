@@ -1,51 +1,45 @@
-$('main > article').empty();
+<% content_for :items_table do 
+
+	render('layouts/shared/items_table',
+
+		fields: {
+			ident: {
+				is_sortlink: true,
+				is_highlighted: true,
+				is_link: {
+					remote: true
+				}
+			},
+			description: {
+				is_highlighted: true,
+				is_multiple_with: :ident
+			},
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: true
+				}
+			]
+		},
+
+		errors: [
+			no_results: {
+				partial: "goods/index/no_results"
+			}
+		], 
+
+		options: [
+			head: true,
+			foot: true
+		]
+	) 
+
+end %>
+
 $('#search_items_select_manufacturer').empty();
 
-<% 
-items_table = render('layouts/shared/items_table',
-
-	fields: {
-		ident: {
-			is_sortlink: true,
-			is_highlighted: true,
-			is_link: {
-				remote: true
-			}
-		},
-		description: {
-			is_highlighted: true,
-			is_multiple_with: :ident
-		},
-		local_taric: [
-			kncode: {
-				call_decorator: :num_to_kncode,
-				is_link: true
-			}
-		]
-	},
-
-	errors: [
-		no_results: {
-			partial: "goods/index/no_results"
-		}
-	], 
-
-	options: [
-		head: true,
-		foot: true
-	]
-) 
-
-search_bar_manufacturers_dropdown = render('goods/shared/search/select_manufacturer_dropdown')
-%>
-
-$('<%=j items_table %>').appendTo('main > article');
-
-$('<%=j search_bar_manufacturers_dropdown %>').appendTo('#search_items_select_manufacturer');
-
-$(document).find("section.search_bar").find('input[autofocus]')
-	.focus(function() {})
-	.trigger('focus');
+$("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
+.appendTo('#search_items_select_manufacturer');
 
 
-<%#=j render partial: 'layouts/base/pagination.js.erb#' %>
+

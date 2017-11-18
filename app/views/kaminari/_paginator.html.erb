@@ -11,8 +11,8 @@
   	<ul>
 
   		<div class="wrap left">
-	    	<%= first_page_tag unless current_page.first? %>
-	    	<%= prev_page_tag unless current_page.first? %>
+	    	<%= first_page_tag %>
+	    	<%= prev_page_tag %>
     	</div>
 
     	<div class="wrap center">
@@ -26,8 +26,8 @@
 		</div>
 
 	    <div class="wrap right">
-	    	<%= next_page_tag unless current_page.last? %>
-	    	<%= last_page_tag unless current_page.last? %>
+	    	<%= next_page_tag %>
+	    	<%= last_page_tag %>
 	    </div>
 
 	</ul>

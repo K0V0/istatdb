@@ -7,5 +7,11 @@
     remote:        data-remote
 -%>
 <li class="prev">
-  <%= link_to_unless current_page.first?, t('views.pagination.previous').html_safe, url, :rel => 'prev', :remote => remote %>
+ 	<%= link_to(
+  		t('views.pagination.previous').html_safe,
+  		url, 
+  		:rel => 'prev',
+  		:remote => remote,
+  		class: current_page.first? ? "inactive" : ""
+  	) %>
 </li>
