@@ -20,6 +20,7 @@ sk:
     edit_other: Upraviť ďalšie súvisiace informácie
     i_am_showing: zobrazujem
     items: položky
+    item: položku
 
   items_table:
     results_count: počet výsledkov

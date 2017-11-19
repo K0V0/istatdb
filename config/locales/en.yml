@@ -20,6 +20,7 @@ en:
     edit_other: Edit other related informations
     i_am_showing: showing
     items: items
+    item: item
 
   items_table:
     results_count: results count

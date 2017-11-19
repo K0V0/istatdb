@@ -6,7 +6,7 @@
 
 	<%= form_for @record do |t| %>
 
-		<%= render('layouts/shared/new_main',
+		<%= new_edit(
 			obj: t,
 			fields: {
 				uom_type: { 
@@ -21,7 +21,7 @@
 			}
 		) %>
 
-		<%= render('layouts/shared/new_submit',
+		<%= new_edit(
 			obj: t
 		) %>
 
