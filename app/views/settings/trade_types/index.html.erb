@@ -1,3 +1,25 @@
 <%= render 'settings/shared/settings_submenu' %>
 
 <%= render 'layouts/base/main_menu' %>
+
+<%= render 'settings/shared/actions' %>
+
+<article class="index settings trade_types">
+	<%= render('layouts/shared/items_table',
+
+		fields: {
+			type: {
+
+			},
+			description: {
+				
+			}
+		},
+
+		options: [
+			head: true,
+			foot: true
+		]
+
+	) %>
+</article>

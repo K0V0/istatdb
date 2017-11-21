@@ -1,4 +1,7 @@
 en:
+  is_true: "Yes"
+  is_false: "No"  
+
   search:
     clear: Clear fields
     reset: Reset form
@@ -25,6 +28,10 @@ en:
   items_table:
     results_count: results count
     nothing_found: No item(s) met the search criteria
+    no_items: No item(s) were added yet to this section
+    solutions: Possible solution(s)
+    add_new_solution: new item(s)
+    no_results: No results to display
   
   goods_search:
     impexpcompany_prompt: do NOT apply...

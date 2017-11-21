@@ -359,4 +359,42 @@ Rails.application.routes.draw do
     to: "trade_types#index",
     as: "trade_types"
 
+  # new
+  get "settings/trade_types/new",
+    to: "trade_types#new",
+    as: "new_trade_type"
+
+  # administration
+  get "settings/trade_types/administrative",
+    to: "trade_types#administrative"
+
+  # end administration
+  get "settings/trade_types/end_administrative",
+    to: "trade_types#end_administrative"
+
+  # show
+  get "settings/trade_types/:id",
+    to: "trade_types#show",
+    as: "trade_type"
+
+  # create
+  post "settings/trade_types",
+    to: "trade_types#create",
+    as: "create_trade_type"
+
+  # edit
+  get "settings/trade_types/:id/edit",
+    to: "trade_types#edit",
+    as: "edit_trade_type"
+
+  # update
+  patch "settings/trade_types/:id",
+    to: "trade_types#update",
+    as: "update_trade_type"
+
+  # delete
+  delete "settings/trade_types/:id",
+    to: "trade_types#delete",
+    as: "delete_trade_type"
+
 end

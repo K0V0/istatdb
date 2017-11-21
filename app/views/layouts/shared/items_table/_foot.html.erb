@@ -1,10 +1,21 @@
-
 <th colspan="99">
 	<% if action_name != 'show' %>
 
-		<div id="items_table_total_count"> 
-			<%= ("#{t('items_table.results_count')}: <b>#{obj.total_count}</b>" + visible_results_stats(@result.length, params[:page].to_i, params[:per].to_i)).html_safe %>
-		</div>
+		<% total_results = obj.total_count %>
+
+		<% if total_results > 0 %>
+
+			<div id="items_table_total_count"> 
+				<%= ("#{t('items_table.results_count')}: <b>#{obj.total_count}</b>" + visible_results_stats(@result.length, params[:page].to_i, params[:per].to_i)).html_safe %>
+			</div>
+
+		<% else %>
+
+			<div id="items_table_total_count"> 
+				<%= t 'items_table.no_results' %>
+			</div>
+
+		<% end %>
 
 	<% else %>
 

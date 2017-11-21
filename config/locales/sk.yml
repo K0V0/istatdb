@@ -1,4 +1,7 @@
 sk:
+  is_true: "Áno"
+  is_false: "Nie" 
+
   search:
     clear: Vymazať polia
     reset: Resetovať formulár
@@ -25,6 +28,10 @@ sk:
   items_table:
     results_count: počet výsledkov
     nothing_found: Podľa zadaných kritérií nebola nájdená žiadna položka 
+    no_items: Zatiaľ neboli pridané žiadne položky v tejto sekcii
+    solutions: Ďalšie možnosti
+    add_new_solution: novú položku
+    no_results: Žiadne výsledky na zobrazenie
 
   goods_search:
     impexpcompany_prompt: "nefiltrovať..."

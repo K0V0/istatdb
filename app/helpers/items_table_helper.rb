@@ -135,10 +135,6 @@ module ItemsTableHelper
 
 		output = ""
 		fields.each do |field, content|
-
-			#output += @record.try(field).class.to_s
-			#output += @record.attributes.keys.to_s
-
 			if content.is_a? Hash
 				# is on current model attribute
 				output += "<th class=\"#{model.name.pluralize.underscore}-#{field.to_s}\">"

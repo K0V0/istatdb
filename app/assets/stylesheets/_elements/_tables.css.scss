@@ -12,11 +12,11 @@ table {
 		overflow: hidden;
 	}
 
-	td:first-child {
+	td:first-child, th:first-child {
 		padding-left:0.375em;
 	}
 
-	td:last-child {
+	td:last-child, th:last-child {
 		padding-right:0.375em;
 	}
 
@@ -148,12 +148,14 @@ table.with_efects {
 }
 
 table.no_results {
+	background: inherit;
 
 	thead {
 		display: none;
 	}
 
 	tbody {
+		background: inherit;
 
 		tr {
 			width: 100%;
@@ -169,7 +171,7 @@ table.no_results {
 			}
 
 			&.solution { 
-				background-color: $group_background !important;
+				background: inherit;
 
 				td {
 					padding: 0.5em 1em;

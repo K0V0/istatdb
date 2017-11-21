@@ -60,4 +60,9 @@ module DecoratorsHelper
 		return num.gsub(/.{2}/).with_index {|x, i| i > 0 ? "#{x} " : "#{x}" } .strip
 	end
 
+	def bool_to_human text
+		text = t("is_#{text}") if !text.blank? 
+		text
+	end
+
 end

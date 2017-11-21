@@ -1,0 +1,27 @@
+<%= render 'settings/shared/settings_submenu' %>
+
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+	<%= form_for @record do |t| %>
+
+		<%= new_edit(
+			obj: t,
+			fields: {
+				type: {
+
+				}, 
+				description: {
+
+				}
+			}
+		) %>
+
+		<%= new_edit(
+			obj: t
+		) %>
+
+	<% end %>
+
+</section>

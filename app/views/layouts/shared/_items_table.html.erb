@@ -14,7 +14,7 @@ case action_name
 	else
 		cn += "-#{object.first.class.name.underscore}"
 	end 
-html_class_table += " no_results" if object.length == 0 
+html_class_table += " no_results" if (object.nil?||object.length == 0) 
 
 if defined? options
 	if o = options[0].try(:[], :html_options) 
@@ -28,6 +28,8 @@ end
 <section class="<%= html_class_main %>">
 
 	<table class="<%= html_class_table %>" id="<%= cn %>">
+
+	<% if !object.nil? %>
 
 		<% if defined? options %>
 
@@ -92,6 +94,12 @@ end
 			<% end %>
 
 		<% end %>
+
+	<% else %>
+
+		<%= render 'layouts/shared/items_table/no_items' %>
+
+	<% end %>
 
 	</table>
 
