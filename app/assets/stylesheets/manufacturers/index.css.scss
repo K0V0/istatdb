@@ -24,7 +24,7 @@ article.manufacturers {
 						th, td {
 							width: 25%;
 
-							table {
+							table.inner_table {
 
 								th {
 									padding: 0;
@@ -37,30 +37,49 @@ article.manufacturers {
 		}
 
 		@media only screen and (max-width: 480px) {
-		   /*
-		   table#goods {
 
-		   		td, th {
+		  	table#manufacturers {
 
-		   			&.inner_table {
-		   				width: 100%;
-		   			}
+				td, th {
+					width: 100%;
 
-		   			&.goods-ident, &.local_tarics-kncode, &.goods-description {
-		   				width: 100%;
-		   			}
-
-		   			&.goods-ident {
+					&.manufacturers-name {
 						font-weight: bold;
 					}
 
-					&.local_tarics-kncode {
-						text-align: right;
-						font-style: italic;
+					table.inner_table {
+
+						td, th {
+							width: 50%;
+
+							table.inner_table {
+
+								td, th {
+									width: 100%;
+								}
+							}
+						}
 					}
-		   		}
-		   	}
-		   	*/
+				}
+				/*
+				th, td {
+
+					&.inner_table {
+
+						th, td {
+							width: 50%;
+						}
+
+						table.inner_table {
+
+							th, td {
+								width: 100%;
+							}
+						}
+					}
+				}
+				*/
+			}
 		}
 	}
 }

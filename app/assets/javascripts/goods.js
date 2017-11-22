@@ -1,4 +1,11 @@
-function GOODS_onready() {
+/*function GOODS_onready(action_name) {
+
+	switch(action_name) {
+		case "index":
+
+
+	}
+	console.log(action_name);
 
 	var SEARCH = new searchItemActions();
 	
@@ -18,4 +25,20 @@ function GOODS_onexclusive() {
 	var QUERY_MANUFACTURERSLIST = new generateSearchQueryForSelectForm ('manufacturer', { name: 'cont' });
 
 	var QUERY_IMPEXPCOMPANIESLIST = new generateSearchQueryForSelectForm ('impexpcompany', { company_name: 'cont' });
+}
+*/
+
+var GoodsController = Paloma.controller('Goods');
+
+GoodsController.prototype.index = function() {
+	console.log("goods ide");
+}
+
+GoodsController.prototype = {
+
+	index: function() {
+		console.log("goods ide 2");
+
+	}
+
 }
