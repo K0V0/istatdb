@@ -1,11 +1,53 @@
+
+var JS;
+
+function Main() {
+	this.H = new H();
+}
+
+Main.prototype = {
+	constructor: Main,
+
+	init: function() {
+		var H = this.H;
+
+		$(window).on('load', function() {
+
+		});
+		
+		$(document).ready(function(){
+
+		});
+
+		$(document).on("turbolinks:load", function() { 
+			H.on_reload();
+		});
+	}
+}
+
+JS = new Main();
+
+JS.init();
+
+
+
+/*
 var CONTROLLER_NAME;
 var ACTION_NAME;
-var EXCLUSIVE_HANDLER_RUNS;
 
 console.log("js router loaded");
 
+function generateHandlers(handler_names) {
+	for (var i=0; i<handler_names.length; i++) {
+		console.log(handler_names[i]+"Handler()");
+	}
+}
+*/
+
+//generateHandlers(['both', 'onload', 'onready', 'reload']);	
+/*
 var bothHandler = function() {
-	console.log("page changed OR reloaded (bothHandler)");
+	console.log("page changed OR reloaded (bothHandler())");
 
 	CONTROLLER_NAME = $('body').data("controller_name");
 	ACTION_NAME = $('body').data("action_name");
@@ -13,8 +55,16 @@ var bothHandler = function() {
 	call_controller_specific("onboth");
 }
 
-var mainHandler = function() {
-	console.log("page full reload (mainHandler)");
+var loadHandler = function() {
+	console.log("window loaded (loadHandler())");
+
+	call_on_all_controllers("before", "onload");
+	call_controller_specific("onload");
+	call_on_all_controllers("after", "onload");
+};
+
+var readyHandler = function() {
+	console.log("page full reload (readyHandler())");
 
 	call_on_all_controllers("before", "onready");
 	call_controller_specific("onready");
@@ -22,33 +72,28 @@ var mainHandler = function() {
 };
 
 var reloadHandler = function() {
-	console.log("page changed - turbolinks reload (reloadHandler)");
+	console.log("page changed - turbolinks reload (reloadHandler())");
 
-	call_on_all_controllers("before", "onload");
-	call_controller_specific("onload");
-	call_on_all_controllers("after", "onload");
+	call_on_all_controllers("before", "reload");
+	call_controller_specific("reload");
+	call_on_all_controllers("after", "reload");
 }
-
-
-var onExclusiveHandler = function() {
-	//console.log(EXCLUSIVE_HANDLER_RUNS);
-	if (EXCLUSIVE_HANDLER_RUNS === undefined) {
-		EXCLUSIVE_HANDLER_RUNS = true;
-		console.log("page changed - turbolinks reload XOR page full reload (onExclusiveHandler)");
-
-		call_controller_specific("onexclusive");
-	}
-}
-
-
-$(document).ready(function() { bothHandler(); mainHandler(); onExclusiveHandler(); });
-
-$(document).on("turbolinks:load", function() { bothHandler(); reloadHandler(); onExclusiveHandler(); } );
 
 $(window).on('load', function() {
-	console.log("window loaded");
+	loadHandler();
+});
+*/
+/*
+$(document).ready(function(){
+  //Paloma.start();
+  bothHandler();
+  readyHandler();
 });
 
-$(document).ready(function(){
-  Paloma.start();
+$(document).on("turbolinks:load", function() { 
+	bothHandler();
+	reloadHandler();
+	//prepareControllerPrototype();
 });
+*/
+

@@ -1,3 +1,20 @@
+function GOODS() {
+	console.log("Goods controller JS initialized ");
+
+}
+
+GOODS.prototype = {
+	constructor: GOODS,
+
+	all: function() {
+
+	},
+
+	index: function() {
+
+	}
+}
+
 /*function GOODS_onready(action_name) {
 
 	switch(action_name) {
@@ -28,8 +45,9 @@ function GOODS_onexclusive() {
 }
 */
 
-var GoodsController = Paloma.controller('Goods');
+//var GoodsController = Paloma.controller('Goods');
 
+/*
 GoodsController.prototype.index = function() {
 	console.log("goods ide");
 }
@@ -42,3 +60,4 @@ GoodsController.prototype = {
 	}
 
 }
+*/

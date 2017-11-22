@@ -56,7 +56,7 @@ gem 'order_as_specified'
 
 gem 'clipboard-rails'
 
-gem 'paloma', '~> 5.1.0'
+#gem 'paloma', '~> 5.1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require clipboard
-//= require paloma
 //= require_tree .
+// require paloma
+
