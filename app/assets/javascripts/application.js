@@ -15,6 +15,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require clipboard
-//= require_tree .
+//= require_tree ./addons
+//= require_tree ./controllersjs
+//= require ./H
+//= require ./MAIN
+
 // require paloma
 

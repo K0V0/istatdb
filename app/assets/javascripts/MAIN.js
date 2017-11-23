@@ -1,8 +1,7 @@
 
-var JS;
-
 function Main() {
 	this.H = new H();
+	logger("", true);
 }
 
 Main.prototype = {
@@ -25,11 +24,11 @@ Main.prototype = {
 	}
 }
 
+var JS;
+
 JS = new Main();
 
 JS.init();
-
-
 
 /*
 var CONTROLLER_NAME;

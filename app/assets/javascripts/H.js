@@ -3,6 +3,8 @@ function H() {
 	this.CONTROLLER_NAME;
 	this.ACTION_NAME;
 	this.CONTROLLER;
+	this.ALL_CONTROLLER;
+
 	this.init();
 }
 
@@ -14,20 +16,37 @@ H.prototype = {
 	},
 
 	get_controller: function() {
-		this.CONTROLLER_NAME = $('body').data("controller_name");
-		this.ACTION_NAME = $('body').data("action_name");
+		this.CONTROLLER_NAME = $('body').data('controller_name');
+		this.ACTION_NAME = $('body').data('action_name');
 		var fx = window[this.CONTROLLER_NAME.toUpperCase()];
-		this.CONTROLLER = new fx();
+		if (typeof fx != 'undefined') {
+			this.CONTROLLER = new fx();
+		} else {
+			logger("no JS class for this controller");
+		}
 	},
 
-	run_controller_action: function() {
+	get_all_controller: function() {
+		this.ALL_CONTROLLER = new ALL();
+	},
 
+	run_controller_action: function(controller) {
+		if (typeof controller == 'undefined') {
+			controller = this.CONTROLLER;
+		}
+		if (typeof controller != 'undefined') {
+			var a;
+			if (typeof (a=controller.all()) == 'function') { a(); }
+			if (typeof (a=controller[this.ACTION_NAME]) == 'function') { a(); }
+		}
 	},
 
 	on_reload: function() {
 		console.log("running on_reload()");
+		this.get_all_controller();
 		this.get_controller();
-
+		this.run_controller_action(this.ALL_CONTROLLER);
+		this.run_controller_action();
 	}
 }
 

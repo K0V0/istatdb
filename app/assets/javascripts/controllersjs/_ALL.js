@@ -1,4 +1,4 @@
-function ALL_CONTROLLERS_after_onready() {
+/*function ALL_CONTROLLERS_after_onready() {
 
 	$(document).find('.allow_add_new').rememberUserManipulation();
 
@@ -6,4 +6,23 @@ function ALL_CONTROLLERS_after_onready() {
 
 	hideMenuByOutclickSmallscreen();
 	
+}*/
+
+function ALL() {
+	logger("ALL controllers JS instantiated");
+
+}
+
+ALL.prototype = {
+	constructor: ALL,
+
+	all: function() {
+
+		hoverSubmenu();
+		
+	},
+
+	index: function() {
+
+	}
 }
