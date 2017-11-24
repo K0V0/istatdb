@@ -1,18 +1,15 @@
 function searchItemActions() {
-
-	this.init();
+	logger("searcher inited");
 	this.events();
 }
 
 searchItemActions.prototype = {
 	constructor: searchItemActions,
 
-	init: function() {
-
-	},
-
 	events: function() {
-		$(document).onNotTooOften('input', 350, "section.search_bar > form", function() {
+		$(document).onNotTooOften('input', 350, "section.search_bar > form", function(event) {
+			logger("searching...");
+			logger(this.event);
 			$(this).append('<input type="hidden" name="page" value="1">');
 		  	$(this).submit();
 		});

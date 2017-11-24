@@ -6,7 +6,7 @@ function GOODS() {
 GOODS.prototype = {
 	constructor: GOODS,
 
-	all: function() {
+	all_onready: function() {
 
 	},
 

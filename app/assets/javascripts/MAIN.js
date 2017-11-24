@@ -11,15 +11,15 @@ Main.prototype = {
 		var H = this.H;
 
 		$(window).on('load', function() {
-
+			H.run('on_load');
 		});
 		
 		$(document).ready(function(){
-
+			H.run('on_ready');
 		});
 
 		$(document).on("turbolinks:load", function() { 
-			H.on_reload();
+			H.run('on_reload');
 		});
 	}
 }
