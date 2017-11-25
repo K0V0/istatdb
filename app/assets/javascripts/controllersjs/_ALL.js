@@ -1,10 +1,9 @@
 
 function ALL() {
-	logger("ALL controllers JS instantiated");
-
 	this.hover_submenu;
 	this.search;
 	this.focus_trigger;
+	this.hide_menu_on_outclick;
 }
 
 ALL.prototype = {
@@ -18,11 +17,12 @@ ALL.prototype = {
 		this.search = new searchItemActions();
 		// set focus to default search input when switching section(s)
 		this.focus_trigger = new triggerFocusOnSearchfield();
+		// when on small screen, rolls back menu on click out of menu
+		this.hide_menu_on_outclick = new hideMenuByOutclickSmallscreen();
 	},
 
 	all: function() {
 		this.focus_trigger.init();
-		this.hover_submenu.init();
 	},
 
 	all_on_resize: function() {

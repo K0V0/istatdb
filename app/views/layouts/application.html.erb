@@ -22,6 +22,7 @@
 	>
 
 		<input type="checkbox" id="show_topmenu" role="button" class="hidden">
+		<input type="checkbox" id="show_paginator" role="button" class="hidden">
 		<input type="checkbox" id="show_searchpanel_opts" role="button" class="hidden" checked="checked">
 
 		<nav>
@@ -42,8 +43,6 @@
 			<%= yield :search_bar if content_for? :search_bar %>
 
 			<%= yield %>
-
-			<%#= insert_paloma_hook %>
 
 		</main>
 

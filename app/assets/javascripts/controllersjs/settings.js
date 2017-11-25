@@ -1,5 +1,11 @@
-function SETTINGS_onexclusive() {
+function SETTINGS() {
+	this.settings_change_submit;
+}
 
-	var SUBMIT_SETTINGS = new submitOnChange();
-	
+SETTINGS.prototype = {
+	constructor: SETTINGS,
+
+	index_once: function() {
+		this.settings_change_submit = new submitSettingsOnChange();
+	}
 }

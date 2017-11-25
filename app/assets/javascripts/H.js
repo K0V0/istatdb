@@ -4,6 +4,8 @@ function H() {
 	this.ACTION_NAME;
 	this.CONTROLLER;
 	this.ALL_CONTROLLER;
+	this.FIRED_ONCE_ACTIONS;
+	this.ONCE_REGEX; 
 
 	this.init();
 }
@@ -12,7 +14,8 @@ H.prototype = {
 	constructor: H,
 
 	init: function() {
-		
+		this.FIRED_ONCE_ACTIONS = [];
+		this.ONCE_REGEX = /_once$/;
 	},
 
 	run: function(handler_name) {
@@ -64,7 +67,15 @@ H.prototype = {
 	run_controller_action: function(controller, action_names) {
 		var a;
 		for (var i=0; i<action_names.length; i++) {
-			if (typeof (a = controller[action_names[i]]) == 'function') { a(); }
+			if (typeof (a = controller[action_names[i]]) == 'function') { 
+				var method_id = controller.constructor.name + "_" + action_names[i];
+				if (this.FIRED_ONCE_ACTIONS.indexOf(method_id) == -1) {
+					a();
+					if (this.ONCE_REGEX.test(method_id)) { 
+						this.FIRED_ONCE_ACTIONS.push(method_id);
+					}
+				}
+			}
 		}
 	}
 }

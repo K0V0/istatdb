@@ -10,6 +10,10 @@ nav.pagination {
 		display: table;
 		width: 100%;
 
+		label {
+			display: none;
+		}
+
 		div.wrap {
 			display: table-cell;
 			vertical-align: top;
@@ -49,5 +53,34 @@ nav.pagination {
 				width:1%;
 			}
 		}
+	}
+
+	@media only screen and (max-width: 480px) {
+		position: relative;
+		overflow-y: hidden;
+
+		ul {
+			@include menu_open_smallscreen_transitions();
+			display: block;
+			background-color: $strong_black;
+			position: relative;
+			overflow: hidden;
+			max-height: 0;
+
+			div.wrap {
+				display: block;
+
+				&.center {
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+
+	input#show_paginator:checked ~ nav.pagination > ul {
+		max-height:512px;
 	}
 }
