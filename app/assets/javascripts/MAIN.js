@@ -21,6 +21,10 @@ Main.prototype = {
 		$(document).on("turbolinks:load", function() { 
 			H.run('on_reload');
 		});
+
+		$(window).frequentFireLimit('resize', 500, this, function(e) {
+			H.run('on_resize');
+		});
 	}
 }
 

@@ -25,7 +25,7 @@ module SearchHelper
 						select_attr(pars),
 						autocomplete: "off",
 						autofocus: index == 0 ? "autofocus" : false,
-						id: "#{field.to_s}_searchfield"
+						class: "#{field.to_s}_searchfield"
 					)
 				}
 			</span>"
