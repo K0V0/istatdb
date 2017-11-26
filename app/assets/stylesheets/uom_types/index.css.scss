@@ -1,0 +1,36 @@
+article.uom_types { 
+
+	section {
+
+		table#uom_types {
+
+			td, th {
+
+				&.uom_types-uom_type {
+					white-space: nowrap;
+				}
+				
+				&.uom_types-full_name {
+					white-space: nowrap;
+				}
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+
+		  	table#uom_types {
+		  		
+				td, th {
+
+					&.uom_types-uom_type {
+						width:1%;
+					}
+
+					&.uom_types-full_name {
+						width:1%;
+					}
+				}
+			}
+		}
+	}
+}

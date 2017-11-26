@@ -21,6 +21,9 @@ if defined? options
 		html_class_main += " #{o[:main_class]}" if o.try(:[], :main_class)
 		html_class_table += " #{o[:table_class]}" if o.try(:[], :table_class)
 	end
+	if o = options[0].try(:[], :change_on_smallscreen)
+		html_class_main += " change_on_smallscreen"
+	end
 	editable = false if options[0].try(:[], :not_editable)
 end
 %>

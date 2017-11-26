@@ -18,12 +18,14 @@ article.impexpcompanies {
 		  	table#impexpcompanies {
 
 				td, th {
-					width:100%;
 
 					&.impexpcompanies-company_name {
 						width:100%;
-						font-weight: bold;
 					}
+				}
+
+				th.impexpcompanies-company_name {
+					font-weight: bold;
 				}
 			}
 		}

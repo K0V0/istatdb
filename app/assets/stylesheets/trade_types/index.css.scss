@@ -1,0 +1,33 @@
+article.trade_types { 
+
+	section {
+
+		table#trade_types {
+
+			td, th {
+
+				&.trade_types-type {
+					white-space: nowrap;
+				}
+
+				&.trade_types-description {
+				}
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+
+		  	table#trade_types {
+		  		
+				td, th {
+
+					&.trade_types-type {
+					}
+
+					&.trade_types-description {
+					}
+				}
+			}
+		}
+	}
+}
