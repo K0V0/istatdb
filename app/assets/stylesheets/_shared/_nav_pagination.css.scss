@@ -68,10 +68,31 @@ nav.pagination {
 			max-height: 0;
 
 			div.wrap {
-				display: block;
+				display: table;
 
 				&.center {
 					text-align: center;
+					margin: 0 auto;
+					width:auto;
+
+					li {
+						display: inline-block;
+
+						a {
+							margin: 0.125em 0;
+							border-radius: 0.25em;
+						}
+					}
+				}
+
+				&.left {
+					float:left;
+					padding-left: 0.25em;
+				}
+
+				&.right {
+					float:right;
+					padding-right:0.25em;
 				}
 			}
 		}
