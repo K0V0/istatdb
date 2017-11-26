@@ -4,22 +4,4 @@
 
 <%= render 'settings/shared/actions' %>
 
-<article class="index settings trade_types">
-	<%= render('layouts/shared/items_table',
-
-		fields: {
-			type: {
-
-			},
-			description: {
-				
-			}
-		},
-
-		options: [
-			head: true,
-			foot: true
-		]
-
-	) %>
-</article>
+<%= render 'settings/trade_types/shared/items_table' %>

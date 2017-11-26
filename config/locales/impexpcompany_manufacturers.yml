@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      impexpcompany_manufacturer: Administrative unit(s) <-> Supplier(s)/Consumer(s) 
+    attributes:
+      impexpcompany_manufacturer:
+        invoices_correct: Documents correct 
+
+sk:
+  activerecord:
+    models:
+      impexpcompany_manufacturer: Spravodajské jednotky <-> Výrobcovia/odberatelia 
+    attributes:
+      impexpcompany_manufacturer:
+        invoices_correct: Poskytuje správne údaje 

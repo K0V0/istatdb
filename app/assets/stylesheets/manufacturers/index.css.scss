@@ -45,12 +45,22 @@ article.manufacturers {
 
 					&.manufacturers-name {
 						font-weight: bold;
+						width:100%;
+					}
+
+					&.impexpcompanies-company_name {
+						font-style: italic;
+					}
+
+					&.local_tarics-kncode, &.impexpcompany_manufacturers-invoices_correct, &.incoterms-shortland {
+						text-align: right;
 					}
 
 					table.inner_table {
 
 						td, th {
 							width: 50%;
+							vertical-align: top;
 
 							table.inner_table {
 
@@ -61,24 +71,12 @@ article.manufacturers {
 						}
 					}
 				}
-				/*
-				th, td {
 
-					&.inner_table {
-
-						th, td {
-							width: 50%;
-						}
-
-						table.inner_table {
-
-							th, td {
-								width: 100%;
-							}
-						}
+				td {
+					&.manufacturers-name { 
+						margin-bottom: 0.25em;
 					}
 				}
-				*/
 			}
 		}
 	}

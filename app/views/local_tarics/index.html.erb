@@ -3,32 +3,4 @@
 
 <%= render 'local_tarics/shared/search' %>
 
-<article class="index local_tarics">
-
-	<%= render('layouts/shared/items_table',
-
-		fields: {
-			kncode: {
-				call_decorator: :num_to_kncode,
-				is_highlighted: true,
-				is_link: true
-			},
-			description: {
-				
-			}
-		},
-
-		#errors: [
-		#	no_results: {
-		#		partial: "goods/index/no_results"
-		#	}
-		#], 
-
-		options: [
-			head: true,
-			foot: true
-		]
-
-	) %>
-	
-</article>
+<%= render 'local_tarics/shared/items_table' %>

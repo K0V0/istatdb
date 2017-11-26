@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      incoterm: Incoterms
+    attributes:
+      incoterm:
+        shortland: Term
+
+sk:
+  activerecord:
+    models:
+      incoterm: Dodacie podmienky
+    attributes:
+      incoterm:
+        shortland: Dodacia podmienka

@@ -1,18 +1,2 @@
-<% content_for :items_table do
 
-	render('layouts/shared/items_table',
-
-		fields: {
-			company_name: {
-				
-			}
-		},
-
-		options: [
-			head: true,
-			foot: true
-		]
-
-	)
-
-end %>
+<%= render 'impexpcompanies/shared/items_table' %>

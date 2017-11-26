@@ -1,31 +1,3 @@
 
-<% content_for :items_table do
-
-	render('layouts/shared/items_table',
-
-		fields: {
-			kncode: {
-				call_decorator: :num_to_kncode,
-				is_highlighted: true,
-				is_link: true
-			},
-			description: {
-				is_highlighted: true
-			}
-		},
-
-		#errors: [
-		#	no_results: {
-		#		partial: "goods/index/no_results"
-		#	}
-		#], 
-
-		options: [
-			head: true,
-			foot: true
-		]
-	) 
-
-end %>
-
+<%= render 'local_tarics/shared/items_table' %>
 

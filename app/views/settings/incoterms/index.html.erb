@@ -4,19 +4,4 @@
 
 <%= render 'settings/shared/actions' %>
 
-<article class="index settings uom_types">
-	<%= render('layouts/shared/items_table',
-
-		fields: {
-			shortland: {
-				
-			}
-		},
-
-		options: [
-			head: true,
-			foot: true
-		]
-
-	) %>
-</article>
+<%= render 'settings/incoterms/shared/items_table' %>

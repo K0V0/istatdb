@@ -32,6 +32,7 @@
 				<%= yield :mainmenu if content_for? :mainmenu %>
 
 				<%= yield :submenu if content_for? :submenu %>
+
 			</div>
 
 			<label for="show_topmenu" class="show_topmenu"> &#9776; </label>
@@ -40,7 +41,21 @@
 
 		<main>
 
-			<%= yield :search_bar if content_for? :search_bar %>
+			<% if content_for? :search_bar %>
+
+				<section class="search_bar">
+					<%= yield :search_bar %>
+				</section>
+
+			<% end %>
+
+			<% if content_for? :items_table %>
+
+				<article class="index <%= controller_name %>">
+					<%= yield :items_table %>
+				</article>
+
+			<% end %>
 
 			<%= yield %>
 

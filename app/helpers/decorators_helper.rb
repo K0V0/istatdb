@@ -61,8 +61,17 @@ module DecoratorsHelper
 	end
 
 	def bool_to_human text
-		text = t("is_#{text}") if !text.blank? 
+		text = t("is_#{text}") if (text=="true"||text=="false")
 		text
+	end
+
+	def fill_if_empty(txt, with)
+		ret = with == true ? "---" : with
+		if txt.blank?
+			return ret
+		else
+			return txt
+		end
 	end
 
 end

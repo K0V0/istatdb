@@ -1,0 +1,31 @@
+article.impexpcompanies { 
+
+	section {
+
+		table#impexpcompanies {
+
+			td, th {
+
+				&.impexpcompanies-company_name {
+					white-space: nowrap;
+					width:1%;
+				}
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+
+		  	table#impexpcompanies {
+
+				td, th {
+					width:100%;
+
+					&.impexpcompanies-company_name {
+						width:100%;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}

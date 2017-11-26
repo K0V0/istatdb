@@ -1,0 +1,48 @@
+
+<% content_for :items_table do 
+
+render('layouts/shared/items_table',
+
+	fields: {
+		name: {
+			is_sortlink: true,
+			is_highlighted: true,
+			is_link: {
+				remote: true
+			}
+		},
+		impexpcompany_manufacturers: [
+			impexpcompany: [
+				company_name: {
+
+				}
+			],
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					fill_if_empty: true
+				}
+			],
+			incoterm: [
+				shortland: {
+					fill_if_empty: true
+				}
+			],
+			invoices_correct: {
+				fill_if_empty: true,
+				call_decorator: :bool_to_human,
+			}
+		]
+	},
+
+	errors: [
+		no_results: {}
+	], 
+
+	options: [
+		head: true,
+		foot: true
+	]
+) 
+ 
+end %>

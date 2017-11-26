@@ -4,6 +4,7 @@ en:
       general: General
       uom_types: UOMs
       incoterms: Incoterms
+      trade_types: Types of trade
 
     general:
       gui_section_window_title: Graphical interface settings
@@ -16,6 +17,7 @@ sk:
       general: Všeobecné
       uom_types: Merné jednotky
       incoterms: Dodacie podmienky
+      trade_types: Typy operácií
 
     general:
       gui_section_window_title: Grafické rozhranie

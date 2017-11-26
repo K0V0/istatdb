@@ -20,24 +20,32 @@ module ItemsTableHelper
 	# 					be copied to clipboard	
 	#			
 	def items_table_field_decorator(text, opts, object, field)
-		
+
+		if opts[:fill_if_empty]
+			text = fill_if_empty(text, opts[:fill_if_empty])
+		end
+
 		if opts[:call_decorator]
 			text = self.send(opts[:call_decorator], text)
 		end
+		
+		if !object.nil?
 
-		if opts[:is_highlighted]
-			patt = highlight_search(object, field, opts[:is_multiple_with], true)
-			text = highlight_searched(str: text, patt: patt)
-		end
-
-		if opts[:clipboard_button]
-			#text = "<span class=\"to_clipboard\" id=\"#{row_id}_#{field_class}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{row_id}_#{field_class}\">&#9986</b>".html_safe
-		end
-
-		if opts[:is_link]
-			text = link_to object, remote: opts[:is_link].try(:[], :remote) do
-				text
+			if opts[:is_highlighted]
+				patt = highlight_search(object, field, opts[:is_multiple_with], true)
+				text = highlight_searched(str: text, patt: patt)
 			end
+
+			if opts[:clipboard_button]
+				#text = "<span class=\"to_clipboard\" id=\"#{row_id}_#{field_class}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{row_id}_#{field_class}\">&#9986</b>".html_safe
+			end
+
+			if opts[:is_link]
+				text = link_to object, remote: opts[:is_link].try(:[], :remote) do
+					text
+				end
+			end
+
 		end
 
 		return text
@@ -103,7 +111,12 @@ module ItemsTableHelper
 						output += items_table_fields(f, content[0])
 					else
 						# do not leave empty fields - every row should have equal number of columns 
-						output += "<td></td>"
+						content[0].each do |k, v|
+							output += 
+								"<td class=\"#{field.to_s.pluralize}-#{k.to_s}\">
+									#{items_table_field_decorator('', v, nil, nil)}
+								</td>"
+						end
 					end
 				else
 					# has_many assoc

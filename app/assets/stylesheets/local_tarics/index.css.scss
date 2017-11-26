@@ -1,0 +1,31 @@
+article.local_tarics { 
+
+	section {
+
+		table#local_tarics {
+
+			td, th {
+
+				&.local_tarics-kncode {
+					white-space: nowrap;
+					width:1%;
+				}
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+
+		  	table#local_tarics {
+
+				td, th {
+					width:100%;
+
+					&.local_tarics-kncode {
+						width:100%;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}

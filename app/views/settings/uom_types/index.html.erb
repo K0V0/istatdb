@@ -4,25 +4,4 @@
 
 <%= render 'settings/shared/actions' %>
 
-<article class="index settings uom_types">
-	<%= render('layouts/shared/items_table',
-
-		fields: {
-			uom_type: {
-				
-			},
-			full_name: {
-
-			},
-			description: {
-				
-			}
-		},
-
-		options: [
-			head: true,
-			foot: true
-		]
-
-	) %>
-</article>
+<%= render 'settings/uom_types/shared/items_table' %>

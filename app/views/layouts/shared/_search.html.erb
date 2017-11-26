@@ -1,84 +1,80 @@
 
 <% content_for :search_bar do %>
 
-	<section class="search_bar"> 
+	<%= search_form_for @search, 
+		remote: true,
+		class: "decorated_wrap" do |s| %> 
 
-		<%= search_form_for @search, 
-			remote: true,
-			class: "decorated_wrap" do |s| %> 
+		<% 
+			@s = s 
+			main_fields_cnt = main_fields.size
+		%>
 
-			<% 
-				@s = s 
-				main_fields_cnt = main_fields.size
-			%>
+		<div class="searchform_main_fields disable_on_bigscreen">
 
-			<div class="searchform_main_fields disable_on_bigscreen">
+			<% main_fields.each_with_index do |(k, v), index| %>
 
-				<% main_fields.each_with_index do |(k, v), index| %>
+				<div>
 
-					<div>
+					<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
 
-						<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
+					<% if index+1 == main_fields_cnt %>
+						<label 
+							class="button" 
+							for="show_searchpanel_opts" 
+							id="show_searchpanel_opts"
+						>
+							&#9776;
+						</label>
+					<% end %>
 
-						<% if index+1 == main_fields_cnt %>
-							<label 
-								class="button" 
-								for="show_searchpanel_opts" 
-								id="show_searchpanel_opts"
-							>
-								&#9776;
-							</label>
-						<% end %>
-
-					</div>
-				<% end %>
-
-			</div>
-
-			<div class="searchform_fulscreen_fields">
-
-				<% main_fields.each_with_index do |(k, v), index| %>
-					<div class="disable_on_smallscreen">
-
-						<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
-
-					</div>
-				<% end %>
-
-				<%= yield %>
-
-				<div class="searchform_actions">
-
-					<%= render 'layouts/shared/actions/add_new_button' if actions.include? :add %><!--
-
-					--><% if actions.include? :clear_fields %><!--
-						--><button id="clear_search" class="button">
-							<%= t 'search.clear' %>
-						</button><!--
-					--><% end %><!--
-
-					--><% if actions.include? :clear_all %><!--
-						--><button id="reset_search" class="button">
-							<%= t 'search.reset' %>
-						</button><!--
-					--><% end %><!--
-
-					--><%= render 'layouts/shared/actions/go_to_administrative' if actions.include? :administrative %><!--
-
-					--><% if actions.include? :google_search %><!--
-						--><button id="search_item_on_google" class="button">
-							<%= t 'goods_search.google' %>
-						</button><!--
-					--><% end %><!--
-
-					--><%= render('layouts/shared/actions/search_or_back_button', s: s) %>
-					
 				</div>
+			<% end %>
 
+		</div>
+
+		<div class="searchform_fulscreen_fields">
+
+			<% main_fields.each_with_index do |(k, v), index| %>
+				<div class="disable_on_smallscreen">
+
+					<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
+
+				</div>
+			<% end %>
+
+			<%= yield %>
+
+			<div class="searchform_actions">
+
+				<%= render 'layouts/shared/actions/add_new_button' if actions.include? :add %><!--
+
+				--><% if actions.include? :clear_fields %><!--
+					--><button id="clear_search" class="button">
+						<%= t 'search.clear' %>
+					</button><!--
+				--><% end %><!--
+
+				--><% if actions.include? :clear_all %><!--
+					--><button id="reset_search" class="button">
+						<%= t 'search.reset' %>
+					</button><!--
+				--><% end %><!--
+
+				--><%= render 'layouts/shared/actions/go_to_administrative' if actions.include? :administrative %><!--
+
+				--><% if actions.include? :google_search %><!--
+					--><button id="search_item_on_google" class="button">
+						<%= t 'goods_search.google' %>
+					</button><!--
+				--><% end %><!--
+
+				--><%= render('layouts/shared/actions/search_or_back_button', s: s) %>
+				
 			</div>
 
-		<% end %>
+		</div>
 
-	</section>
+	<% end %>
 
 <% end %>

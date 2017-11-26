@@ -3,47 +3,4 @@
 
 <%= render 'manufacturers/shared/search' %>
 
-<article class="index manufacturers">
-	<%= render('layouts/shared/items_table',
-
-		fields: {
-			name: {
-				is_sortlink: true,
-				is_highlighted: true,
-				is_link: {
-					remote: true
-				}
-			},
-			impexpcompany_manufacturers: [
-				impexpcompany: [
-					company_name: {
-
-					}
-				],
-				local_taric: [
-					kncode: {
-						
-					}
-				],
-				incoterm: [
-					shortland: {
-
-					}
-				],
-				invoices_correct: {
-					call_decorator: :bool_to_human
-				}
-			]
-		},
-
-		errors: [
-			no_results: {}
-		], 
-
-		options: [
-			head: true,
-			foot: true
-		]
-
-	) %>
-</article>
+<%= render 'manufacturers/shared/items_table' %>
