@@ -15,27 +15,29 @@
 		}
 	) do %>
 	
+	<% has_search_both = params.deep_has_key? :q, :search_both %>
 
 	<div class="search_checkbox_wrap">
 		<span>
 			<%= check_box_tag(
 				'q[search_both]',
 				1,
-				params[:q].has_key?("search_both"),
+				has_search_both,
 				class: "big"
 			) %>
 		</span>
 		<span>
+			<%= params[:q].try(:has_key, "search_both") %>
 			<%= @s.label(
 				:description_cont,
-				class: params[:q].has_key?("search_both") ? "" : "disabled"
+				class: has_search_both ? "" : "disabled"
 			) %>
 		</span>
 		<span class="searchform_inputfield_wrap">
 			<%= @s.search_field(
 				:description_cont,
 			 	autocomplete: "off",
-			 	disabled: !params[:q].has_key?("search_both")
+			 	disabled: !has_search_both
 			) %>
 		</span>
 	</div>

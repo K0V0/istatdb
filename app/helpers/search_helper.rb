@@ -1,8 +1,10 @@
 module SearchHelper
 
 	def select_attr(attrs)
-		if attrs.is_a? Array
+		if attrs.is_a?(Array)&&!params[:q].nil?
 			return (params[:q].keys.map(&:to_sym) & attrs).first
+		elsif attrs.is_a?(Array)
+			return attrs.first
 		else
 			return attrs
 		end
