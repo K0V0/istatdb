@@ -1,6 +1,5 @@
 function GOODS() {
-	console.log("Goods controller JS initialized ");
-
+	this.uoms_calculator;
 }
 
 GOODS.prototype = {
@@ -12,6 +11,10 @@ GOODS.prototype = {
 
 	index: function() {
 
+	},
+
+	show_once: function() {
+		this.uoms_calculator = new UomsCalculator();
 	}
 }
 
