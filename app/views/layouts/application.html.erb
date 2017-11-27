@@ -57,6 +57,14 @@
 
 			<% end %>
 
+			<% if content_for? :show_content %>
+
+				<article class="show <%= controller_name %>">
+					<%= yield :show_content %>
+				</article>
+
+			<% end %>
+
 			<%= yield %>
 
 		</main>

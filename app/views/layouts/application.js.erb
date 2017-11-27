@@ -1,5 +1,6 @@
+<% an = action_name %>
 
-<% if (an = action_name) == 'index' %>
+<% if an == 'index' %>
 
 	$(document).find('body').attr('class', 'index noscroll');
 
@@ -9,19 +10,33 @@
 
 <% end %>
 
+$(document).find('body > main > article').attr('class', '<%= an %> <%= controller_name %>');
+
+<% if action_name=='index'||action_name=='show' %>
+	
+	$('main > article').empty();
+
+<% end %>
+
 
 <% if content_for? :items_table %>
 
-	$('main > article').empty();
-
 	$('<%=j yield(:items_table) %>').appendTo('main > article');
-
+	/*
 	$(document).find("section.search_bar").find('input[autofocus]')
 	.focus(function() {})
 	.trigger('focus');
+	*/
 
+	<%= render partial: 'layouts/base/paginator' %>
+
+<% end %>
+
+<% if content_for? :show_content %>
+
+	$('<%=j yield(:show_content) %>').appendTo('main > article');
+	
 <% end %>
 
 <%= yield %>
 
-<%= render partial: 'layouts/base/paginator' %>

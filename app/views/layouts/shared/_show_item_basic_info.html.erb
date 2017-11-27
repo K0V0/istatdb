@@ -9,13 +9,9 @@ cn = "#{controller_name}-baseinfo"
 
 	<table class="rows_colored" id="<%= cn %>">
 
-		<thead>
-			<tr>
-				<th>
-					<%= object.model_name.human %>
-				</th>
-			</tr>
-		</thead>
+		<caption>
+			<%= object.model_name.human %>
+		</caption>
 
 		<tbody>
 			<% fields.each do |section| %>

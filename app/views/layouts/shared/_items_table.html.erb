@@ -36,22 +36,20 @@ end
 
 		<% if defined? options %>
 
+			<% if o = options[0][:caption] %>
+
+				<caption>
+					<%= object.model.model_name.human %>
+				</caption>
+
+			<% end %>
+
 			<% if o = options[0][:head] %>
 
 				<thead>
-
-					<% if o.try(:[], :caption) %>
-						<tr>
-							<th colspan="99">
-								<%= object.model.model_name.human %>
-							</th>
-						</tr>
-					<% end %>
-
 					<tr>
 						<%= items_table_head(fields, object.model) %>
 					</tr>
-					
 				</thead>
 
 			<% end %>

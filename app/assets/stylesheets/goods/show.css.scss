@@ -2,16 +2,9 @@
 
 @media only screen and (max-width: 480px) {
 
-	article.goods {
+	article.goods.show {
 
 		section {
-
-			table#goods-impexpcompany, table#goods-manufacturer {
-
-				th {
-					font-weight: bold;
-				}
-			}
 
 			table#goods-uom {
 

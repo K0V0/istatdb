@@ -1,7 +1,7 @@
 en:
   activerecord:
     models:
-      good: Goods
+      good: Good(s)
     attributes:
       good:
         ident: Reference
@@ -55,7 +55,7 @@ en:
 sk:
   activerecord:
     models:
-      good: Tovary
+      good: Tovar
     attributes:
       good:
         ident: Referencia
