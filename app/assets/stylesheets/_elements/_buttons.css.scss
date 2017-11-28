@@ -80,6 +80,10 @@
 		border-color: $button_disabled;
 	}
 
+	&.hidden {
+		display: none;
+	}
+
 	&.important {
 		font-weight: bold;
 	}

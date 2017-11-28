@@ -10,7 +10,7 @@ class GoodsController < ApplicationController
 	private 
 
 	def searcher_settings
-		{ preload: :local_taric, paginate: true }
+		{ preload: :local_taric, paginate: true, autoshow: true }
 	end
 
 	def loads_for_search_panel

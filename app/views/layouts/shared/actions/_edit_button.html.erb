@@ -1,0 +1,16 @@
+<%= link_to(
+	t('actions.edit'),
+	{
+		controller: controller_name,
+		action: "edit"
+	},
+	class: "button edit_item_from_search", 
+	id: "edit_#{controller_name.singularize}_from_search"
+) if action_name == 'show' %><!--
+
+--><%= content_tag(
+	'a',
+	t('actions.edit'),
+	class: "button hidden edit_item_from_search", 
+	id: "edit_#{controller_name.singularize}_from_search"
+) if action_name == 'index' %>

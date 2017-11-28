@@ -1,7 +1,8 @@
 
 <% content_for :search_bar do %>
 
-	<%= search_form_for @search, 
+	<%= search_form_for @search,
+		url: url_for(action: :search), 
 		remote: true,
 		class: "decorated_wrap" do |s| %> 
 
@@ -48,6 +49,10 @@
 			<div class="searchform_actions">
 
 				<%= render 'layouts/shared/actions/add_new_button' if actions.include? :add %><!--
+
+				--><%= render 'layouts/shared/actions/edit_button' if actions.include? :edit %><!--
+
+				--><%= render 'layouts/shared/actions/delete_button' if actions.include? :delete %><!--
 
 				--><% if actions.include? :clear_fields %><!--
 					--><button id="clear_search" class="button">

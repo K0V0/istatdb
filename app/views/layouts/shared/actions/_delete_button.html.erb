@@ -1,0 +1,24 @@
+<%= link_to(
+	t('actions.delete'),
+	{
+		controller: controller_name,
+		action: "delete"
+	},
+	method: :delete,
+	data: {
+		confirm: t('actions.ru_sure_delete')
+	},
+	class: "button danger delete_item_from_search", 
+	id: "delete_#{controller_name.singularize}_from_search"
+) if action_name == 'show' %><!--
+
+--><%= content_tag(
+	'a',
+	t('actions.delete'),
+	class: "button danger hidden delete_item_from_search", 
+	id: "delete_#{controller_name.singularize}_from_search",
+	data: {
+		confirm: t('actions.ru_sure_delete'),
+		method: 'delete'
+	}
+) if action_name == 'index' %>

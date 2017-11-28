@@ -3,16 +3,16 @@
 nav.pagination {
 	color: $white;
 
+	label {
+		display: none;
+	}
+
 	ul {
 		text-align: center;
 		font-size:1em;
 		margin: 0 auto;
 		display: table;
 		width: 100%;
-
-		label {
-			display: none;
-		}
 
 		div.wrap {
 			display: table-cell;
