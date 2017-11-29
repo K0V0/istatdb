@@ -1,12 +1,13 @@
 function GOODS() {
 	this.uoms_calculator;
+	this.search_mode_change;
 }
 
 GOODS.prototype = {
 	constructor: GOODS,
 
-	all_onready: function() {
-
+	all: function() {
+		this.search_mode_change = new searchModeChange();
 	},
 
 	index: function() {

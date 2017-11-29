@@ -1,6 +1,9 @@
 module SearchHelper
 
 	def select_attr(attrs)
+		Rails.logger.info "======================="
+		Rails.logger.info attrs
+		Rails.logger.info params[:q]
 		if attrs.is_a?(Array)&&!params[:q].nil?
 			return (params[:q].keys.map(&:to_sym) & attrs).first
 		elsif attrs.is_a?(Array)

@@ -7,10 +7,12 @@ var searchform_add_button;
 var searchform_edit_button;
 var searchform_delete_button;
 
-body.children('article').attr('class', '<%= an %> <%= controller_name %>');
+body.children('main').children('article').attr('class', '<%= an %> <%= controller_name %>');
 body.attr('class', '<%= an %> <%= controller_name %>');
 
-<% if an=='index'||an=='show' %>
+<% if an=='index'||an=='show'||an=='search' %>
+
+	window.history.pushState("", "", "<%= url_for(action: action_name)%>");
 
 	searchform_actions = body.find('section.search_bar > form > div.searchform_fulscreen_fields > div.searchform_actions');
 
@@ -22,13 +24,14 @@ body.attr('class', '<%= an %> <%= controller_name %>');
 	
 	$('main > article').empty();
 	
+	var tiriri = ('<%= an %>' == "index")||('<%= an %>' == "search");
 	$('#back_or_search').val(
-		'<%= an %>' == "index" ? t('search.submit') : t('actions.back')
+		tiriri ? t('search.submit') : t('actions.back')
 	);
 
 <% end %>
 
-<% if an == 'index' %>
+<% if (an == 'index')||(an == 'search') %>
 
 	body.addClass('noscroll');
 	searchform_edit_button.addClass('hidden');

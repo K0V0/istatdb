@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
   	@MEM = Mem.new(session) if !defined? @MEM
 
     @body_class = "#{action_name} #{controller_name}"
-    @body_class += " noscroll" if action_name == 'index'
+    @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')
     remember_settings
     params[:per] = @MEM.settings.per_page
     remember_param :page    ## page number

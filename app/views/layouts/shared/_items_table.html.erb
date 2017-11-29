@@ -9,7 +9,7 @@ end
 
 cn = controller_name.to_s
 case action_name
-	when 'index', 'administrative', 'end_administrative'
+	when 'index', 'administrative', 'end_administrative', 'search'
 		
 	else
 		cn += "-#{object.first.class.name.underscore}"

@@ -21,7 +21,7 @@ searchModeChange.prototype = {
 		if (is_checked === true) {
 			$(document).find('#q_description_cont').removeAttr('disabled');
 			$(document).find('label[for=q_description_cont]').removeClass('disabled');
-			$(document).find('input#ident_searchfield').attr('name', 'q[ident_cont]');
+			$(document).find('input.ident_searchfield').attr('name', 'q[ident_cont]');
 			$(document).find('label#ident_searchfield_label')
 				.text(t('activerecord.attributes.good.ident') +' '+ t('ransack.predicates.cont'))
 				.attr('for', 'q_ident_cont');
@@ -29,7 +29,7 @@ searchModeChange.prototype = {
 		} else {
 			$(document).find('#q_description_cont').attr('disabled', 'disabled');
 			$(document).find('label[for=q_description_cont]').addClass('disabled');
-			$(document).find('input#ident_searchfield').attr('name', 'q[ident_or_description_cont]');
+			$(document).find('input.ident_searchfield').attr('name', 'q[ident_or_description_cont]');
 			$(document).find('label#ident_searchfield_label')
 				.text(t('activerecord.attributes.good.ident') +' '+ t('ransack.or') +' '+ t('activerecord.attributes.good.description') +' '+ t('ransack.predicates.cont'))
 				.attr('for', 'q_ident_or_description_cont');
