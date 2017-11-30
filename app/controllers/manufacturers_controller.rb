@@ -14,6 +14,12 @@ class ManufacturersController < ApplicationController
 	  @collection = Manufacturer.preload_items.default_order
 	end
 
+	def show_action
+		super
+		@for_goodstable = @record.goods.preload(:local_taric)
+		@for_tarictable = @for_goodstable.select('distinct "goods"."local_taric_id"')
+	end
+
     def permitted_params
       params[:manufacturer].permit(
       	:id,

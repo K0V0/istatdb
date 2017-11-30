@@ -29,7 +29,38 @@
 
 	<%= render('layouts/shared/items_table',
 
-		object: @record.goods,
+		object: @for_tarictable,
+
+		fields: {
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: {
+						remote: true
+					}
+				},
+				description: {
+
+				}
+			]
+		},
+
+		options: [
+			caption: true,
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @for_goodstable,
 
 		fields: {
 			ident: { 
