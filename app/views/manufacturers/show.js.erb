@@ -1,13 +1,2 @@
-$('section.items_table').remove();
 
-//$('section.item_details').remove();
-
-$('section.actions').css({ 'display':'none' });
-
-$('<%= j(render "manufacturers/manufacturerslist/item_details") %>').appendTo('main');
-
-//$('#edit_good_from_search, #delete_good_from_search').remove();
-
-//$('<%= j(render("layouts/action_edit_delete", force: "true")) %>').insertBefore('button#clear_search');
-
-$('#back_or_search').val('<%=j t(action_name == 'show' ? :back : :search) %>');
+<%= render 'manufacturers/show/show' %>

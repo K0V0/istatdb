@@ -59,10 +59,11 @@ main {
 	}
 
 	h1, h2, h3, h4 {
-		display: block;
-		line-height: 100%;
 		margin:0;
 		padding:0;
+		border:0;
+		-webkit-margin-before: 0;
+   		-webkit-margin-after: 0;
 	}
 
 	h1 {
@@ -72,7 +73,6 @@ main {
 	h2 {
 		font-size: 1.25em;
 		font-weight:normal;
-		line-height:1.25em;
 	}
 
 	h3 {
@@ -83,7 +83,6 @@ main {
 	h4 {
 		font-size: 1.125em;
 		font-weight:normal;
-		line-height:1.125em;
 	}
 }
 

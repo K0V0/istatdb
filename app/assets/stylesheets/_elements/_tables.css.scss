@@ -286,3 +286,13 @@ table.for_nontabular {
 		border-bottom-left-radius: 0.25em;
 	}
 }
+
+table.no_line_height {
+
+	tbody {
+
+		tr {
+			line-height: initial;
+		}
+	}
+}

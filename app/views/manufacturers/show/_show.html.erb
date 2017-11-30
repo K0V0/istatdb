@@ -1,0 +1,67 @@
+
+<% content_for :show_content do %>
+
+	<%= render('layouts/shared/show_item_basic_info', 
+		fields: [
+			[:name]
+		]
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.impexpcompanies,
+
+		fields: {
+			company_name: {}
+		},
+
+		options: [
+			caption: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.goods,
+
+		fields: {
+			ident: { 
+				is_link: {
+					remote: true
+				} 
+			},
+			description: {
+				
+			},
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: {
+						remote: true
+					}
+				}
+			]
+		},
+
+		options: [
+			caption: true,
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+
+<% end %>
