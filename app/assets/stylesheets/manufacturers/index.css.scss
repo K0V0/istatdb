@@ -15,21 +15,12 @@ article.manufacturers {
 			th, td {
 
 				&.inner_table {
-					width: 100%;
 
 					table {
 						table-layout: fixed;
-						width: 100%;
 
 						th, td {
 							width: 25%;
-
-							table.inner_table {
-
-								th {
-									padding: 0;
-								}
-							}
 						}
 					}
 				}

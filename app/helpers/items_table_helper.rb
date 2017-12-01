@@ -144,7 +144,7 @@ module ItemsTableHelper
 		return ret
 	end
 
-	def items_table_head(fields, model=controller_name.classify.constantize)
+	def items_table_head(fields, model=controller_name.classify.constantize, span=1)
 
 		output = ""
 		fields.each do |field, content|
@@ -156,8 +156,8 @@ module ItemsTableHelper
 
 			elsif content.is_a? Array
 				# is inside associated
-				output += "<th class=\"inner_table\"><table class=\"inner_table\"><thead>"
-				output += items_table_head(content[0], field.to_s.classify.constantize)
+				output += "<th class=\"inner_table\" colspan=\"#{content[0].length}\"><table class=\"inner_table\"><thead>"
+				output += items_table_head(content[0], field.to_s.classify.constantize, content[0].length)
 				output += "</thead></table></th>"
 			end
 		end

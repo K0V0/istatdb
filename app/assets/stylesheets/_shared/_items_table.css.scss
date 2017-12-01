@@ -39,6 +39,20 @@ section.items_table {
 				}
 			}
 		}
+
+		tr {
+
+			th, td {
+
+				&.inner_table {
+					padding:0;
+
+					table.inner_table {
+						width: 100%;
+					}
+				}
+			}
+		}
 	}
 }
 
