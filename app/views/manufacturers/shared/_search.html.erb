@@ -6,12 +6,15 @@
 		},
 		actions: [
 			:add,
-			:clear_fields,
+			:edit,
+			:delete,
 			:clear_all,
 			:administrative,
 			:google_search
 		]
 	}
 ) do %>
+
+	<%= render 'manufacturers/shared/search/select_client_dropdown', obj: @s %>
 
 <% end %>

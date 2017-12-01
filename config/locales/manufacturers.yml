@@ -5,6 +5,7 @@ en:
     attributes:
       manufacturer:
         name: Consumer/manufacturer name
+        impexpcompany_filter: Filter by intrastat subject
 
   helpers:
     submit:
@@ -19,6 +20,7 @@ sk:
     attributes:
       manufacturer:
         name: Výrobca/odberateľ
+        impexpcompany_filter: spolupracuje so spravodajskou jednotkou
 
   helpers:
     submit:

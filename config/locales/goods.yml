@@ -55,7 +55,7 @@ en:
 sk:
   activerecord:
     models:
-      good: Tovar
+      good: Tovary
     attributes:
       good:
         ident: Referencia

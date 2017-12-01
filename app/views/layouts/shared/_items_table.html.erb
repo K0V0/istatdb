@@ -39,7 +39,8 @@ end
 			<% if o = options[0][:caption] %>
 
 				<caption>
-					<%= object.model.model_name.human %>
+					<%= object.model.model_name.human if o == true %>
+					<%= o if o != true %>
 				</caption>
 
 			<% end %>
