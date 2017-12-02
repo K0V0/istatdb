@@ -1,0 +1,43 @@
+article.manufacturers.show {
+
+		section {
+
+			table#manufacturers-local_taric {
+				table-layout: fixed;
+
+				td, th {
+					width:50%;
+				}
+			}
+
+			@media only screen and (max-width: 480px) {
+
+				table#manufacturers-local_taric {
+
+					td, th {
+						width:100%;
+
+						&.local_tarics-kncode {
+							font-weight: bold;
+						}
+					}
+				}
+
+				table#manufacturers-good { 
+
+					td, th {
+						width:100%;
+
+						&.goods-ident {
+							font-weight: bold;
+						}
+
+						&.local_tarics-kncode {
+							font-style: italic;
+							text-align: right;
+						}
+					}
+				}
+			}
+		}
+	}

@@ -1,14 +1,19 @@
-<% an = action_name %>
-
-//console.log($(document).children('body'));
+var AN = "<%= an = action_name %>";
+var CTRL = "<%= ctrl = controller_name %>";
 var body = $(document).find('body');
+
 var searchform_actions;
 var searchform_add_button;
 var searchform_edit_button;
 var searchform_delete_button;
 
-body.children('main').children('article').attr('class', '<%= an %> <%= controller_name %>');
-body.attr('class', '<%= an %> <%= controller_name %>');
+body.data('controller_name', CTRL);
+body.data('action_name', AN);
+body.children('main').children('article').attr('class', AN+' '+CTRL);
+body.attr('class',  AN+' '+CTRL);
+
+JS.H.run('once');
+JS.H.run('on_change');
 
 <% if an=='index'||an=='show'||an=='search' %>
 
@@ -24,14 +29,14 @@ body.attr('class', '<%= an %> <%= controller_name %>');
 	
 	$('main > article').empty();
 	
-	var tiriri = ('<%= an %>' == "index")||('<%= an %>' == "search");
+	var tiriri = (AN == "index")||(AN == "search");
 	$('#back_or_search').val(
 		tiriri ? t('search.submit') : t('actions.back')
 	);
 
 <% end %>
 
-<% if (an == 'index')||(an == 'search') %>
+<% if an=='index'||an=='search' %>
 
 	body.addClass('noscroll');
 	searchform_edit_button.addClass('hidden');

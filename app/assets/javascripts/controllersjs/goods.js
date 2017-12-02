@@ -10,7 +10,7 @@ GOODS.prototype = {
 		this.search_mode_change = new searchModeChange();
 	},
 
-	index: function() {
+	_index_search_show: function() {
 
 	},
 
