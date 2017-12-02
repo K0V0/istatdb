@@ -6,12 +6,8 @@ function GOODS() {
 GOODS.prototype = {
 	constructor: GOODS,
 
-	all: function() {
+	_index_search_show_on_reload: function() {
 		this.search_mode_change = new searchModeChange();
-	},
-
-	_index_search_show: function() {
-
 	},
 
 	show_once: function() {

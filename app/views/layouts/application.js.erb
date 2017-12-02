@@ -12,6 +12,8 @@ body.data('action_name', AN);
 body.children('main').children('article').attr('class', AN+' '+CTRL);
 body.attr('class',  AN+' '+CTRL);
 
+$(document).find('nav.pagination').empty();
+
 JS.H.run('once');
 JS.H.run('on_change');
 
@@ -52,18 +54,15 @@ JS.H.run('on_change');
 		.removeClass('hidden')
 		.attr('href', '<%= url_for(action: :delete) %>');
 
+	$(document).find('nav.pagination').empty();
+
 <% end %>
 
 <% if content_for? :items_table %>
 
 	$('<%=j yield(:items_table) %>').appendTo('main > article');
-	/*
-	$(document).find("section.search_bar").find('input[autofocus]')
-	.focus(function() {})
-	.trigger('focus');
-	*/
 
-	<%= render partial: 'layouts/base/paginator' %>
+	$('<%=j render("layouts/base/pagination") %>').children().appendTo('nav.pagination');
 
 <% end %>
 

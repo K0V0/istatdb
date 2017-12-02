@@ -9,23 +9,30 @@ function ALL() {
 ALL.prototype = {
 	constructor: ALL,
 
-	all_on_ready: function() {
+	_all_on_ready: function() {
 		// synchronise main top menu active tab and submenu ribbon color on hover
 		this.hover_submenu = new hoverSubmenu();
+		// when on small screen, rolls back menu on click out of menu
+		this.hide_menu_on_outclick = new hideMenuByOutclickSmallscreen();
+	},
+
+	_index_search_show_on_ready: function() {
 		// automatically submit search while typing with delay 
 		// when stop typing to prevent too many requests
 		this.search = new searchItemActions();
 		// set focus to default search input when switching section(s)
 		this.focus_trigger = new triggerFocusOnSearchfield();
-		// when on small screen, rolls back menu on click out of menu
-		this.hide_menu_on_outclick = new hideMenuByOutclickSmallscreen();
 	},
 
-	all: function() {
+	_index_search_show_on_reload: function() {
 		this.focus_trigger.init();
 	},
 
-	all_on_resize: function() {
+	_index_search_show_on_change: function() {
+		this.focus_trigger.init();
+	},
+
+	_index_search_show_on_resize: function() {
 		this.focus_trigger.init();
 	}
 }

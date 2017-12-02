@@ -1,9 +1,1 @@
 
-<%
-paginator = render('layouts/base/pagination');
-%>
-
-$(document).find('nav.pagination').empty();
-
-$('<%=j paginator %>').children().appendTo('nav.pagination');
-
