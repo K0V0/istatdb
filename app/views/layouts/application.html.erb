@@ -69,7 +69,13 @@
 
 		</main>
 
-		<%= render 'layouts/base/pagination' %>
+		<nav class="pagination">
+
+			<% case action_name 
+				when 'index', 'search' %>
+					<%= render 'layouts/base/pagination' %>
+			<% end %>
+		</nav>
 
 		<%= render 'layouts/base/footer' %>
 

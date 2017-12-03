@@ -1,4 +1,5 @@
-var AN = "<%= an = action_name %>";
+var an = "<%= an = action_name %>";
+var AN = an.indexOf('_calculator_') > -1 ? 'show' : an;
 var CTRL = "<%= ctrl = controller_name %>";
 var body = $(document).find('body');
 
@@ -62,7 +63,7 @@ JS.H.run('on_change');
 
 	$('<%=j yield(:items_table) %>').appendTo('main > article');
 
-	$('<%=j render("layouts/base/pagination") %>').children().appendTo('nav.pagination');
+	$('<%=j render("layouts/base/pagination") %>').appendTo('nav.pagination');
 
 <% end %>
 
