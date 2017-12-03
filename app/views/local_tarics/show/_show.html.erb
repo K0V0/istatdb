@@ -1,0 +1,115 @@
+
+<% content_for :show_content do %>
+
+	<%= render('layouts/shared/show_item_basic_info', 
+		fields: [
+			[:kncode, :description]
+		]
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @record.goods,
+
+		fields: {
+			ident: {
+
+			},
+			description: {
+
+			},
+			impexpcompanies: [
+				company_name: {
+
+				}
+			],
+			manufacturers: [
+				name: {
+
+				}
+			]
+		},
+
+		options: [
+			caption: true,
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+	<%#= render('layouts/shared/items_table',
+
+		object: @for_tarictable,
+
+		fields: {
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: {
+						remote: true
+					}
+				},
+				description: {
+
+				}
+			]
+		},
+
+		options: [
+			caption: t('activerecord.models.local_taric'),
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked",
+				id: "manufacturers-local_taric"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+	<%#= render('layouts/shared/items_table',
+
+		object: @for_goodstable,
+
+		fields: {
+			ident: { 
+				is_link: {
+					remote: true
+				} 
+			},
+			description: {
+				
+			},
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: {
+						remote: true
+					}
+				}
+			]
+		},
+
+		options: [
+			caption: true,
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+
+<% end %>
