@@ -3,7 +3,16 @@
 
 	<%= render('layouts/shared/show_item_basic_info', 
 		fields: [
-			[:kncode, :description]
+			[
+				[
+					kncode: {
+						call_decorator: :num_to_kncode
+					}
+				],
+				[
+					:description
+				]
+			]
 		]
 	) %>
 
