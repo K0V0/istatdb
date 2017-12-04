@@ -1,0 +1,82 @@
+
+<% content_for :show_content do %>
+
+	<%= render('layouts/shared/show_item_basic_info', 
+		fields: [
+			[:company_name]
+		]
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @for_manufacturerstable,
+
+		fields: {
+			name: {
+
+			},
+			impexpcompany_manufacturers: [
+				local_taric: [
+					kncode: {
+						call_decorator: :num_to_kncode,
+						fill_if_empty: true
+					}
+				],
+				incoterm: [
+					shortland: {
+						fill_if_empty: true
+					}
+				],
+				invoices_correct: {
+					fill_if_empty: true,
+					call_decorator: :bool_to_human,
+				}
+			]
+		},
+
+		options: [
+			caption: true,
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @for_tarictable,
+
+		fields: {
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: {
+						remote: true
+					}
+				},
+				description: {
+
+				}
+			]
+		},
+
+		options: [
+			caption: t('activerecord.models.local_taric'),
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked",
+				id: "impexpcompanies-local_taric"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+
+	) %>
+
+<% end %>
