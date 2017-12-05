@@ -41,6 +41,10 @@ section.form {
 				background-color: $input_validation_error;
 			}
 
+			div.select_wrapper {
+				margin: 0.125em 0;
+			}
+
 			&.form_errors {
 
 				span {
@@ -69,6 +73,14 @@ section.form {
 				tbody {
 
 					tr {
+
+						td {
+
+							label {
+								height: auto;
+								line-height: 1.25em;
+							}
+						}
 
 						&:first-child {
 
