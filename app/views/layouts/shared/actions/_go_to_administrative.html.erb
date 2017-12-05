@@ -8,7 +8,8 @@ if @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").b
 			controller: controller_name,
 			action: "administrative"
 		},
-		class: "button", 
+		remote: true,
+		class: "button administration_from_search", 
 		id: "#{controller_name.singularize}_administration_from_search"
 	) 
 
@@ -20,7 +21,8 @@ else
 			controller: controller_name,
 			action: "end_administrative"
 		},
-		class: "button selected", 
+		remote: true,
+		class: "button selected administration_from_search", 
 		id: "#{controller_name.singularize}_administration_from_search"
 	)
 

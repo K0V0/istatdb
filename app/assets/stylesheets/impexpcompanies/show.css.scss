@@ -1,0 +1,76 @@
+article.impexpcompanies.show {
+
+	section {
+
+		table#impexpcompanies-local_taric {
+			table-layout: fixed;
+
+			td, th {
+				width:50%;
+			}
+		}
+
+		table#impexpcompanies-manufacturer {
+			
+			th.manufacturers-name, td.manufacturers-name {
+				white-space: nowrap;
+			}
+
+			td.local_tarics-kncode, td.incoterms-shortland, td.impexpcompany_manufacturers-invoices_correct {
+				width: 33.33%;
+			}
+
+			th.inner_table {
+
+				table {
+					table-layout: fixed;
+					width:auto;
+
+					th {
+						width: 33.33%;
+					}
+				}
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+
+			table#impexpcompanies-local_taric {
+
+				td, th {
+					width:100%;
+
+					&.local_tarics-kncode {
+						font-weight: bold;
+					}
+				}
+			}
+
+			table#impexpcompanies-manufacturer {
+			
+				th.manufacturers-name, td.manufacturers-name {
+					font-weight: bold;
+					width:100%;
+				}
+
+				th, td {
+
+					&.inner_table {
+						width:100%;
+
+						th.inner_table {
+							width:33%;
+
+							table {
+
+								th {
+									width: 100%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

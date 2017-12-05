@@ -13,7 +13,7 @@ module RansackSearchWrapper
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
 
-		    if @result.count == 1 && !request.xhr?.nil? && autoshow && action_name == "search"
+		    if params[:per] != "1" && @result.count == 1 && !request.xhr?.nil? && autoshow && action_name == "search"
 		    	redirect_to controller: controller_name, action: :show, id: @result.first.id
 		    end
 

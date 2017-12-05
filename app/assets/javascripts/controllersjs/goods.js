@@ -6,7 +6,7 @@ function GOODS() {
 GOODS.prototype = {
 	constructor: GOODS,
 
-	_index_search_show_on_reload: function() {
+	_index_search_show_administrative_end_administrative_on_reload: function() {
 		this.search_mode_change = new searchModeChange();
 	},
 
@@ -15,24 +15,7 @@ GOODS.prototype = {
 	}
 }
 
-/*function GOODS_onready(action_name) {
-
-	switch(action_name) {
-		case "index":
-
-
-	}
-	console.log(action_name);
-
-	var SEARCH = new searchItemActions();
-	
-	var GOOGLE_SEARCH = new searchSearchedItemOnGoogle('search_good_on_google', 'q_ident_or_description_cont');
-
-	var UOMS_CALCULATOR = new UomsCalculator();
-	
-	var SEARCH_MODE = new searchModeChange();
-}
-
+/*
 function GOODS_onexclusive() {
 
 	var UOMS = new uoms();
@@ -45,19 +28,3 @@ function GOODS_onexclusive() {
 }
 */
 
-//var GoodsController = Paloma.controller('Goods');
-
-/*
-GoodsController.prototype.index = function() {
-	console.log("goods ide");
-}
-
-GoodsController.prototype = {
-
-	index: function() {
-		console.log("goods ide 2");
-
-	}
-
-}
-*/

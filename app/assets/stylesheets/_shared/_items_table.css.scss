@@ -18,6 +18,10 @@ section.items_table {
 				td {
 					word-break: break-word;
 				}
+
+				td.edit_item, td.delete_item {
+					width: 1%;
+				}
 			}
 		}
 
@@ -40,6 +44,20 @@ section.items_table {
 			}
 		}
 
+		&.inner_table {
+			width: 100%;
+
+			tbody, thead {
+
+				tr {
+
+					td, th {
+						padding: 0 0.25em;
+					}
+				}
+			}
+		}
+
 		tbody, thead {
 
 			tr {
@@ -48,10 +66,6 @@ section.items_table {
 
 					&.inner_table {
 						padding:0;
-
-						table.inner_table {
-							width: 100%;
-						}
 					}
 				}
 			}
@@ -102,6 +116,7 @@ section.items_table {
 			   			}
 
 			   			td.edit_item, td.delete_item {
+			   				width:auto;
 			   				float: right;
 			   				margin: 0.25em 0;
 			   			}

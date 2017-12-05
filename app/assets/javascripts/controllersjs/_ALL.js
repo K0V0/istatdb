@@ -16,12 +16,16 @@ ALL.prototype = {
 		this.hide_menu_on_outclick = new hideMenuByOutclickSmallscreen();
 	},
 
-	_index_search_show_on_ready: function() {
+	_index_search_show_administrative_end_administrative_on_ready: function() {
 		// automatically submit search while typing with delay 
 		// when stop typing to prevent too many requests
 		this.search = new searchItemActions();
 		// set focus to default search input when switching section(s)
 		this.focus_trigger = new triggerFocusOnSearchfield();
+	},
+
+	_all_on_reload: function() {
+		this.hide_menu_on_outclick.init();
 	},
 
 	_index_search_show_on_reload: function() {

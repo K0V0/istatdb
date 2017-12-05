@@ -9,6 +9,37 @@
 
 	<%= render('layouts/shared/items_table',
 
+		object: @for_tarictable,
+
+		fields: {
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
+					is_link: {
+						remote: true
+					}
+				},
+				description: {
+
+				}
+			]
+		},
+
+		options: [
+			caption: t('activerecord.models.local_taric'),
+			head: true,
+			foot: true,
+			html_options: {
+				main_class: "shrinked",
+				id: "impexpcompanies-local_taric"
+			},
+			not_editable: true,
+			change_on_smallscreen: true
+		]
+	) %>
+
+	<%= render('layouts/shared/items_table',
+
 		object: @for_manufacturerstable,
 
 		fields: {
@@ -40,38 +71,6 @@
 			foot: true,
 			html_options: {
 				main_class: "shrinked"
-			},
-			not_editable: true,
-			change_on_smallscreen: true
-		]
-
-	) %>
-
-	<%= render('layouts/shared/items_table',
-
-		object: @for_tarictable,
-
-		fields: {
-			local_taric: [
-				kncode: {
-					call_decorator: :num_to_kncode,
-					is_link: {
-						remote: true
-					}
-				},
-				description: {
-
-				}
-			]
-		},
-
-		options: [
-			caption: t('activerecord.models.local_taric'),
-			head: true,
-			foot: true,
-			html_options: {
-				main_class: "shrinked",
-				id: "impexpcompanies-local_taric"
 			},
 			not_editable: true,
 			change_on_smallscreen: true

@@ -120,7 +120,7 @@ module ItemsTableHelper
 					end
 				else
 					# has_many assoc
-					output += "<td class=\"inner_table\"><table class=\"inner_table\"><tbody>"
+					output += "<td class=\"inner_table #{obj.class.name.underscore}-#{field.to_s}\"><table class=\"inner_table\"><tbody>"
 					obj.send(field).each do |f|
 						output += "<tr>"
 						output += items_table_fields(f, content[0])

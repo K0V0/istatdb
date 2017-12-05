@@ -7,6 +7,7 @@ var searchform_actions;
 var searchform_add_button;
 var searchform_edit_button;
 var searchform_delete_button;
+var searchform_administrative_button;
 
 body.data('controller_name', CTRL);
 body.data('action_name', AN);
@@ -18,7 +19,7 @@ $(document).find('nav.pagination').empty();
 JS.H.run('once');
 JS.H.run('on_change');
 
-<% if an=='index'||an=='show'||an=='search' %>
+<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative' %>
 
 	window.history.pushState("", "", "<%= url_for(action: action_name)%>");
 
@@ -30,6 +31,8 @@ JS.H.run('on_change');
 
 	searchform_delete_button = searchform_actions.children('a.delete_item_from_search');
 	
+	searchform_administrative_button = searchform_actions.children('a.administration_from_search');
+
 	$('main > article').empty();
 	
 	var tiriri = (AN == "index")||(AN == "search");
@@ -39,11 +42,12 @@ JS.H.run('on_change');
 
 <% end %>
 
-<% if an=='index'||an=='search' %>
+<% if an=='index'||an=='search'||an=='administrative'||an=='end_administrative' %>
 
 	body.addClass('noscroll');
 	searchform_edit_button.addClass('hidden');
 	searchform_delete_button.addClass('hidden');
+	searchform_administrative_button.removeClass('hidden');
 
 <% elsif an == 'show' %>
 	
@@ -55,7 +59,25 @@ JS.H.run('on_change');
 		.removeClass('hidden')
 		.attr('href', '<%= url_for(action: :delete) %>');
 
+	searchform_administrative_button.addClass('hidden');
+
 	$(document).find('nav.pagination').empty();
+
+<% end %>
+
+<% if !@MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").blank? %>
+
+	searchform_administrative_button
+		.addClass('selected')
+		.attr('href', '<%= url_for(action: :end_administrative) %>')
+		.text(t('actions.end_administrative'));
+
+<% else %>
+
+	searchform_administrative_button
+		.removeClass('selected')
+		.attr('href', '<%= url_for(action: :administrative) %>')
+		.text(t('actions.administrative'));
 
 <% end %>
 
