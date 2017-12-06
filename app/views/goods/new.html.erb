@@ -19,13 +19,19 @@
 			}
 		) %>
 
-		<%#= new_edit(
+		<%= new_edit(
 			obj: t,
 			assoc: :local_taric,
 			fields: {
 				kncode: {  },
 				description: { 
 					type: :text_area
+				}
+			},
+			searcher_settings: {
+				query: {
+					kncode: :start,
+					description: :cont
 				}
 			}
 		) %>

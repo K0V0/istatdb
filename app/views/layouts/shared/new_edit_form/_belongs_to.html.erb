@@ -14,6 +14,9 @@
 <article 
  class="decorated_wrap shrinked <%= klass %>"
  id="<%= html_id %>"
+ <% if !(ss = searcher_settings).nil? %>
+ 	<%= "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query %>
+ <% end %>
 >
 
 	<input type="hidden" name="assoc-type" value="belongs_to">

@@ -1,5 +1,5 @@
 function generateSearchQueryForSelectForm (model_name, fields) {
-	this.HELPER = new generateSearchQueryForSelectForm_helper();
+	//this.HELPER = new generateSearchQueryForSelectForm_helper();
 	this.model_name = model_name;
 	this.fields = fields;
 
@@ -17,8 +17,8 @@ generateSearchQueryForSelectForm.prototype = {
 	init: function() {
 		//console.log("generateSearchQueryForSelectForm() init()");
 		var TOTO = this;
-		this.model_name_plu = this.HELPER.toPlural(this.model_name);
-		this.path = '/' + this.model_name_plu + '/new_select_search';
+		//this.model_name_plu = this.HELPER.toPlural(this.model_name);
+		this.path = '/' + this.model_name.pluralize() + '/new_select_search';
 		this.source_controller = $("body").data("controller_name_singular");
 		this.assoc_type = $(document).find("." + this.model_name + "_select").children("input[name=assoc-type]").first().val();
 		//console.log(this.model_name_plu);
@@ -70,7 +70,7 @@ generateSearchQueryForSelectForm.prototype = {
 }
 
 
-
+/*
 function generateSearchQueryForSelectForm_helper () {
 
 }
@@ -91,5 +91,6 @@ generateSearchQueryForSelectForm_helper.prototype = {
 		}
 	}
 }
+*/
 
 

@@ -12,6 +12,10 @@ GOODS.prototype = {
 
 	show_once: function() {
 		this.uoms_calculator = new UomsCalculator();
+	},
+
+	_new_edit_on_reload: function() {
+		
 	}
 }
 
