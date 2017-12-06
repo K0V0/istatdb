@@ -1,6 +1,7 @@
 function GOODS() {
 	this.uoms_calculator;
 	this.search_mode_change;
+	this.generate_search_query;
 }
 
 GOODS.prototype = {
@@ -15,7 +16,7 @@ GOODS.prototype = {
 	},
 
 	_new_edit_on_reload: function() {
-		
+		this.generate_search_query = new generateSearchQuery();
 	}
 }
 

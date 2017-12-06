@@ -17,6 +17,7 @@
  id="<%= html_id %>"
  <% if !(ss = searcher_settings).nil? %>
  	<%= "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query %>
+ 	<%= "data-searcher-assoc=#{assoc.to_s.singularize}" %>
  <% end %>
 >
 
