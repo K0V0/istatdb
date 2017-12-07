@@ -16,18 +16,17 @@ generateSearchQuery.prototype = {
 	},
 
 	attachEvent: function(ref) {
-		//var search_conditions = ref.data('searcher-query');
-		//logger( this.generateInputsClassesList(ref));
+		// ref - article element (window)
 		var toto = this;
 		$(ref)
 			.find(this.generateInputsClassesList(ref))
 			.frequentFireLimit('input', 350, '', function() {
-				//logger($(this));
 				toto.doAjax($(this));
 		});
 	},
 
 	generateInputsClassesList: function(ref) {
+		// ref - article element (window)
 		var elem_string = '';
 		var keys = Object.keys(ref.data('searcher-query'));
 		var keys_length = keys.length;
@@ -41,7 +40,37 @@ generateSearchQuery.prototype = {
 		return elem_string;
 	},
 
-	doAjax: function() {
+	doAjax: function(ref) {
+		// ref - input field that event occurs on
+		var toto = this;
+		var wndw = ref.closest('article');
+		var path = '/' + wndw.data('searcher-assoc').pluralize() + '/new_select_search';
 
+		$.ajax({
+		  	method: "POST",
+		 	url: path,
+		  	data: { 
+		  		q: toto.generateQueryString(wndw),
+		  		model: wndw.data('searcher-assoc'),
+		  		source_controller: $('body').data('controller_name').singularize(),
+		  		association_type: wndw.children('input[name=assoc-type]').val(),
+		  		window_id: wndw.attr('id')
+		  	}
+		});
+	},
+
+	generateQueryString: function(ref) {
+		// ref - article element (window)
+		var querystring = {};
+		var ransack_scheme = ref.data('searcher-query');
+		var scheme_keys = Object.keys(ransack_scheme);
+
+		for (var i=0; i<scheme_keys.length; i++) {
+			var qs_key = scheme_keys[i] + '_' + ransack_scheme[ scheme_keys[i] ];
+			var qs_val = ref.find('.' + ref.data('searcher-assoc') + '_' + scheme_keys[i]).val();
+			querystring[qs_key] = qs_val;
+		}
+
+		return querystring;
 	}
 }

@@ -7,5 +7,14 @@ String.prototype.pluralize = function () {
 	} else {
 		return this + 's';
 	}
-    
+};
+
+String.prototype.singularize = function () {
+
+	var suffix = this.substr(this.length-3);
+	if (suffix == 'ies') {
+		return this.substr(0, this.length-3) + 'y';
+	} else {
+		return this.substr(0, this.length-1);
+	}
 };
