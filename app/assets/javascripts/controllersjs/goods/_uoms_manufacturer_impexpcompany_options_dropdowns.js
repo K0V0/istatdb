@@ -1,3 +1,5 @@
+// new, edit
+
 function uomsManufacturerImpexpcompanyOptionsDropdowns(elem) {
 	this.elem_name = elem;
 	this.default_text_nothing_to_select = "";

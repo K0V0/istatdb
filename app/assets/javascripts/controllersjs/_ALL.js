@@ -4,6 +4,7 @@ function ALL() {
 	this.search;
 	this.focus_trigger;
 	this.hide_menu_on_outclick;
+	this.generate_search_query;
 }
 
 ALL.prototype = {
@@ -17,9 +18,6 @@ ALL.prototype = {
 	},
 
 	_index_search_show_administrative_end_administrative_on_ready: function() {
-		// automatically submit search while typing with delay 
-		// when stop typing to prevent too many requests
-		this.search = new searchItemActions();
 		// set focus to default search input when switching section(s)
 		this.focus_trigger = new triggerFocusOnSearchfield();
 	},
@@ -38,5 +36,9 @@ ALL.prototype = {
 
 	_index_search_show_on_resize: function() {
 		this.focus_trigger.init();
+	},
+
+	_new_edit_on_reload: function() {
+		this.generate_search_query = new generateSearchQuery();
 	}
 }

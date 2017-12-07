@@ -1,3 +1,5 @@
+// new, edit
+
 function uoms() {
 	this.UD_MANUFACTURER = null;
 	this.UD_IMPEXPCOMPANY = null;

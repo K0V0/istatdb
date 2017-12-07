@@ -1,5 +1,11 @@
-function LOCAL_TARICS_onready() {
+function LOCAL_TARICS() {
+	this.search;
+}
 
-	var SEARCH = new searchItemActions();
+LOCAL_TARICS.prototype = {
+	constructor: LOCAL_TARICS,
 
+	_index_search_show_administrative_end_administrative_on_ready: function() {
+		this.search = new searchItemActions();
+	},
 }

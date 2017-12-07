@@ -44,17 +44,16 @@ generateSearchQuery.prototype = {
 		// ref - input field that event occurs on
 		var toto = this;
 		var wndw = ref.closest('article');
-		var path = '/' + wndw.data('searcher-assoc').pluralize() + '/new_select_search';
 
 		$.ajax({
-		  	method: "POST",
-		 	url: path,
+		  	method: 	"POST",
+		 	url: 		'/' + wndw.data('searcher-assoc').pluralize() + '/new_select_search',
 		  	data: { 
-		  		q: toto.generateQueryString(wndw),
-		  		model: wndw.data('searcher-assoc'),
-		  		source_controller: $('body').data('controller_name').singularize(),
-		  		association_type: wndw.children('input[name=assoc-type]').val(),
-		  		window_id: wndw.attr('id')
+		  		q: 					toto.generateQueryString(wndw),
+		  		model: 				wndw.data('searcher-assoc'),
+		  		source_controller: 	$('body').data('controller_name').singularize(),
+		  		association_type: 	wndw.children('input[name=assoc-type]').val(),
+		  		window_id: 			wndw.attr('id')
 		  	}
 		});
 	},

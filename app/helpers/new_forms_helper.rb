@@ -63,7 +63,7 @@ module NewFormsHelper
 		mem_param_name = "#{coll.name.underscore}"
 		coll_name = "#{mem_param_name}_ids"
     	# this loads associations of passed in obj to match checked checkboxes later
-		associated_records = obj.try("#{coll.name.pluralize.underscore}").pluck(:id)
+		associated_records = obj.try("#{coll.name.pluralize.underscore}").try(:pluck, :id)
 		# this checks for params hash to catch if unsaved 
 		pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 		# id of association that is search limited (filtered) by

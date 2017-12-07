@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+	include Log
+
 	### cbt - controller based translation
 	### trying to keep transtations organized, imagine you have t(:foo) somewhere in views
 	### associated to GoodsController, in YML file you write:
@@ -8,11 +10,6 @@ module ApplicationHelper
 	###     foo: BAR
 	def cbt translation_key
 		I18n.t("#{params[:controller].to_s}.#{translation_key.to_s}")#.gsub(/\n/, "<br>").html_safe
-	end
-
-	def log something="log", var=nil
-		Rails.logger.info "-------------- " + something.to_s
-		Rails.logger.info var
 	end
 
 	def current_translations

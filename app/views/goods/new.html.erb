@@ -41,6 +41,11 @@
 			assoc: :impexpcompanies,
 			fields: {
 				company_name: {  }
+			},
+			searcher_settings: {
+				query: {
+					company_name: :cont
+				}
 			}
 		) %>
 
@@ -49,6 +54,11 @@
 			assoc: :manufacturers,
 			fields: {
 				name: {  }
+			},
+			searcher_settings: {
+				query: {
+					name: :cont
+				}
 			}
 		) %>
 

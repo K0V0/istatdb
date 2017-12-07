@@ -1,6 +1,8 @@
 module Defaults
 	extend ActiveSupport::Concern
 
+	include Log
+
 	def self.included(base)
 	  base.instance_eval do 
 

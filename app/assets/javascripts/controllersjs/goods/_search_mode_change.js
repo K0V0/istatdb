@@ -1,3 +1,5 @@
+//index, search, show, administrative, end_administrative
+
 function searchModeChange() {
 	this.checkbox = null;
 	this.init();

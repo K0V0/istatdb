@@ -1,3 +1,5 @@
+// new, edit
+
 function uomsManufacturerImpexpcompanyOptionsHandler(elem) {
 	this.elem_name = elem + '_select';
 	this.HELPER;

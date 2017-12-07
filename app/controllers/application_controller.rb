@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include ApplicationConcern
   #include BeforeRender
   include RansackSearchWrapper
+  include Log
 
   protect_from_forgery with: :exception
 
