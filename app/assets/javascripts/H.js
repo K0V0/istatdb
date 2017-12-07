@@ -70,15 +70,25 @@ H.prototype = {
 			var rgx = "(" + this.ACTION_NAME + ").*(_" + action_type + ")$|(_all_" + action_type + ")$";
 			var meths = this.get_methods(controller);
 
+			//logger(meths);
+
 			for (var i=0; i<meths.length; i++) {
 				if (meths[i].match(rgx) != null) {
 					if (this.FIRED_ONCE_ACTIONS.indexOf(meths[i]) == -1) {
-						controller[meths[i]]();
+						
+						//logger(meths[i]);
+						//logger(controller[meths[i]]);
+
+						//controller[meths[i]]();
+
+						logger(controller["_index_search_show_administrative_end_administrative"])
+
+
 						if (this.ONCE_REGEX.test(meths[i])) { 
 							this.FIRED_ONCE_ACTIONS.push(meths[i]);
 						}
-						logger(controller.constructor.name);
-						logger(meths[i]);
+						//logger(controller.constructor.name);
+						//logger(meths[i]);
 					}
 				}
 			}

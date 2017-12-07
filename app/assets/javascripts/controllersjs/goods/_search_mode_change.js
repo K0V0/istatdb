@@ -1,12 +1,12 @@
 //index, search, show, administrative, end_administrative
 
-function searchModeChange() {
+function SearchModeChange() {
 	this.checkbox = null;
 	this.init();
 }
 
-searchModeChange.prototype = {
-	constructor: searchModeChange,
+SearchModeChange.prototype = {
+	constructor: SearchModeChange,
 
 	init: function() {
 		var totok = this;

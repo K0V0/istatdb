@@ -1,12 +1,11 @@
-function searchItemActions() {
-	logger("searcher inited");
-	this.events();
+function SearchItemActions() {
+	this.init();
 }
 
-searchItemActions.prototype = {
-	constructor: searchItemActions,
+SearchItemActions.prototype = {
+	constructor: SearchItemActions,
 
-	events: function() {
+	init: function() {
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
 			$(this).append('<input type="hidden" name="page" value="1">');

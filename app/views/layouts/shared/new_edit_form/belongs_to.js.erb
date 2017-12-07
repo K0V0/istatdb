@@ -19,7 +19,7 @@ var rows = tBody.children("tr");
 // for later use remember ids (vals) of buttons to avoid duplicates on refresh
 var checked_btns_vals = []
 
-var alower = mainElem.find("#<%= params[:model] %>_allow_add_new");
+var alower = mainElem.find(".<%= params[:model] %>_allow_add_new");
 
 // let checked values be there
 rows.each(function() {

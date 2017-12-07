@@ -69,31 +69,35 @@ module NewFormsHelper
 		# id of association that is search limited (filtered) by
 		id_from_search_filter = get_selected_filter_obj_id_from_mem(mem_param_name)
 
-    	coll.each do |c|
-    		output = ""
-    		record_is_in_associated = associated_records.include?(c.id)
-    		record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
-    		was_selected_in_search_bar_filter = id_from_search_filter == c.id
-    		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter
+		if coll.length > 0
+	    	coll.each do |c|
+	    		output = ""
+	    		record_is_in_associated = associated_records.include?(c.id)
+	    		record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
+	    		was_selected_in_search_bar_filter = id_from_search_filter == c.id
+	    		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter
 
-    		output += "<tr><td>"
-	    		output += check_box(
-					obj_name,
-					coll_name,
-					{ 
-						multiple: true,
-						checked: checked
-					},
-					c.id,
-					""
-				)
-				output += "</td>"
-				output += generate_labels_for_select_table(c, obj_name, coll_name, text_method, opts)
-    		output += "</tr>"
+	    		output += "<tr><td>"
+		    		output += check_box(
+						obj_name,
+						coll_name,
+						{ 
+							multiple: true,
+							checked: checked
+						},
+						c.id,
+						""
+					)
+					output += "</td>"
+					output += generate_labels_for_select_table(c, obj_name, coll_name, text_method, opts)
+	    		output += "</tr>"
 
-    		output_first += output if checked
-    		output_other += output if !checked 
-    	end
+	    		output_first += output if checked
+	    		output_other += output if !checked 
+	    	end
+	    else
+	    	output_first += new_forms_no_results
+	    end
 
     	(output_first + output_other).html_safe
     end
@@ -108,25 +112,43 @@ module NewFormsHelper
     	checked_id = obj.try(coll.name.underscore).try(:id) 
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
-    	coll.each do |c|
-    		output = ""
-            checked = (c.send(val_method).to_s == pars)||(checked_id == c.id)
-    		output += "<tr><td>"
-				output += radio_button(
-					obj_name,
-					coll_name,
-					c.send(val_method),
-					checked: checked
-				) 
-				output += "</td>"
-				output += generate_labels_for_select_table(c, obj_name, coll_name, text_method, opts)
+    	#logger(coll.length.to_s)
+    	if coll.length > 0
+	    	coll.each do |c|
+	    		output = ""
+	            checked = (c.send(val_method).to_s == pars)||(checked_id == c.id)
+	    		output += "<tr><td>"
+					output += radio_button(
+						obj_name,
+						coll_name,
+						c.send(val_method),
+						checked: checked
+					) 
+					output += "</td>"
+					output += generate_labels_for_select_table(c, obj_name, coll_name, text_method, opts)
 
-			output += "</tr>"
-            
-			output_first += output if checked
-            output_other += output if !checked
-    	end
+				output += "</tr>"
+	            
+				output_first += output if checked
+	            output_other += output if !checked
+	    	end
+	    else
+	    	output_first += new_forms_no_results
+	    end
     	(output_first + output_other).html_safe
+    end
+
+    def new_forms_no_results
+    	output = "<tr><td colspan=\"10\" class=\"new_form_select_no_results\">"
+    	output += "
+    		<h2>#{t('items_table.nothing_found')}.</h2>
+    			#{t('new_form_selects.try_to_add_as_new_1a')}
+    			<b>\"#{t('search.search_as_new')}\"</b>
+    			#{t('new_form_selects.try_to_add_as_new_1b')}.<br>
+    		<i>#{t('new_form_selects.try_to_add_as_new_2')}.</i>
+    	"
+    	output += "</td></tr>"
+    	output
     end
 
     # simple input text field generation

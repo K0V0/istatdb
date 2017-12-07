@@ -18,6 +18,8 @@ generateSearchQuery.prototype = {
 	attachEvent: function(ref) {
 		// ref - article element (window)
 		var toto = this;
+
+		$(ref).find('input.allow_add_new').rememberUserManipulation();
 		$(ref)
 			.find(this.generateInputsClassesList(ref))
 			.frequentFireLimit('input', 350, '', function() {

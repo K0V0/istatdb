@@ -1,6 +1,6 @@
 // new, edit
 
-function uoms() {
+function Uoms() {
 	this.UD_MANUFACTURER = null;
 	this.UD_IMPEXPCOMPANY = null;
 	this.selects = '.uoms_impexpcompany_select > select, .uoms_manufacturer_select > select';
@@ -10,8 +10,8 @@ function uoms() {
 	this.events();
 }
 
-uoms.prototype = {
-	constructor: uoms,
+Uoms.prototype = {
+	constructor: Uoms,
 
 	init: function() {
 		this.UD_MANUFACTURER = new uomsManufacturerImpexpcompanyOptionsHandler('manufacturer');
