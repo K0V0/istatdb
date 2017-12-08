@@ -2,14 +2,9 @@
 function H() {
 	this.CONTROLLER_NAME;
 	this.ACTION_NAME;
-
 	this.CONTROLLER;
-	//this.CONTROLLER_METHODS;
 	this.ALL_CONTROLLER;
-	//this.ALL_CONTROLLER_METHODS;
-
 	this.FIRED_ONCE_ACTIONS;
-	this.ONCE_REGEX; 
 
 	this.init();
 }
@@ -19,7 +14,6 @@ H.prototype = {
 
 	init: function() {
 		this.FIRED_ONCE_ACTIONS = [];
-		this.ONCE_REGEX = /_once$/;
 	},
 
 	run: function(handler_name) {
@@ -59,36 +53,60 @@ H.prototype = {
 		}
 	},
 
-	get_methods: function(obj) {
+	get_actions: function(obj) {
 		var meth = Object.getOwnPropertyNames(window[obj.constructor.name].prototype);
 		meth.shift();
     	return meth;
 	},
 
 	run_controller_actions: function(controller, action_type) {
+		// if given page has JS controller
 		if (typeof controller != 'undefined') {
-			var rgx = "(" + this.ACTION_NAME + ").*(_" + action_type + ")$|(_all_" + action_type + ")$";
-			var meths = this.get_methods(controller);
+			var actions = this.get_actions(controller);
 
-			//logger(meths);
+			for (var i=0; i<actions.length; i++) {
+				var action = actions[i];
 
-			for (var i=0; i<meths.length; i++) {
-				if (meths[i].match(rgx) != null) {
-					if (this.FIRED_ONCE_ACTIONS.indexOf(meths[i]) == -1) {
+				// run only actions suited to current page action 
+				// includes for string because of js action can cover multiple rails 
+				// page actions
+				if (action.includes(this.ACTION_NAME) || action == '_ALL') {
+					var methods = controller[ action ];
+					var methods_keys = Object.keys(methods);
+
+					for (var j=0; j<methods_keys.length; j++) {
+						var method_name = methods_keys[j];
+						var method_allowed_events = methods[ methods_keys[j] ];
 						
-						//logger(meths[i]);
-						//logger(controller[meths[i]]);
+						// run only methods that are suited to particular event
+						if (method_allowed_events.contains(action_type)) {
 
-						//controller[meths[i]]();
+							// and run method that is not on 'run once per instantiation' list
+							if (this.FIRED_ONCE_ACTIONS.indexOf(method_name) == -1) {
 
-						logger(controller["_index_search_show_administrative_end_administrative"])
+								logger(
+									'controller: ' + controller.constructor.name + '\n' +
+									'page_action: ' + this.ACTION_NAME + '\n' +
+									'cntrlr_action: ' + action + '\n' +
+									'method: ' + method_name + '\n' +
+									'event: ' + action_type + '\n' + '\n'
+								);
 
+								// instantiate method (object) only if needed, otherwise just run
+								// refresh/events reattach .init() code
+								if (controller[ method_name ] === undefined) {
+									controller[ method_name ] = new window[ method_name.classycase() ]();
+								} else {
+									controller[ method_name ].init();
+								}
 
-						if (this.ONCE_REGEX.test(meths[i])) { 
-							this.FIRED_ONCE_ACTIONS.push(meths[i]);
+								// if 'run once' method executed because is not in list, add it to list
+								if (method_allowed_events.contains('once')) { 
+									this.FIRED_ONCE_ACTIONS.push(method_name);
+								}
+							}
+
 						}
-						//logger(controller.constructor.name);
-						//logger(meths[i]);
 					}
 				}
 			}

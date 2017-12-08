@@ -1,14 +1,19 @@
 
 function ALL() {
 	this.hover_submenu;
-	this.search;
+	//this.search;
 	this.focus_trigger;
 	this.hide_menu_on_outclick;
-	this.generate_search_query;
+	//this.generate_search_query;
 }
 
 ALL.prototype = {
 	constructor: ALL,
+
+	_ALL: {
+		hover_submenu: ['on_ready']
+	}
+	/*
 
 	_all_on_ready: function() {
 		// synchronise main top menu active tab and submenu ribbon color on hover
@@ -41,4 +46,5 @@ ALL.prototype = {
 	_new_edit_on_reload: function() {
 		//this.generate_search_query = new generateSearchQuery();
 	}
+	*/
 }

@@ -1,10 +1,10 @@
-function hoverSubmenu() {
+function HoverSubmenu() {
 	this.elems;
 	this.init();
 }
 
-hoverSubmenu.prototype = {
-	constructor: hoverSubmenu,
+HoverSubmenu.prototype = {
+	constructor: HoverSubmenu,
 
 	init: function() {
 
