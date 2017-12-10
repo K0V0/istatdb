@@ -1,4 +1,4 @@
-function triggerFocusOnSearchfield() {
+function TriggerFocusOnSearchfield() {
 	this.bigscreen_mode;
 	this.focus_parent;
 	this.p;
@@ -6,8 +6,8 @@ function triggerFocusOnSearchfield() {
 	this.init();
 }
 
-triggerFocusOnSearchfield.prototype = {
-	constructor: triggerFocusOnSearchfield,
+TriggerFocusOnSearchfield.prototype = {
+	constructor: TriggerFocusOnSearchfield,
 
 	init: function() {
 		this.p = $(document).find('section.search_bar > form').first();

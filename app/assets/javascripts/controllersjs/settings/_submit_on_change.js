@@ -1,9 +1,9 @@
-function submitSettingsOnChange() {
+function SubmitSettingsOnChange() {
 	this.init();
 }
 
-submitSettingsOnChange.prototype = {
-	constructor: submitSettingsOnChange,
+SubmitSettingsOnChange.prototype = {
+	constructor: SubmitSettingsOnChange,
 
 	init: function() {
 

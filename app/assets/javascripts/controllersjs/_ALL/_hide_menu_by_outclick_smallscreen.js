@@ -1,14 +1,14 @@
-function hideMenuByOutclickSmallscreen() {
+function HideMenuByOutclickSmallscreen() {
 
 	this.init();
 }
 
-hideMenuByOutclickSmallscreen.prototype = {
-	constructor: hideMenuByOutclickSmallscreen,
+HideMenuByOutclickSmallscreen.prototype = {
+	constructor: HideMenuByOutclickSmallscreen,
 
 	init: function() {
 		$(document).find('main').on('click', function() {
-			$('#show_topmenu, #show_paginator')
+			$(document).find('#show_topmenu, #show_paginator')
 				.attr('checked', false);
 		});
 	}

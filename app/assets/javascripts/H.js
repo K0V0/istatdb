@@ -105,7 +105,6 @@ H.prototype = {
 									this.FIRED_ONCE_ACTIONS.push(method_name);
 								}
 							}
-
 						}
 					}
 				}

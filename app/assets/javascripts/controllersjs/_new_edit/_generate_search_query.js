@@ -1,10 +1,10 @@
-function generateSearchQuery () {
+function GenerateSearchQuery () {
 
 	this.init();
 }
 
-generateSearchQuery.prototype = {
-	constructor: generateSearchQuery,
+GenerateSearchQuery.prototype = {
+	constructor: GenerateSearchQuery,
 
 	init: function() {
 		var totok = this;

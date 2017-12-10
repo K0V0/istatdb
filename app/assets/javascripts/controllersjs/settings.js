@@ -1,11 +1,11 @@
 function SETTINGS() {
-	this.settings_change_submit;
+	this.submit_settings_on_change;
 }
 
 SETTINGS.prototype = {
 	constructor: SETTINGS,
 
-	index_once: function() {
-		this.settings_change_submit = new submitSettingsOnChange();
+	index {
+		submit_settings_on_change: ['once']
 	}
 }
