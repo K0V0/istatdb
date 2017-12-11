@@ -26,8 +26,8 @@ H.prototype = {
 		this.ACTION_NAME = $('body').data('action_name');
 		this.get_all_controller();
 		this.get_controller();
-		//this.run_controller_actions(this.ALL_CONTROLLER, handler_name);
-		//this.run_controller_actions(this.CONTROLLER, handler_name);
+		this.run_controller_actions(this.ALL_CONTROLLER, handler_name);
+		this.run_controller_actions(this.CONTROLLER[this.CONTROLLER_NAME], handler_name);
 	},
 
 	initiate_cache: function() {
@@ -59,23 +59,27 @@ H.prototype = {
 
 	get_all_controller: function() {
 		if (this.ALL_CONTROLLER === undefined) {
-			this.ALL_CONTROLLER = ALL;
+			this.ALL_CONTROLLER = {};
 		}
 	},
 
 	get_actions: function(obj) {
-		var meth = Object.getOwnPropertyNames(window[obj.constructor.name].prototype);
-		meth.shift();
+		var meth = Object.getOwnPropertyNames(this.RUN_LIST);
+		//meth.shift();
     	return meth;
 	},
 
 	run_controller_actions: function(controller, action_type) {
 		// if given page has JS controller
-		if (typeof controller != 'undefined') {
+		if (controller !== undefined) {
 			var actions = this.get_actions(controller);
+
+			//logger('cstions');
+			logger(actions);
 
 			for (var i=0; i<actions.length; i++) {
 				var action = actions[i];
+				logger(action);
 
 				// run only actions suited to current page action 
 				// includes for string because of js action can cover multiple rails 
