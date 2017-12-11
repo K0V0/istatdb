@@ -5,7 +5,7 @@ function SETTINGS() {
 SETTINGS.prototype = {
 	constructor: SETTINGS,
 
-	index {
+	index: {
 		submit_settings_on_change: ['once']
 	}
 }

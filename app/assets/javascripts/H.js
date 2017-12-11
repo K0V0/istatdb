@@ -2,6 +2,8 @@
 function H() {
 	this.CONTROLLER_NAME;
 	this.ACTION_NAME;
+	this.RUN_LIST;
+
 	this.CONTROLLER;
 	this.ALL_CONTROLLER;
 	this.FIRED_ONCE_ACTIONS;
@@ -20,26 +22,34 @@ H.prototype = {
 		if (typeof handler_name == 'undefined') {
 			handler_name = 'on_reload';
 		}
+		this.CONTROLLER_NAME = $('body').data('controller_name').toUpperCase();
+		this.ACTION_NAME = $('body').data('action_name');
 		this.get_all_controller();
 		this.get_controller();
-		this.run_controller_actions(this.ALL_CONTROLLER, handler_name);
-		this.run_controller_actions(this.CONTROLLER, handler_name);
+		//this.run_controller_actions(this.ALL_CONTROLLER, handler_name);
+		//this.run_controller_actions(this.CONTROLLER, handler_name);
+	},
+
+	initiate_cache: function() {
+		this.CONTROLLER = {};
+		this.CONTROLLER[this.CONTROLLER_NAME] = {};
 	},
 
 	get_controller: function() {
-		this.CONTROLLER_NAME = $('body').data('controller_name').toUpperCase();
-		this.ACTION_NAME = $('body').data('action_name');
-		var fx = window[this.CONTROLLER_NAME];
+		this.RUN_LIST = window[this.CONTROLLER_NAME];
 		
-		if (typeof fx != 'undefined') {
+		if (this.RUN_LIST !== undefined) {
 
-			if (typeof this.CONTROLLER == 'undefined') {
-				this.CONTROLLER = new fx();
+			if (this.CONTROLLER === undefined) {
+				this.initiate_cache();
 			} 
 			// do not load same controller twice 
 			// after F5 refresh of app or first run botn "on_ready()" and "on_reload()" runs 
-			if (this.CONTROLLER.constructor.name != this.CONTROLLER_NAME) {
-				this.CONTROLLER = new fx();
+			//logger(Object.keys(this.CONTROLLER));
+			if (!(Object.keys(this.CONTROLLER)).includes(this.CONTROLLER_NAME)) {
+				//logger(Object.keys(this.CONTROLLER));
+				this.initiate_cache();
+				//logger('runds');
 			}
 
 		} else {
@@ -48,8 +58,8 @@ H.prototype = {
 	},
 
 	get_all_controller: function() {
-		if (typeof this.ALL_CONTROLLER == 'undefined') {
-			this.ALL_CONTROLLER = new ALL();
+		if (this.ALL_CONTROLLER === undefined) {
+			this.ALL_CONTROLLER = ALL;
 		}
 	},
 
