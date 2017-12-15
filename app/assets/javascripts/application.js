@@ -17,8 +17,10 @@
 //= require clipboard
 //= require_tree ./addons
 //= require_tree ./controllersjs
+// require memory-stats
 //= require ./H
 //= require ./MAIN
+
 
 // require paloma
 

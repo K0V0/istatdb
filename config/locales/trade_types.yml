@@ -1,0 +1,21 @@
+en:
+
+  activerecord:
+    models:
+      trade_type: Type of trade operations
+    attributes:
+      trade_type:
+        type: Number code of operation
+        description: Description of operations
+
+
+sk:
+
+  activerecord:
+    models:
+      trade_type: Typy obchodných operácií
+    attributes:
+      trade_type:
+        type: Číselný kód operácie
+        description: Popis
+        

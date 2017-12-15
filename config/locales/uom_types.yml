@@ -1,0 +1,22 @@
+en:
+
+  activerecord:
+    models:
+      uom_type: Units of measurement
+    attributes:
+      uom_type:
+        uom_type: Unit
+        full_name: Full name
+        description: Description
+
+
+sk:
+
+  activerecord:
+    models:
+      uom_type: Merné jendontky
+    attributes:
+      uom_type:
+        uom_type: Jednotka
+        full_name: Celý názov
+        description: Popis

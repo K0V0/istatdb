@@ -56,6 +56,8 @@ gem 'order_as_specified'
 
 gem 'clipboard-rails'
 
+#gem 'memory-stats-js-rails'
+
 #gem 'paloma', '~> 5.1.0'
 
 # Use ActiveModel has_secure_password
