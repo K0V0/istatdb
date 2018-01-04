@@ -29,15 +29,11 @@ if defined? options
 end
 %>
 
-<%= @collection.blank? %>
-
-<%= @result.blank? %>
-
 <section class="<%= html_class_main %>">
 
 	<table class="<%= html_class_table %>" id="<%= cn %>">
 
-	<% if !@collection.blank?||!@result.blank? %>
+	<% if !object.blank? %>
 
 		<% if defined? options %>
 
@@ -75,11 +71,7 @@ end
 
 			<% end %>
 
-			<% if defined? errors %>
-
-				<%= items_table_errors_handler(errors[0], object) %>
-
-			<% end %>
+			<%= items_table_errors_handler(errors[0], object) if defined? errors %>
 
 		</tbody>
 
@@ -104,7 +96,11 @@ end
 
 	<% else %>
 
-		<%= render 'layouts/shared/items_table/no_items' %>
+		<% if object.klass.name.constantize.all.size > 0 %>
+			<%= items_table_errors_handler(errors[0], object) if defined? errors %>
+		<% else %>
+			<%= render('layouts/shared/items_table/no_items')  %>
+		<% end %>
 
 	<% end %>
 

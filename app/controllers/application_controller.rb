@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
 
   before_action :index_action, only: :index
 
+  before_action :search_action, only: :search
+
   before_action :administrative_action, only: :administrative
 
   before_action :end_administrative_action, only: :end_administrative
@@ -137,12 +139,16 @@ class ApplicationController < ActionController::Base
   end
 
   def index_action
-    @collection = @model.all if @model
+    #@collection = @model.all if @model
+  end
+
+  def search_action
+   # @collection = @model.all if @model
   end
 
   def administrative_action
   	controller_mem_set("is_in_administrative", true)
-  	@collection = @model.all if @model
+  	#@collection = @model.all if @model
   end
 
   def end_administrative_action

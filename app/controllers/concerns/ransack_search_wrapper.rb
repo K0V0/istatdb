@@ -5,6 +5,7 @@ module RansackSearchWrapper
 		params[:q] = [] if disabled
 
 	    object ||= controller_name.classify.constantize.try(:default_order)
+
 	    if !object.nil?
 		    @search = object.ransack(params[:q]) if joins.nil?
 		    @search = object.joins(joins).ransack(params[:q]) if !joins.nil?
@@ -13,11 +14,15 @@ module RansackSearchWrapper
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
 
-		    if params[:per] != "1" && @result.count == 1 && !request.xhr?.nil? && autoshow && action_name == "search"
-		    	redirect_to controller: controller_name, action: :show, id: @result.first.id
+		    if (params[:per] != "1" &&
+		    	@result.length == 1 &&
+		    	!request.xhr?.nil? &&
+		    	autoshow &&
+		    	action_name == "search")
+		    		redirect_to controller: controller_name, action: :show, id: @result.first.id
 		    end
 
-		    if @result.count == 1 && generate_single_result_var
+		    if @result.length == 1 && generate_single_result_var
 		    	@result1 = @result.first
 		    end
 		end

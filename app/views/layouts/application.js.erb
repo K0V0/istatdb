@@ -90,11 +90,15 @@ var an = "<%= an = action_name %>";
 
 		$('<%=j render("layouts/base/pagination") %>').appendTo('nav.pagination');
 
+		$('input[name=page]').remove();
+
 	<% end %>
 
 	<% if content_for? :show_content %>
 
 		$('<%=j yield(:show_content) %>').appendTo('main > article');
+
+		$('<input type="hidden" name="page" value="<%= params[:page] %>">').appendTo('body');
 		
 	<% end %>
 
