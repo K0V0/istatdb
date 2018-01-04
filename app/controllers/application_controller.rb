@@ -129,7 +129,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_subsection_of(parent_controller: nil)
-	@render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
+	  @render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
   end
 
   def searcher_settings
