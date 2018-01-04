@@ -29,11 +29,15 @@ if defined? options
 end
 %>
 
+<%= @collection.blank? %>
+
+<%= @result.blank? %>
+
 <section class="<%= html_class_main %>">
 
 	<table class="<%= html_class_table %>" id="<%= cn %>">
 
-	<% if !object.nil? %>
+	<% if !@collection.blank?||!@result.blank? %>
 
 		<% if defined? options %>
 
