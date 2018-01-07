@@ -26,7 +26,7 @@ var an = "<%= an = action_name %>";
 
 		window.history.pushState("", "", "<%= url_for(action: action_name)%>");
 
-		searchform_actions = body.find('section.search_bar > form > div.searchform_fulscreen_fields > div.searchform_actions');
+		searchform_actions = body.find('section.search_bar > form > div > div.searchform_actions');
 
 		searchform_add_button = searchform_actions.children('a.add_item_from_search');
 

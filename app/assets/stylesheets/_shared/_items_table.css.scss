@@ -116,7 +116,7 @@ section.items_table {
 			   			}
 
 			   			td.edit_item, td.delete_item {
-			   				width:auto;
+			   				width:auto !important;
 			   				float: right;
 			   				margin: 0.25em 0;
 			   			}

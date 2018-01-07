@@ -109,8 +109,10 @@ input[type=checkbox], input[type=radio] {
 
 label {
 	vertical-align:middle;
+	/*
 	white-space: nowrap;
 	height: 1.625em;
+	*/
 	line-height: 1.625em;
 	display: inline-block;
 

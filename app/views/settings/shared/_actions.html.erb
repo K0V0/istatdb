@@ -1,10 +1,18 @@
 
 <% content_for :search_bar do %>
 
-	<form class="decorated_wrap">
+	<form class="decorated_wrap shrinked">
 
-		<%= render "/layouts/shared/actions/add_new_button" %>
-		<%= render "/layouts/shared/actions/go_to_administrative" %>
+		<div>
+			
+			<div class="searchform_actions"><!--
+
+				--><%= render "/layouts/shared/actions/add_new_button" %><!--
+				--><%= render "/layouts/shared/actions/go_to_administrative" %><!--
+
+			--></div>
+
+		</div>
 
 	</form>
 
