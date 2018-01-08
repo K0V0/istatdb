@@ -41,6 +41,12 @@ section.form {
 				background-color: $input_validation_error;
 			}
 
+			input.allow_add_new {
+				display: inline-block;
+				line-height:1em;
+				vertical-align: middle;
+			}
+
 			div.select_wrapper {
 				margin: 0.125em 0;
 			}

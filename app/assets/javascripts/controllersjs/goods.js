@@ -11,7 +11,7 @@ GOODS = {
 	},
 
 	_new_edit: {
-		//uoms: ["on_reload"]
+		//uoms: ["on_reload"],
 		generate_search_query: ['on_reload']
 	}
 }
