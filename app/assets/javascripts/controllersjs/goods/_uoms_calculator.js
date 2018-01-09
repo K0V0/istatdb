@@ -1,4 +1,4 @@
-// show
+// show action on goods controller only
 
 function UomsCalculator(val=null, multiplier=null, uom_type=null) {
 	this.H = new UomsCalculatorHelper();
