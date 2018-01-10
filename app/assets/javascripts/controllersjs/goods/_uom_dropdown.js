@@ -51,6 +51,7 @@ UomDropdown.prototype = {
 	},
 
 	updateDropdownLists: function(list) {
+		// list - json-like list with new options set
 		var T = this;
 		/*console.log(
 			$(document)
@@ -66,6 +67,27 @@ UomDropdown.prototype = {
 			//console.log(this);
 			T.H.clearDropdown(this);
 			T.H.fillupDropdown(this, list.data);
+			T.validateDropdownList(this);
 		});
-	}
+	},
+
+	validateDropdownList: function(dropdown_elem) {
+		var valid = false;
+		var opts = $(dropdown_elem).children('option');
+		this.H.decideEnable(dropdown_elem, opts);
+		valid = this.H.decideValid(dropdown_elem);
+		return valid;
+		/*if (opts.length == 1) {
+			//logger("1");
+			if (opts.first().val() != "") {
+				// if only option is not blank text informing that nothing to do
+			} else {
+				$(dropdown_elem).attr('disabled', false);
+			}
+
+		} else if (opts.length > 1) {
+
+		}*/
+	},
+
 }

@@ -19,6 +19,8 @@ Uom.prototype = {
 		.find('input, select')
 		.on('change', this, function() {
 			//console.log($(this));
+			
+			//logger($(this).closest('article.uoms'));
 		});
 	}
 }
