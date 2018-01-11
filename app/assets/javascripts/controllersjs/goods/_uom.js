@@ -14,10 +14,12 @@ Uom.prototype = {
 	},
 
 	onChange: function() {
+		var T = this;
 		$(document)
 		.find('article.uoms')
 		.find('input, select')
 		.on('change', this, function() {
+			T.H.decideButtonsActivation();
 			//console.log($(this));
 			
 			//logger($(this).closest('article.uoms'));

@@ -14,14 +14,11 @@ UomHelper.prototype = {
 	},
 
 	decideButtonsActivation: function(uom) {
-
+		this.isValid();
 	},
 
 	isValid: function(uom) {
-		var value_is_num;
-		var koeficient_is_num;
-		var type_selected;
-		var impexpcompany_valid;
-		var manufacturer_valid;
+		var valid[];
+		valid['num'] = $(uom).children('div > div > input.uom_val').val().test(/^[0-9\.\,]+\s*$/);
 	}
 }
