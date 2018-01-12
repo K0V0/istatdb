@@ -9,6 +9,10 @@ module ApplicationConcern
 		return nil
 	end
 
+	def curr_controller_has_model?
+		@model.nil? ? false : true
+	end
+
 	def build_if_empty(*assocs)
 		
 		if action_name == "new" || action_name == "create"
@@ -66,7 +70,7 @@ module ApplicationConcern
 
 	def remember_settings
 		if @MEM.settings == nil
-			@MEM.send("settings=", Setting.load)
+			@MEM.send("settings=", current_user.settings.l)
 		end
 	end
 

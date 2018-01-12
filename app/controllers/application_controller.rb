@@ -12,40 +12,43 @@ class ApplicationController < ActionController::Base
     @model = model_exist?
   end
 
+  before_action :authenticate_user!
+
   before_action :inits
 
-  before_action(only: [:index, :search, :show, :administrative]) {
+  before_action(only: [:index, :search, :show, :administrative], if: :curr_controller_has_model?) {
     searcher_for(
     	searcher_settings
     )
   }
 
-  before_action :index_action, only: :index
+  before_action :index_action, only: :index, if: :curr_controller_has_model?
 
-  before_action :search_action, only: :search
+  before_action :search_action, only: :search, if: :curr_controller_has_model?
 
-  before_action :administrative_action, only: :administrative
+  before_action :administrative_action, only: :administrative, if: :curr_controller_has_model?
 
-  before_action :end_administrative_action, only: :end_administrative
+  before_action :end_administrative_action, only: :end_administrative, if: :curr_controller_has_model?
 
-  before_action :show_action, only: :show
+  before_action :show_action, only: :show, if: :curr_controller_has_model?
 
-  before_action :new_action, only: :new
+  before_action :new_action, only: :new, if: :curr_controller_has_model?
 
-  before_action :create_action, only: :create
+  before_action :create_action, only: :create, if: :curr_controller_has_model?
 
-  before_action :edit_action, only: [:edit, :update]
+  before_action :edit_action, only: [:edit, :update], if: :curr_controller_has_model?
 
-  before_action :destroy_action, only: [:destroy, :delete]
+  before_action :destroy_action, only: [:destroy, :delete], if: :curr_controller_has_model?
 
   before_action :load_vars, only: [:new, :edit, :edit_multiple, :update, 
-  :update_multiple, :create]
+  :update_multiple, :create], if: :curr_controller_has_model?
 
-  before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative]
+  before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative], if: :curr_controller_has_model?
 
-  before_action :apicall_search_action, only: :new_select_search
+  before_action :apicall_search_action, only: :new_select_search, if: :curr_controller_has_model?
 
-  before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create]
+  before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create], if: :curr_controller_has_model?
+
 
   def index
   	render "#{@render_command_prepend}index"
@@ -121,8 +124,9 @@ class ApplicationController < ActionController::Base
 
     @body_class = "#{action_name} #{controller_name}"
     @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')
-    remember_settings
-    params[:per] = @MEM.settings.per_page
+    @body_class += " tride" if @MEM.settings.gui_enable_3d == "1"
+    remember_settings 		## load settings, even default if session deleted
+    params[:per] = @MEM.settings.gui_per_page
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
@@ -139,16 +143,13 @@ class ApplicationController < ActionController::Base
   end
 
   def index_action
-    #@collection = @model.all if @model
   end
 
   def search_action
-   # @collection = @model.all if @model
   end
 
   def administrative_action
   	controller_mem_set("is_in_administrative", true)
-  	#@collection = @model.all if @model
   end
 
   def end_administrative_action
@@ -160,12 +161,12 @@ class ApplicationController < ActionController::Base
   end
 
   def new_action
-    @record = @model.new
+    @record = @model.new #if @model
     around_new
   end
 
   def create_action 
-    @record = @model.new(permitted_params)
+    @record = @model.new(permitted_params) #if @model
     around_create
   end
 

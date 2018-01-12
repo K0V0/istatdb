@@ -56,6 +56,8 @@ gem 'order_as_specified'
 
 gem 'clipboard-rails'
 
+gem 'devise'
+
 #gem 'memory-stats-js-rails'
 
 #gem 'paloma', '~> 5.1.0'

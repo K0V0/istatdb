@@ -19,7 +19,7 @@ Uom.prototype = {
 		.find('article.uoms')
 		.find('input, select')
 		.on('change', this, function() {
-			T.H.decideButtonsActivation();
+			T.H.decideButtonsActivation($(this).closest('article'));
 			//console.log($(this));
 			
 			//logger($(this).closest('article.uoms'));

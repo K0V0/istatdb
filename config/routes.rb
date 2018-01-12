@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   ### nastavenie domovskej stranky
 
   root to: 'goods#index'

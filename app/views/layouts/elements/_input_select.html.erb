@@ -1,7 +1,7 @@
 <% 
 	is_blank = (defined?(blank_text)).nil? ? false : blank_text
 	is_disabled = (collection.nil? || !collection.collect(&:id).any?) && (is_blank != false) ? 'disabled' : false
-	klass_html = (html_class if defined?(html_class))||("")
+	klass_html = defined?(html_class) ? html_class : ""
 %>
 
 <div>
