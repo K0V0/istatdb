@@ -152,6 +152,10 @@ section.form {
 	article.shrinked > div.tablewrap {
 		width:auto;
 		margin-left:0.25em;
-		margin-right:0.25em;
+		//margin-right:0.25em;
+
+		& > table {
+			border-right: 0.5em solid transparent;
+		}
 	}
 }

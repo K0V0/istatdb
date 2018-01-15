@@ -4,7 +4,8 @@ class Setting < ActiveRecord::Base
 
 	scope :l, -> { 
 		to_return = {}
-		user_settings = self.all.map { |x| [x.k, x.v] } .to_h
+		user_settings = OpenStruct.new(self.all.map { |x| [x.k, x.v] } .to_h)
+		#Rails.logger.info user_settings
 		self.defaults.each do |k, v|
 			#Rails.logger.info "---------"
 			#Rails.logger.info k
@@ -28,11 +29,19 @@ class Setting < ActiveRecord::Base
 		pars.each do |k, v|
 			#Rails.logger.info k
 			#Rails.logger.info v
-			if self.defaults[k.to_sym] != v
+			#if self.defaults[k.to_sym] != v
 				#Rails.logger.info "********"
 				#Rails.logger.info self.defaults
 				#Rails.logger.info self.defaults[k.to_sym]
-			end
+				#Rails.logger.info self.where(k: k).size
+				setting = self.where(k: k)
+				if setting.length == 0
+					setting.create({k: k, v: v})
+				else
+					setting.first.update({v: v})
+				end
+				#Rails.logger.info self.defaults[k.to_sym]
+			#end
 		end
 	}
 

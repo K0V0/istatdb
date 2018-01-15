@@ -1,0 +1,15 @@
+sk: 
+  activerecord:
+    models:
+      user: Používateľ
+    attributes:
+      user:
+        email: prihlasovací e-mail
+
+en: 
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        email: login e-mail

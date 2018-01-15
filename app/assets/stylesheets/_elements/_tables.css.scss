@@ -262,12 +262,13 @@ table.for_nontabular {
 
 		tr {
 			display: block;
-			padding: 0.25em 0;
+			padding: 0 0.125em;
    			@include clearfix();
 
 			td {
 				display: block;
 				box-sizing: border-box;
+				padding: 0.25em;
 
 				&:first-child {
 					float: left;

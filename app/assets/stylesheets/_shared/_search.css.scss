@@ -21,7 +21,8 @@ section.search_bar {
 				max-width: 100%;
 				height:100%;
 				vertical-align: middle;
-				padding: 0.125em 0;
+				//padding: 0.125em 0;
+				//line-height: 1.875em;
 				padding-right:0.375em;
 				box-sizing: border-box;
 				overflow: hidden;
@@ -38,6 +39,15 @@ section.search_bar {
 					overflow: hidden;
 					padding: 0 0.125em;
 					max-width:100%;
+					padding: 0.125em;
+
+					& > div.select_wrapper {
+						//border-radius: 0.25em;
+						line-height: 1em;
+						height: 1.625em;
+    					//margin: 0.125em;
+						//overflow: hidden;
+					}
 
 					&.searchform_inputfield_wrap {
 						min-width: 14em;

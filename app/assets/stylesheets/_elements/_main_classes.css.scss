@@ -54,16 +54,10 @@ html {
  			background: -o-linear-gradient(135deg, $base_grey, $base_grey_grad); 
  			background: -moz-linear-gradient(135deg, $base_grey, $base_grey_grad);
  			background: linear-gradient(135deg, $base_grey, $base_grey_grad); 
-			border-color:$wrap_border_color;
 			border-style: solid;
-			border-bottom-width:$border_2x_width;
-			border-right-width:$border_2x_width;
-			border-left-width:1px;
-			border-top-width:1px;
-			border-left-color: $wrap_border_color_2;
-			border-top-color: $wrap_border_color_2;
+			border-width:1px;
+			border-color: $wrap_border_color_2;
 			border-radius: $wrap_border_radius;
-			box-shadow: 4px 4px 8px -2px black;
 
 			&.shrinked {
 				display:table;

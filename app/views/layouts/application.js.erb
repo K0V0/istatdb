@@ -4,6 +4,7 @@ var an = "<%= an = action_name %>";
 
 	var AN = an.indexOf('_calculator_') > -1 ? 'show' : an;
 	var CTRL = "<%= ctrl = controller_name %>";
+	var TRID = "<%= @MEM.settings.gui_enable_3d == '1' ? 'tride' : '' %>"
 	var body = $(document).find('body');
 
 	var searchform_actions;
@@ -15,7 +16,7 @@ var an = "<%= an = action_name %>";
 	body.data('controller_name', CTRL);
 	body.data('action_name', AN);
 	body.children('main').children('article').attr('class', AN+' '+CTRL);
-	body.attr('class',  AN+' '+CTRL);
+	body.attr('class',  AN+' '+CTRL+' '+TRID);
 
 	$(document).find('nav.pagination').empty();
 

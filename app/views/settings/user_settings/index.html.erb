@@ -1,0 +1,65 @@
+<%= render 'settings/shared/settings_submenu' %>
+
+<%= render 'layouts/base/main_menu' %>
+
+<% content_for :items_table do %>
+
+<section class="decorated_wrap shrinked">
+
+	<table class="rows_colored no_line_height">
+
+		<caption>
+			<%= t 'settings.users.user' %>
+		</caption>
+
+		<tbody>
+			<tr>
+				<td>
+					<h1><%= current_user.email %></h1>
+					<h2>---</h2>
+				</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>
+
+<section class="decorated_wrap shrinked">
+
+	<table class="rows_colored no_line_height">
+
+		<caption>
+			<%= t 'settings.users.actions' %>
+		</caption>
+
+		<tbody>
+			<tr>
+				<td>
+					
+				</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>
+
+<% end %>
+

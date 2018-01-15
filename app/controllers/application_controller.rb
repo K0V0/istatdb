@@ -124,8 +124,8 @@ class ApplicationController < ActionController::Base
 
     @body_class = "#{action_name} #{controller_name}"
     @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')
+   	remember_settings
     @body_class += " tride" if @MEM.settings.gui_enable_3d == "1"
-    remember_settings 		## load settings, even default if session deleted
     params[:per] = @MEM.settings.gui_per_page
     remember_param :page    ## page number
     remember_param :q       ## search

@@ -398,4 +398,12 @@ Rails.application.routes.draw do
     to: "trade_types#delete",
     as: "delete_trade_type"
 
+
+  ### Nastavenia - pouzivatelia
+
+  # index
+  get "settings/users",
+    to: "user_settings#index",
+    as: "user_settings"
+
 end

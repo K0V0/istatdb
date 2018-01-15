@@ -17,14 +17,15 @@ class SettingsController < ApplicationController
 		#params[:settings].keys.each do |key|
 
 			#Rails.logger.info "---------"
-			#Rails.logger.info @settings.key
+			#Rails.logger.info current_user.settings.l
 		
 		#settings = Setting.where(k: params[:settings].keys)
 		#settings.each do |setting|
 		#	setting.v = params[:settings][setting.k]
 		#	setting.save
 		#end
-		#@MEM.settings = @settings
+		@MEM.settings = current_user.settings.l
+
 		render :index
 	end
 

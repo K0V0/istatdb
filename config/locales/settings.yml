@@ -5,11 +5,16 @@ en:
       uom_types: UOMs
       incoterms: Incoterms
       trade_types: Types of trade
+      users: User dashboard
 
     general:
       gui_section_window_title: Graphical interface settings
       per_page: Number of results to be shown
       show_footer: Show footer (bottom strip with ads)
+
+    users:
+      user: User
+      actions: Actions
 
 sk:
   settings:
@@ -18,8 +23,13 @@ sk:
       uom_types: Merné jednotky
       incoterms: Dodacie podmienky
       trade_types: Typy operácií
+      users: Užívateľ
 
     general:
       gui_section_window_title: Grafické rozhranie
       per_page: Počet výsledkov zobrazených na jednu stránku
       show_footer: Zobraziť pätu (spodný pruh s reklamou)
+
+    users:
+      user: Používateľ
+      actions: Panel akcií
