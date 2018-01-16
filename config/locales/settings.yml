@@ -15,6 +15,7 @@ en:
     users:
       user: User
       actions: Actions
+      logout: Log out
 
 sk:
   settings:
@@ -33,3 +34,4 @@ sk:
     users:
       user: Používateľ
       actions: Panel akcií
+      logout: Odlhlásiť sa 

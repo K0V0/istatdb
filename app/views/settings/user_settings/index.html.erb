@@ -35,7 +35,7 @@
 
 <section class="decorated_wrap shrinked">
 
-	<table class="rows_colored no_line_height">
+	<table class="for_nontabular">
 
 		<caption>
 			<%= t 'settings.users.actions' %>
@@ -44,7 +44,12 @@
 		<tbody>
 			<tr>
 				<td>
-					
+					<%= link_to(
+						t('settings.users.logout'),
+						destroy_user_session_path,
+						method: :delete,
+						class: "button danger"
+					) %>
 				</td>
 			</tr>
 		</tbody>
