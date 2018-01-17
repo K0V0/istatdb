@@ -1,6 +1,7 @@
 module ApplicationHelper
 
 	include Log
+	include MemHelper
 
 	### cbt - controller based translation
 	### trying to keep transtations organized, imagine you have t(:foo) somewhere in views

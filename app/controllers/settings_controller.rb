@@ -26,7 +26,8 @@ class SettingsController < ApplicationController
 		#end
 		@MEM.settings = current_user.settings.l
 
-		render :index
+		#render :index
+		redirect_to :back
 	end
 
 end

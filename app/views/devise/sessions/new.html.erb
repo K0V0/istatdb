@@ -1,26 +1,50 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<% content_for :login do %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	  
+		<section class="decorated_wrap shrinked">
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+			<table class="for_forms">
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+				<caption>
+					<%= t('user.login_title') %>
+				</caption>
+
+				<tbody>
+					<tr>
+						<td>
+							<%= f.label :email %><br />
+							<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<%= f.label :password %><br />
+							<%= f.password_field :password, autocomplete: "off" %>
+						</td>
+					</tr>
+					<% if devise_mapping.rememberable? -%>
+						<tr>
+							<td>
+								<%= f.check_box :remember_me %>
+			     				<%= f.label t('user.remember') %>
+							</td>
+						</tr>
+					<% end -%>
+					<tr>
+						<td class="buttons">
+							<%= f.submit t('user.login') %>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+
+		</section>
+
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -65,6 +65,15 @@
 
 			<% end %>
 
+			<% if content_for? :login %>
+
+				<article class="login">
+					<%= yield :login %>
+				</article>
+
+			<% end %>
+
+
 			<%= yield %>
 
 		</main>

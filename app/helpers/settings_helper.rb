@@ -7,7 +7,7 @@ module SettingsHelper
 		output = ""
 		valshash.each do |k, v|
 			
-			is_selected = @MEM.settings.send(setting_name) == k.to_s
+			is_selected = setting(setting_name) == k.to_s
 
 			output += "<option 
 				value=\"#{k.to_s}\"

@@ -10,7 +10,7 @@ module ApplicationConcern
 	end
 
 	def curr_controller_has_model?
-		@model.nil? ? false : true
+		@model.blank? ? false : true
 	end
 
 	def build_if_empty(*assocs)
@@ -66,12 +66,6 @@ module ApplicationConcern
 	def remember_param param
 		controller_mem_set(param, params[param]) if params.has_key? param
 		params[param] = controller_mem_get(param)
-	end
-
-	def remember_settings
-		if @MEM.settings == nil
-			@MEM.send("settings=", current_user.settings.l)
-		end
 	end
 
 	def remember_sortlink

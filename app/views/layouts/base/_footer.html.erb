@@ -1,6 +1,6 @@
 <footer>
 
-	<% if @MEM.settings.show_footer == "1" %>
+	<% if setting_is_set? :gui_show_footer %>
 		<section class="ads">
 			<div>
 				<%= t('footer.text') %>

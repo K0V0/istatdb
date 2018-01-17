@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   #include BeforeRender
   include RansackSearchWrapper
   include Log
+  include MemHelper
 
   protect_from_forgery with: :exception
 
@@ -16,39 +17,38 @@ class ApplicationController < ActionController::Base
 
   before_action :inits
 
-  before_action(only: [:index, :search, :show, :administrative], if: :curr_controller_has_model?) {
+  before_action(only: [:index, :search, :show, :administrative], if: :conditions) {
     searcher_for(
     	searcher_settings
     )
   }
 
-  before_action :index_action, only: :index, if: :curr_controller_has_model?
+  before_action :index_action, only: :index, if: :conditions
 
-  before_action :search_action, only: :search, if: :curr_controller_has_model?
+  before_action :search_action, only: :search, if: :conditions
 
-  before_action :administrative_action, only: :administrative, if: :curr_controller_has_model?
+  before_action :administrative_action, only: :administrative, if: :conditions
 
-  before_action :end_administrative_action, only: :end_administrative, if: :curr_controller_has_model?
+  before_action :end_administrative_action, only: :end_administrative, if: :conditions
 
-  before_action :show_action, only: :show, if: :curr_controller_has_model?
+  before_action :show_action, only: :show, if: :conditions
 
-  before_action :new_action, only: :new, if: :curr_controller_has_model?
+  before_action :new_action, only: :new, if: :conditions
 
-  before_action :create_action, only: :create, if: :curr_controller_has_model?
+  before_action :create_action, only: :create, if: :conditions
 
-  before_action :edit_action, only: [:edit, :update], if: :curr_controller_has_model?
+  before_action :edit_action, only: [:edit, :update], if: :conditions
 
-  before_action :destroy_action, only: [:destroy, :delete], if: :curr_controller_has_model?
+  before_action :destroy_action, only: [:destroy, :delete], if: :conditions
 
   before_action :load_vars, only: [:new, :edit, :edit_multiple, :update, 
-  :update_multiple, :create], if: :curr_controller_has_model?
+  :update_multiple, :create], if: :conditions
 
-  before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative], if: :curr_controller_has_model?
+  before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative], if: :conditions
 
-  before_action :apicall_search_action, only: :new_select_search, if: :curr_controller_has_model?
+  before_action :apicall_search_action, only: :new_select_search, if: :conditions
 
-  before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create], if: :curr_controller_has_model?
-
+  before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create], if: :conditions
 
   def index
   	render "#{@render_command_prepend}index"
@@ -119,18 +119,19 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def inits
-  	@MEM = Mem.new(session) if !defined? @MEM
+  def conditions
+  	return user_signed_in?&&model_exist?
+  end
 
+  def inits
+  	init_mem
     @body_class = "#{action_name} #{controller_name}"
     @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')
-   	remember_settings
-    @body_class += " tride" if @MEM.settings.gui_enable_3d == "1"
-    params[:per] = @MEM.settings.gui_per_page
+    @body_class += " tride" if setting_is_set?(:gui_enable_3d)
+    params[:per] = setting(:gui_per_page)
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
-
     is_subsection_of
   end
 

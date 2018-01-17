@@ -297,3 +297,40 @@ table.no_line_height {
 		}
 	}
 }
+
+
+table.for_forms {
+
+	tbody {
+		background-color: $grey_2n;
+
+		tr {
+
+			td {
+				padding-top: 0.125em;
+				padding-bottom: 0.125em;
+
+				&.buttons {
+					text-align: right;
+					padding: 0.375em;
+				}
+
+				input[type=checkbox] {
+					display: inline-block;
+					vertical-align: middle;
+					margin: 0.125em;
+					padding:0.25em;
+				}
+
+				label {
+					line-height: inherit;
+				}
+
+				em {
+					line-height: inherit;
+					display: inline-block;
+				}
+			}
+		}
+	}
+}

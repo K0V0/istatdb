@@ -45,11 +45,15 @@ class Setting < ActiveRecord::Base
 		end
 	}
 
+	scope :d, -> {
+		return OpenStruct.new(self.defaults)
+	}
+
 	def self.defaults
 		{
 			gui_per_page: 		"10",
 			gui_show_footer: 	"1",
-			gui_enable_3d: 		"0"
+			gui_enable_3d: 		"1"
 		}
 	end
 
