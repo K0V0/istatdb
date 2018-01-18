@@ -154,6 +154,15 @@ div.select_wrapper {
 	max-width: 100%;
 	box-sizing: border-box;
 
+	&:hover {
+		background-color: $superwhite;
+	}
+
+	&:active > span {
+		@include transform(rotateZ(-180deg));
+		//@include transition_for_transform(0.75s);
+	}
+
 	select {
 		margin:0em;
 		padding-right: 1.25em;
@@ -165,6 +174,19 @@ div.select_wrapper {
 		box-sizing: border-box;
 		overflow: hidden;
 		//@include transform(rotate(0deg));
+
+		&:hover + span, span:hover {
+			//background-image: url(select_dropdown_arrow_hover.png);
+		}
+
+		/*&:active + span {
+			@include transform(rotateZ(-180deg));
+			//@include transition_for_transform(0.75s);
+		}*/
+
+		//&:active:hover + span {
+			//@include transform(rotateZ(-180deg));
+		//}
 	}
 
 	&.error {
@@ -200,40 +222,18 @@ div.select_wrapper {
 		//@include transform(rotate(0deg));
 	}
 
-	select:hover + span, span:hover {
-		//background-image: url(select_dropdown_arrow_hover.png);
-	}
-
-	select:active + span {
-		@include transform(rotateZ(-180deg));
-		//@include transition_for_transform(0.75s);
-	}
-
-	//select:active > option {
-		//@include transform(rotateZ(-180deg));
-		//@include transition_for_transform(0.75s);
-	//}
-
-	//select:active:hover + span {
-		//@include transform(rotateZ(-180deg));
-	//}
-
-	&:hover {
-		background-color: $superwhite;
-	}
-
 	&.disabled {
 
-		select:hover + span, span:hover {
-			background-image: url(select_dropdown_arrow.png);
+		&:hover {
+			background-color: $white;
 		}
 
 		select {
 			border-color: $white;
 		}
 
-		&:hover {
-			background-color: $white;
+		select:hover + span, span:hover {
+			background-image: url(select_dropdown_arrow.png);
 		}
 	}
 }
