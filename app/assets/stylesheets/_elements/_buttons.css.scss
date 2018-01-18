@@ -2,11 +2,7 @@
 
 .button {
 	@include reset_input_browser_styles();
-	@include transition(
-		border-color $main_menu_mouse_actions_transition_time ease,
-		background-color $buttons_mouse_actions_transition_time ease,
-		color $main_menu_mouse_actions_transition_time ease
-	);
+	@include all_transitions();
 
 	cursor: pointer;
 	color: $button_text;

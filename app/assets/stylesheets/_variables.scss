@@ -80,7 +80,7 @@ $buttons_mouse_actions_transition_time: 0.15s;
 $main_menu_mouse_actions_transition_time: 0.30s;
 
 
-@mixin button_transitions() {
+@mixin links_transitions() {
 	@include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease);
 }
 
@@ -92,12 +92,20 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   @include transition(max-height 0.75s linear);
 }
 
-@mixin inputs_transitions() {
+/*@mixin inputs_transitions() {
 	@include transition(border-color $main_menu_mouse_actions_transition_time ease);
-}
+}*/
 
 @mixin all_transitions() {
   @include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease, border-color $main_menu_mouse_actions_transition_time ease);
+}
+
+@mixin transition_for_transform($amount-of-time) {
+	-webkit-transition: -webkit-transform $amount-of-time ease-in-out;
+	-moz-transition:    -moz-transform $amount-of-time ease-in-out;
+	-o-transition:      -o-transform $amount-of-time ease-in-out;
+	-ms-transition:     -ms-transform $amount-of-time ease-in-out;
+	transition:         transform $amount-of-time ease-in-out;
 }
 
 @mixin box_shadows() {
@@ -120,14 +128,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   -ms-transform: $args;
   -o-transform: $args;
   transform: $args;
-}
-
-@mixin transition_for_transform($amount-of-time) {
-	-webkit-transition: -webkit-transform $amount-of-time ease;
-	-moz-transition:    -moz-transform $amount-of-time ease;
-	-o-transition:      -o-transform $amount-of-time ease;
-	-ms-transition:     -ms-transform $amount-of-time ease;
-	transition:         transform $amount-of-time ease;
+  transform-origin: 50% 50%;
 }
 
 @mixin reset_input_browser_styles() {
