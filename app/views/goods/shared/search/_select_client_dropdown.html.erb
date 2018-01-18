@@ -5,18 +5,12 @@
 	</span>
 
 	<span>
-		<div class="select_wrapper">
-
-			<%= obj.collection_select :impexpcompany_filter,
-				@impexpcompanies,
-				:id,
-				:company_name,
-				include_blank: t('goods_search.impexpcompany_prompt')
-			%>
-
-			<span></span>
-
-		</div>
+		<%= obj.collection_select :impexpcompany_filter,
+			@impexpcompanies,
+			:id,
+			:company_name,
+			include_blank: t('goods_search.impexpcompany_prompt')
+		%>
 	</span>
 
 </div>

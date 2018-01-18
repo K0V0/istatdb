@@ -1,20 +1,16 @@
 <td>
-	<div class="select_wrapper">
 
-		<select
-			name="settings[<%= name %>]"
-			class="settings"
-			id="settings_<%= name %>"
-		>
-			
-			<%= get_options_from_options(
-				valshash: options[:options],
-				setting_name: name
-			) %>
+	<select
+		name="settings[<%= name %>]"
+		class="settings"
+		id="settings_<%= name %>"
+	>
+		
+		<%= get_options_from_options(
+			valshash: options[:options],
+			setting_name: name
+		) %>
 
-		</select>
+	</select>
 
-		<span></span>
-
-	</div>
 </td>

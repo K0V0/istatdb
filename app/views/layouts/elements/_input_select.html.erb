@@ -6,19 +6,18 @@
 
 <div>
 	<%= obj.label send_parameters_name %>
-	<div class="select_wrapper <%= klass_html %> <%= is_disabled %>">
-		<%= obj.select(
-			send_parameters_name,
-			collection
-				.collect { |c| [ c.send(method_to_get_texts), c.send(method_to_get_vals) ] }
-				.reject { |x| x[0].nil? },
-			{ 
-				include_blank: is_blank
-			},
-			{
-				disabled: is_disabled
-			}
-		) %>
-		<span></span>
-	</div>
+	
+	<%= obj.select(
+		send_parameters_name,
+		collection
+			.collect { |c| [ c.send(method_to_get_texts), c.send(method_to_get_vals) ] }
+			.reject { |x| x[0].nil? },
+		{ 
+			include_blank: is_blank
+		},
+		{
+			disabled: is_disabled
+		}
+	) %>
+	
 </div>
