@@ -1,35 +1,32 @@
 <% content_for :mainmenu do %>
-	
+
 	<ul class="main">
 
 		<div>
+			
+			<%= active_link_to t("top_menu.goods"), goods_path, wrap_tag: :li %>
 
-			<li>
-				<%= active_link_to t("top_menu.goods"), goods_path %>
-			</li>
+			<%= active_link_to t("top_menu.companies"), manufacturers_path, wrap_tag: :li %>
 
-			<li>
-				<%= active_link_to t("top_menu.companies"), manufacturers_path %>
-			</li>
+			<%= active_link_to t("top_menu.local_taric"), local_tarics_path, wrap_tag: :li %>
 
-			<li>
-				<%= active_link_to t("top_menu.local_taric"), local_tarics_path %>
-			</li>
+			<%= active_link_to t("top_menu.global_taric"), sk_tarics_path, wrap_tag: :li %>
 
-			<li>
-				<%= active_link_to t("top_menu.global_taric"), sk_tarics_path %>
-			</li>
+			<%= active_link_to t("top_menu.others"), others_path, wrap_tag: :li %>
 
-			<li>
-				<%= active_link_to t("top_menu.others"), others_path %>
-			</li>
-
-			<li>
-				<%= active_link_to t("top_menu.settings"), settings_path, class: 'has_submenu' %>
+			<%= active_link_to(settings_path, class: 'has_submenu', wrap_tag: :li) do %>
+				<%= t("top_menu.settings") %>
 				<ul class="sub disable_on_bigscreen">
-					<%= content_for :submenu %>
+					<div>
+						<%= render 'settings/shared/settings_submenu' %>
+					</div>
 				</ul>
-			</li>
+				<% if is_active_link?(settings_path) %>
+					<%= content_for :submenu do %>
+						<%= render 'settings/shared/settings_submenu' %>
+					<% end %>
+				<% end %>
+			<% end %>
 
 		</div>
 
@@ -44,5 +41,7 @@
 		</ul>
 
 	<% end %>
+
+	<label for="show_topmenu" class="show_topmenu"> &#9776; </label>
 
 <% end %>

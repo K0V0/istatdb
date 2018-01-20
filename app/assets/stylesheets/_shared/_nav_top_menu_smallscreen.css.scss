@@ -2,6 +2,50 @@
 
 @media only screen and (max-width: 480px) {
 
+	nav.top_menu {
+
+		ul {
+			@include rotate_cancel();
+			padding:0;
+
+			div {
+				//margin: 0.25em 0.5em;
+				//margin-top: 0.5em;
+
+				li {
+					@include rotate_cancel();
+					display: block;
+
+					&, &:first-child, &:last-child {
+						padding: 0;
+					}
+
+					a { border-radius: 0.25em; }
+
+					&.has_submenu:hover {
+						a {
+							border-bottom-left-radius: 0;
+							border-bottom-right-radius: 0;
+						}
+					}
+
+					&.has_submenu:hover > ul.sub {
+						max-height: 1024px;
+					}
+				}
+			}
+		}
+	}
+
+	input#show_topmenu:checked ~ nav.top_menu > ul {
+		max-height:1024px;
+
+		& > div {
+			height: 100%;
+		}
+	}
+	/*
+
 	nav {
 		position: fixed;
 		width: 100%;
@@ -88,4 +132,5 @@
 	input#show_topmenu:checked ~ nav > div#top_menu_container {
 		max-height:1024px;
 	}
+	*/
 }

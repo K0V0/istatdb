@@ -2,9 +2,9 @@
 
 nav.pagination {
 	@include scrollbar_top_menu_main();
-	color: $white;
 	
 	ul {
+		color: $white;
 		text-align: center;
 		font-size:1em;
 		overflow-x: auto; 
@@ -64,16 +64,14 @@ nav.pagination {
 
 	@media only screen and (max-width: 480px) {
 		position: relative;
-		overflow-y: hidden;
 		flex: 0 0 auto;
 
 		ul {
-			@include menu_open_smallscreen_transitions();
+			//@include menu_open_smallscreen_transitions();
 			display: block;
 			background-color: $strong_black;
 			position: relative;
-			overflow: hidden;
-			max-height: 0;
+			//max-height: 0;
 
 			div.wrap {
 				display: table;

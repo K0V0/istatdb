@@ -1,11 +1,12 @@
 @import "variables";
 
 nav.top_menu {
+	z-index:1000;
 	
 	ul {
 		@include rotate_upside_down();
 		font-family:amsans;
-		font-size: 1.75em;
+		font-size: 1.25em;
 		padding-bottom: 0.25em;
 
 		div {
@@ -42,30 +43,32 @@ nav.top_menu {
 
 				li {
 
-					a {
+					/*a {*/
 
 						&:hover {
-							background-color: $main_menu_inactive_link_hover;
+							a { background-color: $main_menu_inactive_link_hover; }
 						}
 						&.active {
-							background-color: $main_menu_active_link;
-							color: $main_menu_active_link_text;
-							&:hover {
+							a {
 								background-color: $main_menu_active_link;
+								color: $main_menu_active_link_text;
+							}
+							&:hover {
+								a { background-color: $main_menu_active_link; }
 							}
 						}
 
 						&.has_submenu {
 
 							&.active {
-								background-color: $sub_menu_background;
+								a { background-color: $sub_menu_background; }
 								&:hover {
-									background-color: $main_menu_2_submenu_active_link_hover;
+									a { background-color: $main_menu_2_submenu_active_link_hover; }
 								}
 							}
 						}
 					}
-				}
+				/*}*/
 			}
 		}
 
