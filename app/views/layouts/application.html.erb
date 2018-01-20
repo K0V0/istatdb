@@ -25,19 +25,15 @@
 		<input type="checkbox" id="show_paginator" role="button" class="hidden">
 		<input type="checkbox" id="show_searchpanel_opts" role="button" class="hidden" checked="checked">
 
-		<nav>
 
-			<div id="top_menu_container">
+		<% if content_for? :mainmenu %>
 
-				<%= yield :mainmenu if content_for? :mainmenu %>
-
-				<%= yield :submenu if content_for? :submenu %>
-
-			</div>
-
-			<label for="show_topmenu" class="show_topmenu"> &#9776; </label>
-
-		</nav>
+			<nav class="top_menu">
+				<%= yield :mainmenu %>
+				<label for="show_topmenu" class="show_topmenu"> &#9776; </label>
+			</nav>
+			
+		<% end %>
 
 		<main>
 

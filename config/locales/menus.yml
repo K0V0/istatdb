@@ -5,7 +5,8 @@ en:
     companies: Buyers, sellers
     local_taric: Local TARIC
     settings: Settings
-    global_taric: Official TARIC
+    global_taric: SK TARIC
+    others: Other
   footer:
     created_by: created by
     creator: Matej Kováč
@@ -45,7 +46,8 @@ sk:
     companies: Výrobcovia, odberatelia
     local_taric: Lokálny TARIC
     settings: Nastavenia
-    global_taric: Oficiálny TARIC
+    global_taric: SK TARIC
+    others: Iné
   footer:
     created_by: vytvoril
     creator: Matej Kováč

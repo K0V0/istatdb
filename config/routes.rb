@@ -202,50 +202,21 @@ Rails.application.routes.draw do
 
 
 
-  ### spravodajske jednotky
+  ### globalny taric - taric SK
 
   #index
-  get "clientsdb",
-    to: "impexpcompanies#index",
-    as: "impexpcompanies"
+  get "taricsk",
+    to: "global_tarics#index",
+    as: "sk_tarics"
 
-  #new
-  get "clientsdb/new",
-    to: "impexpcompanies#new",
-    as: "new_impexpcompany"
 
-  # administration
-  get "clientsdb/administrative",
-    to: "impexpcompanies#administrative"
 
-  # end administration
-  get "clientsdb/end_administrative",
-    to: "impexpcompanies#end_administrative"
+  ### ostatne
 
-  #show
-  get "clientsdb/:id",
-    to: "impexpcompanies#show",
-    as: "impexpcompany"
-
-  #create
-  post "clientsdb",
-    to: "impexpcompanies#create",
-    as: "create_impexpcompany"
-
-  #edit
-  get "clientsdb/:id/edit",
-    to: "impexpcompanies#edit",
-    as: "edit_impexpcompany"
-
-  #update
-  patch "clientsdb/:id",
-    to: "impexpcompanies#update",
-    as: "update_impexpcompany"
-
-  #delete
-  delete "clientsdb/:id",
-    to: "impexpcompanies#delete",
-    as: "delete_impexpcompany"
+  #index
+  get "others",
+    to: "others#index",
+    as: "others"
 
 
 
@@ -260,6 +231,51 @@ Rails.application.routes.draw do
   post "settings",
     to: "settings#update_settings"
 
+
+  ### Nastavenia - spravodajske jednotky
+
+  #index
+  get "settings/clientsdb",
+    to: "impexpcompanies#index",
+    as: "impexpcompanies"
+
+  #new
+  get "settings/clientsdb/new",
+    to: "impexpcompanies#new",
+    as: "new_impexpcompany"
+
+  # administration
+  get "settings/clientsdb/administrative",
+    to: "impexpcompanies#administrative"
+
+  # end administration
+  get "settings/clientsdb/end_administrative",
+    to: "impexpcompanies#end_administrative"
+
+  #show
+  get "settings/clientsdb/:id",
+    to: "impexpcompanies#show",
+    as: "impexpcompany"
+
+  #create
+  post "settings/clientsdb",
+    to: "impexpcompanies#create",
+    as: "create_impexpcompany"
+
+  #edit
+  get "settings/clientsdb/:id/edit",
+    to: "impexpcompanies#edit",
+    as: "edit_impexpcompany"
+
+  #update
+  patch "settings/clientsdb/:id",
+    to: "impexpcompanies#update",
+    as: "update_impexpcompany"
+
+  #delete
+  delete "settings/clientsdb/:id",
+    to: "impexpcompanies#delete",
+    as: "delete_impexpcompany"
 
   ### Nastavenia - uoms
 

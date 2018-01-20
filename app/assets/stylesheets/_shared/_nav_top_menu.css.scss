@@ -1,0 +1,100 @@
+@import "variables";
+
+nav.top_menu {
+	
+	ul {
+		@include rotate_upside_down();
+		font-family:amsans;
+		font-size: 1.75em;
+		padding-bottom: 0.25em;
+
+		div {
+			overflow-x: auto;
+
+			li {
+				@include rotate_upside_down();
+				vertical-align: bottom;
+
+				&:first-child {
+					padding-left: 0.5em;
+				}
+
+				&:last-child {
+					padding-right: 0.5em;
+				}
+
+				a {
+					@include menu_transitions();
+					padding-top: 0.25em;
+					padding-bottom: 0.125em;
+					border-top-right-radius: 0.25em;
+					border-top-left-radius: 0.25em;
+				}
+			}
+		}
+
+		&.main {
+			color: $white;
+			background-color: $background_color;
+			@include scrollbar_top_menu_main();
+
+			div {
+
+				li {
+
+					a {
+
+						&:hover {
+							background-color: $main_menu_inactive_link_hover;
+						}
+						&.active {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
+							&:hover {
+								background-color: $main_menu_active_link;
+							}
+						}
+
+						&.has_submenu {
+
+							&.active {
+								background-color: $sub_menu_background;
+								&:hover {
+									background-color: $main_menu_2_submenu_active_link_hover;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.sub {
+			background-color: $sub_menu_background;
+			color: $sub_menu_inactive_link_text;
+			@include scrollbar_top_menu_sub();
+
+			div {
+
+				li {
+
+					a {
+						&:hover {
+							background-color: $sub_menu_inactive_link_hover;
+							color: $sub_menu_inactive_link_text_hover;
+						}
+						&.active {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
+							&:hover {
+								background-color: $main_menu_active_link;
+								color: $main_menu_active_link_text;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

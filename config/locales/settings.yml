@@ -6,6 +6,7 @@ en:
       incoterms: Incoterms
       trade_types: Types of trade
       users: User dashboard
+      impexpcompanies: Our clients
 
     general:
       gui_section_window_title: Graphical interface settings
@@ -25,6 +26,7 @@ sk:
       incoterms: Dodacie podmienky
       trade_types: Typy operácií
       users: Užívateľ
+      impexpcompanies: Spravodajské jednotky
 
     general:
       gui_section_window_title: Grafické rozhranie

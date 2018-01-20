@@ -1,8 +1,8 @@
 <% content_for :mainmenu do %>
 	
-	<div class="main">
+	<ul class="main">
 
-		<ul class="top_menu main <%= "has_submenu" if content_for? :submenu %>">
+		<div>
 
 			<li>
 				<%= active_link_to t("top_menu.goods"), goods_path %>
@@ -17,16 +17,32 @@
 			</li>
 
 			<li>
-				<%= active_link_to t("top_menu.clients"), impexpcompanies_path %>
+				<%= active_link_to t("top_menu.global_taric"), sk_tarics_path %>
 			</li>
 
 			<li>
-				<%= active_link_to t("top_menu.settings"), settings_path %>
+				<%= active_link_to t("top_menu.others"), others_path %>
 			</li>
 
+			<li>
+				<%= active_link_to t("top_menu.settings"), settings_path, class: 'has_submenu' %>
+				<ul class="sub disable_on_bigscreen">
+					<%= content_for :submenu %>
+				</ul>
+			</li>
+
+		</div>
+
+	</ul>
+
+	<% if content_for? :submenu %>
+
+		<ul class="sub disable_on_smallscreen">
+			<div>
+				<%= content_for :submenu %>
+			</div>
 		</ul>
 
-	</div>
-
+	<% end %>
 
 <% end %>
