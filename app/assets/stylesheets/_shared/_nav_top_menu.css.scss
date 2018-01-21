@@ -1,7 +1,7 @@
 @import "variables";
 
 nav.top_menu {
-	z-index:1000;
+	//z-index:1000;
 	
 	ul {
 		@include rotate_upside_down();

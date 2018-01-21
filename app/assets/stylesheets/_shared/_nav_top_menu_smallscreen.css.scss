@@ -3,10 +3,11 @@
 @media only screen and (max-width: 480px) {
 
 	nav.top_menu {
-
+		
 		ul {
 			@include rotate_cancel();
 			padding:0;
+			height: 100%;
 
 			div {
 				//margin: 0.25em 0.5em;
@@ -31,17 +32,26 @@
 
 					&.has_submenu:hover > ul.sub {
 						max-height: 1024px;
+
+						& > div {
+							height: 100%;
+						}
 					}
 				}
 			}
 		}
 	}
 
-	input#show_topmenu:checked ~ nav.top_menu > ul {
-		max-height:1024px;
+	input#show_topmenu:checked ~ nav.top_menu {
+		height: 100%;
+		z-index:1000;
 
-		& > div {
-			height: 100%;
+		ul {
+			max-height:1024px;
+
+			& > div {
+				height: 100%;
+			}
 		}
 	}
 	/*

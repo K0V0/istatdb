@@ -63,8 +63,10 @@ nav.pagination {
 	}
 
 	@media only screen and (max-width: 480px) {
-		position: relative;
-		flex: 0 0 auto;
+		bottom:0;
+		//z-index: 1000;
+		//position: relative;
+		//flex: 0 0 auto;
 
 		ul {
 			//@include menu_open_smallscreen_transitions();
@@ -108,7 +110,10 @@ nav.pagination {
 
 @media only screen and (max-width: 480px) {
 
-	input#show_paginator:checked ~ nav.pagination > ul {
-		max-height:512px;
+	input#show_paginator:checked ~ nav.pagination {
+		z-index:1000;
+		ul {
+			max-height:512px;
+		}
 	}
 }
