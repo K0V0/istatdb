@@ -43,8 +43,12 @@ nav {
 		position: fixed;
 		width: 100%;
 		overflow-y: hidden;
+		box-sizing: border-box;
 
 		label {
+			position: absolute;
+			left:0;
+			right:0;
 			display: block;
 			text-align: center;
 			line-height: 1em;
@@ -60,6 +64,7 @@ nav {
 			@include menu_open_smallscreen_transitions();
 			max-height: 0;
 			height: 100%;
+			//box-sizing: border-box;
 			//overflow: hidden;
 			//overflow-y: auto;
 
