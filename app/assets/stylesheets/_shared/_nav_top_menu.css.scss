@@ -1,7 +1,6 @@
 @import "variables";
 
 nav.top_menu {
-	//z-index:1000;
 	
 	ul {
 		@include rotate_upside_down();
@@ -42,33 +41,27 @@ nav.top_menu {
 			div {
 
 				li {
-
-					/*a {*/
-
+					&:hover {
+						a { background-color: $main_menu_inactive_link_hover; }
+					}
+					&.active {
+						a {
+							background-color: $main_menu_active_link;
+							color: $main_menu_active_link_text;
+						}
 						&:hover {
-							a { background-color: $main_menu_inactive_link_hover; }
+							a { background-color: $main_menu_active_link; }
 						}
+					}
+					&.has_submenu {
 						&.active {
-							a {
-								background-color: $main_menu_active_link;
-								color: $main_menu_active_link_text;
-							}
+							a { background-color: $sub_menu_background; }
 							&:hover {
-								a { background-color: $main_menu_active_link; }
-							}
-						}
-
-						&.has_submenu {
-
-							&.active {
-								a { background-color: $sub_menu_background; }
-								&:hover {
-									a { background-color: $main_menu_2_submenu_active_link_hover; }
-								}
+								a { background-color: $main_menu_2_submenu_active_link_hover; }
 							}
 						}
 					}
-				/*}*/
+				}
 			}
 		}
 

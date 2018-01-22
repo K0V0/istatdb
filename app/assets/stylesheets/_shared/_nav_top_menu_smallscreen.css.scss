@@ -3,10 +3,7 @@
 @media only screen and (max-width: 480px) {
 
 	nav.top_menu {
-		//padding-bottom:1.25em;
-		height: 1.25em;
-		//max-height: 0;
-		//@include scrollbar_top_menu_main();
+		padding-bottom:1.25em;
 
 		label {
 			bottom: 0;
@@ -15,14 +12,9 @@
 		ul {
 			@include rotate_cancel();
 			padding:0;
-			//height: 100%;
-			//overflow-y: auto;
-			//padding-bottom: 1em;
 
 			div {
-				//height: 100%;
-				//margin: 0.25em 0.5em;
-				//margin-top: 0.5em;
+				width: 100%;
 
 				li {
 					@include rotate_cancel();
@@ -41,119 +33,20 @@
 						}
 					}
 
-					&.has_submenu:hover > ul.sub {
+					/*&.has_submenu:hover > ul.sub {
 						max-height: 1024px;
 
 						& > div {
 							height: 100%;
 						}
-					}
+					}*/
 				}
 			}
 		}
 	}
 
 	input#show_topmenu:checked ~ nav.top_menu {
-
-		//height: 100%;
-		//z-index:1000;
-		//max-height: 1024px;
-
-		//ul {
-			//max-height:1024px;
-
-			/*& > div {
-				height: 100%;
-			}*/
-		//}
-	}
-	/*
-
-	nav {
-		position: fixed;
-		width: 100%;
+		z-index:1000;
 		max-height: 100%;
-		overflow-y: auto;
-
-		label.show_topmenu, label.show_paginator {
-			//box-sizing: border-box;
-			display: block;
-			width: 100%;
-			height: 1em;
-			background-color: $background-color;
-			color: $white;
-			text-align: center;
-			font-weight: bold;
-			font-size:0.75em;
-			line-height:1em;
-			padding: 0.25em 0;
-			cursor: pointer;
-		}
-
-		div#top_menu_container {
-			@include menu_open_smallscreen_transitions();
-			max-height: 0;
-			overflow: hidden;
-			background-color: $background-color;
-
-			div {
-
-				&.main, &.sub {
-					margin:0;
-					padding:0 0.375em;
-					padding-top: 0.375em;
-				}
-
-				&.sub {
-					margin-top: 0.375em;
-					padding-bottom: 0.375em;
-
-				}
-
-				ul {
-
-					&.top_menu {
-						@include rotate_cancel();
-						padding:0;
-
-						li {
-							@include rotate_cancel();
-							display: block;
-							height: auto;
-							padding: 0;
-
-							a {
-								line-height: 1em;
-								border-radius:0.25em;
-								padding: 0.125em 0.25em;
-								margin: 0.1em;
-								display: inline-block;
-							}
-						}
-
-						&.main {
-							
-						}
-
-						&.sub {
-
-							li {
-
-								a {
-									&.active:hover {
-										background-color: $sub_menu_active_link;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 	}
-
-	input#show_topmenu:checked ~ nav > div#top_menu_container {
-		max-height:1024px;
-	}
-	*/
 }

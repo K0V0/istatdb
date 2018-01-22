@@ -63,20 +63,20 @@ nav.pagination {
 	}
 
 	@media only screen and (max-width: 480px) {
-		bottom:0;
-		//z-index: 1000;
-		//position: relative;
-		//flex: 0 0 auto;
+		position: relative;
+		bottom: 0;
+		padding-top:1.25em;
+		overflow-y: auto;
+		flex: 1 0 auto;
+
+		label {
+			top:0;
+		}
 
 		ul {
-			//@include menu_open_smallscreen_transitions();
 			display: block;
-			background-color: $strong_black;
-			position: relative;
-			//max-height: 0;
 
 			div.wrap {
-				display: table;
 
 				&.center {
 					text-align: center;
@@ -105,15 +105,12 @@ nav.pagination {
 			}
 		}
 	}
-	
 }
 
 @media only screen and (max-width: 480px) {
 
 	input#show_paginator:checked ~ nav.pagination {
 		z-index:1000;
-		ul {
-			max-height:512px;
-		}
+		max-height:512px;
 	}
 }
