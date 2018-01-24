@@ -14,8 +14,8 @@
 
 			<%= active_link_to t("top_menu.others"), others_path, wrap_tag: :li %>
 
-			<%= active_link_to(settings_path, class: 'has_submenu', wrap_tag: :li) do %>
-				<%= t("top_menu.settings") %>
+			<li class="has_submenu <%= "active" if is_active_link?(settings_path) %>"> 
+				<%= active_link_to t("top_menu.settings"), settings_path %>
 				<ul class="sub disable_on_bigscreen">
 					<div>
 						<%= render 'settings/shared/settings_submenu' %>
@@ -26,7 +26,8 @@
 						<%= render 'settings/shared/settings_submenu' %>
 					<% end %>
 				<% end %>
-			<% end %>
+			</li>
+
 
 		</div>
 

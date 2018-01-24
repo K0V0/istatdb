@@ -1,30 +1,23 @@
 @import "variables";
 
 nav.top_menu {
+	font-size: 1.25em;
 	
 	ul {
 		@include rotate_upside_down();
 		font-family:amsans;
-		font-size: 1.25em;
 		padding-bottom: 0.25em;
 
 		div {
 			overflow-x: auto;
+			padding: 0 0.25em;
 
 			li {
 				@include rotate_upside_down();
 				vertical-align: bottom;
 
-				&:first-child {
-					padding-left: 0.5em;
-				}
-
-				&:last-child {
-					padding-right: 0.5em;
-				}
-
 				a {
-					@include menu_transitions();
+					text-align: center;
 					padding-top: 0.25em;
 					padding-bottom: 0.125em;
 					border-top-right-radius: 0.25em;
@@ -32,60 +25,65 @@ nav.top_menu {
 				}
 			}
 		}
+	}
 
-		&.main {
-			color: $white;
-			background-color: $background_color;
-			@include scrollbar_top_menu_main();
+	ul.main {
+		color: $white;
+		background-color: $background_color;
+		@include scrollbar_top_menu_main();
 
-			div {
+		& > div {
 
-				li {
+			& > li {
+
+				&:hover {
+					& > a, & > ul > div { background-color: $main_menu_inactive_link_hover; }
+				}
+				&.active {
+					& > a, & > ul > div {
+						background-color: $main_menu_active_link;
+						color: $main_menu_active_link_text;
+					}
 					&:hover {
-						a { background-color: $main_menu_inactive_link_hover; }
+						& > a, & > ul > div { background-color: $main_menu_active_link; }
 					}
+				}
+				&.has_submenu {
 					&.active {
-						a {
-							background-color: $main_menu_active_link;
-							color: $main_menu_active_link_text;
-						}
+						& > a, & > ul > div { background-color: $sub_menu_background; }
 						&:hover {
-							a { background-color: $main_menu_active_link; }
-						}
-					}
-					&.has_submenu {
-						&.active {
-							a { background-color: $sub_menu_background; }
-							&:hover {
-								a { background-color: $main_menu_2_submenu_active_link_hover; }
-							}
+							& > a, & > ul > div { background-color: $main_menu_2_submenu_active_link_hover; }
 						}
 					}
 				}
 			}
 		}
+	}
+	
+	ul.sub {
+		background-color: $sub_menu_background;
+		color: $sub_menu_inactive_link_text;
+		@include scrollbar_top_menu_sub();
 
-		&.sub {
-			background-color: $sub_menu_background;
-			color: $sub_menu_inactive_link_text;
-			@include scrollbar_top_menu_sub();
+		& > div {
 
-			div {
+			& > li {
 
-				li {
-
-					a {
-						&:hover {
-							background-color: $sub_menu_inactive_link_hover;
-							color: $sub_menu_inactive_link_text_hover;
-						}
-						&.active {
+				&:hover {
+					& > a {
+						background-color: $sub_menu_inactive_link_hover;
+						color: $sub_menu_inactive_link_text_hover;
+					}
+				}
+				&.active {
+					& > a {
+						background-color: $main_menu_active_link;
+						color: $main_menu_active_link_text;
+					}
+					&:hover {
+						& > a {
 							background-color: $main_menu_active_link;
 							color: $main_menu_active_link_text;
-							&:hover {
-								background-color: $main_menu_active_link;
-								color: $main_menu_active_link_text;
-							}
 						}
 					}
 				}

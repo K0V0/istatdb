@@ -3,6 +3,7 @@
 @media only screen and (max-width: 480px) {
 
 	nav.top_menu {
+		font-size: 1em;
 		padding-bottom:1.25em;
 
 		label {
@@ -11,7 +12,7 @@
 		
 		ul {
 			@include rotate_cancel();
-			padding:0;
+			padding-bottom: 0;
 
 			div {
 				width: 100%;
@@ -24,22 +25,44 @@
 						padding: 0;
 					}
 
-					a { border-radius: 0.25em; }
+					a { 
+						border-radius: 0.25em;
+						text-align: left;
+						font-size: 1.25em;
+					}
 
-					&.has_submenu:hover {
-						a {
-							border-bottom-left-radius: 0;
-							border-bottom-right-radius: 0;
+					&.has_submenu { 
+
+						& > ul.sub { 
+							max-height: 0;
 						}
 					}
 
-					/*&.has_submenu:hover > ul.sub {
-						max-height: 1024px;
+					&.has_submenu:hover {
 
-						& > div {
-							height: 100%;
+						& > ul.sub {
+							max-height: 512px;
 						}
-					}*/
+					}
+				}
+			}
+
+			&.main {
+				padding-top:0.25em;
+				padding-bottom: 0.125em;
+			}
+
+			&.sub {
+				@include menu_open_smallscreen_transitions();
+				overflow-y: hidden;
+				background-color: transparent;
+				color: $white;
+
+				div { 
+					border-radius:0.375em;
+					overflow-y: hidden;
+					padding: 0.25em;
+					margin: 0.5em 0.25em;
 				}
 			}
 		}

@@ -1,43 +1,38 @@
-<li>
-	<%= active_link_to(
-		t("settings.sections.general"),
-		settings_path,
-		active: :exclusive
-	) %>
-</li>
 
-<li>
-	<%= active_link_to(
-		t("settings.sections.impexpcompanies"),
-		impexpcompanies_path
-	) %>
-</li>
+<%= active_link_to(
+	t("settings.sections.general"),
+	settings_path,
+	active: :exclusive,
+	wrap_tag: :li
+) %>
 
-<li>
-	<%= active_link_to(
-		t("settings.sections.uom_types"),
-		uom_types_path
-	) %>
-</li>
+<%= active_link_to(
+	t("settings.sections.impexpcompanies"),
+	impexpcompanies_path,
+	wrap_tag: :li
+) %>
 
-<li>
-	<%= active_link_to(
-		t("settings.sections.incoterms"),
-		incoterms_path
-	) %>
-</li>
+<%= active_link_to(
+	t("settings.sections.uom_types"),
+	uom_types_path,
+	wrap_tag: :li
+) %>
 
-<li>
-	<%= active_link_to(
-		t("settings.sections.trade_types"),
-		trade_types_path
-	) %>
-</li>
+<%= active_link_to(
+	t("settings.sections.incoterms"),
+	incoterms_path,
+	wrap_tag: :li
+) %>
 
-<li>
-	<%= active_link_to(
-		t("settings.sections.users"),
-		user_settings_path
-	) %>
-</li>
+<%= active_link_to(
+	t("settings.sections.trade_types"),
+	trade_types_path,
+	wrap_tag: :li
+) %>
+
+<%= active_link_to(
+	t("settings.sections.users"),
+	user_settings_path,
+	wrap_tag: :li
+) %>
 
