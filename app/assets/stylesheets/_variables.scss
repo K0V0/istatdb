@@ -89,7 +89,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
 }
 
 @mixin menu_open_smallscreen_transitions() {
-  @include transition(max-height 0.75s linear);
+  @include transition(max-height 0.375s linear);
 }
 
 /*@mixin sub_menu_open_smallscreen_transitions() {

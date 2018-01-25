@@ -74,14 +74,16 @@ nav.pagination {
 		}
 
 		ul {
-			display: block;
+			//display: block;
+			flex-direction: column;
 
 			div.wrap {
 
 				&.center {
 					text-align: center;
 					//margin: 0 auto;
-					//width:auto;
+					width:auto;
+					display: block;
 
 					li {
 						display: inline-block;
@@ -111,6 +113,7 @@ nav.pagination {
 
 	input#show_paginator:checked ~ nav.pagination {
 		z-index:1000;
-		max-height:512px;
+		//max-height:512px;
+		max-height:100%;
 	}
 }
