@@ -68,6 +68,8 @@ UomDropdown.prototype = {
 			T.H.clearDropdown(this);
 			T.H.fillupDropdown(this, list.data);
 			T.validateDropdownList(this);
+			$(this).trigger('change');
+			// beacause of uom_helper.js to decide if enable/disable buttons
 		});
 	},
 

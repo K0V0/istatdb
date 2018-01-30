@@ -9,12 +9,45 @@ UomHelper.prototype = {
 
 	},
 
-	decideEnableForAddButton: function(uom) {
-
+	onChangeUom: function() {
+		// on change any input inside uom
+		var T = this;
+		$(document)
+		.find('article.uoms')
+		.find('input, select')
+		.on('change', this, function() {
+			logger('runngin');
+			T.decideAddButtonActivation($(this).closest('article'));
+			//T.H.decideIf2ndIsResetOrRemove($(this).closest('article'));
+			//console.log($(this));
+			
+			//logger($(this).closest('article.uoms'));
+		});
 	},
 
-	decideButtonsActivation: function(uom) {
+	onChangeUoms: function() {
+		// on change uoms windows count
+		var par = $(document).find('aside');
+		this.decideRemoveButtonActivation(par.children('article.uoms'));
+	},
+
+	/*decideIf2ndIsResetOrRemove: function(uom) {
+
+	},*/
+
+	decideRemoveButtonActivation: function(uom) {
+		if (uom.length > 1) {
+			
+		}
+	},
+
+	decideAddButtonActivation: function(uom) {
 		var is_valid = this.isValid(uom);
+		if (is_valid === true) {
+			uom.find('button.add_uom').removeAttr('disabled');
+		} else {
+			uom.find('button.add_uom').attr('disabled', 'disabled');
+		}
 	},
 
 	isValid: function(uom) {
@@ -24,8 +57,9 @@ UomHelper.prototype = {
 		
 		valid['num'] = 				/^[0-9\.\,]+\s*$/.test(uom.find('input.uom_val').first().val());
 		valid['multiplier'] = 		/^[0-9]+\s*$/.test(uom.find('input.uom_multiplier').first().val());
-		//valid['unit'] =				uom.find('div.uom_type > select').val() != '';
-		//valid['impexpcompany'] = 	uom.find('div.uom_type > select').val() != '';
+		valid['unit'] =				uom.find('select.uom_type').val() != '';
+		valid['impexpcompany'] = 	uom.find('select.uoms_impexpcompany_select').val() != '';
+		valid['manufacturer'] = 	uom.find('select.uoms_manufacturer_select').val() != '';
 
 		for (var key in valid) {
 		   // console.log(valid[key]);
