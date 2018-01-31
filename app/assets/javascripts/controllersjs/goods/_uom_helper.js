@@ -31,13 +31,11 @@ UomHelper.prototype = {
 		this.decideRemoveButtonActivation(par.children('article.uoms'));
 	},
 
-	/*decideIf2ndIsResetOrRemove: function(uom) {
-
-	},*/
-
 	decideRemoveButtonActivation: function(uom) {
 		if (uom.length > 1) {
-			
+			uom.find('button.remove_uom').enable();
+		} else {
+			uom.find('button.remove_uom').disable();
 		}
 	},
 
@@ -69,8 +67,6 @@ UomHelper.prototype = {
 		    	//break;
 		    }
 		}
-
-
 		return true;
 	}
 }
