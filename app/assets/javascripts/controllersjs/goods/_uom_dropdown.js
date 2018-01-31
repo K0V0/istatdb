@@ -10,7 +10,7 @@ UomDropdown.prototype = {
 
 	},
 
-	rememberDropdownsInitialStates: function() {
+	/*rememberDropdownsInitialStates: function() {
 		var T = this;
 		$(document)
 		.find('article.uoms')
@@ -21,7 +21,7 @@ UomDropdown.prototype = {
 		.each(function() {
 			T.H.rememberInitialState(this);
 		});
-	},
+	},*/
 
 	recollectAvailOptionsForDropdowns: function() {
 		var T = this;

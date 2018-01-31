@@ -16,6 +16,7 @@ en:
     back: Back
     select: Select
     save: Uložiť
+    restore: Restore
     nothing_to_select: Nothing to select
     administrative: Edit item(s)
     end_administrative: End administration

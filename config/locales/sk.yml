@@ -16,6 +16,7 @@ sk:
     back: Naspäť
     select: Vybrať
     save: Uložiť
+    restore: Obnoviť pôvodné
     nothing_to_select: Nie je čo vybrať
     administrative: Spravovať položky
     end_administrative: Ukončiť úpravy

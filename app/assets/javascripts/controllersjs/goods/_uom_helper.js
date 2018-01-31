@@ -17,7 +17,9 @@ UomHelper.prototype = {
 		.find('input, select')
 		.on('change', this, function() {
 			logger('runngin');
+
 			T.decideAddButtonActivation($(this).closest('article'));
+			T.decideClearButtonActivation($(this).closest('article'));
 			//T.H.decideIf2ndIsResetOrRemove($(this).closest('article'));
 			//console.log($(this));
 			
@@ -31,11 +33,11 @@ UomHelper.prototype = {
 		this.decideRemoveButtonActivation(par.children('article.uoms'));
 	},
 
-	decideRemoveButtonActivation: function(uom) {
-		if (uom.length > 1) {
-			uom.find('button.remove_uom').enable();
+	decideRemoveButtonActivation: function(uoms) {
+		if (uoms.length > 1) {
+			uoms.find('button.remove_uom').enable();
 		} else {
-			uom.find('button.remove_uom').disable();
+			uoms.find('button.remove_uom').disable();
 		}
 	},
 
@@ -48,7 +50,16 @@ UomHelper.prototype = {
 		}
 	},
 
+	decideClearButtonActivation: function(uom) {
+		if (this.isDefault(uom) === true) {
+			uom.find('button.restore_uom').disable();
+		} else {
+			uom.find('button.restore_uom').enable();
+		}
+	},
+
 	isValid: function(uom) {
+		// check if ALL are valid
 		var valid = {};
 		//vr is_valid = true;
 		//logger($(uom).children('div > div > input.uom_val').first());
@@ -68,5 +79,27 @@ UomHelper.prototype = {
 		    }
 		}
 		return true;
+	},
+
+	isDefault: function(uom) {
+		// check if at least ONE is different from default
+		var is_default = true;
+		uom.find('input, select').each(function() {
+
+			if ($(this).val() != $(this).data('initial')) {
+				logger('another');
+				is_default = false;
+				return is_default;
+				//break;
+			}
+		});
+		return is_default;
+	},
+
+	saveDefaults: function() {
+		logger('save detaults running')
+		$(document).find('article.uoms').find('input, select').each(function() {
+			$(this).data('initial', $(this).val());
+		});
 	}
 }

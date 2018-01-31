@@ -8,7 +8,8 @@ Uom.prototype = {
 	constructor: Uom,
 
 	init: function() {
-		this.D.rememberDropdownsInitialStates();
+		this.H.saveDefaults();
+		//this.D.rememberDropdownsInitialStates();
 		this.D.recollectAvailOptionsForDropdowns();
 		this.H.onChangeUom();
 		this.evts();
@@ -22,10 +23,15 @@ Uom.prototype = {
 		$(document).on('click', 'button.remove_uom', function() {
 			T.delete($(this).closest('article.uoms'));
 		});
+		$(document).on('click', 'button.restore_uom', function() {
+			T.restore($(this).closest('article.uoms'));
+		});
 	},
 
-	reset: function() {
-
+	restore: function(uom) {
+		uom.find('input, select').each(function() {
+			$(this).val($(this).data('initial'));
+		});
 	},
 
 	delete: function(uom) {

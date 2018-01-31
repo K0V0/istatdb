@@ -24,14 +24,14 @@ UomDropdownHelper.prototype = {
 		});
 	},
 
-	rememberInitialState: function(ref) {
+	/*rememberInitialState: function(ref) {
 		//$(this).data('selected_by_hand', $(this).val());
 		//console.log($(ref).val());
 		var val = $(ref).val();
 		if (val != '') {
 			$(ref).data('initial', val);
 		}
-	},
+	},*/
 
 	decideEnable(dropdown_elem, opts) {
 		var enable = false;
