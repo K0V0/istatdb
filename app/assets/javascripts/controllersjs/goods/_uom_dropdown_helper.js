@@ -1,5 +1,4 @@
 function UomDropdownHelper() {
-
 	this.init();
 }
 
@@ -12,28 +11,55 @@ UomDropdownHelper.prototype = {
 
 	fillupDropdown: function(ref, list) {
 		//console.log(list);
+		var T = this;
 		list.forEach(function(opt) {
-			//console.log(elem);
-			$(ref).append('<option value="' + opt.id + '">' + opt.text + '</option>');
+			//console.log(T.choosen_and_then_obsolete_option_id);
+			//console.log(opt.id);
+			//if (T.choosen_and_then_obsolete_option_id != opt.id) {
+			if ($(ref).data('obsolete') != opt.id) {
+				// user choosed option that became obsolete by user manipulation on
+				// good's properties after, is not deleted, so do not add it twice
+				$(ref).append('<option value="' + opt.id + '">' + opt.text + '</option>');
+			}
 		});
 	},
 
-	clearDropdown: function(ref) {
+	clearDropdown: function(ref, list) {
+		var T = this;
 		$(ref).children('option').each(function() {
-			$(this).remove();
+			//logger($(this).val());
+			option_explicitly_selected = $(this).val() == $(ref).data('user_explicitly_selected');
+			option_selected_now = $(this).val() == $(ref).val();
+
+			/*if (option_selected_now == false && option_explicitly_selected == false) {
+				$(this).remove();
+			} else if (option_selected_now == true && option_explicitly_selected == true)  {
+				// if user choosed option on dropdown but then remove it from
+				// good's attributes, do not remove it, tell him what have done
+				logger('obsolete');
+				$(ref).data('obsolete', $(this).val());
+			}*/
+			if (option_explicitly_selected == false) {
+				$(this).remove();
+			} else if ($(this).val() == "") {
+				// empty value - just text saying to select sth - delete it
+				$(this).remove();
+			} else {
+				// if user choosed option on dropdown but then remove it from
+				// good's attributes, do not remove it, tell him what have done
+				//if ()
+				//if (option_selected_now == true) {
+					logger('obsolete');
+					$(ref).data('obsolete', $(this).val());
+				//}
+			}
+			//$(this).remove();
+
 		});
 	},
 
-	/*rememberInitialState: function(ref) {
-		//$(this).data('selected_by_hand', $(this).val());
-		//console.log($(ref).val());
-		var val = $(ref).val();
-		if (val != '') {
-			$(ref).data('initial', val);
-		}
-	},*/
-
-	decideEnable(dropdown_elem, opts) {
+	decideEnable(dropdown_elem) {
+		var opts = $(dropdown_elem).children('option');
 		var enable = false;
 		//logger($(dropdown_elem));
 		//logger(opts.length);
@@ -44,7 +70,7 @@ UomDropdownHelper.prototype = {
 		else if (opts.length == 1) {
 			//logger("1");
 			if (opts.first().val() == "") {
-				// if only option is not blank text informing that nothing to do
+				// if only option is blank show text informing that nothing to do
 				//false
 			} else {
 				enable = true;
@@ -56,14 +82,10 @@ UomDropdownHelper.prototype = {
 
 		if (enable === true) {
 			//logger($(dropdown_elem));
-			$(dropdown_elem).removeAttr('disabled');
+			$(dropdown_elem).enable();
 		} else {
-			$(dropdown_elem).attr('disabled', 'disabled');
+			$(dropdown_elem).disable();
 		}
-	},
-
-	decideValid(dropdown_elem) {
-		return true;
 	},
 
 	appendSelectSthText(dropdown_elem) {
@@ -72,6 +94,11 @@ UomDropdownHelper.prototype = {
 		var text = t('goods.new_form_texts.uom_cannot_select_' + missing);
 		//logger(text);
 		$(dropdown_elem).append('<option value="">' + text + '</option>');
+	},
+
+	appendObsoleteChoosenError(dropdown_elem) {
+
 	}
+
 
 }

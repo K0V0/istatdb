@@ -1,4 +1,5 @@
 (function($) {
+	// working for checkboxes, used
 
 	$.fn.rememberUserManipulation = function () {
 		

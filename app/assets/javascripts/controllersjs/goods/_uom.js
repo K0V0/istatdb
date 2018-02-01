@@ -26,6 +26,9 @@ Uom.prototype = {
 		$(document).on('click', 'button.restore_uom', function() {
 			T.restore($(this).closest('article.uoms'));
 		});
+		$(document).find('aside').find('select').on('focusout', function() {
+			T.H.saveStraightUserManipulation($(this));
+		});
 	},
 
 	restore: function(uom) {

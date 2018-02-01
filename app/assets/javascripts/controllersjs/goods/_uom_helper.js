@@ -101,5 +101,12 @@ UomHelper.prototype = {
 		$(document).find('article.uoms').find('input, select').each(function() {
 			$(this).data('initial', $(this).val());
 		});
+	},
+
+	saveStraightUserManipulation: function(input) {
+		logger('user_selected');
+		//logger(input.val());
+		input.data('user_explicitly_selected', input.val());
 	}
+
 }

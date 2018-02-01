@@ -1,3 +1,6 @@
+// not used anywhere
+
+/*
 (function($) {
 
 	$.fn.toHidden = function () {
@@ -14,3 +17,4 @@
 		});
 	}
 }(jQuery));
+*/

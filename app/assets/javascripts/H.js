@@ -106,14 +106,14 @@ H.prototype = {
 									controller[ method_name ].init();
 									logger('reinit');
 								}
-
+								/*
 								logger(
 									'controller: ' + this.CONTROLLER_NAME + '\n' +
 									'page_action: ' + this.ACTION_NAME + '\n' +
 									'cntrlr_action: ' + action + '\n' +
 									'method: ' + method_name + '\n' +
 									'event: ' + action_type + '\n' + '\n'
-								);
+								);*/
 
 								// if 'run once' method executed because is not in list, add it to list
 								if (method_allowed_events.contains('once')) { 

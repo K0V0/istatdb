@@ -24,6 +24,7 @@ UomDropdown.prototype = {
 	},*/
 
 	recollectAvailOptionsForDropdowns: function() {
+		// collects (choosen) data from good's client and manufacturer lists 
 		var T = this;
 		// actions on change selections in impexpcompany/manufacturer section
 		// that uom(s) are affected by 
@@ -51,6 +52,7 @@ UomDropdown.prototype = {
 	},
 
 	updateDropdownLists: function(list) {
+		// updates options list in uom(s) dropdowns for manufacturer and client
 		// list - json-like list with new options set
 		var T = this;
 		/*console.log(
@@ -65,31 +67,13 @@ UomDropdown.prototype = {
 		})
 		.each (function() {
 			//console.log(this);
-			T.H.clearDropdown(this);
+			T.H.clearDropdown(this, list.data);
 			T.H.fillupDropdown(this, list.data);
-			T.validateDropdownList(this);
+			T.H.decideEnable(this);
+			//T.validateDropdownList(this);
 			$(this).trigger('change');
 			// beacause of uom_helper.js to decide if enable/disable buttons
 		});
-	},
-
-	validateDropdownList: function(dropdown_elem) {
-		var valid = false;
-		var opts = $(dropdown_elem).children('option');
-		this.H.decideEnable(dropdown_elem, opts);
-		valid = this.H.decideValid(dropdown_elem);
-		return valid;
-		/*if (opts.length == 1) {
-			//logger("1");
-			if (opts.first().val() != "") {
-				// if only option is not blank text informing that nothing to do
-			} else {
-				$(dropdown_elem).attr('disabled', false);
-			}
-
-		} else if (opts.length > 1) {
-
-		}*/
 	},
 
 }
