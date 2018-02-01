@@ -13,6 +13,10 @@ body.index, body.search {
 
 		& > *:first-child {
 			margin-top: 0.75em;
+
+			@media only screen and (max-width: 480px) {
+				margin-top: 2em;
+			}
 		}
 
 		& > *:last-child {

@@ -2,41 +2,23 @@ body.new, body.edit {
 
 	main {
 
+		section {
 
-			section {
+			form {
 
-				form {
-
-						article {
-							//margin: 0.375em 0;
-
-							//& {
-								margin :0.75em 0.75em;
-							//}
-
-							/*&:first-child {
-								margin-top: 0.75em;
-							}
-
-							&:last-child {
-								margin-bottom: 0.75em;
-							}*/
-						}
-				}
-			}
-
-			
-			@media only screen and (max-width: 480px) {
-
-				section.decorated_wrap {
-					//float: none;
-					//margin: 0.75em 0;
-
-					//&:first-child {
-					//	margin-top:0.375em;
-					//}
+				article {
+					margin :0.75em 0.75em;
 				}
 			}
 		}
+
+			
+		@media only screen and (max-width: 480px) {
+
+			section.decorated_wrap {
+				
+			}
+		}
+	}
 	
 }

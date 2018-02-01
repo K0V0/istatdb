@@ -8,20 +8,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	//padding:0.375em 0.75em;
 	background-color: $white;
-
-	/*& > * {
-		margin :0.375em 0.75em;
-	}
-
-	& > *:first-child {
-		margin-top: 0.75em;
-	}
-
-	& > *:last-child {
-		margin-bottom: 0.75em;
-	}*/
 
 	a {
 		text-decoration: none;
@@ -62,18 +49,6 @@ main {
 		font-weight: normal;
 	}
 
-	/*section {
-		//margin: 0.375em 0;
-
-		&.form {
-			margin:0;
-
-			article {
-				margin :0.375em 0.75em;
-			}
-		}
-	}*/
-
 	h1, h2, h3, h4 {
 		margin:0;
 		padding:0;
@@ -100,15 +75,4 @@ main {
 		font-size: 1.125em;
 		font-weight:normal;
 	}
-}
-
-@media only screen and (max-width: 480px) {
-
-	main {
-
-		& > *:first-child {
-			margin-top: 2em;
-		}
-	}
-
 }
