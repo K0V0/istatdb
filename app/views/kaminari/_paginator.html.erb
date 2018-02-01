@@ -7,36 +7,40 @@
     paginator:     the paginator that renders the pagination tags inside
 -%>
 <%= paginator.render do -%>
+
+	<nav class="pagination">
   
-  	<label for="show_paginator" class="show_paginator"> &#9776; </label>
+	  	<label for="show_paginator" class="show_paginator"> &#9776; </label>
 
-  	<ul>
+	  	<ul>
 
-  		<div class="wrap left disable_on_smallscreen">
-	    	<%= first_page_tag %>
-	    	<%= prev_page_tag %>
-    	</div>
+	  		<div class="wrap left disable_on_smallscreen">
+		    	<%= first_page_tag %>
+		    	<%= prev_page_tag %>
+	    	</div>
 
-    	<div class="wrap center">
-		    <% each_page do |page| -%>
-		      <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
-		        <%= page_tag page %>
-		      <% elsif !page.was_truncated? -%>
-		        <%= gap_tag %>
-		      <% end -%>
-		    <% end -%>
-		</div>
+	    	<div class="wrap center">
+			    <% each_page do |page| -%>
+			      <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
+			        <%= page_tag page %>
+			      <% elsif !page.was_truncated? -%>
+			        <%= gap_tag %>
+			      <% end -%>
+			    <% end -%>
+			</div>
 
-		<div class="wrap left disable_on_bigscreen">
-	    	<%= first_page_tag %>
-	    	<%= prev_page_tag %>
-    	</div>
+			<div class="wrap left disable_on_bigscreen">
+		    	<%= first_page_tag %>
+		    	<%= prev_page_tag %>
+	    	</div>
 
-	    <div class="wrap right">
-	    	<%= next_page_tag %>
-	    	<%= last_page_tag %>
-	    </div>
+		    <div class="wrap right">
+		    	<%= next_page_tag %>
+		    	<%= last_page_tag %>
+		    </div>
 
-	</ul>
+		</ul>
+
+	</nav>
  
 <% end -%>

@@ -73,13 +73,13 @@
 
 		</main>
 
-		<nav class="pagination">
-
-			<% case action_name 
-				when 'index', 'search', 'administrative', 'end_administrative' %>
-					<%= render 'layouts/base/pagination' %>
-			<% end %>
-		</nav>
+		<% case action_name 
+			when 'index', 'search', 'administrative', 'end_administrative' %>
+				<%#= render 'layouts/base/pagination' %>
+				<% if !@result.nil? %>
+					<%= paginate(@result, remote: true) %>
+				<% end %>
+		<% end %>
 
 		<%= render 'layouts/base/footer' %>
 

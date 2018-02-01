@@ -18,7 +18,7 @@ var an = "<%= an = action_name %>";
 	body.children('main').children('article').attr('class', AN+' '+CTRL);
 	body.attr('class',  AN+' '+CTRL+' '+TRID);
 
-	$(document).find('nav.pagination').empty();
+	$(document).find('nav.pagination').remove();
 
 	JS.H.run('once');
 	JS.H.run('on_change');
@@ -65,8 +65,6 @@ var an = "<%= an = action_name %>";
 
 		searchform_administrative_button.addClass('hidden');
 
-		$(document).find('nav.pagination').empty();
-
 	<% end %>
 
 	<% if !@MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").blank? %>
@@ -89,7 +87,7 @@ var an = "<%= an = action_name %>";
 
 		$('<%=j yield(:items_table) %>').appendTo('main > article');
 
-		$('<%=j render("layouts/base/pagination") %>').appendTo('nav.pagination');
+		$('<%=j paginate(@result, remote: true) if !@result.nil? %>').insertAfter('main');
 
 		$('input[name=page]').remove();
 
