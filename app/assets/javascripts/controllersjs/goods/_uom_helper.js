@@ -16,7 +16,7 @@ UomHelper.prototype = {
 		.find('article.uoms')
 		.find('input, select')
 		.on('change', this, function() {
-			logger('runngin');
+			logger('on change uom runngin');
 
 			T.decideAddButtonActivation($(this).closest('article'));
 			T.decideClearButtonActivation($(this).closest('article'));
@@ -31,6 +31,11 @@ UomHelper.prototype = {
 		// on change uoms windows count
 		var par = $(document).find('aside');
 		this.decideRemoveButtonActivation(par.children('article.uoms'));
+	},
+
+	setUpClone: function(uom) {
+		var next_id = $(document).find('article.uoms').last().attr('id').match(/^\D+(\d)$/)[1] + 1;
+		//logger(next_id);
 	},
 
 	decideRemoveButtonActivation: function(uoms) {
@@ -87,7 +92,7 @@ UomHelper.prototype = {
 		uom.find('input, select').each(function() {
 
 			if ($(this).val() != $(this).data('initial')) {
-				logger('another');
+				//logger('another');
 				is_default = false;
 				return is_default;
 				//break;
@@ -97,14 +102,14 @@ UomHelper.prototype = {
 	},
 
 	saveDefaults: function() {
-		logger('save detaults running')
+		//logger('save detaults running')
 		$(document).find('article.uoms').find('input, select').each(function() {
 			$(this).data('initial', $(this).val());
 		});
 	},
 
 	saveStraightUserManipulation: function(input) {
-		logger('user_selected');
+		//logger('user_selected');
 		//logger(input.val());
 		input.data('user_explicitly_selected', input.val());
 	}

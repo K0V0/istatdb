@@ -63,10 +63,13 @@
 		) %>
 
 		<aside>
+			<% i = 0 %>
 			<%= t.fields_for :uoms, @uom do |u| %>
 				<%= render('goods/new/uom',
-					obj: u
+					obj: u, 
+					index: i
 				) %>
+				<% i = i + 1 %>
 			<% end %>
 		</aside>
 

@@ -46,6 +46,7 @@ Uom.prototype = {
 	addNext: function(uom) {
 		// uom - uom "window" object 
 		newUom = uom.clone(true, true);
+		this.H.setUpClone(newUom);
 		$(document).find('aside').append(newUom);
 		this.H.onChangeUoms();
 	}

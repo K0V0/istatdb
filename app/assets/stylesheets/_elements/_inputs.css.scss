@@ -57,6 +57,21 @@ select {
 	&:disabled {
 		background-image: url(select_dropdown_arrow_disabled.png);
 	}
+
+	&.error{
+		background-color: $button_danger;
+		border-color: $button_danger;
+
+		&:hover {
+			background-color: $button_danger_hover;
+			border-color: $button_danger_hover;
+		}
+	}
+
+	&.error:disabled {
+		background-color: $button_danger;
+		border-color: $button_danger;
+	}
 }
 
 

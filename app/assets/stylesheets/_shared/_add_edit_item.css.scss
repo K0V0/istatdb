@@ -49,6 +49,10 @@ section.form {
 
 			div.select_wrapper {
 				margin: 0.125em 0;
+
+				select.error {
+					background-color: $button_danger;
+				}
 			}
 
 			&.form_errors {
@@ -85,6 +89,7 @@ section.form {
 							label {
 								height: auto;
 								line-height: 1.25em;
+								cursor: pointer;
 							}
 						}
 
