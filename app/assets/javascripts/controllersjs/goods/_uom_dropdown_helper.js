@@ -65,6 +65,7 @@ UomDropdownHelper.prototype = {
 					//logger('obsolete');
 					//$(ref).data('obsolete', $(this).val());
 					if (list.contains($(this).val())) {
+						//if ()
 						//$(this).remove();
 					} else {
 						logger('obsolete');
