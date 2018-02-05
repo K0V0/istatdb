@@ -27,6 +27,14 @@ UomDropdown.prototype = {
 					text: $(document).find('label[for=' + $(this).attr('id') +']').text()
 				});
 			});
+			if ($(this).hasClass('allow_add_new')) {
+				if (this.checked) {
+					list.data.push({
+						id: "0",
+						text: t('goods.new_form_texts.uom_not_yet_created_select')
+					});
+				}
+			}
 			T.updateDropdownLists(list);
 			// run dropdowns update with collected data
 		});
@@ -48,6 +56,10 @@ UomDropdown.prototype = {
 			$(this).trigger('change');
 			// beacause of uom_helper.js to decide if enable/disable buttons
 		});
+	},
+
+	isValid: function() {
+		
 	}
 
 }

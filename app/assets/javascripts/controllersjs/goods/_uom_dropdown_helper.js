@@ -14,14 +14,14 @@ UomDropdownHelper.prototype = {
 		var T = this;
 		//logger('idee');
 		$(ref).data('manipulated', '1');
-		$(ref).removeClass('error');
+		//$(ref).removeClass('error');
 		//$(ref).removeClass('manipulated');
 		list.forEach(function(opt) {
 			//console.log(T.choosen_and_then_obsolete_option_id);
 			//console.log(opt.id);
 			//if (T.choosen_and_then_obsolete_option_id != opt.id) {
 				//logger($(ref).data('obsolete'));
-			if ($(ref).data('obsolete') != opt.id) {
+			if (/*$(ref).data('obsolete') != opt.id && */$(ref).data('user_explicitly_selected') != opt.id) {
 				// user choosed option that became obsolete by user manipulation on
 				// good's properties after, is not deleted, so do not add it twice
 				$(ref).append('<option value="' + opt.id + '">' + opt.text + '</option>');
@@ -31,10 +31,13 @@ UomDropdownHelper.prototype = {
 
 	clearDropdown: function(ref, list) {
 		var T = this;
+		$(ref).removeClass('error');
 		$(ref).children('option').each(function() {
 			//logger($(this).val());
 			option_explicitly_selected = $(this).val() == $(ref).data('user_explicitly_selected');
 			option_selected_now = $(this).val() == $(ref).val();
+
+			//$(ref).removeClass('error');
 
 			//logger($(ref).data('obsolete'));
 
@@ -66,9 +69,11 @@ UomDropdownHelper.prototype = {
 					} else {
 						logger('obsolete');
 						$(ref).data('obsolete', $(this).val());
+						$(ref).addClass('error');
 					}
 				//}
 			}
+			//$(ref).addClass('error');
 			//$(this).remove();
 
 		});
@@ -93,7 +98,10 @@ UomDropdownHelper.prototype = {
 			if (opts.first().val() == "") {
 				// if only option is blank show text informing that nothing to do
 				//false
-			} else {
+			} /*else if (opts.first().val() == "0") {
+				//$(dropdown_elem).addClass('error');
+				//false
+			}*/ else {
 				enable = true;
 			}
 		} 

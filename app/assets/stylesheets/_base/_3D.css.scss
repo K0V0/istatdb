@@ -50,13 +50,11 @@ body.tride {
 		&.top_menu {
 
 			ul.main {
-				//border-top: 0.125em solid $halftone;
 				&::after {
 					content: "";
 					display: block;
 					width:100%;
 					height: 2px;
-					//color: red;
 					background-color: $semi_grey;
 					position: absolute;
 					top:0;
@@ -70,23 +68,11 @@ body.tride {
 					li {
 
 						a {
-							//border-bottom: 0.125em solid $semi_grey;
 
 							&.active {
 								box-shadow: -2px -1px 0px 1px $semi_grey;
-								//border-bottom: none;
-								//border-top: 0.175em solid $semi_grey;
-								//border-left: 0.175em solid $semi_grey;
-								//border-top-left-radius: 0.3725em;
-								//border-top-right-radius: 0.25em;
 							}
 						}
-
-						/*&:last-child {
-							a {
-								//border-right: 0.125em solid $soft_black;
-							}
-						}*/
 					}
 				}
 			}
@@ -98,7 +84,6 @@ body.tride {
 					display: block;
 					width:100%;
 					height: 2px;
-					//color: red;
 					background-color: $strong_grey;
 					position: absolute;
 					top:0;
@@ -114,21 +99,9 @@ body.tride {
 						z-index: 3;
 
 						a {
-							//border-bottom: 0.125em solid $semi_grey;
 
 							&.active {
 								box-shadow: -2px -1px 0px 1px $strong_grey;
-								//border-bottom: none;
-								//border-top: 0.175em solid $semi_grey;
-								//border-left: 0.175em solid $semi_grey;
-								//border-top-left-radius: 0.3725em;
-								//border-top-right-radius: 0.25em;
-							}
-						}
-
-						&:last-child {
-							a {
-								//border-right: 0.125em solid $soft_black;
 							}
 						}
 					}
