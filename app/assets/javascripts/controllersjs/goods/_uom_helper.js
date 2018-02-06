@@ -1,31 +1,27 @@
 function UomHelper() {
-	this.init();
+	
 }
 
 UomHelper.prototype = {
 	constructor: UomHelper,
 
-	init: function() {
-
-	},
-
-	onChangeUom: function() {
-		// on change any input inside uom
-		var T = this;
-		$(document)
-		.find('article.uoms')
-		.find('input, select')
-		.on('change', this, function() {
-			logger('on change uom runngin');
-			T.decideAddButtonActivation($(this).closest('article'));
-			T.decideClearButtonActivation($(this).closest('article'));
+	restore: function(uom) {
+		uom.find('input, select').each(function() {
+			$(this).val($(this).data('initial'));
 		});
 	},
 
-	onChangeUoms: function() {
-		// on change uoms windows count
-		var par = $(document).find('aside');
-		this.decideRemoveButtonActivation(par.children('article.uoms'));
+	delete: function(uom) {
+		uom.remove();
+		//this.H.onChangeUoms();
+	},
+
+	addNext: function(uom) {
+		// uom - uom "window" object 
+		newUom = uom.clone(true, true);
+		this.setUpClone(newUom);
+		$(document).find('aside').append(newUom);
+		//this.H.onChangeUoms();
 	},
 
 	setUpClone: function(uom) {
@@ -77,12 +73,6 @@ UomHelper.prototype = {
 			}
 		});
 		return is_default;
-	},
-
-	saveDefaults: function() {
-		$(document).find('article.uoms').find('input, select').each(function() {
-			$(this).data('initial', $(this).val());
-		});
 	}
 
 }

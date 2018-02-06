@@ -10,8 +10,8 @@ GOODS = {
 		uoms_calculator: ["once"]
 	},
 
-	_new_edit: {
-		uom: ["on_reload"],
+	_new_edit_update_create: {
+		uom: ["on_reload", "on_change"],
 		generate_search_query: ['on_reload']
 	}
 }

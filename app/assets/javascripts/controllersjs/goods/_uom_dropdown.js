@@ -1,16 +1,11 @@
 function UomDropdown() {
 	this.H = new UomDropdownHelper();
-	this.init();
 }
 
 UomDropdown.prototype = {
 	constructor: UomDropdown,
 
 	init: function() {	
-		this.evts();
-	},
-
-	evts: function() {
 		this.onSourceChange();
 		this.onUserChange();
 		this.onChange();

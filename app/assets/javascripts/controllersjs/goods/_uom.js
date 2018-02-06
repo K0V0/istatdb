@@ -1,4 +1,6 @@
 function Uom() {
+	//this.D = null;
+	//this.H = null;
 	this.D = new UomDropdown();
 	this.H = new UomHelper();
 	this.init();
@@ -8,12 +10,18 @@ Uom.prototype = {
 	constructor: Uom,
 
 	init: function() {
-		this.H.saveDefaults();
-		this.H.onChangeUom();
-		this.evts();
+		this.saveDefaults();
+		this.D.init();
+		//this.H.init();	
+		//this.H.onChangeUom();
+		///this.H.onChangeUoms();
+		//this.evts();
+		this.buttonEvents();
+		this.onChangeUomEvents();
+		this.onChangeUomsEvents();
 	},
 
-	evts: function() {
+	buttonEvents: function() {
 		var T = this;
 		$(document).on('click', 'button.add_uom', function() {
 			T.addNext($(this).closest('article.uoms'));
@@ -26,23 +34,29 @@ Uom.prototype = {
 		});
 	},
 
-	restore: function(uom) {
-		uom.find('input, select').each(function() {
-			$(this).val($(this).data('initial'));
+	onChangeUomEvents: function() {
+		// on change any input inside uom
+		var T = this;
+		$(document)
+		.find('article.uoms')
+		.find('input, select')
+		.on('change', this, function() {
+			logger('onChangeUomEvents');
+			T.H.decideAddButtonActivation($(this).closest('article'));
+			T.H.decideClearButtonActivation($(this).closest('article'));
 		});
 	},
 
-	delete: function(uom) {
-		uom.remove();
-		this.H.onChangeUoms();
+	onChangeUomsEvents: function() {
+		// on change uoms windows count
+		var par = $(document).find('aside');
+		this.H.decideRemoveButtonActivation(par.children('article.uoms'));
 	},
 
-	addNext: function(uom) {
-		// uom - uom "window" object 
-		newUom = uom.clone(true, true);
-		this.H.setUpClone(newUom);
-		$(document).find('aside').append(newUom);
-		this.H.onChangeUoms();
+	saveDefaults: function() {
+		$(document).find('article.uoms').find('input, select').each(function() {
+			$(this).data('initial', $(this).val());
+		});
 	}
 
 }
