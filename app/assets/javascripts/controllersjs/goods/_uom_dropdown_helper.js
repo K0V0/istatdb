@@ -9,134 +9,102 @@ UomDropdownHelper.prototype = {
 
 	},
 
-	fillupDropdown: function(ref, list) {
-		//console.log(list);
+	rememberChangeByUser: function(dropdown_elem) {
+		$(dropdown_elem).data('user_selected', $(dropdown_elem).val());
+	},
+
+	updateDropdownLists: function(list) {
+		// updates options list in uom(s) dropdowns for manufacturer and client
+		// list - json-like list with new options set
 		var T = this;
-		//logger('idee');
-		$(ref).data('manipulated', '1');
-		//$(ref).removeClass('error');
-		//$(ref).removeClass('manipulated');
+		$(document)
+		.find('select')
+		.filter(function() { 
+			return this.id.match("good_uoms_attributes_[0-9]+_" + list.for + "_id");
+		})
+		.each (function() {
+			T.clearDropdown(this, list);
+			T.fillupDropdown(this, list.data);
+			$(this).trigger('change');
+			// beacause of uom_helper.js to decide if enable/disable buttons
+		});
+	},
+
+	fillupDropdown: function(ref, list) {
+		$(ref).data('data_changed', '1');
 		list.forEach(function(opt) {
-			//console.log(T.choosen_and_then_obsolete_option_id);
-			//console.log(opt.id);
-			//if (T.choosen_and_then_obsolete_option_id != opt.id) {
-				//logger($(ref).data('obsolete'));
-			if (/*$(ref).data('obsolete') != opt.id && */$(ref).data('user_explicitly_selected') != opt.id) {
-				// user choosed option that became obsolete by user manipulation on
-				// good's properties after, is not deleted, so do not add it twice
+			var duplicate = $(ref).find('option[value='+opt.id+']');
+			if(duplicate.length == 0) {
 				$(ref).append('<option value="' + opt.id + '">' + opt.text + '</option>');
 			}
 		});
 	},
 
 	clearDropdown: function(ref, list) {
-		var T = this;
-		$(ref).removeClass('error');
 		$(ref).children('option').each(function() {
-			//logger($(this).val());
-			option_explicitly_selected = $(this).val() == $(ref).data('user_explicitly_selected');
-			option_selected_now = $(this).val() == $(ref).val();
-
-			//$(ref).removeClass('error');
-
-			//logger($(ref).data('obsolete'));
-
-			/*if (option_selected_now == false && option_explicitly_selected == false) {
-				$(this).remove();
-			} else if (option_selected_now == true && option_explicitly_selected == true)  {
-				// if user choosed option on dropdown but then remove it from
-				// good's attributes, do not remove it, tell him what have done
-				logger('obsolete');
-				$(ref).data('obsolete', $(this).val());
-			}*/
-			if (option_explicitly_selected == false) {
-				$(this).remove();
-			} else if ($(this).val() == "") {
-				// empty value - just text saying to select sth - delete it
+			if ($(this).val() != $(ref).data('user_selected')) {
 				$(this).remove();
 			} else {
-				// if user choosed option on dropdown but then remove it from
-				// good's attributes, do not remove it, tell him what have done
-				//if ()
-				//if (option_selected_now == true) {
-					//logger($(this).val());
-					//logger(list);
-					//logger(list.contains($(this).val()));
-					//logger('obsolete');
-					//$(ref).data('obsolete', $(this).val());
-					if (list.contains($(this).val())) {
-						//if ()
-						//$(this).remove();
-					} else {
-						logger('obsolete');
-						$(ref).data('obsolete', $(this).val());
-						$(ref).addClass('error');
-					}
-				//}
+				if (!list.contains($(this).val())) { $(this).data('not_in_source', '1'); }
 			}
-			//$(ref).addClass('error');
-			//$(this).remove();
-
 		});
 	},
 
-	decideEnable(dropdown_elem) {
+	decideIfEnable: function(dropdown_elem) {
 		var opts = $(dropdown_elem).children('option');
 		var enable = false;
-		//logger($(dropdown_elem));
-		//logger(opts.length);
-		if (opts.length < 1) {
-			//false
-			this.appendSelectSthText(dropdown_elem);
-			if ($(dropdown_elem).data('manipulated') == '1') { 
-				// if user previously selected something from good's properties
-				// list and then deselect everything, inform him
-				$(dropdown_elem).addClass('error');
-			}
-		}
-		else if (opts.length == 1) {
-			//logger("1");
-			if (opts.first().val() == "") {
-				// if only option is blank show text informing that nothing to do
-				//false
-			} /*else if (opts.first().val() == "0") {
-				//$(dropdown_elem).addClass('error');
-				//false
-			}*/ else {
-				enable = true;
-			}
-		} 
-		else if (opts.length > 1) {
+		if (opts.length == 1 && opts.first().val() != "") {
+			enable = true;
+		} else if (opts.length > 1) {
 			enable = true;
 		}
+		enable ? $(dropdown_elem).enable() : $(dropdown_elem).disable();
+	},
 
-		if (enable === true) {
-			//logger($(dropdown_elem));
-			$(dropdown_elem).enable();
+	validate: function(dropdown_elem) {
+		// runs in onchange event
+		var opts = $(dropdown_elem).children('option');
+		var valid = true;
+
+		if (opts.length < 1) {
+			this.appendSelectSthText(dropdown_elem);
+			// no data there, append add something text
+			if ($(dropdown_elem).data('data_changed') == '1') { 
+				valid = false;
+				// if dropdown was manipulated before, highlight
+			}
 		} else {
-
-			$(dropdown_elem).disable();
+			opts.each(function() {
+				logger($(this).data());
+				if ($(this).data('not_in_source') == "1") {
+					if ($(dropdown_elem).data('user_selected') == $(this).val()) {
+						valid = false;
+						$(this).data('not_in_source', '0');
+						// if selected value is no more available for goods
+					}
+				}
+			});
 		}
+
+		valid ? $(dropdown_elem).removeClass('error') : $(dropdown_elem).addClass('error');
+		// maybe nullize value to empty string to prevent submit form if invalid
+		// skusit jquery one() metodu
 	},
 
 	appendSelectSthText(dropdown_elem) {
 		var rgx = /good_uoms_attributes_[0-9]+_([a-z]+)_id/;
 		var missing = $(dropdown_elem).attr('id').match(rgx)[1];
 		var text = t('goods.new_form_texts.uom_cannot_select_' + missing);
-		//logger(text);
 		$(dropdown_elem).append('<option value="">' + text + '</option>');
-	},
-
-	appendObsoleteChoosenError(dropdown_elem) {
-
 	}
-
-
 }
 
-function OptionsList() {
+
+function OptionsList(elem_source_of_data) {
+	this.src = elem_source_of_data;
 	this.for = "";
 	this.data = [];
+	this.collect();
 }
 
 OptionsList.prototype = {
@@ -150,5 +118,26 @@ OptionsList.prototype = {
 			}
 		}
 		return false; 
+	},
+
+	collect: function() {
+		var src = this.src;
+		var toto = this;
+		this.for = $(src).closest('article').attr('id').match(/^[a-z]+/)[0];
+		$(src).closest('article').find("input:checked").each(function() {
+			var data = {};
+			if ($(this).hasClass('allow_add_new')) {
+				data = {
+					id: "0",
+					text: t('goods.new_form_texts.uom_not_yet_created_select')
+				}
+			} else {
+				data = { 
+					id: $(this).val(),
+					text: $(document).find('label[for=' + $(this).attr('id') +']').text()
+				}
+			}
+			toto.data.push(data);
+		});
 	}
 }

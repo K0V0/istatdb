@@ -6,60 +6,56 @@ function UomDropdown() {
 UomDropdown.prototype = {
 	constructor: UomDropdown,
 
-	init: function() {
-
+	init: function() {	
+		this.evts();
 	},
 
-	recollectAvailOptionsForDropdowns: function() {
+	evts: function() {
+		this.onSourceChange();
+		this.onUserChange();
+		this.onChange();
+	},
+
+	onChange: function() {
+		// dropdown changed
+		var T = this;
+		$(document)
+		.find('select')
+		.filter(function() { 
+			return this.id.match("good_uoms_attributes_[0-9]+_(impexpcompany|manufacturer)_id");
+		})
+		.on('change', this, function() {
+			logger('dropdown changed');
+			T.H.decideIfEnable(this);
+			T.H.validate(this);
+		});
+	},
+
+	onUserChange: function() {
+		// dropdown changed olny by explicit user manipulation
+		var T = this;
+		$(document)
+		.find('select')
+		.filter(function() { 
+			return this.id.match("good_uoms_attributes_[0-9]+_(impexpcompany|manufacturer)_id");
+		})
+		.on('focusout', this, function() {
+			logger('dropdown changed by user');
+			T.H.rememberChangeByUser(this);
+		});
+	},
+
+	onSourceChange: function() {
 		// collects (choosen) data from good's client and manufacturer lists 
 		var T = this;
 		$(document)
 		.find('article.impexpcompany_select, article.manufacturer_select')
 		.find('input[type=checkbox]')
 		.on('change', this, function(){ 
-			// actions on change selections in impexpcompany/manufacturer section
-			// that uom(s) are affected by 
-			list = new OptionsList();
-			list.for = $(this).closest('article').attr('id').match(/^[a-z]+/)[0];
-			$(this).closest('tbody').find("input:checked").each(function() {
-				list.data.push({ 
-					id: $(this).val(),
-					text: $(document).find('label[for=' + $(this).attr('id') +']').text()
-				});
-			});
-			if ($(this).hasClass('allow_add_new')) {
-				if (this.checked) {
-					list.data.push({
-						id: "0",
-						text: t('goods.new_form_texts.uom_not_yet_created_select')
-					});
-				}
-			}
-			T.updateDropdownLists(list);
+			var list = new OptionsList(this);
+			T.H.updateDropdownLists(list);
 			// run dropdowns update with collected data
 		});
-	},
-
-	updateDropdownLists: function(list) {
-		// updates options list in uom(s) dropdowns for manufacturer and client
-		// list - json-like list with new options set
-		var T = this;
-		$(document)
-		.find('select')
-		.filter(function() { 
-			return this.id.match("good_uoms_attributes_[0-9]+_" + list.for + "_id");
-		})
-		.each (function() {
-			T.H.clearDropdown(this, list);
-			T.H.fillupDropdown(this, list.data);
-			T.H.decideEnable(this);
-			$(this).trigger('change');
-			// beacause of uom_helper.js to decide if enable/disable buttons
-		});
-	},
-
-	isValid: function() {
-		
 	}
 
 }

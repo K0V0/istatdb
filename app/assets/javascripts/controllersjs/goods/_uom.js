@@ -9,8 +9,6 @@ Uom.prototype = {
 
 	init: function() {
 		this.H.saveDefaults();
-		//this.D.rememberDropdownsInitialStates();
-		this.D.recollectAvailOptionsForDropdowns();
 		this.H.onChangeUom();
 		this.evts();
 	},
@@ -26,9 +24,6 @@ Uom.prototype = {
 		$(document).on('click', 'button.restore_uom', function() {
 			T.restore($(this).closest('article.uoms'));
 		});
-		$(document).find('aside').find('select').on('focusout', function() {
-			T.H.saveStraightUserManipulation($(this));
-		});
 	},
 
 	restore: function(uom) {
@@ -38,7 +33,6 @@ Uom.prototype = {
 	},
 
 	delete: function(uom) {
-		//var par = uom.closest('aside');
 		uom.remove();
 		this.H.onChangeUoms();
 	},
