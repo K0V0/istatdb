@@ -1,4 +1,4 @@
-body.new, body.edit, body.create, body.update {
+body.new, body.edit, body.create, body.update, body.edit_multiple {
 
 	main {
 
@@ -12,12 +12,8 @@ body.new, body.edit, body.create, body.update {
 			}
 		}
 
-			
 		@media only screen and (max-width: 480px) {
-
-			section.decorated_wrap {
-				
-			}
+			padding-top:1.25em;
 		}
 	}
 	

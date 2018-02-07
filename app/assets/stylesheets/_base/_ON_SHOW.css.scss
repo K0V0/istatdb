@@ -2,17 +2,14 @@
 body.show {
 
 	main {
+		padding-top:0.375em;
+
+		@media only screen and (max-width: 480px) {
+			padding-top:1.625em;
+		}
 
 		& > section {
 			margin :0.375em 0.75em;
-
-			&:first-child {
-				margin-top: 0.75em;
-			}
-
-			&:last-child {
-				margin-bottom: 0.75em;
-			}
 		}
 
 		article {

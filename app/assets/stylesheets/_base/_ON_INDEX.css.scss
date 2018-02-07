@@ -2,6 +2,7 @@
 body.index, body.search, body.administrative {
 
 	main {
+		padding-top:0.375em;
 
 		article {
 			display: flex;
@@ -11,16 +12,8 @@ body.index, body.search, body.administrative {
 			margin :0.375em 0.75em;
 		}
 
-		& > *:first-child {
-			margin-top: 0.75em;
-
-			@media only screen and (max-width: 480px) {
-				margin-top: 2em;
-			}
-		}
-
-		& > *:last-child {
-			margin-bottom: 0.75em;
+		@media only screen and (max-width: 480px) {
+			padding-top:1.625em;
 		}
 	}
 }
