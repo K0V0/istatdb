@@ -8,6 +8,14 @@ UomDropdownHelper.prototype = {
 	rememberChangeByUser: function(dropdown_elem) {
 		$(dropdown_elem).data('user_selected', $(dropdown_elem).val());
 	},
+	
+	updateDropdowns: function(checkboxes_containers) {
+		var T = this;
+		$(checkboxes_containers).each(function() {
+			var list = new OptionsList(this);
+			T.updateDropdownLists(list);
+		});
+	},
 
 	updateDropdownLists: function(list) {
 		// updates options list in uom(s) dropdowns for manufacturer and client

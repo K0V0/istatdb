@@ -11,7 +11,7 @@ GOODS = {
 	},
 
 	_new_edit_update_create: {
-		uom: ["on_reload", "on_change"],
+		uom: ["on_reload"],
 		generate_search_query: ['on_reload']
 	}
 }

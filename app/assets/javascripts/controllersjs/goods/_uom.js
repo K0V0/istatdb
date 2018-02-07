@@ -1,6 +1,4 @@
 function Uom() {
-	//this.D = null;
-	//this.H = null;
 	this.D = new UomDropdown();
 	this.H = new UomHelper();
 	this.init();
@@ -12,10 +10,6 @@ Uom.prototype = {
 	init: function() {
 		this.saveDefaults();
 		this.D.init();
-		//this.H.init();	
-		//this.H.onChangeUom();
-		///this.H.onChangeUoms();
-		//this.evts();
 		this.buttonEvents();
 		this.onChangeUomEvents();
 		this.onChangeUomsEvents();

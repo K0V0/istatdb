@@ -45,10 +45,8 @@ UomDropdown.prototype = {
 		var T = this;
 		$(document)
 		.find('article.impexpcompany_select, article.manufacturer_select')
-		.find('input[type=checkbox]')
 		.on('change', this, function(){ 
-			var list = new OptionsList(this);
-			T.H.updateDropdownLists(list);
+			T.H.updateDropdowns(this);
 			// run dropdowns update with collected data
 		});
 	}
