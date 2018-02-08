@@ -23,7 +23,8 @@
 
 		<% fields.each do |field_name, opts| %>
 			<% if obj_errs[field_name].any? %>
-				<span>
+				<% errclass = "#{object.class.to_s.underscore}_#{field_name.to_s}" %>
+				<span class="errormessage <%= errclass %>">
 					<%= obj_errs[field_name].first %>
 				</span>
 			<% end %>

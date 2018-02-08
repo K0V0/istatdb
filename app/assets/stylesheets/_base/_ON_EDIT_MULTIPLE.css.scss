@@ -1,4 +1,5 @@
-body.edit_multiple {
+
+body.update_multiple, body.edit_multiple {
 
 	main {
 
@@ -7,10 +8,10 @@ body.edit_multiple {
 			form {
 
 				aside {
-					padding: 0.375em 0;
+					padding: 0.75em 0;
 
 					&:nth-child(2n-1) {
-						background-color: #DDD;
+						background-color: #ccc;
 					}
 
 					article {

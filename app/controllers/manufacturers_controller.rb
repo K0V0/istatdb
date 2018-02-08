@@ -10,6 +10,15 @@ class ManufacturersController < ApplicationController
         }
   	end
 
+  	def permitted_params
+      params[:manufacturer].permit(
+      	:id,
+        :name,
+        impexpcompanies_attributes: [:id, :company_name],
+        impexpcompany_ids: []
+      )
+    end
+
   	def index_action
 	  @collection = Manufacturer.preload_items.default_order
 	end
@@ -20,14 +29,24 @@ class ManufacturersController < ApplicationController
 		@for_tarictable = @for_goodstable.select('distinct "goods"."local_taric_id"')
 	end
 
-    def permitted_params
-      params[:manufacturer].permit(
-      	:id,
-        :name,
-        impexpcompanies_attributes: [:id, :company_name],
-        impexpcompany_ids: []
-      )
-    end
+	def update_action_2
+		# override to decide which submit button was clicked
+		# save or make additional changes and proceed to next form
+		saved = @record.update(permitted_params)
+		if params.has_key?(:edit_other_details) && saved
+			if @record.impexpcompanies.length > 0
+				redirect_to edit_details_manufacturer_path(@record.id)
+			else
+				# dont go to next form if no clients selected for this manufacturer
+				## TODO validation error here
+				render "new"
+			end
+		elsif !params.has_key?(:edit_other_details) && saved
+			redirect_to action: :index
+		else 
+			render "new"
+		end
+	end
 
     def loads_for_search_panel
 		@impexpcompanies = Impexpcompany.all.default_order
