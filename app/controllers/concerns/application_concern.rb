@@ -13,6 +13,24 @@ module ApplicationConcern
 		@model.blank? ? false : true
 	end
 
+	def is_subsection_of(parent_controller: nil)
+	  	@render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
+  	end
+
+  	def user_logged_and_model_exist
+  		return user_signed_in?&&model_exist?
+  	end
+
+  	def generate_form_url
+  		url = case action_name
+  		when 'new', 'create'
+  			'new'
+  		when 'edit', 'update'
+  			'edit'
+  		end	
+  		@form_url = { url: url }
+ 	end
+
 	def build_if_empty(*assocs)
 		
 		if action_name == "new" || action_name == "create"

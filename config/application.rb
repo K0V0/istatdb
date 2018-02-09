@@ -30,6 +30,8 @@ module Taric
     #config.autoload_paths += %W(#{config.root}/lib) 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
+    config.autoload_paths += %W( #{config.root}/app/controllers/abstracts )
+
     require 'action_view/helpers/form_builder'
 
     require 'mem'

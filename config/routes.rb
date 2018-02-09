@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     as: "good"
 
   # vytvorit novu
-  post "goodsdb",
+  post "goodsdb/new",
     to: "goods#create",
     as: "create_good"
  
@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     as: "edit_good"
 
   # sekcia upravy - uprava
-  patch "goodsdb/:id",
+  patch "goodsdb/:id/edit",
     to: "goods#update",
     as: "update_good"
 

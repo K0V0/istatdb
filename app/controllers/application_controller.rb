@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   include ApplicationConcern
+  include ApplicationAbstract
   #include BeforeRender
   include RansackSearchWrapper
   include Log
@@ -17,38 +18,96 @@ class ApplicationController < ActionController::Base
 
   before_action :inits
 
-  before_action(only: [:index, :search, :show, :administrative], if: :conditions) {
+  before_action(
+  	only: [:index, :search, :show, :administrative], 
+  	if: :user_logged_and_model_exist) {
     searcher_for(
     	searcher_settings
     )
   }
 
-  before_action :index_action, only: :index, if: :conditions
+  before_action(
+    :generate_form_url,
+    only: [:new, :edit, :create, :update]
+  )
 
-  before_action :search_action, only: :search, if: :conditions
+  before_action(
+  	:index_action,
+  	only: :index,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :administrative_action, only: :administrative, if: :conditions
+  before_action(
+  	:search_action,
+  	only: :search,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :end_administrative_action, only: :end_administrative, if: :conditions
+  before_action(
+  	:administrative_action,
+  	only: :administrative,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :show_action, only: :show, if: :conditions
+  before_action(
+  	:end_administrative_action,
+  	only: :end_administrative,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :new_action, only: :new, if: :conditions
+  before_action(
+  	:show_action,
+  	only: :show,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :create_action, only: :create, if: :conditions
+  before_action(
+  	:new_action,
+  	only: :new,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :edit_action, only: [:edit, :update], if: :conditions
+  before_action(
+  	:create_action,
+  	only: :create,
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :destroy_action, only: [:destroy, :delete], if: :conditions
+  before_action(
+  	:edit_action,
+  	only: [:edit, :update],
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :load_vars, only: [:new, :edit, :edit_multiple, :update, 
-  :update_multiple, :create], if: :conditions
+  before_action(
+  	:destroy_action,
+  	only: [:destroy, :delete],
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :loads_for_search_panel, only: [:index, :search, :show, :administrative], if: :conditions
+  before_action(
+  	:load_vars,
+  	only: [:new, :edit, :edit_multiple, :update, :update_multiple, :create],
+   	if: :user_logged_and_model_exist
+   )
 
-  before_action :apicall_search_action, only: :new_select_search, if: :conditions
+  before_action(
+  	:loads_for_search_panel,
+  	only: [:index, :search, :show, :administrative],
+  	if: :user_logged_and_model_exist
+  )
 
-  before_action :remember_allow_search_as_new, only: [:new, :edit, :update, :create], if: :conditions
+  before_action(
+  	:apicall_search_action,
+  	only: :new_select_search,
+  	if: :user_logged_and_model_exist
+  )
+
+  before_action(
+  	:remember_allow_search_as_new,
+  	only: [:new, :edit, :update, :create],
+  	if: :user_logged_and_model_exist
+  )
 
   def index
   	render "#{@render_command_prepend}index"
@@ -85,28 +144,6 @@ class ApplicationController < ActionController::Base
   end
 
   def new_select_search
-  	if params.has_key? :association_type
-  		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
-  		if parent_rec_id != 0
-  			# is in edit action
-	  		parent_obj = params[:source_controller].classify.constantize.find(parent_rec_id)
-	  	else
-	  		# is in new action
-	  		parent_obj = params[:source_controller].classify.constantize.new
-	  		if params[:association_type] == "belongs_to"
-		  		parent_obj.send("build_#{params[:model]}")
-		  	else
-
-		  	end
-	  	end
-	  	instance_variable_set(
-  			"@#{params[:source_controller]}",
-  			parent_obj
-  		)
-  		apicall_render(params[:association_type])
-  	else
-  		head :ok
-  	end
   end
 
   def administrative
@@ -119,10 +156,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def conditions
-  	return user_signed_in?&&model_exist?
-  end
-
   def inits
   	init_mem
     @body_class = "#{action_name} #{controller_name}"
@@ -133,14 +166,6 @@ class ApplicationController < ActionController::Base
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
     is_subsection_of
-  end
-
-  def is_subsection_of(parent_controller: nil)
-	  @render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
-  end
-
-  def searcher_settings
-    { paginate: true, disabled: true }
   end
 
   def index_action
@@ -207,45 +232,28 @@ class ApplicationController < ActionController::Base
 
   def apicall_search_action
     searcher_for(autoshow: false)
-  end
+    if params.has_key? :association_type
+  		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
+  		if parent_rec_id != 0
+  			# is in edit action
+	  		parent_obj = params[:source_controller].classify.constantize.find(parent_rec_id)
+	  	else
+	  		# is in new action
+	  		parent_obj = params[:source_controller].classify.constantize.new
+	  		if params[:association_type] == "belongs_to"
+		  		parent_obj.send("build_#{params[:model]}")
+		  	else
 
-  def around_new
-  end
-
-  def around_edit
-  end
-
-  def around_create
-  end
-
-  def around_create_after_save
-  end
-
-  def around_create_after_save_ok
-  end
-
-  def around_create_after_save_failed
-  end
-
-  def around_update
-  end
-
-  def around_update_after_save
-  end
-
-  def around_update_after_save_failed
-  end
-
-  def load_vars
-  end
-
-  def loads_for_search_panel
-  end
-
-  def load_new_edit_vars
-  end
-
-  def load_create_update_vars
+		  	end
+	  	end
+	  	instance_variable_set(
+  			"@#{params[:source_controller]}",
+  			parent_obj
+  		)
+  		apicall_render(params[:association_type])
+  	else
+  		head :ok
+  	end
   end
 
 end

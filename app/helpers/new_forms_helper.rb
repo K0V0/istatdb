@@ -108,11 +108,11 @@ module NewFormsHelper
     	coll_name = "#{coll.name.underscore}_id"
         obj_name = "#{obj.class.name.underscore}"
         obj_name = "#{obj_name.pluralize}[#{obj.try(:id).to_s}]" if multiedit == true
+        hidden_nullizer_field = "<tr><input type=\"hidden\" value=\"\" name=\"#{obj_name}[#{coll_name}]\" /></tr>"
 
     	checked_id = obj.try(coll.name.underscore).try(:id) 
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
-    	#logger(coll.length.to_s)
     	if coll.length > 0
 	    	coll.each do |c|
 	    		output = ""
@@ -135,7 +135,7 @@ module NewFormsHelper
 	    else
 	    	output_first += new_forms_no_results
 	    end
-    	(output_first + output_other).html_safe
+    	(hidden_nullizer_field + output_first + output_other).html_safe
     end
 
     def new_forms_no_results
