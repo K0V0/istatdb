@@ -4,8 +4,9 @@ class Good < ActiveRecord::Base
 
 	include Defaults
 	include NestedAttributesGetterConcern
-	include SkipNotAllowedSearchfield
 
+	# nested_attributes - co je v textovych poliach
+	# ids - checkboxy/ radiobuttony
 	has_many :intertables, inverse_of: :good, dependent: :destroy
 	accepts_nested_attributes_for(
 		:intertables,
@@ -15,19 +16,20 @@ class Good < ActiveRecord::Base
 	has_many :manufacturers, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:manufacturers,
-		reject_if: lambda { |c| c[:name].blank? } 
+		reject_if: lambda { |c| c[:name].blank? || c[:allow_search_as_new] == "0" } 
 	)
 
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:impexpcompanies,
-		reject_if: lambda { |c| c[:company_name].blank? } 
+		reject_if: lambda { |c| c[:company_name].blank? || c[:allow_search_as_new] == "0" } 
 	) 
 
 	belongs_to :local_taric, inverse_of: :goods
 	accepts_nested_attributes_for(
 		:local_taric, 
-		reject_if: :local_taric_selected
+		#reject_if: :local_taric_selected
+		reject_if: lambda { |c| c[:allow_search_as_new] == "0" }
 	)
 
 	has_many :uoms, inverse_of: :good
@@ -36,7 +38,7 @@ class Good < ActiveRecord::Base
 		reject_if: lambda { |c| c[:uom].blank? }
 	)
 
-	nested_attrs_getter_for :manufacturers, :impexpcompanies
+	nested_attrs_getter_for :manufacturers, :impexpcompanies#, :local_taric
 	## monkey patch for having <associated>_attributes getter and instance variable
 	## from model itself when using accept_nested_attributes_for
 
@@ -44,8 +46,8 @@ class Good < ActiveRecord::Base
 	#validates :ident, uniqueness: true
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
+	#validate :local_taric_selected_or_created
 
-	before_save :check_if_search_as_new_allowed
 	after_save :update_manufacturer_impexpcompany_relationships
 
 	scope :default_order, -> { 
@@ -74,28 +76,21 @@ class Good < ActiveRecord::Base
 	    %i(impexpcompany_filter manufacturer_filter)
 	end
 
-	def check_if_search_as_new_allowed
-		# skips saving data in searchfields in select sections
-		# if not button to allow this is checked
-		skip_deactivated_fields_for :manufacturers, :impexpcompanies
-	end
-
-	def local_taric_selected
-		## if is kncode selected from list (radio buttons) ignores text fields
-		## execution halted when returned true
-		!self.local_taric_id.blank?
-	end
+	#def local_taric_selected_or_created
+	#	if !nested_selected_or_created_any?(:local_taric, :kncode)
+			## check if parent has at least one association (persisted or newly created)
+			#self.errors.add(:local_taric_attributes, :not_selected_or_created)
+	#	end
+	#end
 
 	def at_least_one_impexpcompany_selected
-		if nested_selected_or_created_any?(:impexpcompanies, :company_name)
-		## returns true if nothong found
-		## check if parent has at least one association (persisted or newly created)
+		if !nested_selected_or_created_any?(:impexpcompanies, :company_name)
 			self.errors.add(:impexpcompanies_attributes, :not_selected_or_created)
 		end
 	end
 
 	def at_least_one_manufacturer_selected
-		if nested_selected_or_created_any?(:manufacturers, :name)
+		if !nested_selected_or_created_any?(:manufacturers, :name)
 			self.errors.add(:manufacturers_attributes, :not_selected_or_created)
 		end
 	end

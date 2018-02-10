@@ -4,7 +4,7 @@ class Manufacturer < ActiveRecord::Base
 
 	include Defaults
 	include NestedAttributesGetterConcern
-	include SkipNotAllowedSearchfield
+	#include SkipNotAllowedSearchfield
 
 	has_many :intertables, inverse_of: :manufacturer, dependent: :destroy
 	has_many :goods, through: :intertables

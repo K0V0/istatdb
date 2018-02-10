@@ -23,10 +23,16 @@ module Defaults
 	end
 	
 	def nested_selected_or_created_any?(assoc, field)
-		a = self.send("#{assoc.to_s}_attributes").map { |k,v| v[field] }
-		(!self.send("#{assoc.to_s.singularize}_ids").any?)&&(a.all?(&:blank?))
-	end
+		ok = false
+		if assoc.to_s.is_singular?
 
+		else
+			a = self.send("#{assoc.to_s}_attributes").map { |k,v| v[field] }
+			ok = !((!self.send("#{assoc.to_s.singularize}_ids").any?)&&(a.all?(&:blank?)))
+		end
+		ok
+	end
+	
 end
 
 

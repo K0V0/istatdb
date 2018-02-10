@@ -10,12 +10,19 @@ module NestedAttributesGetterConcern
 		def nested_attrs_getter_for(*assocs)
 			assocs.each do |a|
 
-				ids_method_name = "#{a.to_s.singularize}_ids"
+				#ids_method_name = a.to_s.is_singular? ? "" : "#{a.to_s.singularize}_ids"
+				ids_method_name = "#{a.to_s.singularize}_id"
+				ids_method_name += "s" if !a.to_s.is_singular?
 				attrs_method_name = "#{a.to_s}_attributes"
 
 				define_method "#{ids_method_name}=" do |arg|
 					# gets associated_ids (checked checkboxes ids)
-					filtered_arr = arg.select { |a| !a.blank? }
+					filtered_arr = case arg
+					when String
+						[arg]
+					else
+					 	arg.select { |a| !a.blank? }
+					end
 					instance_variable_set("@#{ids_method_name}", filtered_arr)
 					super arg
 				end
