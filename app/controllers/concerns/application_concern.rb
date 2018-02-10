@@ -104,11 +104,13 @@ module ApplicationConcern
 			@MEM.send("allow_add_new=", {})
 		elsif action_name == "create"
 			nested_attrs_keys = pars.keys.select { |i| i[regex_to_get_assoc_model] }
+			#logger(nested_attrs_keys, "attr keys")
 	  		nested_attrs_keys.each do |na|
 		  		if pars[na].keys.first == "0"
 		  		 	# is has_many association
 		  		 	to_mem = @MEM.allow_add_new
 		  		 	pars[na].each do |par|
+		  		 		#logger par, "par"
 		  		 		if par[1].key? :allow_search_as_new
 		  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, '')
 		  		 			is_adding_allowed = par[1][:allow_search_as_new] == "1"
@@ -117,7 +119,14 @@ module ApplicationConcern
 		  		 	end
 		  		 	@MEM.send("allow_add_new=", to_mem)
 		  		else
+		  			#logger("singularize")
 		  		 	# is single association
+		  		 	#logger(na, "na")
+		  		 	#logger(na.sub(/_attributes$/, ''), "na")
+		  		 	#logger pars[na][:allow_search_as_new], "pars na"
+		  		 	to_mem = @MEM.allow_add_new
+		  		 	to_mem[na.sub(/_attributes$/, '')] = pars[na][:allow_search_as_new] == "1"
+		  		 	@MEM.send("allow_add_new=", to_mem)
 		  		end
 			end
 		end

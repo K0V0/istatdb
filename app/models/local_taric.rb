@@ -15,7 +15,7 @@ class LocalTaric < ActiveRecord::Base
 
 	validates :description, presence: true
 	validates_uniqueness_of :kncode, scope: :description
-	
+
 	def kncode_length_valid
 		if !kncode.nil?
 		## added because of some reason if presence validations fails

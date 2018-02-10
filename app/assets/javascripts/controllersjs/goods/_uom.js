@@ -18,13 +18,13 @@ Uom.prototype = {
 	buttonEvents: function() {
 		var T = this;
 		$(document).on('click', 'button.add_uom', function() {
-			T.addNext($(this).closest('article.uoms'));
+			T.H.addNext($(this).closest('article.uoms'));
 		});
 		$(document).on('click', 'button.remove_uom', function() {
-			T.delete($(this).closest('article.uoms'));
+			T.H.delete($(this).closest('article.uoms'));
 		});
 		$(document).on('click', 'button.restore_uom', function() {
-			T.restore($(this).closest('article.uoms'));
+			T.H.restore($(this).closest('article.uoms'));
 		});
 	},
 
