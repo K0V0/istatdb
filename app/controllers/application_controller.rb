@@ -187,12 +187,12 @@ class ApplicationController < ActionController::Base
   end
 
   def new_action
-    @record = @model.new #if @model
+    @record = @model.new 
     around_new
   end
 
   def create_action 
-    @record = @model.new(permitted_params) #if @model
+    @record = @model.new(permitted_params) 
     around_create
   end
 

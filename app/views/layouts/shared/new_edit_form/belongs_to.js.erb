@@ -42,6 +42,10 @@ if (alower.data('user-choosed') === undefined) {
 
 var results = jQuery.parseHTML("<%=j template.html_safe %>");
 
+// fix to not to be hidden input with no value used on deselect and remove
+// function on the end - then empty value is posted everytime
+$(results).find('input[type=hidden]').parent().remove();
+
 // remove duplicates from results set, only append not duplicated
 $(results).each(function() {
 	var radio_btn = $(this).children("td").children("input[type=radio]");
@@ -51,7 +55,6 @@ $(results).each(function() {
 	} 
 });
 
-//JS.H.run('on_change');
 
 
 

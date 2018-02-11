@@ -4,28 +4,30 @@ class Good < ActiveRecord::Base
 
 	include Defaults
 	include NestedAttributesGetterConcern
-	#include SkipNotAllowedSearchfield
+	include NestedSelectedOrCreatedAnyConcern
 
 	# nested_attributes - co je v textovych poliach
 	# ids - checkboxy/ radiobuttony
 	has_many :intertables, inverse_of: :good, dependent: :destroy
 	accepts_nested_attributes_for(
 		:intertables,
-		reject_if: lambda { |c| (c[:manufacturer_id].blank?&&c[:impexpcompany_id].blank?) } 
+		reject_if: lambda { |c| 
+			c[:manufacturer_id].blank?&&c[:impexpcompany_id].blank?
+		} 
 	)
 
 	has_many :manufacturers, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:manufacturers,
-		reject_if: lambda { |c| c[:name].blank? || c[:allow_search_as_new] == "0" } 
+		reject_if: lambda { |c| 
+			c[:name].blank? || c[:allow_search_as_new] == "0" 
+		} 
 	)
 
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:impexpcompanies,
 		reject_if: lambda { |c| 
-			#Rails.logger.info "==============="
-			#Rails.logger.info c
 			c[:company_name].blank? || c[:allow_search_as_new] == "0"
 		} 
 	) 
@@ -35,7 +37,6 @@ class Good < ActiveRecord::Base
 		:local_taric, 
 		reject_if: lambda { |c|
 			c[:allow_search_as_new] == "0" || c[:allow_search_as_new].blank?
-			false
 		}
 	)
 
@@ -55,7 +56,6 @@ class Good < ActiveRecord::Base
 	validate :at_least_one_manufacturer_selected
 	validate :local_taric_selected_or_created
 
-	#before_save :check_if_search_as_new_allowed
 	after_save :update_manufacturer_impexpcompany_relationships
 
 	scope :default_order, -> { 
@@ -86,9 +86,6 @@ class Good < ActiveRecord::Base
 
 	def local_taric_selected_or_created
 		if !nested_selected_or_created_any?(:local_taric, :kncode)
-			## check if parent has at least one association (persisted or newly created)
-			logger('no local taric')
-			logger(self.local_taric_id, "localtraic id z good")
 			self.errors.add(:local_taric_attributes, :not_selected_or_created)
 		end
 	end
