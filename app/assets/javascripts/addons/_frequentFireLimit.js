@@ -1,4 +1,3 @@
-// used
 
 (function($) {
 	$.fn.frequentFireLimit = function (event_type, delay, selector, callback) {

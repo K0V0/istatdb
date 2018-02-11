@@ -27,6 +27,9 @@ rows.each(function() {
 
 	if (radio_btn.is(":checked")) {
 		checked_btns_vals.push(radio_btn.val());
+		// highlighting stays on selected and untouchable rows on value
+		// when it was selected bug fix
+		$(this).children('td').children('label').stripTagsInside();
 	} else {
 		$(this).remove();
 	}
@@ -41,10 +44,6 @@ if (alower.data('user-choosed') === undefined) {
 }
 
 var results = jQuery.parseHTML("<%=j template.html_safe %>");
-
-// fix to not to be hidden input with no value used on deselect and remove
-// function on the end - then empty value is posted everytime
-$(results).find('input[type=hidden]').parent().remove();
 
 // remove duplicates from results set, only append not duplicated
 $(results).each(function() {
