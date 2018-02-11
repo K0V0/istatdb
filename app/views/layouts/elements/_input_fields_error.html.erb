@@ -1,9 +1,12 @@
 
 <% 
 	if defined? assoc
-		# if association
+		#if associated
 		object = assoc
-		parent_errs = obj.object.errors["#{object.class.to_s.downcase.pluralize}_attributes"]
+		assoc_name = object.class.to_s.underscore
+		regex = /^(#{assoc_name}_attributes|#{assoc_name.pluralize}_attributes)$/
+		err_keys = obj.object.errors.keys.select { |k| k.to_s.match(regex) }
+		parent_errs = err_keys.map { |k| obj.object.errors[k] }.flatten
 	else
 		# if straight model
 		object = obj.object
