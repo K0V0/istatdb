@@ -1,5 +1,6 @@
 <% 
 	if defined? assoc
+		# if assoc
 		if !assoc.nil?
 			object = assoc
 			assoc_name = object.model_name.to_s.underscore
@@ -27,7 +28,7 @@
 		<% if (!obj_errs.blank?) %>
 			<% fields.each do |field_name, opts| %>
 				<% if obj_errs[field_name].any? %>
-					<% errclass = "#{object.class.to_s.underscore}_#{field_name.to_s}" %>
+					<% errclass = "#{object.model_name.to_s.underscore}_#{field_name.to_s}" %>
 					<span class="errormessage <%= errclass %>">
 						<%= obj_errs[field_name].first %>
 					</span>
@@ -37,7 +38,8 @@
 
 		<% if parent_errs.any? %>
 			<% parent_errs.each do |err| %>
-				<span>
+				<% errclass = "#{object.model_name.to_s.underscore}_select_error" %>
+				<span class="errormessage <%= errclass %>">
 					  <%= err %>
 				</span>
 			<% end %>
