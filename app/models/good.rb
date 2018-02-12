@@ -20,7 +20,7 @@ class Good < ActiveRecord::Base
 	accepts_nested_attributes_for(
 		:manufacturers,
 		reject_if: lambda { |c| 
-			c[:name].blank? || c[:allow_search_as_new] == "0" 
+			c[:allow_search_as_new] == "0" 
 		} 
 	)
 
@@ -28,7 +28,7 @@ class Good < ActiveRecord::Base
 	accepts_nested_attributes_for(
 		:impexpcompanies,
 		reject_if: lambda { |c| 
-			c[:company_name].blank? || c[:allow_search_as_new] == "0"
+			c[:allow_search_as_new] == "0"
 		} 
 	) 
 

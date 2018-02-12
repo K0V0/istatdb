@@ -1,12 +1,12 @@
-
 <% 
 	if defined? assoc
-		#if associated
-		object = assoc
-		assoc_name = object.class.to_s.underscore
-		regex = /^(#{assoc_name}_attributes|#{assoc_name.pluralize}_attributes)$/
-		err_keys = obj.object.errors.keys.select { |k| k.to_s.match(regex) }
-		parent_errs = err_keys.map { |k| obj.object.errors[k] }.flatten
+		if !assoc.nil?
+			object = assoc
+			assoc_name = object.model_name.to_s.underscore
+			regex = /^(#{assoc_name}_attributes|#{assoc_name.pluralize}_attributes)$/
+			err_keys = obj.object.errors.keys.select { |k| k.to_s.match(regex) }
+			parent_errs = err_keys.map { |k| obj.object.errors[k] }.flatten
+		end
 	else
 		# if straight model
 		object = obj.object
@@ -20,16 +20,18 @@
 	end
 %>
 
-<% if (obj_errs.any?)||(parent_errs.any?) %>
+<% if (!obj_errs.blank?)||(!parent_errs.blank?) %>
 
 	<div class="form_errors">
 
-		<% fields.each do |field_name, opts| %>
-			<% if obj_errs[field_name].any? %>
-				<% errclass = "#{object.class.to_s.underscore}_#{field_name.to_s}" %>
-				<span class="errormessage <%= errclass %>">
-					<%= obj_errs[field_name].first %>
-				</span>
+		<% if (!obj_errs.blank?) %>
+			<% fields.each do |field_name, opts| %>
+				<% if obj_errs[field_name].any? %>
+					<% errclass = "#{object.class.to_s.underscore}_#{field_name.to_s}" %>
+					<span class="errormessage <%= errclass %>">
+						<%= obj_errs[field_name].first %>
+					</span>
+				<% end %>
 			<% end %>
 		<% end %>
 

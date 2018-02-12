@@ -180,4 +180,8 @@ module NewFormsHelper
         return nil
     end
 
+    def generate_error_for_field
+    	
+    end
+
 end
