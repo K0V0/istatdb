@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   #post "impexpcompany_manufacturers/new_select_search",
   #  to: "impexpcompany_manufacturers#new_select_search"
 
+  ### check existence ajax call
+
+  post "good/check_existence",
+    to: "goods#check_existence"
+
   ### hlavna stranka - databaza tovarov
 
   # index

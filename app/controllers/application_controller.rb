@@ -103,6 +103,12 @@ class ApplicationController < ActionController::Base
   	if: :user_logged_and_model_exist
   )
 
+   before_action(
+  	:apicall_exist_action,
+  	only: :check_existence,
+  	if: :user_logged_and_model_exist
+  )
+
   before_action(
   	:remember_allow_search_as_new,
   	only: [:new, :edit, :update, :create],
@@ -144,6 +150,9 @@ class ApplicationController < ActionController::Base
   end
 
   def new_select_search
+  end
+
+  def check_existence
   end
 
   def administrative
@@ -257,7 +266,11 @@ class ApplicationController < ActionController::Base
   end
 
   def apicall_exist_action
-    
+  	#logger 
+  	a = controller_name.classify.constantize
+  	.where("#{params[:field].to_s} LIKE ?", "#{params[:text]}")
+  	logger a.size
+    head :ok
   end
 
 end
