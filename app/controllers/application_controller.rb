@@ -256,4 +256,8 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def apicall_exist_action
+    
+  end
+
 end

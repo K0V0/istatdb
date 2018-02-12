@@ -8,6 +8,7 @@ ALL = {
 	},
 
 	_new_edit_update_create: {
-		remove_validation_errors: ['on_reload']
+		remove_validation_errors: ['on_reload'],
+		check_existence: ['on_reload']
 	}
 }

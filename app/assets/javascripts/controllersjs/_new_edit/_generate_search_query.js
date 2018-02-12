@@ -1,5 +1,4 @@
 function GenerateSearchQuery () {
-
 	this.init();
 }
 
