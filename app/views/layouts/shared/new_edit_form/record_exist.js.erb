@@ -1,0 +1,14 @@
+
+var widget = $(document).find('article#' + '<%= params[:window_id] %>');
+var errors_container = widget.find('div.form_errors');
+
+errors_container.children('span.record_exist').remove();
+widget.find('#<%= params[:field_id] %>').removeClass('error');
+
+<% if @results_count >= 1 %>
+	<% temp = render('layouts/shared/new_edit_form/record_exist') %>
+	errors_container.append('<%=j temp %>');
+	widget.find('#<%= params[:field_id] %>').addClass('error');
+<% end %>
+<% temp = render('layouts/shared/new_edit_form/record_exist') %>
+

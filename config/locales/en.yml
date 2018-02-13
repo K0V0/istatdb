@@ -6,7 +6,8 @@ en:
     clear: Clear fields
     reset: Reset form
     submit: Search!
-    search_as_new: Searched text as new item 
+    search_as_new: Searched text as new item
+    also_exist_in_db: with same name exist in database
 
   actions:
     add: Add

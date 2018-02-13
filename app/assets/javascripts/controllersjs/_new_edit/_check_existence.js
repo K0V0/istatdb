@@ -20,8 +20,11 @@ CheckExistence.prototype = {
 		  	method: "POST",
 		 	url: '/' + ref.data('model') + '/check_existence',
 		  	data: {
-		  		field: ref.data('field'),  
-		  		text: ref.val()
+		  		field: ref.data('field'), 
+		  		field_id: ref.attr('id'), 
+		  		text: ref.val(),
+		  		window_id: ref.closest('article').attr('id'),
+		  		model: ref.data('model')
 		  	}
 		});
 	}

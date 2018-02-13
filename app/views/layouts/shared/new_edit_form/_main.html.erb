@@ -1,5 +1,8 @@
 
-<article class="decorated_wrap shrinked">
+<article 
+	class="decorated_wrap shrinked"
+	id="<%= obj.object.model_name.to_s.underscore %>_fields"
+>
 
 	<div>
 		<% fields.each do |field_name, opts| %>

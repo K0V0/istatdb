@@ -7,6 +7,7 @@ sk:
     reset: Resetovať formulár
     submit: Hľadať!
     search_as_new: Pridať ako novú položku
+    also_exist_in_db: s rovakým názvom sa v databáze už nachádza
 
   actions:
     add: Pridať
