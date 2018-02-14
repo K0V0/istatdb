@@ -65,7 +65,7 @@ UomDropdownHelper.prototype = {
 		enable ? $(dropdown_elem).enable() : $(dropdown_elem).disable();
 	},
 
-	validate: function(dropdown_elem) {
+	validate: function(dropdown_elem, force_source_compare) {
 		// runs in onchange event
 		var opts = $(dropdown_elem).children('option');
 		var valid = true;
@@ -79,7 +79,6 @@ UomDropdownHelper.prototype = {
 			}
 		} else {
 			opts.each(function() {
-				//logger($(this).data());
 				if ($(this).data('not_in_source') == "1") {
 					if ($(dropdown_elem).data('user_selected') == $(this).val()) {
 						valid = false;
@@ -89,6 +88,20 @@ UomDropdownHelper.prototype = {
 				}
 			});
 		}
+
+		if (force_source_compare !== undefined) {
+			logger('source check');
+			var klass_for_source = $(dropdown_elem).attr('class').match(/uom_([a-z]+)\s*[a-z]*/)[1] + '_select';
+			var list = new OptionsList($(document).find('article.'+klass_for_source));
+			if (list.contains($(dropdown_elem).val()) === false) {
+				valid = false;
+			}
+			$(dropdown_elem).children('option').each(function() {
+				if (list.contains($(this).val()) === false) {
+					$(this).addClass('obsolete');
+				}
+			});
+		} 
 
 		valid ? $(dropdown_elem).removeClass('error') : $(dropdown_elem).addClass('error');
 		// maybe nullize value to empty string to prevent submit form if invalid

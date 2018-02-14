@@ -74,6 +74,12 @@
 		color: $button_disabled_text;
 		cursor: not-allowed;
 		border-color: $button_disabled;
+
+		&:hover {
+			background-color: $button_disabled;
+			color: $button_disabled_text;
+		}
+		//pointer-events: none;
 	}
 
 	&.hidden {

@@ -13,7 +13,8 @@ UomHelper.prototype = {
 
 	delete: function(uom) {
 		uom.remove();
-		//this.H.onChangeUoms();
+		$(document).find('aside').trigger('change');
+		// beacause need to run change event for deciding if enable/disable buttons
 	},
 
 	addNext: function(uom) {
@@ -21,7 +22,8 @@ UomHelper.prototype = {
 		newUom = uom.clone(true, true);
 		this.setUpClone(newUom);
 		$(document).find('aside').append(newUom);
-		//this.H.onChangeUoms();
+		$(document).find('aside').trigger('change');
+		// beacause need to run change event for deciding if enable/disable buttons
 	},
 
 	setUpClone: function(uom) {
@@ -32,6 +34,8 @@ UomHelper.prototype = {
 	decideRemoveButtonActivation: function(uoms) {
 		var btn = uoms.find('button.remove_uom');
 		(uoms.length > 1) ? btn.enable() : btn.disable();
+		//logger('malo by ist');
+		//logger(uoms.length);
 	},
 
 	decideAddButtonActivation: function(uom) {
@@ -51,8 +55,8 @@ UomHelper.prototype = {
 		valid['num'] = 				/^[0-9\.\,]+\s*$/.test(uom.find('input.uom_val').first().val());
 		valid['multiplier'] = 		/^[0-9]+\s*$/.test(uom.find('input.uom_multiplier').first().val());
 		valid['unit'] =				uom.find('select.uom_type').val() != '';
-		valid['impexpcompany'] = 	uom.find('select.uoms_impexpcompany_select').val() != '';
-		valid['manufacturer'] = 	uom.find('select.uoms_manufacturer_select').val() != '';
+		valid['impexpcompany'] = 	uom.find('select.uom_impexpcompany_select').val() != '';
+		valid['manufacturer'] = 	uom.find('select.uom_manufacturer_select').val() != '';
 
 		for (var key in valid) {
 		    if (valid[key] === false) {

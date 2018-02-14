@@ -1,4 +1,5 @@
 function RemoveValidationErrors() {
+	this.H = new RemoveValidationErrorsHelper();
 	this.init();
 }
 
@@ -6,19 +7,20 @@ RemoveValidationErrors.prototype = {
 	constructor: RemoveValidationErrors,
 
 	init: function() {
-		this.onInputRemove();
 		this.onActivityRemove();
+		this.onInputRemove();
 	},
 
 	onInputRemove: function() {
+		var H = this.H;
 		// validations associated to input fields values
 		$(document)
 		.find('input.error, textarea.error')
-		.on('input', function() {
-			var klass = $(this).attr('class').replace(/^(error)\s+/, "");
-			$(this).closest('article').find('span.' + klass).remove();
-			$(this).removeClass('error');
-		});
+		.on('input', function() { H.removeError(this); });
+		//selects
+		$(document)
+		.find('select.error')
+		.on('change', function() { H.removeError(this); logger('kokoooot'); });
 	},
 
 	onActivityRemove: function() {
@@ -31,4 +33,15 @@ RemoveValidationErrors.prototype = {
 		});
 	}
 
+}
+
+function RemoveValidationErrorsHelper() {}
+RemoveValidationErrorsHelper.prototype = {
+	constructor: RemoveValidationErrorsHelper,
+
+	removeError: function(field) {
+		var klass = $(field).attr('class').replace(/^(error)\s+/, "");
+		$(field).closest('article').find('span.' + klass).remove();
+		$(field).removeClass('error');
+	}
 }

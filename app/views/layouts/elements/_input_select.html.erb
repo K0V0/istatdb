@@ -1,7 +1,10 @@
 <% 
 	is_blank = (defined?(blank_text)).nil? ? false : blank_text
 	is_disabled = (collection.nil? || !collection.collect(&:id).any?) && (is_blank != false) ? 'disabled' : false
-	klass_html = defined?(html_class) ? html_class : ""
+	any_errors = !obj.object.errors[collection.model_name.to_s.underscore].blank?
+
+	klass_html = any_errors ? "error" : ""
+	klass_html += defined?(html_class) ? " #{html_class}" : ""
 %>
 
 <div>

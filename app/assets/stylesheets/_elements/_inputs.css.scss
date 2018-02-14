@@ -72,6 +72,14 @@ select {
 		background-color: $button_danger;
 		border-color: $button_danger;
 	}
+
+	option {
+
+		&.obsolete {
+			background-color: $button_disabled;
+			color: $button_disabled_text;
+		}
+	}
 }
 
 

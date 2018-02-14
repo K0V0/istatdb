@@ -37,6 +37,7 @@ UomDropdown.prototype = {
 		.on('focusout', this, function() {
 			logger('dropdown changed by user');
 			T.H.rememberChangeByUser(this);
+			T.H.validate(this, true);
 		});
 	},
 

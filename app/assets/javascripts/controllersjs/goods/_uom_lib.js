@@ -21,8 +21,8 @@ OptionsList.prototype = {
 	collect: function() {
 		var src = this.src;
 		var toto = this;
-		this.for = $(src)./*closest('article').*/attr('id').match(/^[a-z]+/)[0];
-		$(src)/*.closest('article')*/.find("input:checked").each(function() {
+		this.for = $(src).attr('id').match(/^[a-z]+/)[0];
+		$(src).find("input:checked").each(function() {
 			var data = {};
 			if ($(this).hasClass('allow_add_new')) {
 				data = {

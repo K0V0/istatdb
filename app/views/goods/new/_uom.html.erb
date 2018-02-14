@@ -41,7 +41,7 @@
 				@impexpcompanies_for_uoms,
 				cbt('new_form_texts.uom_cannot_select_impexpcompany')
 			),
-			html_class: "uoms_impexpcompany_select"
+			html_class: "uom_impexpcompany"
 		) %>
 
 		<%= render('layouts/elements/input_select',
@@ -54,12 +54,7 @@
 				@manufacturers_for_uoms,
 				cbt('new_form_texts.uom_cannot_select_manufacturer')
 			),
-			html_class: "uoms_manufacturer_select"
-		) %>
-
-		<%= render('layouts/elements/input_fields_error',
-			obj: obj,
-			fields: { uom: {}, uom_multiplier: {}, uom_type: {}, manufacturer: {}, impexpcompany: {} }
+			html_class: "uom_manufacturer"
 		) %>
 
 		<button class="button add_uom" type="button" disabled="disabled">
@@ -73,6 +68,11 @@
 		<button class="button restore_uom" type="button" disabled="disabled">
 			<%= t 'actions.restore' %>
 		</button>
+
+		<%= render('layouts/elements/input_fields_error',
+			obj: obj,
+			fields: { uom: {}, uom_multiplier: {}, uom_type: {}, manufacturer: {}, impexpcompany: {} }
+		) %>
 
 	</div>
 	

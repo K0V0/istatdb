@@ -42,9 +42,10 @@ Uom.prototype = {
 	},
 
 	onChangeUomsEvents: function() {
-		// on change uoms windows count
-		var par = $(document).find('aside');
-		this.H.decideRemoveButtonActivation(par.children('article.uoms'));
+		var T = this;
+		$(document).find('aside').on('change', this, function() {
+			T.H.decideRemoveButtonActivation($(this).find('article.uoms'));
+		});
 	},
 
 	saveDefaults: function() {

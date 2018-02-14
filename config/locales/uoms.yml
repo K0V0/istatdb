@@ -12,6 +12,14 @@ sk:
         impexpcompany_name: Spravodajská jednotka
         manufacturer_id: Výrobca/odberateľ
         manufacturer_name: Výrobca/odberateľ
+    errors:
+      models:
+        uom:
+          attributes:
+            impexpcompany:
+              blank: Vyberte prislúchajúcu spravodajskú jednotku
+            manufacturer:
+              blank: Vyberte prislúchajucého odberateľa/výrobcu
 
 en: 
   activerecord:
@@ -27,3 +35,11 @@ en:
         manufacturer_id: Manufacturer/consumer
         impexpcompany_name: Intrastat client
         manufacturer_name: Manufacturer/consumer
+    errors:
+      models:
+        uom:
+          attributes:
+            impexpcompany: 
+              blank:  Select respective Financial intelligence unit
+            manufacturer:
+              blank: Select respective manufacturer/supplier
