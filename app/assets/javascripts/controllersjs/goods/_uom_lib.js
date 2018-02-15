@@ -15,7 +15,7 @@ OptionsList.prototype = {
 				return true;
 			}
 		}
-		return false; 
+		return false;
 	},
 
 	collect: function() {
@@ -30,12 +30,25 @@ OptionsList.prototype = {
 					text: t('goods.new_form_texts.uom_not_yet_created_select')
 				}
 			} else {
-				data = { 
+				data = {
 					id: $(this).val(),
 					text: $(document).find('label[for=' + $(this).attr('id') +']').text()
 				}
 			}
 			toto.data.push(data);
 		});
+	}
+}
+
+
+function AttrsManipulator() {}
+
+AttrsManipulator.prototype = {
+	constructor: AttrsManipulator,
+
+	generateNewUomInputAttr(elem, attr_name, index) {
+		var attrs_catch_regex = /^(\D+)(\d+)(\D+)$/;
+		var new_attr_val = elem.attr(attr_name).replace(attrs_catch_regex, '$1' + index + '$3');
+		elem.attr(attr_name, new_attr_val);
 	}
 }

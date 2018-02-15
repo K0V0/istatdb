@@ -12,7 +12,6 @@ Uom.prototype = {
 		this.D.init();
 		this.buttonEvents();
 		this.onChangeUomEvents();
-		this.onChangeUomsEvents();
 	},
 
 	buttonEvents: function() {
@@ -38,13 +37,6 @@ Uom.prototype = {
 			logger('onChangeUomEvents');
 			T.H.decideAddButtonActivation($(this).closest('article'));
 			T.H.decideClearButtonActivation($(this).closest('article'));
-		});
-	},
-
-	onChangeUomsEvents: function() {
-		var T = this;
-		$(document).find('aside').on('change', this, function() {
-			T.H.decideRemoveButtonActivation($(this).find('article.uoms'));
 		});
 	},
 

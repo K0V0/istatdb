@@ -1,5 +1,5 @@
 function UomHelper() {
-	
+	this.AM = new AttrsManipulator();
 }
 
 UomHelper.prototype = {
@@ -9,33 +9,44 @@ UomHelper.prototype = {
 		uom.find('input, select').each(function() {
 			$(this).val($(this).data('initial'));
 		});
+		this.decideClearButtonActivation(uom);
 	},
 
 	delete: function(uom) {
 		uom.remove();
-		$(document).find('aside').trigger('change');
-		// beacause need to run change event for deciding if enable/disable buttons
+		this.decideRemoveButtonActivation($(document).find('aside').children('article.uoms'));
 	},
 
 	addNext: function(uom) {
-		// uom - uom "window" object 
+		// uom - uom "window" object
 		newUom = uom.clone(true, true);
 		this.setUpClone(newUom);
 		$(document).find('aside').append(newUom);
-		$(document).find('aside').trigger('change');
-		// beacause need to run change event for deciding if enable/disable buttons
+		this.decideAddButtonActivation(newUom);
+		this.decideRemoveButtonActivation($(document).find('aside').children('article.uoms'));
 	},
 
 	setUpClone: function(uom) {
-		var next_id = $(document).find('article.uoms').last().attr('id').match(/^\D+(\d)$/)[1] + 1;
-		//logger(next_id);
+		var T = this;
+		var next_id = parseInt($(document).find('article.uoms').last().attr('id').match(/^\D+(\d+)$/)[1]) + 1;
+		$(uom)
+			.attr('id', 'uom_'+next_id);
+		$(uom)
+			.children('div')
+			.children('div')
+			.not('div.form_errors')
+			.children('label, input, select')
+			.each(function() {
+				var attr_type = this.hasAttribute('for') ? 'for' : 'name';
+				T.AM.generateNewUomInputAttr($(this), attr_type, next_id);
+				if (this.hasAttribute('id')) { T.AM.generateNewUomInputAttr($(this), 'id', next_id); }
+				if ($(this).hasClass('uom_val')) { $(this).val(''); }
+			});
 	},
 
 	decideRemoveButtonActivation: function(uoms) {
 		var btn = uoms.find('button.remove_uom');
 		(uoms.length > 1) ? btn.enable() : btn.disable();
-		//logger('malo by ist');
-		//logger(uoms.length);
 	},
 
 	decideAddButtonActivation: function(uom) {
@@ -51,12 +62,11 @@ UomHelper.prototype = {
 	isValid: function(uom) {
 		// check if ALL are valid
 		var valid = {};
-		
 		valid['num'] = 				/^[0-9\.\,]+\s*$/.test(uom.find('input.uom_val').first().val());
 		valid['multiplier'] = 		/^[0-9]+\s*$/.test(uom.find('input.uom_multiplier').first().val());
 		valid['unit'] =				uom.find('select.uom_type').val() != '';
-		valid['impexpcompany'] = 	uom.find('select.uom_impexpcompany_select').val() != '';
-		valid['manufacturer'] = 	uom.find('select.uom_manufacturer_select').val() != '';
+		valid['impexpcompany'] = 	uom.find('select.uom_impexpcompany').val() != '';
+		valid['manufacturer'] = 	uom.find('select.uom_manufacturer').val() != '';
 
 		for (var key in valid) {
 		    if (valid[key] === false) {
