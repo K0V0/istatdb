@@ -1,4 +1,4 @@
-<% 
+<%
 	if defined? assoc
 		# if assoc
 		if !assoc.nil?
@@ -34,7 +34,7 @@
 		<% end %>
 	<% end %>
 
-	<% if parent_errs.any? %>
+	<% if !parent_errs.blank? %>
 		<% parent_errs.each do |err| %>
 			<% errclass = "#{object.model_name.to_s.underscore}_select_error" %>
 			<span class="errormessage <%= errclass %>">
@@ -45,6 +45,6 @@
 
 <% end %>
 
-<div class="form_errors"> 
+<div class="form_errors">
 	<%= content_for :form_errors %>
 </div>

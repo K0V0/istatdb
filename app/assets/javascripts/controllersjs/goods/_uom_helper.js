@@ -47,11 +47,13 @@ UomHelper.prototype = {
 	decideRemoveButtonActivation: function(uoms) {
 		var btn = uoms.find('button.remove_uom');
 		(uoms.length > 1) ? btn.enable() : btn.disable();
+		if ($('body').is('.edit, .update')) { btn.enable(); }
 	},
 
 	decideAddButtonActivation: function(uom) {
 		var btn = uom.find('button.add_uom');
 		this.isValid(uom) ? btn.enable() : btn.disable();
+		//console.log("this.isValid(uom)", this.isValid(uom));
 	},
 
 	decideClearButtonActivation: function(uom) {
@@ -69,6 +71,11 @@ UomHelper.prototype = {
 		valid['uom_manufacturer'] = 	uom.find('select.uom_manufacturer').val() != '';
 
 		// make check for error class on element
+		has_any_errorclass = false;
+		uom.find('input, select').each(function() {
+			if ($(this).hasClass('error')) { has_any_errorclass = true; return false; }
+		});
+		if (has_any_errorclass) { return false; }
 
 		for (var key in valid) {
 		    if (valid[key] === false) {

@@ -12,6 +12,15 @@ Uom.prototype = {
 		this.D.init();
 		this.buttonEvents();
 		this.onChangeUomEvents();
+		this.onInit();
+	},
+
+	onInit: function() {
+		var T = this;
+		$(document).find('article.uoms').each(function() {
+			T.H.decideAddButtonActivation($(this));
+			T.H.decideRemoveButtonActivation($(this));
+		});
 	},
 
 	buttonEvents: function() {

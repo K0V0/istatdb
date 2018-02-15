@@ -3,7 +3,7 @@
 input, select, textarea {
 	@include reset_input_browser_styles();
 	@include all_transitions();
-	
+
 	display: inline-block;
 	margin: 0.125em 0.125em;
 	font-size: 1em;
@@ -13,8 +13,41 @@ input, select, textarea {
 	background-color: $white;
 	line-height:1em;
 	box-sizing:border-box;
-
 	vertical-align:middle;
+
+	&:hover {
+		background-color: $superwhite;
+		border-color: $superwhite;
+	}
+
+	&:focus,  {
+		border-color: $input_selected;
+		background-color: $superwhite;
+	}
+
+	&:disabled {
+		background-color: $disabled_input;
+		border-color: $disabled_input;
+		cursor: not-allowed;
+	}
+
+	&.error{
+		background-color: $input_validation_error;
+		//border-color: $button_danger;
+
+		&:hover {
+			//background-color: $button_danger_hover;
+			//border-color: $button_danger_hover;
+		}
+	}
+
+	&.required {
+
+	}
+
+	&.hidden {
+		display: none !important;
+	}
 }
 
 textarea {
@@ -35,20 +68,18 @@ input[type=search]::-webkit-search-cancel-button {
 	width:0.875em;
 	margin: 0.125em;
 	border-radius: 0.75em;
-    background-color: $dark_red;  
+    background-color: $dark_red;
 
     &:hover {
-    	background-color: $strong_red;  
-    } 
+    	background-color: $strong_red;
+    }
 }
 
 select {
 	padding-right: 1.25em;
 	cursor: pointer;
 	max-width: 100%;
-	box-sizing: border-box;
 	overflow: hidden;
-	background-color: $white;
 	background-image: url(select_dropdown_arrow.png);
 	background-repeat: no-repeat;
 	background-position: right;
@@ -58,21 +89,6 @@ select {
 		background-image: url(select_dropdown_arrow_disabled.png);
 	}
 
-	&.error{
-		background-color: $button_danger;
-		border-color: $button_danger;
-
-		&:hover {
-			background-color: $button_danger_hover;
-			border-color: $button_danger_hover;
-		}
-	}
-
-	&.error:disabled {
-		background-color: $button_danger;
-		border-color: $button_danger;
-	}
-
 	option {
 
 		&.obsolete {
@@ -80,31 +96,6 @@ select {
 			color: $button_disabled_text;
 		}
 	}
-}
-
-
-input:hover, select:hover, textarea:hover {
-	background-color: $superwhite;
-	border-color: $superwhite;
-}
-
-input:focus, select:focus, textarea:focus {
-	border-color: $input_selected;
-	background-color: $superwhite;
-}
-
-input:disabled, select:disabled {
-	background-color: $disabled_input;
-	border-color: $disabled_input;
-	cursor: not-allowed;
-}
-
-input.required {
-
-}
-
-input.hidden {
-	display: none !important;
 }
 
 input[type=submit] {
@@ -169,7 +160,7 @@ label {
 	transition: 0.2s ease-in-out;
 
 	&:hover {
-		transform: rotate(-45deg); 
+		transform: rotate(-45deg);
 	}
 }
 

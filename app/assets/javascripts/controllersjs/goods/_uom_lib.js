@@ -50,5 +50,10 @@ AttrsManipulator.prototype = {
 		var attrs_catch_regex = /^(\D+)(\d+)(\D+)$/;
 		var new_attr_val = elem.attr(attr_name).replace(attrs_catch_regex, '$1' + index + '$3');
 		elem.attr(attr_name, new_attr_val);
+	},
+
+	getAssocFromDropdownId(elem) {
+		var rgx = /good_uoms_attributes_[0-9]+_([a-z]+)_id/;
+		return $(elem).attr('id').match(rgx)[1];
 	}
 }

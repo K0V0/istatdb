@@ -18,9 +18,11 @@ RemoveValidationErrors.prototype = {
 		.find('input.error, textarea.error')
 		.on('input', function() { H.removeError(this); });
 		//selects
-		$(document)
-		.find('select.error')
-		.on('change', function() { H.removeError(this); logger('kokoooot'); });
+		/*$(document)
+		.find('article.uoms')
+		.children('div')
+		.children('div')
+		.on('change', 'select', function() { H.removeError(this); logger('kokoooot'); });*/
 	},
 
 	onActivityRemove: function() {

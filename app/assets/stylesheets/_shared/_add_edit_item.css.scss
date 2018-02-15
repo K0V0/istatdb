@@ -9,7 +9,6 @@ section.form {
 	article {
 		background-color: $group_background;
 		padding:0.25em;
-		//margin: 0.75em 0;
 
 		&.disabled {
 			pointer-events:none;
@@ -35,10 +34,6 @@ section.form {
 				vertical-align: middle;
 				padding-left: 0.375em;
 				padding-right: 0.25em;
-			}
-
-			input.error, textarea.error {
-				background-color: $input_validation_error;
 			}
 
 			input.allow_add_new {
@@ -94,7 +89,7 @@ section.form {
 						}
 
 						td.new_form_select_no_results {
-							background-color: $button_danger; 
+							background-color: $button_danger;
 							color: $superwhite;
 							padding: 0.25em 0.5em;
 
@@ -125,7 +120,7 @@ section.form {
 								&:first-child {
 									border-bottom-left-radius: 0.25em;
 								}
-								
+
 								&:last-child {
 									border-bottom-right-radius: 0.25em;
 								}

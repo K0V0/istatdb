@@ -14,7 +14,7 @@ en:
           attributes:
             ident:
               blank: Item name/reference field is blank.
-            impexpcompanies_attributes: 
+            impexpcompanies_attributes:
               not_selected_or_created: Must enter new or choose at least one intrastat client from list.
             manufacturers_attributes:
               not_selected_or_created: Good(s) must have at least one manufacturer/consumer. Write or choose at least one from list.
@@ -30,7 +30,9 @@ en:
   goods:
     new_form_texts:
       uom_cannot_select_impexpcompany: Select min 1 Intrastat cl. 1st
-      uom_cannot_select_manufacturer: Select min 1 manuf./consum. 1st
+      uom_cannot_select_manufacturer: Select at least one manuf./consum.
+      uom_manufacturer_removed_from_source: Manufacturer selected here was removed from good(s) attributes
+      uom_impexpcompany_removed_from_source: Financial intelligence unit selected here was removed from good(s) attributes
       uom_not_yet_created_select: "[new item]"
     edit_form_texts:
       add_uom: Add unit(s) of measurement
@@ -53,7 +55,7 @@ en:
       result_per_item: Result
       uom_suffix: item(s)
       clear_all: Clear memory
-       
+
 
 sk:
   activerecord:
@@ -71,7 +73,7 @@ sk:
           attributes:
             ident:
               blank: pole Názov tovaru/referencia je prázdne.
-            impexpcompanies_attributes: 
+            impexpcompanies_attributes:
               not_selected_or_created: Zadajte alebo vyberte zo zoznamu aspoň jednu spravodajskú jednotku ku ktorej daný tovar prislúcha.
             manufacturers_attributes:
               not_selected_or_created: Tovar musí mať aspoň jedného odberateľa/výrobcu. Zadajte nového alebo vyberte zo zoznamu.
@@ -90,6 +92,8 @@ sk:
       uom_cannot_select_manufacturer: Vyberte najskôr min 1 výr./odb.
       uom_cannot_select_impexpcompany: Vyberte najskôr min 1 SJ
       uom_not_yet_created_select: "[nová položka]"
+      uom_manufacturer_removed_from_source: Výrobca/odberateľ zvolený pre danú mernú jednotku bol odstránený z vlastností tovaru
+      uom_impexpcompany_removed_from_source: Spravodajská jednotka zvolená pre túto mernú jednotku bola odstránená z vlastností tovaru
     edit_form_texts:
       add_uom: Pridajte mernú jednotku
     show_details:
@@ -117,16 +121,16 @@ sk:
       text3: Pridať
       text4: túto položku
       text5: Skúsiť
-      text6: Vyhľadať na internete 
+      text6: Vyhľadať na internete
       text7: informácie podľa názvu/referencie/popisu tovaru
       text8: Skúsiť hľadať v sekcii
-      text9: či položky na danom doklade nemajú uvedenú správnu nomenklatúru a preto sa údaje o tomto tovare v databáze nenachádzajú, prípadne či výrobca/odberateľ neobchoduje so spravodajskou jednotkou len s jedným druhom tovaru.  
+      text9: či položky na danom doklade nemajú uvedenú správnu nomenklatúru a preto sa údaje o tomto tovare v databáze nenachádzajú, prípadne či výrobca/odberateľ neobchoduje so spravodajskou jednotkou len s jedným druhom tovaru.
       text10a: Odoslať spravodajskej jednotke prichádzajúcej do kontaktu s tovarom
       text10b: Žiadosť o poskytnutie informácií
-      text10c: potrebných pre charakterizovanie tovaru prostredníctvom elektronickej pošty 
+      text10c: potrebných pre charakterizovanie tovaru prostredníctvom elektronickej pošty
       text11: V sekcii
       text12: pozrieť
       text13: Podrobnosti o výrobcovi/odberateľovi
       text14: kde sa nachádza portfólio daného výrobcu/odberateľa a určiť zaradenie tovaru na základe podobnosti/podobnej charakteristiky s inými tovarmi z portfólia
-      text15: kde sa môže nachádzať explicitná informácia o tom, že doklady týkajúce sa tohoto subjektu obsahujú potrebné a pravdivé informácie ohľadom tovaru a teda nie je potrebné jeho zaradenie do databázy 
-      text16: kde sa môže nachádzať explicitná informácia o tom, že predmetný subjekt vyrába/odoberá len jeden druh tovarov a teda všetky dokumenty so všetkými položkami vždy patria pod jednu nomenklatúru 
+      text15: kde sa môže nachádzať explicitná informácia o tom, že doklady týkajúce sa tohoto subjektu obsahujú potrebné a pravdivé informácie ohľadom tovaru a teda nie je potrebné jeho zaradenie do databázy
+      text16: kde sa môže nachádzať explicitná informácia o tom, že predmetný subjekt vyrába/odoberá len jeden druh tovarov a teda všetky dokumenty so všetkými položkami vždy patria pod jednu nomenklatúru

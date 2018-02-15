@@ -1,28 +1,12 @@
 @import "variables";
 
-@font-face 	{ 	
-	font-family: "amsans"; 
-	src: font-url('amsans.eot');
-	src: font-url('amsans.eot?#iefix') format('embedded-opentype'), font-url('amsans.otf');
-}
-
 html {
-	height: 100%;
 
 	body {
 
 		&.noscroll {
 			height:100%;
 		}
-
-		margin:0;
-		background-color: $background-color;
-  		min-height:100%;
-		position:relative;
-
-		display: flex;
-		align-items: stretch;
-  		flex-direction: column;
 
 		.clear {
 			clear:both;
@@ -50,10 +34,10 @@ html {
 
 		.decorated_wrap {
 			background-color: $base_grey;
- 			background: -webkit-linear-gradient(135deg, $base_grey, $base_grey_grad); 
- 			background: -o-linear-gradient(135deg, $base_grey, $base_grey_grad); 
+ 			background: -webkit-linear-gradient(135deg, $base_grey, $base_grey_grad);
+ 			background: -o-linear-gradient(135deg, $base_grey, $base_grey_grad);
  			background: -moz-linear-gradient(135deg, $base_grey, $base_grey_grad);
- 			background: linear-gradient(135deg, $base_grey, $base_grey_grad); 
+ 			background: linear-gradient(135deg, $base_grey, $base_grey_grad);
 			border-style: solid;
 			border-width:1px;
 			border-color: $wrap_border_color_2;
@@ -64,7 +48,7 @@ html {
 			}
 
 			&.centered {
-				
+
 			}
 		}
 
@@ -78,14 +62,14 @@ html {
 }
 
 @media only screen and (min-width: 481px) {
-	
+
 	.disable_on_bigscreen {
 		display: none !important;
 	}
 }
 
 @media only screen and (max-width: 480px) {
-	
+
 	.disable_on_smallscreen {
 		display: none !important;
 	}

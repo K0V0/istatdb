@@ -1,78 +1,99 @@
 @import "variables";
 
-main {
-	@include scrollbars();
-	overflow-y:auto;
-	overflow-x: hidden;
-	flex: 1 1 auto;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	background-color: $white;
+@font-face 	{
+	font-family: "amsans";
+	src: font-url('amsans.eot');
+	src: font-url('amsans.eot?#iefix') format('embedded-opentype'), font-url('amsans.otf');
+}
 
-	a {
-		text-decoration: none;
-		color:inherit;
-		border-bottom: 1px solid transparent;
-		position: relative;
+html {
+	height: 100%;
 
-		&:after {
-			@include links_transitions();
-			display: block;
-			content: '';
-			position: absolute;
-			height: 1px;
-			left:0;
-			right:0;
-			background-color: transparent;
-			bottom: 1px;
-		}
-
-		&:hover:after {
-			background-color: black;
-		}			
-	}
-
-	article {
-		border-radius: $wrap_border_radius;
-	}
-
-	em {
-		font-style: normal;
-		font-weight: bold;
-		background-color: $input_selected;
-		color: white;
-		border-radius: 0.25em;
-	}
-
-	small {
-		font-weight: normal;
-	}
-
-	h1, h2, h3, h4 {
+	body {
 		margin:0;
-		padding:0;
-		border:0;
-		-webkit-margin-before: 0;
-   		-webkit-margin-after: 0;
-	}
+		background-color: $background-color;
+  		min-height:100%;
+		position:relative;
 
-	h1 {
-		font-size: 2em;
-	}
+		display: flex;
+		align-items: stretch;
+  		flex-direction: column;
 
-	h2 {
-		font-size: 1.25em;
-		font-weight:normal;
-	}
+		main {
+			@include scrollbars();
+			overflow-y:auto;
+			overflow-x: hidden;
+			flex: 1 1 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			background-color: $white;
 
-	h3 {
-		font-size: 2.25em;
-		font-weight:normal;
-	}
+			a {
+				text-decoration: none;
+				color:inherit;
+				border-bottom: 1px solid transparent;
+				position: relative;
 
-	h4 {
-		font-size: 1.125em;
-		font-weight:normal;
+				&:after {
+					@include links_transitions();
+					display: block;
+					content: '';
+					position: absolute;
+					height: 1px;
+					left:0;
+					right:0;
+					background-color: transparent;
+					bottom: 1px;
+				}
+
+				&:hover:after {
+					background-color: black;
+				}
+			}
+
+			article {
+				border-radius: $wrap_border_radius;
+			}
+
+			em {
+				font-style: normal;
+				font-weight: bold;
+				background-color: $input_selected;
+				color: white;
+				border-radius: 0.25em;
+			}
+
+			small {
+				font-weight: normal;
+			}
+
+			h1, h2, h3, h4 {
+				margin:0;
+				padding:0;
+				border:0;
+				-webkit-margin-before: 0;
+		   		-webkit-margin-after: 0;
+			}
+
+			h1 {
+				font-size: 2em;
+			}
+
+			h2 {
+				font-size: 1.25em;
+				font-weight:normal;
+			}
+
+			h3 {
+				font-size: 2.25em;
+				font-weight:normal;
+			}
+
+			h4 {
+				font-size: 1.125em;
+				font-weight:normal;
+			}
+		}
 	}
 }
