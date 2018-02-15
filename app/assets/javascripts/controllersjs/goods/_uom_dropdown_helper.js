@@ -29,7 +29,7 @@ UomDropdownHelper.prototype = {
 		.each (function() {
 			T.clearDropdown(this, list);
 			T.fillupDropdown(this, list.data);
-			$(this).trigger('change');
+			//$(this).trigger('change');
 			// beacause of uom_helper.js to decide if enable/disable buttons
 		});
 	},

@@ -62,11 +62,13 @@ UomHelper.prototype = {
 	isValid: function(uom) {
 		// check if ALL are valid
 		var valid = {};
-		valid['num'] = 				/^[0-9\.\,]+\s*$/.test(uom.find('input.uom_val').first().val());
-		valid['multiplier'] = 		/^[0-9]+\s*$/.test(uom.find('input.uom_multiplier').first().val());
-		valid['unit'] =				uom.find('select.uom_type').val() != '';
-		valid['impexpcompany'] = 	uom.find('select.uom_impexpcompany').val() != '';
-		valid['manufacturer'] = 	uom.find('select.uom_manufacturer').val() != '';
+		valid['uom_val'] = 				/^[0-9\.\,]+\s*$/.test(uom.find('input.uom_val').first().val());
+		valid['uom_multiplier'] = 		/^[0-9]+\s*$/.test(uom.find('input.uom_multiplier').first().val());
+		valid['uom_type'] =				uom.find('select.uom_type').val() != '';
+		valid['uom_impexpcompany'] = 	uom.find('select.uom_impexpcompany').val() != '';
+		valid['uom_manufacturer'] = 	uom.find('select.uom_manufacturer').val() != '';
+
+		// make check for error class on element
 
 		for (var key in valid) {
 		    if (valid[key] === false) {
