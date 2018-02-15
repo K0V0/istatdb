@@ -11,30 +11,30 @@ class Good < ActiveRecord::Base
 	has_many :intertables, inverse_of: :good, dependent: :destroy
 	accepts_nested_attributes_for(
 		:intertables,
-		reject_if: lambda { |c| 
+		reject_if: lambda { |c|
 			c[:manufacturer_id].blank?&&c[:impexpcompany_id].blank?
-		} 
+		}
 	)
 
 	has_many :manufacturers, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:manufacturers,
-		reject_if: lambda { |c| 
-			c[:allow_search_as_new] == "0" 
-		} 
+		reject_if: lambda { |c|
+			c[:allow_search_as_new] == "0"
+		}
 	)
 
 	has_many :impexpcompanies, -> { distinct }, through: :intertables
 	accepts_nested_attributes_for(
 		:impexpcompanies,
-		reject_if: lambda { |c| 
+		reject_if: lambda { |c|
 			c[:allow_search_as_new] == "0"
-		} 
-	) 
+		}
+	)
 
 	belongs_to :local_taric, inverse_of: :goods
 	accepts_nested_attributes_for(
-		:local_taric, 
+		:local_taric,
 		reject_if: lambda { |c|
 			c[:allow_search_as_new] == "0" || c[:allow_search_as_new].blank?
 		}
@@ -45,6 +45,8 @@ class Good < ActiveRecord::Base
 		:uoms,
 		reject_if: lambda { |c| c[:uom].blank? }
 	)
+	## resolve how to remove not wanted uoms
+	# probably hidden field special delete helper
 
 	nested_attrs_getter_for :manufacturers, :impexpcompanies, :local_taric
 	## monkey patch for having <associated>_attributes getter and instance variable
@@ -58,24 +60,24 @@ class Good < ActiveRecord::Base
 
 	after_save :update_manufacturer_impexpcompany_relationships
 
-	scope :default_order, -> { 
+	scope :default_order, -> {
 		order(ident: :asc)
 	}
 
-	scope :impexpcompany_filter, -> (pars) { 
+	scope :impexpcompany_filter, -> (pars) {
 		self
 		.includes(:impexpcompanies)
-		.where(impexpcompanies: { 
-			id: pars 
+		.where(impexpcompanies: {
+			id: pars
 		})
 		.references(:impexpcompanies)
 	}
 
-	scope :manufacturer_filter, -> (pars) { 
+	scope :manufacturer_filter, -> (pars) {
 		self
 		.includes(:manufacturers)
-		.where(manufacturers: { 
-			id: pars 
+		.where(manufacturers: {
+			id: pars
 		})
 		.references(:manufacturers)
 	}
@@ -119,7 +121,7 @@ class Good < ActiveRecord::Base
 			# create association if not exist
 			impexp.manufacturers << Manufacturer.find(missing_new_manufacturers)
 			# remove association if Intrastat client no more have any bussines with supplier/consumer
-			# but leave it intact if user decided or some other informations are associated here 
+			# but leave it intact if user decided or some other informations are associated here
 			# (edited or added from manufacturers section for example)
 			obsolete_mans_ids = impexp.manufacturers
 				.joins(:impexpcompany_manufacturers)
