@@ -14,8 +14,12 @@ UomHelper.prototype = {
 
 	delete: function(uom) {
 		if ($('body').is('.edit, .update')) {
-			uom.children('input.delete_uom').val('1');
-			uom.addClass('to_delete');
+			if (uom.children('input.delete_uom').attr('uom_id') != "") {
+				uom.children('input.delete_uom').val('1');
+				uom.addClass('to_delete');
+			} else {
+				uom.remove();
+			}
 		} else {
 			uom.remove();
 		}
@@ -30,6 +34,7 @@ UomHelper.prototype = {
 	addNext: function(uom) {
 		// uom - uom "window" object
 		newUom = uom.clone(true, true);
+		this.cancelDelete(newUom);
 		this.setUpClone(newUom);
 		$(document).find('aside').append(newUom);
 		this.decideAddButtonActivation(newUom);
@@ -57,7 +62,15 @@ UomHelper.prototype = {
 	decideRemoveButtonActivation: function(uoms) {
 		var btn = uoms.find('button.remove_uom');
 		(uoms.length > 1) ? btn.enable() : btn.disable();
-		if ($('body').is('.edit, .update')) { btn.enable(); }
+		if ($('body').is('.edit, .update')) {
+			if (uoms.length == 1) {
+				if (uoms.first().children('input.delete_uom').attr('uom_id') != "") {
+					btn.enable();
+				}
+			} else {
+				btn.enable();
+			}
+		}
 	},
 
 	decideAddButtonActivation: function(uom) {
