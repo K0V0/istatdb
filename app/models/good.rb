@@ -43,7 +43,8 @@ class Good < ActiveRecord::Base
 	has_many :uoms, inverse_of: :good
 	accepts_nested_attributes_for(
 		:uoms,
-		reject_if: lambda { |c| c[:uom].blank? }
+		reject_if: lambda { |c| c[:uom].blank? },
+		allow_destroy: true
 	)
 	## resolve how to remove not wanted uoms
 	# probably hidden field special delete helper

@@ -34,6 +34,9 @@ Uom.prototype = {
 		$(document).on('click', 'button.restore_uom', function() {
 			T.H.restore($(this).closest('article.uoms'));
 		});
+		$(document).on('click', 'u.cancel_uom_delete', function() {
+			T.H.cancelDelete($(this).closest('article.uoms'));
+		});
 	},
 
 	onChangeUomEvents: function() {

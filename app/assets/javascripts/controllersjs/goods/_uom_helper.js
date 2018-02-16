@@ -13,8 +13,18 @@ UomHelper.prototype = {
 	},
 
 	delete: function(uom) {
-		uom.remove();
+		if ($('body').is('.edit, .update')) {
+			uom.children('input.delete_uom').val('1');
+			uom.addClass('to_delete');
+		} else {
+			uom.remove();
+		}
 		this.decideRemoveButtonActivation($(document).find('aside').children('article.uoms'));
+	},
+
+	cancelDelete: function(uom) {
+		uom.children('input.delete_uom').val('false');
+		uom.removeClass('to_delete');
 	},
 
 	addNext: function(uom) {

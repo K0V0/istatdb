@@ -34,6 +34,8 @@ en:
       uom_manufacturer_removed_from_source: Manufacturer selected here was removed from good(s) attributes
       uom_impexpcompany_removed_from_source: Financial intelligence unit selected here was removed from good(s) attributes
       uom_not_yet_created_select: "[new item]"
+      uom_for_remove: "This item will be deleted after form submission"
+      cancel_uom_remove: "I don't want to delete it"
     edit_form_texts:
       add_uom: Add unit(s) of measurement
     show_details:
@@ -94,6 +96,8 @@ sk:
       uom_not_yet_created_select: "[nová položka]"
       uom_manufacturer_removed_from_source: Výrobca/odberateľ zvolený pre danú mernú jednotku bol odstránený z vlastností tovaru
       uom_impexpcompany_removed_from_source: Spravodajská jednotka zvolená pre túto mernú jednotku bola odstránená z vlastností tovaru
+      uom_for_remove: "Táto merná jednotka bude po odoslaní formuláru vymazaná"
+      cancel_uom_remove: "Nechcem vymazať túto položku"
     edit_form_texts:
       add_uom: Pridajte mernú jednotku
     show_details:

@@ -7,7 +7,7 @@ class GoodsController < ApplicationController
 		#super
 	end
 
-	private 
+	private
 
 	def searcher_settings
 		{ preload: :local_taric, paginate: true, autoshow: true }
@@ -53,7 +53,7 @@ class GoodsController < ApplicationController
 	def permitted_params
 		params.require(:good).permit(
 			:id,
-			:ident, 
+			:ident,
 			:description,
 			:local_taric_id,
 			local_taric_attributes: [:kncode, :description, :id, :allow_search_as_new],
@@ -61,7 +61,7 @@ class GoodsController < ApplicationController
 			impexpcompany_ids: [],
 			manufacturers_attributes: [:id, :name, :allow_search_as_new],
 			manufacturer_ids: [],
-			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id]
+			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy]
 		)
 	end
 end

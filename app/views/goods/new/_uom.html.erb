@@ -1,8 +1,16 @@
 
-<article 
+<article
 	class="decorated_wrap shrinked uoms"
 	id="uom_<%= index %>"
 >
+
+	 <input id="good_uoms_attributes_<%= index %>__destroy" class="delete_uom" type="hidden" value="false" name="good[uoms_attributes][<%= index %>][_destroy]" uom_id="<%= "#{obj.object.id}" %>">
+
+	<div class="delete_info">
+		<span><%= t 'goods.new_form_texts.uom_for_remove' %></span>
+		<u class="cancel_uom_delete"><%= t 'goods.new_form_texts.cancel_uom_remove' %></u>
+		<br class="clear">
+	</div>
 
 	<div>
 
@@ -75,5 +83,5 @@
 		) %>
 
 	</div>
-	
+
 </article>

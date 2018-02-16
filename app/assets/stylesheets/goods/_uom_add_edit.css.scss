@@ -1,0 +1,52 @@
+@import "variables";
+
+body.new, body.edit, body.create, body.update {
+
+    main {
+
+        section {
+
+            form {
+
+                aside {
+
+                    article.uoms {
+
+                        div.delete_info {
+                            display: none;
+                            background-color: $button_danger;
+                            color: $white;
+                            padding: 0.25em 0.5em;
+                            box-sizing: border-box;
+                            margin-bottom: 0.125em;
+                            border-top-left-radius: 0.25em;
+                            border-top-right-radius: 0.25em;
+
+                            u {
+                                float:right;
+                                cursor:pointer;
+
+                                &:hover {
+                                    color: $superwhite;
+                                }
+                            }
+
+                            span {
+                                float:left;
+                            }
+                        }
+
+                        &.to_delete {
+                            background: none;
+                            background-color: $input_validation_error;
+
+                            div.delete_info {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
