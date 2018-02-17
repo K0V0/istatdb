@@ -2,11 +2,13 @@
 
 <section class="form">
 
-	<%= form_tag(update_details_manufacturer_path, method: :patch) do |t| %>
+	<%= form_tag(update_details_manufacturer_path, method: "patch") do %>
+	<%#= form_for @details do |t| %>
 
-		<% for detail in @details %>
+		<%# for detail in @details %>
+		<% @details.each do |detail| %>
 
-			<%= fields_for "impexpcompany_manufacturers[]", detail do |d| %>
+			<%= fields_for "impexpcompany_manufacturers[#{detail.id}]", detail do |d| %>
 
 				<aside class="impexpcompany_manufacturers_details">
 
@@ -38,14 +40,14 @@
 						multiedit: true,
 						fields: {
 							kncode: {  },
-							description: { 
+							description: {
 								type: :text_area
 							}
 						}
 					) %>
 
 				</aside>
-		     	
+
 		    <% end %>
 
 		<% end %>

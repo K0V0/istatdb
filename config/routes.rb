@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   post "good/check_existence",
     to: "goods#check_existence"
 
+
+
   ### hlavna stranka - databaza tovarov
 
   # index
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
   # ransack search
   get "goodsdb/search",
     to: "goods#search",
-    as: "search_goods" 
+    as: "search_goods"
 
   # administration - enter index page into administration mode
   get "goodsdb/administrative",
@@ -60,7 +62,7 @@ Rails.application.routes.draw do
   post "goodsdb/new",
     to: "goods#create",
     as: "create_good"
- 
+
   # sekcia upravy - nacitanie polozky
   get "goodsdb/:id/edit",
     to: "goods#edit",
@@ -93,7 +95,7 @@ Rails.application.routes.draw do
 
   # upravit hodnotu
   post "goodsdb/edit_in_uoms_calculator/:id",
-    to: "goods#edit_rec_in_calculator_mem", 
+    to: "goods#edit_rec_in_calculator_mem",
     as: "calculator_edit"
 
 
@@ -103,7 +105,7 @@ Rails.application.routes.draw do
   # index
   get "manufacturersdb",
     to: "manufacturers#index",
-    as: "manufacturers" 
+    as: "manufacturers"
 
   get "manufacturersdb/search",
     to: "manufacturers#search",
@@ -120,7 +122,7 @@ Rails.application.routes.draw do
   # novy vyrobca/odoberatel
   get "manufacturersdb/new",
     to: "manufacturers#new",
-    as: "new_manufacturer" 
+    as: "new_manufacturer"
 
   # show details
   get "manufacturersdb/:id",
@@ -149,10 +151,10 @@ Rails.application.routes.draw do
     to: "impexpcompany_manufacturers#edit_multiple",
     as: "edit_details_manufacturer"
 
-  patch "manufacturersdb/:id/update_details",
+  patch "manufacturersdb/:id/edit_details",
     to: "impexpcompany_manufacturers#update_multiple",
     as: "update_details_manufacturer"
-  
+
 
 
   ### lokalna taric databaza
@@ -178,7 +180,7 @@ Rails.application.routes.draw do
   #new
   get "localtaricdb/new",
     to: "local_tarics#new",
-    as: "new_local_taric" 
+    as: "new_local_taric"
 
   #show
   get "localtaricdb/:id",

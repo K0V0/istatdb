@@ -2,10 +2,15 @@
 	if defined? assoc
 		# if assoc
 		if !assoc.nil?
+			#logger assoc, "assoc"
+			#logger fields, "fields"
+			#logger obj, "obj"
 			object = assoc
 			assoc_name = object.model_name.to_s.underscore
 			regex = /^(#{assoc_name}_attributes|#{assoc_name.pluralize}_attributes)$/
 			err_keys = obj.object.errors.keys.select { |k| k.to_s.match(regex) }
+			#logger(obj.object.errors.keys, "err keys")
+
 			parent_errs = err_keys.map { |k| obj.object.errors[k] }.flatten
 		end
 	else
@@ -19,12 +24,24 @@
 	else
 		obj_errs = []
 	end
+	#logger(parent_errs.try(:keys), "err keys obj parent")
+	#logger(object, "object")
+	#logger(obj_errs.any?, "obj errs")
+	#logger(obj_errs.keys, "obj errs keys")
+	#logger(obj_errs.try(:keys), "err keys obj errs")
+	#logger(fields, "fields")
 %>
 
 <% content_for :form_errors, flush: true do %>
 
+	<b>CHUUJ</b>
+
 	<% if (!obj_errs.blank?) %>
+		<%= "kkt" %>
+		<% #logger("renderovanie ide") %>
 		<% fields.each do |field_name, opts| %>
+			<%= "kkt" %>
+			<% #logger("renderovanie ide") %>
 			<% if obj_errs[field_name].any? %>
 				<% errclass = "#{object.model_name.to_s.underscore}_#{field_name.to_s}" %>
 				<span class="errormessage <%= errclass %>">
