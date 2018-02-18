@@ -11,12 +11,25 @@ class ImpexpcompanyManufacturersController < ApplicationController
 
 	def update_multiple
 		## TODO: handle errors - validation of kncode if entered new
+		details_saved = {}
 		@details = ImpexpcompanyManufacturer.where(manufacturer_id: params[:id])
 
 		@details.each do |detail|
 			logger detail.id, "detail id"
 			pars = params[:impexpcompany_manufacturers]["#{detail.id}"]
+			add_new_localtaric = pars[:local_taric_attributes][:allow_search_as_new] == "1" ? true :false
+
+			if add_new_localtaric
+				local_taric = LocalTaric.find_or_create_by(
+					kncode: pars[:local_taric_attributes][:kncode],
+					description: pars[:local_taric_attributes][:description]
+				)
+				logger local_taric.errors.keys
+			else
+
+			end
 			#detail.update_attributes(permitted_pars(pars))
+			details_saved[detail.id] = false
 		end
 		# :id -> manufacturer_id - foreign key
 		# fisrt - extended options should always be for one manufacturer
@@ -89,12 +102,12 @@ class ImpexpcompanyManufacturersController < ApplicationController
 		#logger(@details.second.local_taric.errors.keys, "det log kley err lotar")
 		#logger(@details.second.local_taric.errors[:kncode], "det log kley err lotar")
 
-		#if details_saved.has_value? false
+		if details_saved.has_value? false
 			render :edit_multiple
 			# if at least one assoc does not pass validation, do not submit
-		#else
-			#redirect_to manufacturers_path
-		#end
+		else
+			redirect_to manufacturers_path
+		end
 	end
 
 	private
