@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_action :inits
 
   before_action(
-  	only: [:index, :search, :show, :administrative], 
+  	only: [:index, :search, :show, :administrative],
   	if: :user_logged_and_model_exist) {
     searcher_for(
     	searcher_settings
@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
 
   before_action(
   	:remember_allow_search_as_new,
-  	only: [:new, :edit, :update, :create],
+  	only: [:new, :edit, :update, :create, :update_multiple, :edit_multiple],
   	if: :user_logged_and_model_exist
   )
 
@@ -127,7 +127,7 @@ class ApplicationController < ActionController::Base
   	render "#{@render_command_prepend}show"
   end
 
-  def new 
+  def new
   	render "#{@render_command_prepend}new"
   end
 
@@ -196,12 +196,12 @@ class ApplicationController < ActionController::Base
   end
 
   def new_action
-    @record = @model.new 
+    @record = @model.new
     around_new
   end
 
-  def create_action 
-    @record = @model.new(permitted_params) 
+  def create_action
+    @record = @model.new(permitted_params)
     around_create
   end
 
@@ -270,9 +270,9 @@ class ApplicationController < ActionController::Base
   		.where("#{params[:field].to_s} LIKE ?", "#{params[:text]}")
   		.size
 
-	respond_to do |format|
-		format.js { render('layouts/shared/new_edit_form/record_exist') }
-	end
+  	respond_to do |format|
+  		format.js { render('layouts/shared/new_edit_form/record_exist') }
+  	end
   end
 
 end

@@ -27,12 +27,12 @@ module ApplicationConcern
   			'new'
   		when 'edit', 'update'
   			'edit'
-  		end	
+  		end
   		@form_url = { url: url }
  	end
 
 	def build_if_empty(*assocs)
-		
+
 		if action_name == "new" || action_name == "create"
 
 			assocs.each do |a, opts|
@@ -65,7 +65,7 @@ module ApplicationConcern
 			end
 
 		elsif action_name == "edit" || action_name == "update"
-			
+
 			assocs.each do |a, opts|
 				if (a.to_s.is_singular?)
 
@@ -96,26 +96,33 @@ module ApplicationConcern
 
 	def remember_allow_search_as_new
 		regex_to_get_assoc_model = /([a-z_]+)_attributes/
-		singular_controller_name = controller_name.singularize
-		pars = params[singular_controller_name]
+		#singular_controller_name = controller_name.singularize
+		#pars = params[singular_controller_name]
 
-		if action_name == "new"
+		if (action_name == "new")||(action_name == "edit_multiple")||(action_name == "edit")
 			# clear mem to not have turned on buttons on new forms
 			@MEM.send("allow_add_new=", {})
-		elsif action_name == "create"
+		elsif (action_name == "create")||(action_name == "update")
+			pars = params[controller_name.singularize]
+			save_allow_search_as_new_to_mem(attr_set: pars)
+=begin
 			nested_attrs_keys = pars.keys.select { |i| i[regex_to_get_assoc_model] }
 			#logger(nested_attrs_keys, "attr keys")
 	  		nested_attrs_keys.each do |na|
 		  		if pars[na].keys.first == "0"
 		  		 	# is has_many association
+		  		 	#logger pars[na].keys.first, "keys first"
 		  		 	to_mem = @MEM.allow_add_new
+		  		 	idx = 0
 		  		 	pars[na].each do |par|
 		  		 		#logger par, "par"
 		  		 		if par[1].key? :allow_search_as_new
-		  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, '')
+		  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, "_#{idx.to_s}")
 		  		 			is_adding_allowed = par[1][:allow_search_as_new] == "1"
 		  		 			to_mem[assoc_model_name] = is_adding_allowed
+		  		 			logger assoc_model_name, "name for mem"
 		  		 		end
+		  		 		idx = idx + 1
 		  		 	end
 		  		 	@MEM.send("allow_add_new=", to_mem)
 		  		else
@@ -126,11 +133,62 @@ module ApplicationConcern
 		  		 	#logger pars[na][:allow_search_as_new], "pars na"
 		  		 	to_mem = @MEM.allow_add_new
 		  		 	to_mem[na.sub(/_attributes$/, '')] = pars[na][:allow_search_as_new] == "1"
+		  		 	logger na.sub(/_attributes$/, ''), "singular name for mem"
 		  		 	@MEM.send("allow_add_new=", to_mem)
 		  		end
 			end
+=end
+		elsif action_name == "update_multiple"
+			pars = params[controller_name]
+			pars.each do |k, v|
+				save_allow_search_as_new_to_mem(attr_set: v, multiedit: k)
+			end
+=begin
+			#to_mem = @MEM.allow_add_new
+			#logger pars, "pars"
+			pars.each do |k, v|
+				nested_attrs_keys = v.keys.select { |i| i[regex_to_get_assoc_model] }
+				#logger nested_attrs_keys, "na keys"
+				nested_attrs_keys.each do |na|
+					 #logger v[na].keys.first, "na keys first"
+				end
+				#logger k, "pars k"
+
+			end
+=end
 		end
 	end
+
+	def save_allow_search_as_new_to_mem(attr_set: [], multiedit: false)
+		regex_to_get_assoc_model = /([a-z_]+)_attributes/
+		nested_attrs_keys = attr_set.keys.select { |i| i[regex_to_get_assoc_model] }
+		to_mem = @MEM.allow_add_new
+
+		nested_attrs_keys.each do |na|
+			if attr_set[na].keys.first == "0"
+		  		# is has_many association, test if hash starts with number
+		  		idx = 0
+		  		attr_set[na].each do |par|
+	  		 		if par[1].key? :allow_search_as_new
+	  		 			# if given subset hash contains :allow_search_as_new
+	  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, "_#{idx.to_s}")
+	  		 			to_mem[assoc_model_name] = par[1][:allow_search_as_new] == "1"
+	  		 			logger assoc_model_name, "plural name for mem"
+	  		 		end
+	  		 		idx = idx + 1
+	  		 	end
+		  	else
+		  		# is belongs to assoc
+		  		assoc_model_name = na.sub(/_attributes$/, '')
+		  		assoc_model_name += ("_" + multiedit) if multiedit != false
+		  		to_mem[assoc_model_name] = attr_set[na][:allow_search_as_new] == "1"
+		  		logger assoc_model_name, "singular name for mem"
+		  	end
+		end
+
+		@MEM.send("allow_add_new=", to_mem)
+	end
+
 
 	def controller_mem_set prefix, val
 	@MEM.send(

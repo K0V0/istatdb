@@ -12,10 +12,4 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
     accepts_nested_attributes_for :local_taric, update_only: true
 
-    #validates_associated :local_taric
-
-    #accepts_nested_attributes_for :local_taric
-    #
-    #validates_presence_of :local_taric
-
 end

@@ -1,4 +1,4 @@
-<% 
+<%
 	single = instance_variable_get("@#{assoc.to_s}")
 	coll = instance_variable_get("@#{assoc.to_s.pluralize}")
 
@@ -11,7 +11,7 @@
 	html_id = "#{klass}_#{(obj.object.try(:id) || 0).to_s}"
 %>
 
-<article 
+<article
  class="decorated_wrap shrinked <%= klass %>"
  id="<%= html_id %>"
  <% if !(ss = searcher_settings).nil? %>
@@ -41,7 +41,7 @@
 				) %>
 				<%= a.check_box(
 					:allow_search_as_new,
-					{ 
+					{
 						#id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
 						class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new",
 						checked: (@MEM.allow_add_new)["#{assoc.to_s}"] #@MEM.send("#{assoc.to_s}_allow_add_new")
@@ -66,7 +66,7 @@
 	<%= render('layouts/elements/input_fields_error',
 		obj: obj,
 		fields: fields,
-		assoc: single
+		assoc: (multiedit == true ? obj.object.send(assoc) : single),
 	) %>
 
 </article>
