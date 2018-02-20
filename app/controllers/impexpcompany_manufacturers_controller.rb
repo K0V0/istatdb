@@ -53,10 +53,4 @@ class ImpexpcompanyManufacturersController < ApplicationController
 		)
 	end
 
-	#def build_local_tarics
-	#	@details.each do |im|
-    #		im.build_local_taric if im.local_taric.nil?
-    #	end
-	#end
-
 end
