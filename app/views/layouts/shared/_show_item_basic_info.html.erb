@@ -1,11 +1,17 @@
-<% 
+<%
+tag = "section"
 if !defined? object
 	object = @record
 end
 cn = "#{controller_name}-baseinfo"
+if defined? wrap_tag
+	tag = wrap_tag
+end
 %>
 
-<section class="decorated_wrap shrinked items_table">
+<% if tag != false %>
+	<<%= tag.to_s %> class="decorated_wrap shrinked items_table">
+<% end %>
 
 	<table class="rows_colored no_line_height" id="<%= cn %>">
 
@@ -35,4 +41,6 @@ cn = "#{controller_name}-baseinfo"
 
 	</table>
 
-</section>
+<% if tag != false %>
+	</<%= tag.to_s %>>
+<% end %>

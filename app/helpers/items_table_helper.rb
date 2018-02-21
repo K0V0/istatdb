@@ -15,10 +15,10 @@ module ItemsTableHelper
 	# 					input true or false
 	# is_link			creates link to show action, detemined from passed AR object
 	# 				 	input true, false or options hash
-	# 					options: remote - if link is remoted (true/false)  
+	# 					options: remote - if link is remoted (true/false)
 	# clipboard_button	creates small scissors icon next to item, by clicking it related content will
-	# 					be copied to clipboard	
-	#			
+	# 					be copied to clipboard
+	#
 	def items_table_field_decorator(text, opts, object, field)
 
 		if opts[:fill_if_empty]
@@ -28,7 +28,7 @@ module ItemsTableHelper
 		if opts[:call_decorator]
 			text = self.send(opts[:call_decorator], text)
 		end
-		
+
 		if !object.nil?
 
 			if opts[:is_highlighted]
@@ -110,9 +110,9 @@ module ItemsTableHelper
 					if !(f = obj.try(field)).nil?
 						output += items_table_fields(f, content[0])
 					else
-						# do not leave empty fields - every row should have equal number of columns 
+						# do not leave empty fields - every row should have equal number of columns
 						content[0].each do |k, v|
-							output += 
+							output +=
 								"<td class=\"#{field.to_s.pluralize}-#{k.to_s}\">
 									#{items_table_field_decorator('', v, nil, nil)}
 								</td>"
@@ -131,14 +131,14 @@ module ItemsTableHelper
 			end
 
 		end
-		return output.html_safe 
+		return output.html_safe
 	end
 
 	def items_table_caption_decorator(opts, object, field)
 		ret = object.human_attribute_name(field)
 
 		if opts[:is_sortlink]
-			ret = sort_link(@search, field, { action: :search }, remote: true)  
+			ret = sort_link(@search, field, { action: :search }, remote: true)
 		end
 
 		return ret
@@ -156,7 +156,8 @@ module ItemsTableHelper
 
 			elsif content.is_a? Array
 				# is inside associated
-				output += "<th class=\"inner_table\" colspan=\"#{content[0].length}\"><table class=\"inner_table\"><thead>"
+				#output += "<th class=\"inner_table\" colspan=\"#{content[0].length}\"><table class=\"inner_table\"><thead>"
+				output += "<th class=\"inner_table\"><table class=\"inner_table\"><thead>"
 				output += items_table_head(content[0], field.to_s.classify.constantize, content[0].length)
 				output += "</thead></table></th>"
 			end

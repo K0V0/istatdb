@@ -54,7 +54,7 @@ table {
 		tr {
 			@include links_transitions();
 			line-height:1.25em;
-			
+
 			td {
 				vertical-align: middle;
 
@@ -78,7 +78,7 @@ table {
 		text-align:right;
 
 		tr {
-			
+
 			th, td {
 				font-weight: normal;
 				padding-right: 1em;
@@ -170,7 +170,7 @@ table.no_results {
 				}
 			}
 
-			&.solution { 
+			&.solution {
 				background: inherit;
 
 				td {
@@ -219,7 +219,7 @@ table.checkboxes_list, table.radio_buttons_list {
 				padding-left: 0.375em;
 
 				input.error {
-					
+
 				}
 			}
 
@@ -240,7 +240,7 @@ table.inner_table {
 			background-color: transparent !important;
 			transition: color 0s !important;
 			pointer-events: auto !important;
-			
+
 			&:hover {
 				background-color: $black !important;
 				color: $white;
@@ -298,7 +298,6 @@ table.no_line_height {
 	}
 }
 
-
 table.for_forms {
 
 	tbody {
@@ -334,3 +333,43 @@ table.for_forms {
 		}
 	}
 }
+
+table.for_dialogbox {
+
+	tbody {
+		border-radius:0.25em;
+		background-color: transparent;
+
+		tr {
+
+			&:first-child {
+
+				td {
+
+					&:first-child {
+						border-top-left-radius: 0.25em;
+					}
+
+					&:last-child {
+						border-top-right-radius: 0.25em;
+					}
+				}
+			}
+
+			&:last-child {
+
+				td {
+
+					&:first-child {
+						border-bottom-left-radius: 0.25em;
+					}
+
+					&:last-child {
+						border-bottom-right-radius: 0.25em;
+					}
+				}
+			}
+		}
+	}
+}
+

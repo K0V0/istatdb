@@ -8,7 +8,7 @@ body.update_multiple, body.edit_multiple {
 			form {
 
 				aside {
-					padding: 0.75em 0;
+					padding: 0.375em 0.375em;
 
 					&:nth-child(2n-1) {
 						background-color: #ccc;
@@ -32,5 +32,5 @@ body.update_multiple, body.edit_multiple {
 
 		}
 	}
-	
+
 }

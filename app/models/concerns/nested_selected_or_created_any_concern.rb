@@ -2,10 +2,10 @@ module NestedSelectedOrCreatedAnyConcern
 	extend ActiveSupport::Concern
 
 	def self.included(base)
-	  base.instance_eval do 
+	  base.instance_eval do
 	  end
 	end
-	
+
 	def nested_selected_or_created_any?(assoc, field)
 		ok = false
 		if assoc.to_s.is_singular?
@@ -15,10 +15,27 @@ module NestedSelectedOrCreatedAnyConcern
 				ok = true
 			end
 		else
-			a = self.send("#{assoc.to_s}_attributes").map { |k,v| v[field] }
-			ok = !((!self.send("#{assoc.to_s.singularize}_ids").any?)&&(a.all?(&:blank?)))
+			inputs = self.send("#{assoc.to_s}_attributes").map { |k,v| v[field] }
+			ids = self.send("#{assoc.to_s.singularize}_ids")
+			enabled_to_add = self.send("#{assoc.to_s}_attributes").map { |k,v| v[:allow_search_as_new] == "1" } .any?
+			any_input = !inputs.all?(&:blank?)
+
+			#logger enabled_to_add, "enabled input"
+			#logger any_input, "any input"
+			#logger ids.any?, "any ids"
+
+			if ids.nil?
+				# handle app fail when searching list contains no checkboxes
+				ok = true if any_input && enabled_to_add
+			else
+				ok = true if (any_input && enabled_to_add) || ids.any?
+			end
+
+			if !any_input && enabled_to_add
+				logger "input slected but nothing here"
+			end
 		end
 		ok
 	end
-	
+
 end

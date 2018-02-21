@@ -10,7 +10,22 @@
 
 				<aside class="impexpcompany_manufacturers_details">
 
-					<article class="decorated_wrap shrinked">
+					<article class="decorated_wrap shrinked subsection_caption">
+						<table class="for_dialogbox rows_colored">
+							<tbody>
+								<tr>
+									<td class="detail_desc"><%= detail.manufacturer.model_name.human %>:</td>
+									<td class="detail_manu"> <%= detail.manufacturer.name %> </td>
+								</tr>
+								<tr>
+									<td class="detail_desc"><%= detail.impexpcompany.model_name.human %>:</td>
+									<td class="detail_impexp"> <%= detail.impexpcompany.company_name %> </td>
+								</tr>
+							</tbody>
+						</table>
+					</article>
+
+					<article class="decorated_wrap shrinked select_incoterm">
 
 						<%= render('layouts/elements/input_select',
 							obj: d,
@@ -23,12 +38,12 @@
 
 					</article>
 
-					<article class="decorated_wrap shrinked">
+					<article class="decorated_wrap shrinked invoices_correct">
 
-						<div>
-							<%= d.label :invoices_correct %>
-							<%= d.check_box :invoices_correct %>
-						</div>
+						<%= render('layouts/elements/yesno_select',
+							obj: d,
+							field: :invoices_correct
+						) %>
 
 					</article>
 

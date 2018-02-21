@@ -1,0 +1,16 @@
+<div>
+    <%= obj.label field %>
+    <%= obj.select(
+        field,
+        options_for_select(
+            [
+                [t(:is_true), true],
+                [t(:is_false), false]
+            ],
+            obj.object.send(field)
+        ),
+        {
+            include_blank: "---"
+        }
+    ) %>
+</div>

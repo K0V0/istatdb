@@ -1,12 +1,12 @@
-<% 
-	allow_new = @result.size > 0 ? "0" : "1" 
+<%
+	allow_new = @result.size > 0 ? "0" : "1"
 
 	template = new_form_has_many_select(
 		obj: instance_variable_get("@#{params[:source_controller]}"),
 		coll: @result,
 		text_method: get_fields_from_ransack_params,
 		opts: { is_highlighted: true }
-	) 
+	)
 %>
 
 // search-select section (widget)
@@ -34,7 +34,7 @@ rows.each(function() {
 	}
 });
 
-if (alower.data('user-choosed') === undefined) { 
+if (alower.data('user-choosed') === undefined) {
 	if ("<%= allow_new %>" == "1") {
 		alower.prop('checked', true);
 	} else {
@@ -50,8 +50,8 @@ $(results).each(function() {
 
 	if (checked_btns_vals.indexOf(checkbox.val()) == -1) {
 		tBody.append($(this));
-	} 
+	}
 });
 
-// trigger change on window to rubn JS that should run when content changed 
+// trigger change on window to rubn JS that should run when content changed
 mainElem.trigger('change');

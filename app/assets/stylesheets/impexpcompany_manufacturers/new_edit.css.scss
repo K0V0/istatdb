@@ -1,0 +1,53 @@
+body.update_multiple.impexpcompany_manufacturers,
+body.edit_multiple.impexpcompany_manufacturers {
+
+    main {
+
+        section {
+
+            form {
+
+                aside {
+
+                   article {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin: 0.375em;
+
+                        &.invoices_correct {
+
+                            input[type=checkbox] {
+                                display: inline-block;
+                                margin: 0 0.25em;
+                            }
+                        }
+
+                        &.subsection_caption {
+
+                            table {
+
+                                tr {
+
+                                    td {
+                                        vertical-align: bottom;
+                                        line-height: 1em;
+                                        padding: 0.125em 0.25em;
+
+                                        &.detail_desc {
+                                            font-size: 0.875em;
+                                        }
+
+                                        &.detail_impexp {
+                                            font-size:1.125em;
+                                            font-weight: bold;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

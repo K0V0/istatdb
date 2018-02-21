@@ -46,8 +46,7 @@ class GoodsController < ApplicationController
 	end
 
 	def around_update_after_save_failed
-		@record.impexpcompanies.build
-		@record.manufacturers.build
+		build_if_empty :impexpcompanies, :manufacturers
 	end
 
 	def permitted_params

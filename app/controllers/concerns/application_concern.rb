@@ -67,10 +67,13 @@ module ApplicationConcern
 		elsif action_name == "edit" || action_name == "update"
 
 			assocs.each do |a, opts|
-				if (a.to_s.is_singular?)
+				if a.to_s.is_singular?
 
 				else
-					@record.send(a).send(:build)
+					any_builded_assoc = @record.send(a).map { |r| r.id.blank? } .any?
+					if !any_builded_assoc
+						@record.send(a).send(:build)
+					end
 				end
 			end
 

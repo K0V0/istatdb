@@ -32,12 +32,13 @@ body.tride {
 
 	section.form {
 
-		article.shrinked > div.tablewrap { 
+		article > div.tablewrap {
 			border-top: 1px solid $halftone;
 			border-left: 1px solid $halftone;
 			box-shadow: 2px 2px 4px 0px black;
 			background-color: $group_background;
-			margin-right:0.275em;
+			margin-right:0.3125em;
+			margin-left:0.125em;
 
 			table {
 				border-right: 0;
