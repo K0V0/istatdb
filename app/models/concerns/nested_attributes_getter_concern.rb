@@ -6,7 +6,7 @@ module NestedAttributesGetterConcern
 	end
 
 	module ClassMethods
-		
+
 		def nested_attrs_getter_for(*assocs)
 			assocs.each do |a|
 
@@ -24,6 +24,8 @@ module NestedAttributesGetterConcern
 						# has_many
 					 	arg.select { |a| !a.blank? }
 					end
+					#logger arg
+					#logger filtered_arr
 					instance_variable_set("@#{ids_method_name}", filtered_arr)
 					super arg
 				end
@@ -40,7 +42,6 @@ module NestedAttributesGetterConcern
 					if arg.try(:[], "0").blank?
 						# is in belongs_to (singular) assoc
 						instance_variable_set("@#{attrs_method_name}", arg)
-						logger arg, "attrs for super" 
 						super arg
 					else
 						if self.id.blank?
@@ -50,6 +51,7 @@ module NestedAttributesGetterConcern
 							super tmp
 						else
 							ids_checked = instance_variable_get("@#{ids_method_name}")
+							#logger arg
 							arg.each do |k, v|
 								if v.keys.first.to_s == "id"
 									if !ids_checked.include? v[:id]
@@ -58,6 +60,7 @@ module NestedAttributesGetterConcern
 								end
 							end
 							instance_variable_set("@#{attrs_method_name}", arg)
+							#logger arg
 							super arg
 						end
 					end

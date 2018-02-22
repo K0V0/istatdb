@@ -29,6 +29,9 @@ module ApplicationAbstract
 	def around_update_after_save
 	end
 
+	def around_update_after_save_ok
+	end
+
 	def around_update_after_save_failed
 	end
 

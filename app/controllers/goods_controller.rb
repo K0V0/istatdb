@@ -4,7 +4,6 @@ class GoodsController < ApplicationController
 
 	def show
 		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
-		#super
 	end
 
 	private
@@ -40,13 +39,16 @@ class GoodsController < ApplicationController
 	end
 
 	def around_edit
-		@record.impexpcompanies.build
-		@record.manufacturers.build
+		build_if_empty :impexpcompanies, :manufacturers
 		@uom = Uom.new if !@record.uoms.any?
 	end
 
-	def around_update_after_save_failed
+	def around_update_after_save
 		build_if_empty :impexpcompanies, :manufacturers
+	end
+
+	def around_update_after_save_failed
+		@uom = Uom.new if !@record.uoms.any?
 	end
 
 	def permitted_params

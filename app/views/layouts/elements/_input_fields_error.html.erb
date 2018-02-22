@@ -4,7 +4,7 @@
 		if !assoc.nil?
 			object = assoc
 			assoc_name = object.model_name.to_s.underscore
-			regex = /^(#{assoc_name}_attributes|#{assoc_name.pluralize}_attributes)$/
+			regex = /^(#{assoc_name}_attributes|#{assoc_name.pluralize}_attributes|#{assoc_name.pluralize}\.[a-z_]+)$/
 			err_keys = obj.object.errors.keys.select { |k| k.to_s.match(regex) }
 			parent_errs = err_keys.map { |k| obj.object.errors[k] }.flatten
 		end

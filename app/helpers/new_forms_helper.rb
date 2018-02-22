@@ -24,9 +24,9 @@ module NewFormsHelper
         return args_hash
     end
 
-    # gets selected item (associated record id) from search bar filters 
+    # gets selected item (associated record id) from search bar filters
     def get_selected_filter_obj_id_from_mem(association_name)
-    	# only run when entering new form from list with items, 
+    	# only run when entering new form from list with items,
     	# not on repeat after validation failed
     	if action_name == "new"
     		# params are restored from mem on page load if not new are set
@@ -46,9 +46,9 @@ module NewFormsHelper
 				coll_name,
 				result_row.send(l),
 				value: result_row.id
-			) do 
+			) do
 				items_table_field_decorator(result_row.send(l), opts, result_row, l)
-			end 
+			end
 			output += "</td>"
 		end
 		output
@@ -64,24 +64,32 @@ module NewFormsHelper
 		coll_name = "#{mem_param_name}_ids"
     	# this loads associations of passed in obj to match checked checkboxes later
 		associated_records = obj.try("#{coll.name.pluralize.underscore}").try(:pluck, :id)
-		# this checks for params hash to catch if unsaved 
+		# this checks for params hash to catch if unsaved
 		pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 		# id of association that is search limited (filtered) by
 		id_from_search_filter = get_selected_filter_obj_id_from_mem(mem_param_name)
 
+        ###### FIX ###### seems not working
+        logger id_from_search_filter, "id from searchfilter"
+
 		if coll.length > 0
 	    	coll.each do |c|
 	    		output = ""
-	    		record_is_in_associated = associated_records.include?(c.id)
-	    		record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
-	    		was_selected_in_search_bar_filter = id_from_search_filter == c.id
+                # do this only on edit - preloads values from parent object
+                # must do hack, because after validation checkboxes defaultly preselected appeared (parent associations)
+	    		record_is_in_associated = (action_name == "edit" ? associated_records.include?(c.id) : false)
+	    		# check comparing to params if should be checked (e.g. render after validation fail)
+                record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
+                # preselecting for faster UX if searched with filters, do only on new
+	    		was_selected_in_search_bar_filter = (action_name == "new" ? id_from_search_filter == c.id : false)
+
 	    		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter
 
 	    		output += "<tr><td>"
 		    		output += check_box(
 						obj_name,
 						coll_name,
-						{ 
+						{
 							multiple: true,
 							checked: checked
 						},
@@ -93,7 +101,7 @@ module NewFormsHelper
 	    		output += "</tr>"
 
 	    		output_first += output if checked
-	    		output_other += output if !checked 
+	    		output_other += output if !checked
 	    	end
 	    else
 	    	output_first += new_forms_no_results
@@ -109,7 +117,7 @@ module NewFormsHelper
         obj_name = "#{obj.class.name.underscore}"
         obj_name = "#{obj_name.pluralize}[#{obj.try(:id).to_s}]" if multiedit == true
 
-    	checked_id = obj.try(coll.name.underscore).try(:id) 
+    	checked_id = obj.try(coll.name.underscore).try(:id)
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
     	if coll.length > 0
@@ -122,12 +130,12 @@ module NewFormsHelper
 						coll_name,
 						c.send(val_method),
 						checked: checked
-					) 
+					)
 					output += "</td>"
 					output += generate_labels_for_select_table(c, obj_name, coll_name, text_method, opts)
 
 				output += "</tr>"
-	            
+
 				output_first += output if checked
 	            output_other += output if !checked
 	    	end
@@ -170,7 +178,7 @@ module NewFormsHelper
 
     # for simple input text field generation - prefill with content of search field on main page
     # when adding sometning new
-    def prefill_from_search_field(pars) 
+    def prefill_from_search_field(pars)
         if (!pars.nil?)&&(action_name == 'new')
             search_params = @MEM.send("q_#{controller_name.singularize.underscore}")
             if !search_params.nil?
@@ -185,7 +193,7 @@ module NewFormsHelper
     end
 
     def generate_error_for_field
-    	
+
     end
 
 end

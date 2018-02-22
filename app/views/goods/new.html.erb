@@ -8,12 +8,12 @@
 		<%= new_edit(
 			obj: t,
 			fields: {
-				ident: { 
+				ident: {
 					prefill_from_mem_param: [:ident_or_description_cont, :ident_cont],
 					autofocus: true,
 					js_check_existence: true
 				},
-				description: { 
+				description: {
 					type: :text_area,
 					prefill_from_mem_param: [:ident_or_description_cont, :description_cont]
 				}
@@ -25,7 +25,7 @@
 			assoc: :local_taric,
 			fields: {
 				kncode: {  },
-				description: { 
+				description: {
 					type: :text_area
 				}
 			},
@@ -67,7 +67,7 @@
 			<% i = 0 %>
 			<%= t.fields_for :uoms, @uom do |u| %>
 				<%= render('goods/new/uom',
-					obj: u, 
+					obj: u,
 					index: i
 				) %>
 				<% i = i + 1 %>

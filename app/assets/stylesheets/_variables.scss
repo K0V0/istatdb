@@ -18,7 +18,7 @@ $halftone:		  #888;
 
 $soft_red:        #FF7F7F;
 $strong_red:      #e00;
-$dark_red:        #8E0000;    
+$dark_red:        #8E0000;
 
 
 $background_color:                        $strong_black;
@@ -247,13 +247,13 @@ $main_menu_mouse_actions_transition_time: 0.30s;
 @mixin rotate_upside_down() {
     transform:rotateX(180deg);
     -ms-transform:rotateX(180deg);
-    -webkit-transform:rotateX(180deg);  
+    -webkit-transform:rotateX(180deg);
 }
 
 @mixin rotate_cancel() {
     transform:rotateX(0deg);
     -ms-transform:rotateX(0deg);
-    -webkit-transform:rotateX(0deg);  
+    -webkit-transform:rotateX(0deg);
 }
 
 @mixin clearfix() {

@@ -17,6 +17,16 @@ RemoveValidationErrors.prototype = {
 		$(document)
 		.find('input.error, textarea.error')
 		.on('input', function() { H.removeError(this); });
+		$(document)
+		.find('input.error, textarea.error')
+		.closest('div')
+		.next()
+		.children('input.allow_add_new')
+		.on('change', function(e) {
+			if (!$(this).is(':checked')) {
+				$(this).closest('div').prev().children('input, textarea').removeClass('error');
+			}
+		});
 		//selects
 		/*$(document)
 		.find('article.uoms')

@@ -1,3 +1,4 @@
+@import "variables";
 
 body.update_multiple, body.edit_multiple {
 
@@ -11,7 +12,7 @@ body.update_multiple, body.edit_multiple {
 					padding: 0.375em 0.375em;
 
 					&:nth-child(2n-1) {
-						background-color: #ccc;
+						background-color: $semi_grey;
 					}
 
 					article {

@@ -1,10 +1,10 @@
 class Good < ActiveRecord::Base
 
-	extend OrderAsSpecified
-
 	include Defaults
 	include NestedAttributesGetterConcern
 	include NestedSelectedOrCreatedAnyConcern
+
+	extend OrderAsSpecified
 
 	# nested_attributes - co je v textovych poliach
 	# ids - checkboxy/ radiobuttony
@@ -20,7 +20,7 @@ class Good < ActiveRecord::Base
 	accepts_nested_attributes_for(
 		:manufacturers,
 		reject_if: lambda { |c|
-			c[:allow_search_as_new] == "0" #|| !c[:id].blank?
+			c[:allow_search_as_new] == "0"
 		}
 	)
 
@@ -28,7 +28,7 @@ class Good < ActiveRecord::Base
 	accepts_nested_attributes_for(
 		:impexpcompanies,
 		reject_if: lambda { |c|
-			c[:allow_search_as_new] == "0" #|| !c[:id].blank?
+			c[:allow_search_as_new] == "0"
 		}
 	)
 
@@ -46,8 +46,6 @@ class Good < ActiveRecord::Base
 		reject_if: lambda { |c| c[:uom].blank? },
 		allow_destroy: true
 	)
-	## resolve how to remove not wanted uoms
-	# probably hidden field special delete helper
 
 	nested_attrs_getter_for :manufacturers, :impexpcompanies, :local_taric
 	## monkey patch for having <associated>_attributes getter and instance variable
@@ -58,6 +56,9 @@ class Good < ActiveRecord::Base
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
 	validate :local_taric_selected_or_created
+
+	validates_associated :uoms
+	# needed only when updating, as per documentation
 
 	after_save :update_manufacturer_impexpcompany_relationships
 

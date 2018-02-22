@@ -75,8 +75,14 @@ class ApplicationController < ActionController::Base
 
   before_action(
   	:edit_action,
-  	only: [:edit, :update],
+  	only: :edit,
   	if: :user_logged_and_model_exist
+  )
+
+  before_action(
+    :update_action,
+    only: :update,
+    if: :user_logged_and_model_exist
   )
 
   before_action(
@@ -103,7 +109,7 @@ class ApplicationController < ActionController::Base
   	if: :user_logged_and_model_exist
   )
 
-   before_action(
+  before_action(
   	:apicall_exist_action,
   	only: :check_existence,
   	if: :user_logged_and_model_exist
@@ -222,11 +228,16 @@ class ApplicationController < ActionController::Base
     around_edit
   end
 
+  def update_action
+    @record = @model.find(params[:id])
+  end
+
   def update_action_2
     around_update
     saved = @record.update(permitted_params)
     around_update_after_save
     if saved
+      around_update_after_save_ok
       redirect_to controller: controller_name, action: 'index'
     else
       around_update_after_save_failed
@@ -243,17 +254,11 @@ class ApplicationController < ActionController::Base
     searcher_for(autoshow: false)
     if params.has_key? :association_type
   		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
-  		if parent_rec_id != 0
-  			# is in edit action
-	  		parent_obj = params[:source_controller].classify.constantize.find(parent_rec_id)
+  		parent_obj = params[:source_controller].classify.constantize.new
+  		if params[:association_type] == "belongs_to"
+	  		parent_obj.send("build_#{params[:model]}")
 	  	else
-	  		# is in new action
-	  		parent_obj = params[:source_controller].classify.constantize.new
-	  		if params[:association_type] == "belongs_to"
-		  		parent_obj.send("build_#{params[:model]}")
-		  	else
 
-		  	end
 	  	end
 	  	instance_variable_set(
   			"@#{params[:source_controller]}",
