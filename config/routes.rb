@@ -18,13 +18,29 @@ Rails.application.routes.draw do
   post "manufacturers/new_select_search",
     to: "manufacturers#new_select_search"
 
-  #post "impexpcompany_manufacturers/new_select_search",
-  #  to: "impexpcompany_manufacturers#new_select_search"
-
   ### check existence ajax call
 
   post "good/check_existence",
     to: "goods#check_existence"
+
+  post "local_taric/check_existence",
+    to: "local_tarics#check_existence"
+
+  post "manufacturer/check_existence",
+    to: "manufacturers#check_existence"
+
+  post "impexpcompany/check_existence",
+    to: "impexpcompanies#check_existence"
+
+  post "uom_type/check_existence",
+    to: "uom_types#check_existence"
+
+  post "incoterm/check_existence",
+    to: "incoterms#check_existence"
+
+  post "trade_type/check_existence",
+    to: "trade_types#check_existence"
+
 
 
 
@@ -134,7 +150,7 @@ Rails.application.routes.draw do
     to: "manufacturers#edit",
     as: "edit_manufacturer"
 
-  post "manufacturersdb",
+  post "manufacturersdb/new",
     to: "manufacturers#create",
     as: "create_manufacturer"
 
@@ -193,7 +209,7 @@ Rails.application.routes.draw do
     as: "edit_local_taric"
 
   #create
-  post "localtaricdb",
+  post "localtaricdb/new",
     to: "local_tarics#create",
     as: "create_local_taric"
 
@@ -265,7 +281,7 @@ Rails.application.routes.draw do
     as: "impexpcompany"
 
   #create
-  post "settings/clientsdb",
+  post "settings/clientsdb/new",
     to: "impexpcompanies#create",
     as: "create_impexpcompany"
 
@@ -310,7 +326,7 @@ Rails.application.routes.draw do
     as: "uom_type"
 
   # create
-  post "settings/uom_types",
+  post "settings/uom_types/new",
     to: "uom_types#create",
     as: "create_uom_type"
 
@@ -356,7 +372,7 @@ Rails.application.routes.draw do
     as: "incoterm"
 
   # create
-  post "settings/incoterms",
+  post "settings/incoterms/new",
     to: "incoterms#create",
     as: "create_incoterm"
 
@@ -402,7 +418,7 @@ Rails.application.routes.draw do
     as: "trade_type"
 
   # create
-  post "settings/trade_types",
+  post "settings/trade_types/new",
     to: "trade_types#create",
     as: "create_trade_type"
 
