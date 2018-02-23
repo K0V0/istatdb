@@ -8,6 +8,9 @@ CheckExistence.prototype = {
 	init: function() {
 		var T = this;
 		$(document)
+		.children('html')
+		.children('body')
+		.not('.edit, .update')
 		.find('input.js_check_existence')
 		.frequentFireLimit('input', 350, '', function() {
 			//logger($(this).val());
