@@ -138,7 +138,7 @@ Rails.application.routes.draw do
     to: "manufacturers#create",
     as: "create_manufacturer"
 
-  patch "manufacturersdb/:id",
+  patch "manufacturersdb/:id/edit",
     to: "manufacturers#update",
     as: "update_manufacturer"
 
@@ -198,7 +198,7 @@ Rails.application.routes.draw do
     as: "create_local_taric"
 
   #update
-  patch "localtaricdb/:id",
+  patch "localtaricdb/:id/edit",
    to: "local_tarics#update",
     as: "update_local_taric"
 
@@ -275,7 +275,7 @@ Rails.application.routes.draw do
     as: "edit_impexpcompany"
 
   #update
-  patch "settings/clientsdb/:id",
+  patch "settings/clientsdb/:id/edit",
     to: "impexpcompanies#update",
     as: "update_impexpcompany"
 
@@ -320,7 +320,7 @@ Rails.application.routes.draw do
     as: "edit_uom_type"
 
   # update
-  patch "settings/uom_types/:id",
+  patch "settings/uom_types/:id/edit",
     to: "uom_types#update",
     as: "update_uom_type"
 
@@ -366,7 +366,7 @@ Rails.application.routes.draw do
     as: "edit_incoterm"
 
   # update
-  patch "settings/incoterms/:id",
+  patch "settings/incoterms/:id/edit",
     to: "incoterms#update",
     as: "update_incoterm"
 
@@ -412,7 +412,7 @@ Rails.application.routes.draw do
     as: "edit_trade_type"
 
   # update
-  patch "settings/trade_types/:id",
+  patch "settings/trade_types/:id/edit",
     to: "trade_types#update",
     as: "update_trade_type"
 

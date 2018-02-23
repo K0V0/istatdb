@@ -24,6 +24,8 @@
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 
 	<div>
+
+		<% i = 0 %>
 		<%= obj.fields_for assoc.to_sym, single do |a| %>
 
 			<% fields.each do |field_name, opts| %>
@@ -33,6 +35,9 @@
 					opts: opts
 				) %>
 			<% end %>
+
+			<% 	mem_query = assoc.to_s
+			 	mem_query += "_#{obj.object.id}" if multiedit %>
 
 			<div>
 				<%= a.label(
@@ -44,7 +49,7 @@
 					{
 						#id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
 						class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new",
-						checked: (@MEM.allow_add_new)["#{assoc.to_s}"] #@MEM.send("#{assoc.to_s}_allow_add_new")
+						checked: (@MEM.allow_add_new)[mem_query]
 					},
 					1,
 					0
