@@ -32,6 +32,10 @@ html {
 			float: left;
 		}
 
+		.novisible {
+			display:none;
+		}
+
 		.decorated_wrap {
 			background-color: $base_grey;
  			background: -webkit-linear-gradient(135deg, $base_grey, $base_grey_grad);

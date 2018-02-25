@@ -1,8 +1,8 @@
 
 ALL = {
-	
+
 	_ALL: {
-		hover_submenu: ['on_ready'],
+		hover_submenu: ['on_reload'],
 		hide_menu_by_outclick_smallscreen: ['on_ready', 'on_reload']
 	},
 

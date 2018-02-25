@@ -241,6 +241,20 @@ Rails.application.routes.draw do
     to: "others#index",
     as: "others"
 
+  ### ostatne - kalkulacka
+
+  #index
+  get "others/calculator",
+    to: "calculators#index",
+    as: "calculators"
+
+  ### ostatne - zoznam zmien
+
+  #index
+  get "others/changelog",
+    to: "changess#index",
+    as: "changes"
+
 
 
   ### Nastavenia
@@ -253,7 +267,6 @@ Rails.application.routes.draw do
   #ulozenie nastaveni
   post "settings",
     to: "settings#update_settings"
-
 
   ### Nastavenia - spravodajske jednotky
 

@@ -1,0 +1,19 @@
+
+<%= active_link_to(
+    t("others.sections.calculator"),
+    calculators_path,
+    wrap_tag: :li
+) %>
+
+<%= active_link_to(
+    t("others.sections.changes"),
+    changes_path,
+    wrap_tag: :li
+) %>
+
+<%= active_link_to(
+    t("others.sections.others"),
+    others_path,
+    active: :exclusive,
+    wrap_tag: :li
+) %>

@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111220801) do
+ActiveRecord::Schema.define(version: 20180224125642) do
+
+  create_table "calculators", force: :cascade do |t|
+    t.text     "data"
+    t.integer  "impexpcompany_id"
+    t.integer  "manufacturer_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "calculators", ["impexpcompany_id"], name: "index_calculators_on_impexpcompany_id"
+  add_index "calculators", ["manufacturer_id"], name: "index_calculators_on_manufacturer_id"
+
+  create_table "changes", force: :cascade do |t|
+    t.text     "change"
+    t.text     "version_num"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"
@@ -148,6 +166,18 @@ ActiveRecord::Schema.define(version: 20180111220801) do
     t.text "type"
     t.text "description"
   end
+
+  create_table "units", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "good_id"
+    t.integer  "manufacturer_id"
+    t.integer  "impexpcompany_id"
+  end
+
+  add_index "units", ["good_id"], name: "index_units_on_good_id"
+  add_index "units", ["impexpcompany_id"], name: "index_units_on_impexpcompany_id"
+  add_index "units", ["manufacturer_id"], name: "index_units_on_manufacturer_id"
 
   create_table "uom_types", force: :cascade do |t|
     t.string   "uom_type"

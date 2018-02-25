@@ -1,0 +1,22 @@
+
+<%
+    section_name = section.to_s
+    path = public_send("#{section_name}_path")
+%>
+
+<li class="has_submenu <%= "active" if is_active_link?(path) %><%= " #{section_name}" %>">
+    <%= active_link_to t("top_menu.#{section_name}"), path %>
+    <ul class="sub disable_on_bigscreen">
+        <div>
+            <%= render "#{section_name}/shared/#{section_name}_submenu" %>
+        </div>
+    </ul>
+    <% visible = is_active_link?(path) ? "" : "novisible" %>
+    <%= content_for :submenu do %>
+        <ul class="sub disable_on_smallscreen <%= "#{section_name} #{visible}" %>">
+            <div>
+                <%= render "#{section_name}/shared/#{section_name}_submenu" %>
+            </div>
+        </ul>
+    <% end %>
+</li>
