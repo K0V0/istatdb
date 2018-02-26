@@ -9,7 +9,7 @@
 		label {
 			bottom: 0;
 		}
-		
+
 		ul {
 			@include rotate_cancel();
 			padding-bottom: 0;
@@ -25,15 +25,15 @@
 						padding: 0;
 					}
 
-					a { 
+					a {
 						border-radius: 0.25em;
 						text-align: left;
 						font-size: 1.25em;
 					}
 
-					&.has_submenu { 
+					&.has_submenu {
 
-						& > ul.sub { 
+						& > ul.sub {
 							max-height: 0;
 						}
 					}
@@ -58,7 +58,7 @@
 				background-color: transparent;
 				color: $white;
 
-				div { 
+				div {
 					border-radius:0.375em;
 					overflow-y: hidden;
 					padding: 0.25em;

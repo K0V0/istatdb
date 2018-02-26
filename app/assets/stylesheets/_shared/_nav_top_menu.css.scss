@@ -94,6 +94,24 @@ nav.top_menu {
 				}
 			}
 		}
+
+		&.noactive {
+			background-color: $main_menu_inactive_link_hover;
+			color: $white;
+
+			& > div {
+
+				& > li {
+
+					&:hover {
+						& > a {
+							background-color: $sub_menu_background;
+							color: $main_menu_active_link_text;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
