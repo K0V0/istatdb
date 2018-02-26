@@ -61,10 +61,10 @@ nav.top_menu {
 	}
 
 	ul.sub {
-		@include scrollbar_top_menu_sub();
-		@include menu_transitions();
 		background-color: $sub_menu_background;
 		color: $sub_menu_inactive_link_text;
+		@include scrollbar_top_menu_sub();
+		@include menu_transitions();
 
 		&.hover {
 			background-color: $main_menu_2_submenu_active_link_hover;

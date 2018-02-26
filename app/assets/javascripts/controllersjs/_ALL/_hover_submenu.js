@@ -1,6 +1,7 @@
 function HoverSubmenu() {
 	this.class_name;
 	this.timer;
+	this.timer2;
 	this.init();
 }
 
@@ -13,7 +14,17 @@ HoverSubmenu.prototype = {
 		$(document)
 			.find('nav.top_menu > ul.main > div > li.has_submenu')
 			.betterMouseover(400, function() {
-				T.show_submenu(this);
+				if (!$(this).hasClass('active')) {
+					T.show_submenu(this);
+				}
+			});
+		$(document)
+			.find('nav.top_menu > ul.main > div > li')
+			.not('.has_submenu')
+			.betterMouseover(400, function() {
+				//if (!$(this).hasClass('active')) {
+					T.hide_submenus();
+				//}
 			});
 		// on submenu actions
 		$(document)
@@ -31,13 +42,19 @@ HoverSubmenu.prototype = {
 							T.hide_submenus();
 						}
 					}
-				}, 500)
+				}, 500);
 			});
 		// hover active fix
 		$(document)
 			.on('mouseenter', 'nav.top_menu > ul.sub.active, nav.top_menu > ul.main > div > li.active', function(e) {
 				$(document).find(e.handleObj.selector).prependClass('hover');
+				clearTimeout(T.timer2);
 			})
+			.on('mouseleave', 'nav.top_menu > ul.sub.active, nav.top_menu > ul.main > div > li.active', function(e) {
+				T.timer2 = setTimeout(function() {
+					$(document).find(e.handleObj.selector).removeClass('hover');
+				}, 500);
+			});
 	},
 
 	show_submenu: function(ref) {
@@ -49,12 +66,18 @@ HoverSubmenu.prototype = {
 		}
 		var sub_menus = $(document).find('nav.top_menu').children('ul.sub');
 		sub_menus.filter('.'+this.class_name).removeClass('novisible');
-		sub_menus.not('.'+this.class_name).addClass('novisible');
+		sub_menus.not('.'+this.class_name).prependClass('novisible');
 	},
 
 	hide_submenus: function() {
-		$(document).find('nav.top_menu').children('ul.sub').addClass('novisible');
-		$(document).find('nav.top_menu > ul.main > div > li').removeClass('hover');
+		var submenu = $(document).find('nav.top_menu').children('ul.sub');
+		submenu.each(function() {
+			if (!$(this).hasClass('active')) {
+				$(this).addClass('novisible');
+				$(document).find('nav.top_menu > ul.main > div > li').removeClass('hover');
+			}
+		})
+
 	},
 
 	getClassName: function(ref) {

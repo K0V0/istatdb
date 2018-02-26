@@ -52,12 +52,25 @@ body.tride {
 
 			&.top_menu {
 
+				ul {
+
+					div {
+
+						li {
+
+							a {
+								margin-left: 0.125em;
+							}
+						}
+					}
+				}
+
 				ul.main {
 					&::after {
 						content: "";
 						display: block;
 						width:100%;
-						height: 2px;
+						height: 0.125em;
 						background-color: $semi_grey;
 						position: absolute;
 						top:0;
@@ -68,13 +81,10 @@ body.tride {
 					div {
 						padding-bottom: 2px; /*because rotate hack applied*/
 
-						li {
+						li.active, li:hover, li.hover {
 
 							a {
-
-								&.active {
-									box-shadow: -2px -1px 0px 1px $semi_grey;
-								}
+								box-shadow: -2px -1px 0px 1px $semi_grey;
 							}
 						}
 					}
@@ -86,8 +96,8 @@ body.tride {
 						content: "";
 						display: block;
 						width:100%;
-						height: 2px;
-						background-color: $strong_grey;
+						height: 0.125em;
+						background-color: $halftone;
 						position: absolute;
 						top:0;
 						left:0;
@@ -98,14 +108,10 @@ body.tride {
 					div {
 						padding-bottom: 2px;
 
-						li {
-							z-index: 3;
+						li.active, li:hover, li.hover {
 
 							a {
-
-								&.active {
-									box-shadow: -2px -1px 0px 1px $strong_grey;
-								}
+								box-shadow: -2px -1px 0px 1px $halftone;
 							}
 						}
 					}
