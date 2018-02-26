@@ -2,7 +2,7 @@
 
 nav.top_menu {
 	font-size: 1.25em;
-	
+
 	ul {
 		@include rotate_upside_down();
 		font-family:amsans;
@@ -36,7 +36,7 @@ nav.top_menu {
 
 			& > li {
 
-				&:hover {
+				&:hover, &.hover {
 					& > a, & > ul > div { background-color: $main_menu_inactive_link_hover; }
 				}
 				&.active {
@@ -44,14 +44,14 @@ nav.top_menu {
 						background-color: $main_menu_active_link;
 						color: $main_menu_active_link_text;
 					}
-					&:hover {
+					&:hover, &.hover {
 						& > a, & > ul > div { background-color: $main_menu_active_link; }
 					}
 				}
 				&.has_submenu {
 					&.active {
 						& > a, & > ul > div { background-color: $sub_menu_background; }
-						&:hover {
+						&:hover, &.hover {
 							& > a, & > ul > div { background-color: $main_menu_2_submenu_active_link_hover; }
 						}
 					}
@@ -59,7 +59,7 @@ nav.top_menu {
 			}
 		}
 	}
-	
+
 	ul.sub {
 		background-color: $sub_menu_background;
 		color: $sub_menu_inactive_link_text;

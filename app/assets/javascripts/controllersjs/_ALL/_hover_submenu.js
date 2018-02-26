@@ -1,6 +1,6 @@
 function HoverSubmenu() {
 	this.class_name;
-	//this.elems;
+	this.timer;
 	this.init();
 }
 
@@ -11,39 +11,52 @@ HoverSubmenu.prototype = {
 		var T = this;
 		// on menu item actions
 		$(document)
-		.find('nav.top_menu')
-		.on('mouseenter', 'ul.main > div > li.has_submenu', function() {
-			T.class_name = $(this).attr('class').match(/([a-z]+)$/)[0];
-			T.show_submenu();
-		})
-		.on('mouseleave', 'ul.main > div > li.has_submenu', function() {
-
+		.find('nav.top_menu > ul.main > div > li')
+		.betterMouseover(400, function() {
+			if ($(this).hasClass('has_submenu')) {
+				T.show_submenu(this);
+			} else {
+				T.hide_submenus();
+			}
 		});
 		// on submenu actions
 		$(document)
 		.find('nav.top_menu')
 		.on('mouseenter', 'ul.sub', function() {
-			//T.class_name = $(this).attr('class').match(/([a-z]+)$/)[0];
-			//T.show_submenu();
-			logger('mouseenter on sub');
-			if ($(this).attr('class').indexOf(this.class_name) != -1) {
-				logger('is inside submenu for previously hovered main menu item');
-			}
+			clearTimeout(T.timer);
 		})
 		.on('mouseleave', 'ul.sub', function() {
-
+			logger("mouselevae happend")
+			T.timer = setTimeout(function() {
+				var active_elem = $(document).find('nav.top_menu').children('ul.main').find('li.active');
+				if (!active_elem.hasClass(T.class_name)) {
+					if (active_elem.hasClass('has_submenu')) {
+						T.show_submenu(active_elem);
+					} else {
+						T.hide_submenus();
+					}
+				}
+			}, 500)
 		});
 	},
 
-	show_submenu: function() {
+	show_submenu: function(ref) {
+		clearTimeout(this.timer);
+		this.class_name = this.getClassName(ref);
+		$(ref).siblings().removeClass('hover');
+		$(ref).prependClass('hover');
 		var sub_menus = $(document).find('nav.top_menu').children('ul.sub');
-		sub_menus.addClass('novisible');
 		sub_menus.filter('.'+this.class_name).removeClass('novisible');
+		sub_menus.not('.'+this.class_name).addClass('novisible');
 	},
 
-	hide_submenu: function() {
-		//var sub_menus = $(document).find('nav.top_menu').children('ul.sub');
-		//sub_menus.addClass('novisible');
+	hide_submenus: function() {
+		$(document).find('nav.top_menu').children('ul.sub').addClass('novisible');
+		$(document).find('nav.top_menu > ul.main > div > li').removeClass('hover');
+	},
+
+	getClassName: function(ref) {
+		return $(ref).attr('class').match(/([a-z]+)$/)[0];
 	}
 
 }
