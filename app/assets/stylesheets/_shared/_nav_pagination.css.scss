@@ -2,17 +2,17 @@
 
 nav.pagination {
 	@include scrollbar_top_menu_main();
-	
+
 	ul {
 		color: $white;
 		text-align: center;
 		font-size:1em;
-		overflow-x: auto; 
+		overflow-x: auto;
 
 		div.wrap {
 			display: table-cell;
 			vertical-align: top;
-			
+
 			li {
 
 				a {
@@ -20,8 +20,8 @@ nav.pagination {
 					min-width:1em;
 					padding:0.25em;
 					margin-bottom: 0.25em;
-					border-bottom-left-radius: 0.25em; 
-					border-bottom-right-radius: 0.25em; 
+					border-bottom-left-radius: 0.25em;
+					border-bottom-right-radius: 0.25em;
 					white-space: nowrap;
 
 					&:hover {

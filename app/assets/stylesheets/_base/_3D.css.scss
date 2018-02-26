@@ -46,80 +46,83 @@ body.tride {
 		}
 	}
 
-	nav {
+	@media only screen and (min-width: 480px) {
 
-		&.top_menu {
+		nav {
 
-			ul.main {
-				&::after {
-					content: "";
-					display: block;
-					width:100%;
-					height: 2px;
-					background-color: $semi_grey;
-					position: absolute;
-					top:0;
-					left:0;
-					right:0;
+			&.top_menu {
+
+				ul.main {
+					&::after {
+						content: "";
+						display: block;
+						width:100%;
+						height: 2px;
+						background-color: $semi_grey;
+						position: absolute;
+						top:0;
+						left:0;
+						right:0;
+					}
+
+					div {
+						padding-bottom: 2px; /*because rotate hack applied*/
+
+						li {
+
+							a {
+
+								&.active {
+									box-shadow: -2px -1px 0px 1px $semi_grey;
+								}
+							}
+						}
+					}
 				}
 
-				div {
-					padding-bottom: 2px; /*because rotate hack applied*/
+				ul.sub {
 
-					li {
+					&::after {
+						content: "";
+						display: block;
+						width:100%;
+						height: 2px;
+						background-color: $strong_grey;
+						position: absolute;
+						top:0;
+						left:0;
+						right:0;
+						z-index: -1;
+					}
 
-						a {
+					div {
+						padding-bottom: 2px;
 
-							&.active {
-								box-shadow: -2px -1px 0px 1px $semi_grey;
+						li {
+							z-index: 3;
+
+							a {
+
+								&.active {
+									box-shadow: -2px -1px 0px 1px $strong_grey;
+								}
 							}
 						}
 					}
 				}
 			}
 
-			ul.sub {
+			&.pagination {
 
-				&::after {
-					content: "";
-					display: block;
-					width:100%;
-					height: 2px;
-					background-color: $strong_grey;
-					position: absolute;
-					top:0;
-					left:0;
-					right:0;
-					z-index: -1;
-				}
+				ul {
 
-				div {
-					padding-bottom: 2px;
+					div.wrap.center {
 
-					li {
-						z-index: 3;
+						li {
 
-						a {
-
-							&.active {
-								box-shadow: -2px -1px 0px 1px $strong_grey;
+							a.active {
+								box-shadow: -2px 1px 0px 1px $semi_grey;
 							}
-						}
-					}
-				}
-			}
-		}
-
-		&.pagination {
-
-			ul {
-
-				div.wrap.center {
-
-					li {
-
-						a.active {
-							box-shadow: -2px 1px 0px 1px $semi_grey;
 						}
 					}
 				}

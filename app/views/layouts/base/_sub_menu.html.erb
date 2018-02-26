@@ -13,7 +13,7 @@
     </ul>
     <% visible = is_active_link?(path) ? "" : "novisible" %>
     <%= content_for :submenu do %>
-        <ul class="sub disable_on_smallscreen <%= "#{section_name} #{visible}" %>">
+        <ul class="sub disable_on_smallscreen <%= "active" if is_active_link?(path) %> <%= "#{section_name} #{visible}" %>">
             <div>
                 <%= render "#{section_name}/shared/#{section_name}_submenu" %>
             </div>
