@@ -31,7 +31,7 @@
 			<nav class="top_menu">
 				<%= yield :mainmenu %>
 			</nav>
-			
+
 		<% end %>
 
 		<main>
@@ -63,7 +63,9 @@
 			<% if content_for? :login %>
 
 				<article class="login">
-					<%= yield :login %>
+					<section class="login">
+						<%= yield :login %>
+					</section>
 				</article>
 
 			<% end %>
@@ -73,7 +75,7 @@
 
 		</main>
 
-		<% case action_name 
+		<% case action_name
 			when 'index', 'search', 'administrative', 'end_administrative' %>
 				<%#= render 'layouts/base/pagination' %>
 				<% if !@result.nil? %>
