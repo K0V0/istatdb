@@ -12,12 +12,27 @@
 
 			<%= link_to(
 				t('actions.back'),
-				{ 
+				{
 					controller: controller_name,
 					action: :index
 				},
 				class: "button"
 			) %>
+
+			<% if add_next == true %>
+
+				<% if action_name == "new"||action_name == "create" %>
+
+					<%= obj.button(
+						t('actions.add_and_add_next'),
+						name: "add_next",
+						value: "1",
+						class: "button"
+					) %>
+
+				<% end %>
+
+			<% end %>
 
 		<% end %>
 

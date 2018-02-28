@@ -33,7 +33,6 @@ table {
 		border-top-right-radius: 0.4375em;
 		width:100%;
 		line-height: 1.5em;
-		//border-bottom: 0.125em solid $wrap_border_color;
 		background-color: $wrap_border_color_2;
 	}
 
@@ -119,6 +118,22 @@ table.rows_colored {
 
 				&:nth-child(2n-1) {
 					background-color: $even_table_line_color;
+				}
+			}
+		}
+	}
+
+	&.disabled {
+		tbody {
+
+			tr {
+
+				&:nth-child(2n) {
+					background-color: $semi_grey;
+				}
+
+				&:nth-child(2n-1) {
+					background-color: $halftone;
 				}
 			}
 		}
@@ -371,5 +386,9 @@ table.for_dialogbox {
 			}
 		}
 	}
+}
+
+table.disabled {
+	pointer-events: none;
 }
 

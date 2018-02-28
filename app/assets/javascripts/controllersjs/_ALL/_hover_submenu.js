@@ -9,18 +9,11 @@ HoverSubmenu.prototype = {
 		var T = this;
 		// handle behaviour baased on main menu
 		$(document)
-			.find('nav.top_menu > ul.main > div > li')
-			.betterMouseover(250, function() {
-				if ($(this).hasClass('has_submenu')) {
-					if ($(this).hasClass('active')) {
-						T.hideSubmenus();
-					} else {
-						T.showSubmenu(this);
-					}
-				} else {
-					T.hideSubmenus();
-				}
-			});
+		.preventAccidentTrigger('mouseenter',
+			'nav.top_menu > ul.main > div > li',
+			350,
+			function() { T.decideAction(this); }
+		);
 		// handle leave menu at all
 		$(document).on('mouseleave', 'nav.top_menu', function() {
 			T.hideSubmenus();
@@ -39,6 +32,18 @@ HoverSubmenu.prototype = {
 				$(document).find(e.handleObj.selector).removeClass('hover');
 			}
 		);
+	},
+
+	decideAction: function(ref) {
+		if ($(ref).hasClass('has_submenu')) {
+			if ($(ref).hasClass('active')) {
+				this.hideSubmenus();
+			} else {
+				this.showSubmenu(ref);
+			}
+		} else {
+			this.hideSubmenus();
+		}
 	},
 
 	showSubmenu: function(trigger_elem) {

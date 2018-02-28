@@ -216,6 +216,16 @@ class ApplicationController < ActionController::Base
     around_create_after_save
     if saved
       continue = around_create_after_save_ok
+      if continue != false
+        if params.has_key? :add_next
+          if params[:add_next] == '1'
+            @record = @record.dup
+            around_do_add_another
+            render "#{@render_command_prepend}new"
+            continue = false
+          end
+        end
+      end
       redirect_to public_send("#{controller_name.pluralize}_path") if continue != false
     else
       around_create_after_save_failed

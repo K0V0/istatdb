@@ -3,7 +3,7 @@ class ManufacturersController < ApplicationController
   	private
 
   	def searcher_settings
-  		{ 
+  		{
   			object: Manufacturer.preload_items,
         	autoshow: false,
         	paginate: true
@@ -43,7 +43,7 @@ class ManufacturersController < ApplicationController
 			end
 		elsif !params.has_key?(:edit_other_details) && saved
 			redirect_to action: :index
-		else 
+		else
 			render "new"
 		end
 	end
@@ -67,6 +67,14 @@ class ManufacturersController < ApplicationController
 		return false
 	end
 
-	# spravit aroud update tiez oznacit riadky v tabulke ako spraveny zasah pouzivatelom
+    def around_update_after_save_ok
+        @record.impexpcompany_manufacturers.each do |r|
+            r.added_or_modded_by_user = true
+            r.save
+        end
+        return true
+    end
 
+	# spravit aroud update tiez oznacit riadky v tabulke ako spraveny zasah pouzivatelom
+    # malo by byt, otestovat
 end

@@ -252,7 +252,7 @@ Rails.application.routes.draw do
 
   #index
   get "others/changelog",
-    to: "changess#index",
+    to: "changes#index",
     as: "changes"
 
 

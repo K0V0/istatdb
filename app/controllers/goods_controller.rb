@@ -51,6 +51,12 @@ class GoodsController < ApplicationController
 		@uom = Uom.new if !@record.uoms.any?
 	end
 
+	def around_do_add_another
+		@record.ident = ""
+		@record.description = ""
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms
+	end
+
 	def permitted_params
 		params.require(:good).permit(
 			:id,

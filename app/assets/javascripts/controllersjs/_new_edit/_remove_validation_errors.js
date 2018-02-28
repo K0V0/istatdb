@@ -27,12 +27,6 @@ RemoveValidationErrors.prototype = {
 				$(this).closest('div').prev().children('input, textarea').removeClass('error');
 			}
 		});
-		//selects
-		/*$(document)
-		.find('article.uoms')
-		.children('div')
-		.children('div')
-		.on('change', 'select', function() { H.removeError(this); logger('kokoooot'); });*/
 	},
 
 	onActivityRemove: function() {

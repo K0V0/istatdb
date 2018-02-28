@@ -1,6 +1,6 @@
 en:
   is_true: "Yes"
-  is_false: "No"  
+  is_false: "No"
 
   search:
     clear: Clear fields
@@ -12,7 +12,8 @@ en:
   actions:
     add: Add
     add_next: Add next
-    edit: Edit 
+    add_and_add_next: Save this, and add another
+    edit: Edit
     delete: Delete
     back: Back
     select: Select
@@ -34,15 +35,15 @@ en:
     solutions: Possible solution(s)
     add_new_solution: new item(s)
     no_results: No results to display
-  
+
   goods_search:
     impexpcompany_prompt: do NOT apply...
     manufacturer_prompt: Everyone...
     google: Search on Google
 
   new_form_selects:
-    try_to_add_as_new_1a: Check state of 
-    try_to_add_as_new_1b: button if You want to create a new record 
+    try_to_add_as_new_1a: Check state of
+    try_to_add_as_new_1b: button if You want to create a new record
     try_to_add_as_new_2: Button is activated automatically if 0 records met the search criteria in case it was not manipulated with it by user before
 
- 
+

@@ -13,7 +13,6 @@ CheckExistence.prototype = {
 		.not('.edit, .update')
 		.find('input.js_check_existence')
 		.frequentFireLimit('input', 350, '', function() {
-			//logger($(this).val());
 			T.doAjax($(this));
 		});
 	},
@@ -23,8 +22,8 @@ CheckExistence.prototype = {
 		  	method: "POST",
 		 	url: '/' + ref.data('model') + '/check_existence',
 		  	data: {
-		  		field: ref.data('field'), 
-		  		field_id: ref.attr('id'), 
+		  		field: ref.data('field'),
+		  		field_id: ref.attr('id'),
 		  		text: ref.val(),
 		  		window_id: ref.closest('article').attr('id'),
 		  		model: ref.data('model')

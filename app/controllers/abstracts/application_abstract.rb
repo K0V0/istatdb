@@ -47,4 +47,7 @@ module ApplicationAbstract
 	def load_create_update_vars
 	end
 
+	def around_do_add_another
+	end
+
 end
