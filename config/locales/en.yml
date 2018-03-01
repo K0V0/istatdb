@@ -4,6 +4,7 @@ en:
 
   search:
     clear: Clear fields
+    clear_short: Reset
     reset: Reset form
     submit: Search!
     search_as_new: Searched text as new item

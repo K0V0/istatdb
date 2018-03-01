@@ -23,6 +23,7 @@ BelongsToDisableSelectTableOnNew.prototype = {
                 var table = $(this).closest('article').find('table');
                 if ($(this).first().is(':checked')) {
                     table.addClass('disabled');
+                    table.find('input:checked').prop('checked', false);
                 } else {
                     table.removeClass('disabled');
                 }

@@ -8,6 +8,9 @@ class Good < ActiveRecord::Base
 
 	# nested_attributes - co je v textovych poliach
 	# ids - checkboxy/ radiobuttony
+
+	belongs_to :user, inverse_of: :goods
+
 	has_many :intertables, inverse_of: :good, dependent: :destroy
 	accepts_nested_attributes_for(
 		:intertables,
@@ -52,7 +55,7 @@ class Good < ActiveRecord::Base
 	## from model itself when using accept_nested_attributes_for
 
 	validates :ident, presence: true
-	#validates :ident, uniqueness: true
+	validates_uniqueness_of :ident, scope: :description
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
 	validate :local_taric_selected_or_created
@@ -60,7 +63,10 @@ class Good < ActiveRecord::Base
 	validates_associated :uoms
 	# needed only when updating, as per documentation
 
+	before_save :assign_to_user
+
 	after_save :update_manufacturer_impexpcompany_relationships
+	after_destroy :update_manufacturer_impexpcompany_relationships
 
 	scope :default_order, -> {
 		order(ident: :asc)
@@ -133,6 +139,10 @@ class Good < ActiveRecord::Base
 				.ids
 			impexp.manufacturers.delete(*obsolete_mans_ids)
 		end
+	end
+
+	def assign_to_user
+		self.user = User.current
 	end
 
 end

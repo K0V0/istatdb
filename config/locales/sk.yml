@@ -4,6 +4,7 @@ sk:
 
   search:
     clear: Vymazať polia
+    clear_short: Reset
     reset: Resetovať formulár
     submit: Hľadať!
     search_as_new: Pridať ako novú položku

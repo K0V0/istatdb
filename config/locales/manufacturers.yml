@@ -1,5 +1,13 @@
 en:
   activerecord:
+    errors:
+      models:
+        manufacturer:
+          attributes:
+            name:
+              blank: Manufacturer/consumer field left empty
+              taken: Manufacturer with same name already exists
+
     models:
       manufacturer: Consumers/manufacturers
     attributes:
@@ -15,6 +23,14 @@ en:
 
 sk:
   activerecord:
+    errors:
+      models:
+        manufacturer:
+          attributes:
+            name:
+              blank: Pole s názvom Výrobcu/Odberateľa ostalo prázdne
+              taken: Výrobca/odberateľ s týmto názvom už existuje
+
     models:
       manufacturer: Výrobcovia/odberatelia
     attributes:
@@ -27,4 +43,4 @@ sk:
       manufacturer:
         create: Pridať výrobcu/odberateľa
         update: Uložiť zmeny
-        
+

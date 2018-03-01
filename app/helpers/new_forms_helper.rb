@@ -164,12 +164,12 @@ module NewFormsHelper
     # field 		- column in table (AR) that is field related to
     # type 			- type of textfield (like text_area, search_field)
     # default_val 	- default value if field has no value
-    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false, js_check_existence: false)
+    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false, js_check_existence: false, html_class: "")
         output = ""
         parent_obj_model_name = obj.object.class.name.underscore
 
         type = :text_field if type.nil?
-        klass = "#{parent_obj_model_name}_#{field.to_s}"
+        klass = "#{parent_obj_model_name}_#{field.to_s} #{html_class}"
         data = js_check_existence ? { model: parent_obj_model_name, field: field.to_s } : nil
         klass += " js_check_existence" if js_check_existence
         output += default_val.nil? ? obj.send(type, field, class: klass, autofocus: autofocus, data: data) : obj.send(type, field, value: default_val, class: klass, autofocus: autofocus, data: data)

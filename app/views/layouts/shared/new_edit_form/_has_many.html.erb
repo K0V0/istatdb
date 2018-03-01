@@ -23,6 +23,10 @@
 
 	<input type="hidden" name="assoc-type" value="has_many">
 
+	<% if ss.nil? %>
+		<div class="caption"><%= obj.object.model_name.human %></div>
+	<% end %>
+
 	<div>
 		<%= obj.fields_for assoc.to_sym, single do |a| %>
 
@@ -35,6 +39,8 @@
 						opts: opts
 					) %>
 				<% end %>
+
+				<%= render 'layouts/elements/input_fields_reset_button' %>
 
 				<div>
 					<%= a.label(

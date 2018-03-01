@@ -6,10 +6,11 @@ ALL = {
 		hide_menu_by_outclick_smallscreen: ['on_ready', 'on_reload']
 	},
 
-	_new_edit_update_create: {
+	_new_edit_update_create_update_multiple_edit_multiple: {
 		remove_validation_errors: ['on_reload'],
 		check_existence: ['on_reload'],
 		generate_search_query: ['on_reload'],
-        belongs_to_disable_select_table_on_new: ['on_reload']
+        belongs_to_disable_select_table_on_new: ['on_reload'],
+        reset_fields_button: ['on_reload']
 	}
 }

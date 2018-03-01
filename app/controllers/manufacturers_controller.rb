@@ -38,7 +38,7 @@ class ManufacturersController < ApplicationController
 				redirect_to edit_details_manufacturer_path(@record.id)
 			else
 				# dont go to next form if no clients selected for this manufacturer
-				## TODO validation error here
+				### TODO validation error here
 				render "new"
 			end
 		elsif !params.has_key?(:edit_other_details) && saved
@@ -46,6 +46,7 @@ class ManufacturersController < ApplicationController
 		else
 			render "new"
 		end
+        around_update_after_save_ok if saved
 	end
 
     def loads_for_search_panel
@@ -59,7 +60,9 @@ class ManufacturersController < ApplicationController
 	end
 
 	def around_create_after_save_ok
+        logger "man create"
 		@record.impexpcompany_manufacturers.each do |r|
+            logger r.id, "man create impexps"
 			r.added_or_modded_by_user = true
 			r.save
 		end
@@ -68,13 +71,12 @@ class ManufacturersController < ApplicationController
 	end
 
     def around_update_after_save_ok
+        logger "man update"
         @record.impexpcompany_manufacturers.each do |r|
+            logger "man update impexps"
             r.added_or_modded_by_user = true
             r.save
         end
-        return true
     end
 
-	# spravit aroud update tiez oznacit riadky v tabulke ako spraveny zasah pouzivatelom
-    # malo by byt, otestovat
 end

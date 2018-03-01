@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180224125642) do
+ActiveRecord::Schema.define(version: 20180228181809) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 20180224125642) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "local_taric_id"
+    t.integer  "user_id"
   end
 
   add_index "goods", ["local_taric_id"], name: "index_goods_on_local_taric_id"
+  add_index "goods", ["user_id"], name: "index_goods_on_user_id"
 
   create_table "goods_impexpcompanies", force: :cascade do |t|
     t.integer  "good_id"

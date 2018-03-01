@@ -172,6 +172,7 @@ class ApplicationController < ActionController::Base
   private
 
   def inits
+    User.current = current_user
   	init_mem
     @body_class = "#{action_name} #{controller_name}"
     @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')

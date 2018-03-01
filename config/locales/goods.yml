@@ -14,6 +14,7 @@ en:
           attributes:
             ident:
               blank: Item name/reference field is blank.
+              taken: Item with this reference code and description is already in database
             impexpcompanies_attributes:
               not_selected_or_created: Must enter new or choose at least one intrastat client from list.
             manufacturers_attributes:
@@ -75,6 +76,7 @@ sk:
           attributes:
             ident:
               blank: pole Názov tovaru/referencia je prázdne.
+              taken: tovar so zhodnou referenciou a popisom sa v databáze už nachádza
             impexpcompanies_attributes:
               not_selected_or_created: Zadajte alebo vyberte zo zoznamu aspoň jednu spravodajskú jednotku ku ktorej daný tovar prislúcha.
             manufacturers_attributes:

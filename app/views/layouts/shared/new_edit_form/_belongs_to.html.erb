@@ -9,6 +9,8 @@
 	end
 
 	html_id = "#{klass}_#{(obj.object.try(:id) || 0).to_s}"
+	html_class = ""
+	has_error = false
 %>
 
 <article
@@ -23,21 +25,33 @@
 	<input type="hidden" name="assoc-type" value="belongs_to">
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 
+	<% if ss.nil? %>
+		<div class="caption"><%= obj.object.model_name.human %></div>
+	<% end %>
+
 	<div>
 
-		<% i = 0 %>
+		<% 	mem_query = assoc.to_s
+			mem_query += "_#{obj.object.id}" if multiedit %>
+
 		<%= obj.fields_for assoc.to_sym, single do |a| %>
 
 			<% fields.each do |field_name, opts| %>
+
+				<% if multiedit %>
+					<% has_error = obj.object.send(assoc).try(:errors).try(:has_key?, field_name) ? true : false %>
+				<% end %>
+
 				<%= render('layouts/elements/input_text',
 					field_name: field_name,
 					obj: a,
-					opts: opts
+					opts: opts,
+					html_class: has_error ? (html_class + ' error') : html_class
 				) %>
+
 			<% end %>
 
-			<% 	mem_query = assoc.to_s
-			 	mem_query += "_#{obj.object.id}" if multiedit %>
+			<%= render 'layouts/elements/input_fields_reset_button' %>
 
 			<div>
 				<%= a.label(
@@ -47,7 +61,6 @@
 				<%= a.check_box(
 					:allow_search_as_new,
 					{
-						#id: "#{assoc.to_s.singularize}_allow_add_new_#{obj.object.id.to_s}",
 						class: "#{assoc.to_s.singularize}_allow_add_new allow_add_new",
 						checked: (@MEM.allow_add_new)[mem_query]
 					},
@@ -65,7 +78,8 @@
 		coll: coll,
 		# collection of all from associated model
 		text_method: fields.keys,
-		multiedit: multiedit
+		multiedit: multiedit,
+		disabled: (@MEM.allow_add_new)[mem_query] || false
 	) if coll.length > 0 %>
 
 	<%= render('layouts/elements/input_fields_error',

@@ -1,10 +1,11 @@
 
-<article 
+<article
 	class="decorated_wrap shrinked"
 	id="<%= obj.object.model_name.to_s.underscore %>_fields"
 >
 
 	<div>
+
 		<% fields.each do |field_name, opts| %>
 			<%= render('layouts/elements/input_text',
 				field_name: field_name,
@@ -12,12 +13,15 @@
 				opts: opts
 			) %>
 		<% end %>
+
+		<%= render 'layouts/elements/input_fields_reset_button' %>
+
 	</div>
 
 	<%= render('layouts/elements/input_fields_error',
 		fields: fields,
 		obj: obj
 	) %>
-	
+
 
 </article>
