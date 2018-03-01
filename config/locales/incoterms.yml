@@ -6,6 +6,12 @@ en:
       incoterm:
         shortland: Term
 
+  helpers:
+    submit:
+      incoterm:
+        create: Create new freight term
+        update: Update term
+
 sk:
   activerecord:
     models:
@@ -13,3 +19,9 @@ sk:
     attributes:
       incoterm:
         shortland: Dodacia podmienka
+
+  helpers:
+    submit:
+      incoterm:
+        create: Pridať dodaciu podmienku
+        update: Upraviť dodaciu podmienku

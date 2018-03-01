@@ -1,4 +1,4 @@
-sk: 
+sk:
   activerecord:
     models:
       uom: Merné jednotky
@@ -21,7 +21,7 @@ sk:
             manufacturer:
               blank: Vyberte prislúchajucého odberateľa/výrobcu
 
-en: 
+en:
   activerecord:
     models:
       uom: Units of measurement
@@ -39,7 +39,7 @@ en:
       models:
         uom:
           attributes:
-            impexpcompany: 
+            impexpcompany:
               blank:  Select respective Financial intelligence unit
             manufacturer:
               blank: Select respective manufacturer/supplier

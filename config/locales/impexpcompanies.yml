@@ -12,6 +12,12 @@ en:
             company_name:
               blank: Enter name of Intrastat client or choose at least one from list
 
+  helpers:
+    submit:
+      impexpcompany:
+        create: Add financial intelligence
+        update: Update Intelligence
+
 sk:
   activerecord:
     models:
@@ -25,4 +31,10 @@ sk:
           attributes:
             company_name:
               blank: Zadajte názov spravodajskej jednotky alebo vyberte aspoň jednu zo zoznamu
-        
+
+  helpers:
+    submit:
+      impexpcompany:
+        create: Pridať spravodajskú jednotku
+        update: Upraviť spravodajskú jednotku
+

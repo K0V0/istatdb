@@ -8,6 +8,12 @@ en:
         type: Number code of operation
         description: Description of operations
 
+  helpers:
+    submit:
+      trade_type:
+        create: Add trade (movement) type
+        update: Update trade type
+
 
 sk:
 
@@ -18,4 +24,10 @@ sk:
       trade_type:
         type: Číselný kód operácie
         description: Popis
-        
+
+  helpers:
+    submit:
+      trade_type:
+        create: Pridať typ obchodnej operácie
+        update: Upraviť obchodnú operáciu
+

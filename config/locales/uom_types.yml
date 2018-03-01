@@ -9,6 +9,12 @@ en:
         full_name: Full name
         description: Description
 
+  helpers:
+    submit:
+      uom_type:
+        create: Add new UOM
+        update: Update UOM
+
 
 sk:
 
@@ -20,3 +26,9 @@ sk:
         uom_type: Jednotka
         full_name: Celý názov
         description: Popis
+
+  helpers:
+    submit:
+      uom_type:
+        create: Pridať jednotku
+        update: Upraviť jednotku
