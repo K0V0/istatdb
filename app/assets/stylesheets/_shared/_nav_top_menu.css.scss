@@ -6,11 +6,11 @@ nav.top_menu {
 	ul {
 		@include rotate_upside_down();
 		font-family:amsans;
-		padding-bottom: 0.25em;
 
 		div {
 			overflow-x: auto;
 			padding: 0 0.25em;
+			margin-bottom:0.25em;
 
 			li {
 				@include rotate_upside_down();
@@ -19,7 +19,7 @@ nav.top_menu {
 				a {
 					text-align: center;
 					padding-top: 0.25em;
-					padding-bottom: 0.125em;
+					padding-bottom: 0.25em;
 					border-top-right-radius: 0.25em;
 					border-top-left-radius: 0.25em;
 				}
@@ -64,7 +64,9 @@ nav.top_menu {
 		background-color: $sub_menu_background;
 		color: $sub_menu_inactive_link_text;
 		@include scrollbar_top_menu_sub();
-		@include menu_transitions();
+		@include menu_open_smallscreen_transitions();
+		max-height: 256px;
+		overflow-y: hidden;
 
 		&.hover {
 			background-color: $main_menu_2_submenu_active_link_hover;
@@ -111,6 +113,11 @@ nav.top_menu {
 					}
 				}
 			}
+		}
+
+		&.novisible {
+			display: block !important;
+			max-height: 0;
 		}
 	}
 }
