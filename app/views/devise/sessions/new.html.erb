@@ -3,6 +3,12 @@
 
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+		<%= devise_error_messages! %>
+
+		<%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%>
+
 		<section class="decorated_wrap shrinked">
 
 			<table class="for_forms">
@@ -10,6 +16,9 @@
 				<caption>
 					<%= t('user.login_title') %>
 				</caption>
+
+
+				<%= devise_error_messages! %>
 
 				<tbody>
 					<tr>

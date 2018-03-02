@@ -48,41 +48,40 @@
 
 		</section>
 
-		<% if !(err = devise_error_messages!).blank? %>
-			
-			<section class="decorated_wrap shrinked">
-
-				<table class="for_forms no_results">
-
-					<caption>
-						Chyba
-					</caption>
-
-					<tbody>
-
-						<tr>
-							<td>
-								<%= err %>
-							</td>
-						</tr>
-
-					<tfoot>
-						<tr>
-							<td>
-								&nbsp;
-							</td>
-						</tr>
-					</tfoot>
-
-				</table>
-
-			</section>
-
-		<% end %>
-
 	<% end %>
 
 	<%= render "devise/shared/links" %>
+
+	<% if !(err = devise_error_messages!).blank? %>
+
+		<section class="decorated_wrap shrinked">
+
+			<table class="for_forms no_results">
+
+				<caption>
+					Chyba
+				</caption>
+
+				<tbody>
+
+					<tr>
+						<td>
+							<%= err %>
+						</td>
+					</tr>
+
+				<tfoot>
+					<tr>
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+				</tfoot>
+
+			</table>
+
+		</section>
+	<% end %>
 
 <% end %>
 

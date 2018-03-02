@@ -1,26 +1,42 @@
 body.new.registrations,
+body.create.registrations,
 body.new.sessions,
 body.new.passwords
 
+
 {
+     //height: 100%;
 
     main {
+       // height: 100%;
 
         article.login {
+             //height: 100%;
             margin: 0 auto;
-            margin-top: 50%;
+           // margin-top: 50%;
+            //padding-top: -50%;
 
             section.login {
-                margin-top: -50%;
-
+                //margin-bottom: 50%;
+//margin-top: -100%;
+                /*
                 & > * {
-                    float: left;
+                    //float: left;
                     margin-right: 1em;
 
                     &:last-child {
                         margin-right: 0;
                     }
                 }
+
+                & > form {
+                    float: left;
+                }
+
+                section {
+                    margin: 1em 0;
+                }
+                */
             }
 
             /*@media only screen and (max-width: 480px) {
