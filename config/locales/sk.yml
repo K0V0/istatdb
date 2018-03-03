@@ -28,6 +28,7 @@ sk:
     i_am_showing: zobrazujem
     items: položky
     item: položku
+    error: Chyba
 
   items_table:
     results_count: počet výsledkov

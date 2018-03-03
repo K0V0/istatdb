@@ -6,16 +6,22 @@ article.manufacturers.show {
 			table-layout: fixed;
 
 			td, th {
-				width:50%;
+
+				&.local_tarics-description {
+					width:100%;
+				}
 			}
 		}
 
 		@media only screen and (max-width: 480px) {
 
+			td, th {
+				width:100%;
+			}
+
 			table#manufacturers-local_taric {
 
-				td, th {
-					width:100%;
+				th, td {
 
 					&.local_tarics-kncode {
 						font-weight: bold;
@@ -23,10 +29,24 @@ article.manufacturers.show {
 				}
 			}
 
-			table#manufacturers-good { 
+			table#manufacturers-impexpcompany_manufacturer {
 
 				td, th {
-					width:100%;
+
+					&.impexpcompanies-company_name {
+						font-weight: bold;
+						width:100%;
+					}
+
+					&.trade_types-type {
+						text-align: right;
+					}
+				}
+			}
+
+			table#manufacturers-good {
+
+				td, th {
 
 					&.goods-ident {
 						font-weight: bold;

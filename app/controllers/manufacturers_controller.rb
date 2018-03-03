@@ -25,6 +25,7 @@ class ManufacturersController < ApplicationController
 
 	def show_action
 		super
+        @for_impexpcompaniestable = @record.impexpcompany_manufacturers.preload(:impexpcompany, :incoterm, :trade_type)
 		@for_goodstable = @record.goods.preload(:local_taric)
 		@for_tarictable = @for_goodstable.select('distinct "goods"."local_taric_id"')
 	end

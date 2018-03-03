@@ -1,4 +1,4 @@
-article.manufacturers { 
+article.manufacturers {
 
 	section {
 
@@ -39,24 +39,35 @@ article.manufacturers {
 						width:100%;
 					}
 
-					&.impexpcompanies-company_name {
-						font-style: italic;
-					}
+					&.inner_table {
 
-					&.local_tarics-kncode, &.impexpcompany_manufacturers-invoices_correct, &.incoterms-shortland {
-						text-align: right;
-					}
+						table {
 
-					table.inner_table {
+							th, td {
 
-						td, th {
-							width: 50%;
-							vertical-align: top;
+								&.manufacturers-name {
+									font-weight: bold;
+									width:100%;
+								}
 
-							table.inner_table {
+								&.impexpcompanies-company_name {
+									font-style: italic;
+									width:50%;
+								}
 
-								td, th {
-									width: 100%;
+								&.local_tarics-kncode {
+									width:50%;
+									text-align: right;
+								}
+
+								&.incoterms-shortland,
+								&.trade_types-type,
+								&.impexpcompany_manufacturers-invoices_correct {
+									width: 33.3%;
+								}
+
+								&.impexpcompany_manufacturers-invoices_correct {
+									text-align: right;
 								}
 							}
 						}
@@ -64,7 +75,7 @@ article.manufacturers {
 				}
 
 				td {
-					&.manufacturers-name { 
+					&.manufacturers-name {
 						margin-bottom: 0.25em;
 					}
 				}

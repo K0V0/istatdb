@@ -1,0 +1,55 @@
+<%
+    err = []
+    if defined? from_flash
+        flash.each do |name, msg|
+             err.push(msg) if msg.is_a?(String)
+        end
+    else
+        err = resource.errors.full_messages
+    end
+%>
+
+<% if !err.blank? %>
+
+    <article class="login_errors">
+
+        <section class="decorated_wrap shrinked">
+
+            <table class="for_forms no_results">
+
+                <thead>
+
+                </thead>
+
+                <tbody>
+
+                    <tr class="no_results">
+                       <td colspan="10">
+                          <%= t 'actions.error' %>
+                       </td>
+                    </tr>
+                    <tr class="solution">
+                        <td>
+                           <ul>
+                               <% err.each do |e| %>
+                                    <li> <%= e %> </li>
+                               <% end %>
+                            </ul>
+                        </td>
+                    </tr>
+
+                <tfoot>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </section>
+
+    </article>
+
+<% end %>

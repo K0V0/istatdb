@@ -62,14 +62,9 @@
 
 			<% if content_for? :login %>
 
-				<article class="login">
-					<section class="login">
-						<%= yield :login %>
-					</section>
-				</article>
+				<%= yield :login %>
 
 			<% end %>
-
 
 			<%= yield %>
 

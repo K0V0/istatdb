@@ -27,6 +27,15 @@ sk:
         unconfirmed_email: Nepotvrdený email
         unlock_token: Odomykací kľúč
         updated_at: Aktualizované
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: ostal nevyplnený
+            password:
+              blank: ostalo nevyplnené
+
   devise:
     confirmations:
       confirmed: Váš účet bol úspešne overený. Teraz ste prihlásený.
@@ -37,7 +46,7 @@ sk:
     failure:
       already_authenticated: Už ste prihlásený.
       inactive: Váš účet ešte nebol aktivovaný.
-      invalid:
+      invalid: Nesprávne prihlasovacie údaje.
       last_attempt: Máte ešte posledný pokus pred tým, než sa vám zamkne konto.
       locked: Váš účet je zamknutý.
       not_found_in_database:
@@ -141,6 +150,7 @@ sk:
         one: "%{resource} nebol uložený kvôli chybe:"
         other: "%{resource} nebol uložený kvôli %{count} chybám:"
 
+
   user:
     signup: Vytvoriť používateľský účet
     signup_short: Vytvoriť účet
@@ -149,16 +159,23 @@ sk:
     login_title: Prihlásenie sa
     forgot_password: Zabudnuté heslo
     remember: Zapamätať prihlásenie
+    characters_minimum: minimálny počet znakov
+    send_me_new_password: Odoslať inštrukcie na reset hesla
 
 
 en:
   activerecord:
     models:
       user: User
-    #attributes:
-      #user:
-        #email: login e-mail
-        #password: Password
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: is blank
+            password:
+              blank: is not filled up
+
 
   user:
     signup: Create user account

@@ -1,15 +1,19 @@
 en:
   activerecord:
     models:
-      impexpcompany_manufacturer: Administrative unit(s) <-> Supplier(s)/Consumer(s) 
+      impexpcompany_manufacturer: Administrative unit(s) <-> Supplier(s)/Consumer(s)
     attributes:
       impexpcompany_manufacturer:
-        invoices_correct: Documents correct 
+        invoices_correct: Documents correct
+        incoterm_id: Delivery term
+        trade_type_id: Type of operation
 
 sk:
   activerecord:
     models:
-      impexpcompany_manufacturer: Spravodajské jednotky <-> Výrobcovia/odberatelia 
+      impexpcompany_manufacturer: Spravodajské jednotky <-> Výrobcovia/odberatelia
     attributes:
       impexpcompany_manufacturer:
-        invoices_correct: Poskytuje správne údaje 
+        invoices_correct: Poskytuje správne údaje
+        incoterm_id: Dodacia podmienka
+        trade_type_id: Obcodná operácia

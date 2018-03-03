@@ -38,6 +38,19 @@
 
 					</article>
 
+					<article class="decorated_wrap shrinked select_trade_type">
+
+						<%= render('layouts/elements/input_select',
+							obj: d,
+							collection: @trade_types,
+							method_to_get_vals: :id,
+							method_to_get_texts: :type,
+							send_parameters_name: :trade_type_id,
+							blank_text: "---"
+						) %>
+
+					</article>
+
 					<article class="decorated_wrap shrinked invoices_correct">
 
 						<%= render('layouts/elements/yesno_select',

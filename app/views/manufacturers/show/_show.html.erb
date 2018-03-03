@@ -1,7 +1,7 @@
 
 <% content_for :show_content do %>
 
-	<%= render('layouts/shared/show_item_basic_info', 
+	<%= render('layouts/shared/show_item_basic_info',
 		fields: [
 			[:name]
 		]
@@ -9,14 +9,30 @@
 
 	<%= render('layouts/shared/items_table',
 
-		object: @record.impexpcompanies,
+		object: @for_impexpcompaniestable,
 
 		fields: {
-			company_name: {}
+			impexpcompany: [
+				company_name: {}
+			],
+			incoterm: [
+				shortland: {
+					fill_if_empty: true
+				}
+			],
+			trade_type: [
+				type: {
+					fill_if_empty: true
+				}
+			],
+			invoices_correct: {
+				fill_if_empty: true
+			}
 		},
 
 		options: [
-			caption: true,
+			caption: Impexpcompany.model_name.human,
+			head: true,
 			foot: true,
 			html_options: {
 				main_class: "shrinked"
@@ -47,7 +63,9 @@
 
 		options: [
 			caption: t('activerecord.models.local_taric'),
-			head: true,
+			head: {
+				span: 2
+			},
 			foot: true,
 			html_options: {
 				main_class: "shrinked",
@@ -64,13 +82,13 @@
 		object: @for_goodstable,
 
 		fields: {
-			ident: { 
+			ident: {
 				is_link: {
 					remote: true
-				} 
+				}
 			},
 			description: {
-				
+
 			},
 			local_taric: [
 				kncode: {

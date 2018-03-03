@@ -1,87 +1,62 @@
 
 <% content_for :login do %>
 
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	<%= render "devise/shared/error", resource: resource %>
 
-		<section class="decorated_wrap shrinked">
+	<article class="login">
 
-			<table class="for_forms">
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-				<caption>
-					<%= t 'user.signup' %>
-				</caption>
+			<section class="decorated_wrap shrinked">
 
-				<tbody>
+				<table class="for_forms">
 
-					<tr>
-						<td>
-							<%= f.label :email %><br />
-		   					<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<%= f.label :password %>
-		    				<% if @minimum_password_length %>
-		    					<em>&nbsp;(<%= @minimum_password_length %> characters minimum)&nbsp;</em>
-		    				<% end %><br />
-		    				<%= f.password_field :password, autocomplete: "off" %>
-						</td>
-					</tr>
-					<% if devise_mapping.rememberable? -%>
+					<caption>
+						<%= t 'user.signup' %>
+					</caption>
+
+					<tbody>
+
 						<tr>
 							<td>
-		    					<%= f.label :password_confirmation %><br />
-		    					<%= f.password_field :password_confirmation, autocomplete: "off" %>
+								<%= f.label :email %><br />
+			   					<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 							</td>
 						</tr>
-					<% end -%>
-					<tr>
-						<td class="buttons">
-							<%= f.submit t('user.signup_short') %>
-						</td>
-					</tr>
+						<tr>
+							<td>
+								<%= f.label :password %>
+			    				<% if @minimum_password_length %>
+			    					<em>&nbsp;(<%= "#{t('user.characters_minimum')}: #{@minimum_password_length}" %>)&nbsp;</em>
+			    				<% end %><br />
+			    				<%= f.password_field :password, autocomplete: "off" %>
+							</td>
+						</tr>
+						<% if devise_mapping.rememberable? -%>
+							<tr>
+								<td>
+			    					<%= f.label :password_confirmation %><br />
+			    					<%= f.password_field :password_confirmation, autocomplete: "off" %>
+								</td>
+							</tr>
+						<% end -%>
+						<tr>
+							<td class="buttons">
+								<%= f.submit t('user.signup_short') %>
+							</td>
+						</tr>
 
-				</tbody>
+					</tbody>
 
-			</table>
+				</table>
 
-		</section>
+			</section>
 
-	<% end %>
+		<% end %>
 
-	<%= render "devise/shared/links" %>
+		<%= render "devise/shared/links" %>
 
-	<% if !(err = devise_error_messages!).blank? %>
-
-		<section class="decorated_wrap shrinked">
-
-			<table class="for_forms no_results">
-
-				<caption>
-					Chyba
-				</caption>
-
-				<tbody>
-
-					<tr>
-						<td>
-							<%= err %>
-						</td>
-					</tr>
-
-				<tfoot>
-					<tr>
-						<td>
-							&nbsp;
-						</td>
-					</tr>
-				</tfoot>
-
-			</table>
-
-		</section>
-	<% end %>
+	</article>
 
 <% end %>
 

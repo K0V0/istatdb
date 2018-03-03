@@ -23,6 +23,8 @@ class ImpexpcompanyManufacturersController < ApplicationController
 					detail.local_taric = LocalTaric.find(pars[:local_taric_id])
 				end
 			end
+			# assign other attributes
+			detail.assign_attributes(permitted_pars(pars).except!(:local_taric_id, :local_taric, :local_taric_attributes))
 			details_saved[detail.id] = detail.save
 		end
 
@@ -40,6 +42,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 		@incoterms = Incoterm.all
 		@local_tarics = LocalTaric.all
 		@local_taric = LocalTaric.new
+		@trade_types = TradeType.all
 	end
 
 	def permitted_pars pars
@@ -48,6 +51,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 			:id,
 			:local_taric_id,
 			:incoterm_id,
+			:trade_type_id,
 			:invoices_correct,
 			local_taric: [:kncode, :description, :id, :allow_search_as_new]
 		)

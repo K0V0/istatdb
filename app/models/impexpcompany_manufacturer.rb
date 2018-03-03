@@ -10,6 +10,8 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
 	belongs_to :incoterm, inverse_of: :impexpcompany_manufacturers
 
+    belongs_to :trade_type, inverse_of: :impexpcompany_manufacturers
+
     accepts_nested_attributes_for :local_taric, update_only: true
 
 end

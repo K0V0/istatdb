@@ -1,5 +1,5 @@
 
-<% content_for :items_table do 
+<% content_for :items_table do
 
 render('layouts/shared/items_table',
 
@@ -28,6 +28,11 @@ render('layouts/shared/items_table',
 					fill_if_empty: true
 				}
 			],
+			trade_type: [
+				type: {
+					fill_if_empty: true
+				}
+			],
 			invoices_correct: {
 				fill_if_empty: true,
 				call_decorator: :bool_to_human,
@@ -37,13 +42,13 @@ render('layouts/shared/items_table',
 
 	errors: [
 		no_results: {}
-	], 
+	],
 
 	options: [
 		head: true,
 		foot: true,
 		change_on_smallscreen: true
 	]
-) 
- 
+)
+
 end %>

@@ -28,6 +28,7 @@ en:
     i_am_showing: showing
     items: items
     item: item
+    error: Error
 
   items_table:
     results_count: results count

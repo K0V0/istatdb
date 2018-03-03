@@ -1,6 +1,6 @@
 class ImpexpcompaniesController < ApplicationController
 
-	before_action do 
+	before_action do
 		is_subsection_of(parent_controller: :settings)
 	end
 
@@ -14,9 +14,10 @@ class ImpexpcompaniesController < ApplicationController
 		super
 		# this include only taric code, incoterm and correct invoices mark
 		# only for impexpcompany shown
+
 		@for_manufacturerstable = @record.manufacturers
-			.joins(impexpcompany_manufacturers: [:incoterm, :local_taric])
-			.includes(impexpcompany_manufacturers: [:incoterm, :local_taric])
+			.joins(impexpcompany_manufacturers: [:local_taric, :incoterm])
+			.includes(impexpcompany_manufacturers: [:local_taric, :incoterm])
 
 		@for_tarictable = @record.goods
 			.preload(:local_taric)

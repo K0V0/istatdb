@@ -1,39 +1,44 @@
 
 <% content_for :login do %>
 
-    <section class="decorated_wrap shrinked">
+    <%= render "devise/shared/error", resource: resource %>
 
-        <table class="for_forms">
+    <article class="login">
 
-            <caption>
-                <%= t('user.forgot_password') %>
-            </caption>
+        <section class="decorated_wrap shrinked">
 
-            <tbody>
-                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                  <%= devise_error_messages! %>
+            <table class="for_forms">
 
-                    <tr>
-                        <td>
-                            <%= f.label :email %><br />
-                            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                        </td>
-                    </tr>
+                <caption>
+                    <%= t('user.forgot_password') %>
+                </caption>
 
-                    <tr>
-                        <td class="buttons">
-                            <%= f.submit "Send me reset password instructions" %>
-                        </td>
-                    </tr>
+                <tbody>
+                    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-                <% end %>
-            </tbody>
+                        <tr>
+                            <td>
+                                <%= f.label :email %><br />
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                            </td>
+                        </tr>
 
-        </table>
+                        <tr>
+                            <td class="buttons">
+                                <%= f.submit t('user.send_me_new_password') %>
+                            </td>
+                        </tr>
 
-    </section>
+                    <% end %>
+                </tbody>
 
-    <%= render "devise/shared/links" %>
+            </table>
+
+        </section>
+
+        <%= render "devise/shared/links" %>
+
+    </article>
 
 <% end %>
 

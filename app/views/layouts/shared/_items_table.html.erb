@@ -52,7 +52,11 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 				<thead>
 					<tr>
-						<%= items_table_head(fields, object.model) %>
+						<%# if (span = o.try(:[], :span)) %>
+							<%#= items_table_head(fields, object.model, span) %>
+						<%# else %>
+							<%= items_table_head(fields, object.model) %>
+						<%# end %>
 						<% if is_in_administrative %>
 							<th class="edit_delete_columns_fillup" colspan="2">&nbsp;</th>
 						<% end %>

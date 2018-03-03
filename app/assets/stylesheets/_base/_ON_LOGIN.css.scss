@@ -1,55 +1,57 @@
+@import "variables";
+
 body.new.registrations,
 body.create.registrations,
 body.new.sessions,
-body.new.passwords
-
+body.new.passwords,
+body.create.passwords
 
 {
-     //height: 100%;
-
     main {
-       // height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
 
-        article.login {
-             //height: 100%;
-            margin: 0 auto;
-           // margin-top: 50%;
-            //padding-top: -50%;
+        article {
 
-            section.login {
-                //margin-bottom: 50%;
-//margin-top: -100%;
-                /*
-                & > * {
-                    //float: left;
-                    margin-right: 1em;
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                }
-
-                & > form {
-                    float: left;
-                }
-
-                section {
-                    margin: 1em 0;
-                }
-                */
+            section {
+                margin: 1em;
             }
 
-            /*@media only screen and (max-width: 480px) {
+            &.login_errors {
+                max-width: 50%;
 
-                section.decorated_wrap {
-                    float: none;
-                    margin: 0.75em 0;
+                section {
 
-                    &:first-child {
-                        margin-top:0.375em;
+                    table {
+
+                        tbody {
+
+                            tr.no_results {
+
+                                td {
+                                    border-bottom: 0.125em solid $halftone;
+                                    font-weight: bold;
+                                }
+                            }
+
+                            tr.solution {
+
+                                td {
+                                    padding-bottom: 0;
+
+                                    ul {
+                                        margin:0;
+                                        padding-left: 1em;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-            }*/
+            }
         }
     }
 }
