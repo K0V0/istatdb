@@ -11,28 +11,30 @@ module DecoratorsHelper
 		else
 			patt_mod = patt.chars.map { |p| "\s?[#{p}]" } .join
 			pattern = /(#{patt_mod})/i
-			tmp = str.gsub(pattern) do |x| 
+			tmp = str.gsub(pattern) do |x|
 				if x =~ /^\s/
 					" <#{tag.to_s}>#{x.strip}</#{tag.to_s}>"
-				else 
+				else
 					"<#{tag.to_s}>#{x}</#{tag.to_s}>"
-				end 
+				end
 			end .html_safe
 		end
 	end
 
 
-	### function using prevoius highlihting function to higlight occurences in 
+	### function using prevoius highlihting function to higlight occurences in
 	### ransack gem search results
 	# obj - 	resulting object
 	# param - 	wanted attribute, for ex. have object with results from clients database,
-	# 			and you want field with client name  
+	# 			and you want field with client name
 	def highlight_search obj, param, multiple_with=nil, return_patt=false
 		p = ""
 		if params.has_key? :q
 			if !params[:q].blank?
 				tmp = multiple_with || param
-				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^" + tmp.to_s + "_.+$")) }.first
+				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^(translations_)?" + tmp.to_s + "_.+$")) }.first
+				logger k, "k"
+				logger Regexp.new("^(translations_)?" + tmp.to_s + "_.+$"), "rgbx"
 				p = params[:q][(k.to_sym)] if !k.blank?
 			end
 		end
@@ -49,13 +51,13 @@ module DecoratorsHelper
 		end
 
 		return p if return_patt == true
-		highlight_searched str: obj.send(param), patt: p 
+		highlight_searched str: obj.send(param), patt: p
 	end
 
 
-	### function for formatting kncode number output 
+	### function for formatting kncode number output
 	# first part of HS/TARIC code is group of 4 numbers
-	# other parts are groups of 2 numbers 
+	# other parts are groups of 2 numbers
 	def num_to_kncode num
 		return num.gsub(/.{2}/).with_index {|x, i| i > 0 ? "#{x} " : "#{x}" } .strip
 	end

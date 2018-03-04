@@ -34,8 +34,9 @@ GenerateSearchQuery.prototype = {
 		var assoc_name = ref.data('searcher-assoc');
 
 		for (var i=0; i<keys_length; i++) {
-			elem_string += ('.' + assoc_name + '_' + keys[i]);
-			if (i < keys_length-1) { elem_string += ', '; } 
+			//logger(keys[i]);
+			elem_string += ('.' + assoc_name + '_' + keys[i].replace('translations_', ''));
+			if (i < keys_length-1) { elem_string += ', '; }
 		}
 		//console.log(elem_string);
 		return elem_string;
@@ -49,7 +50,7 @@ GenerateSearchQuery.prototype = {
 		$.ajax({
 		  	method: 	"POST",
 		 	url: 		'/' + wndw.data('searcher-assoc').pluralize() + '/new_select_search',
-		  	data: { 
+		  	data: {
 		  		q: 					toto.generateQueryString(wndw),
 		  		model: 				wndw.data('searcher-assoc'),
 		  		source_controller: 	$('body').data('controller_name').singularize(),
@@ -66,11 +67,15 @@ GenerateSearchQuery.prototype = {
 		var scheme_keys = Object.keys(ransack_scheme);
 
 		for (var i=0; i<scheme_keys.length; i++) {
+			//logger(scheme_keys[i].replace("translations_", ""));
 			var qs_key = scheme_keys[i] + '_' + ransack_scheme[ scheme_keys[i] ];
-			var qs_val = ref.find('.' + ref.data('searcher-assoc') + '_' + scheme_keys[i]).val();
+			//logger(qs_key);
+			var qs_val = ref.find('.' + ref.data('searcher-assoc') + '_' + scheme_keys[i].replace("translations_", "")).val();
+			//logger(qs_val);
 			querystring[qs_key] = qs_val;
 		}
 
+		//logger(querystring);
 		return querystring;
 	}
 }
