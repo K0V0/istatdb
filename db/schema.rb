@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303010545) do
+ActiveRecord::Schema.define(version: 20180303144154) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -130,9 +130,19 @@ ActiveRecord::Schema.define(version: 20180303010545) do
   add_index "intertables", ["manufacturer_id"], name: "index_intertables_on_manufacturer_id"
   add_index "intertables", ["uom_id"], name: "index_intertables_on_uom_id"
 
+  create_table "local_taric_translations", force: :cascade do |t|
+    t.integer  "local_taric_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "description"
+  end
+
+  add_index "local_taric_translations", ["local_taric_id"], name: "index_local_taric_translations_on_local_taric_id"
+  add_index "local_taric_translations", ["locale"], name: "index_local_taric_translations_on_locale"
+
   create_table "local_tarics", force: :cascade do |t|
     t.string   "kncode"
-    t.string   "description"
     t.string   "additional_info"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

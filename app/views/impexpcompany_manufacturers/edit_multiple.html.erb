@@ -84,7 +84,21 @@
 
 		<% end %>
 
-		<%= new_edit(type: :submit) %>
+		<%= new_edit(type: :submit) do %>
+
+			<%= link_to(
+				t('impexpcompany_manufacturer.back_to_manufacturer'),
+				edit_manufacturer_path(params[:id]),
+				class: "button"
+			) %>
+
+			<%= link_to(
+				t('impexpcompany_manufacturer.back_to_manufacturers'),
+				manufacturers_path,
+				class: "button"
+			) %>
+
+		<% end %>
 
 	<% end %>
 

@@ -31,6 +31,14 @@ module ApplicationConcern
   		@form_url = { url: url }
  	end
 
+ 	def remake_params_for_i18n
+ 		logger controller_name, "controller_name"
+ 		logger params[:q]
+ 		#if controller_name.classify.constantize.try(:translated?, field)
+
+ 		#end
+ 	end
+
 	def build_if_empty(*assocs)
 
 		if action_name == "new" || action_name == "create"

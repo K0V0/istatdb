@@ -36,6 +36,12 @@
 
 		<% end %>
 
+		<% if !block.nil? %>
+
+			<% block.call().html_safe %>
+
+		<% end %>
+
 	</div>
 
 </article>

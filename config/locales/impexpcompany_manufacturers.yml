@@ -17,3 +17,6 @@ sk:
         invoices_correct: Poskytuje správne údaje
         incoterm_id: Dodacia podmienka
         trade_type_id: Obcodná operácia
+  impexpcompany_manufacturer:
+    back_to_manufacturer: Späť na vlastnosti výrobcu/odberateľa
+    back_to_manufacturers: Storno a návrat na vyhľadávanie

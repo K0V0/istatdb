@@ -33,7 +33,6 @@ gem 'ransack', git: 'https://github.com/K0V0/ransack'
 
 #gem 'ransack', path: '/home/kovo/:. GitHub/ransack'
 
-
 gem 'jquery-turbolinks'
 
 #gem 'active_link_to'
@@ -59,6 +58,8 @@ gem 'clipboard-rails'
 gem 'devise'
 
 gem 'rubocop'
+
+gem 'globalize', '~> 5.0.0'
 
 #gem 'memory-stats-js-rails'
 

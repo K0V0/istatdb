@@ -32,6 +32,11 @@ class ApplicationController < ActionController::Base
   )
 
   before_action(
+    :remake_params_for_i18n,
+    only: [:search, :new_select_search]
+  )
+
+  before_action(
   	:index_action,
   	only: :index,
   	if: :user_logged_and_model_exist

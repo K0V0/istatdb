@@ -3,7 +3,8 @@ class LocalTaric < ActiveRecord::Base
 	extend OrderAsSpecified
 
 	include Defaults
-	#include SkipNotAllowedSearchfield
+
+	translates :description
 
 	has_many :goods, inverse_of: :local_taric
 
@@ -26,8 +27,9 @@ class LocalTaric < ActiveRecord::Base
 		end
 	end
 
-	scope :default_order, -> { 
+	scope :default_order, -> {
+		#with_translations(I18n.locale)
 		order(kncode: :asc)
 	}
-	
+
 end

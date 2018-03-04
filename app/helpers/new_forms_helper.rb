@@ -192,8 +192,34 @@ module NewFormsHelper
         return nil
     end
 
-    def generate_error_for_field
+    def generate_search_instructions(ss, assoc)
+        logger ss, "search instr"
+        logger ss[:query].to_json
+        logger assoc.to_s
+        new_query = {}
 
+        ss[:query].each do |k, v|
+            logger k, "qo k"
+            logger v, "qo v"
+
+           # logger assoc.to_s.classify.constantize.try(:translated?, k)
+            if assoc.to_s.classify.constantize.try(:translated?, k)
+                new_query["translations_" + k.to_s] = v
+            else
+                new_query[k] = v
+            end
+
+            logger new_query, "new query"
+           #
+            #{}"data-searcher-query=\"#{new_query.to_json}\"".html_safe
+        end
+
+        #{}"data-searcher-query=\"#{new_query.to_json}\"".html_safe
+        #"data-searcher-assoc=#{assoc.to_s}"
+        #
+        #
+        return "data-searcher-query=#{new_query.to_json}" +
+        " data-searcher-assoc=#{assoc.to_s}"
     end
 
 end
