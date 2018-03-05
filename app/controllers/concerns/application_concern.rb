@@ -22,7 +22,6 @@ module ApplicationConcern
   	end
 
   	def task_banned_for_user?
-  		#logger current_user.is_admin, "is_admin"
   		@task_banned_for_user = (_ban_admin_tasks! == true)&&(!current_user.is_admin)
   	end
 

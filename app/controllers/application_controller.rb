@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   	only: [:index, :search, :show, :administrative],
   	if: -> { @user_logged_and_model_exist }) {
     searcher_for(
-    	searcher_settings
+    	_searcher_settings
     )
   }
 
@@ -36,97 +36,11 @@ class ApplicationController < ActionController::Base
     if: -> { !@task_banned_for_user }
   )
 
- # before_action(
-  #	:index_action,
-  #	only: :index,
-  #	if: :user_logged_and_model_exist?
-  #)
-
-  #before_action(
-  #	:search_action,
-  #	only: :search,
-  #	if: :user_logged_and_model_exist?
-  #)
-
-  #before_action(
-  #	:administrative_action,
-  #	only: :administrative,
-  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  #before_action(
-  #	:end_administrative_action,
-  #	only: :end_administrative,
-  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  #before_action(
-  #	:show_action,
-  #	only: :show,
-  #	if: :user_logged_and_model_exist?
-  #)
-
-  #before_action(
-  #	:new_action,
-  #	only: :new,
-  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  #before_action(
-  #	:create_action,
-  #	only: :create,
-  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  #before_action(
-  #	:edit_action,
-  #	only: :edit,
-  	#if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  #before_action(
-  #  :update_action,
-   # only: :update,
-   # if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  #before_action(
-  #	:destroy_action,
-  #	only: [:destroy, :delete],
-  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
-  #)
-
-  before_action(
-  	:load_vars,
-  	only: [:new, :edit, :edit_multiple, :update, :update_multiple, :create],
-  	if: -> { @user_logged_and_model_exist }
-  )
-
-  before_action(
-  	:loads_for_search_panel,
-  	only: [:index, :search, :show, :administrative],
-  	if: -> { @user_logged_and_model_exist }
-  )
-
-  #before_action(
-  #	:apicall_search_action,
-  #	only: :new_select_search,
-  #	if: :user_logged_and_model_exist?
-  #)
-
-  #before_action(
-  	#:apicall_exist_action,
-  	#only: :check_existence,
-  	#if: :user_logged_and_model_exist?
-  #)
-
   before_action(
   	:remember_allow_search_as_new,
   	only: [:new, :edit, :update, :create, :update_multiple, :edit_multiple],
   	if: -> { @user_logged_and_model_exist }
   )
-
-  #before_action :task_banned_for_user?
 
   def index
     index_action if @user_logged_and_model_exist
@@ -209,12 +123,15 @@ class ApplicationController < ActionController::Base
   end
 
   def index_action
+    _loads_for_search_panel
   end
 
   def search_action
+    _loads_for_search_panel
   end
 
   def administrative_action
+    _loads_for_search_panel
   	controller_mem_set("is_in_administrative", true)
   end
 
@@ -224,28 +141,31 @@ class ApplicationController < ActionController::Base
 
   def show_action
     @record = @model.find(params[:id])
+    _loads_for_search_panel
   end
 
   def new_action
     @record = @model.new
-    around_new
+    _load_vars
+    _around_new
   end
 
   def create_action
     @record = @model.new(permitted_params)
-    around_create
+    _load_vars
+    _around_create
   end
 
   def create_action_2
     saved = @record.save
-    around_create_after_save
+    _around_create_after_save
     if saved
-      continue = around_create_after_save_ok
+      continue = _around_create_after_save_ok
       if continue != false
         if params.has_key? :add_next
           if params[:add_next] == '1'
             @record = @record.dup
-            around_do_add_another
+            _around_do_add_another
             render "#{@render_command_prepend}new"
             continue = false
           end
@@ -253,29 +173,31 @@ class ApplicationController < ActionController::Base
       end
       redirect_to public_send("#{controller_name.pluralize}_path") if continue != false
     else
-      around_create_after_save_failed
+      _around_create_after_save_failed
       render "#{@render_command_prepend}new"
     end
   end
 
   def edit_action
     show_action
-    around_edit
+    _load_vars
+    _around_edit
   end
 
   def update_action
     @record = @model.find(params[:id])
+    _load_vars
   end
 
   def update_action_2
-    around_update
+    _around_update
     saved = @record.update(permitted_params)
-    around_update_after_save
+    _around_update_after_save
     if saved
-      around_update_after_save_ok
+      _around_update_after_save_ok
       redirect_to controller: controller_name, action: 'index'
     else
-      around_update_after_save_failed
+      _around_update_after_save_failed
       render "#{@render_command_prepend}new"
     end
   end
@@ -309,7 +231,6 @@ class ApplicationController < ActionController::Base
   	@results_count = controller_name.classify.constantize
   		.where("#{params[:field].to_s} LIKE ?", "#{params[:text]}")
   		.size
-
   	respond_to do |format|
   		format.js { render('layouts/shared/new_edit_form/record_exist') }
   	end

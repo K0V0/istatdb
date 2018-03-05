@@ -1,10 +1,12 @@
 class ImpexpcompanyManufacturersController < ApplicationController
 
 	def edit_multiple
+		_load_vars
 		@details = ImpexpcompanyManufacturer.where(manufacturer_id: params[:id])
 	end
 
 	def update_multiple
+		_load_vars
 		details_saved = {}
 		@details = ImpexpcompanyManufacturer.where(manufacturer_id: params[:id])
 
@@ -38,7 +40,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 
 	private
 
-	def load_vars
+	def _load_vars
 		@incoterms = Incoterm.all
 		@local_tarics = LocalTaric.all
 		@local_taric = LocalTaric.new

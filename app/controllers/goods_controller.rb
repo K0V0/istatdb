@@ -8,11 +8,11 @@ class GoodsController < ApplicationController
 
 	private
 
-	def searcher_settings
+	def _searcher_settings
 		{ preload: :local_taric, paginate: true, autoshow: true }
 	end
 
-	def loads_for_search_panel
+	def _loads_for_search_panel
 		@impexpcompanies = Impexpcompany.all.default_order
 		if (params.deep_has_key?(:q, :impexpcompany_filter))&&(!params[:q][:impexpcompany_filter].blank?)
 			@manufacturers = @impexpcompanies.find(params[:q][:impexpcompany_filter]).manufacturers.default_order
@@ -21,7 +21,7 @@ class GoodsController < ApplicationController
 		end
 	end
 
-	def load_vars
+	def _load_vars
 		@local_tarics = LocalTaric.all
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
@@ -30,35 +30,35 @@ class GoodsController < ApplicationController
 		@manufacturers_for_uoms = @record.manufacturers
 	end
 
-	def around_new
+	def _around_new
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
-	def around_create_after_save_failed
+	def _around_create_after_save_failed
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
 	end
 
-	def around_edit
+	def _around_edit
 		build_if_empty :impexpcompanies, :manufacturers
 		@uom = Uom.new if !@record.uoms.any?
 	end
 
-	def around_update_after_save
+	def _around_update_after_save
 		build_if_empty :impexpcompanies, :manufacturers
 	end
 
-	def around_update_after_save_failed
+	def _around_update_after_save_failed
 		@uom = Uom.new if !@record.uoms.any?
 	end
 
-	def around_do_add_another
+	def _around_do_add_another
 		@record.ident = ""
 		@record.description = ""
 		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms
 	end
 
 	def permitted_params
-		params.require(:good).permit(
+		params[:good].permit(
 			:id,
 			:ident,
 			:description,

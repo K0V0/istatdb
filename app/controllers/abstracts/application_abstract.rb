@@ -1,7 +1,7 @@
 module ApplicationAbstract
 	extend ActiveSupport::Concern
 
-	def searcher_settings
+	def _searcher_settings
    		{ paginate: true, disabled: true }
  	end
 
@@ -9,49 +9,49 @@ module ApplicationAbstract
   		false
   	end
 
-	def around_new
+	def _around_new
 	end
 
-	def around_edit
+	def _around_edit
 	end
 
-	def around_create
+	def _around_create
 	end
 
-	def around_create_after_save
+	def _around_create_after_save
 	end
 
-	def around_create_after_save_ok
+	def _around_create_after_save_ok
 	end
 
-	def around_create_after_save_failed
+	def _around_create_after_save_failed
 	end
 
-	def around_update
+	def _around_update
 	end
 
-	def around_update_after_save
+	def _around_update_after_save
 	end
 
-	def around_update_after_save_ok
+	def _around_update_after_save_ok
 	end
 
-	def around_update_after_save_failed
+	def _around_update_after_save_failed
 	end
 
-	def load_vars
+	def _load_vars
 	end
 
-	def loads_for_search_panel
+	def _loads_for_search_panel
 	end
 
-	def load_new_edit_vars
+	def _load_new_edit_vars
 	end
 
-	def load_create_update_vars
+	def _load_create_update_vars
 	end
 
-	def around_do_add_another
+	def _around_do_add_another
 	end
 
 end

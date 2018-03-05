@@ -2,7 +2,7 @@ class LocalTaricsController < ApplicationController
 
     private
 
-    def searcher_settings
+    def _searcher_settings
     	{ paginate: true, autoshow: false }
     end
 

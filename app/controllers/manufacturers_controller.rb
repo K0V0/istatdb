@@ -2,7 +2,7 @@ class ManufacturersController < ApplicationController
 
   	private
 
-  	def searcher_settings
+  	def _searcher_settings
   		{
   			object: Manufacturer.preload_items,
         	autoshow: false,
