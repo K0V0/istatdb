@@ -16,11 +16,15 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
 
+  before_action :user_logged_and_model_exist?
+
+  before_action :task_banned_for_user?
+
   before_action :inits
 
   before_action(
   	only: [:index, :search, :show, :administrative],
-  	if: :user_logged_and_model_exist) {
+  	if: -> { @user_logged_and_model_exist }) {
     searcher_for(
     	searcher_settings
     )
@@ -28,150 +32,165 @@ class ApplicationController < ActionController::Base
 
   before_action(
     :generate_form_url,
-    only: [:new, :edit, :create, :update]
+    only: [:new, :edit, :create, :update],
+    if: -> { !@task_banned_for_user }
   )
 
-  before_action(
-    :remake_params_for_i18n,
-    only: [:search, :new_select_search]
-  )
+ # before_action(
+  #	:index_action,
+  #	only: :index,
+  #	if: :user_logged_and_model_exist?
+  #)
 
-  before_action(
-  	:index_action,
-  	only: :index,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:search_action,
+  #	only: :search,
+  #	if: :user_logged_and_model_exist?
+  #)
 
-  before_action(
-  	:search_action,
-  	only: :search,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:administrative_action,
+  #	only: :administrative,
+  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
-  before_action(
-  	:administrative_action,
-  	only: :administrative,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:end_administrative_action,
+  #	only: :end_administrative,
+  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
-  before_action(
-  	:end_administrative_action,
-  	only: :end_administrative,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:show_action,
+  #	only: :show,
+  #	if: :user_logged_and_model_exist?
+  #)
 
-  before_action(
-  	:show_action,
-  	only: :show,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:new_action,
+  #	only: :new,
+  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
-  before_action(
-  	:new_action,
-  	only: :new,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:create_action,
+  #	only: :create,
+  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
-  before_action(
-  	:create_action,
-  	only: :create,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:edit_action,
+  #	only: :edit,
+  	#if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
-  before_action(
-  	:edit_action,
-  	only: :edit,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #  :update_action,
+   # only: :update,
+   # if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
-  before_action(
-    :update_action,
-    only: :update,
-    if: :user_logged_and_model_exist
-  )
-
-  before_action(
-  	:destroy_action,
-  	only: [:destroy, :delete],
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:destroy_action,
+  #	only: [:destroy, :delete],
+  #	if: -> { user_logged_and_model_exist? && !task_banned_for_user? }
+  #)
 
   before_action(
   	:load_vars,
   	only: [:new, :edit, :edit_multiple, :update, :update_multiple, :create],
-   	if: :user_logged_and_model_exist
-   )
+  	if: -> { @user_logged_and_model_exist }
+  )
 
   before_action(
   	:loads_for_search_panel,
   	only: [:index, :search, :show, :administrative],
-  	if: :user_logged_and_model_exist
+  	if: -> { @user_logged_and_model_exist }
   )
 
-  before_action(
-  	:apicall_search_action,
-  	only: :new_select_search,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  #	:apicall_search_action,
+  #	only: :new_select_search,
+  #	if: :user_logged_and_model_exist?
+  #)
 
-  before_action(
-  	:apicall_exist_action,
-  	only: :check_existence,
-  	if: :user_logged_and_model_exist
-  )
+  #before_action(
+  	#:apicall_exist_action,
+  	#only: :check_existence,
+  	#if: :user_logged_and_model_exist?
+  #)
 
   before_action(
   	:remember_allow_search_as_new,
   	only: [:new, :edit, :update, :create, :update_multiple, :edit_multiple],
-  	if: :user_logged_and_model_exist
+  	if: -> { @user_logged_and_model_exist }
   )
 
+  #before_action :task_banned_for_user?
+
   def index
+    index_action if @user_logged_and_model_exist
   	render "#{@render_command_prepend}index"
   end
 
   def search
+    search_action if @user_logged_and_model_exist
     render "#{@render_command_prepend}index"
   end
 
   def show
+    show_action if @user_logged_and_model_exist
   	render "#{@render_command_prepend}show"
   end
 
   def new
-  	render "#{@render_command_prepend}new"
+    new_action if @user_logged_and_model_exist && !@task_banned_for_user
+  	render(@task_banned_for_user ? "" : "#{@render_command_prepend}new")
   end
 
   def create
-    create_action_2
+    if !@task_banned_for_user
+      create_action
+      create_action_2
+    end
   end
 
   def edit
-    render "#{@render_command_prepend}new"
+    edit_action if @user_logged_and_model_exist && !@task_banned_for_user
+    render(@task_banned_for_user ? "" : "#{@render_command_prepend}new")
   end
 
   def update
-    update_action_2
+    if !@task_banned_for_user
+      update_action
+      update_action_2
+    end
   end
 
   def delete
+    destroy_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
   def destroy
+    destroy_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
   def new_select_search
+    apicall_search_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
   def check_existence
+    apicall_exist_action if @user_logged_and_model_exist
   end
 
   def administrative
   	render "#{@render_command_prepend}index"
+    administrative_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
   def end_administrative
   	redirect_to action: "index"
+    end_administrative_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
   private

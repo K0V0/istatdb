@@ -1,0 +1,18 @@
+<% content_for :items_table do
+
+    render('layouts/shared/items_table',
+
+        fields: {
+            version_num: {},
+            change: {}
+        },
+
+        options: [
+            head: true,
+            foot: true,
+            change_on_smallscreen: true,
+            admin_restricted_actions: true
+        ]
+    )
+
+end %>

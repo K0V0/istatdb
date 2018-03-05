@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
 
+  def is_admin?
+    self.is_admin == "t" ? true : false
+  end
+
 end

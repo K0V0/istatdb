@@ -255,6 +255,17 @@ Rails.application.routes.draw do
     to: "changes#index",
     as: "changes"
 
+  get "others/changelog/new",
+    to: "changes#new",
+    as: "new_change"
+
+  get "others/changelog/administrative",
+    to: "changes#administrative"
+
+  get "others/changelog/end_administrative",
+    to: "changes#end_administrative"
+
+
 
 
   ### Nastavenia

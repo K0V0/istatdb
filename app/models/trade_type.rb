@@ -1,5 +1,7 @@
 class TradeType < ActiveRecord::Base
 
+    translates :description
+
     has_many :impexpcompany_manufacturers, inverse_of: :trade_type
 
 	self.inheritance_column = nil

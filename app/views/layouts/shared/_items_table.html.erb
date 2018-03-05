@@ -2,7 +2,7 @@
 html_class_main = "items_table decorated_wrap"
 html_class_table = "items rows_colored with_efects"
 editable = true
-
+show_administrative_action = true
 if !defined? object
 	object = @result
 end
@@ -25,6 +25,8 @@ if defined? options
 	if o = options[0].try(:[], :change_on_smallscreen)
 		html_class_main += " change_on_smallscreen"
 	end
+	restrict_to_admin = true if options[0].try(:[], :admin_restricted_actions)
+	show_administrative_action = (restrict_to_admin == false)||(current_user.email == "admin@admin.hsdb")
 	editable = false if options[0].try(:[], :not_editable)
 end
 
@@ -105,10 +107,12 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 	<% else %>
 
-		<% if object.klass.name.constantize.all.size > 0 %>
+		<% if object.model_name.to_s.classify.constantize.all.size > 0 %>
 			<%= items_table_errors_handler(errors[0], object) if defined? errors %>
 		<% else %>
-			<%= render('layouts/shared/items_table/no_items')  %>
+			<%= render(
+				'layouts/shared/items_table/no_items'
+			) %>
 		<% end %>
 
 	<% end %>

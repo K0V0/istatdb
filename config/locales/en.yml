@@ -37,6 +37,7 @@ en:
     solutions: Possible solution(s)
     add_new_solution: new item(s)
     no_results: No results to display
+    requires_admin: Modifications of this section can require user account with administrator rights. Try to contact such person for help.
 
   goods_search:
     impexpcompany_prompt: do NOT apply...

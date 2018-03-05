@@ -17,8 +17,13 @@ module ApplicationConcern
 	  	@render_command_prepend = parent_controller.nil? ? "" : "#{parent_controller}/#{controller_name}/"
   	end
 
-  	def user_logged_and_model_exist
-  		return user_signed_in?&&model_exist?
+  	def user_logged_and_model_exist?
+  		return @user_logged_and_model_exist = user_signed_in?&&model_exist?
+  	end
+
+  	def task_banned_for_user?
+  		#logger current_user.is_admin, "is_admin"
+  		@task_banned_for_user = (_ban_admin_tasks! == true)&&(!current_user.is_admin)
   	end
 
   	def generate_form_url
@@ -29,14 +34,6 @@ module ApplicationConcern
   			'edit'
   		end
   		@form_url = { url: url }
- 	end
-
- 	def remake_params_for_i18n
- 		logger controller_name, "controller_name"
- 		logger params[:q]
- 		#if controller_name.classify.constantize.try(:translated?, field)
-
- 		#end
  	end
 
 	def build_if_empty(*assocs)
@@ -152,14 +149,14 @@ module ApplicationConcern
 
 
 	def controller_mem_set prefix, val
-	@MEM.send(
-	  "#{prefix.to_s}_#{controller_name.singularize.underscore}=",
-	  val
-	)
+		@MEM.send(
+		  "#{prefix.to_s}_#{controller_name.singularize.underscore}=",
+		  val
+		)
 	end
 
 	def controller_mem_get prefix
-	@MEM.send("#{prefix.to_s}_#{controller_name.singularize.underscore}")
+		@MEM.send("#{prefix.to_s}_#{controller_name.singularize.underscore}")
 	end
 
 	module ClassMethods

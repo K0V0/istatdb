@@ -5,6 +5,10 @@ module ApplicationAbstract
    		{ paginate: true, disabled: true }
  	end
 
+ 	def _ban_admin_tasks!
+  		false
+  	end
+
 	def around_new
 	end
 

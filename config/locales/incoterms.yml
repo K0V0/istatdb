@@ -5,6 +5,7 @@ en:
     attributes:
       incoterm:
         shortland: Term
+        description: Description
 
   helpers:
     submit:
@@ -19,6 +20,7 @@ sk:
     attributes:
       incoterm:
         shortland: Dodacia podmienka
+        description: Popis
 
   helpers:
     submit:

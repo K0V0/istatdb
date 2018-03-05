@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303144154) do
+ActiveRecord::Schema.define(version: 20180304231327) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 20180303144154) do
   add_index "impexpcompany_manufacturers", ["manufacturer_id"], name: "index_impexpcompany_manufacturers_on_manufacturer_id"
   add_index "impexpcompany_manufacturers", ["trade_type_id"], name: "index_impexpcompany_manufacturers_on_trade_type_id"
 
+  create_table "incoterm_translations", force: :cascade do |t|
+    t.integer  "incoterm_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+  end
+
+  add_index "incoterm_translations", ["incoterm_id"], name: "index_incoterm_translations_on_incoterm_id"
+  add_index "incoterm_translations", ["locale"], name: "index_incoterm_translations_on_locale"
+
   create_table "incoterms", force: :cascade do |t|
     t.text     "shortland"
     t.datetime "created_at", null: false
@@ -176,9 +187,19 @@ ActiveRecord::Schema.define(version: 20180303144154) do
 
   add_index "settings", ["user_id"], name: "index_settings_on_user_id"
 
+  create_table "trade_type_translations", force: :cascade do |t|
+    t.integer  "trade_type_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "description"
+  end
+
+  add_index "trade_type_translations", ["locale"], name: "index_trade_type_translations_on_locale"
+  add_index "trade_type_translations", ["trade_type_id"], name: "index_trade_type_translations_on_trade_type_id"
+
   create_table "trade_types", force: :cascade do |t|
     t.text "type"
-    t.text "description"
   end
 
   create_table "units", force: :cascade do |t|
@@ -193,12 +214,22 @@ ActiveRecord::Schema.define(version: 20180303144154) do
   add_index "units", ["impexpcompany_id"], name: "index_units_on_impexpcompany_id"
   add_index "units", ["manufacturer_id"], name: "index_units_on_manufacturer_id"
 
-  create_table "uom_types", force: :cascade do |t|
-    t.string   "uom_type"
+  create_table "uom_type_translations", force: :cascade do |t|
+    t.integer  "uom_type_id", null: false
+    t.string   "locale",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "full_name"
-    t.string   "description"
+    t.text     "full_name"
+    t.text     "description"
+  end
+
+  add_index "uom_type_translations", ["locale"], name: "index_uom_type_translations_on_locale"
+  add_index "uom_type_translations", ["uom_type_id"], name: "index_uom_type_translations_on_uom_type_id"
+
+  create_table "uom_types", force: :cascade do |t|
+    t.string   "uom_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "uoms", force: :cascade do |t|
@@ -218,18 +249,19 @@ ActiveRecord::Schema.define(version: 20180303144154) do
   add_index "uoms", ["uom_type_id"], name: "index_uoms_on_uom_type_id"
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "is_admin",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
