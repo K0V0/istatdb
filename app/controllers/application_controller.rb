@@ -98,8 +98,8 @@ class ApplicationController < ActionController::Base
   end
 
   def administrative
-  	render "#{@render_command_prepend}index"
     administrative_action if @user_logged_and_model_exist && !@task_banned_for_user
+    render "#{@render_command_prepend}index"
   end
 
   def end_administrative
@@ -140,23 +140,34 @@ class ApplicationController < ActionController::Base
   end
 
   def show_action
-    @record = @model.find(params[:id])
+    @record = @modelPost.with_translations(I18n.locale).find(params[:id])
     _loads_for_search_panel
   end
 
   def new_action
     @record = @model.new
+    logger @record.inspect, "record new"
+    #logger LocalTaric.new.inspect, "r2"
+    #logger LocalTaric.with_translations(I18n.locale).new.inspect, "r2"
+    #logger (a = LocalTaric.includes(:translations).new).inspect, "r2"
+    #logger a.description = "kkt", "r2 desc"
+   # logger (a = LocalTaric.new).inspect, "r2"
+    #logger a.description = "kkt", "r2 desc"
+    #logger a.description, "a desc"
     _load_vars
     _around_new
   end
 
   def create_action
     @record = @model.new(permitted_params)
+    logger @record.inspect, "record create"
+    #@record = LocalTaric.includes(:translations).new(permitted_params)
     _load_vars
     _around_create
   end
 
   def create_action_2
+    logger @record.inspect, "record"
     saved = @record.save
     _around_create_after_save
     if saved

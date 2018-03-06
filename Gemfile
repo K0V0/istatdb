@@ -61,6 +61,8 @@ gem 'rubocop'
 
 gem 'globalize', '~> 5.0.0'
 
+gem 'globalize-accessors'
+
 #gem 'memory-stats-js-rails'
 
 #gem 'paloma', '~> 5.1.0'
