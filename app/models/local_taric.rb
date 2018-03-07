@@ -4,9 +4,7 @@ class LocalTaric < ActiveRecord::Base
 
 	include Defaults
 
-	translates :description, touch: true
-	globalize_accessors locales: [:en, :sk], attributes: [:description]
-	accepts_nested_attributes_for :translations, :allow_destroy => true
+	translates :description#, touch: true
 
 	has_many :goods, inverse_of: :local_taric
 
@@ -15,13 +13,14 @@ class LocalTaric < ActiveRecord::Base
 	validates :kncode, presence: true
 	validates :kncode, numericality: { only_integer: true }
 	validate :kncode_length_valid
+	validates_presence_of :description
+	validate :record_identical
 
-	#accepts_nested_attributes_for :translations, :allow_destroy => true
-	validates_associated :translations
-  	translation_class.validates :description, presence: true
-
-	#validates :description, presence: true
-	#validates_uniqueness_of :kncode, scope: :description
+	def record_identical
+		if LocalTaric.exists?(kncode: self.kncode, description: self.description)
+			errors.add(:description, :not_unique)
+		end
+	end
 
 	def kncode_length_valid
 		if !kncode.nil?

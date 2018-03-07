@@ -10,4 +10,9 @@ class LocalTaricsController < ApplicationController
       params[:local_taric].permit(:id, :kncode, :description, :additional_info)
     end
 
+    def _around_create_after_save
+        logger @record.errors.inspect
+
+    end
+
 end

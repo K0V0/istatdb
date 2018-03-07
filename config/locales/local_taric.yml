@@ -18,6 +18,7 @@ en:
               not_exactly_8_or_10: Nomenclature code length is 8 or 10 numbers
             description:
               blank: Text describing nomenclature is blank
+              not_unique: Record is not unique. If You want to store existing TARIC code to database with alternative description text, probably this text is there.
 
   helpers:
     submit:
@@ -45,10 +46,11 @@ sk:
               not_exactly_8_or_10: Nesprávna dĺžka, kód nomenklatúry zadávajte ako 8 alebo 10 číselný kód
             description:
               blank: Popis skupiny ostal nevyplnený
+              not_unique: Rovnaký záznam sa už v databáze nachádza. Zmeňte TARIC kód alebo popis
 
   helpers:
     submit:
       local_taric:
         create: Pridať kód HS/TARIC
         update: Uložiť zmeny
-              
+
