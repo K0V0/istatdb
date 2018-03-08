@@ -9,7 +9,7 @@ end
 
 cn = controller_name.to_s
 case action_name
-	when 'index', 'administrative', 'end_administrative', 'search'
+	when 'index', 'administrative', 'end_administrative', 'search', 'destroy', 'delete'
 
 	else
 		cn += "-#{object.first.class.name.underscore}"
@@ -107,12 +107,14 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 	<% else %>
 
-		<% if object.model_name.to_s.classify.constantize.all.size > 0 %>
-			<%= items_table_errors_handler(errors[0], object) if defined? errors %>
-		<% else %>
-			<%= render(
-				'layouts/shared/items_table/no_items'
-			) %>
+		<% if !object.nil? %>
+			<% if object.model_name.to_s.classify.constantize.all.size > 0 %>
+				<%= items_table_errors_handler(errors[0], object) if defined? errors %>
+			<% else %>
+				<%= render(
+					'layouts/shared/items_table/no_items'
+				) %>
+			<% end %>
 		<% end %>
 
 	<% end %>

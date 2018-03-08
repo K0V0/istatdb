@@ -1,6 +1,14 @@
 module ApplicationAbstract
 	extend ActiveSupport::Concern
 
+	def _parent_controller
+		nil
+	end
+
+	def _allowed_params
+		[]
+	end
+
 	def _searcher_settings
    		{ paginate: true, disabled: true }
  	end

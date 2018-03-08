@@ -35,6 +35,11 @@ module ApplicationConcern
   		@form_url = { url: url }
  	end
 
+ 	def permitted_params
+ 		logger controller_name.underscore.singularize.to_sym
+ 		params[controller_name.underscore.singularize.to_sym].permit(_allowed_params)
+ 	end
+
 	def build_if_empty(*assocs)
 
 		if action_name == "new" || action_name == "create"

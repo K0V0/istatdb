@@ -2,14 +2,25 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
-	def show
-		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
-	end
-
 	private
 
 	def _searcher_settings
 		{ preload: :local_taric, paginate: true, autoshow: true }
+	end
+
+	def _allowed_params
+		[
+			:id,
+			:ident,
+			:description,
+			:local_taric_id,
+			local_taric_attributes: [:kncode, :description, :id, :allow_search_as_new],
+			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
+			impexpcompany_ids: [],
+			manufacturers_attributes: [:id, :name, :allow_search_as_new],
+			manufacturer_ids: [],
+			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy]
+		]
 	end
 
 	def _loads_for_search_panel
@@ -57,18 +68,11 @@ class GoodsController < ApplicationController
 		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms
 	end
 
-	def permitted_params
-		params[:good].permit(
-			:id,
-			:ident,
-			:description,
-			:local_taric_id,
-			local_taric_attributes: [:kncode, :description, :id, :allow_search_as_new],
-			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
-			impexpcompany_ids: [],
-			manufacturers_attributes: [:id, :name, :allow_search_as_new],
-			manufacturer_ids: [],
-			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy]
-		)
+	### OVERRIDES
+
+	def show_action
+		super
+		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
 	end
+
 end

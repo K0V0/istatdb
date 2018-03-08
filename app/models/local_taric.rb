@@ -1,13 +1,11 @@
 class LocalTaric < ActiveRecord::Base
 
 	extend OrderAsSpecified
-
 	include Defaults
 
 	translates :description#, touch: true
 
 	has_many :goods, inverse_of: :local_taric
-
 	has_many :impexpcompany_manufacturers, inverse_of: :local_taric
 
 	validates :kncode, presence: true
@@ -16,9 +14,19 @@ class LocalTaric < ActiveRecord::Base
 	validates_presence_of :description
 	validate :record_identical
 
+	before_destroy :check_if_used
+
+	scope :default_order, -> {
+		order(kncode: :asc)
+	}
+
+	private
+
 	def record_identical
 		if LocalTaric.exists?(kncode: self.kncode, description: self.description)
-			errors.add(:description, :not_unique)
+			if self.id.blank?
+				errors.add(:description, :not_unique)
+			end
 		end
 	end
 
@@ -32,8 +40,11 @@ class LocalTaric < ActiveRecord::Base
 		end
 	end
 
-	scope :default_order, -> {
-		order(kncode: :asc)
-	}
+	def check_if_used
+		if goods.any? || impexpcompany_manufacturers.any?
+			errors.add(:base, :is_used)
+			return false
+		end
+	end
 
 end

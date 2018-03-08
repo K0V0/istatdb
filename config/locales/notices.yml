@@ -1,0 +1,7 @@
+en:
+  notices:
+    cannot_destroy: Cannot destroy item because is in use by other(s) item(s). Deletion can results problems in database.
+
+sk:
+  notices:
+    cannot_destroy: Nemožno vymazať túto položku, je asociovaná s inými polžkami v databáze. Vymazanie by mohlo spôsobiť problémy.

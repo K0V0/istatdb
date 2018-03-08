@@ -23,9 +23,15 @@ var an = "<%= an = action_name %>";
 	JS.H.run('once');
 	JS.H.run('on_change');
 
-	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative' %>
+	$('body').append('<%=j render "layouts/base/flash_messages" if !flash.empty? %>');
 
-		window.history.pushState("", "", "<%= url_for(action: action_name)%>");
+	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete' %>
+
+		if (an != 'delete') {
+			window.history.pushState("", "", "<%= url_for(action: action_name)%>");
+		} else {
+			window.history.pushState("", "", "<%= url_for(action: :index)%>");
+		}
 
 		searchform_actions = body.find('section.search_bar > form > div > div.searchform_actions');
 
@@ -34,11 +40,11 @@ var an = "<%= an = action_name %>";
 		searchform_edit_button = searchform_actions.children('a.edit_item_from_search');
 
 		searchform_delete_button = searchform_actions.children('a.delete_item_from_search');
-		
+
 		searchform_administrative_button = searchform_actions.children('a.administration_from_search');
 
 		$('main > article').empty();
-		
+
 		var tiriri = (AN == "index")||(AN == "search");
 		$('#back_or_search').val(
 			tiriri ? t('search.submit') : t('actions.back')
@@ -46,7 +52,7 @@ var an = "<%= an = action_name %>";
 
 	<% end %>
 
-	<% if an=='index'||an=='search'||an=='administrative'||an=='end_administrative' %>
+	<% if an=='index'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete' %>
 
 		body.addClass('noscroll');
 		searchform_edit_button.addClass('hidden');
@@ -54,7 +60,7 @@ var an = "<%= an = action_name %>";
 		searchform_administrative_button.removeClass('hidden');
 
 	<% elsif an == 'show' %>
-		
+
 		searchform_edit_button
 			.removeClass('hidden')
 			.attr('href', '<%= url_for(action: :edit) %>');
@@ -98,7 +104,7 @@ var an = "<%= an = action_name %>";
 		$('<%=j yield(:show_content) %>').appendTo('main > article');
 
 		$('<input type="hidden" name="page" value="<%= params[:page] %>">').appendTo('body');
-		
+
 	<% end %>
 
 <% end %>

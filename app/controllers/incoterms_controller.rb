@@ -1,13 +1,13 @@
 class IncotermsController < ApplicationController
 
-	before_action do
-		is_subsection_of(parent_controller: :settings)
-	end
-
     private
 
-    def permitted_params
-      params[:incoterm].permit(:id, :shortland, :description)
+    def _parent_controller
+        :settings
+    end
+
+    def _allowed_params
+        [ :id, :description, :shortland ]
     end
 
 end

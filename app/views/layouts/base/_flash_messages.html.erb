@@ -1,0 +1,15 @@
+<div class="flash_messages">
+    <div class="decorated_wrap shrinked">
+        <table class="no_results">
+            <thead></thead>
+            <tbody>
+                <% flash.each do |key, value| %>
+                    <tr class="flash <%= "#{key}" %>">
+                        <td> <%= value %> </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
