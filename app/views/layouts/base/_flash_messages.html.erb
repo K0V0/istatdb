@@ -1,7 +1,9 @@
 <div class="flash_messages">
     <div class="decorated_wrap shrinked">
         <table class="for_dialogbox">
-            <caption></caption>
+            <caption>
+                <%= t 'notice' %>
+            </caption>
             <thead></thead>
             <tbody>
                 <% flash.each do |key, value| %>
@@ -9,11 +11,11 @@
                         <td> <%= value %> </td>
                     </tr>
                 <% end %>
-                <tr>
-                    <td> 
+                <tr class="buttons">
+                    <td>
                         <button type="button" class="button cancel_flash">
                             <%= t('actions.back') %>
-                        </button> 
+                        </button>
                     </td>
                 </tr>
             </tbody>

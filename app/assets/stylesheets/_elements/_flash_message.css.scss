@@ -1,3 +1,5 @@
+@import "variables";
+
 body {
 
     div.flash_messages {
@@ -8,11 +10,52 @@ body {
         bottom:0;
         background: rgba(0,0,0,0.5);
         z-index: 9999;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
+
+        div {
+            max-width: 50%;
+
+            table {
+
+                caption {
+                    background-color: $dark_red;
+                    color: $white;
+                }
+
+                tbody {
+
+                    tr {
+
+                        td {
+                            padding-top: 0.25em;
+                            padding-bottom: 0.25em;
+                        }
+
+                        &:first-child {
+                            td { padding-top: 0.375em; }
+                        }
+
+                        &:last-child {
+                            td { padding-bottom: 0.375em; }
+                        }
+
+                        &.buttons {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            div {
+                max-width: 90%;
+            }
+        }
     }
 }

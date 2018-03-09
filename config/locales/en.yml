@@ -1,6 +1,7 @@
 en:
   is_true: "Yes"
   is_false: "No"
+  notice: "Notice"
 
   search:
     clear: Clear fields

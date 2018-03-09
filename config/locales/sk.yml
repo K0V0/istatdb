@@ -1,6 +1,7 @@
 sk:
   is_true: "Áno"
   is_false: "Nie"
+  notice: "Upozornenie"
 
   search:
     clear: Vymazať polia
