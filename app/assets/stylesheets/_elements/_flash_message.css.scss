@@ -18,6 +18,7 @@ body {
 
         div {
             max-width: 50%;
+            pointer-events: none;
 
             table {
 
@@ -44,6 +45,7 @@ body {
                         }
 
                         &.buttons {
+                            //pointer-events: auto;
                             text-align: right;
                         }
                     }
