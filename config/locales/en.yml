@@ -50,4 +50,7 @@ en:
     try_to_add_as_new_1b: button if You want to create a new record
     try_to_add_as_new_2: Button is activated automatically if 0 records met the search criteria in case it was not manipulated with it by user before
 
+  html5validations:
+    email: Check out e-mail address format
+
 

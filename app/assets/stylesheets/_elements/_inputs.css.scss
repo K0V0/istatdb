@@ -20,7 +20,7 @@ input, select, textarea {
 		border-color: $superwhite;
 	}
 
-	&:focus,  {
+	&:focus {
 		border-color: $input_selected;
 		background-color: $superwhite;
 	}
@@ -33,7 +33,10 @@ input, select, textarea {
 
 	&.error{
 		background-color: $input_validation_error;
-		//border-color: $button_danger;
+
+		&:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0 100px $input_validation_error inset !important;
+		}
 
 		&:hover {
 			//background-color: $button_danger_hover;

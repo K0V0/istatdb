@@ -94,6 +94,19 @@ html {
 				font-size: 1.125em;
 				font-weight:normal;
 			}
+
+			div.form_errors {
+
+				span {
+					display: inline-block;
+					background-color: $button_danger;
+					color: white;
+					padding: 0.125em 0.25em;
+					margin: 0.125em;
+					margin-top: 0.25em;
+					border-radius: 0.25em;
+				}
+			}
 		}
 	}
 }

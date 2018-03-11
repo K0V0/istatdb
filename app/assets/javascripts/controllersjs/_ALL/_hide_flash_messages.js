@@ -7,10 +7,12 @@ HideFlashMessages.prototype = {
 
     init: function() {
         $(document).on('click', 'body > div.flash_messages', function(e) {
-            $(this).remove();
+            if (e.target == this) {
+                $(this).remove();
+            }
         });
-         $(document).on('click', 'body > div.flash_message > div', function(e) {
-            e.stopPropagation();
-        });
+       $(document).on('click', 'button.cancel_flash', function(e) {
+            $('body > div.flash_messages').remove();
+       });
     }
 }

@@ -18,7 +18,8 @@ body {
 
         div {
             max-width: 50%;
-            pointer-events: none;
+            //pointer-events: none;
+            z-index: 99999;
 
             table {
 
