@@ -4,6 +4,7 @@ footer {
 	background-color: $background_color;
 	color: $white;
 	flex: 0 1 auto;
+	z-index: 1;
 
 	section {
 		padding:0.125em 0.375em;

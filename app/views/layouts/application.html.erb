@@ -25,7 +25,11 @@
 		<input type="checkbox" id="show_paginator" role="button" class="hidden">
 		<input type="checkbox" id="show_searchpanel_opts" role="button" class="hidden" checked="checked">
 
-		<%= render('layouts/base/flash_messages') if !flash.empty? %>
+		<% show_flash = !flash.empty? && user_signed_in? %>
+
+		<div class="flash_messages <%= 'visible' if show_flash %>">
+			<%= render('layouts/base/flash_messages') if show_flash %>
+		</div>
 
 		<% if content_for? :mainmenu %>
 

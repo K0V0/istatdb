@@ -1,7 +1,7 @@
 
 <% content_for :login do %>
 
-	<%= render "devise/shared/error", resource: resource %>
+	<%= render "devise/shared/error", resource: resource, from_flash: true %>
 
 	<article class="login">
 

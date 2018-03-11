@@ -96,6 +96,10 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   @include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease, border-color $main_menu_mouse_actions_transition_time ease);
 }
 
+@mixin flashmessage_transitions() {
+  @include transition(background-color 0.375s linear);
+}
+
 @mixin transition_for_transform($amount-of-time) {
 	-webkit-transition: -webkit-transform $amount-of-time ease-in-out;
 	-moz-transition:    -moz-transform $amount-of-time ease-in-out;

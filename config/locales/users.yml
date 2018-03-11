@@ -44,15 +44,16 @@ sk:
       send_instructions: O niekoľko minút dostanete email s inštrukciami ako potvrdiť váš účet.
       send_paranoid_instructions: Ak sa váš email nachádza v našej databáze, o niekoľko minút dostanete email s inštrukciami ako potvrdiť váš účet.
     failure:
-      already_authenticated: Už ste prihlásený.
-      inactive: Váš účet ešte nebol aktivovaný.
-      invalid: Nesprávne prihlasovacie údaje.
-      last_attempt: Máte ešte posledný pokus pred tým, než sa vám zamkne konto.
-      locked: Váš účet je zamknutý.
-      not_found_in_database:
-      timeout: Vaša session vypršala. Na pokračovanie sa prosím znovu prihláste.
-      unauthenticated: Pred pokračovaním sa musíte zaregistrovať alebo prihlásiť.
-      unconfirmed: Pred pokračovaním musíte potvrdiť svoj účet.
+      user:
+        already_authenticated: Už ste prihlásený.
+        inactive: Váš účet ešte nebol aktivovaný.
+        invalid: Nesprávne prihlasovacie údaje.
+        last_attempt: Máte ešte posledný pokus pred tým, než sa vám zamkne konto.
+        locked: Váš účet je zamknutý.
+        not_found_in_database: Zadaný používateľ neexistuje
+        timeout: Vaša session vypršala. Na pokračovanie sa prosím znovu prihláste.
+        unauthenticated: Pred pokračovaním sa musíte zaregistrovať alebo prihlásiť.
+        unconfirmed: Pred pokračovaním musíte potvrdiť svoj účet.
     mailer:
       confirmation_instructions:
         action: Potvrdiť môj účet
