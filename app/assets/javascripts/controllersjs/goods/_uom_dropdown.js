@@ -5,7 +5,7 @@ function UomDropdown() {
 UomDropdown.prototype = {
 	constructor: UomDropdown,
 
-	init: function() {	
+	init: function() {
 		this.onSourceChange();
 		this.onUserChange();
 		this.onChange();
@@ -16,7 +16,7 @@ UomDropdown.prototype = {
 		var T = this;
 		$(document)
 		.find('select')
-		.filter(function() { 
+		.filter(function() {
 			return this.id.match("good_uoms_attributes_[0-9]+_(impexpcompany|manufacturer)_id");
 		})
 		.on('change', this, function() {
@@ -31,7 +31,7 @@ UomDropdown.prototype = {
 		var T = this;
 		$(document)
 		.find('select')
-		.filter(function() { 
+		.filter(function() {
 			return this.id.match("good_uoms_attributes_[0-9]+_(impexpcompany|manufacturer)_id");
 		})
 		.on('focusout', this, function() {
@@ -42,11 +42,11 @@ UomDropdown.prototype = {
 	},
 
 	onSourceChange: function() {
-		// collects (choosen) data from good's client and manufacturer lists 
+		// collects (choosen) data from good's client and manufacturer lists
 		var T = this;
 		$(document)
 		.find('article.impexpcompany_select, article.manufacturer_select')
-		.on('change', this, function(){ 
+		.on('change', this, function(){
 			T.H.updateDropdowns(this);
 			// run dropdowns update with collected data
 		});

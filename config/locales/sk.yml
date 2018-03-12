@@ -2,6 +2,9 @@ sk:
   is_true: "Áno"
   is_false: "Nie"
   notice: "Upozornenie"
+  confirmation: "Ste si istý ?"
+  ok: OK
+  cancel: Storno
 
   search:
     clear: Vymazať polia

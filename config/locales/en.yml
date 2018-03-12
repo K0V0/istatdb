@@ -2,6 +2,9 @@ en:
   is_true: "Yes"
   is_false: "No"
   notice: "Notice"
+  confirmation: "Are You sure?"
+  ok: OK
+  cancel: Cancel
 
   search:
     clear: Clear fields

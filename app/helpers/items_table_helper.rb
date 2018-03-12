@@ -82,8 +82,8 @@ module ItemsTableHelper
 					id: obj.id
 				},
 				data: { confirmation: t('actions.ru_sure_delete') },
-				method: :delete,
-				remote: true,
+				#method: :delete,
+				#remote: true,
 				class: "button danger"
 			)
 		output += "</td>"
