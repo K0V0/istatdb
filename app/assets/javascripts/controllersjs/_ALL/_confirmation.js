@@ -63,6 +63,7 @@ Confirmation.prototype = {
 
     confirm: function() {
         logger('confirm');
+        this.doAjax();
     },
 
     cancel: function() {
@@ -70,13 +71,14 @@ Confirmation.prototype = {
     },
 
     doAjax: function() {
-        /*$.ajax({
-          url: your_url,
+        var T = this;
+        $.ajax({
+          url: T.link.attr('href'),
           type: 'DELETE',
           success: function(result) {
-            // Do something with the result
+            
           }
-        });*/
+        });
     },
 
     confirmationDialog: function(text="") {

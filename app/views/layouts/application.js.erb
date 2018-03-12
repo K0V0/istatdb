@@ -24,6 +24,7 @@ var an = "<%= an = action_name %>";
 	JS.H.run('on_change');
 
 	$('body > div.flash_messages')
+		.empty()
 		.append('<%=j render "layouts/base/flash_messages" if !flash.empty? %>')
 		//.removeClass('novisible')
 		.addClass('visible');

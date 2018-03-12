@@ -1,9 +1,9 @@
-function HideFlashMessages() {
+function FlashMessages() {
     this.init();
 }
 
-HideFlashMessages.prototype = {
-    constructor: HideFlashMessages,
+FlashMessages.prototype = {
+    constructor: FlashMessages,
 
     init: function() {
         var T = this;
