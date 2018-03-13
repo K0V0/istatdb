@@ -162,6 +162,10 @@ sk:
     remember: Zapamätať prihlásenie
     characters_minimum: minimálny počet znakov
     send_me_new_password: Odoslať inštrukcie na reset hesla
+    edit: Upraviť prihlasovacie údaje
+    cancel: Odstrániť používateľský účet
+    cancel_warning: Chcete NAOZAJ odstrániť Váš účet? Tento úkon nie je možné vrátiť späť! Tovary, informácie o Výrobcoch/Odberateľoch a iné položky, ktoré ste ale nahrali zostanú k dispozícií pre ostatných.
+    change_pass: Zmeniť prihlasovacie údaje
 
 
 en:

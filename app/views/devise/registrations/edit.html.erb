@@ -1,43 +1,95 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= render 'layouts/base/main_menu' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<%= render "devise/shared/error", resource: resource %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<article class="login">
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <%#= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: "/settings/users/user/edit", html: { method: :put }) do |f| %>
+      <%#= devise_error_messages! %>
+      <section class="decorated_wrap shrinked">
+
+        <table class="for_forms">
+
+          <caption>
+            <%= t 'user.edit' %>
+          </caption>
+
+          <tbody>
+
+            <tr><td>
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </td></tr>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <tr><td>
+                Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+              </td></tr>
+            <% end %>
+
+            <tr><td>
+              <%= f.label :password %><br />
+              <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+              <% end %>
+            </td></tr>
+
+            <tr><td>
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </td></tr>
+
+            <tr><td>
+              <%= f.label :current_password %><br />
+              <i>(we need your current password to confirm your changes)</i><br />
+              <%= f.password_field :current_password, autocomplete: "off" %>
+            </td></tr>
+
+            <tr>
+              <td class="buttons">
+                <%= link_to t('actions.back'), :back, class: "button" %>
+                <%= f.submit t('actions.edit'), class: "button" %>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <section class="decorated_wrap shrinked">
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+        <table class="for_forms">
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+          <caption>
+            <%= t 'user.cancel' %>
+          </caption>
 
-<h3>Cancel my account</h3>
+          <thead class="danger">
+            <tr><th>
+               <%= t 'actions.delete_warning' %>
+            </th></tr>
+          </thead>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <tbody>
+            <tr>
+              <td class="buttons">
+                <%= link_to t('actions.back'), :back, class: "button" %>
+                <%= link_to t('user.cancel'), registration_path(resource_name), data: { confirmation: "#{t('user.cancel_warning')}" }, class: 'button danger' %>
+              </td>
+            </tr>
+          </tbody>
 
-<%= link_to "Back", :back %>
+        </table>
+
+    </section>
+
+</article>

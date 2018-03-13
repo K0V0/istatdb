@@ -23,11 +23,12 @@ var an = "<%= an = action_name %>";
 	JS.H.run('once');
 	JS.H.run('on_change');
 
-	$('body > div.flash_messages')
-		.empty()
-		.append('<%=j render "layouts/base/flash_messages" if !flash.empty? %>')
-		//.removeClass('novisible')
-		.addClass('visible');
+	<% if !flash.empty? && user_signed_in? %>
+		$('body > div.flash_messages')
+			.empty()
+			.append('<%=j render "layouts/base/flash_messages" %>')
+			.addClass('visible');
+	<% end %>
 
 	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete' %>
 

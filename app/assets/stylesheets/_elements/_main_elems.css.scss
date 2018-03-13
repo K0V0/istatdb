@@ -28,6 +28,7 @@ html {
 			flex-direction: column;
 			align-items: stretch;
 			background-color: $white;
+			z-index:1;
 
 			a {
 				text-decoration: none;

@@ -33,6 +33,7 @@ en:
     items: items
     item: item
     error: Error
+    not_allowed: You are not allowed to go into this section
 
   items_table:
     results_count: results count

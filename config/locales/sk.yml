@@ -33,6 +33,8 @@ sk:
     items: položky
     item: položku
     error: Chyba
+    not_allowed: Nemáte oprávnenie na vstup do tejto sekcie
+    delete_warning: Pozor! táto akcia je nezvratná!
 
   items_table:
     results_count: počet výsledkov

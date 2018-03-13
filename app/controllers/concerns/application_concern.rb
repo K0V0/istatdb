@@ -35,8 +35,16 @@ module ApplicationConcern
   		@form_url = { url: url }
  	end
 
+ 	def watch_if_allowed
+ 		if !@task_banned_for_user
+ 			yield
+ 		else
+	      	redirect_to(action: :index)
+	      	flash[:not_allowed] = t('actions.not_allowed')
+	    end
+ 	end
+
  	def permitted_params
- 		logger controller_name.underscore.singularize.to_sym
  		params[controller_name.underscore.singularize.to_sym].permit(_allowed_params)
  	end
 

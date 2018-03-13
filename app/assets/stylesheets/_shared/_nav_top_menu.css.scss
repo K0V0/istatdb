@@ -65,12 +65,10 @@ nav.top_menu {
 		color: $sub_menu_inactive_link_text;
 		@include menu_transitions();
 		@include scrollbar_top_menu_sub();
-		@include menu_open_smallscreen_transitions();
 		max-height: 256px;
 		overflow-y: hidden;
 
 		&.hover {
-			//@include menu_transitions();
 			background-color: $main_menu_2_submenu_active_link_hover;
 		}
 

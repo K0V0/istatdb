@@ -33,7 +33,7 @@
 
 <section class="decorated_wrap shrinked">
 
-	<table class="for_nontabular">
+	<table class="for_forms">
 
 		<caption>
 			<%= t 'settings.users.actions' %>
@@ -41,12 +41,17 @@
 
 		<tbody>
 			<tr>
-				<td>
+				<td class="buttons">
 					<%= link_to(
 						t('settings.users.logout'),
 						destroy_user_session_path,
 						method: :delete,
 						class: "button danger"
+					) %>
+					<%= link_to(
+						t('user.change_pass'),
+						edit_user_registration_path,
+						class: "button"
 					) %>
 				</td>
 			</tr>

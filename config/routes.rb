@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   ### nastavenie domovskej stranky
 
   root to: 'goods#index'
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
   post "manufacturers/new_select_search",
     to: "manufacturers#new_select_search"
 
-  ### check existence ajax call
+  ## check existence ajax call
 
   post "good/check_existence",
     to: "goods#check_existence"
@@ -40,7 +39,6 @@ Rails.application.routes.draw do
 
   post "trade_type/check_existence",
     to: "trade_types#check_existence"
-
 
 
 
@@ -241,14 +239,14 @@ Rails.application.routes.draw do
     to: "others#index",
     as: "others"
 
-  ### ostatne - kalkulacka
+  ## ostatne - kalkulacka
 
   #index
   get "others/calculator",
     to: "calculators#index",
     as: "calculators"
 
-  ### ostatne - zoznam zmien
+  ## ostatne - zoznam zmien
 
   #index
   get "others/changelog",
@@ -267,7 +265,6 @@ Rails.application.routes.draw do
 
 
 
-
   ### Nastavenia
 
   #index
@@ -279,7 +276,7 @@ Rails.application.routes.draw do
   post "settings",
     to: "settings#update_settings"
 
-  ### Nastavenia - spravodajske jednotky
+  ## Nastavenia - spravodajske jednotky
 
   #index
   get "settings/clientsdb",
@@ -324,7 +321,7 @@ Rails.application.routes.draw do
     to: "impexpcompanies#delete",
     as: "delete_impexpcompany"
 
-  ### Nastavenia - uoms
+  ## Nastavenia - uoms
 
   # index
   get "settings/uom_types",
@@ -369,8 +366,7 @@ Rails.application.routes.draw do
     to: "uom_types#delete",
     as: "delete_uom_type"
 
-
-  ### Nastavenia - incoterms
+  ## Nastavenia - incoterms
 
   # index
   get "settings/incoterms",
@@ -415,8 +411,7 @@ Rails.application.routes.draw do
     to: "incoterms#delete",
     as: "delete_incoterm"
 
-
-  ### Nastavenia - druhy obchodu
+  ## Nastavenia - druhy obchodu
 
   # index
   get "settings/trade_types",
@@ -461,12 +456,76 @@ Rails.application.routes.draw do
     to: "trade_types#delete",
     as: "delete_trade_type"
 
-
-  ### Nastavenia - pouzivatelia
+  ## Nastavenia - pouzivatelia
 
   # index
-  get "settings/users",
+  get "settings/users/user",
     to: "user_settings#index",
     as: "user_settings"
+
+  devise_scope :user do
+
+    # prihlasenie pouzivatela
+    get "/login",
+      to: "devise/sessions#new",
+      as: "new_user_session"
+
+    # nvm
+    post "/login",
+      to: "devise/sessions#create",
+      as: "user_session"
+
+    # odhlasenie
+    delete "/logout",
+      to: "devise/sessions#destroy",
+      as: "destroy_user_session"
+
+    # nvm
+    post "/password",
+      to: "devise/passwords#create",
+      as: "user_password"
+
+    get "/password/new",
+      to: "devise/passwords#new",
+      as: "new_user_password"
+
+    get "/password/edit",
+      to: "devise/passwords#edit",
+      as: "edit_user_password"
+
+    patch "/password",
+      to: "devise/passwords#update"
+
+    put "/password",
+      to: "devise/passwords#update"
+
+    get "/settings/users/user/cancel",
+      to: "devise/registrations#cancel",
+      as: "cancel_user_registration"
+
+    post "/",
+      to: "devise/registrations#create",
+      as: "user_registration"
+
+    get "/register",
+      to: "devise/registrations#new",
+      as: "new_user_registration"
+
+    get "/settings/users/user/edit",
+      to: "devise/registrations#edit",
+      as: "edit_user_registration"
+
+    patch "/",
+      to: "devise/registrations#update"
+
+    put "/settings/users/user/edit",
+      to: "devise/registrations#update"
+
+    delete "/",
+      to: "devise/registrations#destroy"
+
+  end
+
+  #devise_for :users
 
 end

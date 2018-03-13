@@ -22,8 +22,6 @@ FlashMessages.prototype = {
     hideMessages: function() {
         $('body > div.flash_messages').children().remove();
         $('body > div.flash_messages').removeClass('visible');
-        /*$('body > div.flash_messages').one('transitionend', function() {
-           $(this).addClass('novisible');
-        });*/
+        //$('body > div.flash_messages').addClass('novisible');
     }
 }

@@ -34,6 +34,11 @@ table {
 		width:100%;
 		line-height: 1.5em;
 		background-color: $wrap_border_color_2;
+
+		&.danger {
+			background-color: $button_danger;
+			color: $white;
+		}
 	}
 
 	thead {
@@ -44,6 +49,11 @@ table {
 			th {
 				text-align: left;
 			}
+		}
+
+		&.danger {
+			background-color: $button_danger;
+			color: $white;
 		}
 	}
 

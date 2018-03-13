@@ -77,7 +77,7 @@ class ManufacturersController < ApplicationController
         else
             render "new"
         end
-        around_update_after_save_ok if saved
+        _around_update_after_save_ok if saved
     end
 
 end

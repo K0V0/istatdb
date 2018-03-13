@@ -58,24 +58,28 @@ class ApplicationController < ActionController::Base
   end
 
   def new
-    new_action if @user_logged_and_model_exist && !@task_banned_for_user
-  	render(@task_banned_for_user ? "" : "#{@render_command_prepend}new")
+      watch_if_allowed do
+          new_action if @user_logged_and_model_exist
+          render("#{@render_command_prepend}new")
+      end
   end
 
   def create
-    if !@task_banned_for_user
+    watch_if_allowed do
       create_action
       create_action_2
     end
   end
 
   def edit
-    edit_action if @user_logged_and_model_exist && !@task_banned_for_user
-    render(@task_banned_for_user ? "" : "#{@render_command_prepend}new")
+    watch_if_allowed do
+      edit_action if @user_logged_and_model_exist
+      render("#{@render_command_prepend}new")
+    end
   end
 
   def update
-    if !@task_banned_for_user
+    watch_if_allowed do
       update_action
       update_action_2
     end
@@ -98,8 +102,10 @@ class ApplicationController < ActionController::Base
   end
 
   def administrative
-    administrative_action if @user_logged_and_model_exist && !@task_banned_for_user
-    render "#{@render_command_prepend}index"
+    watch_if_allowed do
+      administrative_action if @user_logged_and_model_exist
+      render "#{@render_command_prepend}index"
+    end
   end
 
   def end_administrative
