@@ -4,6 +4,7 @@ class LocalTaric < ActiveRecord::Base
 	include Defaults
 
 	translates :description#, touch: true
+	translates :additional_info
 
 	has_many :goods, inverse_of: :local_taric
 	has_many :impexpcompany_manufacturers, inverse_of: :local_taric

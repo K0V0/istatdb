@@ -25,8 +25,8 @@ Confirmation.prototype = {
         $(document)
             .find('div.flash_messages')
             .append(dialog)
-            .removeClass('novisible')
-            //.addClass('visible');
+            //.removeClass('novisible')
+            .addClass('visible');
         $(document)
             .find('div.flash_messages')
             .on('click', 'div > table > tbody > tr > td > button', function(e) {
@@ -57,7 +57,7 @@ Confirmation.prototype = {
           url: T.link.attr('href'),
           type: 'DELETE',
           success: function(result) {
-            //T.hideDialog();
+            T.hideDialog();
           }
         });
     },

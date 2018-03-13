@@ -27,7 +27,7 @@
 
 		<% show_flash = !flash.empty? && user_signed_in? %>
 
-		<div class="flash_messages <%= show_flash ? 'visible' : 'novisible' %>">
+		<div class="flash_messages <%= show_flash ? 'visible' : '' %>">
 			<%= render('layouts/base/flash_messages') if show_flash %>
 		</div>
 
