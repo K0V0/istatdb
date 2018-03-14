@@ -14,7 +14,7 @@ namespace :deletions do
     Change.delete_all
     Setting.delete_all
     TradeType.delete_all
-    #User.delete_all
+    User.delete_all
   end
 
 end
