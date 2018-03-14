@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313205845) do
+ActiveRecord::Schema.define(version: 20180314003010) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -126,20 +126,16 @@ ActiveRecord::Schema.define(version: 20180313205845) do
   end
 
   create_table "intertables", force: :cascade do |t|
-    t.integer  "intertables_id"
     t.integer  "good_id"
     t.integer  "manufacturer_id"
     t.integer  "impexpcompany_id"
-    t.integer  "uom_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
   add_index "intertables", ["good_id"], name: "index_intertables_on_good_id"
   add_index "intertables", ["impexpcompany_id"], name: "index_intertables_on_impexpcompany_id"
-  add_index "intertables", ["intertables_id"], name: "index_intertables_on_intertables_id"
   add_index "intertables", ["manufacturer_id"], name: "index_intertables_on_manufacturer_id"
-  add_index "intertables", ["uom_id"], name: "index_intertables_on_uom_id"
 
   create_table "local_taric_translations", force: :cascade do |t|
     t.integer  "local_taric_id",  null: false
@@ -162,9 +158,8 @@ ActiveRecord::Schema.define(version: 20180313205845) do
   create_table "manufacturers", force: :cascade do |t|
     t.string   "name"
     t.string   "plant"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "goods_manufacturers_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|

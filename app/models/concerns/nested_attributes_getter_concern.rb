@@ -17,15 +17,13 @@ module NestedAttributesGetterConcern
 				define_method "#{ids_method_name}=" do |arg|
 					# gets associated_ids (checked checkboxes ids)
 					filtered_arr = case arg
-					when String
+					when String, Fixnum
 						# singular assoc
 						arg
 					else
 						# has_many
 					 	arg.select { |a| !a.blank? }
 					end
-					#logger arg
-					#logger filtered_arr
 					instance_variable_set("@#{ids_method_name}", filtered_arr)
 					super arg
 				end
@@ -51,7 +49,6 @@ module NestedAttributesGetterConcern
 							super tmp
 						else
 							ids_checked = instance_variable_get("@#{ids_method_name}")
-							#logger arg
 							arg.each do |k, v|
 								if v.keys.first.to_s == "id"
 									if !ids_checked.include? v[:id]
@@ -60,7 +57,6 @@ module NestedAttributesGetterConcern
 								end
 							end
 							instance_variable_set("@#{attrs_method_name}", arg)
-							#logger arg
 							super arg
 						end
 					end
