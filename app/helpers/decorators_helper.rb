@@ -33,8 +33,6 @@ module DecoratorsHelper
 			if !params[:q].blank?
 				tmp = multiple_with || param
 				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^(translations_)?" + tmp.to_s + "_.+$")) }.first
-				logger k, "k"
-				logger Regexp.new("^(translations_)?" + tmp.to_s + "_.+$"), "rgbx"
 				p = params[:q][(k.to_sym)] if !k.blank?
 			end
 		end

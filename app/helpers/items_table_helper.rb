@@ -149,12 +149,8 @@ module ItemsTableHelper
 
 		output = ""
 		fields.each do |field, content|
-			#logger content, "content"
-			#logger content.length, "content length"
-			#logger content.flatten.length, "content[0] length"
 			if content.is_a? Hash
 
-				#logger content, "hash"
 				# is on current model attribute
 				output += "<th class=\"#{model.name.pluralize.underscore}-#{field.to_s}\">"
 				output += items_table_caption_decorator(content, model, field)
@@ -162,12 +158,10 @@ module ItemsTableHelper
 
 			elsif content.is_a? Array
 				# is inside associated
-				logger field, "filed"
 				if field.to_s.is_singular?
 					output += items_table_head(content[0], field.to_s.classify.constantize, content[0].length)
 				else
 					#spanned = span == 0 ? 1 : content[0].length
-					#logger content[0].length
 					#output += "<th class=\"inner_table\"><table class=\"inner_table\"><thead>"
 					output += "<th class=\"inner_table\" colspan=\"#{span}\"><table class=\"inner_table\"><thead>"
 					#output += "<th class=\"inner_table\"><table class=\"inner_table\"><thead>"
