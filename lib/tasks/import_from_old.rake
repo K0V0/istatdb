@@ -37,12 +37,12 @@ namespace :import_from_old do
         end
   end
 
-  # local_taric
-  # manufacturer
-  # impexpcompany
-  # good
-  # intertables
-  # impexpcompany_manufacturer
-  # uom
+  ## local_taric
+  ## manufacturer
+  ## impexpcompany
+  ## good
+  ## intertable
+  ## impexpcompany_manufacturer
+  ## uom
 
 end

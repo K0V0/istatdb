@@ -463,9 +463,11 @@ Rails.application.routes.draw do
     to: "user_settings#index",
     as: "user_settings"
 
+
+  devise_for :users, skip: :all
+
   devise_scope :user do
 
-    # prihlasenie pouzivatela
     get "/login",
       to: "devise/sessions#new",
       as: "new_user_session"
@@ -525,7 +527,5 @@ Rails.application.routes.draw do
       to: "devise/registrations#destroy"
 
   end
-
-  #devise_for :users
 
 end

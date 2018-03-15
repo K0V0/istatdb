@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 
+  #include Devise::Controllers::Helpers
   include ApplicationConcern
   include ApplicationAbstract
   #include BeforeRender
