@@ -16,13 +16,7 @@
 <article
  class="decorated_wrap shrinked <%= klass %>"
  id="<%= html_id %>"
- <%# if !(ss = searcher_settings).nil? %>
- 	<%# logger ss, "SS" %>
- 	<%#= "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query %>
- 	<%#= "data-searcher-assoc=#{assoc.to_s}" %>
- <%# end %>
  <% if !(ss = searcher_settings).nil? %>
- 	<%#= "data-searcher-assoc=#{assoc.to_s}" %>
  	<%= generate_search_instructions(ss, assoc) %>
  <% end %>
 >

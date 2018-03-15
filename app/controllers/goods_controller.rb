@@ -14,7 +14,7 @@ class GoodsController < ApplicationController
 			:ident,
 			:description,
 			:local_taric_id,
-			local_taric_attributes: [:kncode, :description, :id, :allow_search_as_new],
+			local_taric_attributes: [:kncode, :description, :allow_search_as_new],
 			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
 			impexpcompany_ids: [],
 			manufacturers_attributes: [:id, :name, :allow_search_as_new],
@@ -50,7 +50,7 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_edit
-		build_if_empty :impexpcompanies, :manufacturers
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric
 		@uom = Uom.new if !@record.uoms.any?
 	end
 

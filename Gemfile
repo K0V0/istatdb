@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'hirb'
 
+gem 'rails_12factor'
+
 #gem 'ransack'
 
 gem 'i18n'
@@ -41,7 +43,7 @@ gem 'jquery-turbolinks'
 
 gem 'active_link_to', git: 'https://github.com/K0V0/active_link_to'
 
-gem 'localtunnel'
+#gem 'localtunnel'
 
 gem 'yaml_db'
 
@@ -49,7 +51,7 @@ gem 'kaminari', git: 'https://github.com/kaminari/kaminari'
 
 gem 'recursive-open-struct'
 
-gem 'activerecord-session_store'
+#gem 'activerecord-session_store'
 
 gem 'order_as_specified'
 
@@ -57,7 +59,7 @@ gem 'clipboard-rails'
 
 gem 'devise'
 
-gem 'rubocop'
+#gem 'rubocop'
 
 gem 'globalize', '~> 5.0.0'
 
