@@ -83,13 +83,13 @@ select {
 	cursor: pointer;
 	max-width: 100%;
 	overflow: hidden;
-	background-image: image-url(select_dropdown_arrow.png);
+	background-image: image-url(select_dropdown_arrow);
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: contain;
 
 	&:disabled {
-		background-image: image-url(select_dropdown_arrow_disabled.png);
+		background-image: image-url(select_dropdown_arrow_disabled);
 	}
 
 	option {
