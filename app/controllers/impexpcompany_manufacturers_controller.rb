@@ -41,10 +41,10 @@ class ImpexpcompanyManufacturersController < ApplicationController
 	private
 
 	def _load_vars
-		@incoterms = Incoterm.all
-		@local_tarics = LocalTaric.all
+		@incoterms = Incoterm.includes(:translations).all
+		@local_tarics = LocalTaric.includes(:translations).all
 		@local_taric = LocalTaric.new
-		@trade_types = TradeType.all
+		@trade_types = TradeType.includes(:translations).all
 	end
 
 	def permitted_pars pars

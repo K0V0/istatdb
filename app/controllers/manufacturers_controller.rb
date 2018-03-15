@@ -25,13 +25,12 @@ class ManufacturersController < ApplicationController
 
 	def _load_vars
 		@impexpcompanies = Impexpcompany.all
-		@incoterms = Incoterm.all
-		@local_tarics = LocalTaric.all
+		@incoterms = Incoterm.includes(:translations).all
+		@local_tarics = LocalTaric.includes(:translations).all
 	end
 
 	def _around_create_after_save_ok
 		@record.impexpcompany_manufacturers.each do |r|
-            logger r.id, "man create impexps"
 			r.added_or_modded_by_user = true
 			r.save
 		end
@@ -41,7 +40,6 @@ class ManufacturersController < ApplicationController
 
     def _around_update_after_save_ok
         @record.impexpcompany_manufacturers.each do |r|
-            logger "man update impexps"
             r.added_or_modded_by_user = true
             r.save
         end

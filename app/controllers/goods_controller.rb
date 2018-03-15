@@ -33,10 +33,10 @@ class GoodsController < ApplicationController
 	end
 
 	def _load_vars
-		@local_tarics = LocalTaric.all
+		@local_tarics = LocalTaric.includes(:translations).all
 		@impexpcompanies = Impexpcompany.all
 		@manufacturers = Manufacturer.all
-		@uom_types = UomType.all
+		@uom_types = UomType.includes(:translations).all
 		@impexpcompanies_for_uoms = @record.impexpcompanies
 		@manufacturers_for_uoms = @record.manufacturers
 	end
