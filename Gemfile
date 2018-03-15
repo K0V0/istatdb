@@ -51,7 +51,7 @@ gem 'kaminari', git: 'https://github.com/kaminari/kaminari'
 
 gem 'recursive-open-struct'
 
-#gem 'activerecord-session_store'
+gem 'activerecord-session_store'
 
 gem 'order_as_specified'
 
