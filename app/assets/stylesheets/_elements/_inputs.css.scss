@@ -65,7 +65,7 @@ input[type=text], input[type=search], select {
 input[type=search]::-webkit-search-cancel-button {
 	@include all_transitions();
 	-webkit-appearance: none;
-	background-image: url(searchfield-cancel.png);
+	background-image: image-url('searchfield-cancel.png');
 	background-size: contain;
 	height:0.875em;
 	width:0.875em;
