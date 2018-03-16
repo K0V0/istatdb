@@ -1,5 +1,10 @@
 en:
 
+  ransack:
+    attributes:
+      uom_type:
+        uom_type: Units of measurement
+
   activerecord:
     models:
       uom_type: Units of measurement
@@ -17,6 +22,11 @@ en:
 
 
 sk:
+
+  ransack:
+    attributes:
+      uom_type:
+        uom_type: Merná jednotka
 
   activerecord:
     models:

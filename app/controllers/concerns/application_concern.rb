@@ -57,12 +57,15 @@ module ApplicationConcern
 				build_command = a.to_s.is_singular? ? "build_#{a.to_s}" : "build"
 
 				if (a.to_s.is_singular?)
-					if @record.has_attribute? "#{a.to_s}_id"
-						#if @record.send(a).nil?
+					if @record.send(a).nil?
+						# association does not exist
+						if @record.has_attribute? "#{a.to_s}_id"
+							# but parent model have foreign key field for assoc
 							instance_variable_set(assoc_var_name, @record.send(build_command))
-						#else
-							#instance_variable_set(assoc_var_name, @record.send(a))
-						#end
+							#set single record instance variable and also build parent object assocition
+						end
+					else
+						instance_variable_set(assoc_var_name, @record.send(a))
 					end
 				else
 					# if associated has not been build yet
@@ -143,7 +146,6 @@ module ApplicationConcern
 	  		 			# if given subset hash contains :allow_search_as_new
 	  		 			assoc_model_name = na[regex_to_get_assoc_model].sub(/_attributes$/, "_#{idx.to_s}")
 	  		 			to_mem[assoc_model_name] = par[1][:allow_search_as_new] == "1"
-	  		 			#logger assoc_model_name, "plural name for mem"
 	  		 		end
 	  		 		idx = idx + 1
 	  		 	end
@@ -152,7 +154,6 @@ module ApplicationConcern
 		  		assoc_model_name = na.sub(/_attributes$/, '')
 		  		assoc_model_name += ("_" + multiedit) if multiedit != false
 		  		to_mem[assoc_model_name] = attr_set[na][:allow_search_as_new] == "1"
-		  		#logger assoc_model_name, "singular name for mem"
 		  	end
 		end
 

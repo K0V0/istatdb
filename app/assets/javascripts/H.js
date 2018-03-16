@@ -100,10 +100,12 @@ H.prototype = {
 								// refresh/events reattach .init() code
 								if (controller[ method_name ] === undefined) {
 									controller[ method_name ] = new window[ method_name.classycase() ]();
-									this.logging(action, method_name, action_type, 'new()');
+									//this.logging(action, method_name, action_type, 'new()');
+									logger(action_type);
 								} else {
 									controller[ method_name ].init();
-									this.logging(action, method_name, action_type, 'init()');
+									//this.logging(action, method_name, action_type, 'init()');
+									logger(action_type);
 								}
 
 								// if 'run once' method executed because is not in list, add it to list

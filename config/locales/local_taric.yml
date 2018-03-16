@@ -1,5 +1,10 @@
 en:
 
+  ransack:
+    attributes:
+      local_taric:
+        translations_description: Description contains
+
   activerecord:
     models:
       local_taric: TARIC
@@ -26,7 +31,14 @@ en:
         create: Add HS/TARIC code
         update: Save changes
 
+
+
 sk:
+
+  ransack:
+    attributes:
+      local_taric:
+        translations_description: Popis položky obsahuje
 
   activerecord:
     models:

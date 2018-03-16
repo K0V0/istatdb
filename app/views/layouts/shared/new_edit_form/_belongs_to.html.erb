@@ -41,6 +41,8 @@
 					<% has_error = obj.object.send(assoc).try(:errors).try(:has_key?, field_name) ? true : false %>
 				<% end %>
 
+				<% a.object[field_name] = "" if action_name = "edit" %>
+
 				<%= render('layouts/elements/input_text',
 					field_name: field_name,
 					obj: a,

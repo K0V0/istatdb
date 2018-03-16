@@ -13,7 +13,8 @@ class UomType < ActiveRecord::Base
 	}
 
 	def name_for_form_input
-		"#{self.full_name} [#{self.uom_type}]"
+		prep = intrastat_code.blank? ? "---" : intrastat_code
+		"#{self.full_name} [#{self.uom_type}] - {#{prep}}"
 	end
 
 end

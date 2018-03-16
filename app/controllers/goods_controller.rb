@@ -50,7 +50,7 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_edit
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric
+		build_if_empty :impexpcompanies, :manufacturers
 		@uom = Uom.new if !@record.uoms.any?
 	end
 
