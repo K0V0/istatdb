@@ -19,9 +19,11 @@ class ImpexpcompaniesController < ApplicationController
 		@for_manufacturerstable = @record.manufacturers
 			.joins(impexpcompany_manufacturers: [:local_taric, :incoterm])
 			.includes(impexpcompany_manufacturers: [:local_taric, :incoterm])
+			.default_order
 		@for_tarictable = @record.goods
 			.preload(:local_taric)
 			.select('distinct "goods"."local_taric_id"')
+			.default_order
 	end
 
 end

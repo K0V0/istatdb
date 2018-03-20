@@ -69,6 +69,7 @@ nav.top_menu {
 		overflow-y: hidden;
 
 		&.hover {
+			@include scrollbar_top_menu_sub_hover();
 			background-color: $main_menu_2_submenu_active_link_hover;
 		}
 
@@ -100,6 +101,7 @@ nav.top_menu {
 		&.noactive {
 			background-color: $main_menu_inactive_link_hover;
 			color: $white;
+			@include scrollbar_top_menu_sub_hover_noactive();
 
 			& > div {
 

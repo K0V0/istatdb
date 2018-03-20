@@ -14,4 +14,6 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
     accepts_nested_attributes_for :local_taric, update_only: true
 
+    #scope
+
 end

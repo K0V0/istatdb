@@ -24,9 +24,9 @@ class ManufacturersController < ApplicationController
 	end
 
 	def _load_vars
-		@impexpcompanies = Impexpcompany.all
-		@incoterms = Incoterm.includes(:translations).all
-		@local_tarics = LocalTaric.includes(:translations).all
+		@impexpcompanies = Impexpcompany.all.default_order
+		@incoterms = Incoterm.includes(:translations).all.default_order
+		@local_tarics = LocalTaric.includes(:translations).all.default_order
 	end
 
 	def _around_create_after_save_ok
@@ -54,9 +54,9 @@ class ManufacturersController < ApplicationController
 
     def show_action
         super
-        @for_impexpcompaniestable = @record.impexpcompany_manufacturers.preload(:impexpcompany, :incoterm, :trade_type)
-        @for_goodstable = @record.goods.preload(:local_taric)
-        @for_tarictable = @for_goodstable.select('distinct "goods"."local_taric_id"')
+        @for_impexpcompaniestable = @record.impexpcompany_manufacturers.preload(:impexpcompany, :incoterm, :trade_type).default_order
+        @for_goodstable = @record.goods.preload(:local_taric).default_order
+        @for_tarictable = @for_goodstable.select('distinct "goods"."local_taric_id"').default_order
     end
 
     def update_action_2

@@ -1,0 +1,38 @@
+
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+    <%= form_for @record, @form_url do |t| %>
+
+        <%= new_edit(
+            obj: t,
+            fields: {
+                version_num: {
+
+                },
+                change: {
+                    type: :text_area
+                }
+            }
+        ) %>
+
+        <article class="decorated_wrap shrinked" id="change_fields">
+            <div>
+                <div>
+                    <%= t.label :change_typ %>
+                    <%= t.select(
+                        :change_typ,
+                        ChangeType.all.collect { |p| [ p.name, p.id ] }
+                    ) %>
+                </div>
+            </div>
+        </article>
+
+        <%= new_edit(
+            obj: t
+        ) %>
+
+    <% end %>
+
+</section>

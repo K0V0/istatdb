@@ -139,7 +139,7 @@ module ItemsTableHelper
 		ret = object.human_attribute_name(field)
 
 		if opts[:is_sortlink]
-			ret = sort_link(@search, field, { action: :search }, remote: true)
+			ret = sort_link(@search, field, { action: :search }, default_order: :asc, remote: true)
 		end
 
 		return ret

@@ -55,6 +55,12 @@ sk:
     try_to_add_as_new_1b: ak chcete vytvoriť nový záznam
     try_to_add_as_new_2: Tlačítko bude aktivované automaticky pri 0 výsledkoch ak s ním nebolo predtým manipulované ručne
 
+  changelog:
+    bugfix: kritická oprava
+    uxfix: zlepšenie ovládatelnosti/rozhrania
+    performance: zlepšenie výkonu
+    add: pridanie funkcií
+
   html5validations:
     email: Skontrolujte formát e-mail adresy
 

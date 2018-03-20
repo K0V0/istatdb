@@ -4,6 +4,7 @@ en:
       calculator: Invoices calculator
       changes: Changelog
       others: Other
+      tasks: Tasks
 
 sk:
   others:
@@ -11,4 +12,5 @@ sk:
       calculator: Rozpočítanie dokladu
       changes: Zoznam zmien
       others: Ostatné
+      tasks: Úlohy
 

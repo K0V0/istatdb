@@ -11,7 +11,7 @@ class ChangesController < ApplicationController
     end
 
     def _allowed_params
-      [ :id, :version_num, :change ]
+      [ :id, :version_num, :change, :change_typ ]
     end
 
 end

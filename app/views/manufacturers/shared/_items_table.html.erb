@@ -20,7 +20,8 @@ render('layouts/shared/items_table',
 			local_taric: [
 				kncode: {
 					call_decorator: :num_to_kncode,
-					fill_if_empty: true
+					fill_if_empty: true,
+					is_link: true
 				}
 			],
 			incoterm: [

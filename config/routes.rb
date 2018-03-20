@@ -257,11 +257,34 @@ Rails.application.routes.draw do
     to: "changes#new",
     as: "new_change"
 
+  post "others/changelog/new",
+    to: "changes#create",
+    as: "create_change"
+
+  get "others/changelog/:id/edit",
+    to: "changes#edit",
+    as: "edit_change"
+
+  patch "others/changelog/:id/edit",
+    to: "changes#update",
+    as: "update_change"
+
+  delete "others/changelog/:id",
+    to: "changes#delete",
+    as: "delete_change"
+
   get "others/changelog/administrative",
     to: "changes#administrative"
 
   get "others/changelog/end_administrative",
     to: "changes#end_administrative"
+
+  ## ostatne - ulohy
+
+  #index
+  get "others/tasks",
+    to: "tasks#index",
+    as: "tasks"
 
 
 
@@ -462,7 +485,6 @@ Rails.application.routes.draw do
   get "settings/users/user",
     to: "user_settings#index",
     as: "user_settings"
-
 
   devise_for :users, skip: :all
 

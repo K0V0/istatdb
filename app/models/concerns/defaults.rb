@@ -21,20 +21,6 @@ module Defaults
 			where "#{model_name.plural}.id IS NOT NULL"
 		}
 
-		#def translations_validations *validations
-		#	accepts_nested_attributes_for :translations, :allow_destroy => true
-		#	validates_associated :translations
-		#	validations.each do |field|
-		#		field.each do |f_name, v_opts|
-		#			translations_validation f_name, v_opts
-		#		end
-		#	end
-		#end
-
-		#def translations_validation field, *options
-		#	translation_class.validates(field, *options)
-		#end
-
 	  end
 	end
 

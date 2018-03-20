@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :goods, inverse_of: :user
 
+  has_many :tasks, inverse_of: :user
+
   def self.current
     Thread.current[:user]
   end

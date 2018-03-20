@@ -240,6 +240,22 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   }
 }
 
+@mixin scrollbar_top_menu_sub_hover_noactive() {
+  @include scrollbar_top_menu_sub();
+
+  ::-webkit-scrollbar-thumb {
+      background-color: $main_menu_2_submenu_active_link_hover;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+      background-color: $sub_menu_background;
+  }
+
+  ::-webkit-scrollbar-track {
+      border-color: $main_menu_inactive_link_hover;
+  }
+}
+
 @mixin rotate_upside_down() {
     transform:rotateX(180deg);
     -ms-transform:rotateX(180deg);

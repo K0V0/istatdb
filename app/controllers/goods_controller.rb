@@ -33,12 +33,12 @@ class GoodsController < ApplicationController
 	end
 
 	def _load_vars
-		@local_tarics = LocalTaric.includes(:translations).all
-		@impexpcompanies = Impexpcompany.all
-		@manufacturers = Manufacturer.all
-		@uom_types = UomType.includes(:translations).all
-		@impexpcompanies_for_uoms = @record.impexpcompanies
-		@manufacturers_for_uoms = @record.manufacturers
+		@local_tarics = LocalTaric.includes(:translations).all.default_order
+		@impexpcompanies = Impexpcompany.all.default_order
+		@manufacturers = Manufacturer.all.default_order
+		@uom_types = UomType.includes(:translations).all.default_order
+		@impexpcompanies_for_uoms = @record.impexpcompanies.default_order
+		@manufacturers_for_uoms = @record.manufacturers.default_order
 	end
 
 	def _around_new

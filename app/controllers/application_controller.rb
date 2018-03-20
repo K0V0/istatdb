@@ -214,19 +214,16 @@ class ApplicationController < ActionController::Base
     sucess = @model.find(params[:id]).destroy
     searcher_for(_searcher_settings)
     index_action
-    #flash[:notice] = "Welcome to the Sample App!"
     respond_to do |format|
       format.js {
         flash.now[:cannot_destroy] = t('notices.cannot_destroy') if !sucess
-        render :index
+        #flash[:destroy_ok] = t('notices.destroy_ok') if sucess
+        render "#{@render_command_prepend}index"
       }
-
       #format.html { redirect_to(controller: controller_name, action: 'index'), notice: "Order was successfully deleted" }
     end
-
     #flash.now[:alert] = t("uploading_error")
     ### len 1 request, bez now 2 requesty vydrzi
-
   end
 
   def apicall_search_action
