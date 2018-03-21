@@ -1,5 +1,46 @@
 
 ---
+changes:
+  columns:
+  - id
+  - change
+  - version_num
+  - created_at
+  - updated_at
+  - change_typ
+  records: 
+  - - 4
+    - "- opravený vzhľad horného menu: farby scrollbarov aktivovaných pri malej obrazovke,
+      avšak nie ešte pri kompaktnom zobrazení.\r\n- opravené predvolené triedenie
+      položiek vo výberových menu pri pridávní/editácií nových záznamov \r\n- opravené
+      predvolené triedenie v sekcii výrobcovia/odberatelia"
+    - 2.0.0.1-pre
+    - '2018-03-20 00:18:08.221000'
+    - '2018-03-20 20:11:47.605000'
+    - 2
+  - - 5
+    - "- pridaná sekcia \"zoznam zmien\"\r\n- vytvorená prázdna sekcia \"úlohy\"\r\n-
+      pridaný sortlink pre sekciu \"lokálny taric\""
+    - 2.0.0.1-pre
+    - '2018-03-20 00:24:18.927000'
+    - '2018-03-20 20:37:17.438000'
+    - 4
+  - - 6
+    - "- zistená a opravená chyba renderovania po vymazaní položky v podsekciách"
+    - 2.0.0.1-pre
+    - '2018-03-20 00:27:16.695000'
+    - '2018-03-20 00:27:16.695000'
+    - 1
+  - - 7
+    - "- pridanie optického oddelovača do riadkov tabuliek s viac asociovanými záznamami
+      (podtabuľka), hlavne pri kompaktnom zobrazení\r\n- úpravy zobrazenia zoznamu
+      zmien a nastavení používateľa"
+    - 2.0.0.2-pre
+    - '2018-03-21 00:13:10.065000'
+    - '2018-03-21 00:13:10.065000'
+    - 2
+
+---
 goods:
   columns:
   - id
@@ -5772,7 +5813,7 @@ goods:
     - 10
     - 
   - - 830
-    - šr. hreb 02 2195.00
+    - "šr. hreb 02 2195.00"
     - nekal. 2x8
     - '2017-07-25 12:40:14.205000'
     - '2017-07-25 12:40:14.205000'
@@ -7334,7 +7375,7 @@ goods:
     - 
   - - 1059
     - RP432KPP000A
-    - Úzka LCD klávesnica
+    - "Úzka LCD klávesnica"
     - '2018-01-31 08:48:30.401000'
     - '2018-01-31 08:48:30.401000'
     - 279
@@ -7525,9 +7566,9 @@ goods:
     - CP-UNR-404T1
     - Sieťový videorekordér
     - '2018-01-31 11:00:45.152000'
-    - '2018-01-31 11:00:45.152000'
-    - 214
-    - 
+    - '2018-03-15 14:10:57.207505'
+    - 3
+    - 11
   - - 1087
     - CP-PR-27
     - Mini mikrofón pre CCTV
@@ -22959,6 +23000,26 @@ impexpcompany_manufacturers:
     - false
     - 
     - 
+  - - 420
+    - '2018-03-15 08:43:10.440616'
+    - '2018-03-15 08:43:10.440616'
+    - 3
+    - 410
+    - 
+    - true
+    - false
+    - 
+    - 
+  - - 421
+    - '2018-03-15 09:39:23.060622'
+    - '2018-03-15 09:39:23.060622'
+    - 3
+    - 411
+    - 
+    - true
+    - false
+    - 
+    - 
 
 ---
 incoterm_translations:
@@ -32420,18 +32481,6 @@ intertables:
     - 
     - '2018-01-31 10:56:16.236000'
     - '2018-01-31 10:56:16.236000'
-  - - 1546
-    - 1086
-    - 
-    - 7
-    - '2018-01-31 11:00:45.177000'
-    - '2018-01-31 11:00:45.177000'
-  - - 1547
-    - 1086
-    - 333
-    - 
-    - '2018-01-31 11:00:45.202000'
-    - '2018-01-31 11:00:45.202000'
   - - 1548
     - 1087
     - 
@@ -38354,6 +38403,18 @@ intertables:
     - 3
     - '2018-03-14 22:29:41.972000'
     - '2018-03-14 22:29:41.972000'
+  - - 2908
+    - 1086
+    - 
+    - 3
+    - '2018-03-15 14:13:03.365396'
+    - '2018-03-15 14:13:03.365396'
+  - - 2909
+    - 1086
+    - 3
+    - 
+    - '2018-03-15 14:13:03.455501'
+    - '2018-03-15 14:13:03.455501'
 
 ---
 local_taric_translations:
@@ -38371,7 +38432,7 @@ local_taric_translations:
     - sk
     - '2018-03-03 14:50:12.793263'
     - '2018-03-14 00:13:57.825678'
-    - Železné pásy vo zvitkoch valcované za studena max. šírka 500 mm
+    - "Železné pásy vo zvitkoch valcované za studena max. šírka 500 mm"
     - 
   - - 2
     - 198
@@ -38392,7 +38453,7 @@ local_taric_translations:
     - sk
     - '2018-03-03 14:50:12.824666'
     - '2018-03-14 00:13:57.961684'
-    - Železné bedne a nádoby bepresahujúce objem 50 litrov
+    - "Železné bedne a nádoby bepresahujúce objem 50 litrov"
     - 
   - - 5
     - 201
@@ -38413,7 +38474,7 @@ local_taric_translations:
     - sk
     - '2018-03-03 14:50:12.852921'
     - '2018-03-14 00:13:58.118971'
-    - Časti a súčasti ložisiek
+    - "Časti a súčasti ložisiek"
     - 
   - - 8
     - 205
@@ -38434,7 +38495,7 @@ local_taric_translations:
     - sk
     - '2018-03-06 00:51:30.894485'
     - '2018-03-14 00:13:58.303339'
-    - Časti a súčasti strojov položiek 8462 a 8463
+    - "Časti a súčasti strojov položiek 8462 a 8463"
     - 
   - - 11
     - 208
@@ -38575,7 +38636,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:48.102051'
     - '2018-03-14 00:13:48.102051'
-    - Časti pre špeciálne zariadenia inde neuvedené
+    - "Časti pre špeciálne zariadenia inde neuvedené"
     - 
   - - 53
     - 20
@@ -38631,7 +38692,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:48.536175'
     - '2018-03-14 00:13:48.536175'
-    - Časti a súčasti kovoobrábacích strojov
+    - "Časti a súčasti kovoobrábacích strojov"
     - 
   - - 61
     - 28
@@ -38666,7 +38727,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:48.835639'
     - '2018-03-14 00:13:48.835639'
-    - Časti priemyselných zariadení na ohýbanie plastov
+    - "Časti priemyselných zariadení na ohýbanie plastov"
     - 
   - - 66
     - 33
@@ -38695,7 +38756,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:49.060026'
     - '2018-03-14 00:13:49.060026'
-    - Časti ventilov
+    - "Časti ventilov"
     - 
   - - 70
     - 37
@@ -38835,14 +38896,14 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:50.227773'
     - '2018-03-14 00:13:50.227773'
-    - Časti a súčasti meracích a kontrolných zariadení
+    - "Časti a súčasti meracích a kontrolných zariadení"
     - 
   - - 90
     - 57
     - sk
     - '2018-03-14 00:13:50.288118'
     - '2018-03-14 00:13:50.288118'
-    - Časti a súčasti kapitoly 9031
+    - "Časti a súčasti kapitoly 9031"
     - 
   - - 91
     - 58
@@ -38968,14 +39029,14 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:51.300747'
     - '2018-03-14 00:13:51.300747'
-    - Časti pre elektrické zváracie zariadenia - elektródy
+    - "Časti pre elektrické zváracie zariadenia - elektródy"
     - 
   - - 109
     - 76
     - sk
     - '2018-03-14 00:13:51.353364'
     - '2018-03-14 00:13:51.353364'
-    - Časti elektroinštalačných výrobkov ostatné
+    - "Časti elektroinštalačných výrobkov ostatné"
     - 
   - - 110
     - 77
@@ -38996,7 +39057,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:51.503902'
     - '2018-03-14 00:13:51.503902'
-    - Časti a súčasti kovoobrábacích strojov
+    - "Časti a súčasti kovoobrábacích strojov"
     - 
   - - 113
     - 80
@@ -39094,7 +39155,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:52.280237'
     - '2018-03-14 00:13:52.280237'
-    - Časti spájkovacích zariadení
+    - "Časti spájkovacích zariadení"
     - 
   - - 127
     - 94
@@ -39157,7 +39218,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:52.767049'
     - '2018-03-14 00:13:52.767049'
-    - Časti zdvíhacích manipulátorov
+    - "Časti zdvíhacích manipulátorov"
     - 
   - - 136
     - 103
@@ -39403,16 +39464,16 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:54.640178'
     - '2018-03-14 00:13:54.640178'
-    - Časti a súčasti položiek 9027 20xx - 80xx (časti a súčasti Ph, Rh metrov a prístrojov
-      na meranie vodivosti)
+    - "Časti a súčasti položiek 9027 20xx - 80xx (časti a súčasti Ph, Rh metrov a
+      prístrojov na meranie vodivosti)"
     - 
   - - 171
     - 138
     - sk
     - '2018-03-14 00:13:54.690983'
     - '2018-03-14 00:13:54.690983'
-    - Šošovky na kamery, fotoaparáty, projektory, zväčšovacie alebo zmenšovacie a
-      zväčšovacie prístroje.
+    - "Šošovky na kamery, fotoaparáty, projektory, zväčšovacie alebo zmenšovacie a
+      zväčšovacie prístroje."
     - 
   - - 172
     - 139
@@ -39510,7 +39571,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:55.450417'
     - '2018-03-14 00:13:55.450417'
-    - Časti a súčasti čísla 8424, časti a súčasti rozprašovacích a striekacích zariadení
+    - "Časti a súčasti čísla 8424, časti a súčasti rozprašovacích a striekacích zariadení"
     - 
   - - 186
     - 153
@@ -39587,7 +39648,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:56.031125'
     - '2018-03-14 00:13:56.031125'
-    - Časti a súčasti pneumatického náradia
+    - "Časti a súčasti pneumatického náradia"
     - 
   - - 197
     - 164
@@ -39693,7 +39754,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:56.794623'
     - '2018-03-14 00:13:56.794623'
-    - Časti a súčasti filtračných zariadení
+    - "Časti a súčasti filtračných zariadení"
     - 
   - - 212
     - 179
@@ -39770,7 +39831,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:57.401768'
     - '2018-03-14 00:13:57.401768'
-    - Čast a súčasti ohrievačov vody
+    - "Čast a súčasti ohrievačov vody"
     - 
   - - 223
     - 190
@@ -39812,14 +39873,14 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:57.722045'
     - '2018-03-14 00:13:57.722045'
-    - Časti a súčasti strojov a zariadení neelektrické ostatné
+    - "Časti a súčasti strojov a zariadení neelektrické ostatné"
     - 
   - - 229
     - 196
     - sk
     - '2018-03-14 00:13:57.764012'
     - '2018-03-14 00:13:57.764012'
-    - Časti a súčasti meracích prístrojov (2017)
+    - "Časti a súčasti meracích prístrojov (2017)"
     - 
   - - 230
     - 204
@@ -39889,7 +39950,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:58.863137'
     - '2018-03-14 00:13:58.863137'
-    - Časti a súčasti odstrediviek a prístrojov na filtrovanie
+    - "Časti a súčasti odstrediviek a prístrojov na filtrovanie"
     - 
   - - 240
     - 220
@@ -39910,21 +39971,21 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:13:59.034849'
     - '2018-03-14 00:13:59.034849'
-    - Časti a súčasti ručného náradia
+    - "Časti a súčasti ručného náradia"
     - 
   - - 243
     - 223
     - sk
     - '2018-03-14 00:13:59.092572'
     - '2018-03-14 00:13:59.092572'
-    - Časti a súčasti na prístroje 8525
+    - "Časti a súčasti na prístroje 8525"
     - 
   - - 244
     - 224
     - sk
     - '2018-03-14 00:13:59.147971'
     - '2018-03-14 00:13:59.147971'
-    - Časti a súčasti pre meracie a kontrolné zariadenia
+    - "Časti a súčasti pre meracie a kontrolné zariadenia"
     - 
   - - 245
     - 225
@@ -40036,7 +40097,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:14:00.037621'
     - '2018-03-14 00:14:00.037621'
-    - Časti a súčasti elektrických spájkovacích zariadení
+    - "Časti a súčasti elektrických spájkovacích zariadení"
     - 
   - - 261
     - 242
@@ -40168,7 +40229,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:14:01.030454'
     - '2018-03-14 00:14:01.030454'
-    - Éteralkoholy a ich nitro- alebo sulfo- deriváty ostatné
+    - "Éteralkoholy a ich nitro- alebo sulfo- deriváty ostatné"
     - 
   - - 279
     - 260
@@ -40225,7 +40286,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:14:01.463547'
     - '2018-03-14 00:14:01.463547'
-    - Časti zariadené na automatické spracovanie údajov-základná doska
+    - "Časti zariadené na automatické spracovanie údajov-základná doska"
     - 
   - - 287
     - 272
@@ -40323,7 +40384,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 00:14:02.307172'
     - '2018-03-14 00:14:02.307172'
-    - Časti a súčasti poplachových zariadení
+    - "Časti a súčasti poplachových zariadení"
     - 
   - - 301
     - 286
@@ -40381,7 +40442,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 22:44:44.358203'
     - '2018-03-14 22:44:44.358203'
-    - Časti a súčasti
+    - "Časti a súčasti"
     - 
   - - 309
     - 294
@@ -40402,7 +40463,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 22:44:44.484675'
     - '2018-03-14 22:44:44.484675'
-    - Časti a súčasti statických meničov
+    - "Časti a súčasti statických meničov"
     - 
   - - 312
     - 297
@@ -40423,7 +40484,7 @@ local_taric_translations:
     - sk
     - '2018-03-14 22:44:44.641349'
     - '2018-03-14 22:44:44.641349'
-    - časti a súčasti
+    - "časti a súčasti"
     - 
   - - 315
     - 300
@@ -43029,7 +43090,7 @@ manufacturers:
     - '2017-03-17 13:12:52.817000'
     - '2017-03-17 13:12:52.817000'
   - - 285
-    - Železárny Velký Šenov/CZ
+    - "Železárny Velký Šenov/CZ"
     - 
     - '2017-03-17 13:15:38.349000'
     - '2017-03-17 13:15:38.349000'
@@ -43643,6 +43704,16 @@ manufacturers:
     - 
     - '2018-03-14 10:22:06.372000'
     - '2018-03-14 10:22:06.372000'
+  - - 410
+    - test test
+    - 
+    - '2018-03-15 08:43:10.435492'
+    - '2018-03-15 08:43:10.435492'
+  - - 411
+    - test edit other
+    - 
+    - '2018-03-15 09:39:23.051828'
+    - '2018-03-15 09:39:23.051828'
 
 ---
 sessions:
@@ -43960,6 +44031,29 @@ sessions:
       Y1NRUXZqUm5FWEZ0Zjc5a2J6ZzRhZ1FlSWNUbFhxQk1kdG8xcXZFPQY7AEY=
     - '2018-03-15 01:00:22.388706'
     - '2018-03-15 01:02:57.592220'
+  - - 109
+    - abdf056b3422ff85ab74fe450c985e33
+    - |
+      BAh7CEkiCE1FTQY6BkVUIgJ9AgQIVToMTWVtRGF0YXsQOg1zZXR0aW5nc1U6
+      D09wZW5TdHJ1Y3R7CDoRZ3VpX3Blcl9wYWdlSSIHMjAGOgZFVDoUZ3VpX3No
+      b3dfZm9vdGVySSIGMAY7CVQ6Emd1aV9lbmFibGVfM2RJIgYxBjsJVDoSYWxs
+      b3dfYWRkX25ld3sAOhJxX2xvY2FsX3RhcmljSUM6IUFjdGlvbkNvbnRyb2xs
+      ZXI6OlBhcmFtZXRlcnN7B0kiEWtuY29kZV9zdGFydAY7CVRJIgAGOwlUSSIi
+      dHJhbnNsYXRpb25zX2Rlc2NyaXB0aW9uX2NvbnQGOwlUSSIABjsJVAY6D0Bw
+      ZXJtaXR0ZWRGOg5wYWdlX2dvb2RJIgYxBjsJVDoLcV9nb29kSUM7DnsISSIe
+      aWRlbnRfb3JfZGVzY3JpcHRpb25fY29udAY7CVRJIgAGOwlUSSIZaW1wZXhw
+      Y29tcGFueV9maWx0ZXIGOwlUSSIABjsJVEkiGG1hbnVmYWN0dXJlcl9maWx0
+      ZXIGOwlUSSIABjsJVAY7D0Y6FnBhZ2VfbWFudWZhY3R1cmVySSIGMQY7CVQ6
+      E3FfbWFudWZhY3R1cmVySUM7DnsHSSIObmFtZV9jb250BjsJVEkiCXRlc3QG
+      OwlUSSIZaW1wZXhwY29tcGFueV9maWx0ZXIGOwlUSSIABjsJVAY7D0Y6Jmlz
+      X2luX2FkbWluaXN0cmF0aXZlX21hbnVmYWN0dXJlclQ6HmlzX2luX2FkbWlu
+      aXN0cmF0aXZlX2dvb2RUOhVwYWdlX2xvY2FsX3RhcmljSSIGMQY7CVQ6IGlz
+      X2luX2FkbWluaXN0cmF0aXZlX2NoYW5nZUZJIhl3YXJkZW4udXNlci51c2Vy
+      LmtleQY7AFRbB1sGaRBJIiIkMmEkMTEka0tveXVpcHouaGFJeXdFQ3NQQ0l4
+      LgY7AFRJIhBfY3NyZl90b2tlbgY7AEZJIjFia28rRktJa2hJdW5aWmZ1bWxp
+      cUoyU3FOQ1NEUWRDcHhFZHUvVklkeGxNPQY7AEY=
+    - '2018-03-15 07:46:57.956646'
+    - '2018-03-21 15:51:52.643257'
 
 ---
 settings:
@@ -44824,7 +44918,7 @@ uom_type_translations:
     - sk
     - '2018-03-14 18:31:11.355415'
     - '2018-03-14 18:31:11.355415'
-    - Štvorcový meter
+    - "Štvorcový meter"
     - plocha
   - - 7
     - 7
@@ -44992,8 +45086,8 @@ uom_type_translations:
     - sk
     - '2018-03-14 18:31:12.525954'
     - '2018-03-14 18:31:12.525954'
-    - Žiadna/iné
-    - žiadna/iná doplnková jednotka
+    - "Žiadna/iné"
+    - "žiadna/iná doplnková jednotka"
 
 ---
 uom_types:
@@ -47467,11 +47561,11 @@ uoms:
     - 230.0
     - 1
     - '2018-01-31 11:00:45.225000'
-    - '2018-01-31 11:00:45.225000'
+    - '2018-03-15 14:13:03.549068'
     - 3
     - 1086
-    - 333
-    - 7
+    - 3
+    - 3
   - - 1109
     - 230.0
     - 1
@@ -48762,14 +48856,14 @@ users:
   records: 
   - - 11
     - '2018-03-15 00:38:18.541678'
-    - '2018-03-15 01:00:22.217693'
+    - '2018-03-15 07:46:57.386102'
     - admin@admin.hsdb
     - "$2a$11$kKoyuipz.haIywECsPCIx.MbRhqhLmd4iDpZsErLstJNFWDjRKdoO"
     - 
     - 
-    - 
-    - 1
-    - '2018-03-15 01:00:22.213264'
+    - '2018-03-15 07:46:57.008469'
+    - 2
+    - '2018-03-15 07:46:57.377971'
     - '2018-03-15 01:00:22.213264'
     - 127.0.0.1
     - 127.0.0.1

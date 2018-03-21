@@ -6,7 +6,7 @@ class Change < ActiveRecord::Base
         order(version_num: :asc)
     }
 
-    after_save :write_changelog_file
+    after_save :write_changelog_file #, on: :create
 
     def write_changelog_file
         File.open("db/changelog/changelog.json", "w") { |f| f.write Change.all.default_order.to_json }
