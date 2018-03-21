@@ -4,9 +4,9 @@ class ChangeType < ActiveRecord::Base
         { changes: [
             { name: "---", type: "", id: 0 },
             { name: I18n.t('changelog.bugfix'), type: "danger", id: 1 },
-            { name: I18n.t('changelog.uxfix'), type: "", id: 2 },
-            { name: I18n.t('changelog.performance'), type: "", id: 3 },
-            { name: I18n.t('changelog.add'), type: "", id: 1 }
+            { name: I18n.t('changelog.uxfix'), type: "normal", id: 2 },
+            { name: I18n.t('changelog.performance'), type: "normal", id: 3 },
+            { name: I18n.t('changelog.add'), type: "new", id: 4 }
         ] },
         recurse_over_arrays: true
     )

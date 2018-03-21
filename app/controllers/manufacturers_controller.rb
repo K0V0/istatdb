@@ -54,9 +54,24 @@ class ManufacturersController < ApplicationController
 
     def show_action
         super
-        @for_impexpcompaniestable = @record.impexpcompany_manufacturers.preload(:impexpcompany, :incoterm, :trade_type).default_order
-        @for_goodstable = @record.goods.preload(:local_taric).default_order
-        @for_tarictable = @for_goodstable.select('distinct "goods"."local_taric_id"').default_order
+        @for_impexpcompaniestable =
+            @record
+            .impexpcompany_manufacturers
+            .includes(:impexpcompany, :incoterm, :trade_type)
+            .order('impexpcompanies.company_name ASC')
+        @for_goodstable = @record
+            .goods
+            .includes(:local_taric)
+            .order('goods.ident ASC')
+        @for_tarictable = @record
+            .goods
+            .includes(local_taric: [:translations])
+            .select('distinct "goods"."local_taric_id"')
+            #.order('local_tarics.kncode ASC')
+            #.sort { |value1, value2| value2.kncode <=> value1.kncode }
+            #.includes(local_taric: [:translations])
+            #.select('distinct "goods"."local_taric_id"')
+            #.order('local_tarics.kncode ASC')
     end
 
     def update_action_2

@@ -275,3 +275,20 @@ $main_menu_mouse_actions_transition_time: 0.30s;
     display: table;
   }
 }
+
+@mixin inner_table_separator() {
+  &::after {
+    content: '';
+    height: 1px;
+    background-color: #999;
+    width:90%;
+    margin: 0.125em auto;
+    display:block;
+  }
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+}

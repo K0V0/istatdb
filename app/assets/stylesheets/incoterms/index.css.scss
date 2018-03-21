@@ -1,4 +1,4 @@
-article.incoterms { 
+article.incoterms {
 
 	section {
 
@@ -15,11 +15,12 @@ article.incoterms {
 		@media only screen and (max-width: 480px) {
 
 		  	table#incoterms {
-		  		
+
 				td, th {
 
 					&.incoterms-shortland {
 						width:100%;
+						font-weight: bold;
 					}
 				}
 			}

@@ -18,4 +18,9 @@ module ApplicationHelper
   		@translations[I18n.locale].with_indifferent_access
 	end
 
+	def is_in_administrative?
+		!@MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").blank?
+	end
+
+
 end

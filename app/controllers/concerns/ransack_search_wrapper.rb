@@ -1,6 +1,6 @@
 module RansackSearchWrapper
 
-	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false
+	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil
 
 		params[:q] = [] if disabled
 

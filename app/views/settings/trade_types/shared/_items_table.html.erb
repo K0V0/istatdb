@@ -1,4 +1,4 @@
-<% content_for :items_table do 
+<% content_for :items_table do
 
 render('layouts/shared/items_table',
 
@@ -7,14 +7,15 @@ render('layouts/shared/items_table',
 
 		},
 		description: {
-			
+
 		}
 	},
 
 	options: [
 		head: true,
-		foot: true
+		foot: true,
+		change_on_smallscreen: true
 	]
 )
- 
+
 end %>

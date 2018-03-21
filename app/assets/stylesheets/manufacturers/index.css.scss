@@ -1,3 +1,5 @@
+@import "variables";
+
 article.manufacturers {
 
 	section {
@@ -43,40 +45,39 @@ article.manufacturers {
 
 						table {
 
-							th, td {
+							tr {
 
-								&.manufacturers-name {
-									font-weight: bold;
-									width:100%;
-								}
+								@include inner_table_separator();
 
-								&.impexpcompanies-company_name {
-									font-style: italic;
-									width:50%;
-								}
+								th, td {
 
-								&.local_tarics-kncode {
-									width:50%;
-									text-align: right;
-								}
+									&.manufacturers-name {
+										font-weight: bold;
+										width:100%;
+									}
 
-								&.incoterms-shortland,
-								&.trade_types-type,
-								&.impexpcompany_manufacturers-invoices_correct {
-									width: 33.3%;
-								}
+									&.impexpcompanies-company_name {
+										font-style: italic;
+										width:50%;
+									}
 
-								&.impexpcompany_manufacturers-invoices_correct {
-									text-align: right;
+									&.local_tarics-kncode {
+										width:50%;
+										text-align: right;
+									}
+
+									&.incoterms-shortland,
+									&.trade_types-type,
+									&.impexpcompany_manufacturers-invoices_correct {
+										width: 33.3%;
+									}
+
+									&.impexpcompany_manufacturers-invoices_correct {
+										text-align: right;
+									}
 								}
 							}
 						}
-					}
-				}
-
-				td {
-					&.manufacturers-name {
-						margin-bottom: 0.25em;
 					}
 				}
 			}

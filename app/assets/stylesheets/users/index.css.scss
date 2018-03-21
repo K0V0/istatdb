@@ -8,18 +8,24 @@ body.user_settings.index {
 				margin-right: 0.75em;
 				float: left;
 			}
+		}
+	}
 
-			/*@media only screen and (max-width: 480px) {
+	@media only screen and (max-width: 480px) {
 
-				section.decorated_wrap {
+		main {
+
+			article {
+				display: block;
+
+				section {
 					float: none;
-					margin: 0.75em 0;
 
 					&:first-child {
-						margin-top:0.375em;
+						word-break: break-all;
 					}
 				}
-			}*/
+			}
 		}
 	}
 }

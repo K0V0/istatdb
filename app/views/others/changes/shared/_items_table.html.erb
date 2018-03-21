@@ -1,18 +1,71 @@
-<% content_for :items_table do
+<% content_for :items_table do %>
 
-    render('layouts/shared/items_table',
+    <article class="index changes">
 
-        fields: {
-            version_num: {},
-            change: {}
-        },
+        <section class="items_table decorated_wrap change_on_smallscreen">
 
-        options: [
-            head: true,
-            foot: true,
-            change_on_smallscreen: true,
-            admin_restricted_actions: true
-        ]
-    )
+            <table class="items rows_colored" id="changes">
 
-end %>
+                <thead>
+                    <tr>
+                        <th class="changes-vesrion_num">
+                            <%=t 'changes.version_num' %>
+                        </th>
+                        <th class="changes-description">
+                             <%=t 'changes.change' %>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <% @result.group_by(&:version_num).each do |k, v| %>
+
+                        <tr>
+                            <td class="changes-vesrion_num"> <%= k %> </td>
+                            <td class="inner_table">
+                                <table class="inner_table">
+                                    <tbody>
+                                        <% v.each do |d| %>
+                                            <tr>
+                                                <td class="changes-description">
+                                                    <%=simple_format d.change %>
+                                                </td>
+                                                <td class="changes-type">
+                                                    <p class="<%= d.change_class %>">
+                                                        <%= d.change_desc %>
+                                                    </p>
+                                                </td>
+                                                <% if is_in_administrative? %>
+                                                    <%= items_table_row_administrative_buttons(d) %>
+                                                <% end %>
+                                            </tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                    <% end %>
+
+                </tbody>
+
+                <tfoot>
+
+                    <tr>
+                        <th colspan="99">
+                            <div id="items_table_total_count">
+                                &nbsp;
+                            </div>
+                        </th>
+                    </tr>
+
+                </tfoot>
+
+            </table>
+
+        </section>
+
+    </article>
+
+<% end %>
