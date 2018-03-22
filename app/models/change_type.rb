@@ -4,6 +4,8 @@ class ChangeType < ActiveRecord::Base
         { changes: [
             { name: "---", type: "", id: 0 },
             { name: I18n.t('changelog.bugfix'), type: "danger", id: 1 },
+            { name: I18n.t('changelog.lobugfix'), type: "normal", id: 5 },
+            { name: I18n.t('changelog.refactor'), type: "normal", id: 6 },
             { name: I18n.t('changelog.uxfix'), type: "normal", id: 2 },
             { name: I18n.t('changelog.performance'), type: "normal", id: 3 },
             { name: I18n.t('changelog.add'), type: "new", id: 4 }
@@ -16,7 +18,7 @@ class ChangeType < ActiveRecord::Base
     end
 
     def self.find change_type_id
-         return @@change_types.changes[change_type_id] if !change_type_id.blank?
+         return @@change_types.changes.select { |k| k.id == change_type_id } [0]
     end
 
 end

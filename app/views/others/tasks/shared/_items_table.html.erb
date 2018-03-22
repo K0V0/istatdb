@@ -1,0 +1,26 @@
+<% content_for :items_table do
+
+render('layouts/shared/items_table',
+
+    #object: Task.all,
+
+    fields: {
+        task: {
+            is_label_for: :done
+        },
+        created_at: {
+
+        },
+        done: {
+            is_checkbox: true
+        }
+    },
+
+    options: [
+        head: true,
+        foot: true,
+        change_on_smallscreen: true
+    ]
+)
+
+end %>

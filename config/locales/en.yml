@@ -39,6 +39,7 @@ en:
     results_count: results count
     nothing_found: No item(s) met the search criteria
     no_items: No item(s) were added yet to this section
+    no_assoc: No associations
     solutions: Possible solution(s)
     add_new_solution: new item(s)
     no_results: No results to display

@@ -46,6 +46,23 @@ module ItemsTableHelper
 				end
 			end
 
+			if opts[:is_checkbox]
+				text = check_box_tag(
+					'sub',
+					0,
+					data: {
+						remote: true,
+						url: url_for(action: 'change_status', id: object.id),
+						method: 'PUT'
+					}
+				)
+				#text = obj.check_box
+			end
+
+			if opts[:is_label]
+				text
+			end
+
 		end
 
 		return text

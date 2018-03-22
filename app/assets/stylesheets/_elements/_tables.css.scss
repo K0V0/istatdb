@@ -224,6 +224,36 @@ table.no_results {
 		}
 
 	}
+
+	tfoot {
+		display: none;
+	}
+}
+
+table.no_assocs {
+
+	thead {
+		display: none;
+	}
+
+	tbody {
+		background: inherit;
+
+		tr {
+			width: 100%;
+			pointer-events: none !important;
+
+			&.no_assocs {
+				background-color: $button_danger;
+				color: $white;
+
+				td {
+					padding:0.25em 0.5em;
+				}
+			}
+		}
+	}
+
 }
 
 table.checkboxes_list, table.radio_buttons_list {

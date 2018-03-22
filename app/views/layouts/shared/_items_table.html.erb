@@ -3,18 +3,21 @@ html_class_main = "items_table decorated_wrap"
 html_class_table = "items rows_colored with_efects"
 editable = true
 show_administrative_action = true
+cn = controller_name.to_s
+
 if !defined? object
 	object = @result
 end
 
-cn = controller_name.to_s
 case action_name
-	when 'index', 'administrative', 'end_administrative', 'search', 'destroy', 'delete'
-
-	else
-		cn += "-#{object.first.class.name.underscore}"
-	end
-html_class_table += " no_results" if (object.nil?||object.length == 0)
+when 'index', 'administrative', 'end_administrative', 'search', 'destroy', 'delete'
+ 	###
+else
+	cn += "-#{object.first.class.name.underscore}"
+end
+if (object.nil?||object.length == 0)
+	html_class_table += (action_name == 'show') ? " no_assocs" : " no_results"
+end
 
 if defined? options
 	if o = options[0].try(:[], :html_options)
@@ -33,11 +36,10 @@ end
 is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}")&&editable
 %>
 
+
 <section class="<%= html_class_main %>">
 
 	<table class="<%= html_class_table %>" id="<%= cn %>">
-
-	<% if !object.blank? %>
 
 		<% if defined? options %>
 
@@ -57,6 +59,8 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 						<%# if (span = o.try(:[], :span)) %>
 							<%#= items_table_head(fields, object.model, span) %>
 						<%# else %>
+							<% logger @result %>
+							<% logger object %>
 							<%= items_table_head(fields, object.model) %>
 						<%# end %>
 						<% if is_in_administrative %>
@@ -71,18 +75,44 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 		<tbody>
 
-			<% object.each do |item| %>
+			<% if !object.nil? && !object.blank? %>
 
-				<tr>
-					<%= items_table_fields(item, fields) %>
-					<% if is_in_administrative %>
-						<%= items_table_row_administrative_buttons(item) %>
-					<% end %>
-				</tr>
+				<% object.each do |item| %>
+
+					<tr>
+						<%= items_table_fields(item, fields) %>
+						<% if is_in_administrative %>
+							<%= items_table_row_administrative_buttons(item) %>
+						<% end %>
+					</tr>
+
+				<% end %>
+
+				<%= items_table_errors_handler(errors[0], object) if defined? errors %>
+
+			<% elsif !object.nil? && object.blank? %>
+
+				<% if action_name != 'show' %>
+
+					<%= render(
+						'layouts/shared/items_table/no_items',
+						html_class_main: html_class_main,
+						html_class_table: html_class_table,
+						cn: cn
+					) %>
+
+				<% else %>
+
+					<%= render(
+						'layouts/shared/items_table/no_assoc',
+						html_class_main: html_class_main,
+						html_class_table: html_class_table,
+						cn: cn
+					) %>
+
+				<% end %>
 
 			<% end %>
-
-			<%= items_table_errors_handler(errors[0], object) if defined? errors %>
 
 		</tbody>
 
@@ -105,22 +135,6 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 		<% end %>
 
-	<% else %>
-
-		<% if !object.nil? %>
-			<% if object.model_name.to_s.classify.constantize.all.size > 0 %>
-				<%= items_table_errors_handler(errors[0], object) if defined? errors %>
-			<% else %>
-				<%= render(
-					'layouts/shared/items_table/no_items'
-				) %>
-			<% end %>
-		<% end %>
-
-	<% end %>
-
 	</table>
 
 </section>
-
-

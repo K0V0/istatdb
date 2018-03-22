@@ -249,7 +249,7 @@ Rails.application.routes.draw do
   ## ostatne - zoznam zmien
 
   #index
-  get "others/changelog",
+  get "others/tasklog",
     to: "changes#index",
     as: "changes"
 
@@ -285,6 +285,36 @@ Rails.application.routes.draw do
   get "others/tasks",
     to: "tasks#index",
     as: "tasks"
+
+  get "others/tasks/new",
+    to: "tasks#new",
+    as: "new_task"
+
+  post "others/tasks/new",
+    to: "tasks#create",
+    as: "create_task"
+
+  get "others/tasks/:id/edit",
+    to: "tasks#edit",
+    as: "edit_task"
+
+  patch "others/tasks/:id/edit",
+    to: "tasks#update",
+    as: "update_task"
+
+  delete "others/tasks/:id",
+    to: "tasks#delete",
+    as: "delete_task"
+
+  put "others/tasks/:id",
+    to: "tasks#change_status"#,
+    #as: "edit_task"
+
+  get "others/tasks/administrative",
+    to: "tasks#administrative"
+
+  get "others/tasks/end_administrative",
+    to: "tasks#end_administrative"
 
 
 

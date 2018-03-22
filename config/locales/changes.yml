@@ -1,9 +1,11 @@
 sk:
   changelog:
-    bugfix: kritická oprava
-    uxfix: zlepšenie gr. rozhrania
-    performance: zlepšenie výkonu
+    bugfix: kritická chyba algoritmu
+    lobugfix: banálna chyba algoritmu
+    uxfix: grafické prostredie
+    performance: zrýchlenie
     add: pridanie funkcií
+    refactor: prestavba algoritmu
 
   changes:
     version_num: č. verzie
