@@ -286,9 +286,17 @@ Rails.application.routes.draw do
     to: "tasks#index",
     as: "tasks"
 
+  get "others/tasks/search",
+    to: "tasks#search",
+    as: "search_tasks"
+
   get "others/tasks/new",
     to: "tasks#new",
     as: "new_task"
+
+  get "others/tasks/:id",
+    to: "tasks#show",
+    as: "task"
 
   post "others/tasks/new",
     to: "tasks#create",
@@ -308,7 +316,7 @@ Rails.application.routes.draw do
 
   put "others/tasks/:id",
     to: "tasks#change_status"#,
-    #as: "edit_task"
+    #as: "task"
 
   get "others/tasks/administrative",
     to: "tasks#administrative"

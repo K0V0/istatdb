@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   before_action :inits
 
   before_action(
-  	only: [:index, :search, :show, :administrative],
+  	only: [:index, :search, :show, :administrative, :change_status],
   	if: -> { @user_logged_and_model_exist }) {
     searcher_for(
     	_searcher_settings

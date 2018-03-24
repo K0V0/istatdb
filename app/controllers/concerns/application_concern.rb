@@ -44,6 +44,10 @@ module ApplicationConcern
 	    end
  	end
 
+ 	def custom_render(a_name)
+ 		render "#{@render_command_prepend}#{a_name.to_s}"
+ 	end
+
  	def permitted_params
  		params[controller_name.underscore.singularize.to_sym].permit(_allowed_params)
  	end

@@ -50,10 +50,11 @@ module ItemsTableHelper
 				text = check_box_tag(
 					'sub',
 					0,
+					{},
 					data: {
 						remote: true,
-						url: url_for(action: 'change_status', id: object.id),
-						method: 'PUT'
+						url: task_path(object),
+						method: :put
 					}
 				)
 				#text = obj.check_box
