@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321233253) do
+ActiveRecord::Schema.define(version: 20180324214446) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -183,13 +183,21 @@ ActiveRecord::Schema.define(version: 20180321233253) do
 
   add_index "settings", ["user_id"], name: "index_settings_on_user_id"
 
+  create_table "task_types", force: :cascade do |t|
+    t.string "typ"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.text     "task"
     t.integer  "user_id"
-    t.boolean  "done",       default: false
+    t.boolean  "done",         default: false
+    t.integer  "task_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tasks", ["task_type_id"], name: "index_tasks_on_task_type_id"
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "trade_type_translations", force: :cascade do |t|
     t.integer  "trade_type_id", null: false

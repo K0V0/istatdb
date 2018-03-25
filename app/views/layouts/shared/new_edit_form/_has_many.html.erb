@@ -69,7 +69,9 @@
 		obj: obj.object,
 		coll: coll,
 		text_method: fields.keys
-	) %>
+	) if coll.length > 0 %>
+
+	<%= render('/layouts/shared/new_edit_form/not_any_record') if coll.length == 0 %>
 
 	<%= render('layouts/elements/input_fields_error',
 		obj: obj,

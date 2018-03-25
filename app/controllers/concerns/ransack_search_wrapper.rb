@@ -4,7 +4,12 @@ module RansackSearchWrapper
 
 		params[:q] = [] if disabled
 
-	    object ||= controller_name.classify.constantize.try(:default_order)
+		mdl = controller_name.classify.constantize
+		if mdl.respond_to? :default_order
+	    	object ||= controller_name.classify.constantize.try(:default_order)
+	    else
+	    	object ||= controller_name.classify.constantize
+	    end
 
 	    if !object.try(:translated_locales).blank?
 	    	object = object.with_translations(I18n.locale)

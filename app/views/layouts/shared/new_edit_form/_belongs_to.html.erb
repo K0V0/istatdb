@@ -83,6 +83,8 @@
 		disabled: (@MEM.allow_add_new)[mem_query] || false
 	) if coll.length > 0 %>
 
+	<%= render('/layouts/shared/new_edit_form/not_any_record') if coll.length == 0 %>
+
 	<%= render('layouts/elements/input_fields_error',
 		obj: obj,
 		fields: fields,

@@ -1,0 +1,34 @@
+
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+    <%= form_for @record, @form_url do |t| %>
+
+        <%= new_edit(
+            obj: t,
+            fields: {
+                task: { }
+            }
+        ) %>
+
+        <%= new_edit(
+            obj: t,
+            assoc: :task_type,
+            fields: {
+                typ: {  }
+            },
+            searcher_settings: {
+                query: {
+                    typ: :cont
+                }
+            }
+        ) %>
+
+        <%= new_edit(
+            obj: t
+        ) %>
+
+    <% end %>
+
+</section>

@@ -2,14 +2,12 @@
 
 render('layouts/shared/items_table',
 
-    #object: Task.all,
-
     fields: {
         task: {
-            #is_label_for: :done
+            is_highlighted: true
         },
         created_at: {
-
+            is_sortlink: true
         },
         done: {
             is_checkbox: true

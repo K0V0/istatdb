@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   post "manufacturers/new_select_search",
     to: "manufacturers#new_select_search"
 
+  post "task_types/new_select_search",
+    to: "task_types#new_select_search"
+
   ## check existence ajax call
 
   post "good/check_existence",
@@ -249,7 +252,7 @@ Rails.application.routes.draw do
   ## ostatne - zoznam zmien
 
   #index
-  get "others/tasklog",
+  get "others/changelog",
     to: "changes#index",
     as: "changes"
 
@@ -290,6 +293,12 @@ Rails.application.routes.draw do
     to: "tasks#search",
     as: "search_tasks"
 
+  get "others/tasks/administrative",
+    to: "tasks#administrative"
+
+  get "others/tasks/end_administrative",
+    to: "tasks#end_administrative"
+
   get "others/tasks/new",
     to: "tasks#new",
     as: "new_task"
@@ -317,12 +326,6 @@ Rails.application.routes.draw do
   put "others/tasks/:id",
     to: "tasks#change_status"#,
     #as: "task"
-
-  get "others/tasks/administrative",
-    to: "tasks#administrative"
-
-  get "others/tasks/end_administrative",
-    to: "tasks#end_administrative"
 
 
 

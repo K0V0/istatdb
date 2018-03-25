@@ -30,7 +30,7 @@ var an = "<%= an = action_name %>";
 			.addClass('visible');
 	<% end %>
 
-	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete' %>
+	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete'||an='change_status' %>
 
 		if (an != 'delete') {
 			window.history.pushState("", "", "<%= url_for(action: action_name)%>");
@@ -57,7 +57,7 @@ var an = "<%= an = action_name %>";
 
 	<% end %>
 
-	<% if an=='index'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete' %>
+	<% if an=='index'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete'||an='change_status' %>
 
 		body.addClass('noscroll');
 		searchform_edit_button.addClass('hidden');

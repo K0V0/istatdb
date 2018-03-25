@@ -143,6 +143,7 @@ module NewFormsHelper
     end
 
     def new_forms_no_results
+        logger "outputtt"
     	output = "<tr><td colspan=\"10\" class=\"new_form_select_no_results\">"
     	output += "
     		<h2>#{t('items_table.nothing_found')}.</h2>

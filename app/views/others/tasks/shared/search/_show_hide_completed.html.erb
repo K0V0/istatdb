@@ -1,0 +1,20 @@
+<div>
+
+    <span>
+        <%= obj.label :done_filter %>
+    </span>
+
+    <span>
+        <%= obj.select(
+            :done_filter,
+            options_for_select(
+                [
+                    [t(:is_true), true],
+                    [t(:is_false), false]
+                ],
+                obj.object.send(:done)
+            )
+        ) %>
+    </span>
+
+</div>

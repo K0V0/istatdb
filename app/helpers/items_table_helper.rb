@@ -48,16 +48,15 @@ module ItemsTableHelper
 
 			if opts[:is_checkbox]
 				text = check_box_tag(
-					'sub',
-					0,
-					{},
+					"#{object.model_name.to_s.underscore}[#{field.to_s}]",
+					1,
+					object.send(field),
 					data: {
 						remote: true,
 						url: task_path(object),
 						method: :put
 					}
 				)
-				#text = obj.check_box
 			end
 
 			if opts[:is_label]
