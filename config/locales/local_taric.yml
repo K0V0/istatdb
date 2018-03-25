@@ -38,7 +38,7 @@ sk:
   ransack:
     attributes:
       local_taric:
-        translations_description: Popis položky obsahuje
+        translations_description: Popis položky
 
   activerecord:
     models:

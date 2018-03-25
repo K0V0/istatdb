@@ -94,12 +94,22 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 				<% if action_name != 'show' %>
 
-					<%= render(
-						'layouts/shared/items_table/no_items',
-						html_class_main: html_class_main,
-						html_class_table: html_class_table,
-						cn: cn
-					) %>
+					<% if object.model.count > 0 %>
+						<%=
+						render(
+							"#{controller_name}/shared/search/no_results",
+						) rescue
+						render(
+							"layouts/shared/items_table/no_results",
+						) %>
+					<% else %>
+						<%= render(
+							'layouts/shared/items_table/no_items',
+							html_class_main: html_class_main,
+							html_class_table: html_class_table,
+							cn: cn
+						) %>
+					<% end %>
 
 				<% else %>
 

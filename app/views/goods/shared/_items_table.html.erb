@@ -1,5 +1,5 @@
 
-<% content_for :items_table do 
+<% content_for :items_table do
 
 render('layouts/shared/items_table',
 
@@ -18,7 +18,8 @@ render('layouts/shared/items_table',
 		local_taric: [
 			kncode: {
 				call_decorator: :num_to_kncode,
-				is_link: true
+				is_link: true,
+				clipboard_button: true
 			}
 		]
 	},
@@ -27,7 +28,7 @@ render('layouts/shared/items_table',
 		no_results: {
 			partial: "goods/index/no_results"
 		}
-	], 
+	],
 
 	options: [
 		head: true,
@@ -35,6 +36,6 @@ render('layouts/shared/items_table',
 		change_on_smallscreen: true
 	]
 
-) 
- 
+)
+
 end %>

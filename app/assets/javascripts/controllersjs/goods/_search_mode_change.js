@@ -27,7 +27,7 @@ SearchModeChange.prototype = {
 			$(document).find('label#ident_searchfield_label')
 				.text(t('activerecord.attributes.good.ident') +' '+ t('ransack.predicates.cont'))
 				.attr('for', 'q_ident_cont');
-			
+
 		} else {
 			$(document).find('#q_description_cont').attr('disabled', 'disabled');
 			$(document).find('label[for=q_description_cont]').addClass('disabled');

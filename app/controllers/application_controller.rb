@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
 
   before_action :inits
 
+  before_action :convert_params_to_date
+
   before_action(
   	only: [:index, :search, :show, :administrative, :change_status],
   	if: -> { @user_logged_and_model_exist }) {

@@ -16,15 +16,17 @@ class Task < ActiveRecord::Base
         order(created_at: :asc)
     }
 
-    scope :done_filter, -> (pars) {
-        logger pars, "par"
-        #self
-        #.where(done: true)
+    scope :done_filter, -> (*pars) {
+        where(done: false)
+        .order(created_at: :asc)
+    }
+
+    scope :date_filter, -> (*pars) {
+        where("created_at > ?", Date.parse(*pars))
     }
 
     def self.ransackable_scopes(*pars)
-        %i(done_filter)
+        %i(done_filter date_filter)
     end
-
 
 end

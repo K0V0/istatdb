@@ -6,6 +6,12 @@ en:
   ok: OK
   cancel: Cancel
 
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+
   search:
     clear: Clear fields
     clear_short: Reset

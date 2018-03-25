@@ -2,7 +2,7 @@
 <%= render(
 		layout: 'layouts/shared/search',
 		locals: {
-			main_fields: { 
+			main_fields: {
 				ident: [:ident_or_description_cont, :ident_cont]
 			},
 			actions: [
@@ -16,18 +16,10 @@
 			]
 		}
 	) do %>
-	
+
 	<% has_search_both = params.deep_has_key? :q, :search_both %>
 
 	<div class="search_checkbox_wrap">
-		<span>
-			<%= check_box_tag(
-				'q[search_both]',
-				1,
-				has_search_both,
-				class: "big"
-			) %>
-		</span>
 		<span>
 			<%= params[:q].try(:has_key, "search_both") %>
 			<%= @s.label(
@@ -40,6 +32,14 @@
 				:description_cont,
 			 	autocomplete: "off",
 			 	disabled: !has_search_both
+			) %>
+		</span>
+		<span>
+			<%= check_box_tag(
+				'q[search_both]',
+				1,
+				has_search_both,
+				class: "big"
 			) %>
 		</span>
 	</div>

@@ -13,6 +13,10 @@ class TasksController < ApplicationController
         :others
     end
 
+    def _searcher_settings
+        { paginate: true, object: Task, autoshow: false }
+    end
+
     def _allowed_params
         [
             :id,

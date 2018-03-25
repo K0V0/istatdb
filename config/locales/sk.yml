@@ -6,6 +6,16 @@ sk:
   ok: OK
   cancel: Storno
 
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+    day_names: [Pondelok, Utorok, Streda, Štvrtok, Piatok, Sobota, Nedela]
+    abbr_day_names: [Po, Ut, St, Št, Pi, So, Ne]
+    month_names: [~, Január, Február, Marec, Apríl, Máj, Jún, Júl, August, September, Október, November, December]
+    abbr_month_names: [~, Jan., Feb., Mar., Apr., Máj, Jún, Júl, Aug., Sep., Okt., Nov., Dec.]
+
   search:
     clear: Vymazať polia
     clear_short: Reset

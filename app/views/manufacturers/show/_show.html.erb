@@ -15,6 +15,12 @@
 			impexpcompany: [
 				company_name: {}
 			],
+			local_taric: [
+				kncode: {
+					fill_if_empty: true,
+					call_decorator: :num_to_kncode
+				}
+			],
 			incoterm: [
 				shortland: {
 					fill_if_empty: true
@@ -26,7 +32,8 @@
 				}
 			],
 			invoices_correct: {
-				fill_if_empty: true
+				fill_if_empty: true,
+				call_decorator: :bool_to_human
 			}
 		},
 

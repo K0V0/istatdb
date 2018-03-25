@@ -36,14 +36,15 @@ module ItemsTableHelper
 				text = highlight_searched(str: text, patt: patt)
 			end
 
-			if opts[:clipboard_button]
-				#text = "<span class=\"to_clipboard\" id=\"#{row_id}_#{field_class}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{row_id}_#{field_class}\">&#9986</b>".html_safe
-			end
-
 			if opts[:is_link]
 				text = link_to object, remote: opts[:is_link].try(:[], :remote) do
 					text
 				end
+			end
+
+			if opts[:clipboard_button]
+				target_id = "#{object.class.name}_#{field.to_s}"
+				text = "<span class=\"to_clipboard\" id=\"#{target_id}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{target_id}\">&#9986</b>".html_safe
 			end
 
 			if opts[:is_checkbox]

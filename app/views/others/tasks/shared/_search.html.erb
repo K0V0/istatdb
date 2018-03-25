@@ -1,21 +1,22 @@
 <%= render(
-        layout: 'layouts/shared/search',
-        locals: {
-            main_fields: {
-                task: :task_cont
-            },
-            actions: [
-                :add,
-                :edit,
-                :delete,
-                :clear_fields,
-                :clear_all,
-                :administrative
-            ]
-        }
-    ) do %>
+    layout: 'layouts/shared/search',
+    locals: {
+        main_fields: {
+            task: :task_cont
+        },
+        actions: [
+            :add,
+            :edit,
+            :delete,
+            :clear_fields,
+            :clear_all,
+            :administrative
+        ]
+    }
+) do %>
 
     <%= render 'others/tasks/shared/search/show_hide_completed', obj: @s %>
 
+    <%= render 'others/tasks/shared/search/date_filter', obj: @s %>
 
 <% end %>

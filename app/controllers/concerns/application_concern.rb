@@ -176,6 +176,14 @@ module ApplicationConcern
 		@MEM.send("#{prefix.to_s}_#{controller_name.singularize.underscore}")
 	end
 
+	def convert_params_to_date
+        if params.deep_has_key? :q, "created_at(3i)"
+            #logger params[:q]["created_at(3i)"], "kkt"
+            q = params[:q]
+            q[:date_filter] = "#{q['created_at(1i)']}-#{q['created_at(2i)']}-#{q['created_at(3i)']}"
+        end
+    end
+
 	module ClassMethods
 
 	end
