@@ -1,6 +1,9 @@
 <div>
 
-	<%= obj.label field_name %>
+	<%= obj.label(
+		field_name,
+		class: (opts[:required] ? "required" : "")
+	) %>
 
 	<%= new_form_plain_textfield(
 		obj: obj,
@@ -9,7 +12,8 @@
 		default_val: prefill_from_search_field(opts[:prefill_from_mem_param]),
 		autofocus: opts[:autofocus],
 		js_check_existence: opts[:js_check_existence],
-        html_class: defined?(html_class) ? html_class : ""
+        html_class: defined?(html_class) ? html_class : "",
+        required: opts[:required]
 	) %>
 
 </div>

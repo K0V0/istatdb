@@ -29,7 +29,6 @@ nav.top_menu {
 
 	ul.main {
 		color: $white;
-		background-color: $background_color;
 		@include scrollbar_top_menu_main();
 
 		& > div {

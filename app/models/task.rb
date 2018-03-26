@@ -29,4 +29,8 @@ class Task < ActiveRecord::Base
         %i(done_filter date_filter)
     end
 
+    def time_created
+        created_at.strftime("%d. %b %Y")
+    end
+
 end

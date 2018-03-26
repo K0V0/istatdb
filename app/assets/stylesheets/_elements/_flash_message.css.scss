@@ -18,14 +18,12 @@ body {
         z-index: -1;
 
         &.visible {
-            z-index: 9999;
             background: rgba(0,0,0,0.5);
         }
 
         div {
             min-width:10em;
             max-width: 50%;
-            z-index: 99999;
 
             table {
                 min-width:10em;

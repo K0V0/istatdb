@@ -162,16 +162,20 @@ module NewFormsHelper
     # field 		- column in table (AR) that is field related to
     # type 			- type of textfield (like text_area, search_field)
     # default_val 	- default value if field has no value
-    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false, js_check_existence: false, html_class: "")
+    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false, js_check_existence: false, html_class: "", required: false)
         output = ""
         klass = ""
         parent_obj_model_name = obj.object.class.name.underscore
 
         type = :text_field if type.nil?
-        klass += " js_check_existence" if js_check_existence
+        klass += " js_check_existence " if js_check_existence
         klass += "#{parent_obj_model_name}_#{field.to_s} #{html_class}"
         data = js_check_existence ? { model: parent_obj_model_name, field: field.to_s } : nil
-        output += default_val.nil? ? obj.send(type, field, class: klass, autofocus: autofocus, data: data) : obj.send(type, field, value: default_val, class: klass, autofocus: autofocus, data: data)
+        arguments = [ type, field ]
+        arguments += [ value: default_val ] if !default_val.nil?
+        arguments += [ { class: klass, autofocus: autofocus, required: required } ]
+        #output += default_val.nil? ? obj.send(type, field, class: klass, autofocus: autofocus, data: data) : obj.send(type, field, value: default_val, class: klass, autofocus: autofocus, data: data)
+        output += obj.send(*arguments)
         output.html_safe
     end
 

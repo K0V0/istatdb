@@ -24,12 +24,17 @@
 	<input type="hidden" name="assoc-type" value="belongs_to">
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 
-	<% if ss.nil? %>
-		<div class="caption"><%= obj.object.model_name.human %></div>
+	<% if ss.has_key? :caption %>
+		<div class="caption">
+			<%= assoc.to_s.classify.constantize.model_name.human %>
+		</div>
+	<% else %>
+		<% if !ss.has_key? :query %>
+			<div class="caption"><%= obj.object.model_name.human %></div>
+		<% end %>
 	<% end %>
 
 	<div>
-
 		<% 	mem_query = assoc.to_s
 			mem_query += "_#{obj.object.id}" if multiedit %>
 

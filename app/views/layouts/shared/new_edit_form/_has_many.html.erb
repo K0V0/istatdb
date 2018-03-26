@@ -23,8 +23,14 @@
 
 	<input type="hidden" name="assoc-type" value="has_many">
 
-	<% if ss.nil? %>
-		<div class="caption"><%= obj.object.model_name.human %></div>
+	<% if ss.has_key? :caption %>
+		<div class="caption">
+			<%= assoc.to_s.classify.constantize.model_name.human %>
+		</div>
+	<% else %>
+		<% if !ss.has_key? :query %>
+			<div class="caption"><%= obj.object.model_name.human %></div>
+		<% end %>
 	<% end %>
 
 	<div>

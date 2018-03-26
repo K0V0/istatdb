@@ -1,7 +1,7 @@
 
 <% content_for :show_content do %>
 
-	<%= render('layouts/shared/show_item_basic_info', 
+	<%= render('layouts/shared/show_item_basic_info',
 		fields: [
 			[:company_name]
 		]
@@ -15,9 +15,8 @@
 			local_taric: [
 				kncode: {
 					call_decorator: :num_to_kncode,
-					is_link: {
-						remote: true
-					}
+					is_link: true,
+					clipboard_button: true
 				},
 				description: {
 
@@ -50,12 +49,15 @@
 				local_taric: [
 					kncode: {
 						call_decorator: :num_to_kncode,
-						fill_if_empty: true
+						fill_if_empty: true,
+						is_link: true,
+						clipboard_button: true
 					}
 				],
 				incoterm: [
 					shortland: {
-						fill_if_empty: true
+						fill_if_empty: true,
+						clipboard_button: true
 					}
 				],
 				invoices_correct: {

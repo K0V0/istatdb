@@ -15,6 +15,7 @@ module LayoutsHelper
 				multiedit: multiedit,
 				searcher_settings: searcher_settings,
 				add_next: add_next,
+				#required: required,
 				block: block
 			}
 		)

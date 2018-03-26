@@ -7,6 +7,7 @@ sk:
         uom: Hodnota
         uom_multiplier: Koeficient
         uom_type: Merná jednotka
+        uom_type_id: Merná jednotka
         type: Merná jednotka
         impexpcompany_id: Spravodajská jednotka
         impexpcompany_name: Spravodajská jednotka
@@ -30,6 +31,7 @@ en:
         uom: Value
         uom_multiplier: per units
         uom_type: Unit of measurement
+        uom_type_id: Unit of measurement
         type: Unit of measurement
         impexpcompany_id: Intrastat client
         manufacturer_id: Manufacturer/consumer

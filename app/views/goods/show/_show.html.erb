@@ -1,7 +1,7 @@
 
 <% content_for :show_content do %>
 
-	<%= render('layouts/shared/show_item_basic_info', 
+	<%= render('layouts/shared/show_item_basic_info',
 		fields: [
 			[:ident, :description],
 			[
@@ -9,7 +9,8 @@
 					:local_taric,
 					kncode: {
 						call_decorator: :num_to_kncode,
-						is_link: true
+						is_link: true,
+						clipboard_button: true
 					}
 				],
 				[:local_taric, :description]

@@ -43,7 +43,7 @@ module ItemsTableHelper
 			end
 
 			if opts[:clipboard_button]
-				target_id = "#{object.class.name}_#{field.to_s}"
+				target_id = "#{object.class.name.underscore}-#{field.to_s}-#{object.id}"
 				text = "<span class=\"to_clipboard\" id=\"#{target_id}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{target_id}\">&#9986</b>".html_safe
 			end
 

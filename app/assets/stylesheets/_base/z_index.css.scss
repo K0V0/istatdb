@@ -1,19 +1,27 @@
-main {
-    z-index: 1;
+body {
+    z-index:1;
 }
 
-section, article, aside {
+main {
     z-index: 2;
 }
 
-.to_clipboard {
+section, article, aside {
     z-index: 3;
+}
+
+b.copy_to_clipboard {
+    z-index: 4;
 }
 
 nav {
     z-index: 8;
 }
 
-div.flash_messages {
+div.flash_messages.visible {
     z-index: 9;
+
+    div {
+        z-index: 10;
+    }
 }
