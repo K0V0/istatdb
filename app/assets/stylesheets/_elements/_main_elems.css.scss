@@ -56,6 +56,23 @@ html {
 				border-radius: $wrap_border_radius;
 			}
 
+			caption, div.caption {
+				text-align:left;
+				padding: 0 0.5em;
+				font-weight: bold;
+				box-sizing: border-box;
+				border-top-left-radius: 0.4375em;
+				border-top-right-radius: 0.4375em;
+				width:100%;
+				line-height: 1.5em;
+				background-color: $wrap_border_color_2;
+
+				&.danger {
+					background-color: $button_danger;
+					color: $white;
+				}
+			}
+
 			em {
 				font-style: normal;
 				font-weight: bold;

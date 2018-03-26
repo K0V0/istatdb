@@ -25,7 +25,7 @@
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 
 	<% if ss.has_key? :caption %>
-		<div class="caption">
+		<div class="caption <%= 'required' if ss[:caption].has_key?(:required) %>">
 			<%= assoc.to_s.classify.constantize.model_name.human %>
 		</div>
 	<% else %>

@@ -8,17 +8,22 @@ section.form {
 
 	article {
 		background-color: $group_background;
-		padding:0.25em;
+		padding-bottom: 0.25em;
+		padding-top: 0.25em;
 
 		&.disabled {
 			pointer-events:none;
 			color: $disabled_input_text;
 		}
 
+		& > div {
+			padding: 0 0.25em;
+		}
+
 		div {
 
 			div {
-				margin: 0em 0.25em;
+				margin: 0 0.25em;
 				width: auto;
 				display: inline-block;
 				line-height: 1.5em;
@@ -56,8 +61,22 @@ section.form {
 				}
 			}
 
+			&.tablewrap {
+				padding:0;
+			}
+
 			&.caption {
-				padding: 0 0.125em;
+				position:relative;
+				bottom: 0.25em;
+				font-weight: normal;
+
+				&.required {
+					font-weight: bold;
+
+					&::before {
+						content: '*';
+					}
+				}
 			}
 
 			label {

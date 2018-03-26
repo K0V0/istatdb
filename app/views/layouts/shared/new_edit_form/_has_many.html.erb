@@ -24,7 +24,7 @@
 	<input type="hidden" name="assoc-type" value="has_many">
 
 	<% if ss.has_key? :caption %>
-		<div class="caption">
+		<div class="caption <%= 'required' if ss[:caption].has_key?(:required) %>">
 			<%= assoc.to_s.classify.constantize.model_name.human %>
 		</div>
 	<% else %>
