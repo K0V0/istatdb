@@ -7,13 +7,13 @@ section.form {
 	}
 
 	article {
-		background-color: $group_background;
+		//background-color: $group_background;
 		padding-bottom: 0.25em;
 		padding-top: 0.25em;
 
 		&.disabled {
 			pointer-events:none;
-			color: $disabled_input_text;
+			//color: $disabled_input_text;
 		}
 
 		& > div {
@@ -50,7 +50,7 @@ section.form {
 				margin: 0.125em 0;
 
 				select.error {
-					background-color: $button_danger;
+					//background-color: $button_danger;
 				}
 			}
 
@@ -68,15 +68,6 @@ section.form {
 			&.caption {
 				position:relative;
 				bottom: 0.25em;
-				font-weight: normal;
-
-				&.required {
-					font-weight: bold;
-
-					&::before {
-						content: '*';
-					}
-				}
 			}
 
 			label {
@@ -101,8 +92,8 @@ section.form {
 						}
 
 						td.new_form_select_no_results {
-							background-color: $button_danger;
-							color: $superwhite;
+							//background-color: $button_danger;
+							//color: $superwhite;
 							padding: 0.25em 0.5em;
 
 							h2 {

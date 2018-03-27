@@ -11,7 +11,7 @@ html {
 
 	body {
 		margin:0;
-		background-color: $background-color;
+		background-color: $body_background;
   		min-height:100%;
 		position:relative;
 
@@ -27,7 +27,7 @@ html {
 			display: flex;
 			flex-direction: column;
 			align-items: stretch;
-			background-color: $white;
+			background-color: $workspace_background;
 
 			a {
 				text-decoration: none;
@@ -65,19 +65,28 @@ html {
 				border-top-right-radius: 0.4375em;
 				width:100%;
 				line-height: 1.5em;
-				background-color: $wrap_border_color_2;
+				background-color: $widget_caption_background;
+				color: $widget_caption_text;
 
 				&.danger {
-					background-color: $button_danger;
-					color: $white;
+					background-color: $widget_caption_danger_background;
+					color: $widget_caption_danger_text;
+				}
+
+				&.required {
+					color: $widget_caption_required_text;
+
+					&::before {
+						content: '*';
+					}
 				}
 			}
 
 			em {
 				font-style: normal;
 				font-weight: bold;
-				background-color: $input_selected;
-				color: white;
+				background-color: $button_danger_background;
+				color: $button_danger_text;
 				border-radius: 0.25em;
 			}
 
@@ -116,8 +125,8 @@ html {
 
 				span {
 					display: inline-block;
-					background-color: $button_danger;
-					color: white;
+					background-color: $button_danger_background;
+					color: $button_danger_text;
 					padding: 0.125em 0.25em;
 					margin: 0.125em;
 					margin-top: 0.25em;

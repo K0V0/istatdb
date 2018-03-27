@@ -1,26 +1,60 @@
-$superwhite:      #fff;
-$white:           #eee;
-
-$dark_grey:       #999;
-$strong_grey:     #aaa;
-$base_grey:       #bbb;
-$base_grey_grad:  #b0b0b0;
-$grey_2n-1:       #ddd;
-$grey_2n-1_grad:  #d0d0d0;
-$grey_2n:         #ccc;
-$grey_2n_grad:    #c0c0c0;
-
 $strong_black:    #000;
 $black:           #222;
 $soft_black:      #444;
-$semi_grey:       #666;
-$halftone:		  #888;
+$light_black:     #666;
+$halftone:        #888;
+$strong_grey:     #999;
+$grey:            #aaa;
+$medium_grey:     #bbb;
+$soft_grey:       #ccc;
+$light_grey:      #ddd;
+$white:           #eee;
+$strong_white:    #fff;
 
 $soft_red:        #FF7F7F;
 $strong_red:      #e00;
 $dark_red:        #8E0000;
 
 
+$body_background:                     $strong_black;
+$workspace_background:                $white;
+
+$widget_background:                   $soft_grey;
+$widget_caption_background:           $grey;
+$widget_caption_text:                 $black;
+$widget_caption_danger_background:    $dark_red;
+$widget_caption_danger_text:          $white;
+$widget_caption_required_text:        $strong_black;
+$widget_border:                       $halftone;
+
+$main_menu_active_link_text:          $strong_black;
+$main_menu_active_link_background:    $white;
+
+
+$main_menu_inactive_link_hover_background:       red;
+
+
+$input_background:                    $white;
+$input_text:                          $strong_black;
+$input_border:                        $white;
+$input_hover_background:              $strong_white;
+$input_selected_border:               $dark_red;
+
+$button_background:                   $white;
+$buton_text:                          $black;
+$button_hover_background:             $strong_white;
+$button_danger_background:            $dark_red;
+$button_danger_text:                  $white;
+$button_danger_hover_background:      $strong_red;
+
+$table_row_even_background:           $light_grey;
+$table_row_odd_background:            $white;
+$table_row_hover_background:          $medium_grey;
+$table_row_hover_text:                $strong_black;
+
+
+
+/*
 $background_color:                        $strong_black;
 $group_background:                        $base_grey;
 $table_background:                        $grey_2n;
@@ -68,13 +102,12 @@ $button_disabled_text:            $grey_2n-1;
 $even_table_line_color:           $grey_2n;
 $odd_table_line_color:            $grey_2n-1;
 $table_row_hover:                 $strong_grey;
-
+*/
 
 $main_border_radius:      0.25em;
 $wrap_border_radius:      0.5em;
 $border-width:            0.125em;
-$border-2x-width: $border-width * 2;
-
+$border-2x-width:         $border-width * 2;
 
 $buttons_mouse_actions_transition_time: 0.15s;
 $main_menu_mouse_actions_transition_time: 0.30s;
@@ -147,7 +180,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   }
 
   ::-webkit-scrollbar-thumb {
-      background-color: $white;
+      //background-color: $white;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
@@ -155,16 +188,16 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      background-color: $superwhite;
+      //background-color: $superwhite;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-track {
-      background: $dark_grey;
+      //background: $dark_grey;
       border-radius:0.5em;
-      border: 0.25em solid $base_grey;
+      //border: 0.25em solid $base_grey;
       margin: 0.25em;
   }
 }
@@ -202,16 +235,16 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   @include scrollbars_top_menu();
 
   ::-webkit-scrollbar-thumb {
-      background-color: $main_menu_2_submenu_active_link_hover;
+      //background-color: $main_menu_2_submenu_active_link_hover;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      background-color: $sub_menu_background;
+      //background-color: $sub_menu_background;
   }
 
   ::-webkit-scrollbar-track {
-      background: $main_menu_inactive_link_hover;
-      border-color: $background_color;
+     // background: $main_menu_inactive_link_hover;
+      //border-color: $background_color;
   }
 }
 
@@ -219,16 +252,16 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   @include scrollbars_top_menu();
 
   ::-webkit-scrollbar-thumb {
-      background-color: $white;
+      //background-color: $white;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      background-color: $superwhite;
+      //background-color: $superwhite;
   }
 
   ::-webkit-scrollbar-track {
-      background: $sub_menu_inactive_link_hover;
-      border-color: $sub_menu_background;
+      //background: $sub_menu_inactive_link_hover;
+      //border-color: $sub_menu_background;
   }
 }
 
@@ -236,7 +269,7 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   @include scrollbar_top_menu_sub();
 
   ::-webkit-scrollbar-track {
-      border-color: $main_menu_2_submenu_active_link_hover;
+      //border-color: $main_menu_2_submenu_active_link_hover;
   }
 }
 
@@ -244,15 +277,15 @@ $main_menu_mouse_actions_transition_time: 0.30s;
   @include scrollbar_top_menu_sub();
 
   ::-webkit-scrollbar-thumb {
-      background-color: $main_menu_2_submenu_active_link_hover;
+      //background-color: $main_menu_2_submenu_active_link_hover;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      background-color: $sub_menu_background;
+      //background-color: $sub_menu_background;
   }
 
   ::-webkit-scrollbar-track {
-      border-color: $main_menu_inactive_link_hover;
+      //border-color: $main_menu_inactive_link_hover;
   }
 }
 

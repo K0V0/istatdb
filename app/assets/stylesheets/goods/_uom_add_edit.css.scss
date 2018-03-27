@@ -14,8 +14,8 @@ body.new, body.edit, body.create, body.update {
 
                         div.delete_info {
                             display: none;
-                            background-color: $button_danger;
-                            color: $white;
+                            //background-color: $button_danger;
+                            //color: $white;
                             padding: 0.25em 0.5em;
                             box-sizing: border-box;
                             margin-bottom: 0.125em;
@@ -27,7 +27,7 @@ body.new, body.edit, body.create, body.update {
                                 cursor:pointer;
 
                                 &:hover {
-                                    color: $superwhite;
+                                    //color: $superwhite;
                                 }
                             }
 
@@ -38,7 +38,7 @@ body.new, body.edit, body.create, body.update {
 
                         &.to_delete {
                             background: none;
-                            background-color: $input_validation_error;
+                            //background-color: $input_validation_error;
 
                             div.delete_info {
                                 display: block;

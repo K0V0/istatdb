@@ -7,35 +7,35 @@ input, select, textarea {
 	display: inline-block;
 	margin: 0.125em 0.125em;
 	font-size: 1em;
-	border:0.125em solid $white;
+	//border:0.125em solid $white;
 	padding:0.125em 0.25em;
 	border-radius:0.25em;
-	background-color: $white;
+	//background-color: $white;
 	line-height:1em;
 	box-sizing:border-box;
 	vertical-align:middle;
 
 	&:hover {
-		background-color: $superwhite;
-		border-color: $superwhite;
+		//background-color: $superwhite;
+		//border-color: $superwhite;
 	}
 
 	&:focus {
-		border-color: $input_selected;
-		background-color: $superwhite;
+		//border-color: $input_selected;
+		//background-color: $superwhite;
 	}
 
 	&:disabled {
-		background-color: $disabled_input;
-		border-color: $disabled_input;
+		//background-color: $disabled_input;
+		//border-color: $disabled_input;
 		cursor: not-allowed;
 	}
 
 	&.error{
-		background-color: $input_validation_error;
+		//background-color: $input_validation_error;
 
 		&:-webkit-autofill {
-			-webkit-box-shadow: 0 0 0 100px $input_validation_error inset !important;
+			//-webkit-box-shadow: 0 0 0 100px $input_validation_error inset !important;
 		}
 
 		&:hover {
@@ -71,10 +71,10 @@ input[type=search]::-webkit-search-cancel-button {
 	width:0.875em;
 	margin: 0.125em;
 	border-radius: 0.75em;
-    background-color: $dark_red;
+    //background-color: $dark_red;
 
     &:hover {
-    	background-color: $strong_red;
+    	//background-color: $strong_red;
     }
 }
 
@@ -96,8 +96,8 @@ select {
 	option {
 
 		&.obsolete {
-			background-color: $button_disabled;
-			color: $button_disabled_text;
+			//background-color: $button_disabled;
+			//color: $button_disabled_text;
 		}
 	}
 }
@@ -105,17 +105,17 @@ select {
 input[type=submit] {
 	padding: 0.125em 0.25em;
 	border-width: 0.125em;
-	border-color: transparent;
+	//border-color: transparent;
 
 	&:active {
-		border-color: $button_selected;
+		//border-color: $button_selected;
 	}
 }
 
 input[type=checkbox], input[type=radio] {
 	display: block;
-	border:0.25em solid $button_disabled;
-	background-color: $soft_black !important;
+	//border:0.25em solid $button_disabled;
+	//background-color: $soft_black !important;
 	border-radius:0.625em;
 	margin:0;
 	padding:0;
@@ -129,15 +129,15 @@ input[type=checkbox], input[type=radio] {
 	}
 
 	&:hover {
-		border-color: $button_disabled_hover !important;
+		//border-color: $button_disabled_hover !important;
 	}
 
 	&:checked {
-		background-color: $button_danger_hover !important;
-		border-color: $button_selected !important;
+		//background-color: $button_danger_hover !important;
+		//border-color: $button_selected !important;
 
 		&:hover {
-			border-color: $button_selected_hover !important;
+			//border-color: $button_selected_hover !important;
 		}
 	}
 }
@@ -148,7 +148,7 @@ label {
 	display: inline-block;
 
 	&.disabled {
-		color: $disabled_input_text;
+		//color: $disabled_input_text;
 	}
 
 	&.required {

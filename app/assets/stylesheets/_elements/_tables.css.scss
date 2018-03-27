@@ -35,13 +35,13 @@ table {
 		}
 
 		&.danger {
-			background-color: $button_danger;
-			color: $white;
+			//background-color: $button_danger;
+			//color: $white;
 		}
 	}
 
 	tbody {
-		background-color: $odd_table_line_color;
+		//background-color: $odd_table_line_color;
 
 		tr {
 			@include links_transitions();
@@ -90,31 +90,31 @@ table.rows_colored {
 		tr {
 
 			&:nth-child(2n) {
-				background-color: $even_table_line_color;
+				background-color: $table_row_even_background;
 			}
 
 			&:nth-child(2n-1) {
-				background-color: $odd_table_line_color;
+				background-color: $table_row_odd_background;
 			}
 		}
 	}
 
-	&.darker {
+	/*&.darker {
 
 		tbody {
 
 			tr {
 
 				&:nth-child(2n) {
-					background-color: $base_grey;
+					//background-color: $base_grey;
 				}
 
 				&:nth-child(2n-1) {
-					background-color: $even_table_line_color;
+					//background-color: $even_table_line_color;
 				}
 			}
 		}
-	}
+	}*/
 
 	&.disabled {
 		tbody {
@@ -122,11 +122,11 @@ table.rows_colored {
 			tr {
 
 				&:nth-child(2n) {
-					background-color: $semi_grey;
+					//background-color: $semi_grey;
 				}
 
 				&:nth-child(2n-1) {
-					background-color: $halftone;
+					//background-color: $halftone;
 				}
 			}
 		}
@@ -140,15 +140,16 @@ table.with_efects {
 		tr {
 
 			&:hover {
-				background-color: $table_row_hover;
+				background-color: $table_row_hover_background;
+				color: $table_row_hover_text;
 			}
 
 			&:active, &.selected {
-				background-color: $black;
-				color: $white;
+				//background-color: $black;
+				//color: $white;
 
 				&:hover {
-					background-color: $button_selected_hover;
+					//background-color: $button_selected_hover;
 				}
 			}
 		}
@@ -170,8 +171,8 @@ table.no_results {
 			pointer-events: none !important;
 
 			&.no_results {
-				background-color: $button_danger;
-				color: $white;
+				//background-color: $button_danger;
+				//color: $white;
 
 				td {
 					padding:0.25em 0.5em;
@@ -227,8 +228,8 @@ table.no_assocs {
 			pointer-events: none !important;
 
 			&.no_assocs {
-				background-color: $button_danger;
-				color: $white;
+				//background-color: $button_danger;
+				//color: $white;
 
 				td {
 					padding:0.25em 0.5em;
@@ -282,8 +283,8 @@ table.inner_table {
 			pointer-events: auto !important;
 
 			&:hover {
-				background-color: $black !important;
-				color: $white;
+				//background-color: $black !important;
+				//color: $white;
 			}
 		}
 	}
@@ -298,7 +299,7 @@ table.for_nontabular {
 
 	tbody, thead {
 		display: block;
-		background-color: $grey_2n;
+		//background-color: $grey_2n;
 
 		tr {
 			display: block;
@@ -341,7 +342,7 @@ table.no_line_height {
 table.for_forms {
 
 	tbody {
-		background-color: $grey_2n;
+		//background-color: $grey_2n;
 
 		tr {
 
@@ -378,7 +379,7 @@ table.for_dialogbox {
 
 	tbody {
 		border-radius:0.25em;
-		background-color: transparent;
+		//background-color: transparent;
 
 		tr {
 

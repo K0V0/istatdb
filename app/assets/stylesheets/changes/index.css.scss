@@ -31,21 +31,21 @@ article.changes {
                                     margin:0;
 
                                     &.normal {
-                                        background-color: $superwhite;
-                                        border-right-color: $superwhite;
-                                        color: $black;
+                                        //background-color: $superwhite;
+                                        //border-right-color: $superwhite;
+                                        //color: $black;
                                     }
 
                                     &.new {
-                                        background-color: $black;
-                                        color: $white;
-                                        border-right-color: $black;
+                                        //background-color: $black;
+                                        //color: $white;
+                                        //border-right-color: $black;
                                     }
 
                                     &.danger {
-                                        background-color: $button_danger;
-                                        color: $white;
-                                        border-right-color: $button_danger;
+                                        //background-color: $button_danger;
+                                        //color: $white;
+                                        //border-right-color: $button_danger;
                                     }
 
                                     &.normal, &.danger, &.new {
@@ -65,9 +65,9 @@ article.changes {
                                             border-style: solid;
                                             border-right-width: 1em;
                                             border-left-width: 0;
-                                            border-right-color: inherit;
-                                            border-top-color: transparent;
-                                            border-bottom-color: transparent;
+                                            //border-right-color: inherit;
+                                            //border-top-color: transparent;
+                                           // border-bottom-color: transparent;
                                             border-top-width:0.875em;
                                             border-bottom-width:0.875em;
                                             position: absolute;

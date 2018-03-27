@@ -25,20 +25,20 @@ nav.pagination {
 					white-space: nowrap;
 
 					&:hover {
-						background-color: $main_menu_inactive_link_hover;
+						//background-color: $main_menu_inactive_link_hover;
 					}
 
 					&.active {
-							background-color: $main_menu_active_link;
-							color: $main_menu_active_link_text;
+							//background-color: $main_menu_active_link;
+							//color: $main_menu_active_link_text;
 						&:hover {
-							background-color: $main_menu_active_link;
+							//background-color: $main_menu_active_link;
 						}
 					}
 
 					&.inactive {
 						pointer-events: none;
-						color: $semi_grey;
+						//color: $semi_grey;
 					}
 				}
 			}
