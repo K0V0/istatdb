@@ -65,24 +65,23 @@
   }
 
   ::-webkit-scrollbar-thumb {
-      //background-color: $white;
+      background-color: $scrollbar_handle;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
       min-height: 1.5em;
+      cursor: pointer;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      //background-color: $superwhite;
+      background-color: $scrollbar_hover_handle;
       border-radius:0.5em;
       border: 0.25em solid rgba(0, 0, 0, 0);
       background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-track {
-      //background: $dark_grey;
       border-radius:0.5em;
-      //border: 0.25em solid $base_grey;
       margin: 0.25em;
   }
 }
