@@ -1,97 +1,10 @@
 @import "variables";
 
-.button {
+button, .button {
 	@include reset_input_browser_styles();
 	@include all_transitions();
 
 	cursor: pointer;
-	//color: $button_text;
-	//background-color: $button;
-	border-color: transparent;
-
-	&:hover {
-		//background-color: $button_hover;
-		//color: $button_text_hover;
-		text-decoration: none;
-	}
-
-	&:focus {
-		//background-color: $button_hover;
-		//color: $button_text_hover;
-		//border-color: $input_selected;
-	}
-
-	&:active {
-		//background-color: $button_selected;
-		//border-color: $button_selected;
-		//color: $button_selected_text_hover;
-	}
-
-	&.danger {
-		//background-color: $button_danger;
-		//color: $button_danger_text;
-
-		&:hover {
-			//background-color: $button_danger_hover;
-			//color: $button_danger_text_hover;
-		}
-
-		&:focus {
-			//background-color: $button_danger_hover;
-			//color: $button_danger_text_hover;
-			//border-color: $input_selected_inverted;
-		}
-
-		&:active {
-			//background-color: $button_selected;
-			//border-color:  $button_selected;
-			//color: $button_danger_text_hover;
-		}
-	}
-
-	&.selected {
-		//background-color: $button_selected;
-		//color: $button_selected_text;
-
-		&:hover {
-			//background-color: $button_selected_hover;
-			//color: $button_selected_text_hover;
-		}
-
-		&:focus {
-			//background-color: $button_selected_hover;
-			//color: $button_selected_text_hover;
-		}
-
-		&:active {
-			//background-color:  $button_selected_hover;
-			//border-color:  $button_selected_hover;
-		}
-	}
-
-	&.disabled, &:disabled {
-		//background-color: $button_disabled;
-		//color: $button_disabled_text;
-		cursor: not-allowed;
-		//border-color: $button_disabled;
-
-		&:hover {
-			//background-color: $button_disabled;
-			//color: $button_disabled_text;
-		}
-		//pointer-events: none;
-	}
-
-	&.hidden {
-		display: none;
-	}
-
-	&.important {
-		font-weight: bold;
-	}
-}
-
-button, .button {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0.125em;
 	font-size: 1em;
@@ -104,6 +17,75 @@ button, .button {
 	box-sizing: border-box;
 	line-height:1.125em;
 	text-align: center;
+
+	color: $button_text;
+	background-color: $button_background;
+	border-color: transparent;
+
+	&:hover {
+		background-color: $button_hover_background;
+		color: $button_hover_text;
+		text-decoration: none;
+	}
+
+	&:focus {
+		background-color: $button_hover_background;
+		color: $button_hover_text;
+		border-color: $input_selected_border;
+	}
+
+	&.danger {
+		background-color: $button_danger_background;
+		color: $button_danger_text;
+
+		&:hover {
+			background-color: $button_danger_hover_background;
+			color: $button_danger_hover_text;
+		}
+
+		&:focus {
+			background-color: $button_danger_hover_background;
+			color: $button_danger_hover_text;
+			border-color: $button_pressed_background;;
+		}
+	}
+
+	&.selected {
+		background-color: $button_selected_background;
+		color: $button_selected_text;
+
+		&:hover {
+			background-color: $button_selected_hover_background;
+			color: $button_selected_hover_text;
+		}
+
+		&:focus {
+			background-color: $button_selected_hover_background;
+			color: $button_selected_hover_text;
+			border-color: $input_selected_border;
+		}
+	}
+
+	&:active, &.selected:active, &.danger:active {
+		background-color: $button_pressed_background;
+		border-color: $button_pressed_background;
+		color: $button_pressed_text;
+	}
+
+	&.disabled, &:disabled, &.disabled:hover, &:disabled:hover {
+		background-color: $button_disabled_background;
+		color: $button_disabled_text;
+		border-color: $button_disabled_background;
+		cursor: not-allowed;
+	}
+
+	&.hidden {
+		display: none;
+	}
+
+	&.important {
+		font-weight: bold;
+	}
 
 	&:after {
 		display: none;

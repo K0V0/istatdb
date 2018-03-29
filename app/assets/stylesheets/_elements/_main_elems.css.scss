@@ -12,6 +12,7 @@ html {
 	body {
 		margin:0;
 		background-color: $body_background;
+		color: $body_text;
   		min-height:100%;
 		position:relative;
 
@@ -28,6 +29,7 @@ html {
 			flex-direction: column;
 			align-items: stretch;
 			background-color: $workspace_background;
+			color: $workspace_text;
 
 			a {
 				text-decoration: none;

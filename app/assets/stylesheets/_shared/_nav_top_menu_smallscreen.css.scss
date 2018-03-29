@@ -57,13 +57,24 @@
 				@include menu_open_smallscreen_transitions();
 				overflow-y: hidden;
 				background-color: transparent;
-				//color: $white;
 
 				div {
 					border-radius:0.375em;
 					overflow-y: hidden;
-					padding: 0.25em;
 					margin: 0.5em 0.25em;
+
+					li {
+
+						&.active {
+
+							&:hover {
+								& > a {
+									background-color: $sub_menu_smallscreen_active_link_hover_background;
+									color: $sub_menu_smallscreen_active_link_hover_text;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

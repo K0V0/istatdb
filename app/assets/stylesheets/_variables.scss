@@ -3,7 +3,7 @@ $black:           #222;
 $soft_black:      #444;
 $light_black:     #666;
 $halftone:        #888;
-$strong_grey:     #999;
+//$strong_grey:     #999;
 $grey:            #aaa;
 $medium_grey:     #bbb;
 $soft_grey:       #ccc;
@@ -11,13 +11,17 @@ $light_grey:      #ddd;
 $white:           #eee;
 $strong_white:    #fff;
 
+$light_red:       #FF9191;
 $soft_red:        #FF7F7F;
 $strong_red:      #e00;
 $dark_red:        #8E0000;
 
 
+
 $body_background:                     $strong_black;
+$body_text:                           $white;
 $workspace_background:                $white;
+$workspace_text:                      $black;
 
 $widget_background:                   $soft_grey;
 $widget_caption_background:           $grey;
@@ -25,27 +29,106 @@ $widget_caption_text:                 $black;
 $widget_caption_danger_background:    $dark_red;
 $widget_caption_danger_text:          $white;
 $widget_caption_required_text:        $strong_black;
-$widget_border:                       $halftone;
-
-$main_menu_active_link_text:          $strong_black;
-$main_menu_active_link_background:    $white;
+$widget_border:                       $grey;
 
 
-$main_menu_inactive_link_hover_background:       red;
+
+$main_menu_background:                                  inherit;
+$main_menu_text:                                        inherit;
+
+$main_menu_active_link_background:                      $white;
+$main_menu_active_link_text:                            $black;
+$main_menu_active_link_hover_background:                $white;
+$main_menu_active_link_hover_text:                      $strong_black;
+
+$main_menu_active_link_with_submenu_background:         $grey;
+$main_menu_active_link_with_submenu_text:               $black;
+$main_menu_active_link_with_submenu_hover_background:   $medium_grey;
+$main_menu_active_link_with_submenu_hover_text:         $strong_black;
+
+$main_menu_inactive_link_background:                    inherit;
+$main_menu_inactive_link_text:                          inherit;
+$main_menu_inactive_link_hover_background:              $soft_black;
+$main_menu_inactive_link_hover_text:                    $strong_white;
+
+$sub_menu_background:                                   $main_menu_active_link_with_submenu_background;
+$sub_menu_text:                                         $main_menu_active_link_with_submenu_text;
+
+$sub_menu_active_link_background:                       $white;
+$sub_menu_active_link_text:                             $black;
+$sub_menu_active_link_hover_background:                 $white;
+$sub_menu_active_link_hover_text:                       $strong_black;
+$sub_menu_smallscreen_active_link_hover_background:     $strong_white;
+$sub_menu_smallscreen_active_link_hover_text:           $strong_black;
+
+$sub_menu_inactive_background:                          $main_menu_inactive_link_hover_background;
+$sub_menu_inactive_text:                                $main_menu_inactive_link_hover_text;
+
+$sub_menu_inactive_link_background:                     inherit;
+$sub_menu_inactive_link_text:                           inherit;
+$sub_menu_inactive_link_hover_background:               $halftone;
+$sub_menu_inactive_link_hover_text:                     $strong_white;
+
+$sub_menu_incative_inactive_link_hover_background:      inherit;
+$sub_menu_incative_inactive_link_hover_text:            inherit;
+
 
 
 $input_background:                    $white;
-$input_text:                          $strong_black;
+$input_text:                          $black;
 $input_border:                        $white;
 $input_hover_background:              $strong_white;
+$input_hover_text:                    $strong_black;
+
+$input_selected_background:           $strong_white;
+$input_selected_text:                 $strong_black;
 $input_selected_border:               $dark_red;
 
+$input_disabled_background:           $grey;
+$input_disabled_text:                 $light_black;;
+$input_disabled_border:               $grey;
+
+$input_error_background:              $soft_red;
+$input_error_text:                    $black;
+$input_error_border:                  $soft_red;
+
+$input_error_hover_background:        $light_red;
+$input_error_hover_border:            $light_red;
+
+
+
 $button_background:                   $white;
-$buton_text:                          $black;
+$button_text:                         $black;
 $button_hover_background:             $strong_white;
+$button_hover_text:                   $strong_black;
+$button_pressed_background:           $strong_black;
+$button_pressed_text:                 $strong_white;
+
 $button_danger_background:            $dark_red;
 $button_danger_text:                  $white;
 $button_danger_hover_background:      $strong_red;
+$button_danger_hover_text:            $strong_white;
+
+$button_selected_background:          $black;
+$button_selected_text:                $white;
+$button_selected_hover_background:    $strong_black;
+$button_selected_hover_text:          $strong_white;
+
+$button_disabled_background:          $grey;
+$button_disabled_text:                $light_black;
+
+
+
+$checkbox_background:                 $grey;
+$checkbox_diode:                      $soft_black;
+$checkbox_hover_background:           $halftone;
+$checkbox_on_background:              $black;
+$checkbox_on_diode:                   $strong_red;
+$checkbox_on_hover_background:        $strong_black;
+
+$label_disabled_text:                 $light_black;
+
+
 
 $table_row_even_background:           $light_grey;
 $table_row_odd_background:            $white;
@@ -53,56 +136,6 @@ $table_row_hover_background:          $medium_grey;
 $table_row_hover_text:                $strong_black;
 
 
-
-/*
-$background_color:                        $strong_black;
-$group_background:                        $base_grey;
-$table_background:                        $grey_2n;
-$wrap_border_color:                       $halftone;
-$wrap_border_color_2:                     $strong_grey;
-
-$main_menu_active_link:                   $white;
-$main_menu_active_link_text:              $strong_black;
-$main_menu_inactive_link_hover:           $soft_black;
-$main_menu_2_submenu_active_link_hover:   $strong_grey;
-
-$sub_menu_background:			          $base_grey;
-$sub_menu_active_link:                    $superwhite;
-$sub_menu_inactive_link_text:             $black;
-$sub_menu_inactive_link_hover:            $semi_grey;
-$sub_menu_inactive_link_text_hover:       $white;
-
-$disabled_input:                  $strong_grey;
-$disabled_input_text:             $semi_grey;
-$input_selected:                  $dark_red;
-$input_selected_inverted:         $black;
-$input_validation_error:          $soft_red;
-
-$button:                          $white;
-$button_hover:                    $superwhite;
-$button_text:                     $soft_black;
-$button_text_hover:               $strong_black;
-//$button_border:                   rgba(85,85,85,1);
-
-$button_selected:                 $black;
-$button_selected_hover:           $strong_black;
-$button_selected_text:            $white;
-$button_selected_text_hover:      $superwhite;
-
-$button_danger:                   $dark_red;
-$button_danger_hover:             $strong_red;
-$button_danger_text:              $white;
-$button_danger_text_hover:        $superwhite;
-
-$button_disabled:                 $dark_grey;
-$button_disabled_hover:           $grey_2n;
-$button_disabled_text:            $grey_2n-1;
-//$button_disabled_text_hover:      $base_grey;
-
-$even_table_line_color:           $grey_2n;
-$odd_table_line_color:            $grey_2n-1;
-$table_row_hover:                 $strong_grey;
-*/
 
 $main_border_radius:      0.25em;
 $wrap_border_radius:      0.5em;
@@ -112,216 +145,4 @@ $border-2x-width:         $border-width * 2;
 $buttons_mouse_actions_transition_time: 0.15s;
 $main_menu_mouse_actions_transition_time: 0.30s;
 
-
-@mixin links_transitions() {
-	@include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease);
-}
-
-@mixin menu_transitions() {
-	@include transition(background-color $main_menu_mouse_actions_transition_time ease, color $main_menu_mouse_actions_transition_time ease);
-}
-
-@mixin menu_open_smallscreen_transitions() {
-  @include transition(max-height 0.375s linear);
-}
-
-@mixin all_transitions() {
-  @include transition(background-color $buttons_mouse_actions_transition_time ease, color $buttons_mouse_actions_transition_time ease, border-color $main_menu_mouse_actions_transition_time ease);
-}
-
-@mixin flashmessage_transitions() {
-  @include transition(background-color 0.375s ease-in-out, z-index 0.375s ease-in-out);
-}
-
-@mixin transition_for_transform($amount-of-time) {
-	-webkit-transition: -webkit-transform $amount-of-time ease-in-out;
-	-moz-transition:    -moz-transform $amount-of-time ease-in-out;
-	-o-transition:      -o-transform $amount-of-time ease-in-out;
-	-ms-transition:     -ms-transform $amount-of-time ease-in-out;
-	transition:         transform $amount-of-time ease-in-out;
-}
-
-@mixin box_shadows() {
-  -webkit-box-shadow: 1px 1px 0px 1px $button_grey_border;
-  -moz-box-shadow: 1px 1px 0px 1px $button_grey_border;
-  box-shadow: 1px 1px 0px 1px $button_grey_border;
-}
-
-@mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
-}
-
-@mixin transform($args...) {
-  -webkit-transform: $args;
-  -moz-transform: $args;
-  -ms-transform: $args;
-  -o-transform: $args;
-  transform: $args;
-  transform-origin: 50% 50%;
-}
-
-@mixin reset_input_browser_styles() {
-	-webkit-appearance:     none;
-    -moz-appearance:        none;
-    -ms-appearance:         none;
-    -o-appearance:          none;
-    appearance:             none;
-    outline:	none;
-}
-
-@mixin scrollbars() {
-  ::-webkit-scrollbar {
-      width:  1em;
-      height: 1em;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      //background-color: $white;
-      border-radius:0.5em;
-      border: 0.25em solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-      min-height: 1.5em;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-      //background-color: $superwhite;
-      border-radius:0.5em;
-      border: 0.25em solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-  }
-
-  ::-webkit-scrollbar-track {
-      //background: $dark_grey;
-      border-radius:0.5em;
-      //border: 0.25em solid $base_grey;
-      margin: 0.25em;
-  }
-}
-
-@mixin scrollbars_top_menu() {
-
-  ::-webkit-scrollbar {
-      width:  1em;
-      height: 0.75em;
-      z-index: 9999;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      border-radius:0.5em;
-      border: 0.25em solid transparent;
-      background-clip: padding-box;
-      min-height: 1.5em;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-      border-radius:0.5em;
-      border: 0.25em solid transparent;
-      background-clip: padding-box;
-  }
-
-  ::-webkit-scrollbar-track {
-      border-radius:0.5em;
-      border-width: 0.25em;
-      border-style: solid;
-      margin: 0.25em;
-  }
-}
-
-@mixin scrollbar_top_menu_main() {
-  @include scrollbars_top_menu();
-
-  ::-webkit-scrollbar-thumb {
-      //background-color: $main_menu_2_submenu_active_link_hover;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-      //background-color: $sub_menu_background;
-  }
-
-  ::-webkit-scrollbar-track {
-     // background: $main_menu_inactive_link_hover;
-      //border-color: $background_color;
-  }
-}
-
-@mixin scrollbar_top_menu_sub() {
-  @include scrollbars_top_menu();
-
-  ::-webkit-scrollbar-thumb {
-      //background-color: $white;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-      //background-color: $superwhite;
-  }
-
-  ::-webkit-scrollbar-track {
-      //background: $sub_menu_inactive_link_hover;
-      //border-color: $sub_menu_background;
-  }
-}
-
-@mixin scrollbar_top_menu_sub_hover() {
-  @include scrollbar_top_menu_sub();
-
-  ::-webkit-scrollbar-track {
-      //border-color: $main_menu_2_submenu_active_link_hover;
-  }
-}
-
-@mixin scrollbar_top_menu_sub_hover_noactive() {
-  @include scrollbar_top_menu_sub();
-
-  ::-webkit-scrollbar-thumb {
-      //background-color: $main_menu_2_submenu_active_link_hover;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-      //background-color: $sub_menu_background;
-  }
-
-  ::-webkit-scrollbar-track {
-      //border-color: $main_menu_inactive_link_hover;
-  }
-}
-
-@mixin rotate_upside_down() {
-    transform:rotateX(180deg);
-    -ms-transform:rotateX(180deg);
-    -webkit-transform:rotateX(180deg);
-}
-
-@mixin rotate_cancel() {
-    transform:rotateX(0deg);
-    -ms-transform:rotateX(0deg);
-    -webkit-transform:rotateX(0deg);
-}
-
-@mixin clearfix() {
-  &::after {
-    content: '';
-    clear: both;
-    display: table;
-  }
-}
-
-@mixin inner_table_separator() {
-  &::after {
-    content: '';
-    height: 1px;
-    background-color: #999;
-    width:90%;
-    margin: 0.125em auto;
-    display:block;
-  }
-
-  &:last-child {
-    &::after {
-      display: none;
-    }
-  }
-}
+@import "mixins"

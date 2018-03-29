@@ -7,40 +7,58 @@ input, select, textarea {
 	display: inline-block;
 	margin: 0.125em 0.125em;
 	font-size: 1em;
-	//border:0.125em solid $white;
+	border-width:0.125em;
+	border-style: solid;
 	padding:0.125em 0.25em;
 	border-radius:0.25em;
-	//background-color: $white;
 	line-height:1em;
 	box-sizing:border-box;
 	vertical-align:middle;
 
+	background-color: $input_background;
+	color: $input_text;
+	border-color: $input_background;
+
 	&:hover {
-		//background-color: $superwhite;
-		//border-color: $superwhite;
+		background-color: $input_hover_background;
+		border-color: $input_hover_background;
+		color: $input_hover_text;
 	}
 
 	&:focus {
-		//border-color: $input_selected;
-		//background-color: $superwhite;
+		border-color: $input_selected_border;
+		background-color: $input_selected_background;
+		color: $input_selected_text;
 	}
 
 	&:disabled {
-		//background-color: $disabled_input;
-		//border-color: $disabled_input;
+		background-color: $input_disabled_background;
+		border-color: $input_disabled_border;
+		color: $input_disabled_text;
 		cursor: not-allowed;
 	}
 
 	&.error{
-		//background-color: $input_validation_error;
+		background-color: $input_error_background;
+		border-color: $input_error_background;
 
 		&:-webkit-autofill {
-			//-webkit-box-shadow: 0 0 0 100px $input_validation_error inset !important;
+			-webkit-box-shadow: 0 0 0 100px $input_error_background inset !important;
 		}
 
 		&:hover {
-			//background-color: $button_danger_hover;
-			//border-color: $button_danger_hover;
+			background-color: $input_error_hover_background;
+			border-color: $input_error_hover_background;
+		}
+
+		&:focus {
+			background-color: $input_error_hover_background;
+			border-color: $input_selected_border;
+		}
+
+		&:disabled {
+			background-color: $input_error_background;
+			border-color: $input_error_background;
 		}
 	}
 
@@ -71,10 +89,10 @@ input[type=search]::-webkit-search-cancel-button {
 	width:0.875em;
 	margin: 0.125em;
 	border-radius: 0.75em;
-    //background-color: $dark_red;
+    background-color: $button_danger_background;
 
     &:hover {
-    	//background-color: $strong_red;
+    	background-color: $button_danger_hover_background;
     }
 }
 
@@ -96,8 +114,8 @@ select {
 	option {
 
 		&.obsolete {
-			//background-color: $button_disabled;
-			//color: $button_disabled_text;
+			background-color: $input_disabled_background;
+			color: $input_disabled_text;
 		}
 	}
 }
@@ -105,17 +123,12 @@ select {
 input[type=submit] {
 	padding: 0.125em 0.25em;
 	border-width: 0.125em;
-	//border-color: transparent;
-
-	&:active {
-		//border-color: $button_selected;
-	}
 }
 
 input[type=checkbox], input[type=radio] {
 	display: block;
-	//border:0.25em solid $button_disabled;
-	//background-color: $soft_black !important;
+	border-width:0.25em;
+	border-style: solid;
 	border-radius:0.625em;
 	margin:0;
 	padding:0;
@@ -123,21 +136,24 @@ input[type=checkbox], input[type=radio] {
 	height:0.875em;
 	cursor:pointer;
 
+	border-color: $checkbox_background;
+	background-color: $checkbox_diode;
+
 	&.big {
 		width:1.125em;
 		height:1.125em;
 	}
 
 	&:hover {
-		//border-color: $button_disabled_hover !important;
+		border-color: $checkbox_hover_background !important;
 	}
 
 	&:checked {
-		//background-color: $button_danger_hover !important;
-		//border-color: $button_selected !important;
+		background-color: $checkbox_on_diode !important;
+		border-color: $checkbox_on_background !important;
 
 		&:hover {
-			//border-color: $button_selected_hover !important;
+			border-color: $checkbox_on_hover_background !important;
 		}
 	}
 }
@@ -148,7 +164,7 @@ label {
 	display: inline-block;
 
 	&.disabled {
-		//color: $disabled_input_text;
+		color: $label_disabled_text;
 	}
 
 	&.required {
