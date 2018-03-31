@@ -12,7 +12,11 @@ body.update_multiple, body.edit_multiple {
 					padding: 0.375em 0.375em;
 
 					&:nth-child(2n-1) {
-						//background-color: $semi_grey;
+						background-color: $section_2n_separator_background;
+					}
+
+					&:nth-child(2n) {
+						background-color: $section_2n-1_separator_background;
 					}
 
 					article {
