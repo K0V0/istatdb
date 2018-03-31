@@ -1,6 +1,6 @@
 <section class="decorated_wrap shrinked items_table">
 
-	<table id="uoms_calculator_input" class="rows_colored for_nontabular">
+	<table id="uoms_calculator_input" class="for_nontabular with_controls">
 
 		<caption> <%= t('goods.uoms_calculator.cap') %> </caption>
 
@@ -42,6 +42,9 @@
 				<td>
 					<label for="uom_result">
 						<%= t('goods.uoms_calculator.price') %>
+						[<b class="uoms_calculator_uom_type">
+							<%= @uom_alone.try(:type) %>
+						</b>]
 					</label>
 				</td>
 
@@ -50,22 +53,13 @@
 				</td>
 			</tr>
 
-			<tr>
-				<td colspan="10" class="right">
-					<button class="button disabled" id="add_to_calculator_memory" disabled="disabled"><%= t('goods.uoms_calculator.add') %></button><!--
-					--><button class="button" id="clear_calculator_fields"><%= t('goods.uoms_calculator.clear') %></button>
-				</td>
-			</tr>
-
 		</tbody>
 
 		<tfoot>
 			<tr>
-				<td colspan="10"> 
-					<%= t('goods.uoms_calculator.type') %>: 
-					<span class="uoms_calculator_uom_type">
-						<%= @uom_alone.try(:type) %> 
-					</span>
+				<td colspan="10" class="">
+					<button class="button disabled" id="add_to_calculator_memory" disabled="disabled"><%= t('goods.uoms_calculator.add') %></button><!--
+					--><button class="button" id="clear_calculator_fields"><%= t('goods.uoms_calculator.clear') %></button>
 				</td>
 			</tr>
 		</tfoot>

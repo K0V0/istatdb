@@ -3,7 +3,7 @@ $black:           #222;
 $soft_black:      #444;
 $light_black:     #666;
 $halftone:        #888;
-//$strong_grey:     #999;
+$strong_grey:     #999;
 $grey:            #aaa;
 $medium_grey:     #bbb;
 $soft_grey:       #ccc;
@@ -32,11 +32,12 @@ $widget_caption_required_text:        $strong_black;
 $widget_border:                       $grey;
 
 $scrollbar_handle:					  $white;
-$scrollbar_hover_handle:			  $strong_white;
+$scrollbar_hover_handle:  		      $strong_white;
+$scrollbar_background:                $grey;
 
 
 
-$main_menu_background:                                  inherit;
+$main_menu_background:                                  $strong_black;
 $main_menu_text:                                        inherit;
 
 $main_menu_active_link_background:                      $white;
@@ -135,8 +136,26 @@ $label_disabled_text:                 $light_black;
 
 $table_row_even_background:           $light_grey;
 $table_row_odd_background:            $white;
+$table_row_even_disabled_background:  $halftone;
+$table_row_odd_disabled_background:   $strong_grey;
 $table_row_hover_background:          $medium_grey;
 $table_row_hover_text:                $strong_black;
+$table_row_error_background:          $dark_red;
+$table_row_error_text:                $white;
+$table_row_selected_background:       $black;
+$table_row_selected_text:             $white;
+$table_row_selected_hover_background: $strong_black;
+$table_row_selected_hover_text:       $strong_white;
+$inner_table_row_hover_background:    $halftone;
+$inner_table_row_hover_text:          $strong_white;
+
+$table_head_background:               $soft_grey;
+$table_head_text:                     $black;
+$table_head_error_background:         $dark_red;
+$table_head_caption_error_text:       $white;
+
+$table_footer_background:             $grey;
+$table_footer_text:                   $black;
 
 
 

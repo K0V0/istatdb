@@ -91,13 +91,15 @@ module ApplicationConcern
 		elsif action_name == "edit" || action_name == "update"
 
 			assocs.each do |a, opts|
+				assoc_var_name = "@#{a.to_s.singularize}"
 				if a.to_s.is_singular?
-
+					instance_variable_set(assoc_var_name, @record.send(a))
 				else
 					any_builded_assoc = @record.send(a).map { |r| r.id.blank? } .any?
 					if !any_builded_assoc
 						@record.send(a).send(:build)
 					end
+					#instance_variable_set(assoc_var_name, @record.send(a))
 				end
 			end
 

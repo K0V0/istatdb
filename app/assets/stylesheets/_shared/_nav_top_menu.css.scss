@@ -2,6 +2,7 @@
 
 nav.top_menu {
 	font-size: 1.25em;
+	border-color: red;
 
 	ul {
 		@include rotate_upside_down();
@@ -81,9 +82,10 @@ nav.top_menu {
 		@include scrollbar_top_menu_sub();
 		max-height: 256px;
 		overflow-y: hidden;
+		border-color: red;
 
 		&.hover {
-			@include scrollbar_top_menu_sub_hover();
+			//@include scrollbar_top_menu_sub_hover();
 			background-color: $main_menu_active_link_with_submenu_hover_background;
 			color: $main_menu_active_link_with_submenu_hover_text;
 		}

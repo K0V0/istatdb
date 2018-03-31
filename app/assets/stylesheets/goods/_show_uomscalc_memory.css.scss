@@ -16,7 +16,7 @@ table#uomscalc_list {
 			text-align:right;
 		}
 	}
-	
+
 	thead {
 		font-weight: normal;
 	}
@@ -28,19 +28,14 @@ table#uomscalc_list {
 
 			td {
 
-				&.uomscalc_list_cp {
-					text-align:right;
-					padding-bottom: 0.25em;
-				}
-
 				strong {
 					font-size: 1.25em;
 				}
 			}
-		}	
+		}
 	}
 
-	@media only screen and (max-width: 480px) { 
+	@media only screen and (max-width: 480px) {
 
 		td, th {
 

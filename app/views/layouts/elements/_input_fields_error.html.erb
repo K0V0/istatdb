@@ -21,6 +21,7 @@
 	end
 %>
 
+
 <% content_for :form_errors, flush: true do %>
 
 	<% if (!obj_errs.blank?) %>
@@ -35,6 +36,7 @@
 	<% end %>
 
 	<% if !parent_errs.blank? %>
+		<% logger fields %>
 		<% parent_errs.each do |err| %>
 			<% errclass = "#{object.model_name.to_s.underscore}_select_error" %>
 			<span class="errormessage <%= errclass %>">

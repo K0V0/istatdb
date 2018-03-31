@@ -13,18 +13,15 @@
 
 	<%= obj.select(
 		send_parameters_name,
-		collection
+		options_for_select(
+			collection
 			.collect { |c| [ c.send(method_to_get_texts), c.send(method_to_get_vals) ] }
 			.reject { |x| x[0].nil? },
-		{
-			include_blank: is_blank,
-			selected: is_selected,
-		},
-		{
-			disabled: is_disabled,
-			#selected: is_selected,
-			class: klass_html
-		}
+			obj.object.send(send_parameters_name) || is_selected
+		),
+		include_blank: is_blank,
+		disabled: is_disabled,
+		class: klass_html
 	) %>
 
 </div>

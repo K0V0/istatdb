@@ -4,7 +4,7 @@ table {
 	border-radius: 0.5em;
 	border-collapse: collapse;
 	position: relative;
-	z-index: 0;
+	width:100%;
 
 	th, td {
 		padding: 0 0.25em;
@@ -25,6 +25,8 @@ table {
 	}
 
 	thead {
+		background-color: $table_head_background;
+		color: $table_head_text;
 
 		tr {
 			line-height:1.5em;
@@ -41,7 +43,6 @@ table {
 	}
 
 	tbody {
-		//background-color: $odd_table_line_color;
 
 		tr {
 			@include links_transitions();
@@ -99,34 +100,17 @@ table.rows_colored {
 		}
 	}
 
-	/*&.darker {
-
-		tbody {
-
-			tr {
-
-				&:nth-child(2n) {
-					//background-color: $base_grey;
-				}
-
-				&:nth-child(2n-1) {
-					//background-color: $even_table_line_color;
-				}
-			}
-		}
-	}*/
-
 	&.disabled {
 		tbody {
 
 			tr {
 
 				&:nth-child(2n) {
-					//background-color: $semi_grey;
+					background-color: $table_row_even_disabled_background;
 				}
 
 				&:nth-child(2n-1) {
-					//background-color: $halftone;
+					background-color: $table_row_odd_disabled_background;
 				}
 			}
 		}
@@ -144,12 +128,13 @@ table.with_efects {
 				color: $table_row_hover_text;
 			}
 
-			&:active, &.selected {
-				//background-color: $black;
-				//color: $white;
+			/*&:active,*/ &.selected {
+				background-color: $table_row_selected_background;
+				color: $table_row_selected_text;
 
 				&:hover {
-					//background-color: $button_selected_hover;
+					background-color: $table_row_selected_hover_background;
+					color: $table_row_selected_hover_text;
 				}
 			}
 		}
@@ -171,8 +156,8 @@ table.no_results {
 			pointer-events: none !important;
 
 			&.no_results {
-				//background-color: $button_danger;
-				//color: $white;
+				background-color: $table_row_error_background;
+				color: $table_row_error_text;
 
 				td {
 					padding:0.25em 0.5em;
@@ -228,8 +213,8 @@ table.no_assocs {
 			pointer-events: none !important;
 
 			&.no_assocs {
-				//background-color: $button_danger;
-				//color: $white;
+				background-color: $table_row_error_background;
+				color: $table_row_error_text;
 
 				td {
 					padding:0.25em 0.5em;
@@ -259,9 +244,9 @@ table.checkboxes_list, table.radio_buttons_list {
 				width: auto;
 				padding-left: 0.375em;
 
-				input.error {
+				/*input.error {
 
-				}
+				}*/
 			}
 
 			td:last-child {
@@ -283,8 +268,8 @@ table.inner_table {
 			pointer-events: auto !important;
 
 			&:hover {
-				//background-color: $black !important;
-				//color: $white;
+				background-color: $inner_table_row_hover_background !important;
+				color: $inner_table_row_hover_text;
 			}
 		}
 	}
@@ -294,12 +279,11 @@ table.for_nontabular {
 
 	caption {
 		display: block;
-		border-top-right-radius: 0.25em;
+		//border-top-right-radius: 0.25em;
 	}
 
 	tbody, thead {
 		display: block;
-		//background-color: $grey_2n;
 
 		tr {
 			display: block;
@@ -324,6 +308,7 @@ table.for_nontabular {
 	}
 
 	tbody {
+		padding: 0.25em 0;
 		border-bottom-right-radius: 0.25em;
 		border-bottom-left-radius: 0.25em;
 	}
@@ -409,6 +394,21 @@ table.for_dialogbox {
 						border-bottom-right-radius: 0.25em;
 					}
 				}
+			}
+		}
+	}
+}
+
+table.with_controls {
+
+	tfoot {
+
+		tr:last-child {
+			//padding-bottom: 0.25em;
+			padding-right: 0.25em;
+
+			td {
+				padding-bottom: 0.375em;
 			}
 		}
 	}

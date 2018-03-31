@@ -28,6 +28,9 @@ UomsCalculator.prototype = {
 		$(document).on('click', 'button#add_to_calculator_memory', function() {
 			totok.sendToMem();
 		});
+		$(document).on('click', 'button#clear_calculator_fields', function() {
+			totok.clearFields();
+		});
 		$(document).on('click', 'button#clear_uomscalc_list', function() {
 			totok.clearMem();
 		});
@@ -48,12 +51,16 @@ UomsCalculator.prototype = {
 		if (this.count == 0 || this.result == 0) {
 			this.H.handleZeroError();
 			this.valid = false;
-		} 
+		}
 		if (isNaN(this.count) || isNaN(this.result)) {
 			this.H.handleNanError();
 			this.valid = false;
 		}
 		this.H.blockAddButton(!(this.valid));
+	},
+
+	clearFields: function() {
+		$('input[name=uom_count], input[name=uom_result]').val('');
 	},
 
 	calculateResult: function() {
@@ -75,7 +82,7 @@ UomsCalculator.prototype = {
 	getValsFromFields: function() {
 		this.val = parseFloat($('input[name=uom_value]').val());
 		this.multiplier = parseInt($('input[name=uom_multiplier]').val());
-		this.uom_type = $.trim($('span.uoms_calculator_uom_type').text());
+		this.uom_type = $.trim($('b.uoms_calculator_uom_type').text());
 	},
 
 	setVals: function(val=null, multiplier=null, uom_type=null) {
@@ -84,12 +91,12 @@ UomsCalculator.prototype = {
 		this.uom_type = uom_type;
 		$('input[name=uom_value]').val(val);
 		$('input[name=uom_multiplier]').val(multiplier);
-		$('span.uoms_calculator_uom_type').text(uom_type);
+		$('b.uoms_calculator_uom_type').text(uom_type);
 		if (this.last_calculated_was_quantity === false) {
 			this.calculateResult();
 		} else if (this.last_calculated_was_quantity === true) {
 			this.calculateQuantity();
-		} 
+		}
 	},
 
 	sendToMem: function() {
@@ -98,7 +105,7 @@ UomsCalculator.prototype = {
 			$.ajax({
 			  	method: "POST",
 			 	url: 'http://' + window.location.host + '/goodsdb/add_to_uoms_calculator',
-			  	data: { 
+			  	data: {
 			  		good_name: $(document).find('h1').first().text(),
 			  		uom: totok.val,
 			  		multiplier: totok.multiplier,
@@ -115,8 +122,8 @@ UomsCalculator.prototype = {
 		$.ajax({
 		  	method: "POST",
 		 	url: 'http://' + window.location.host + '/goodsdb/clear_uoms_calculator',
-		  	data: { 
-		  		 
+		  	data: {
+
 		  	}
 		});
 	},

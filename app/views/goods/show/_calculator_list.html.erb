@@ -3,24 +3,24 @@
 
 	<section class="decorated_wrap shrinked items_table change_on_smallscreen">
 
-		<table class="rows_colored with_efects" id="uomscalc_list">
+		<table class="rows_colored with_efects with_controls" id="uomscalc_list">
 
-			<caption> 
+			<caption>
 				<%= t 'goods.calc_mem_list.cap' %>
 			</caption>
-			
+
 			<thead>
 				<tr>
-					<th class="uomscalc_mem_good"> 
+					<th class="uomscalc_mem_good">
 						<%= t 'goods.calc_mem_list.name' %>
 					</th>
 					<th class="uomscalc_mem_uom">
 						<%= t 'goods.calc_mem_list.uom' %>
 					</th>
-					<th class="uomscalc_mem_count"> 
+					<th class="uomscalc_mem_count">
 						<%= t 'goods.calc_mem_list.count' %>
 					</th>
-					<th class="uomscalc_mem_result"> 
+					<th class="uomscalc_mem_result">
 						<%= t 'goods.calc_mem_list.result_per_item' %>
 					</th>
 				</tr>
@@ -30,7 +30,7 @@
 
 				<% @MEM.uomscalc.each do |calc| %>
 					<tr>
-						<td class="uomscalc_mem_good"> 
+						<td class="uomscalc_mem_good">
 							<%= link_to calc[:good_name], good_path(calc[:good_id]) %>
 						</td>
 						<td class="uomscalc_mem_uom">
@@ -39,7 +39,7 @@
 						<td class="uomscalc_mem_count">
 							<%= "#{calc[:count]} #{t('goods.calc_mem_list.uom_suffix')}" %>
 						</td>
-						<td class="uomscalc_mem_result"> 
+						<td class="uomscalc_mem_result">
 							<%= "#{calc[:result].to_f.round(4)} #{calc[:uom_type]}" %>
 						</td>
 						<td class="uomscalc_mem_edit">
@@ -60,7 +60,7 @@
 					</tr>
 				<% end %>
 				<tr>
-					<td colspan="10" class="uomscalc_list_cp">
+					<td colspan="10">
 						<button id="clear_uomscalc_list" class="button">
 							<%= t ('goods.calc_mem_list.clear_all') %>
 						</button>

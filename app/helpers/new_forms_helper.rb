@@ -168,13 +168,15 @@ module NewFormsHelper
         parent_obj_model_name = obj.object.class.name.underscore
 
         type = :text_field if type.nil?
+        required = false if required.nil?
         klass += " js_check_existence " if js_check_existence
         klass += "#{parent_obj_model_name}_#{field.to_s} #{html_class}"
-        data = js_check_existence ? { model: parent_obj_model_name, field: field.to_s } : nil
+        data = js_check_existence ? { model: parent_obj_model_name, field: field.to_s } : ""
+
+        options = { class: klass, autofocus: autofocus, required: required, data: data }
+        options.merge!(value: default_val) if !default_val.nil?
         arguments = [ type, field ]
-        arguments += [ value: default_val ] if !default_val.nil?
-        arguments += [ { class: klass, autofocus: autofocus, required: required } ]
-        #output += default_val.nil? ? obj.send(type, field, class: klass, autofocus: autofocus, data: data) : obj.send(type, field, value: default_val, class: klass, autofocus: autofocus, data: data)
+        arguments += [ options ]
         output += obj.send(*arguments)
         output.html_safe
     end

@@ -18,7 +18,7 @@ Main.prototype = {
 		// runs when DOM is ready (first load/F5)
 		$(document).ready(function(){
 			H.run('on_ready');
-			H.run('once');
+			//H.run('once');
 		});
 
 		// runs when page changed (turbolinks reload)

@@ -1,8 +1,8 @@
 @import "variables";
 
 footer {
-	//background-color: $background_color;
-	//color: $white;
+	background-color: inherit;
+	color: inherit;
 	flex: 0 1 auto;
 	z-index: 1;
 
@@ -15,7 +15,7 @@ footer {
 
 			a {
 				font-weight: bold;
-				//color: $dark_red;
+				color: $dark_red;
 			}
 
 			&:first-child {
