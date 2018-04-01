@@ -74,6 +74,12 @@ section.form {
 				bottom: 0.25em;
 			}
 
+			&.detach_assoc {
+				text-align: right;
+    			width: 100%;
+    			box-sizing: border-box;
+			}
+
 			label {
 				margin-right: 0.125em;
 			}

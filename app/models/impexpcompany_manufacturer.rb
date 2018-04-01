@@ -14,6 +14,11 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
     accepts_nested_attributes_for :local_taric, update_only: true
 
-    #scope
+    def detach_local_taric
+        !self.local_taric_id.nil?
+    end
 
+    def detach_local_taric= bool
+         update_attribute(:local_taric_id, nil) if bool
+    end
 end

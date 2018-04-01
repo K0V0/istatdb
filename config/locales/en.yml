@@ -40,6 +40,7 @@ en:
     item: item
     error: Error
     not_allowed: You are not allowed to go into this section
+    detach_assoc: Remove attribute(s)
 
   items_table:
     results_count: results count

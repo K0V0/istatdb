@@ -46,8 +46,6 @@
 					<% has_error = obj.object.send(assoc).try(:errors).try(:has_key?, field_name) ? true : false %>
 				<% end %>
 
-				<%#= action_name %>
-
 				<% a.object[field_name] = "" if action_name == "edit" %>
 
 				<%= render('layouts/elements/input_text',
@@ -98,5 +96,11 @@
 		assoc: obj.object.send(assoc)
 		#assoc: (multiedit == true ? obj.object.send(assoc) : single),
 	) %>
+
+	<%= render(
+		'/layouts/shared/new_edit_form/detach_belongs_to_assoc',
+		obj: obj,
+		assoc: assoc
+	) if obj.object.respond_to?("detach_#{assoc.to_s}") %>
 
 </article>

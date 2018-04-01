@@ -1,0 +1,11 @@
+<div class="detach_assoc">
+    <% if !obj.object.send(assoc).nil? %>
+        <%= obj.hidden_field(
+            "detach_#{assoc.to_s}",
+            value: false
+        ) %>
+        <button type="button" class="button danger detach_assoc">
+            <%= t 'actions.detach_assoc' %>
+        </button>
+    <% end %>
+</div>

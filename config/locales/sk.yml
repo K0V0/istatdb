@@ -45,6 +45,7 @@ sk:
     error: Chyba
     not_allowed: Nemáte oprávnenie na vstup do tejto sekcie
     delete_warning: Pozor! táto akcia je nezvratná!
+    detach_assoc: Odstrániť atribút(y)
 
   items_table:
     results_count: počet výsledkov
