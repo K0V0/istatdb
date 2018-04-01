@@ -29,11 +29,12 @@ body {
                 min-width:10em;
 
                 caption {
-                    //background-color: $dark_red;
-                    //color: $white;
+                    background-color: $widget_caption_danger_background;
+                    color: $widget_caption_danger_text;
                 }
 
                 tbody {
+                    color: $widget_text;
 
                     tr {
 

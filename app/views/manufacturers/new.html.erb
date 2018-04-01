@@ -11,7 +11,8 @@
 				name: {
 					prefill_from_mem_param: [:name_cont],
 					autofocus: true,
-					js_check_existence: true
+					js_check_existence: true,
+					required: true
 				}
 			}
 		) %>
@@ -21,6 +22,11 @@
 			assoc: :impexpcompanies,
 			fields: {
 				company_name: {  }
+			},
+			searcher_settings: {
+				caption: {
+
+				}
 			}
 		) %>
 

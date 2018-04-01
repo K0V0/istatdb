@@ -34,8 +34,10 @@ class ManufacturersController < ApplicationController
 			r.added_or_modded_by_user = true
 			r.save
 		end
-		redirect_to(edit_details_manufacturer_path(@record.id))
-		return false
+        if params.has_key?(:edit_other_details)
+            redirect_to(edit_details_manufacturer_path(@record.id))
+            return false
+        end
 	end
 
     def _around_update_after_save_ok
@@ -78,6 +80,7 @@ class ManufacturersController < ApplicationController
         # override to decide which submit button was clicked
         # save or make additional changes and proceed to next form
         saved = @record.update(permitted_params)
+        logger params.has_key?(:edit_other_details), "phk"
         if params.has_key?(:edit_other_details) && saved
             if @record.impexpcompanies.length > 0
                 redirect_to edit_details_manufacturer_path(@record.id)

@@ -8,14 +8,16 @@
 		<%= new_edit(
 			obj: t,
 			fields: {
-				kncode: { 
+				kncode: {
 					prefill_from_mem_param: [:kncode_start],
 					autofocus: true,
-					js_check_existence: true
+					js_check_existence: true,
+					required: true
 				},
-				description: { 
+				description: {
 					prefill_from_mem_param: [:description_cont],
-					type: :text_area
+					type: :text_area,
+					required: true
 				}
 			}
 		) %>

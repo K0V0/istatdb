@@ -29,7 +29,7 @@ Confirmation.prototype = {
             .addClass('visible');
         $(document)
             .find('div.flash_messages')
-            .on('click', 'div > table > tbody > tr > td > button', function(e) {
+            .on('click', 'div > table > tfoot > tr > td > button', function(e) {
                 if ($(e.target).hasClass('confirmation_ok')) {
                     T.confirm();
                 } else {
@@ -63,7 +63,7 @@ Confirmation.prototype = {
     },
 
     confirmationDialog: function(text="") {
-        var html = "<div class=\"decorated_wrap shrinked\"><table class=\"for_dialogbox\"><caption>" + t('confirmation') + "</caption><thead></thead><tbody><tr class=\"confirmation\"><td>" + text + "</td></tr><tr><td class=\"buttons\"><button type=\"button\" class=\"button confirmation_ok\">" + t('ok') + "</button> <button type=\"button\" class=\"button confirmation_cancel\">" + t('cancel') + "</button></td></tr></tbody></table></div>";
+        var html = "<div class=\"decorated_wrap shrinked\"><table class=\"for_nontabular with_controls confirmation\"><caption>" + t('confirmation') + "</caption><thead></thead><tbody><tr><td>" + text + "</td></tr></tbody><tfoot><tr><td colspan=\"10\"><button type=\"button\" class=\"button confirmation_ok\">" + t('ok') + "</button> <button type=\"button\" class=\"button confirmation_cancel\">" + t('cancel') + "</button></td></tr></tfoot></table></div>";
         return html;
     }
 }

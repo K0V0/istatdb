@@ -9,6 +9,7 @@ SearchItemActions.prototype = {
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
 			$(this).append('<input type="hidden" name="page" value="1">');
+			//$(this).append('<input type="hidden" name="q[s]" value="">');
 			var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
 			inputs.val($(e.target).val());
 		  	$(this).submit();

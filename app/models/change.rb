@@ -20,4 +20,7 @@ class Change < ActiveRecord::Base
         return ChangeType.find(change_typ).type
     end
 
+    validates :version_num, presence: true
+    validates :change, presence: true
+
 end

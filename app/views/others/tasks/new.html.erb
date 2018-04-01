@@ -8,7 +8,9 @@
         <%= new_edit(
             obj: t,
             fields: {
-                task: { }
+                task: {
+                    required: true
+                }
             }
         ) %>
 
@@ -21,7 +23,10 @@
             searcher_settings: {
                 query: {
                     typ: :cont
-                }
+                },
+                #caption: {
+
+                #}
             }
         ) %>
 

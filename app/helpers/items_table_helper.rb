@@ -60,10 +60,6 @@ module ItemsTableHelper
 				)
 			end
 
-			if opts[:is_label]
-				text
-			end
-
 		end
 
 		return text

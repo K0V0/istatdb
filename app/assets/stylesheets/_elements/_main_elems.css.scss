@@ -9,6 +9,32 @@
 html {
 	height: 100%;
 
+	caption, div.caption {
+		text-align:left;
+		padding: 0 0.5em;
+		font-weight: bold;
+		box-sizing: border-box;
+		border-top-left-radius: 0.4375em;
+		border-top-right-radius: 0.4375em;
+		width:100%;
+		line-height: 1.5em;
+		background-color: $widget_caption_background;
+		color: $widget_caption_text;
+
+		&.danger {
+			background-color: $widget_caption_danger_background;
+			color: $widget_caption_danger_text;
+		}
+
+		&.required {
+			color: $widget_caption_required_text;
+
+			&::before {
+				content: '**';
+			}
+		}
+	}
+
 	body {
 		margin:0;
 		background-color: $body_background;
@@ -56,32 +82,6 @@ html {
 
 			article {
 				border-radius: $wrap_border_radius;
-			}
-
-			caption, div.caption {
-				text-align:left;
-				padding: 0 0.5em;
-				font-weight: bold;
-				box-sizing: border-box;
-				border-top-left-radius: 0.4375em;
-				border-top-right-radius: 0.4375em;
-				width:100%;
-				line-height: 1.5em;
-				background-color: $widget_caption_background;
-				color: $widget_caption_text;
-
-				&.danger {
-					background-color: $widget_caption_danger_background;
-					color: $widget_caption_danger_text;
-				}
-
-				&.required {
-					color: $widget_caption_required_text;
-
-					&::before {
-						content: '*';
-					}
-				}
 			}
 
 			em {

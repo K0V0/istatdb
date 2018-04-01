@@ -35,10 +35,10 @@
 		<% end %>
 	<% end %>
 
-	<div>
-		<%= obj.fields_for assoc.to_sym, single do |a| %>
+	<%= obj.fields_for assoc.to_sym, single do |a| %>
 
-			<% if a.object.id.blank? %>
+		<% if a.object.id.blank? %>
+			<div>
 
 				<% fields.each do |field_name, opts| %>
 					<%= render('layouts/elements/input_text',
@@ -67,11 +67,11 @@
 
 				</div>
 
-			<% end %>
-
+			</div>
 		<% end %>
 
-	</div>
+	<% end %>
+
 
 	<%= render('/layouts/elements/table_list_checkboxes',
 		obj: obj.object,

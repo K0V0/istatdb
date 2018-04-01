@@ -2,14 +2,18 @@
 <% content_for :search_bar do %>
 
 	<%= search_form_for @search,
-		url: url_for(action: :search), 
+		url: url_for(action: :search),
 		remote: true,
-		class: "decorated_wrap" do |s| %> 
+		class: "decorated_wrap" do |s| %>
 
-		<% 
-			@s = s 
+		<%
+			@s = s
 			main_fields_cnt = main_fields.size
 		%>
+
+		<% if params.deep_has_key? :q, :s %>
+			<input type="hidden" name="q[s]" value="<%= params[:q][:s] %>" id="q_s">
+		<% end %>
 
 		<div class="searchform_main_fields disable_on_bigscreen">
 
@@ -20,9 +24,9 @@
 					<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
 
 					<% if index+1 == main_fields_cnt %>
-						<label 
-							class="button" 
-							for="show_searchpanel_opts" 
+						<label
+							class="button"
+							for="show_searchpanel_opts"
 							id="show_searchpanel_opts"
 						>
 							&#9776;
@@ -75,7 +79,7 @@
 				--><% end %><!--
 
 				--><%= render('layouts/shared/actions/search_or_back_button', s: s) %>
-				
+
 			</div>
 
 		</div>

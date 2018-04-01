@@ -10,4 +10,6 @@ class Incoterm < ActiveRecord::Base
 		order(shortland: :asc)
 	}
 
+    validates :shortland, presence: true
+
 end

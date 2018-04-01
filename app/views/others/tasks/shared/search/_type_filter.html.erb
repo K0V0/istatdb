@@ -1,0 +1,20 @@
+<%
+    type_selected = params.deep_has_key?(:q, :type_filter) ? params[:q][:type_filter] : nil
+%>
+
+<div>
+
+    <span>
+        <%= obj.label :type_filter %>
+    </span>
+
+    <span>
+        <%= obj.select(
+            :type_filter,
+            TaskType.all.collect { |t| [t.typ, t.id] },
+            include_blank: "---",
+            selected: type_selected
+        ) %>
+    </span>
+
+</div>

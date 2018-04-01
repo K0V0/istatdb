@@ -74,4 +74,8 @@ module DecoratorsHelper
 		end
 	end
 
+	def date_to_human text
+		return Date.parse(text).strftime("%d. %b %Y")
+	end
+
 end

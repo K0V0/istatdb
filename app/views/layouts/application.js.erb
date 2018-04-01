@@ -12,6 +12,7 @@ var an = "<%= an = action_name %>";
 	var searchform_edit_button;
 	var searchform_delete_button;
 	var searchform_administrative_button;
+	var searchform_sortlink_remember_helper;
 
 	body.data('controller_name', CTRL);
 	body.data('action_name', AN);
@@ -48,12 +49,18 @@ var an = "<%= an = action_name %>";
 
 		searchform_administrative_button = searchform_actions.children('a.administration_from_search');
 
+		searchform_sortlink_remember_helper = body.find('section.search_bar > form > input#q_s');
+
 		$('main > article').empty();
 
 		var tiriri = (AN == "index")||(AN == "search");
 		$('#back_or_search').val(
 			tiriri ? t('search.submit') : t('actions.back')
 		);
+
+		<% if params.deep_has_key? :q, :s %>
+			searchform_sortlink_remember_helper.val('<%= params[:q][:s] %>');
+		<% end %>
 
 	<% end %>
 

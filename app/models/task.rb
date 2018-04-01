@@ -18,7 +18,12 @@ class Task < ActiveRecord::Base
 
     scope :done_filter, -> (*pars) {
         where(done: false)
-        .order(created_at: :asc)
+        #.order(created_at: :asc)
+    }
+
+    scope :type_filter, -> (*pars) {
+        where(task_type_id: pars)
+        #.order(created_at: :asc)
     }
 
     scope :date_filter, -> (*pars) {
@@ -26,11 +31,9 @@ class Task < ActiveRecord::Base
     }
 
     def self.ransackable_scopes(*pars)
-        %i(done_filter date_filter)
+        %i(done_filter date_filter type_filter)
     end
 
-    def time_created
-        created_at.strftime("%d. %b %Y")
-    end
+    validates :task, presence: true
 
 end

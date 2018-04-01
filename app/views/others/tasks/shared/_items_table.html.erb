@@ -6,8 +6,9 @@ render('layouts/shared/items_table',
         task: {
             is_highlighted: true
         },
-        time_created: {
-            is_sortlink: true
+        created_at: {
+            is_sortlink: true,
+            call_decorator: :date_to_human
         },
         task_type: [
            typ: {}
