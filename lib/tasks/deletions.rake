@@ -17,4 +17,15 @@ namespace :deletions do
     User.delete_all
   end
 
+  desc "TODO"
+  task delete_userdata: :environment do
+    Good.delete_all
+    Impexpcompany.delete_all
+    ImpexpcompanyManufacturer.delete_all
+    LocalTaric.delete_all
+    Manufacturer.delete_all
+    Uom.delete_all
+    Intertable.delete_all
+  end
+
 end

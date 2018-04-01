@@ -25,9 +25,12 @@
 			obj: t,
 			assoc: :local_taric,
 			fields: {
-				kncode: {  },
+				kncode: {
+					required: true
+				},
 				description: {
-					type: :text_area
+					type: :text_area,
+					required: true
 				}
 			},
 			searcher_settings: {
