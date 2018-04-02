@@ -117,6 +117,20 @@ Rails.application.routes.draw do
 
 
 
+  ### vyhladavac
+
+  # index
+  get "searcher",
+    to: "searchers#index",
+    as: "searchers"
+
+  # ransack search
+  get "goodsdb/search",
+    to: "goods#search",
+    as: "search_searchers"
+
+
+
   ### databaza vyrobcov/odoberatelov tovarov
 
   # index

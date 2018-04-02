@@ -7,6 +7,7 @@ en:
     settings: Settings
     global_taric: SK TARIC
     others: Other
+    searchers: Search
   footer:
     created_by: created by
     creator: Matej Kováč
@@ -38,7 +39,7 @@ en:
       cont: contains
       start: starts with
 
-    
+
 sk:
   top_menu:
     goods: Tovary
@@ -48,6 +49,7 @@ sk:
     settings: Nastavenia
     global_taric: SK TARIC
     others: Iné
+    searchers: Hľadať
   footer:
     created_by: vytvoril
     creator: Matej Kováč
@@ -72,7 +74,7 @@ sk:
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
- 
+
   ransack:
     or: alebo
     predicates:
