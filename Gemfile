@@ -27,11 +27,11 @@ gem 'hirb'
 
 gem 'rails_12factor'
 
-#gem 'ransack'
+gem 'ransack'
 
 gem 'i18n'
 
-gem 'ransack', git: 'https://github.com/K0V0/ransack'
+#gem 'ransack', git: 'https://github.com/K0V0/ransack'
 
 #gem 'ransack', path: '/home/kovo/:. GitHub/ransack'
 
