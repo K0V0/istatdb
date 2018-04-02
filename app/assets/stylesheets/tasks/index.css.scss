@@ -1,0 +1,59 @@
+@import "variables";
+
+article.tasks {
+
+    section {
+
+        table#tasks {
+
+            th, td {
+
+                &.task_types-typ, &.tasks-done {
+
+                }
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            table#tasks {
+
+                tr {
+                    padding-bottom:0.125em;
+                }
+
+                td, th {
+
+                    &.tasks-task {
+                        width: 100%;
+                    }
+
+                    &.tasks-created_at {
+                         width: 100%;
+                         text-align: right;
+                         font-style: italic;
+                    }
+
+                    &.task_types-typ, &.tasks-done {
+                        width: 50%;
+                    }
+
+                    &.tasks-done {
+                        text-align: right;
+
+                        &::before {
+                            content: 'OK ';
+                            vertical-align: middle;
+                        }
+
+                        input {
+                            display: inline-block;
+                            width:1em;
+                            height:1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
