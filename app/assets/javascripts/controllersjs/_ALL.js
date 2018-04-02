@@ -14,6 +14,7 @@ ALL = {
 		check_existence: ['on_reload'],
 		generate_search_query: ['on_reload'],
         belongs_to_disable_select_table_on_new: ['on_reload'],
-        reset_fields_button: ['on_reload']
+        reset_fields_button: ['on_reload'],
+        belongs_to_detach_assoc: ['on_ready']
 	}
 }

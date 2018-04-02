@@ -13,14 +13,6 @@ body.new, body.edit, body.create, body.update {
                     article.uoms {
 
                         div.delete_info {
-                            display: none;
-                            background-color: $dark_red;
-                            color: $white;
-                            padding: 0.25em 0.5em;
-                            box-sizing: border-box;
-                            margin-bottom: 0.125em;
-                            border-top-left-radius: 0.25em;
-                            border-top-right-radius: 0.25em;
 
                             u {
                                 float:right;
@@ -33,15 +25,6 @@ body.new, body.edit, body.create, body.update {
 
                             span {
                                 float:left;
-                            }
-                        }
-
-                        &.to_delete {
-                            background: none;
-                            background-color: $soft_red;
-
-                            div.delete_info {
-                                display: block;
                             }
                         }
                     }

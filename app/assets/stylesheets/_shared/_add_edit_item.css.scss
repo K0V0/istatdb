@@ -10,10 +10,28 @@ section.form {
 		padding-bottom: 0.25em;
 		padding-top: 0.25em;
 
+		 div.delete_info {
+            display: none;
+            background-color: $dark_red;
+            color: $white;
+            padding: 0.25em 0.5em;
+            box-sizing: border-box;
+            margin-bottom: 0.125em;
+        }
+
 		&.disabled {
 			pointer-events:none;
 			//color: $disabled_input_text;
 		}
+
+		&.to_delete {
+            background: none;
+            background-color: $soft_red;
+
+            div.delete_info {
+                display: block;
+            }
+        }
 
 		& > div {
 			padding: 0 0.25em;

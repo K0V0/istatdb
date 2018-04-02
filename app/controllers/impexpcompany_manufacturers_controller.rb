@@ -55,6 +55,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 			:incoterm_id,
 			:trade_type_id,
 			:invoices_correct,
+			:detach_local_taric,
 			local_taric: [:kncode, :description, :id, :allow_search_as_new]
 		)
 	end

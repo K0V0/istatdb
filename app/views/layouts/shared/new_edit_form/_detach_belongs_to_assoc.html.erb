@@ -1,3 +1,7 @@
+<div class="delete_info">
+    <span><%= t 'actions.assoc_will_be_detached' %></span>
+</div>
+
 <div class="detach_assoc">
     <% if !obj.object.send(assoc).nil? %>
         <%= obj.hidden_field(

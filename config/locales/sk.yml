@@ -46,6 +46,8 @@ sk:
     not_allowed: Nemáte oprávnenie na vstup do tejto sekcie
     delete_warning: Pozor! táto akcia je nezvratná!
     detach_assoc: Odstrániť atribút(y)
+    detach_assoc_cancel: Ponechať túto položku
+    assoc_will_be_detached: Táto asociácia bude zrušená po odoslaní formuláru. Ak chcete túto akciu zrušiť, stlačte "ponechať túto položku"
 
   items_table:
     results_count: počet výsledkov
