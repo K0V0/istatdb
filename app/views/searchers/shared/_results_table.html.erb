@@ -4,39 +4,46 @@
 
     <section class="decorated_wrap">
 
-         <table class="items_table rows_colored with_efects">
+        <div class="caption">
+            <%= obj.model_name.human %>
+        </div>
 
-            <caption>
-                <%= obj.model_name.human %>
-            </caption>
+        <div class="content">
 
-            <thead>
-                <tr>
-                    <%= items_table_head(
-                        fields,
-                        obj.model
-                    ) %>
-                </tr>
-            </thead>
+            <table
+                class="items_table rows_colored with_efects"
+                id="<%= obj.model_name.to_s.underscore.pluralize %>"
+            >
 
-            <tbody>
-                <% obj.each do |row| %>
+                <thead>
                     <tr>
-                         <%= items_table_fields(row, fields) %>
+                        <%= items_table_head(
+                            fields,
+                            obj.model
+                        ) %>
                     </tr>
-                <% end %>
-            </tbody>
+                </thead>
 
-            <tfoot>
-                <tr>
-                    <td>
+                <tbody>
+                    <% obj.each do |row| %>
+                        <tr>
+                             <%= items_table_fields(row, fields) %>
+                        </tr>
+                    <% end %>
+                </tbody>
 
-                        <b><%= num_of_results %></b>
-                    </td>
-                </tr>
-            </tfoot>
+                <tfoot>
+                    <tr>
+                        <td>
 
-         </table>
+                            <b><%= num_of_results %></b>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
 
     </section>
 

@@ -1,5 +1,5 @@
 
-article.goods { 
+article.goods, article.searchers {
 
 	section {
 
@@ -20,7 +20,7 @@ article.goods {
 		}
 
 		@media only screen and (max-width: 480px) {
-		   
+
 		   table#goods {
 
 		   		td, th {

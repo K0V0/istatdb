@@ -1,3 +1,6 @@
+
+<% def_val = params.deep_has_key?(:q, :done_filter) ? params[:q][:done_filter] : nil %>
+
 <div>
 
     <span>
@@ -12,7 +15,7 @@
                     [t(:is_true), 1],
                     [t(:is_false), 0]
                 ],
-                params[:q][:done_filter]
+                def_val
             )
         ) %>
     </span>

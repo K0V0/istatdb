@@ -3,6 +3,10 @@ article.searchers {
 
     section {
         margin: 0.375em 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
 
         &:first-child {
             margin-top:0;
@@ -12,31 +16,17 @@ article.searchers {
             margin-bottom:0;
         }
 
-        /*table#searchers {
+        div.content {
+            overflow-y: auto;
+            border-bottom-left-radius: 0.375em;
 
-            td, th {
+            table {
 
-                &.searchers-type {
-                    white-space: nowrap;
-                }
-
-                &.searchers-description {
-                }
             }
-        }*/
+        }
 
         @media only screen and (max-width: 480px) {
 
-            /*table#searchers {
-
-                td, th {
-
-                    &.searchers-type {
-                        font-weight: bold;
-                        width: 100%;
-                    }
-                }
-            }*/
         }
     }
 }
