@@ -1,28 +1,43 @@
-<section class="decorated_wrap">
+<% num_of_results = obj.total_count %>
 
-     <table class="items_table rows_colored with_efects">
+<% if num_of_results > 0 %>
 
-        <caption>
-            <%= obj.model_name.human %>
-        </caption>
+    <section class="decorated_wrap">
 
-        <tbody>
-            <% obj.each do |row| %>
+         <table class="items_table rows_colored with_efects">
+
+            <caption>
+                <%= obj.model_name.human %>
+            </caption>
+
+            <thead>
                 <tr>
-                     <%= items_table_fields(row, fields) %>
+                    <%= items_table_head(
+                        fields,
+                        obj.model
+                    ) %>
                 </tr>
-            <% end %>
-        </tbody>
+            </thead>
 
-        <tfoot>
-            <tr>
-                <td>
+            <tbody>
+                <% obj.each do |row| %>
+                    <tr>
+                         <%= items_table_fields(row, fields) %>
+                    </tr>
+                <% end %>
+            </tbody>
 
-                    <b><%= obj.total_count %></b>
-                </td>
-            </tr>
-        </tfoot>
+            <tfoot>
+                <tr>
+                    <td>
 
-     </table>
+                        <b><%= num_of_results %></b>
+                    </td>
+                </tr>
+            </tfoot>
 
-</section>
+         </table>
+
+    </section>
+
+<% end %>
