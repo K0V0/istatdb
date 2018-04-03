@@ -21,6 +21,14 @@ class LocalTaric < ActiveRecord::Base
 		order(kncode: :asc)
 	}
 
+	scope :kncode_start_or_translations_description_cont, -> (pars) {
+		where("kncode LIKE ? OR description LIKE ?", "#{pars}%", "%#{pars}%")
+	}
+
+	def self.ransackable_scopes(*pars)
+	    %i(kncode_start_or_translations_description_cont)
+	end
+
 	private
 
 	def record_identical

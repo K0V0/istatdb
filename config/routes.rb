@@ -122,12 +122,12 @@ Rails.application.routes.draw do
   # index
   get "searcher",
     to: "searchers#index",
-    as: "searchers"
+    as: "searcher"
 
   # ransack search
-  get "goodsdb/search",
-    to: "goods#search",
-    as: "search_searchers"
+  get "searcher/search",
+    to: "searchers#search",
+    as: "search"
 
 
 

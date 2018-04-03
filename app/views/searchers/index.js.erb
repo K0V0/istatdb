@@ -1,0 +1,6 @@
+$('article.searchers').empty();
+
+$('article.searchers')
+    .append("<%=j render 'searchers/shared/tables/goods' %>")
+    .append("<%=j render 'searchers/shared/tables/manufacturers' %>")
+    .append("<%=j render 'searchers/shared/tables/local_taric' %>");

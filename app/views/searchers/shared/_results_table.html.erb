@@ -1,0 +1,28 @@
+<section class="decorated_wrap">
+
+     <table class="items_table rows_colored with_efects">
+
+        <caption>
+            <%= obj.model_name.human %>
+        </caption>
+
+        <tbody>
+            <% obj.each do |row| %>
+                <tr>
+                     <%= items_table_fields(row, fields) %>
+                </tr>
+            <% end %>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>
+
+                    <b><%= obj.total_count %></b>
+                </td>
+            </tr>
+        </tfoot>
+
+     </table>
+
+</section>

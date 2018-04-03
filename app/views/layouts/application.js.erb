@@ -1,6 +1,6 @@
 var an = "<%= an = action_name %>";
 
-<% if an != 'new_select_search' && an != 'check_existence' && an != 'add_to_calculator_mem' && an != 'clear_calculator_mem' && an != 'remove_from_calculator_mem' && an != 'edit_rec_in_calculator_mem' %>
+<% if an != 'new_select_search' && an != 'check_existence' && an != 'add_to_calculator_mem' && an != 'clear_calculator_mem' && an != 'remove_from_calculator_mem' && an != 'edit_rec_in_calculator_mem' && !params.has_key?(:norender_default_jserb) %>
 
 	var AN = an.indexOf('_calculator_') > -1 ? 'show' : an;
 	var CTRL = "<%= ctrl = controller_name %>";

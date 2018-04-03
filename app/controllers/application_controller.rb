@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include Log
   include MemHelper
 
-  protect_from_forgery with: :exception
+  #protect_from_forgery with: :exception
 
   def initialize
     super

@@ -1,0 +1,67 @@
+
+<section class="search_bar">
+
+    <%= form_tag(
+        search_path,
+        method: :get,
+        class: 'decorated_wrap',
+        id: 'all_search',
+        remote: true
+    ) do %>
+
+        <%= hidden_field_tag :norender_default_jserb, true %>
+
+        <% field = text_field_tag(
+            'q[search_cont]',
+            nil,
+            {
+                autofocus: 'autofocus',
+                autocomplete: 'off',
+                class: 'search_searchfield',
+                type: 'search',
+                id: 'search_cont'
+            }
+        ) %>
+
+        <div class="searchform_main_fields disable_on_bigscreen">
+            <div>
+                <span>
+                    <label id="search_searchfield_label" for="q_search_cont"></label>
+                </span>
+                <span class="searchform_inputfield_wrap">
+                    <%= field %>
+                </span>
+                <label class="button" for="show_searchpanel_opts" id="show_searchpanel_opts">
+                    ☰
+                </label>
+            </div>
+        </div>
+
+        <div class="searchform_fulscreen_fields">
+
+            <div class="disable_on_smallscreen">
+                <span>
+                    <label id="search_searchfield_label" for="q_search_cont"></label>
+                </span>
+                <span class="searchform_inputfield_wrap">
+                    <%= field %>
+                </span>
+            </div>
+
+            <div class="searchform_actions">
+                <button id="clear_search" class="button">
+                     <%= t 'search.reset' %>
+                </button><!--
+                --><button id="search_item_on_google" class="button">
+                    <%= t 'goods_search.google' %>
+                </button><!--
+                --><!--
+                --><input type="submit" name="commit" value="Hľadať!" class="button important" id="back_or_search">
+            </div>
+
+        </div>
+
+    <% end %>
+
+</section>
+
