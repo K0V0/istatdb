@@ -6,7 +6,7 @@ class SearchersController < ApplicationController
 
     def index
 
-        @goods = Good.all
+        @goods = Good
             .includes(:local_taric)
             .default_order
             .page(params[:goods_page])
@@ -15,9 +15,11 @@ class SearchersController < ApplicationController
             .preload_items
             .page(params[:manufacturers_page])
 
-        @local_tarics = LocalTaric.all
+        @local_tarics = LocalTaric
             .includes(:translations)
             .page(params[:local_taric_page])
+
+        load_counts
     end
 
     def search
@@ -25,11 +27,14 @@ class SearchersController < ApplicationController
         q = params[:q]
 
         @goods = Good
+            .includes(:local_taric)
             .ransack(ident_or_description_cont: q[:search_cont])
             .result
+            .order('ident ASC')
             .page(params[:goods_page])
 
         @manufacturers = Manufacturer
+            .preload_items
             .ransack(name_cont: q[:search_cont])
             .result
             .page(params[:manufacturers_page])
@@ -40,7 +45,18 @@ class SearchersController < ApplicationController
             .result
             .page(params[:local_taric_page])
 
+        load_counts
         render "index"
+    end
+
+    private
+
+    def load_counts
+        @counts = {
+            goods: @goods.total_count,
+            manufacturers: @manufacturers.total_count,
+            local_tarics: @local_tarics.total_count
+        }
     end
 
 end

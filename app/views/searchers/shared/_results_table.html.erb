@@ -1,18 +1,29 @@
-<% num_of_results = obj.total_count %>
+<%
+    table_key = obj.model_name.to_s.underscore.pluralize.to_sym
+%>
 
-<% if num_of_results > 0 %>
+<% if @counts[table_key] > 0 %>
 
-    <section class="decorated_wrap">
+    <section class="items_table decorated_wrap change_on_smallscreen">
 
         <div class="caption">
-            <%= obj.model_name.human %>
+            <span class="caption_name">
+                <%= obj.model_name.human %>
+            </span>
+            <span class="stats">
+               <%= visible_results_stats(
+                    obj.length,
+                    params["#{table_key.to_s}_page"].to_i,
+                    params[:per].to_i
+                ).html_safe %>
+            </span>
         </div>
 
         <div class="content">
 
             <table
                 class="items_table rows_colored with_efects"
-                id="<%= obj.model_name.to_s.underscore.pluralize %>"
+                id="<%= table_key.to_s %>"
             >
 
                 <thead>
@@ -34,9 +45,16 @@
 
                 <tfoot>
                     <tr>
-                        <td>
-
-                            <b><%= num_of_results %></b>
+                        <td colspan="10">
+                            <%= paginate(
+                                obj,
+                                remote: true,
+                                param_name: "#{table_key.to_s}_page",
+                                params: {
+                                    norender_default_jserb: true,
+                                    render_part: "#{table_key.to_s}"
+                                }
+                            ) %>
                         </td>
                     </tr>
                 </tfoot>
