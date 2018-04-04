@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   ### nastavenie domovskej stranky
 
-  root to: 'goods#index'
+  root to: 'searchers#index'
 
 
 

@@ -3,10 +3,12 @@
     obj: @local_tarics,
     fields: {
         kncode: {
-
+            is_link: true,
+            is_highlighted: :search,
+            call_decorator: :num_to_kncode
         },
         description: {
-
+             is_highlighted: :search
         }
     }
 ) %>

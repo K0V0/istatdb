@@ -27,8 +27,9 @@ module DecoratorsHelper
 	# obj - 	resulting object
 	# param - 	wanted attribute, for ex. have object with results from clients database,
 	# 			and you want field with client name
-	def highlight_search obj, param, multiple_with=nil, return_patt=false
+	def highlight_search obj: nil, field: nil, param: nil, multiple_with: nil, return_patt: false
 		p = ""
+		param = field if param.nil?
 		if params.has_key? :q
 			if !params[:q].blank?
 				tmp = multiple_with || param
@@ -47,7 +48,6 @@ module DecoratorsHelper
 				p = params[contr.to_sym][obj_contr + '_' + param.to_s]
 			end
 		end
-
 		return p if return_patt == true
 		highlight_searched str: obj.send(param), patt: p
 	end

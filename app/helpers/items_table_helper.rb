@@ -31,9 +31,28 @@ module ItemsTableHelper
 
 		if !object.nil?
 
-			if opts[:is_highlighted]
-				patt = highlight_search(object, field, opts[:is_multiple_with], true)
-				text = highlight_searched(str: text, patt: patt)
+			if o = opts[:is_highlighted]
+				#logger "high"
+				if o.is_a? TrueClass
+					patt = highlight_search(
+						obj: object,
+						field: field,
+						multiple_with: opts[:is_multiple_with],
+						return_patt: true
+					)
+				else
+					patt = highlight_search(
+						obj: object,
+						field: field,
+						param: o,
+						multiple_with: opts[:is_multiple_with],
+						return_patt: true
+					)
+				end
+				text = highlight_searched(
+					str: text,
+					patt: patt
+				)
 			end
 
 			if opts[:is_link]

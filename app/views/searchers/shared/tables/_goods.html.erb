@@ -3,14 +3,16 @@
     obj: @goods,
     fields: {
         ident: {
-            is_link: true
+            is_link: true,
+            is_highlighted: :search
         },
         description: {
-
+            is_highlighted: :search
         },
         local_taric: [
             kncode: {
-                is_link: true
+                is_link: true,
+                call_decorator: :num_to_kncode
             }
         ]
     }

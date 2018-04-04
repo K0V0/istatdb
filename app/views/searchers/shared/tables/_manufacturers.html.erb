@@ -3,31 +3,35 @@
     obj: @manufacturers,
     fields: {
         name: {
-
+            is_highlighted: :search,
+            is_link: true
         },
         impexpcompany_manufacturers: [
             impexpcompany: [
                 company_name: {
-
+                    fill_if_empty: true
                 }
             ],
             local_taric: [
                 kncode: {
-
+                    is_link: true,
+                    call_decorator: :num_to_kncode,
+                    fill_if_empty: true
                 }
             ],
             incoterm: [
                 shortland: {
-
+                     fill_if_empty: true
                 }
             ],
             trade_type: [
                 type: {
-
+                     fill_if_empty: true
                 }
             ],
             invoices_correct: {
-
+                 fill_if_empty: true,
+                 call_decorator: :bool_to_human
             }
         ]
     }
