@@ -58,7 +58,6 @@ var an = "<%= an = action_name %>";
 			tiriri ? t('search.submit') : t('actions.back')
 		);
 
-		<% logger params %>
 		<% if params.deep_has_key? :q, :s %>
 			searchform_sortlink_remember_helper.val('<%= params[:q][:s] %>');
 		<% end %>
