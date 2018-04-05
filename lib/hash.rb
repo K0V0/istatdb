@@ -22,7 +22,7 @@ class Hash
 
  	private
 
- 	def deep_merge_fu keys, obj, val 
+ 	def deep_merge_fu keys, obj, val
  		lk = keys.last
  		v = (keys.length > 1) ? {} : val
  		obj.merge!(lk => v)
@@ -34,7 +34,7 @@ class Hash
  	def deep_do_generation_fu args, failval
  		tmp = self
  		args.each do |arg|
- 			if !tmp.nil?
+ 			if !tmp.nil?&&!tmp.blank?
 				if tmp.has_key? arg
 					tmp2 = tmp[arg]
 					tmp = tmp2

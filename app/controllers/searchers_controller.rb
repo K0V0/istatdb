@@ -17,6 +17,7 @@ class SearchersController < ApplicationController
 
         @local_tarics = LocalTaric
             .includes(:translations)
+            .default_order
             .page(params[:local_taric_page])
 
         load_counts
@@ -43,6 +44,7 @@ class SearchersController < ApplicationController
             .with_translations(I18n.locale)
             .ransack(kncode_start_or_translations_description_cont: q[:search_cont])
             .result
+            .order('kncode ASC')
             .page(params[:local_taric_page])
 
         load_counts

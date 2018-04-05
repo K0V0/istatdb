@@ -1,0 +1,49 @@
+en:
+  activerecord:
+    models:
+      Task: Task
+    attributes:
+      task:
+        task: Task
+        created_at: Submitted
+        done: Is done
+        type_filter: Type of task
+        done_filter: Hide completed
+        date_filter: Hide older than
+    errors:
+      models:
+        task:
+          attributes:
+            task:
+              blank: Task name/reference field is blank.
+  helpers:
+    submit:
+      task:
+        create: Add task(s)
+        update: Update task details
+
+
+sk:
+  activerecord:
+    models:
+      Task: Úloha
+    attributes:
+      task:
+        task: Úloha
+        created_at: Zadané dňa
+        done: Dokončená
+        type_filter: Typ
+        done_filter: Iba nedokončené
+        date_filter: Nie staršie ako
+    errors:
+      models:
+        task:
+          attributes:
+            task:
+              blank: Pole je prázdne
+  helpers:
+    submit:
+      task:
+        create: Zadať úlohu
+        update: Upraviť úlohu
+
