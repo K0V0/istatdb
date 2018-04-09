@@ -3,7 +3,7 @@
 }
 
 @mixin menu_transitions() {
-    @include transition(background-color $main_menu_mouse_actions_transition_time ease, color $main_menu_mouse_actions_transition_time ease, border-color $main_menu_mouse_actions_transition_time ease);
+    @include transition(background-color $main_menu_mouse_actions_transition_time ease, color $main_menu_mouse_actions_transition_time ease, border-color $main_menu_mouse_actions_transition_time ease, opacity $main_menu_mouse_actions_transition_time ease);
 }
 
 @mixin menu_open_smallscreen_transitions() {
