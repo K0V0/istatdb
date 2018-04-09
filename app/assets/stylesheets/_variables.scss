@@ -31,7 +31,8 @@ $widget_caption_text:                 $black;
 $widget_caption_danger_background:    $dark_red;
 $widget_caption_danger_text:          $white;
 $widget_caption_required_text:        $strong_black;
-$widget_border:                       $grey;
+$widget_border:                       $strong_grey;
+$widget_caption_3D_shadow:			  $strong_grey;
 
 $scrollbar_handle:					  $white;
 $scrollbar_hover_handle:  		      $strong_white;
@@ -41,6 +42,7 @@ $scrollbar_background:                $grey;
 
 $main_menu_background:                                  $strong_black;
 $main_menu_text:                                        inherit;
+$main_menu_item_3D_shadow:								$light_black;
 
 $main_menu_active_link_background:                      $white;
 $main_menu_active_link_text:                            $black;
@@ -59,6 +61,8 @@ $main_menu_inactive_link_hover_text:                    $strong_white;
 
 $sub_menu_background:                                   $main_menu_active_link_with_submenu_background;
 $sub_menu_text:                                         $main_menu_active_link_with_submenu_text;
+$sub_menu_item_3D_shadow:								$halftone;
+
 
 $sub_menu_active_link_background:                       $white;
 $sub_menu_active_link_text:                             $black;
