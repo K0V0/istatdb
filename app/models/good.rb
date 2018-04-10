@@ -119,26 +119,30 @@ class Good < ActiveRecord::Base
 		# update relationship table between impexpcompanies and manufacturers
 		# based on goods they are both conected with
 		impexps = Impexpcompany.preload(:manufacturers, goods: [:manufacturers])
-		impexps.each do |impexp|
-			# from ImpexpcompanyManufacturer model
-			x = impexp.manufacturers.collect { |w| w.id }
-			# by going through goods and their impexpcompanies
-			y = impexp.goods.collect { |w| w.manufacturers.collect { |q| q.id } }.flatten.uniq
-			missing_new_manufacturers = y - x
-			manufacturers_deselected = x - y
-			# create association if not exist
-			impexp.manufacturers << Manufacturer.find(missing_new_manufacturers)
-			# remove association if Intrastat client no more have any bussines with supplier/consumer
-			# but leave it intact if user decided or some other informations are associated here
-			# (edited or added from manufacturers section for example)
-			obsolete_mans_ids = impexp.manufacturers
-				.joins(:impexpcompany_manufacturers)
-				.where(id: manufacturers_deselected)
-				.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil })
-				.distinct
-				.ids
-			impexp.manufacturers.delete(*obsolete_mans_ids)
-		end
+		
+		#Thread.new do
+			impexps.each do |impexp|
+				# from ImpexpcompanyManufacturer model
+				x = impexp.manufacturers.collect { |w| w.id }
+				# by going through goods and their impexpcompanies
+				y = impexp.goods.collect { |w| w.manufacturers.collect { |q| q.id } }.flatten.uniq
+				missing_new_manufacturers = y - x
+				manufacturers_deselected = x - y
+				# create association if not exist
+				impexp.manufacturers << Manufacturer.find(missing_new_manufacturers)
+				# remove association if Intrastat client no more have any bussines with supplier/consumer
+				# but leave it intact if user decided or some other informations are associated here
+				# (edited or added from manufacturers section for example)
+				obsolete_mans_ids = impexp.manufacturers
+					.joins(:impexpcompany_manufacturers)
+					.where(id: manufacturers_deselected)
+					.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil })
+					.distinct
+					.ids
+				impexp.manufacturers.delete(*obsolete_mans_ids)
+			end
+			#ActiveRecord::Base.connection.close
+		#end
 	end
 
 	def assign_to_user
