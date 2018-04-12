@@ -18,6 +18,10 @@ class Uom < ActiveRecord::Base
 
 	after_initialize :set_default_pcs_to_one
 
+	def uom=(val)
+		super(val.gsub(',', '.'))
+	end
+
 	def set_fallback_multiplier
 		if !self.uom.blank? && self.uom_multiplier.blank?
 			self.uom_multiplier = 1
