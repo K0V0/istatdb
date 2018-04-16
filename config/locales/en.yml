@@ -19,6 +19,7 @@ en:
     submit: Search!
     search_as_new: Searched text as new item
     also_exist_in_db: with same name exist in database
+    log_in: Log in
 
   actions:
     add: Add

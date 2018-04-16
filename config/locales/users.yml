@@ -166,6 +166,7 @@ sk:
     cancel: Odstrániť používateľský účet
     cancel_warning: Chcete NAOZAJ odstrániť Váš účet? Tento úkon nie je možné vrátiť späť! Tovary, informácie o Výrobcoch/Odberateľoch a iné položky, ktoré ste ale nahrali zostanú k dispozícií pre ostatných.
     change_pass: Zmeniť prihlasovacie údaje
+    unlocked_sections: Sekcie dostupné aj bez prilásenia
 
 
 en:
@@ -190,3 +191,5 @@ en:
     login_title: Log In
     forgot_password: Forget password ?
     remember: Remember user
+    unlocked_sections: Sections accessible without login
+

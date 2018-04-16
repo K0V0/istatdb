@@ -56,7 +56,14 @@
                     <%= t 'goods_search.google' %>
                 </button><!--
                 --><!--
-                --><input type="submit" name="commit" value="Hľadať!" class="button important" id="back_or_search">
+                --><input type="submit" name="commit" value="Hľadať!" class="button important" id="back_or_search"><!--
+                --><% if !user_signed_in? %>
+                    <%= link_to(
+                        t('search.log_in'),
+                        new_user_session_path,
+                        class: 'button danger'
+                    ) %>
+                <% end %>
             </div>
 
         </div>

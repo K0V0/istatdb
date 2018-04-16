@@ -8,6 +8,7 @@ en:
     global_taric: SK TARIC
     others: Other
     searchers: Search
+    searchers_long: Search everything
   footer:
     created_by: created by
     creator: Matej Kováč
@@ -50,6 +51,7 @@ sk:
     global_taric: SK TARIC
     others: Iné
     searchers: Hľadať
+    searchers_long: Prehľadávať Tovary/Firmy/TARIC
   footer:
     created_by: vytvoril
     creator: Matej Kováč
