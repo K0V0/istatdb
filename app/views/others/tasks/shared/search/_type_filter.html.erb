@@ -1,5 +1,5 @@
 <%
-    type_selected = params.deep_has_key?(:q, :type_filter) ? params[:q][:type_filter] : nil
+    type_selected = params.deep_has_key?(:q, :type_filter) ? params[:q][:type_filter].to_i : nil
 %>
 
 <div>
@@ -11,7 +11,7 @@
     <span>
         <%= obj.select(
             :type_filter,
-            TaskType.all.collect { |t| [t.typ, t.id] },
+            TaskType.all.collect { |t| [t.typ, t.id.to_i] },
             include_blank: "---",
             selected: type_selected
         ) %>

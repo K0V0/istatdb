@@ -22,6 +22,8 @@ class Task < ActiveRecord::Base
     }
 
     scope :type_filter, -> (*pars) {
+        Rails.logger.info "-------------------"
+        Rails.logger.info *pars
         where(task_type_id: pars)
         #.order(created_at: :asc)
     }
