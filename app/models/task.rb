@@ -18,13 +18,12 @@ class Task < ActiveRecord::Base
 
     scope :done_filter, -> (*pars) {
         where(done: false)
-        #.order(created_at: :asc)
     }
 
     scope :type_filter, -> (*pars) {
-        Rails.logger.info "-------------------"
-        Rails.logger.info *pars
-        where(task_type_id: pars)
+        where(task_type_id: pars[0])
+        # resolved 0 and 1 values not displaying results ransack bug,
+        # see rensack initializuer for more info
         #.order(created_at: :asc)
     }
 
