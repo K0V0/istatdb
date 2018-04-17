@@ -17,7 +17,11 @@ class Task < ActiveRecord::Base
     }
 
     scope :done_filter, -> (*pars) {
-        where(done: false)
+        if pars[0] == "1"
+            return self.where(done: false)
+        elsif pars[0] == "2"
+            return self.where(done: true)
+        end
     }
 
     scope :type_filter, -> (*pars) {

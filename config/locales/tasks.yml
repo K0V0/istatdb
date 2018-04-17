@@ -22,6 +22,9 @@ en:
         create: Add task(s)
         update: Update task details
 
+  tasks:
+    show_completed_only: Show only completed
+
 
 sk:
   activerecord:
@@ -46,4 +49,7 @@ sk:
       task:
         create: Zadať úlohu
         update: Upraviť úlohu
+
+  tasks:
+    show_completed_only: Zobraziť len dokončené
 
