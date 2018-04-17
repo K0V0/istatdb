@@ -6,7 +6,7 @@ ALL = {
 		hide_menu_by_outclick_smallscreen: ['on_ready'],
 		flash_messages: ['on_ready'],
 		confirmation: ['on_ready'],
-		copy_paste: ['on_ready']
+		copy_paste: ['on_reload']
 	},
 
 	_new_edit_update_create_update_multiple_edit_multiple: {
