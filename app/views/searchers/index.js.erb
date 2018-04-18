@@ -3,10 +3,19 @@
 
     $('article.searchers').empty();
 
-    $('article.searchers')
-        .append("<%=j render 'searchers/shared/tables/goods' %>")
-        .append("<%=j render 'searchers/shared/tables/manufacturers' %>")
-        .append("<%=j render 'searchers/shared/tables/local_tarics' %>");
+    <% if [@goods, @local_tarics, @manufacturers].any? { |r| !r.empty? } %>
+
+        $('article.searchers')
+            .append("<%=j render 'searchers/shared/tables/goods' %>")
+            .append("<%=j render 'searchers/shared/tables/manufacturers' %>")
+            .append("<%=j render 'searchers/shared/tables/local_tarics' %>");
+
+    <% else %>
+
+        $('article.searchers')
+            .append("<%=j render 'searchers/shared/tables/no_results' %>");
+
+    <% end %>
 
 <% else %>
 
@@ -14,10 +23,8 @@
     var window_id = "<%= params[:render_part] %>";
     var parent = $('#'+window_id).closest('div.content');
     var new_content = partial.find('#'+window_id);
-    //var new_stats = partial.find('span.stats');
 
     parent.empty();
     parent.append(new_content);
-    //parent.siblings('caption').children('span.stats').empty().append(new_stats);
 
 <% end %>

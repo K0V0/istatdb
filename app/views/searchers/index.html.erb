@@ -5,11 +5,15 @@
 
 <article class="index searchers">
 
-    <%= render 'searchers/shared/tables/goods' %>
+	<% if [@goods, @local_tarics, @manufacturers].any? { |r| !r.empty? } %>
 
-    <%= render 'searchers/shared/tables/manufacturers' %>
+	    <%= render 'searchers/shared/tables/goods' %>
 
-    <%= render 'searchers/shared/tables/local_tarics' %>
+	    <%= render 'searchers/shared/tables/manufacturers' %>
+
+	    <%= render 'searchers/shared/tables/local_tarics' %>
+
+	<% end %>
 
 </article>
 

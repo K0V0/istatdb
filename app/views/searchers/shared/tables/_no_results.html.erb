@@ -1,0 +1,45 @@
+<section class="items_table decorated_wrap change_on_smallscreen">
+
+        <div class="caption danger">
+            <span class="caption_name">
+                <%= t 'searchers.nothing_found_caption' %>
+            </span>
+        </div>
+
+        <div class="content">
+
+            <table class="no_results">
+
+                <tbody>
+                    <tr class="solution">
+                        <td colspan="10">
+                            <h4> <%= t 'searchers.posibilities' %> </h4>
+                            <ul>
+                                
+                                <li>
+                                    <%= t 'actions.add' %>
+                                    <%= link_to t('searchers.goods'),new_good_path, class: 'button' %>
+                                    <%= t 'or' %>
+                                    <%= link_to t('searchers.supplier'),new_manufacturer_path, class: 'button' %>
+                                    <%= t 'or' %>
+                                    <%= link_to t('searchers.taric'),new_local_taric_path, class: 'button' %>
+                                </li>
+
+                                <li>
+                                    <%= t 'searchers.try_information' %>
+                                    <button id="search_item_on_google_2" class="button">
+                                        <%= t 'goods_search.google' %>
+                                    </button>
+                                </li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+    </section>

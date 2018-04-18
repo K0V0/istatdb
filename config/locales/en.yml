@@ -5,6 +5,7 @@ en:
   confirmation: "Are You sure?"
   ok: OK
   cancel: Cancel
+  or: or
 
   date:
     order:

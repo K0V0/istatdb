@@ -5,6 +5,7 @@ sk:
   confirmation: "Ste si istý ?"
   ok: OK
   cancel: Storno
+  or: alebo
 
   date:
     order:

@@ -1,0 +1,17 @@
+en:
+  searchers:
+    nothing_found_caption: Nothing found
+    posibilities: Possible solutions
+    goods: Good(s)
+    supplier: Manufacturer/consumer
+    taric: TARIC code
+    try_information: Try to
+
+sk:
+  searchers:
+    nothing_found_caption: Nenájdené žiadne záznamy
+    posibilities: Ďalšie možnosti
+    goods: Tovar
+    supplier: Výrobcu/odberateľa
+    taric: Kód TARIC
+    try_information: Skúsiť informácie

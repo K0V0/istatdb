@@ -5,6 +5,7 @@ article.searchers {
 
     section {
         margin: 0.375em 0;
+        overflow-y: hidden;
 
         &:first-child {
             margin-top:0;
@@ -17,6 +18,7 @@ article.searchers {
         div.content {
             overflow-y: auto;
             border-bottom-left-radius: 0.375em;
+            min-height: 6em;
 
             table {
 
