@@ -19,6 +19,7 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
     end
 
     def detach_local_taric= bool
-         update_attribute(:local_taric_id, nil) if bool
+        update_attribute(:local_taric_id, nil) if (bool == true)||(bool == 'true')
+        # due to patch tor ransack select dropdowns first ID problem
     end
 end
