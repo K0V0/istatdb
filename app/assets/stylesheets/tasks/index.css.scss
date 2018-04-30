@@ -8,8 +8,17 @@ article.tasks {
 
             th, td {
 
-                &.task_types-typ, &.tasks-done {
+                &.task_types-typ {
+                     white-space: nowrap;
+                }
 
+                &.tasks-created_at {
+                    white-space: nowrap;
+                }
+
+                &.tasks-done {
+                    min-width: 2em;
+                    overflow: ellipsis;
                 }
             }
         }
