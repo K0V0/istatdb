@@ -3,12 +3,13 @@ article.manufacturers.show {
 	section {
 
 		table#manufacturers-local_taric {
-			table-layout: fixed;
+			//table-layout: fixed;
 
 			td, th {
 
-				&.local_tarics-description {
-					width:100%;
+				&.local_tarics-kncode {
+					width:1%;
+					white-space: nowrap;
 				}
 			}
 		}
@@ -24,6 +25,7 @@ article.manufacturers.show {
 				th, td {
 
 					&.local_tarics-kncode {
+						width:auto;
 						font-weight: bold;
 					}
 				}
