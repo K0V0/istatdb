@@ -11,9 +11,9 @@
 
         <%= hidden_field_tag :norender_default_jserb, true %>
 
-        <% field = text_field_tag(
+        <%  field = text_field_tag(
             'q[search_cont]',
-            nil,
+            searched_from_mem,
             {
                 autofocus: 'autofocus',
                 autocomplete: 'off',

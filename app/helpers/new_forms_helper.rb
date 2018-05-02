@@ -143,7 +143,6 @@ module NewFormsHelper
     end
 
     def new_forms_no_results
-        logger "outputtt"
     	output = "<tr><td colspan=\"10\" class=\"new_form_select_no_results\">"
     	output += "
     		<h2>#{t('items_table.nothing_found')}.</h2>
@@ -185,9 +184,11 @@ module NewFormsHelper
     # when adding sometning new
     def prefill_from_search_field(pars)
         if (!pars.nil?)&&(action_name == 'new')
+            #logger(params)
             search_params = @MEM.send("q_#{controller_name.singularize.underscore}")
             if !search_params.nil?
                 pars.each do |par|
+                    #logger par, "paar"
                     if !(res = search_params[par]).blank?
                         return res
                     end
