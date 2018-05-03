@@ -7,7 +7,7 @@
 
 <%= active_link_to(
     t("others.sections.tasks"),
-    tasks_path,
+    search_tasks_path(q: { done_filter: 1 }),
     wrap_tag: :li
 ) %>
 
