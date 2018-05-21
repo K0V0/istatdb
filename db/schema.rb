@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324214446) do
+ActiveRecord::Schema.define(version: 20180521115555) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20180324214446) do
     t.datetime "updated_at",  null: false
     t.integer  "change_typ"
   end
+
+  create_table "global_settings", force: :cascade do |t|
+    t.string   "var",                   null: false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "global_settings", ["thing_type", "thing_id", "var"], name: "index_global_settings_on_thing_type_and_thing_id_and_var", unique: true
 
   create_table "global_tarics", force: :cascade do |t|
     t.string   "kncode"

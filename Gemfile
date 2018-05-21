@@ -63,6 +63,8 @@ gem 'devise'
 
 gem 'globalize', '~> 5.0.0'
 
+gem "rails-settings-cached"
+
 #gem 'globalize-accessors'
 
 #gem 'memory-stats-js-rails'
