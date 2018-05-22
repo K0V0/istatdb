@@ -21,11 +21,12 @@ module LayoutsHelper
 		)
 	end
 
-	def settings(section: :main, settings: {})
+	def settings(section: :main, settings: {}, only_admin: false)
 		render(
 			"layouts/shared/settings",
 			section: section,
-			settings: settings
+			settings: settings,
+			only_admin: only_admin
 		)
 	end
 

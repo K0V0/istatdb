@@ -154,6 +154,7 @@ table.no_results {
 		tr {
 			width: 100%;
 			pointer-events: none !important;
+			box-sizing:border-box;
 
 			&.no_results {
 				background-color: $table_row_error_background;

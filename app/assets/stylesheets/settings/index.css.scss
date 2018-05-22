@@ -1,0 +1,16 @@
+article.settings {
+
+	form {
+
+		section {
+			margin: 0.375em 0;
+			margin-right: 0.75em;
+			float:left;
+
+			@media only screen and (max-width: 480px) {
+				margin-right: 0;
+
+			}
+		}
+	}
+}

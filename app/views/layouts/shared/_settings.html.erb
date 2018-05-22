@@ -1,30 +1,45 @@
+<%
+	allow = (only_admin == true && current_user.is_admin) || (only_admin == false)
+%>
 
-<section class="decorated_wrap shrinked">
+<section class="decorated_wrap shrinked change_on_smallscreen">
 
-	<table class="for_nontabular">
+	<table class="for_nontabular <%= allow == false ? 'no_results' : '' %>">
 
 		<caption> 
 			<%= t("settings.general.#{section.to_s}_section_window_title") %>
 		</caption>
 
 		<tbody>
-			<% settings.each do |setting_name, options| %>
 
-				<tr>
-					<td>
-						<label for="settings_<%= setting_name %>">
-							<%= t("settings.general.#{setting_name}") %>
-						</label>
-					</td>
+			<% if !allow %>
 
-					<%= render(
-						"layouts/shared/settings/#{options[:type].to_s}",
-						name: "#{section.to_s}_#{setting_name.to_s}",
-						options: options
-					) %>
+				<tr class="no_results">
+					<td colspan="10"> <h4> si kkt a nie admin</h4> </td>
 				</tr>
 
+			<% else %>
+
+				<% settings.each do |setting_name, options| %>
+
+					<tr>
+						<td>
+							<label for="settings_<%= setting_name %>">
+								<%= t("settings.general.#{setting_name}") %>
+							</label>
+						</td>
+
+						<%= render(
+							"layouts/shared/settings/#{options[:type].to_s}",
+							name: "#{section.to_s}_#{setting_name.to_s}",
+							options: options
+						) %>
+					</tr>
+
+				<% end %>
+
 			<% end %>
+
 		</tbody>
 
 	</table>
