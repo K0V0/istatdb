@@ -1,5 +1,7 @@
 en:
   settings:
+    only_admin: Only available to user(s) with administrator rights
+
     sections:
       general: General
       uom_types: UOMs
@@ -10,6 +12,7 @@ en:
 
     general:
       gui_section_window_title: Graphical interface settings
+      backup_section_window_title: Backup and sync settings
       per_page: Number of results to be shown
       show_footer: Show footer (bottom strip with ads)
       enable_3d: Enable 3D effects
@@ -21,6 +24,8 @@ en:
 
 sk:
   settings:
+    only_admin: Prístupné iba používateľovi s právami administrátora 
+
     sections:
       general: Všeobecné
       uom_types: Merné jednotky
@@ -31,6 +36,7 @@ sk:
 
     general:
       gui_section_window_title: Grafické rozhranie
+      backup_section_window_title: Zálohovanie a synchronizácia
       per_page: Počet výsledkov zobrazených na jednu stránku
       show_footer: Zobraziť pätu (spodný pruh s reklamou)
       enable_3d: zapnúť 3D vzhľad
