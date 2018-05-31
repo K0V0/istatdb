@@ -19,6 +19,9 @@
  <% if !(ss = searcher_settings).nil? %>
  	<%= generate_search_instructions(ss, assoc) %>
  <% end %>
+ <% if multiedit %>
+ 	data-searcher-multiedit="true"
+ <% end %>
 >
 
 	<input type="hidden" name="assoc-type" value="belongs_to">

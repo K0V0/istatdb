@@ -55,7 +55,8 @@ GenerateSearchQuery.prototype = {
 		  		model: 				wndw.data('searcher-assoc'),
 		  		source_controller: 	$('body').data('controller_name').singularize(),
 		  		association_type: 	wndw.children('input[name=assoc-type]').val(),
-		  		window_id: 			wndw.attr('id')
+		  		window_id: 			wndw.attr('id'),
+		  		multiedit: 			wndw.data('searcher-multiedit')
 		  	}
 		});
 	},
