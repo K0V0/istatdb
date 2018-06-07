@@ -114,11 +114,14 @@ module NewFormsHelper
         #multiedit = false
         obj_name = "#{obj.class.name.underscore}"
         obj_name = "#{obj_name.pluralize}[#{obj.try(:id).to_s}]" if multiedit == true
-        logger obj, "obj"
-        logger obj.inspect, "obj length"
+        #logger obj, "obj"
+        #logger obj.inspect, "obj length"
         logger obj.try(:id), "obj id"
+        logger coll, "coll"
+        logger coll.length, "coll length"
+        logger coll.inspect, "coll inspect"
         ### nefinguje ID pri vyhladavani
-        #obj_name = "#{obj_name.pluralize}[393]" if multiedit == true
+        #obj_name = "#{obj_name.pluralize}[393]" if multiedit == true ### toto fungovalo, dostat len id tu do zatvorky
         #logger obj_name, "obj name"
         #logger obj.try(:id), "obj"
         ###logger multiedit, "obj name used multiedit"

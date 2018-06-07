@@ -232,7 +232,9 @@ class ApplicationController < ActionController::Base
     searcher_for(autoshow: false)
     if params.has_key? :association_type
   		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
+      ## pouzit parent rec id
   		parent_obj = params[:source_controller].classify.constantize.new
+      parent_obj.id = parent_rec_id
   		if params[:association_type] == "belongs_to"
 	  		parent_obj.send("build_#{params[:model]}")
 	  	else
