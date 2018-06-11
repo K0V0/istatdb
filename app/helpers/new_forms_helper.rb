@@ -111,22 +111,8 @@ module NewFormsHelper
     	output_first = ""
     	output_other = ""
     	coll_name = "#{coll.name.underscore}_id"
-        #multiedit = false
         obj_name = "#{obj.class.name.underscore}"
         obj_name = "#{obj_name.pluralize}[#{obj.try(:id).to_s}]" if multiedit == true
-        #logger obj, "obj"
-        #logger obj.inspect, "obj length"
-        logger obj.try(:id), "obj id"
-        logger coll, "coll"
-        logger coll.length, "coll length"
-        logger coll.inspect, "coll inspect"
-        ### nefinguje ID pri vyhladavani
-        #obj_name = "#{obj_name.pluralize}[393]" if multiedit == true ### toto fungovalo, dostat len id tu do zatvorky
-        #logger obj_name, "obj name"
-        #logger obj.try(:id), "obj"
-        ###logger multiedit, "obj name used multiedit"
-        ### tu je chyba pri vahladavani - js sablona nie je 
-        ### pusteny parameter multiedit
     	checked_id = obj.try(coll.name.underscore).try(:id)
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 

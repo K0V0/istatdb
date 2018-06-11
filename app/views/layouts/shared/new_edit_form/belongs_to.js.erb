@@ -2,10 +2,10 @@
 	### neni nastavena instance variable pri hladani cez jserb
 	parent_object = instance_variable_get("@#{params[:source_controller]}")
 	allow_new = @result.size > 0 ? "0" : "1"
-	#is_multiedit = false
+	is_multiedit = false
 	if params.has_key?(:multiedit)
 		#logger(params['multiedit'], "multiedit")
-		#is_multiedit = params['multiedit'] == "true" ? true : false
+		is_multiedit = params['multiedit'] == "true" ? true : false
 	end
 
 	logger @result.length, "result"
@@ -15,7 +15,7 @@
 		coll: @result,
 		text_method: get_fields_from_ransack_params,
 		opts: { is_highlighted: true },
-		multiedit: true
+		multiedit: is_multiedit
 	)
 %>
 
