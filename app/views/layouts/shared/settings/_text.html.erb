@@ -1,0 +1,15 @@
+<% 
+	set_name = "settings[#{name}]"
+	set_name = "global_" + set_name if only_admin
+	val = only_admin ? @global_settings[name] : @settings[name]
+%>
+
+<td>
+	<input
+		type="text"
+		name="<%= set_name %>"
+		class="settings"
+		id="<%= set_name %>"
+		value="<%= val %>"
+	>
+</td>

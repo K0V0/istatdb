@@ -32,7 +32,8 @@
 						<%= render(
 							"layouts/shared/settings/#{options[:type].to_s}",
 							name: "#{section.to_s}_#{setting_name.to_s}",
-							options: options
+							options: options,
+							only_admin: only_admin
 						) %>
 					</tr>
 
