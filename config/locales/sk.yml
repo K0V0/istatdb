@@ -50,6 +50,7 @@ sk:
     detach_assoc: Odstrániť atribút(y)
     detach_assoc_cancel: Ponechať túto položku
     assoc_will_be_detached: Táto asociácia bude zrušená po odoslaní formuláru. Ak chcete túto akciu zrušiť, stlačte "ponechať túto položku"
+    wait_until_backup: Táto operácia môže chvíľu trvať, počkajte. Na konci Vám bude ponúknutý súbor na stiahnutie.
 
   items_table:
     results_count: počet výsledkov

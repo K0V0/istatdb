@@ -354,6 +354,11 @@ Rails.application.routes.draw do
   post "settings",
     to: "settings#update_settings"
 
+  #urob zalohu
+  post "db_backup",
+    to: "backups#do_backup",
+    as: "db_backup"
+
   ## Nastavenia - spravodajske jednotky
 
   #index

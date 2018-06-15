@@ -1,7 +1,12 @@
 # config/app.yml for rails-settings-cached
 defaults: &defaults
-  foo: "Foo"
-  bar: 123
+
+  backup_adress: "0.0.0.0"
+  backup_port: 24
+  backup_user: "admin"
+  backup_pass: "0000"
+  backup_root: "~/istatdb-backup/"
+  backup_enabled: "0"
 
 development:
   <<: *defaults

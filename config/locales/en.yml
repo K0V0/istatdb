@@ -43,6 +43,7 @@ en:
     error: Error
     not_allowed: You are not allowed to go into this section
     detach_assoc: Remove attribute(s)
+    wait_until_backup: This operation can take some time, please wait for a while. At the end file with backup will be offered to you to download. 
 
   items_table:
     results_count: results count

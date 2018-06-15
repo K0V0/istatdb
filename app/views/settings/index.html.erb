@@ -34,7 +34,6 @@
 			}
 		) %>
 
-
 		<%= settings(
 			section: :backup,
 			only_admin: true,
@@ -43,9 +42,60 @@
 
 				adress: {
 					type: :text
+				},
+				port: {
+					type: :text
+				},
+				user: {
+					type: :text
+				},
+				pass: {
+					type: :text
+				},
+				root: {
+					type: :text
+				},
+				enabled: {
+					type: :switch
 				}
 			}
 		) %>
+
+		<section class="decorated_wrap shrinked change_on_smallscreen">
+
+			<table class="for_forms">
+
+				<caption>
+					<%= t 'settings.users.actions' %>
+				</caption>
+
+				<tbody>
+					<tr>
+						<td class="buttons">
+							<%= link_to(
+								t('settings.backup.do_backup'),
+								db_backup_path(noncancellable_flash: true),
+								data: { 
+									confirmation: t('actions.wait_until_backup'),
+									is_only_notice: "1"
+								},
+								method: :post,
+								class: "button"
+							) %>
+							
+						</td>
+					</tr>
+				</tbody>
+
+				<tfoot>
+					<tr>
+						<td></td>
+					</tr>
+				</tfoot>
+
+			</table>
+
+		</section>
 
 	<% end %>
 
