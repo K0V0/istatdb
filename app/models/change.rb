@@ -3,7 +3,7 @@ class Change < ActiveRecord::Base
     include Defaults
 
     scope :default_order, -> {
-        order(version_num: :asc)
+        order(version_num: :desc)
     }
 
     after_save :write_changelog_file #, on: :create
