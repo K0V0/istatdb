@@ -74,7 +74,7 @@ Confirmation.prototype = {
     },
 
     noticeDialog: function(text="") {
-        var html = "<div class=\"decorated_wrap shrinked\"><table class=\"for_nontabular with_controls confirmation\"><caption>" + t('confirmation') + "</caption><thead></thead><tbody><tr><td>" + text + "</td></tr></tbody><tfoot><tr><td colspan=\"10\"><button type=\"button\" class=\"button confirmation_cancel\">" + t('ok') + "</button></td></tr></tfoot></table></div>";
+        var html = "<div class=\"decorated_wrap shrinked\"><table class=\"for_nontabular with_controls confirmation\"><caption>" + t('notice') + "</caption><thead></thead><tbody><tr><td>" + text + "</td></tr></tbody><tfoot><tr><td colspan=\"10\"><button type=\"button\" class=\"button confirmation_cancel\">" + t('ok') + "</button></td></tr></tfoot></table></div>";
         return html;
     }
 }

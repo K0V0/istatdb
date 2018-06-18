@@ -66,14 +66,14 @@
 			<table class="for_forms">
 
 				<caption>
-					<%= t 'settings.users.actions' %>
+					<%= t 'settings.general.backup.actions_window_title' %>
 				</caption>
 
 				<tbody>
 					<tr>
 						<td class="buttons">
 							<%= link_to(
-								t('settings.backup.do_backup'),
+								t('settings.general.backup.do_backup'),
 								db_backup_path(noncancellable_flash: true),
 								data: { 
 									confirmation: t('actions.wait_until_backup'),

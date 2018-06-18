@@ -3,6 +3,7 @@ sk:
   is_false: "Nie"
   notice: "Upozornenie"
   confirmation: "Ste si istý ?"
+  notice: Poznámka
   ok: OK
   cancel: Storno
   or: alebo

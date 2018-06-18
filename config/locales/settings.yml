@@ -11,11 +11,22 @@ en:
       impexpcompanies: Our clients
 
     general:
-      gui_section_window_title: Graphical interface settings
-      backup_section_window_title: Backup and sync settings
-      per_page: Number of results to be shown
-      show_footer: Show footer (bottom strip with ads)
-      enable_3d: Enable 3D effects
+      gui:
+        section_window_title: Graphical interface settings
+        per_page: Number of results to be shown
+        show_footer: Show footer (bottom strip with ads)
+        enable_3d: Enable 3D effects
+      backup:
+        section_window_title: Backup - FTP settings
+        actions_window_title: Backup
+        adress: adress
+        port: Port 
+        user: Login
+        pass: Password
+        root: Root directory
+        enabled: Active
+        do_backup: Generate file with DB backup
+
 
     users:
       user: User
@@ -42,12 +53,14 @@ sk:
         enable_3d: zapnúť 3D vzhľad
       backup:
         section_window_title: Zálohovanie - nastavenie FTP
+        actions_window_title: Zálohovanie
         adress: Adresa
         port: Port 
         user: Meno
         pass: Heslo
         root: Koreň. adresár
         enabled: Aktivované
+        do_backup: Vygenerovať súbor zálohy
 
 
     users:
