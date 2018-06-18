@@ -13,10 +13,10 @@ class BackupsController < ApplicationController
     	Rake::Task['db:data:dump'].invoke
     	timestring = Time.now.strftime("%Y-%h-%d_%H.%M")
     	FileUtils.cp 'db/data.yml', "backup/#{timestring}-data.yml"
-    	FileUtils.cp 'db/data.yml', "public/#{timestring}-data.yml"
+    	FileUtils.cp 'db/data.yml', "public/backups/#{timestring}-data.yml"
     	#flash.now[:backup_complete] = "Backup operations completed".html_safe
     	#redirect_to settings_path
-    	send_file "public/#{timestring}-data.yml"
+    	send_file "public/backups/#{timestring}-data.yml"
     end
 
     private

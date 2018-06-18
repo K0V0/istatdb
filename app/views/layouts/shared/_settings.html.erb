@@ -7,7 +7,7 @@
 	<table class="for_nontabular <%= allow == false ? 'no_results' : '' %>">
 
 		<caption> 
-			<%= t("settings.general.#{section.to_s}_section_window_title") %>
+			<%= t("settings.general.#{section.to_s}.section_window_title") %>
 		</caption>
 
 		<tbody>
@@ -25,7 +25,7 @@
 					<tr>
 						<td>
 							<label for="settings_<%= setting_name %>">
-								<%= t("settings.general.#{setting_name}") %>
+								<%= t("settings.general.#{section}.#{setting_name}") %>
 							</label>
 						</td>
 

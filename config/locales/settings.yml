@@ -35,11 +35,20 @@ sk:
       impexpcompanies: Spravodajské jednotky
 
     general:
-      gui_section_window_title: Grafické rozhranie
-      backup_section_window_title: Zálohovanie a synchronizácia
-      per_page: Počet výsledkov zobrazených na jednu stránku
-      show_footer: Zobraziť pätu (spodný pruh s reklamou)
-      enable_3d: zapnúť 3D vzhľad
+      gui:
+        section_window_title: Grafické rozhranie
+        per_page: Počet výsledkov zobrazených na jednu stránku
+        show_footer: Zobraziť pätu (spodný pruh s reklamou)
+        enable_3d: zapnúť 3D vzhľad
+      backup:
+        section_window_title: Zálohovanie - nastavenie FTP
+        adress: Adresa
+        port: Port 
+        user: Meno
+        pass: Heslo
+        root: Koreň. adresár
+        enabled: Aktivované
+
 
     users:
       user: Používateľ
