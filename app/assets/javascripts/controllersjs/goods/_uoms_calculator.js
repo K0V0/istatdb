@@ -69,6 +69,7 @@ UomsCalculator.prototype = {
 		this.count = parseFloat(this.H.sanitizeComma($('input[name=uom_count]').val().replace(/\s/g, '')));
 		this.result = (this.val * this.count) / this.multiplier;
 		$('input[name=uom_result]').val(NumberFormat(this.result.toFixed(2)));
+		$('input[name=uom_count]').val(NumberFormat(this.count));
 	},
 
 	calculateQuantity: function() {
@@ -77,6 +78,7 @@ UomsCalculator.prototype = {
 		this.result = parseFloat(this.H.sanitizeComma($('input[name=uom_result]').val().replace(/\s/g, '')));
 		this.count = this.result / (this.val / this.multiplier);
 		$('input[name=uom_count]').val(NumberFormat(Math.ceil(this.count)));
+		$('input[name=uom_result]').val(NumberFormat(this.result));
 	},
 
 	getValsFromFields: function() {
