@@ -37,10 +37,10 @@
 							<%= "#{calc[:uom]} #{calc[:uom_type]} / #{calc[:multiplier]} #{t('goods.calc_mem_list.uom_suffix')}" %>
 						</td>
 						<td class="uomscalc_mem_count">
-							<%= "#{calc[:count]} #{t('goods.calc_mem_list.uom_suffix')}" %>
+							<%= "#{num_pretty(calc[:count])} #{t('goods.calc_mem_list.uom_suffix')}" %>
 						</td>
 						<td class="uomscalc_mem_result">
-							<%= "#{calc[:result].to_f.round(4)} #{calc[:uom_type]}" %>
+							<%= "#{num_pretty(calc[:result].to_f.round(4))} #{calc[:uom_type]}" %>
 						</td>
 						<td class="uomscalc_mem_edit">
 							<%= link_to "&#9998;".html_safe, calculator_edit_path(calc[:id]), method: :post, remote: true %>

@@ -66,22 +66,22 @@ UomsCalculator.prototype = {
 	calculateResult: function() {
 		this.last_calculated_was_quantity = false;
 		this.getValsFromFields();
-		this.count = parseFloat(this.H.sanitizeComma($('input[name=uom_count]').val()));
+		this.count = parseFloat(this.H.sanitizeComma($('input[name=uom_count]').val().replace(/\s/g, '')));
 		this.result = (this.val * this.count) / this.multiplier;
-		$('input[name=uom_result]').val(this.result.toFixed(2));
+		$('input[name=uom_result]').val(NumberFormat(this.result.toFixed(2)));
 	},
 
 	calculateQuantity: function() {
 		this.last_calculated_was_quantity = true;
 		this.getValsFromFields();
-		this.result = parseFloat(this.H.sanitizeComma($('input[name=uom_result]').val()));
+		this.result = parseFloat(this.H.sanitizeComma($('input[name=uom_result]').val().replace(/\s/g, '')));
 		this.count = this.result / (this.val / this.multiplier);
-		$('input[name=uom_count]').val(Math.ceil(this.count));
+		$('input[name=uom_count]').val(NumberFormat(Math.ceil(this.count)));
 	},
 
 	getValsFromFields: function() {
-		this.val = parseFloat($('input[name=uom_value]').val());
-		this.multiplier = parseInt($('input[name=uom_multiplier]').val());
+		this.val = parseFloat($('input[name=uom_value]').val().replace(/\s/g, ''));
+		this.multiplier = parseInt($('input[name=uom_multiplier]').val().replace(/\s/g, ''));
 		this.uom_type = $.trim($('b.uoms_calculator_uom_type').text());
 	},
 

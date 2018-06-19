@@ -78,4 +78,8 @@ module DecoratorsHelper
 		return Date.parse(text).strftime("%d. %b %Y")
 	end
 
+	def num_pretty num
+		number_with_delimiter(num, delimiter: " ", separator: ",")
+	end
+
 end
