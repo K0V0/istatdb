@@ -92,7 +92,10 @@ UomDropdownHelper.prototype = {
 		}
 
 		if (force_source_compare !== undefined) {
-			var klass_for_source = $(dropdown_elem).attr('class').match(/uom_([a-z]+)\s*[a-z]*/)[1] + '_select';
+			logger($(dropdown_elem));
+			//var klass_for_source = $(dropdown_elem).attr('class').match(/uom_([a-z]+)\s*[a-z]*/)[1] + '_select';
+			var klass_for_source = this.AM.getAssocFromDropdownId(dropdown_elem) + '_select';
+			//good_uoms_[a-z]+_[0-9]+_([a-z_]+)_id$
 			var list = new OptionsList($(document).find('article.'+klass_for_source));
 			if (list.contains($(dropdown_elem).val()) === false) {
 				valid = false;
@@ -120,17 +123,19 @@ UomDropdownHelper.prototype = {
 	},
 
 	createFormError: function(input_elem, text) {
+		var assoc = this.AM.getAssocFromDropdownId(input_elem);
 		this.removeFormError(input_elem);
-		var elem = $("<span class=\"errormessage " + $(input_elem).attr('class') + "\">" + text + "</span>");
+		var elem = $("<span class=\"errormessage " + assoc + "\">" + text + "</span>");
 		$(input_elem).closest('article.uoms').find('div.form_errors').append(elem);
 	},
 
 	removeFormError: function(input_elem) {
+		var assoc = this.AM.getAssocFromDropdownId(input_elem);
 		$(input_elem).removeClass('error');
 		$(input_elem)
 			.closest('article.uoms')
 			.find('div.form_errors')
-			.find('span.' + $(input_elem).attr('class'))
+			.find('span.' + assoc)
 			.remove();
 	}
 }
