@@ -17,13 +17,13 @@ UomsCalculator.prototype = {
 
 	init: function() {
 		var totok = this
-		$(document).on('input', 'input[name=uom_count]', function() {
+		$(document).on('input', 'input[name=uom_count]', function(e) {
 			totok.calculateResult();
-			totok.validate();
+			totok.validate(e);
 		});
-		$(document).on('input', 'input[name=uom_result]', function() {
+		$(document).on('input', 'input[name=uom_result]', function(e) {
 			totok.calculateQuantity();
-			totok.validate();
+			totok.validate(e);
 		});
 		$(document).on('click', 'button#add_to_calculator_memory', function() {
 			totok.sendToMem();
@@ -45,15 +45,15 @@ UomsCalculator.prototype = {
 		});
 	},
 
-	validate: function() {
+	validate: function(evt) {
 		// all conditions must fail if is valid
 		this.valid = true;
 		if (this.count == 0 || this.result == 0) {
 			this.H.handleZeroError();
 			this.valid = false;
 		}
-		if (isNaN(this.count) || isNaN(this.result)) {
-			this.H.handleNanError();
+		else if (isNaN(this.count) || isNaN(this.result)) {
+			this.H.handleNanError(evt);
 			this.valid = false;
 		}
 		this.H.blockAddButton(!(this.valid));
@@ -143,8 +143,10 @@ UomsCalculatorHelper.prototype = {
 		return text.replace(/\,/gi,".");
 	},
 
-	handleNanError: function() {
-
+	handleNanError: function(evt) {
+		//logger(etarget);
+		$(evt.target).val("");
+		//$(evt.target).val("");
 	},
 
 	handleZeroError: function() {

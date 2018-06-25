@@ -56,7 +56,7 @@
 			<tfoot>
 				<% @MEM.uomscalc_results.each do |k, v| %>
 					<tr>
-						<td> <%= "#{k}: " %> <strong> <%= "#{v.to_f.round(2)}" %> </strong> </td>
+						<td> <%= "#{k}: " %> <strong> <%= "#{num_pretty(v.to_f.round(2))}" %> </strong> </td>
 					</tr>
 				<% end %>
 				<tr>
