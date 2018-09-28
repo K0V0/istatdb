@@ -180,10 +180,28 @@ module ApplicationConcern
 
 	def convert_params_to_date
         if params.deep_has_key? :q, "created_at(3i)"
-            #logger params[:q]["created_at(3i)"], "kkt"
             q = params[:q]
             q[:date_filter] = "#{q['created_at(1i)']}-#{q['created_at(2i)']}-#{q['created_at(3i)']}"
         end
+    end
+
+    def set_path_back(controller: params[:controller], action: params[:action])
+    	#r = Rails.application.routes.router.recognize(request)
+    	#logger 
+    	#logger request
+    	#logger request[:controller]
+    	session[:path_back] = { controller: controller, action: action }
+    	#logger r[:controller]
+
+    end
+
+    def get_path_back
+    	if !session[:path_back].nil?
+    		if !session[:path_back][:controller].nil?
+    			return session[:path_back]
+    		end
+    	end
+    	return { controller: params[:controller], action: 'index' }
     end
 
 	module ClassMethods

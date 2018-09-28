@@ -22,5 +22,13 @@ module ApplicationHelper
 		!@MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").blank?
 	end
 
+	def get_path_back
+    	if !session[:path_back].nil?
+    		if !session[:path_back][:controller].nil?
+    			return session[:path_back]
+    		end
+    	end
+    	return { controller: params[:controller], action: 'index' }
+    end
 
 end

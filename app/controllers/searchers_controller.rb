@@ -3,6 +3,7 @@ class SearchersController < ApplicationController
     skip_filter *_process_action_callbacks.map(&:filter)
 
     before_action :inits
+    before_action :set_path_back
 
     def index
         search

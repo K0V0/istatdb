@@ -7,7 +7,7 @@ body.index, body.search, body.administrative, body.delete, body.change_status {
 		article {
 			display: flex;
 
-			section {
+			section.items_table {
 				width: 100%;
 			}
 		}

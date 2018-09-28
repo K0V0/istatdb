@@ -34,6 +34,11 @@ class ApplicationController < ActionController::Base
   }
 
   before_action(
+    :set_path_back,
+    except: [:new, :edit, :create, :update, :show]
+  )
+
+  before_action(
     :generate_form_url,
     only: [:new, :edit, :create, :update],
     if: -> { !@task_banned_for_user }
