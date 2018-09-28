@@ -9,7 +9,21 @@ table {
 	th, td {
 		padding: 0 0.25em;
 		text-overflow: ellipsis;
-		overflow: hidden;
+		//overflow-x: hidden;
+	}
+
+	td {
+		position: relative;
+
+		sup {
+			display: none;
+			position: absolute;
+			background-color: $black;
+			color: $white;
+			bottom: 100%;
+			padding: 0.125em 0.25em;
+			border-radius: 0.25em;
+		}
 	}
 
 	td:first-child, th:first-child {

@@ -23,7 +23,9 @@
 		object: @record.impexpcompanies,
 
 		fields: {
-			company_name: {}
+			company_name: {
+				#is_link: true
+			}
 		},
 
 		options: [
@@ -43,7 +45,9 @@
 		object: @record.manufacturers,
 
 		fields: {
-			name: {}
+			name: {
+				is_link: true
+			}
 		},
 
 		options: [

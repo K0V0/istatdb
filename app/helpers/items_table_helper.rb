@@ -66,6 +66,14 @@ module ItemsTableHelper
 				text = "<span class=\"to_clipboard\" id=\"#{target_id}\">#{text.to_s}</span><b class=\"copy_to_clipboard\" data-clipboard-action=\"copy\" data-clipboard-target=\"##{target_id}\">&#9986</b>".html_safe
 			end
 
+			if opts[:tooltip]
+				if (o = opts[:tooltip].to_s).is_singular?
+					text = text + "<sup>#{object.send(o)}</sup>".html_safe
+				else
+
+				end
+			end
+
 			if opts[:is_checkbox]
 				text = check_box_tag(
 					"#{object.model_name.to_s.underscore}[#{field.to_s}]",
