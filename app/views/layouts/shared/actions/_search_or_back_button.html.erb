@@ -1,6 +1,7 @@
-<% if get_path_back == controller_name %>
-	<%= 
-		s.submit( 
+
+<% if get_path_back[:controller] == controller_name %>
+	<%=
+		s.submit(
 			t(action_name == 'show' ? 'actions.back' : 'search.submit'),
 			class: "button important",
 			id: "back_or_search"
