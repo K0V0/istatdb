@@ -3,7 +3,12 @@
 
 		return this.each(function(e) {
 			if (show === false) {
-				$(this).children("sup").css("display", "none");
+				$(this).children("sup")
+					.css("display", "none")
+					.css("top", "")
+					.css("bottom", "")
+					.css("left", "")
+					.css("right", "");
 			} else {
 				var ww = $(window).width();
 				var t = $(this).children("sup");
