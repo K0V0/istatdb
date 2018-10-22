@@ -59,11 +59,11 @@ class ManufacturersController < ApplicationController
         @for_impexpcompaniestable =
             @record
             .impexpcompany_manufacturers
-            .includes(:impexpcompany, :incoterm, :trade_type, :local_taric)
+            .includes(:impexpcompany, :incoterm, :trade_type, local_taric: [:translations])
             .order('impexpcompanies.company_name ASC')
         @for_goodstable = @record
             .goods
-            .includes(:local_taric)
+            .includes(local_taric: [:translations])
             .order('goods.ident ASC')
         @for_tarictable = @record
             .goods
