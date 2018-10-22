@@ -65,6 +65,8 @@ gem 'globalize', '~> 5.0.0'
 
 gem "rails-settings-cached"
 
+gem 'naturally'
+
 #gem "backup"
 
 #gem 'globalize-accessors'

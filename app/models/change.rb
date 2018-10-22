@@ -1,9 +1,16 @@
 class Change < ActiveRecord::Base
 
     include Defaults
+    extend OrderAsSpecified
+    require 'naturally'
 
     scope :default_order, -> {
-        order(version_num: :desc)
+        tmp = Naturally.sort(self.all.pluck(:version_num, :id))
+        versions_ordered = []
+        tmp.each do |v|
+            versions_ordered << v[1]
+        end
+        self.order_as_specified(id: versions_ordered.reverse)
     }
 
     after_save :write_changelog_file #, on: :create

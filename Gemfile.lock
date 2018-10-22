@@ -118,6 +118,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    naturally (2.2.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -231,6 +232,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   kaminari!
+  naturally
   order_as_specified
   rails (= 4.2.6)
   rails-settings-cached
