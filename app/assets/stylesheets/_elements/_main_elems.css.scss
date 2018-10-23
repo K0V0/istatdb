@@ -44,6 +44,7 @@ html {
 		color: $body_text;
   		min-height:100%;
 		position:relative;
+		//background-image: image-url("logo.svg");
 
 		display: flex;
 		align-items: stretch;
@@ -60,6 +61,11 @@ html {
 			padding-bottom: 0.375em;
 			background-color: $workspace_background;
 			color: $workspace_text;
+
+			background-image: image-url("logo.svg");
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: right bottom;
 
 			a {
 				text-decoration: none;
