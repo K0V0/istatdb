@@ -6,12 +6,16 @@ main {
     z-index: 2;
 }
 
-section, article, aside {
+figure.logo {
     z-index: 3;
 }
 
-b.copy_to_clipboard {
+section, article, aside {
     z-index: 4;
+}
+
+b.copy_to_clipboard {
+    z-index: 5;
 }
 
 nav {

@@ -13,6 +13,10 @@ class Change < ActiveRecord::Base
         self.order_as_specified(id: versions_ordered.reverse)
     }
 
+    scope :last_change, -> {
+       self.default_order.first
+    }
+
     after_save :write_changelog_file #, on: :create
 
     def write_changelog_file
