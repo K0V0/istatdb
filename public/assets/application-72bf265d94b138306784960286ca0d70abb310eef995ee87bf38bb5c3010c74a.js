@@ -13002,7 +13002,14 @@ TriggerFocusOnSearchfield.prototype = {
 		} else {
 			this.focus_parent = this.p.children('div.disable_on_bigscreen');
 		}
-		this.focus_parent.find('input[autofocus=autofocus]').first().trigger('focus');
+		var autofocus_field = this.focus_parent.find('input[autofocus=autofocus]').first();
+		if (this.focus_parent.find('input').length > 1) {
+			if (this.focus_parent.find(':focus').length == 0) {
+				autofocus_field.trigger('focus');
+			}
+		} else {
+			autofocus_field.trigger('focus');
+		}
 	}
 }
 ;
