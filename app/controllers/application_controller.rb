@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   before_action(
     :set_path_back,
-    except: [:new, :edit, :create, :update, :show]
+    except: [:new, :edit, :create, :update, :show, :check_existence]
   )
 
   before_action(
@@ -186,7 +186,8 @@ class ApplicationController < ActionController::Base
           end
         end
       end
-      redirect_to public_send("#{controller_name.pluralize}_path") if continue != false
+      #redirect_to public_send("#{controller_name.pluralize}_path") if continue != false
+      redirect_to get_path_back if continue != false
     else
       _around_create_after_save_failed
       render "#{@render_command_prepend}new"
@@ -210,7 +211,8 @@ class ApplicationController < ActionController::Base
     _around_update_after_save
     if saved
       _around_update_after_save_ok
-      redirect_to controller: controller_name, action: 'index'
+      #redirect_to controller: controller_name, action: 'index'
+      redirect_to get_path_back
     else
       _around_update_after_save_failed
       render "#{@render_command_prepend}new"

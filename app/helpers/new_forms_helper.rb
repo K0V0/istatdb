@@ -171,7 +171,7 @@ module NewFormsHelper
         klass += "#{parent_obj_model_name}_#{field.to_s} #{html_class}"
         data = js_check_existence ? { model: parent_obj_model_name, field: field.to_s } : ""
 
-        options = { class: klass, autofocus: autofocus, required: required, data: data }
+        options = { class: klass, autofocus: autofocus, required: required, data: data, autocomplete: 'off' }
         options.merge!(value: default_val) if !default_val.nil?
         arguments = [ type, field ]
         arguments += [ options ]
