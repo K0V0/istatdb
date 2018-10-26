@@ -12,10 +12,7 @@
 
 			<%= link_to(
 				t('actions.back'),
-				{
-					controller: controller_name,
-					action: :index
-				},
+				get_path_back,
 				class: "button"
 			) %>
 

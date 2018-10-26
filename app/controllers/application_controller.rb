@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   before_action(
     :set_path_back,
-    except: [:new, :edit, :create, :update, :show, :check_existence]
+    except: [:new, :edit, :create, :update, :show, :check_existence, :new_select_search, :edit_details]
   )
 
   before_action(
