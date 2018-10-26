@@ -9,10 +9,10 @@ Tooltip.prototype = {
     init: function() {
         $(document)
 	        .on("mouseenter", "td", function() {
-	        	$(this).has("sup").tooltip();
+	        	$(this).not('.inner_table').has("sup").tooltip();
 	        })
 	        .on("mouseleave", "td", function() {
-	        	$(this).has("sup").tooltip(false);
+	        	$(this).not('.inner_table').has("sup").tooltip(false);
 	        });
     }
 }

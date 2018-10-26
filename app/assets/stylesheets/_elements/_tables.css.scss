@@ -9,7 +9,7 @@ table {
 	th, td {
 		padding: 0 0.25em;
 		text-overflow: ellipsis;
-		//overflow-x: hidden;
+		overflow-x: hidden;
 	}
 
 	td {
@@ -17,13 +17,6 @@ table {
 
 		sup {
 			display: none;
-			position: absolute;
-			background-color: $black;
-			color: $white;
-			//bottom: 100%;
-			padding: 0.125em 0.375em;
-			border-radius: 0.25em;
-			//height: 100%;
 		}
 	}
 
