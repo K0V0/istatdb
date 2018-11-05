@@ -16,4 +16,10 @@
         required: opts[:required]
 	) %>
 
+	<% if opts[:google_search] %>
+		<button id="search_item_on_google" type="button">
+			<%= t 'goods_search.google' %>
+		</button>
+	<% end %>
+
 </div>
