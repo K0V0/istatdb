@@ -11,7 +11,8 @@ GOODS = {
 	},
 
 	_new_edit_update_create: {
-		uom: ["on_reload"]
+		uom: ["on_reload"],
+		search_on_google: ["on_reload"]
 	}
 }
 
