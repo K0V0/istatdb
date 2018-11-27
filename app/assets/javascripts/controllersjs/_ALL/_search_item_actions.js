@@ -15,6 +15,11 @@ SearchItemActions.prototype = {
 		  	$(this).submit();
 		});
 
+		$(document).frequentFireLimit('input', 1500, "section.search_bar > form input[type=search]", function(e) {
+			
+			//logger("picus: " + $(e.target).val());
+		});
+
 		$(document).on('click', '#clear_search', function() {
 			$(this).closest('section.search_bar').find('input[type="search"]').val('');
 		});
