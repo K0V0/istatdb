@@ -1,11 +1,13 @@
 function SearchItemActions() {
 	this.init();
+	this.rememberLastSearches = new RememberLastSearches();
 }
 
 SearchItemActions.prototype = {
 	constructor: SearchItemActions,
 
 	init: function() {
+		var T = this;
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
 			$(this).append('<input type="hidden" name="page" value="1">');
@@ -16,7 +18,7 @@ SearchItemActions.prototype = {
 		});
 
 		$(document).frequentFireLimit('input', 1500, "section.search_bar > form input[type=search]", function(e) {
-			
+			T.add($(this));
 			//logger("picus: " + $(e.target).val());
 		});
 
