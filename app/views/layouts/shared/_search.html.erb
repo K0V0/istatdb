@@ -50,9 +50,15 @@
 
 			<%= yield %>
 
-			<div class="searchform_actions">
+			<div class="searchform_actions"><!--
 
-				<%= render 'layouts/shared/actions/add_new_button' if actions.include? :add %><!--
+				--><% if actions.include? :last_searches %><!--
+					--><button id="last_searches" class="button">
+						&#8986;
+					</button><!--
+				--><% end %><!--
+
+				--><%= render 'layouts/shared/actions/add_new_button' if actions.include? :add %><!--
 
 				--><%= render 'layouts/shared/actions/edit_button' if actions.include? :edit %><!--
 
