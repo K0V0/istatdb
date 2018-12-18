@@ -32,5 +32,9 @@ SearchItemActions.prototype = {
 			var searched_term = $(document).find('section.search_bar').children('form').find('input[autofocus=autofocus]').first().val();
 			window.open('http://google.com/search?q=' + searched_term);
 		});
+
+		$(document).on('click', '#last_searches', function() {
+
+		});
 	}
 }
