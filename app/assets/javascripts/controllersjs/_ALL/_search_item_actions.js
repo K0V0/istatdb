@@ -1,6 +1,7 @@
 function SearchItemActions() {
 	this.init();
 	this.rememberLastSearches = new RememberLastSearches();
+	this.lastSearchSwitchTimer = null;
 }
 
 SearchItemActions.prototype = {
@@ -10,15 +11,19 @@ SearchItemActions.prototype = {
 		var T = this;
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
-			$(this).append('<input type="hidden" name="page" value="1">');
-			var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
-			inputs.val($(e.target).val());
-		  	$(this).submit();
+			if ($(this).hasClass('paused')) {
+
+			} else {
+				$(this).append('<input type="hidden" name="page" value="1">');
+				var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
+				inputs.val($(e.target).val());
+			  	$(this).submit();
+			}
 		});
 
-		$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {
-			T.rememberLastSearches.add($(this));
-		});
+		//$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {
+		//	T.rememberLastSearches.add($(this));
+		//});
 
 		$(document).on('click', '#clear_search', function() {
 			$(this).closest('section.search_bar').find('input[type="search"]').val('');
@@ -34,7 +39,17 @@ SearchItemActions.prototype = {
 		});
 
 		$(document).on('click', '#last_searches', function() {
+			console.log("malo by pause");
 
+			/// !!! input type BUTTON pravdepodobne submituje formular a sposobuije opakovany request
+
+			//$(document).find("section.search_bar > form").addClass('paused');
+			//window.clearTimeout(T.lastSearchSwitchTimer);
+			//T.lastSearchSwitchTimer = window.setTimeout(function(){ 
+			//	console.log("mohlo by ist uz");
+			//	$(document).find("section.search_bar > form").removeClass('paused');
+			//}, 1500);
+			//$(document).find('input[type="search"]').eventPause();
 		});
 	}
 }
