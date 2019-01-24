@@ -21,9 +21,9 @@ SearchItemActions.prototype = {
 			}
 		});
 
-		//$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {
-		//	T.rememberLastSearches.add($(this));
-		//});
+		$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {
+			T.rememberLastSearches.add($(this));
+		});
 
 		$(document).on('click', '#clear_search', function() {
 			$(this).closest('section.search_bar').find('input[type="search"]').val('');
@@ -39,17 +39,14 @@ SearchItemActions.prototype = {
 		});
 
 		$(document).on('click', '#last_searches', function() {
-			console.log("malo by pause");
+			$(document).find("section.search_bar > form").addClass('paused');
+			window.clearTimeout(T.lastSearchSwitchTimer);
+			console.log(T.rememberLastSearches.rewind($(this)));
+			T.lastSearchSwitchTimer = window.setTimeout(function(){ 
+				console.log("mohlo by ist uz");
+				$(document).find("section.search_bar > form").removeClass('paused');
 
-			/// !!! input type BUTTON pravdepodobne submituje formular a sposobuije opakovany request
-
-			//$(document).find("section.search_bar > form").addClass('paused');
-			//window.clearTimeout(T.lastSearchSwitchTimer);
-			//T.lastSearchSwitchTimer = window.setTimeout(function(){ 
-			//	console.log("mohlo by ist uz");
-			//	$(document).find("section.search_bar > form").removeClass('paused');
-			//}, 1500);
-			//$(document).find('input[type="search"]').eventPause();
+			}, 1500);
 		});
 	}
 }
