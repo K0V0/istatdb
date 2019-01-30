@@ -46,7 +46,11 @@ RememberLastSearches.prototype = {
         var varname = this.init_obj(ref);
         var pos = window['last_searches_pos'][varname];
         var content = window['last_searches'][varname][pos];
-        window['last_searches_pos'][varname]++;
+        if (window['last_searches'][varname][pos+1] === undefined) {
+            window['last_searches_pos'][varname] = 0;  
+        } else {
+            window['last_searches_pos'][varname]++;
+        }
         return content;
     }
 }
