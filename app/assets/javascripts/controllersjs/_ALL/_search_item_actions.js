@@ -41,16 +41,12 @@ SearchItemActions.prototype = {
 		$(document).on('click', '#last_searches', function() {
 			$(document).find("section.search_bar > form").addClass('paused');
 			window.clearTimeout(T.lastSearchSwitchTimer);
-			//console.log(T.rememberLastSearches.rewind($(this)));
 			var res = T.rememberLastSearches.rewind($(this));
-			//$(this).closest('section.search_bar').find('input[type="search"]').is(':focus').val(res);
+			$(this).closest('section.search_bar').find('input[type="search"]').filter('[autofocus=autofocus]').val(res);
 			T.lastSearchSwitchTimer = window.setTimeout(function(){ 
-				console.log("mohlo by ist uz");
 				$(document).find("section.search_bar > form")
 				.removeClass('paused')
 				.submit();
-				//.trigger('input');
-
 			}, 1500);
 		});
 	}

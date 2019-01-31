@@ -26,18 +26,19 @@ RememberLastSearches.prototype = {
     add: function(ref) {
     	var varname = this.init_obj(ref);
     	var content = ref.val();
-    	if (window['last_searches'][varname].includes(content)) {
-    		// neopakovat vysledky
-    		var pos = window['last_searches'][varname].indexOf(content);
-    		window['last_searches'][varname].splice(pos, 1);
-    		// priradene na zaciatok bude v dalsom kroku
-    	}
-    	if (window['last_searches'][varname].length > this.maxlength) {
-    		window['last_searches'][varname].pop();
-    	} 
-    	window['last_searches'][varname].unshift(content);
-        window['last_searches_pos'][varname] = 0;
-    	//console.log(window['last_searches'][varname]);
+        if ($.trim(content) != "") {
+        	if (window['last_searches'][varname].includes(content)) {
+        		// neopakovat vysledky
+        		var pos = window['last_searches'][varname].indexOf(content);
+        		window['last_searches'][varname].splice(pos, 1);
+        		// priradene na zaciatok bude v dalsom kroku
+        	}
+        	if (window['last_searches'][varname].length > this.maxlength) {
+        		window['last_searches'][varname].pop();
+        	} 
+        	window['last_searches'][varname].unshift(content);
+            window['last_searches_pos'][varname] = 0;
+        }
     },
 
     rewind: function(ref) {
