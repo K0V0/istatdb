@@ -1,0 +1,22 @@
+<% 
+	options = {
+		include_blank: t('search.last_visits')
+	}
+	
+	options.merge!(disabled: "disabled") if @last_visits.blank?
+%>
+
+<div>
+
+	<span>
+		<%= select_tag(
+			'last_visits',
+			options_for_select(
+				@last_visits.map { |obj| [obj[:title], obj[:id]] }
+			),
+			options
+		) %>
+	</span>
+
+</div>
+

@@ -149,4 +149,8 @@ class Good < ActiveRecord::Base
 		self.user = User.current
 	end
 
+	def name_field
+		self.ident
+	end
+
 end

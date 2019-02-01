@@ -51,4 +51,8 @@ class Manufacturer < ActiveRecord::Base
 	    %i(impexpcompany_filter)
 	end
 
+	def name_field
+		self.name
+	end
+
 end

@@ -31,6 +31,12 @@ module RansackSearchWrapper
 		    		redirect_to controller: controller_name, action: :show, id: @result.first.id
 		    end
 
+		    if params.has_key? :last_visits
+		    	if !(id = params[:last_visits]).blank?
+		    		redirect_to controller: controller_name, action: :show, id: id
+		    	end
+		    end
+
 		    if @result.length == 1 && generate_single_result_var
 		    	@result1 = @result.first
 		    end

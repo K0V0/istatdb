@@ -41,11 +41,17 @@
 		<div class="searchform_fulscreen_fields">
 
 			<% main_fields.each_with_index do |(k, v), index| %>
+
 				<div class="disable_on_smallscreen">
-
 					<%= render_searchfield(obj: s, field: k, pars: v, index: index) %>
-
 				</div>
+
+				<% if actions.include? :last_visits %>
+					<% if index == 0 %>
+						<%= render 'layouts/shared/actions/last_visits_dropdown', obj: nil %>
+					<% end %>
+				<% end %>
+
 			<% end %>
 
 			<%= yield %>

@@ -13,6 +13,7 @@ var an = "<%= an = action_name %>";
 	var searchform_delete_button;
 	var searchform_administrative_button;
 	var searchform_sortlink_remember_helper;
+	var searchform_last_visits;
 
 	body.data('controller_name', CTRL);
 	body.data('action_name', AN);
@@ -51,6 +52,8 @@ var an = "<%= an = action_name %>";
 
 		searchform_sortlink_remember_helper = body.find('section.search_bar > form > input#q_s');
 
+		searchform_last_visits = body.find('select#last_visits');
+
 		$('main > article').empty();
 
 		var tiriri = (AN == "index")||(AN == "search");
@@ -82,6 +85,12 @@ var an = "<%= an = action_name %>";
 			.attr('href', '<%= url_for(action: :delete) %>');
 
 		searchform_administrative_button.addClass('hidden');
+
+		searchform_last_visits.children('option').each(function() {
+			if ($(this).val() != "") { $(this).remove(); }
+		});
+
+		searchform_last_visits.append("<%=j options_for_select(@last_visits.map { |obj| [obj[:title], obj[:id]] }) %>");
 
 	<% end %>
 

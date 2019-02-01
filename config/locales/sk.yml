@@ -26,6 +26,7 @@ sk:
     search_as_new: Pridať ako novú položku
     also_exist_in_db: s rovakým názvom sa v databáze už nachádza
     log_in: Prihlásiť sa
+    last_visits: naposledy zobrazené...
 
   actions:
     add: Pridať

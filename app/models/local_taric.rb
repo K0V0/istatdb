@@ -29,6 +29,10 @@ class LocalTaric < ActiveRecord::Base
 	    %i(kncode_start_or_translations_description_cont)
 	end
 
+	def name_field
+		self.kncode.gsub(/.{2}/).with_index {|x, i| i > 0 ? "#{x} " : "#{x}" } .strip
+	end
+
 	private
 
 	def record_identical

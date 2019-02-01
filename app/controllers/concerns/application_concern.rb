@@ -204,6 +204,29 @@ module ApplicationConcern
     	return { controller: params[:controller], action: 'index' }
     end
 
+    def last_visited_set
+    	last_visits = controller_mem_get('last_visits')
+    	last_visits = [] if last_visits.nil?
+    	#path = { controller: controller_name, action: :show, id:  }
+    	#logger last_visits, "last_visits"
+    	#logger @record.id
+    	current = { id: @record.id, title: @record.name_field }
+    	if last_visits.include?(current)
+    		last_visits.delete(current)
+    	else
+    	end
+    	last_visits.unshift(current)
+    	controller_mem_set('last_visits', last_visits)
+    end
+
+    def last_visited_get
+    	#logger last_visits, "last_visits"
+    	last_visits = controller_mem_get('last_visits')
+    	last_visits = [] if last_visits.nil?
+    	@last_visits = last_visits
+    	logger @last_visits, "last_visits"
+    end
+
 	module ClassMethods
 
 	end
