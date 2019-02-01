@@ -9,6 +9,10 @@ module ApplicationAbstract
 		[]
 	end
 
+	def _max_last_visited
+		20
+	end
+
 	def _searcher_settings
    		{ paginate: true, disabled: true }
  	end
