@@ -41,4 +41,10 @@ class Task < ActiveRecord::Base
 
     validates :task, presence: true
 
+    before_create :assign_to_user
+
+    def assign_to_user
+        self.user = User.current
+    end
+
 end
