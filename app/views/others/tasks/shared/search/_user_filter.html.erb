@@ -1,0 +1,16 @@
+<div>
+
+    <span>
+        <%= obj.label :user_filter %>
+    </span>
+
+    <span>
+        <%= obj.select(
+            :user_filter,
+            User.all.collect { |t| [t.email, t.id.to_i] },
+            include_blank: "---",
+            selected: User.current
+        ) %>
+    </span>
+
+</div>

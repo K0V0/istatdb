@@ -35,8 +35,12 @@ class Task < ActiveRecord::Base
         where("created_at > ?", Date.parse(*pars))
     }
 
+    scope :user_filter, -> (*pars) {
+        where(user_id: pars[0].to_i)
+    }
+
     def self.ransackable_scopes(*pars)
-        %i(done_filter date_filter type_filter)
+        %i(done_filter date_filter type_filter user_filter)
     end
 
     validates :task, presence: true
