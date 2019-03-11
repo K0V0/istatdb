@@ -3,7 +3,7 @@
     vb = "00000000-0000"
     if session[:APP_VER_NUM].nil?
         @last_change = Change.last_change
-        if !@last_change.nil?
+        if !@last_change.blank?
             session[:APP_VER_NUM] = vn = @last_change.version_num
             session[:APP_VER_BUILD] = vb = @last_change.created_at.strftime("%Y%m%d-%H%M")
 
