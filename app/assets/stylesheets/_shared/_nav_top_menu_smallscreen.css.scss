@@ -24,6 +24,10 @@
 
 					&, &:first-child, &:last-child {
 						padding: 0;
+
+						a {
+							margin-right: 0;
+						}
 					}
 
 					a {
@@ -61,7 +65,10 @@
 				div {
 					border-radius:0.375em;
 					overflow-y: hidden;
-					margin: 0.5em 0.25em;
+					margin-left: 0.25em;
+					margin-right: 0.25em;
+					margin-top: 0.25em;
+					margin-bottom: 0;
 
 					li {
 

@@ -11,7 +11,7 @@ nav.top_menu {
 		div {
 			overflow-x: auto;
 			padding: 0 0.25em;
-			margin-bottom:0.25em;
+			//margin-bottom:0.25em;
 
 			li {
 				@include rotate_upside_down();
@@ -24,6 +24,13 @@ nav.top_menu {
 					border-top-right-radius: 0.25em;
 					border-top-left-radius: 0.25em;
 				}
+
+				&:last-child {
+
+					a {
+						margin-right: 0.25em;
+					}
+				}
 			}
 		}
 	}
@@ -34,6 +41,8 @@ nav.top_menu {
 		color: $main_menu_text;
 
 		& > div {
+			margin-top: 0.25em;
+			//margin-bottom: 0;
 
 			& > li {
 				background-color: $main_menu_inactive_link_background;
@@ -91,6 +100,7 @@ nav.top_menu {
 		}
 
 		& > div {
+			margin-bottom: 0.25em;
 
 			& > li {
 
