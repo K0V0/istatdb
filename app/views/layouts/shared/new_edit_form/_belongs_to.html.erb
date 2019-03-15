@@ -27,6 +27,11 @@
 	<input type="hidden" name="assoc-type" value="belongs_to">
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 
+	<% if !(l = coll.limit_value).blank? %>
+		<input type="hidden" name="load-limit" value="<%= l.to_s %>">
+		<input type="hidden" name="page_num" value="<%= coll.current_page %>">
+	<% end %>
+
 	<% if ss.has_key? :caption %>
 		<div class="caption <%= 'required' if ss[:caption].has_key?(:required) %>">
 			<%= assoc.to_s.classify.constantize.model_name.human %>

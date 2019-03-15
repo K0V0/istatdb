@@ -110,6 +110,10 @@ module ApplicationConcern
 		render("layouts/shared/new_edit_form/#{type_of_assoc.to_s}")
 	end
 
+    #def apicall_add_next_render
+
+    #end
+
 	def remember_param param
 		controller_mem_set(param, params[param]) if params.has_key? param
 		params[param] = controller_mem_get(param)
@@ -187,7 +191,7 @@ module ApplicationConcern
 
     def set_path_back(controller: params[:controller], action: params[:action])
     	#r = Rails.application.routes.router.recognize(request)
-    	#logger 
+    	#logger
     	#logger request
     	#logger request[:controller]
     	session[:path_back] = { controller: controller, action: action }

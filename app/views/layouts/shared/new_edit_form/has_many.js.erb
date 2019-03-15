@@ -1,5 +1,6 @@
 <%
 	allow_new = @result.size > 0 ? "0" : "1"
+	#adding_mode = !@result.limit_value.blank?
 
 	template = new_form_has_many_select(
 		obj: instance_variable_get("@#{params[:source_controller]}"),
@@ -20,6 +21,8 @@ var checked_btns_vals = []
 // button that allows saving content of searchfields as new records
 var alower = mainElem.find(".<%= params[:model] %>_allow_add_new");
 
+mainElem.find('input[name=page_num]').val("<%= params[:page].to_s %>");
+
 // let checked values be there
 rows.each(function() {
 	var checkbox = $(this).children("td").children("input[type=checkbox]");
@@ -30,7 +33,9 @@ rows.each(function() {
 		// when it was selected bug fix
 		$(this).children('td').children('label').stripTagsInside();
 	} else {
-		$(this).remove();
+		<% if action_name == "new_select_search" %>
+			$(this).remove();
+		<% end %>
 	}
 });
 
@@ -56,4 +61,3 @@ $(results).each(function() {
 // trigger change on window to rubn JS that should run when content changed
 mainElem.trigger('change');
 
-logger(mainElem.find('input[type=hidden]').val());
