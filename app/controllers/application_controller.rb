@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   before_action(
     :set_path_back,
-    except: [:new, :edit, :create, :update, :show, :check_existence, :new_select_search, :edit_details]
+    except: [:new, :edit, :create, :update, :show, :check_existence, :new_select_search, :edit_details, :new_select_load_items]
   )
 
   before_action(
@@ -107,6 +107,14 @@ class ApplicationController < ActionController::Base
 
   def new_select_search
     apicall_search_action if @user_logged_and_model_exist && !@task_banned_for_user
+  end
+
+  def new_select_load_items
+    apicall_search_action if @user_logged_and_model_exist && !@task_banned_for_user
+  end
+
+  def new_select_add_items
+    apicall_add_next_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
   def check_existence
@@ -239,8 +247,26 @@ class ApplicationController < ActionController::Base
   end
 
   def apicall_search_action
-    searcher_for(autoshow: false)
-    if params.has_key? :association_type
+
+    rndr = true
+    if action_name == "new_select_search"
+      # akcia vyhladavania - input do text pola
+      if params[:per_page].blank?
+        # widget natahujuci vsetko
+        searcher_for(autoshow: false)
+      else
+        # widget bude strankovany
+        params[:page] = 1
+        searcher_for(autoshow: false, paginate: true)
+      end
+    elsif action_name == "new_select_load_items"
+      # akcia len natahovania dalsieho obsahu
+      params[:page] = params[:loaded_page].to_i + 1
+      searcher_for(autoshow: false, paginate: true)
+      rndr = false if @result.blank?
+    end
+
+    if ((params.has_key? :association_type) && rndr)
   		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
       ## pouzit parent rec id
   		parent_obj = params[:source_controller].classify.constantize.new
@@ -258,10 +284,6 @@ class ApplicationController < ActionController::Base
   	else
   		head :ok
   	end
-  end
-
-  def apicall_add_next_action
-
   end
 
   def apicall_exist_action

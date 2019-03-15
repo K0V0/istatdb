@@ -34,9 +34,9 @@ class GoodsController < ApplicationController
 
 	# new.create, edit, update
 	def _load_vars
-		@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1)
+		@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1).per(20)
 		@impexpcompanies = Impexpcompany.all.default_order
-		@manufacturers = Manufacturer.all.default_order.page(1)
+		@manufacturers = Manufacturer.all.default_order.page(1).per(20)
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = @record.impexpcompanies.default_order
 		@manufacturers_for_uoms = @record.manufacturers.default_order

@@ -110,9 +110,9 @@ module ApplicationConcern
 		render("layouts/shared/new_edit_form/#{type_of_assoc.to_s}")
 	end
 
-    def apicall_add_next_render
+    #def apicall_add_next_render
 
-    end
+    #end
 
 	def remember_param param
 		controller_mem_set(param, params[param]) if params.has_key? param

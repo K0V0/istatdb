@@ -30,6 +30,8 @@ var checked_btns_vals = []
 
 var alower = mainElem.find(".<%= params[:model] %>_allow_add_new");
 
+mainElem.find('input[name=page_num]').val("<%= params[:page].to_s %>");
+
 // let checked values be there
 rows.each(function() {
 	var radio_btn = $(this).children("td").children("input[type=radio]");
@@ -40,11 +42,13 @@ rows.each(function() {
 		// when it was selected bug fix
 		$(this).children('td').children('label').stripTagsInside();
 	} else {
-		$(this).remove();
+		<% if action_name == "new_select_search" %>
+			$(this).remove();
+		<% end %>
 	}
 });
 
-if (alower.data('user-choosed') === undefined) { 
+if (alower.data('user-choosed') === undefined) {
 	if ("<%= allow_new %>" == "1") {
 		alower.prop('checked', true);
 	} else {
@@ -60,7 +64,7 @@ $(results).each(function() {
 
 	if (checked_btns_vals.indexOf(radio_btn.val()) == -1) {
 		tBody.append($(this));
-	} 
+	}
 });
 
 

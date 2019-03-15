@@ -11,11 +11,17 @@ Rails.application.routes.draw do
   post "local_tarics/new_select_search",
     to: "local_tarics#new_select_search"
 
+  post "local_tarics/new_select_load_items",
+    to: "local_tarics#new_select_load_items"
+
   post "impexpcompanies/new_select_search",
     to: "impexpcompanies#new_select_search"
 
   post "manufacturers/new_select_search",
     to: "manufacturers#new_select_search"
+
+  post "manufacturers/new_select_load_items",
+    to: "manufacturers#new_select_load_items"
 
   post "task_types/new_select_search",
     to: "task_types#new_select_search"

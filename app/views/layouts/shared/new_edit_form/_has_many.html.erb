@@ -18,11 +18,15 @@
  <% if !(ss = searcher_settings).nil? %>
  	<%= "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query %>
  	<%= "data-searcher-assoc=#{assoc.to_s.singularize}" %>
- 	<%#= "data-searcher-load-limit=#{ss[:performance_load_limit].to_s}" %>
  <% end %>
 >
 
 	<input type="hidden" name="assoc-type" value="has_many">
+
+	<% if !(l = coll.limit_value).blank? %>
+		<input type="hidden" name="load-limit" value="<%= l.to_s %>">
+		<input type="hidden" name="page_num" value="<%= coll.current_page %>">
+	<% end %>
 
 	<% if !ss.nil? %>
 		<% if ss.has_key? :caption %>
@@ -72,8 +76,6 @@
 		<% end %>
 
 	<% end %>
-
-	<%= coll.limit_value %>
 
 	<%= render('/layouts/elements/table_list_checkboxes',
 		obj: obj.object,
