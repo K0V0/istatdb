@@ -18,15 +18,13 @@
  <% if !(ss = searcher_settings).nil? %>
  	<%= "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query %>
  	<%= "data-searcher-assoc=#{assoc.to_s.singularize}" %>
+ 	<%#= "data-searcher-load-limit=#{ss[:performance_load_limit].to_s}" %>
  <% end %>
 >
 
 	<input type="hidden" name="assoc-type" value="has_many">
 
 	<% if !ss.nil? %>
-		<% if ss.has_key? :performance_load_limit %>
-			<input type="hidden" name="load_limit" value="<%= ss[:performance_load_limit].to_s %>">
-		<% end %>
 		<% if ss.has_key? :caption %>
 			<div class="caption <%= 'required' if ss[:caption].has_key?(:required) %>">
 				<%= assoc.to_s.classify.constantize.model_name.human %>
@@ -75,6 +73,7 @@
 
 	<% end %>
 
+	<%= coll.limit_value %>
 
 	<%= render('/layouts/elements/table_list_checkboxes',
 		obj: obj.object,

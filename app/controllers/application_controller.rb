@@ -159,7 +159,6 @@ class ApplicationController < ActionController::Base
 
   def show_action
     @record = @model.find(params[:id])
-    #_load_vars
     _loads_for_search_panel
   end
 
@@ -259,6 +258,10 @@ class ApplicationController < ActionController::Base
   	else
   		head :ok
   	end
+  end
+
+  def apicall_add_next_action
+
   end
 
   def apicall_exist_action

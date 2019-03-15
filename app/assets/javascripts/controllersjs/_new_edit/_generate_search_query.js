@@ -17,13 +17,13 @@ GenerateSearchQuery.prototype = {
 	attachEvent: function(ref) {
 		// ref - article element (window)
 		var toto = this;
-
 		$(ref).find('input.allow_add_new').rememberUserManipulation();
 		$(ref)
 			.find(this.generateInputsClassesList(ref))
 			.frequentFireLimit('input', 350, '', function() {
 				toto.doAjax($(this));
 		});
+		toto.onScrollToEnd($(ref));
 	},
 
 	generateInputsClassesList: function(ref) {
@@ -56,7 +56,8 @@ GenerateSearchQuery.prototype = {
 		  		source_controller: 	$('body').data('controller_name').singularize(),
 		  		association_type: 	wndw.children('input[name=assoc-type]').val(),
 		  		window_id: 			wndw.attr('id'),
-		  		multiedit: 			wndw.data('searcher-multiedit')
+		  		multiedit: 			wndw.data('searcher-multiedit'),
+		  		limit_results: 		wndw.data('searcher-load-limit')
 		  	}
 		});
 	},
@@ -78,5 +79,20 @@ GenerateSearchQuery.prototype = {
 
 		//logger(querystring);
 		return querystring;
+	},
+
+	onScrollToEnd: function(ref) {
+		var last_y_pos = 0;
+		ref.find('div.tablewrap')[0].onscroll = function(e) {
+			var elem = $(e.currentTarget);
+			var scroll_top;
+			// reaguje len na koliesko mysi
+			if ((scroll_top = elem.scrollTop()) > last_y_pos) {
+			    if (elem[0].scrollHeight - scroll_top == elem.outerHeight()) {
+			        console.log("bottom");
+			    }
+			}
+			last_y_pos = scroll_top;
+		};
 	}
 }
