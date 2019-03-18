@@ -25,6 +25,14 @@ UomHelper.prototype = {
 
     get_regex_for_dropdowns_class: function(ref) {
         return $(ref).attr('id').replace(/(_select_\d+)$/, "") + "_id";
+    },
+
+    set_dropdown_state: function(ref, state) {
+        $(ref).data("state", state);
+    },
+
+    get_dropdown_state: function(ref) {
+        $(ref).data("state");
     }
 
 

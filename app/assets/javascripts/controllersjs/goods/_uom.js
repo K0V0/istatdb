@@ -17,7 +17,7 @@ Uom.prototype = {
             //logger(e.delegateTarget);
             //logger(this);
             toto.updateDropdowns(this, e);
-        })
+        });
 
         // zmena v dropdown menu spravodajskej jednotky alebo dodavatela/odberatela pre danu mernu jednotku
         $(document)
@@ -25,12 +25,33 @@ Uom.prototype = {
             if ($(this).attr('id').indexOf(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
                 logger('dropdown changed');
             }
-        })
+        });
+
+        $(document)
+        .on('click', 'article.uoms > div > div > select', function() {
+            //logger('dropdown clicked');
+            logger($(this).context.id);
+            if ($(this).context.id.search(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
+                logger('dropdown clicked');
+                toto.HELPER.set_dropdown_state(this, 'clicked');
+                logger($(this));
+            }
+        });
+
+        // ide az po druhom kliknuti - vybrati moznosti
+        $(document)
+        .on('focusout', 'article.uoms > div > div > select', function() {
+            logger('dropdown focused out');
+            //if ($(this).attr('id').indexOf(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
+                //logger('dropdown focused out');
+            //}
+        });
     },
 
     updateDropdowns: function(ref, e) {
         var data = this.HELPER.collect_data_from_item_properties(e.delegateTarget);
         var dropdowns_class = this.HELPER.get_regex_for_dropdowns_class(e.delegateTarget);
+
         $(document).find('article.uoms').find('select').each(function() {
              //logger($(this));
              //logger(dropdowns_class);
