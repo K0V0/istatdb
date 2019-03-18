@@ -262,7 +262,8 @@ class ApplicationController < ActionController::Base
     elsif action_name == "new_select_load_items"
       # akcia len natahovania dalsieho obsahu
       params[:page] = params[:loaded_page].to_i + 1
-      searcher_for(autoshow: false, paginate: true)
+      params[:per] = params[:per_page]
+      searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked])
       rndr = false if @result.blank?
     end
 
@@ -270,16 +271,25 @@ class ApplicationController < ActionController::Base
   		parent_rec_id = (params[:window_id].match(/([0-9]+)$/))[1].to_i
       ## pouzit parent rec id
   		parent_obj = params[:source_controller].classify.constantize.new
+      ### zleeeeeeee (dobre len pri update)
       parent_obj.id = parent_rec_id
+
   		if params[:association_type] == "belongs_to"
 	  		parent_obj.send("build_#{params[:model]}")
 	  	else
-
+        assocs = params[:model].classify.constantize.send(:find, params[:checked])
+        logger(assocs.size)
+        parent_obj.send("#{params[:model].to_s.pluralize}").send("build")
 	  	end
 	  	instance_variable_set(
   			"@#{params[:source_controller]}",
   			parent_obj
   		)
+
+      ## nepridava asociacie
+      logger(instance_variable_get("@#{params[:source_controller]}").send("#{params[:model].to_s.pluralize}").size)
+      logger(params[:checked])
+
   		apicall_render(params[:association_type])
   	else
   		head :ok

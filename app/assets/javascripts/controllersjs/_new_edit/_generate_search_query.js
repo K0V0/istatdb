@@ -48,6 +48,12 @@ GenerateSearchQuery.prototype = {
 		var wndw = ref.closest('article');
 		var load_limit = wndw.children('input[name=load-limit]').val();
 		var loaded_page = parseInt(wndw.children('input[name=page_num]').val());
+		var checked = [];
+		wndw.find('table').find('input:checked').each(function() {
+			checked.push($(this).attr('id').replace(/\D+/, ""));
+		});
+
+		logger(wndw.find('table').find('input').length);
 
 		$.ajax({
 		  	method: 	"POST",
@@ -61,6 +67,7 @@ GenerateSearchQuery.prototype = {
 		  		multiedit: 			wndw.data('searcher-multiedit'),
 		  		loaded_page: 		loaded_page,
 		  		per_page: 			load_limit,
+		  		checked: 			checked
 		  	}
 		});
 	},

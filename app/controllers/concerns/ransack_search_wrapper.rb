@@ -1,21 +1,27 @@
 module RansackSearchWrapper
 
-	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil
+	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: []
 
 		params[:q] = [] if disabled
 
 		mdl = controller_name.classify.constantize
 		if mdl.respond_to? :default_order
-	    	object ||= controller_name.classify.constantize.try(:default_order)
+	    	object ||= mdl.try(:default_order)
 	    else
-	    	object ||= controller_name.classify.constantize
+	    	object ||= mdl
 	    end
 
 	    if !object.try(:translated_locales).blank?
 	    	object = object.with_translations(I18n.locale)
 	    end
 
+	    
 	    if !object.nil?
+
+	    	if !not_load_ids.blank?
+	    		object = object.where.not(id: not_load_ids)
+	    	end
+
 		    @search = object.ransack(params[:q]) if joins.nil?
 		    @search = object.joins(joins).ransack(params[:q]) if !joins.nil?
 		    @result = @search.result if preload.nil?

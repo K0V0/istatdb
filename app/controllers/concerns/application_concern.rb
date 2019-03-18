@@ -98,6 +98,8 @@ module ApplicationConcern
 					any_builded_assoc = @record.send(a).map { |r| r.id.blank? } .any?
 					if !any_builded_assoc
 						@record.send(a).send(:build)
+					else
+						instance_variable_set(assoc_var_name, @record.send(a))	
 					end
 					#instance_variable_set(assoc_var_name, @record.send(a))
 				end
@@ -110,9 +112,9 @@ module ApplicationConcern
 		render("layouts/shared/new_edit_form/#{type_of_assoc.to_s}")
 	end
 
-    #def apicall_add_next_render
-
-    #end
+ 	def will_paginate *pars
+ 		params[:will_paginate] = pars
+ 	end
 
 	def remember_param param
 		controller_mem_set(param, params[param]) if params.has_key? param
