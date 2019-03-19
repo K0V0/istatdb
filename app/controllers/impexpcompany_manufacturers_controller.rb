@@ -42,7 +42,8 @@ class ImpexpcompanyManufacturersController < ApplicationController
 
 	def _load_vars
 		@incoterms = Incoterm.includes(:translations).all.default_order
-		@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1).per(20)
+		#@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1).per(20)
+		will_paginate :local_taric
 		@local_taric = LocalTaric.new
 		@trade_types = TradeType.includes(:translations).all.default_order
 	end

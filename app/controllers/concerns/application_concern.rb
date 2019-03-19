@@ -120,7 +120,7 @@ module ApplicationConcern
  			ids_arr = []
  			ids = @record.send("#{par.to_s.singularize}_ids") if !par.to_s.is_singular?
  			ids_arr.push(ids) if !ids.nil?
- 			id = @record.send("#{par.to_s}_id") if par.to_s.is_singular?
+ 			id = @record.try("#{par.to_s}_id") if par.to_s.is_singular?
  			ids_arr.push(id) if !id.nil?
  			model = par.to_s.classify.constantize
  			ids_to_load_count = 25 - ids_arr.length

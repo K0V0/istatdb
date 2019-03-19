@@ -27,6 +27,7 @@ class ManufacturersController < ApplicationController
 		@impexpcompanies = Impexpcompany.all.default_order
 		@incoterms = Incoterm.includes(:translations).all.default_order
 		@local_tarics = LocalTaric.includes(:translations).all.default_order#.page(1).per(20)
+        #will_paginate :local_taric
 	end
 
 	def _around_create_after_save_ok
