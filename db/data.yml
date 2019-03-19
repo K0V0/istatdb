@@ -354,6 +354,14 @@ changes:
     - '2019-03-11 19:59:07.003785'
     - '2019-03-11 19:59:07.003785'
     - 1
+  - - 54
+    - "- postupné načítavanie položiek v jednotlivých oknách pri nascrollovaní na
+      koniec zoznamu pri pridávaní/editovaní tovaru a podobných sekcií, kde môže byť
+      vo vývberových zoznamoch veľa položiek"
+    - 2.0.8.1-pre
+    - '2019-03-16 00:30:23.840022'
+    - '2019-03-16 00:31:09.689460'
+    - 3
 
 ---
 global_settings:
@@ -11969,6 +11977,48 @@ goods:
     - '2019-03-14 15:50:57.180076'
     - '2019-03-14 15:50:57.180076'
     - 149
+    - 11
+  - - 1667
+    - FS-N41C
+    - Fiber optic sensor amplifier IO-link
+    - '2019-03-15 12:42:52.308871'
+    - '2019-03-15 12:42:52.308871'
+    - 106
+    - 11
+  - - 1668
+    - op-73865
+    - standart quick disconnect cable
+    - '2019-03-15 12:46:17.282165'
+    - '2019-03-15 12:46:17.282165'
+    - 346
+    - 11
+  - - 1669
+    - FPNA3 P3.98-L2-B8
+    - locating pin
+    - '2019-03-15 13:07:16.293335'
+    - '2019-03-15 13:07:16.293335'
+    - 278
+    - 11
+  - - 1670
+    - A1807071
+    - CuSn full dull Sn 4 to 8u
+    - '2019-03-15 13:15:48.771716'
+    - '2019-03-15 13:15:48.771716'
+    - 165
+    - 11
+  - - 1671
+    - A1807072
+    - CuSn 33,3 x 0,8
+    - '2019-03-15 13:16:46.769382'
+    - '2019-03-15 13:16:46.769382'
+    - 165
+    - 11
+  - - 1672
+    - '2643540002'
+    - ferite core round
+    - '2019-03-18 13:24:21.572950'
+    - '2019-03-18 13:24:21.572950'
+    - 55
     - 11
 
 ---
@@ -25273,14 +25323,14 @@ impexpcompany_manufacturers:
     - 
   - - 329
     - '2017-05-31 09:55:56.082000'
-    - '2018-03-16 15:02:24.820002'
+    - '2019-03-15 12:31:45.400857'
     - 3
     - 326
     - 
+    - true
     - false
-    - false
-    - 
-    - 
+    - 2
+    - 90
   - - 330
     - '2017-05-31 10:02:28.923000'
     - '2018-03-16 15:02:24.853759'
@@ -27498,6 +27548,46 @@ impexpcompany_manufacturers:
     - 537
     - 
     - false
+    - false
+    - 
+    - 
+  - - 557
+    - '2019-03-15 11:56:08.471803'
+    - '2019-03-15 11:56:25.135635'
+    - 3
+    - 538
+    - 
+    - true
+    - true
+    - 15
+    - 90
+  - - 558
+    - '2019-03-15 12:02:53.268887'
+    - '2019-03-15 12:05:17.583440'
+    - 3
+    - 539
+    - 
+    - true
+    - true
+    - 2
+    - 90
+  - - 559
+    - '2019-03-15 12:37:17.521707'
+    - '2019-03-15 12:37:28.354745'
+    - 3
+    - 540
+    - 
+    - true
+    - true
+    - 15
+    - 90
+  - - 560
+    - '2019-03-15 13:13:09.614612'
+    - '2019-03-15 13:13:09.614612'
+    - 3
+    - 541
+    - 
+    - true
     - false
     - 
     - 
@@ -47750,6 +47840,78 @@ intertables:
     - 
     - '2019-03-14 15:50:57.190704'
     - '2019-03-14 15:50:57.190704'
+  - - 3725
+    - 1667
+    - 
+    - 3
+    - '2019-03-15 12:42:52.314920'
+    - '2019-03-15 12:42:52.314920'
+  - - 3726
+    - 1667
+    - 175
+    - 
+    - '2019-03-15 12:42:52.318439'
+    - '2019-03-15 12:42:52.318439'
+  - - 3727
+    - 1668
+    - 
+    - 3
+    - '2019-03-15 12:46:17.287508'
+    - '2019-03-15 12:46:17.287508'
+  - - 3728
+    - 1668
+    - 175
+    - 
+    - '2019-03-15 12:46:17.290502'
+    - '2019-03-15 12:46:17.290502'
+  - - 3729
+    - 1669
+    - 
+    - 3
+    - '2019-03-15 13:07:16.296814'
+    - '2019-03-15 13:07:16.296814'
+  - - 3730
+    - 1669
+    - 124
+    - 
+    - '2019-03-15 13:07:16.300089'
+    - '2019-03-15 13:07:16.300089'
+  - - 3731
+    - 1670
+    - 
+    - 3
+    - '2019-03-15 13:15:48.775313'
+    - '2019-03-15 13:15:48.775313'
+  - - 3732
+    - 1670
+    - 541
+    - 
+    - '2019-03-15 13:15:48.778713'
+    - '2019-03-15 13:15:48.778713'
+  - - 3733
+    - 1671
+    - 
+    - 3
+    - '2019-03-15 13:16:46.773216'
+    - '2019-03-15 13:16:46.773216'
+  - - 3734
+    - 1671
+    - 541
+    - 
+    - '2019-03-15 13:16:46.776266'
+    - '2019-03-15 13:16:46.776266'
+  - - 3735
+    - 1672
+    - 
+    - 3
+    - '2019-03-18 13:24:21.605034'
+    - '2019-03-18 13:24:21.605034'
+  - - 3736
+    - 1672
+    - 374
+    - 
+    - '2019-03-18 13:24:21.636931'
+    - '2019-03-18 13:24:21.636931'
 
 ---
 local_taric_translations:
@@ -54221,6 +54383,26 @@ manufacturers:
     - 
     - '2019-03-14 15:50:57.188224'
     - '2019-03-14 15:50:57.188224'
+  - - 538
+    - Adriatecnica/IT
+    - 
+    - '2019-03-15 11:56:08.468451'
+    - '2019-03-15 11:56:08.468451'
+  - - 539
+    - Elektrisola/DE
+    - 
+    - '2019-03-15 12:02:53.265269'
+    - '2019-03-15 12:02:53.265269'
+  - - 540
+    - Karnasch/DE
+    - 
+    - '2019-03-15 12:37:17.518259'
+    - '2019-03-15 12:38:11.990411'
+  - - 541
+    - PEM/FR
+    - 
+    - '2019-03-15 13:13:09.611170'
+    - '2019-03-15 13:13:09.611170'
 
 ---
 sessions:
@@ -56628,102 +56810,149 @@ sessions:
       OwBG
     - '2019-03-12 01:04:07.688763'
     - '2019-03-12 01:07:17.417678'
-  - - 336
-    - c9cc6d217a420644547e0de5dc7dd9ee
-    - |
-      BAh7CkkiCE1FTQY6BkVUIhMECFU6DE1lbURhdGF7AEkiDnBhdGhfYmFjawY7
-      AEZ7BzoPY29udHJvbGxlckkiDnNlYXJjaGVycwY7AFQ6C2FjdGlvbkkiCmlu
-      ZGV4BjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMXZJcmdyNWFqV3JIbnE3cTFq
-      M3V0ZGEvL21sSUkzTGJFNnI3WlNKWWNYMVk9BjsARkkiEEFQUF9WRVJfTlVN
-      BjsARkkiEDIuMC43LjEtcHJlBjsAVEkiEkFQUF9WRVJfQlVJTEQGOwBGSSIS
-      MjAxOTAzMTEtMTk1OQY7AFQ=
-    - '2019-03-12 09:30:59.791582'
-    - '2019-03-12 09:30:59.791582'
   - - 338
     - ec885e9aa4fae82e94c2a6dd600498db
     - |
-      BAh7C0kiCE1FTQY6BkVUIgKMBQQIVToMTWVtRGF0YXsROhJwYWdlX3NlYXJj
+      BAh7C0kiCE1FTQY6BkVUIgKRBQQIVToMTWVtRGF0YXsROhJwYWdlX3NlYXJj
       aGVySSIGMQY6BkVUOg9xX3NlYXJjaGVySUM6IUFjdGlvbkNvbnRyb2xsZXI6
-      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiAAY7B1QGOg9AcGVy
-      bWl0dGVkRjoNc2V0dGluZ3NVOg9PcGVuU3RydWN0ewg6EWd1aV9wZXJfcGFn
-      ZUkiCDEwMAY7B1Q6FGd1aV9zaG93X2Zvb3RlckkiBjAGOwdUOhJndWlfZW5h
-      YmxlXzNkSSIGMQY7B1Q6DnBhZ2VfZ29vZEkiBjEGOwdUOgtxX2dvb2RJQzsJ
-      ewhJIh5pZGVudF9vcl9kZXNjcmlwdGlvbl9jb250BjsHVEkiB3NnBjsHVEki
-      GWltcGV4cGNvbXBhbnlfZmlsdGVyBjsHVEkiAAY7B1RJIhhtYW51ZmFjdHVy
-      ZXJfZmlsdGVyBjsHVEkiAAY7B1QGOwpGOhVsYXN0X3Zpc2l0c19nb29kWxl7
-      BzoHaWRpAoEGOgp0aXRsZUkiE1NHMzUwLTI4LUs5LUVVBjsHVHsHOxNpAoAE
-      OxRJIhlQRVJJREVDVC1QRFMvUy9OTy8wMAY7B1R7BzsTaQJGBDsUSSIRUEVS
-      SURFQ1QtUFZKBjsHVHsHOxNpAuMEOxRJIhFSTTQzMlBHMEQwMEUGOwdUewc7
-      E2kCPAI7FEkiE1NMTjQzOUEwMDAyOjAyBjsHVHsHOxNpAh0COxRJIhNTTE40
-      MzlBMDAwMTowMgY7B1R7BzsTaQIUAjsUSSIOQVdTLUtBMDUyBjsHVHsHOxNp
-      AlsFOxRJIhFBUTMyMjIxOTY2LTIGOwdUewc7E2kCXQU7FEkiD0FRMzIyMjE2
-      NzMGOwdUewc7E2kCWgU7FEkiD0FRMzIyMjE2NzIGOwdUewc7E2kCVQI7FEki
-      EXN1Yi10ZTAyMTowMgY7B1R7BzsTaQIKBTsUSSIUc2xuNC00Ny1BLTAwLTAx
-      BjsHVHsHOxNpAhIDOxRJIhNzbG40LTUxLWEtMDAtMQY7B1R7BzsTaRE7FEki
-      FEhFTDE4OTg4Ny0wMDowMQY7B1R7BzsTaRI7FEkiFEhFTDE4NjkxNC0wMDow
-      NQY7B1R7BzsTaQJjBTsUSSIQQUdDLTEyMzY5MTkGOwdUewc7E2kCaAU7FEki
-      EEFHQy0xMjM3Mjk0BjsHVHsHOxNpAmkFOxRJIhBBR0MtMTE4ODc0NAY7B1R7
-      BzsTaQJmBTsUSSIQQUdDLTEyNDA3MTcGOwdUewc7E2kCawU7FEkiEEFHQy0x
-      MjUzMjM3BjsHVDoSYWxsb3dfYWRkX25ld3sISSIQbG9jYWxfdGFyaWMGOwdU
-      RkkiFmltcGV4cGNvbXBhbmllc18xBjsHVEZJIhRtYW51ZmFjdHVyZXJzXzEG
-      OwdURjoScV9sb2NhbF90YXJpY0lDOwl7B0kiEWtuY29kZV9zdGFydAY7B1RJ
-      Ig04NTE3NjIwMAY7B1RJIiJ0cmFuc2xhdGlvbnNfZGVzY3JpcHRpb25fY29u
-      dAY7B1RJIgAGOwdUBjsKRjoTcV9tYW51ZmFjdHVyZXJJQzsJewZJIg5uYW1l
-      X2NvbnQGOwdUSSIMc2VuZXRpYwY7B1QGOwpGOhRxX2ltcGV4cGNvbXBhbnlJ
-      QzsJewZJIhZjb21wYW55X25hbWVfY29udAY7B1RJIghIRFMGOwdUBjsKRjoL
-      cV90YXNrSUM7CXsJSSIOdGFza19jb250BjsHVEkiAAY7B1RJIhB0eXBlX2Zp
-      bHRlcgY7B1RJIgAGOwdUSSIQZG9uZV9maWx0ZXIGOwdUSSIGMQY7B1RJIhB1
-      c2VyX2ZpbHRlcgY7B1RJIgAGOwdUBjsKRjoOcGFnZV90YXNrSSIGMQY7B1RJ
-      Ig5wYXRoX2JhY2sGOwBGewc6D2NvbnRyb2xsZXJJIg5zZWFyY2hlcnMGOwBU
-      OgthY3Rpb25JIgppbmRleAY7AFRJIhBBUFBfVkVSX05VTQY7AEZJIhAyLjAu
-      Ny4xLXByZQY7AFRJIhJBUFBfVkVSX0JVSUxEBjsARkkiEjIwMTkwMzExLTE5
-      NTkGOwBUSSIZd2FyZGVuLnVzZXIudXNlci5rZXkGOwBUWwdbBmkSSSIiJDJh
-      JDExJDZ0ZTBtdkxmUndOZElCYzdyck44Q2UGOwBUSSIQX2NzcmZfdG9rZW4G
-      OwBGSSIxRXg0UklvcDNKUUFwbDBDNWV2V3lJRTFENmFXRkFEaXdCa1REUFdl
-      Y2F4az0GOwBG
+      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiClRXLUhEBjsHVAY6
+      D0BwZXJtaXR0ZWRGOg1zZXR0aW5nc1U6D09wZW5TdHJ1Y3R7CDoRZ3VpX3Bl
+      cl9wYWdlSSIIMTAwBjsHVDoUZ3VpX3Nob3dfZm9vdGVySSIGMAY7B1Q6Emd1
+      aV9lbmFibGVfM2RJIgYxBjsHVDoOcGFnZV9nb29kSSIGMQY7B1Q6C3FfZ29v
+      ZElDOwl7CEkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwdUSSIHc2cG
+      OwdUSSIZaW1wZXhwY29tcGFueV9maWx0ZXIGOwdUSSIABjsHVEkiGG1hbnVm
+      YWN0dXJlcl9maWx0ZXIGOwdUSSIABjsHVAY7CkY6FWxhc3RfdmlzaXRzX2dv
+      b2RbGXsHOgdpZGkCgQY6CnRpdGxlSSITU0czNTAtMjgtSzktRVUGOwdUewc7
+      E2kCgAQ7FEkiGVBFUklERUNULVBEUy9TL05PLzAwBjsHVHsHOxNpAkYEOxRJ
+      IhFQRVJJREVDVC1QVkoGOwdUewc7E2kC4wQ7FEkiEVJNNDMyUEcwRDAwRQY7
+      B1R7BzsTaQI8AjsUSSITU0xONDM5QTAwMDI6MDIGOwdUewc7E2kCHQI7FEki
+      E1NMTjQzOUEwMDAxOjAyBjsHVHsHOxNpAhQCOxRJIg5BV1MtS0EwNTIGOwdU
+      ewc7E2kCWwU7FEkiEUFRMzIyMjE5NjYtMgY7B1R7BzsTaQJdBTsUSSIPQVEz
+      MjIyMTY3MwY7B1R7BzsTaQJaBTsUSSIPQVEzMjIyMTY3MgY7B1R7BzsTaQJV
+      AjsUSSIRc3ViLXRlMDIxOjAyBjsHVHsHOxNpAgoFOxRJIhRzbG40LTQ3LUEt
+      MDAtMDEGOwdUewc7E2kCEgM7FEkiE3NsbjQtNTEtYS0wMC0xBjsHVHsHOxNp
+      ETsUSSIUSEVMMTg5ODg3LTAwOjAxBjsHVHsHOxNpEjsUSSIUSEVMMTg2OTE0
+      LTAwOjA1BjsHVHsHOxNpAmMFOxRJIhBBR0MtMTIzNjkxOQY7B1R7BzsTaQJo
+      BTsUSSIQQUdDLTEyMzcyOTQGOwdUewc7E2kCaQU7FEkiEEFHQy0xMTg4NzQ0
+      BjsHVHsHOxNpAmYFOxRJIhBBR0MtMTI0MDcxNwY7B1R7BzsTaQJrBTsUSSIQ
+      QUdDLTEyNTMyMzcGOwdUOhJhbGxvd19hZGRfbmV3ewhJIhBsb2NhbF90YXJp
+      YwY7B1RGSSIWaW1wZXhwY29tcGFuaWVzXzEGOwdURkkiFG1hbnVmYWN0dXJl
+      cnNfMQY7B1RGOhJxX2xvY2FsX3RhcmljSUM7CXsHSSIRa25jb2RlX3N0YXJ0
+      BjsHVEkiDTg1MTc2MjAwBjsHVEkiInRyYW5zbGF0aW9uc19kZXNjcmlwdGlv
+      bl9jb250BjsHVEkiAAY7B1QGOwpGOhNxX21hbnVmYWN0dXJlcklDOwl7Bkki
+      Dm5hbWVfY29udAY7B1RJIgxzZW5ldGljBjsHVAY7CkY6FHFfaW1wZXhwY29t
+      cGFueUlDOwl7BkkiFmNvbXBhbnlfbmFtZV9jb250BjsHVEkiCEhEUwY7B1QG
+      OwpGOgtxX3Rhc2tJQzsJewlJIg50YXNrX2NvbnQGOwdUSSIABjsHVEkiEHR5
+      cGVfZmlsdGVyBjsHVEkiAAY7B1RJIhBkb25lX2ZpbHRlcgY7B1RJIgYxBjsH
+      VEkiEHVzZXJfZmlsdGVyBjsHVEkiAAY7B1QGOwpGOg5wYWdlX3Rhc2tJIgYx
+      BjsHVEkiDnBhdGhfYmFjawY7AEZ7BzoPY29udHJvbGxlckkiDnNlYXJjaGVy
+      cwY7AFQ6C2FjdGlvbkkiC3NlYXJjaAY7AFRJIhBBUFBfVkVSX05VTQY7AEZJ
+      IhAyLjAuNy4xLXByZQY7AFRJIhJBUFBfVkVSX0JVSUxEBjsARkkiEjIwMTkw
+      MzExLTE5NTkGOwBUSSIZd2FyZGVuLnVzZXIudXNlci5rZXkGOwBUWwdbBmkS
+      SSIiJDJhJDExJDZ0ZTBtdkxmUndOZElCYzdyck44Q2UGOwBUSSIQX2NzcmZf
+      dG9rZW4GOwBGSSIxRXg0UklvcDNKUUFwbDBDNWV2V3lJRTFENmFXRkFEaXdC
+      a1REUFdlY2F4az0GOwBG
     - '2019-03-12 11:45:00.586146'
-    - '2019-03-13 12:13:25.063377'
+    - '2019-03-15 11:00:35.850701'
   - - 339
     - 4ebc4690cc8949b45f493c3ed1b90a55
     - |
-      BAh7C0kiCE1FTQY6BkVUIgKhAgQIVToMTWVtRGF0YXsOOhJwYWdlX3NlYXJj
+      BAh7C0kiCE1FTQY6BkVUIgLnAwQIVToMTWVtRGF0YXsPOhJwYWdlX3NlYXJj
       aGVySSIGMQY6BkVUOg9xX3NlYXJjaGVySUM6IUFjdGlvbkNvbnRyb2xsZXI6
-      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiCzE3NzM4OAY7B1QG
+      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiCWVya28GOwdUBjoP
+      QHBlcm1pdHRlZEY6DXNldHRpbmdzVToPT3BlblN0cnVjdHsIOhFndWlfcGVy
+      X3BhZ2VJIgcyMAY7B1Q6FGd1aV9zaG93X2Zvb3RlckkiBjAGOwdUOhJndWlf
+      ZW5hYmxlXzNkSSIGMQY7B1Q6DnBhZ2VfZ29vZEkiBjEGOwdUOgtxX2dvb2RJ
+      QzsJewhJIh5pZGVudF9vcl9kZXNjcmlwdGlvbl9jb250BjsHVEkiAAY7B1RJ
+      IhlpbXBleHBjb21wYW55X2ZpbHRlcgY7B1RJIgAGOwdUSSIYbWFudWZhY3R1
+      cmVyX2ZpbHRlcgY7B1RJIgAGOwdUBjsKRjodbGFzdF92aXNpdHNfbWFudWZh
+      Y3R1cmVyWxJ7BzoHaWRpArEBOgp0aXRsZUkiEEZsdXhhbWF0L0NaBjsHVHsH
+      OxNpAfg7FEkiDUZpYnJvL0RFBjsHVHsHOxNpDzsUSSIMRXJrby9QTAY7B1R7
+      BzsTaQLXATsUSSIRQUdDIEdsYXNzL0hVBjsHVHsHOxNpAeQ7FEkiE0VtaWwg
+      TXVsbGVyL0RFBjsHVHsHOxNpAhsCOxRJIhNFbGVrdHJpc29sYS9ERQY7B1R7
+      BzsTaUQ7FEkiDkNvdGVjaC9HQgY7B1R7BzsTaQKvATsUSSISQ2FibGVjcmFm
+      dC9HQgY7B1R7BzsTaQ47FEkiE0JlZGlhIEthYmVsL0RFBjsHVHsHOxNpLDsU
+      SSIMQXRhbS9HQgY7B1R7BzsTaSk7FEkiD0FsY29tZXgvQ1oGOwdUewc7E2kC
+      4gE7FEkiDkFtcGVyZS9ERQY7B1R7BzsTaQIvATsUSSILQldUL0NaBjsHVDoS
+      YWxsb3dfYWRkX25ld3sGSSIUbG9jYWxfdGFyaWNfNTU4BjsHVEY6EnFfbG9j
+      YWxfdGFyaWNJQzsJewdJIhFrbmNvZGVfc3RhcnQGOwdUSSILMzkxNzI5BjsH
+      VEkiInRyYW5zbGF0aW9uc19kZXNjcmlwdGlvbl9jb250BjsHVEkiAAY7B1QG
+      OwpGOhNxX21hbnVmYWN0dXJlcklDOwl7B0kiDm5hbWVfY29udAY7B1RJIgpm
+      bHV4YQY7B1RJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7B1RJIgAGOwdUBjsK
+      RjoWcGFnZV9tYW51ZmFjdHVyZXJJIgYxBjsHVEkiDnBhdGhfYmFjawY7AEZ7
+      BzoPY29udHJvbGxlckkiEm1hbnVmYWN0dXJlcnMGOwBUOgthY3Rpb25JIgtz
+      ZWFyY2gGOwBUSSIQQVBQX1ZFUl9OVU0GOwBGSSIQMi4wLjcuMS1wcmUGOwBU
+      SSISQVBQX1ZFUl9CVUlMRAY7AEZJIhIyMDE5MDMxMS0xOTU5BjsAVEkiGXdh
+      cmRlbi51c2VyLnVzZXIua2V5BjsAVFsHWwZpEEkiIiQyYSQxMSRrS295dWlw
+      ei5oYUl5d0VDc1BDSXguBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMTQrS2Jq
+      S2tKYnl1R1ExeHE3SDEwb1p2TTVsejcrY3RWMHluNWJWNTl1NFE9BjsARg==
+    - '2019-03-12 13:36:36.372303'
+    - '2019-03-15 12:18:22.162071'
+  - - 341
+    - 2684ec6eac6ea7a02bbbd14fd2d655e2
+    - |
+      BAh7C0kiCE1FTQY6BkVUIgLlBQQIVToMTWVtRGF0YXsTOhJwYWdlX3NlYXJj
+      aGVySSIGMQY6BkVUOg9xX3NlYXJjaGVySUM6IUFjdGlvbkNvbnRyb2xsZXI6
+      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiC2JvbnplbAY7B1QG
       Og9AcGVybWl0dGVkRjoNc2V0dGluZ3NVOg9PcGVuU3RydWN0ewg6EWd1aV9w
       ZXJfcGFnZUkiBzIwBjsHVDoUZ3VpX3Nob3dfZm9vdGVySSIGMAY7B1Q6Emd1
-      aV9lbmFibGVfM2RJIgYxBjsHVDoOcGFnZV9nb29kSSIGMQY7B1Q6C3FfZ29v
-      ZElDOwl7CEkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwdUSSIABjsH
-      VEkiGWltcGV4cGNvbXBhbnlfZmlsdGVyBjsHVEkiAAY7B1RJIhhtYW51ZmFj
-      dHVyZXJfZmlsdGVyBjsHVEkiAAY7B1QGOwpGOh1sYXN0X3Zpc2l0c19tYW51
-      ZmFjdHVyZXJbBnsHOgdpZGkCLwE6CnRpdGxlSSILQldUL0NaBjsHVDoSYWxs
-      b3dfYWRkX25ld3sISSIQbG9jYWxfdGFyaWMGOwdURkkiFmltcGV4cGNvbXBh
-      bmllc18wBjsHVEZJIhRtYW51ZmFjdHVyZXJzXzAGOwdUVDoScV9sb2NhbF90
-      YXJpY0lDOwl7B0kiEWtuY29kZV9zdGFydAY7B1RJIgszOTE3MjkGOwdUSSIi
-      dHJhbnNsYXRpb25zX2Rlc2NyaXB0aW9uX2NvbnQGOwdUSSIABjsHVAY7CkY6
-      E3FfbWFudWZhY3R1cmVySUM7CXsGSSIObmFtZV9jb250BjsHVEkiE3NrbGFk
-      IFByYWhhL0NaBjsHVAY7CkZJIg5wYXRoX2JhY2sGOwBGewc6D2NvbnRyb2xs
-      ZXJJIg5zZWFyY2hlcnMGOwBUOgthY3Rpb25JIgtzZWFyY2gGOwBUSSIQQVBQ
-      X1ZFUl9OVU0GOwBGSSIQMi4wLjcuMS1wcmUGOwBUSSISQVBQX1ZFUl9CVUlM
-      RAY7AEZJIhIyMDE5MDMxMS0xOTU5BjsAVEkiGXdhcmRlbi51c2VyLnVzZXIu
-      a2V5BjsAVFsHWwZpEEkiIiQyYSQxMSRrS295dWlwei5oYUl5d0VDc1BDSXgu
-      BjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMTQrS2JqS2tKYnl1R1ExeHE3SDEw
-      b1p2TTVsejcrY3RWMHluNWJWNTl1NFE9BjsARg==
-    - '2019-03-12 13:36:36.372303'
-    - '2019-03-14 15:51:01.458802'
-  - - 340
-    - 9bf452a1a603f22483c17fcc63a8de21
+      aV9lbmFibGVfM2RJIgYxBjsHVDodbGFzdF92aXNpdHNfbWFudWZhY3R1cmVy
+      Wxl7BzoHaWRpMzoKdGl0bGVJIg5Cb256ZWwvREUGOwdUewc7EWkCAQI7Ekki
+      HUF1cmljIE1ldGFsIGZpbmlzaGVycy9HQgY7B1R7BzsRaS87EkkiDUFscGhh
+      L05MBjsHVHsHOxFpAoABOxJJIhRXZWhhIHBsYXN0aWMvQ1oGOwdUewc7EWkC
+      /gE7EkkiDldlZ3N0ci9DWgY7B1R7BzsRaQGmOxJJIhZWaW50cm9zYSBHdW1t
+      aS9TRQY7B1R7BzsRaQGkOxJJIhlWaWVubmEgQ29tcG9uZW50cy9DWgY7B1R7
+      BzsRaQLyATsSSSIRU2NobG90dGVyL0RFBjsHVHsHOxFpAdw7EkkiE1Jvc2Vu
+      YmVyZ2VyL0RFBjsHVHsHOxFpAew7EkkiDlByb3RlYy9ERQY7B1R7BzsRaRc7
+      EkkiC1BLUi9HQgY7B1R7BzsRaRY7EkkiC1BCVC9DWgY7B1R7BzsRaQHqOxJJ
+      IhNQMkogVGVjaG5vbG9neQY7B1R7BzsRaQJfATsSSSINT3J2ZWQvSVQGOwdU
+      ewc7EWkCFwI7EkkiFU9FTSBhdXRvbWF0aWMvU0UGOwdUewc7EWkBfDsSSSIO
+      TWlzdW1pL0RFBjsHVHsHOxFpAqQBOxJJIhJNSCBUZWNobmljL0NaBjsHVHsH
+      OxFpAYg7EkkiDlByb2xlZC9ERQY7B1R7BzsRaXM7EkkiDUxpbmdsL0RFBjsH
+      VHsHOxFpEzsSSSISS0lUIEludmVzdC9DWgY7B1Q6FnBhZ2VfbWFudWZhY3R1
+      cmVySSIGMQY7B1Q6E3FfbWFudWZhY3R1cmVySUM7CXsHSSIObmFtZV9jb250
+      BjsHVEkiCWJ1bnQGOwdUSSIZaW1wZXhwY29tcGFueV9maWx0ZXIGOwdUSSIA
+      BjsHVAY7CkY6EmFsbG93X2FkZF9uZXd7CEkiEGxvY2FsX3RhcmljBjsHVEZJ
+      IhZpbXBleHBjb21wYW5pZXNfMQY7B1RGSSIUbWFudWZhY3R1cmVyc18xBjsH
+      VEY6EnFfbG9jYWxfdGFyaWNJQzsJewdJIhFrbmNvZGVfc3RhcnQGOwdUSSIA
+      BjsHVEkiInRyYW5zbGF0aW9uc19kZXNjcmlwdGlvbl9jb250BjsHVEkiAAY7
+      B1QGOwpGOg5wYWdlX2dvb2RJIgYxBjsHVDoLcV9nb29kSUM7CXsISSIeaWRl
+      bnRfb3JfZGVzY3JpcHRpb25fY29udAY7B1RJIgliZXJuBjsHVEkiGWltcGV4
+      cGNvbXBhbnlfZmlsdGVyBjsHVEkiAAY7B1RJIhhtYW51ZmFjdHVyZXJfZmls
+      dGVyBjsHVEkiAAY7B1QGOwpGOhVsYXN0X3Zpc2l0c19nb29kWwl7BzsRaQI9
+      AzsSSSIQMzUxNyAwOCBrMDQGOwdUewc7EWkCYwY7EkkiDzItNTIwMTAzLTIG
+      OwdUewc7EWkCEwY7EkkiDzItNTIwMTgyLTIGOwdUewc7EWkBkjsSSSIlcHJl
+      Y2lzaW9uIHBhcmFsbGVsIGdyaXBwZXIgZ3BwLTMGOwdUOgtxX3Rhc2tJQzsJ
+      ewZJIhBkb25lX2ZpbHRlcgY7B1RJIgYxBjsHVAY7CkY6IGlzX2luX2FkbWlu
+      aXN0cmF0aXZlX2NoYW5nZUY6FXBhZ2VfbG9jYWxfdGFyaWNJIgYxBjsHVEki
+      DnBhdGhfYmFjawY7AEZ7BzoPY29udHJvbGxlckkiEm1hbnVmYWN0dXJlcnMG
+      OwBUOgthY3Rpb25JIgtzZWFyY2gGOwBUSSIQQVBQX1ZFUl9OVU0GOwBGSSIQ
+      Mi4wLjguMS1wcmUGOwBUSSISQVBQX1ZFUl9CVUlMRAY7AEZJIhIyMDE5MDMx
+      Ni0wMDMwBjsAVEkiGXdhcmRlbi51c2VyLnVzZXIua2V5BjsAVFsHWwZpEEki
+      IiQyYSQxMSRrS295dWlwei5oYUl5d0VDc1BDSXguBjsAVEkiEF9jc3JmX3Rv
+      a2VuBjsARkkiMXRNaGNEREZJNDR0d3FHbW85dUN4YllIbnQzTnZMK2VHR0dr
+      c0NobEpRb1E9BjsARg==
+    - '2019-03-15 12:29:21.259351'
+    - '2019-03-18 13:53:30.603455'
+  - - 343
+    - 7e540c941940ffa58b8f8b421ac6911f
     - |
-      BAh7C0kiCE1FTQY6BkVUInQECFU6DE1lbURhdGF7BjoNc2V0dGluZ3NVOg9P
-      cGVuU3RydWN0ewg6EWd1aV9wZXJfcGFnZUkiBzEwBjoGRVQ6FGd1aV9zaG93
-      X2Zvb3RlckkiBjAGOwlUOhJndWlfZW5hYmxlXzNkSSIGMQY7CVRJIg5wYXRo
+      BAh7C0kiCE1FTQY6BkVUIgJOAQQIVToMTWVtRGF0YXsKOg1zZXR0aW5nc1U6
+      D09wZW5TdHJ1Y3R7CDoRZ3VpX3Blcl9wYWdlSSIHMTAGOgZFVDoUZ3VpX3No
+      b3dfZm9vdGVySSIGMAY7CVQ6Emd1aV9lbmFibGVfM2RJIgYxBjsJVDoSYWxs
+      b3dfYWRkX25ld3sAOhJxX2xvY2FsX3RhcmljSUM6IUFjdGlvbkNvbnRyb2xs
+      ZXI6OlBhcmFtZXRlcnN7B0kiEWtuY29kZV9zdGFydAY7CVRJIgAGOwlUSSIi
+      dHJhbnNsYXRpb25zX2Rlc2NyaXB0aW9uX2NvbnQGOwlUSSIABjsJVAY6D0Bw
+      ZXJtaXR0ZWRGOgtxX3Rhc2tJQzsOewZJIhBkb25lX2ZpbHRlcgY7CVRJIgYx
+      BjsJVAY7D0Y6IGlzX2luX2FkbWluaXN0cmF0aXZlX2NoYW5nZUZJIg5wYXRo
       X2JhY2sGOwBGewc6D2NvbnRyb2xsZXJJIgpnb29kcwY7AFQ6C2FjdGlvbkki
-      CmluZGV4BjsAVEkiEEFQUF9WRVJfTlVNBjsARkkiEDIuMC43LjEtcHJlBjsA
-      VEkiEkFQUF9WRVJfQlVJTEQGOwBGSSISMjAxOTAzMTEtMTk1OQY7AFRJIhl3
-      YXJkZW4udXNlci51c2VyLmtleQY7AFRbB1sGaRFJIiIkMmEkMTEkeUE1blZk
-      T21SMTZPWlc2YzhLOW9oZQY7AFRJIhBfY3NyZl90b2tlbgY7AEZJIjFkOWlW
-      WEdrMkU4eGJYdUxKOE1oemFWK0NHWSthekduQmdiR3hRUFA0YUkwPQY7AEY=
-    - '2019-03-15 01:33:20.589105'
-    - '2019-03-15 01:33:39.987756'
+      CmluZGV4BjsAVEkiGXdhcmRlbi51c2VyLnVzZXIua2V5BjsAVFsHWwZpEEki
+      IiQyYSQxMSRrS295dWlwei5oYUl5d0VDc1BDSXguBjsAVEkiEF9jc3JmX3Rv
+      a2VuBjsARkkiMTZDV2xGdW95elZLNVoyb3NkTVpPU3lmSWNkb0QwQkw1bkt6
+      aytCNkNPSFk9BjsARkkiEEFQUF9WRVJfTlVNBjsARkkiEDIuMC44LjEtcHJl
+      BjsAVEkiEkFQUF9WRVJfQlVJTEQGOwBGSSISMjAxOTAzMTYtMDAzMAY7AFQ=
+    - '2019-03-16 00:26:04.857219'
+    - '2019-03-16 00:31:31.957229'
 
 ---
 settings:
@@ -56737,9 +56966,9 @@ settings:
   records: 
   - - 24
     - gui_per_page
-    - '20'
+    - '10'
     - '2018-03-15 01:00:40.910819'
-    - '2018-03-15 01:01:28.215653'
+    - '2019-03-16 00:27:12.874902'
     - 11
   - - 25
     - gui_show_footer
@@ -56814,6 +57043,8 @@ task_types:
     - Vývoj - otravná chyba
   - - 6
     - Vývoj - prerobiť/vylepšiť
+  - - 7
+    - Vývoj - nutná optimalizácia
 
 ---
 tasks:
@@ -57177,6 +57408,14 @@ tasks:
     - 2
     - '2019-02-15 09:57:39.762850'
     - '2019-02-15 09:57:39.762850'
+  - - 46
+    - Pri pridávaní novej položky/editácií spravidla tovaru nenačítavať do výberových
+      okien všetky položky - v prípade potreby načítať ďalšie po doscrolovaní
+    - 12
+    - true
+    - 7
+    - '2019-03-15 01:43:54.656252'
+    - '2019-03-16 00:24:41.573536'
 
 ---
 trade_type_translations:
@@ -62868,26 +63107,26 @@ users:
   records: 
   - - 11
     - '2018-03-15 00:38:18.541678'
-    - '2019-03-12 13:36:36.289547'
+    - '2019-03-16 00:26:04.612192'
     - admin@admin.hsdb
     - "$2a$11$kKoyuipz.haIywECsPCIx.MbRhqhLmd4iDpZsErLstJNFWDjRKdoO"
     - 
     - 
     - '2019-03-12 13:36:36.258744'
-    - 17
-    - '2019-03-12 13:36:36.286411'
-    - '2019-03-11 19:44:11.992905'
+    - 19
+    - '2019-03-16 00:26:04.592635'
+    - '2019-03-15 12:29:21.146937'
+    - 25.68.181.225
     - 192.168.0.103
-    - 192.168.0.105
     - true
   - - 12
     - '2018-03-15 07:13:52.932691'
-    - '2019-03-15 01:33:20.481876'
+    - '2019-03-16 00:25:33.298682'
     - roulage.mato@gmail.com
     - "$2a$11$yA5nVdOmR16OZW6c8K9oheRv3UHyKJk4POxSm9073AvMdH9tWou8O"
     - 
     - 
-    - '2018-12-28 13:28:11.344507'
+    - 
     - 16
     - '2019-03-15 01:33:20.478542'
     - '2019-03-12 01:04:07.526090'

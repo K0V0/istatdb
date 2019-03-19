@@ -1,61 +1,43 @@
 function Uom() {
-	this.D = new UomDropdown();
-	this.H = new UomHelper();
-	this.init();
+    this.HELPER;
+    this.HELPER = new UomHelper();
+    this.init();
 }
 
 Uom.prototype = {
-	constructor: Uom,
+    constructor: Uom,
 
-	init: function() {
-		this.saveDefaults();
-		this.D.init();
-		this.buttonEvents();
-		this.onChangeUomEvents();
-		this.onInit();
-	},
+    init: function() {
+        var toto = this;
 
-	onInit: function() {
-		var T = this;
-		$(document).find('article.uoms').each(function() {
-			T.H.decideAddButtonActivation($(this));
-			T.H.decideRemoveButtonActivation($(this));
-		});
-	},
+        // znema vyberu spravodajskej jednotky alebo dodavatela/odberatela pre tovar
+        $('article.impexpcompany_select, article.manufacturer_select')
+        .on('change', 'div.tablewrap > table > tbody > tr > td > input', function(e) {
+            logger('impexp or manufacturer changed');
+            //logger(e.delegateTarget);
+            //logger(this);
+            toto.updateDropdowns(this, e);
+        })
 
-	buttonEvents: function() {
-		var T = this;
-		$(document).on('click', 'button.add_uom', function() {
-			T.H.addNext($(this).closest('article.uoms'));
-		});
-		$(document).on('click', 'button.remove_uom', function() {
-			T.H.delete($(this).closest('article.uoms'));
-		});
-		$(document).on('click', 'button.restore_uom', function() {
-			T.H.restore($(this).closest('article.uoms'));
-		});
-		$(document).on('click', 'u.cancel_uom_delete', function() {
-			T.H.cancelDelete($(this).closest('article.uoms'));
-		});
-	},
+        // zmena v dropdown menu spravodajskej jednotky alebo dodavatela/odberatela pre danu mernu jednotku
+        $(document)
+        .on('change', 'article.uoms > div > div > select', function() {
+            if ($(this).attr('id').indexOf(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
+                logger('dropdown changed');
+            }
+        })
+    },
 
-	onChangeUomEvents: function() {
-		// on change any input inside uom
-		var T = this;
-		$(document)
-		.find('article.uoms')
-		.find('input, select')
-		.on('change', this, function() {
-			logger('onChangeUomEvents');
-			T.H.decideAddButtonActivation($(this).closest('article'));
-			T.H.decideClearButtonActivation($(this).closest('article'));
-		});
-	},
-
-	saveDefaults: function() {
-		$(document).find('article.uoms').find('input, select').each(function() {
-			$(this).data('initial', $(this).val());
-		});
-	}
-
+    updateDropdowns: function(ref, e) {
+        var data = this.HELPER.collect_data_from_item_properties(e.delegateTarget);
+        var dropdowns_class = this.HELPER.get_regex_for_dropdowns_class(e.delegateTarget);
+        $(document).find('article.uoms').find('select').each(function() {
+             //logger($(this));
+             //logger(dropdowns_class);
+            if ($(this).attr('id').indexOf(dropdowns_class) > 0) {
+                logger('dropdown found');
+                logger($(this));
+            }
+        });
+    }
 }

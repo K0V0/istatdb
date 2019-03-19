@@ -67,6 +67,8 @@ gem "rails-settings-cached"
 
 gem 'naturally'
 
+#gem 'where-or', '~> 0.1.6'
+
 #gem "backup"
 
 #gem 'globalize-accessors'

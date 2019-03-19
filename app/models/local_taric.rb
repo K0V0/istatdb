@@ -18,7 +18,8 @@ class LocalTaric < ActiveRecord::Base
 	before_destroy :check_if_used
 
 	scope :default_order, -> {
-		order(kncode: :asc)
+		includes(:translations)
+		.order(kncode: :asc)
 	}
 
 	scope :kncode_start_or_translations_description_cont, -> (pars) {
