@@ -277,9 +277,9 @@ class ApplicationController < ActionController::Base
   		if params[:association_type] == "belongs_to"
 	  		parent_obj.send("build_#{params[:model]}")
 	  	else
-        assocs = params[:model].classify.constantize.send(:find, params[:checked])
-        logger(assocs.size)
-        parent_obj.send("#{params[:model].to_s.pluralize}").send("build")
+        #assocs = params[:model].classify.constantize.send(:find, params[:checked])
+        #logger(assocs.size)
+        #parent_obj.send("#{params[:model].to_s.pluralize}").send("build")
 	  	end
 	  	instance_variable_set(
   			"@#{params[:source_controller]}",
@@ -287,8 +287,8 @@ class ApplicationController < ActionController::Base
   		)
 
       ## nepridava asociacie
-      logger(instance_variable_get("@#{params[:source_controller]}").send("#{params[:model].to_s.pluralize}").size)
-      logger(params[:checked])
+      #logger(instance_variable_get("@#{params[:source_controller]}").send("#{params[:model].to_s.pluralize}").size)
+      #logger(params[:checked])
 
   		apicall_render(params[:association_type])
   	else

@@ -35,10 +35,7 @@ class GoodsController < ApplicationController
 	# new.create, edit, update
 	def _load_vars
 		will_paginate :manufacturers, :local_taric
-		@local_tarics = LocalTaric.load_for_new_edit(@record.local_taric)
 		@impexpcompanies = Impexpcompany.all.default_order
-		#@manufacturers = Manufacturer.all.default_order
-		@manufacturers = Manufacturer.load_checked_first(@record.manufacturers)
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = @record.impexpcompanies.default_order
 		@manufacturers_for_uoms = @record.manufacturers.default_order

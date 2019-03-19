@@ -114,6 +114,24 @@ module ApplicationConcern
 
  	def will_paginate *pars
  		params[:will_paginate] = pars
+
+ 		pars.each do |par|
+ 			
+ 			ids_arr = []
+ 			ids = @record.send("#{par.to_s.singularize}_ids") if !par.to_s.is_singular?
+ 			ids_arr.push(ids) if !ids.nil?
+ 			id = @record.send("#{par.to_s}_id") if par.to_s.is_singular?
+ 			ids_arr.push(id) if !id.nil?
+ 			model = par.to_s.classify.constantize
+ 			ids_to_load_count = 25 - ids_arr.length
+
+ 			if ids_to_load_count > 0
+ 				ids_arr.push(model.default_order.limit(ids_to_load_count).pluck(:id))
+ 			end
+
+ 			result = model.where(id: ids_arr).order_as_specified(id: ids_arr)
+ 			instance_variable_set("@#{par.to_s.pluralize}", result)
+ 		end
  	end
 
 	def remember_param param

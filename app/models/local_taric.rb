@@ -26,12 +26,6 @@ class LocalTaric < ActiveRecord::Base
 		where("kncode LIKE ? OR description LIKE ?", "#{pars}%", "%#{pars}%")
 	}
 
-	scope :load_for_new_edit, -> (pars) {
-		ids = self.default_order.limit(24).pluck(:id)
-		ids.prepend(pars.id) if !pars.nil?
-		self.where(id: ids).order_as_specified(id: ids)
-	}
-
 	def self.ransackable_scopes(*pars)
 	    %i(kncode_start_or_translations_description_cont)
 	end
