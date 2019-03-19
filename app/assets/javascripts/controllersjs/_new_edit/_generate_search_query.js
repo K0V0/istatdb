@@ -53,10 +53,11 @@ GenerateSearchQuery.prototype = {
 			checked.push($(this).attr('id').replace(/\D+/, ""));
 		});
 
-		logger(wndw.find('table').find('input').length);
+		//logger(wndw.find('table').find('input').length);
 
 		$.ajax({
 		  	method: 	"POST",
+		  	async: 		false,
 		 	url: 		'/' + wndw.data('searcher-assoc').pluralize() + '/' + action,
 		  	data: {
 		  		q: 					toto.generateQueryString(wndw),
@@ -89,21 +90,16 @@ GenerateSearchQuery.prototype = {
 
 	onScrollToEnd: function(ref) {
 		var toto = this;
-		var last_y_pos = 0;
-		ref.find('div.tablewrap')[0].onscroll = function(e) {
-			var elem = $(e.currentTarget);
-			var scroll_top;
-			// reaguje len na koliesko mysi
-			if ((scroll_top = elem.scrollTop()) > last_y_pos) {
-			    if (elem[0].scrollHeight - scroll_top == elem.outerHeight()) {
-			        var wndw = $(this).closest('article');
-			        toto.doAjax(
-			        	wndw.find(toto.generateInputsClassesList(wndw)),
-			        	'new_select_load_items'
-			        );
-			    }
-			}
-			last_y_pos = scroll_top;
-		};
+
+		$(ref).find('div.tablewrap').scroll($.debounce(50, function(e){
+		    var elem = $(e.target);
+		    if (elem.scrollTop() + elem.outerHeight() >= elem.children('table').outerHeight()) {
+		    	var wndw = $(this).closest('article');
+		    	toto.doAjax(
+		        	wndw.find(toto.generateInputsClassesList(wndw)),
+		        	'new_select_load_items'
+		        );
+		    }
+		}));
 	}
 }
