@@ -67,6 +67,10 @@ gem "rails-settings-cached"
 
 gem 'naturally'
 
+gem "down", "~> 4.4"
+
+gem 'whenever', require: false
+
 #gem "backup"
 
 #gem 'globalize-accessors'
