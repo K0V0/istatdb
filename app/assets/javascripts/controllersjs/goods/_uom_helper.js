@@ -46,7 +46,10 @@ UomHelper.prototype = {
             var id = $(this).val();
             if ($(this).is(':selected')) {
                 if (data.contains(id)) {
+                    // vlasntost by bola duplicitne
                     data.remove(id);
+                } else {
+                    // tovar uz tuto vlastnost neobsahuje
                 }
             } else {
                 if (data.contains(id)) {
@@ -60,6 +63,7 @@ UomHelper.prototype = {
     },
 
     after_actions: function(ref, data) {
+        // ak v dropdown nevybrate nic a tovar ma len po jednej vlastnosti, nastavit tie
         if (($(ref).val() == "")&&(data.size() <= 2)) {
             $(ref).children('option').each(function() {
                 if ($(this).val != "") {

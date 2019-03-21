@@ -54,5 +54,9 @@ Uom.prototype = {
                 toto.HELPER.after_actions(this, data);
             }
         });
+    },
+
+    userManipulated: function(ref) {
+        
     }
 }
