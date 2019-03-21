@@ -5,6 +5,7 @@ en:
       changes: Changelog
       others: Other
       tasks: Tasks
+      valuts: Valuts
 
 sk:
   others:
@@ -13,4 +14,5 @@ sk:
       changes: Zoznam zmien
       others: Ostatné
       tasks: Úlohy
+      valuts: Kurzy
 
