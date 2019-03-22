@@ -22,6 +22,15 @@ Uom.prototype = {
         .on('change', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown changed');
+                //toto.HELPER.trigger_checking_process(this);
+            }
+        });
+
+        $(document)
+        .on('DOMSubtreeModified', 'article.uoms > div > div > select', function() {
+            if (toto.HELPER.is_dropdown(this)) {
+                logger('dropdown options changed');
+                //toto.HELPER.trigger_checking_process(this);
             }
         });
 
@@ -30,6 +39,7 @@ Uom.prototype = {
         .on('click', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown clicked');
+                toto.HELPER.user_manipulated(this);
             }
         });
 
@@ -54,9 +64,8 @@ Uom.prototype = {
                 toto.HELPER.after_actions(this, data);
             }
         });
-    },
-
-    userManipulated: function(ref) {
-        
     }
+
+
+
 }
