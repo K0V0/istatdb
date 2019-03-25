@@ -8,6 +8,9 @@ defaults: &defaults
   backup_root: "~/istatdb-backup/"
   backup_enabled: "0"
 
+  valuts_adress_history: "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml"
+  valuts_adress_daily: "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+
 development:
   <<: *defaults
 

@@ -48,6 +48,8 @@ module Taric
 
     require 'class_on_input_with_error'
 
+    require "down"
+
   end
 
 end

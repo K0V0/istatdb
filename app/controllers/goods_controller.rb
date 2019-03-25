@@ -32,13 +32,16 @@ class GoodsController < ApplicationController
 		end
 	end
 
-	# new.create, edit, update
+	# new, create, edit, update
 	def _load_vars
 		will_paginate :manufacturers, :local_taric
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
-		@impexpcompanies_for_uoms = @record.impexpcompanies.default_order
-		@manufacturers_for_uoms = @record.manufacturers.default_order
+		#@impexpcompanies_for_uoms = @record.impexpcompanies.default_order
+		#@manufacturers_for_uoms = @record.manufacturers.default_order
+		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
+		@manufacturers_for_uoms = Manufacturer.where(id: @record.manufacturer_ids)
+		#logger @record.impexpcompany_ids.size
 	end
 
 	def _around_new
@@ -50,7 +53,7 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_edit
-		build_if_empty :impexpcompanies, :manufacturers
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric
 		@uom = Uom.new if !@record.uoms.any?
 	end
 
@@ -59,6 +62,7 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_update_after_save_failed
+		build_if_empty :impexpcompanies, :manufacturers
 		@uom = Uom.new if !@record.uoms.any?
 	end
 

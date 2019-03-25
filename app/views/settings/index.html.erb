@@ -61,6 +61,22 @@
 			}
 		) %>
 
+		<%= settings(
+			section: :valuts,
+			only_admin: true,
+
+			settings: {
+
+				adress_daily: {
+					type: :text
+				},
+
+				adress_history: {
+					type: :text
+				}
+			}
+		) %>
+
 		<section class="decorated_wrap shrinked change_on_smallscreen">
 
 			<table class="for_forms">

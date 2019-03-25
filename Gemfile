@@ -67,7 +67,9 @@ gem "rails-settings-cached"
 
 gem 'naturally'
 
-#gem 'where-or', '~> 0.1.6'
+gem "down", "~> 4.4"
+
+gem 'whenever', require: false
 
 #gem "backup"
 

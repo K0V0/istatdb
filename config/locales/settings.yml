@@ -26,6 +26,10 @@ en:
         root: Root directory
         enabled: Active
         do_backup: Generate file with DB backup
+      valuts:
+        section_window_title: Sources of exchange rates
+        adress_daily: Daily curses
+        adress_history: All curses
 
 
     users:
@@ -61,6 +65,10 @@ sk:
         root: Koreň. adresár
         enabled: Aktivované
         do_backup: Vygenerovať súbor zálohy
+      valuts:
+        section_window_title: Zdroje výmenných kurzov
+        adress_daily: Denné kurzy
+        adress_history: Všetky kurzy
 
 
     users:

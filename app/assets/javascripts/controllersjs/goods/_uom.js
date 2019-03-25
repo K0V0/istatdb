@@ -14,30 +14,93 @@ Uom.prototype = {
         $('article.impexpcompany_select, article.manufacturer_select')
         .on('change', 'div.tablewrap > table > tbody > tr > td > input', function(e) {
             logger('impexp or manufacturer changed');
-            //logger(e.delegateTarget);
-            //logger(this);
             toto.updateDropdowns(this, e);
-        })
+        });
 
         // zmena v dropdown menu spravodajskej jednotky alebo dodavatela/odberatela pre danu mernu jednotku
         $(document)
         .on('change', 'article.uoms > div > div > select', function() {
-            if ($(this).attr('id').indexOf(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
+            if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown changed');
+                toto.validate(this);
             }
-        })
+        });
+
+        $(document)
+        .on('DOMSubtreeModified', 'article.uoms > div > div > select', function() {
+            if (toto.HELPER.is_dropdown(this)) {
+                logger('dropdown options changed');
+                toto.validate(this);
+            }
+        });
+
+        // ide az po druhom kliknuti - vybrati moznosti
+        $(document)
+        .on('click', 'article.uoms > div > div > select', function() {
+            if (toto.HELPER.is_dropdown(this)) {
+                logger('dropdown clicked');
+                toto.HELPER.set_user_manipulated(this);
+            }
+        });
+
+        // zaznamena zmenu este po odchode focusu z elementu, napr prepinanie tabom
+        $(document)
+        .on('focusout', 'article.uoms > div > div > select', function() {
+            if (toto.HELPER.is_dropdown(this)) {
+                logger('dropdown focused out');
+            }
+        });
     },
 
     updateDropdowns: function(ref, e) {
+        var toto = this;
         var data = this.HELPER.collect_data_from_item_properties(e.delegateTarget);
         var dropdowns_class = this.HELPER.get_regex_for_dropdowns_class(e.delegateTarget);
+
         $(document).find('article.uoms').find('select').each(function() {
-             //logger($(this));
-             //logger(dropdowns_class);
             if ($(this).attr('id').indexOf(dropdowns_class) > 0) {
                 logger('dropdown found');
-                logger($(this));
+                toto.HELPER.fillup_dropdown_data(this, data);
+                toto.validate(this);
             }
         });
+    },
+
+    validate: function(ref) {
+        var toto = this;
+        var datasource_elem = $(document).find('article.' + toto.HELPER.get_regex_for_attributes_class(ref));
+        var data = toto.HELPER.collect_data_from_item_properties(datasource_elem);
+        toto.HELPER.set_valid(ref, true);
+
+        if (data.size() <= 0) {
+            // nie su vybrate ziadne atributy pre tovar
+            toto.HELPER.set_valid(ref, false);
+            toto.HELPER.add_validation_msg(ref, 2);
+        } else {
+            $(ref).children('option').each(function() {
+                if (data.contains($(this).val())) {
+                    // ok, zdroj dat obsahuje tuto polozku
+                } else {
+                    // ak puzivatel rucne manipuloval s dropdownom
+                    if (toto.HELPER.get_user_manipulated(ref)) {
+                        // ak porovnavane data nie je len popisok, placeholder bez hodnoty
+                        if ($(this).val() != "") {
+                            // ak je chybajuca polozka ta vybrata
+                            if (toto.HELPER.get_is_option_active(this)) {
+                                toto.HELPER.set_valid(ref, false);
+                                toto.HELPER.add_validation_msg(ref, 1);
+                            } else {
+
+                            }
+                        } else {
+
+                        }
+                    } else {
+
+                    }
+                }
+            });
+        }
     }
+
 }
