@@ -25,6 +25,11 @@ UomHelper.prototype = {
         return $(ref).attr('id').replace(/(_select_\d+)$/, "") + "_id";
     },
 
+    get_regex_for_attributes_class: function(ref) {
+        rgx = /[a-z_]+[0-9]+_([a-z]+)_id/;
+        return $(ref).attr('id').match(rgx)[1] + "_select";
+    },
+
     is_dropdown: function(ref) {
         if ($(ref).context.id.search(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
             return true;
@@ -42,12 +47,10 @@ UomHelper.prototype = {
                 if (data.contains(id)) {
                     // vlasntost by bola duplicitne
                     data.remove(id);
-                    toto.set_valid(ref, true);
                 } else {
                     // tovar uz tuto vlastnost neobsahuje
                     if ($(ref).data("user-manipulated") == "1") {
-                        // sice neni ale hybal s nim user
-                        toto.set_valid(ref, false);
+                        
                     } else {
                         // kludne mozno odstranit
                         $(this).remove();
@@ -65,6 +68,7 @@ UomHelper.prototype = {
     },
 
     after_actions: function(ref, data) {
+        /*
         var val = $(ref).val();
         var opts_count = $(ref).children('option').length;
         // ak v dropdown nevybrate nic a tovar ma len po jednej vlastnosti, nastavit tie
@@ -94,17 +98,18 @@ UomHelper.prototype = {
             // dropdown je prazdny, ale uz bude nieco asi vybrate
             this.set_valid(ref, true);
         }
+        */
     },
 
     user_manipulated: function(ref) {
         $(ref).data("user-manipulated", "1");
-        if ($(ref).val() == "") {
+        /*if ($(ref).val() == "") {
             // pouzivatel vybral valid. chyby text alebo kokotinu
             // dojebat ho
             this.set_valid(ref, false);
         } else {
 
-        }
+        }*/
     },
 
     set_valid: function(ref, bool) {

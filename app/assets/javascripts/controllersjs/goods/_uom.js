@@ -23,6 +23,7 @@ Uom.prototype = {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown changed');
                 //toto.HELPER.trigger_checking_process(this);
+                toto.validate(this);
             }
         });
 
@@ -31,6 +32,7 @@ Uom.prototype = {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown options changed');
                 //toto.HELPER.trigger_checking_process(this);
+                toto.validate(this);
             }
         });
 
@@ -62,6 +64,20 @@ Uom.prototype = {
                 logger('dropdown found');
                 toto.HELPER.fillup_dropdown_data(this, data);
                 toto.HELPER.after_actions(this, data);
+            }
+        });
+    },
+
+    validate: function(ref) {
+        var toto = this;
+        var datasource_elem = $(document).find('article.' + toto.HELPER.get_regex_for_attributes_class(ref));
+        var data = toto.HELPER.collect_data_from_item_properties(datasource_elem);
+
+        $(ref).children('option').each(function() {
+            if (data.contains($(this).attr('id'))) {
+                // ok, zdroj dat obsahuje tuto polozku
+            } else {
+                
             }
         });
     }
