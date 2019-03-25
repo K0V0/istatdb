@@ -34,14 +34,17 @@ class GoodsController < ApplicationController
 
 	# new, create, edit, update
 	def _load_vars
-		will_paginate :manufacturers, :local_taric
+		will_paginate :manufacturers, :local_taric 
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
-		#@impexpcompanies_for_uoms = @record.impexpcompanies.default_order
-		#@manufacturers_for_uoms = @record.manufacturers.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
 		@manufacturers_for_uoms = Manufacturer.where(id: @record.manufacturer_ids)
-		#logger @record.impexpcompany_ids.size
+	end
+
+	def load_uoms
+		@uom = Uom.new if !@record.uoms.any?
+		@impexpcompanies_for_uoms = @record.impexpcompanies
+		@manufacturers_for_uoms = @record.manufacturers
 	end
 
 	def _around_new
@@ -54,16 +57,16 @@ class GoodsController < ApplicationController
 
 	def _around_edit
 		build_if_empty :impexpcompanies, :manufacturers, :local_taric
-		@uom = Uom.new if !@record.uoms.any?
+		load_uoms
 	end
 
 	def _around_update_after_save
-		build_if_empty :impexpcompanies, :manufacturers
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric
 	end
 
 	def _around_update_after_save_failed
-		build_if_empty :impexpcompanies, :manufacturers
-		@uom = Uom.new if !@record.uoms.any?
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric
+		load_uoms
 	end
 
 	def _around_do_add_another
