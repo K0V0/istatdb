@@ -41,7 +41,7 @@ Uom.prototype = {
         .on('click', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown clicked');
-                toto.HELPER.user_manipulated(this);
+                toto.HELPER.set_user_manipulated(this);
             }
         });
 
@@ -77,7 +77,11 @@ Uom.prototype = {
             if (data.contains($(this).attr('id'))) {
                 // ok, zdroj dat obsahuje tuto polozku
             } else {
-                
+                if (get_user_manipulated(ref)) {
+
+                } else {
+                    
+                }
             }
         });
     }

@@ -101,7 +101,7 @@ UomHelper.prototype = {
         */
     },
 
-    user_manipulated: function(ref) {
+    set_user_manipulated: function(ref) {
         $(ref).data("user-manipulated", "1");
         /*if ($(ref).val() == "") {
             // pouzivatel vybral valid. chyby text alebo kokotinu
@@ -110,6 +110,14 @@ UomHelper.prototype = {
         } else {
 
         }*/
+    },
+
+    get_user_manipulated: function(ref) {
+        if ($(ref).data("user-manipulated") == "1") {
+            return true;
+        } else {
+            return false;
+        }
     },
 
     set_valid: function(ref, bool) {
