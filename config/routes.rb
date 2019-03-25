@@ -347,6 +347,13 @@ Rails.application.routes.draw do
     to: "tasks#change_status"#,
     #as: "task"
 
+  ## ostatne - valuty
+
+  get "others/valuts",
+    to: "valuts#index",
+    as: "valuts"
+
+
 
 
   ### Nastavenia
