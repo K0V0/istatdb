@@ -22,7 +22,6 @@ Uom.prototype = {
         .on('change', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown changed');
-                //toto.HELPER.trigger_checking_process(this);
                 toto.validate(this);
             }
         });
@@ -31,7 +30,6 @@ Uom.prototype = {
         .on('DOMSubtreeModified', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown options changed');
-                //toto.HELPER.trigger_checking_process(this);
                 toto.validate(this);
             }
         });
@@ -63,7 +61,7 @@ Uom.prototype = {
             if ($(this).attr('id').indexOf(dropdowns_class) > 0) {
                 logger('dropdown found');
                 toto.HELPER.fillup_dropdown_data(this, data);
-                toto.HELPER.after_actions(this, data);
+                toto.validate(this);
             }
         });
     },
@@ -72,20 +70,37 @@ Uom.prototype = {
         var toto = this;
         var datasource_elem = $(document).find('article.' + toto.HELPER.get_regex_for_attributes_class(ref));
         var data = toto.HELPER.collect_data_from_item_properties(datasource_elem);
+        toto.HELPER.set_valid(ref, true);
 
-        $(ref).children('option').each(function() {
-            if (data.contains($(this).attr('id'))) {
-                // ok, zdroj dat obsahuje tuto polozku
-            } else {
-                if (get_user_manipulated(ref)) {
-
+        if (data.size() <= 0) {
+            // nie su vybrate ziadne atributy pre tovar
+            toto.HELPER.set_valid(ref, false);
+            toto.HELPER.add_validation_msg(ref, 2);
+        } else {
+            $(ref).children('option').each(function() {
+                if (data.contains($(this).val())) {
+                    // ok, zdroj dat obsahuje tuto polozku
                 } else {
-                    
+                    // ak puzivatel rucne manipuloval s dropdownom
+                    if (toto.HELPER.get_user_manipulated(ref)) {
+                        // ak porovnavane data nie je len popisok, placeholder bez hodnoty
+                        if ($(this).val() != "") {
+                            // ak je chybajuca polozka ta vybrata
+                            if (toto.HELPER.get_is_option_active(this)) {
+                                toto.HELPER.set_valid(ref, false);
+                                toto.HELPER.add_validation_msg(ref, 1);
+                            } else {
+
+                            }
+                        } else {
+
+                        }
+                    } else {
+
+                    }
                 }
-            }
-        });
+            });
+        }
     }
-
-
 
 }

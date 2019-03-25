@@ -30,6 +30,11 @@ UomHelper.prototype = {
         return $(ref).attr('id').match(rgx)[1] + "_select";
     },
 
+    get_regex_for_validation_messages_class: function(ref) {
+        var rgx = /good_uoms_attributes_[0-9]+_([a-z]+)_id/;
+        return $(ref).attr('id').match(rgx)[1];
+    },
+
     is_dropdown: function(ref) {
         if ($(ref).context.id.search(/(_impexpcompany_id|_manufacturer_id)$/) > 0) {
             return true;
@@ -67,49 +72,10 @@ UomHelper.prototype = {
         $(ref).append(data.generate_options());
     },
 
-    after_actions: function(ref, data) {
-        /*
-        var val = $(ref).val();
-        var opts_count = $(ref).children('option').length;
-        // ak v dropdown nevybrate nic a tovar ma len po jednej vlastnosti, nastavit tie
-        if ((val == "")&&(opts_count <= 2)) {
-            // presne 1 moznost na vyber - vybrat ju
-            $(ref).children('option').each(function() {
-                if ($(this).val != "") {
-                    $(this).prop('selected', true);
-                }
-            });
-            this.set_valid(ref, true);
-        } else if ((val == "")&&(opts_count <= 1)&&(data.size == 0)) {
-            // uz bude na vyber pravdepodobne len text validacie
-            this.set_valid(ref, false);
-            this.add_validation_msg(ref, 1);
-        } else if (opts_count == 0) {
-            // user pravdepodobne nieco pridal, nemanipuloval dropdownom
-            // ale potom vsetko vyjebal
-            this.set_valid(ref, false);
-            //this.add_validation_msg(ref, 1);
-            this.add_validation_msg(ref, 2);
-        } else if ((opts_count <= 1)&&(data.size == 0)) {
-            // to iste ako predtym moze byt
-            this.set_valid(ref, false);
-            this.add_validation_msg(ref, 1);
-        } else if ((opts_count <= 1)&&(val == "")&&(data.size > 0)) {
-            // dropdown je prazdny, ale uz bude nieco asi vybrate
-            this.set_valid(ref, true);
-        }
-        */
-    },
-
     set_user_manipulated: function(ref) {
-        $(ref).data("user-manipulated", "1");
-        /*if ($(ref).val() == "") {
-            // pouzivatel vybral valid. chyby text alebo kokotinu
-            // dojebat ho
-            this.set_valid(ref, false);
-        } else {
-
-        }*/
+        if ($(ref).val() != "") {
+            $(ref).data("user-manipulated", "1");
+        }
     },
 
     get_user_manipulated: function(ref) {
@@ -120,9 +86,19 @@ UomHelper.prototype = {
         }
     },
 
+    get_is_option_active: function(ref) {
+        //if ($(ref).val() == $(ref).closest('select').val()) {
+        if ($(ref).is(':selected')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
     set_valid: function(ref, bool) {
         if (bool) {
             $(ref).removeClass('error');
+            this.remove_validation_messages(ref);
         } else {
             $(ref).addClass('error');
         }
@@ -131,36 +107,37 @@ UomHelper.prototype = {
     add_validation_msg: function(ref, num) {
         var dropdown_text;
         var validation_text;
-        var rgx = /good_uoms_attributes_[0-9]+_([a-z]+)_id/;
-        var assoc = $(ref).attr('id').match(rgx)[1];
-        //logger(assoc);
+        var assoc = this.get_regex_for_validation_messages_class(ref);
+
+        this.remove_validation_messages(ref);
+       
         switch(num) {
+            // polozka odstranena z atributov tovaru
             case 1:
                 validation_text = t('goods.new_form_texts.uom_' + assoc + '_removed_from_source');
                 break;
+            // nula atributov tovaru
             case 2:
-                dropdown_text = t('goods.new_form_texts.uom_cannot_select_' + assoc);
+                validation_text = t('goods.new_form_texts.uom_cannot_select_' + assoc);
+                dropdown_text = " - - - - - - - - ";
                 break;
         }
 
         if (dropdown_text !== undefined) {
-            $(ref).append('<option class="validation_text">'+dropdown_text+'</option>');
+            if ($(ref).children('option.validation_text').length <= 0) {
+                $(ref).append('<option class="validation_text" value="0">'+dropdown_text+'</option>');
+            }
         }
 
         if (validation_text !== undefined) {
-            var txt = '<span class="errormessage">'+validation_text+'</span>';
+            var txt = '<span class="errormessage uom_'+assoc+'">'+validation_text+'</span>';
             $(ref).closest('article').find('div.form_errors').append(txt);
         }
     },
 
-    remove_validation_message: function(ref) {
-
+    remove_validation_messages: function(ref) {
+        var assoc = this.get_regex_for_validation_messages_class(ref);
+        $(ref).closest('article').find('span.errormessage.uom_'+assoc).remove();
     }
-
-    /*trigger_checking_process: function(ref) {
-        $('article.impexpcompany_select, article.manufacturer_select')
-        .find('div.tablewrap > table > tbody > tr > td > input')
-        .trigger('change');
-    }*/
 
 }
