@@ -42,8 +42,9 @@ GenerateSearchQuery.prototype = {
 		return elem_string;
 	},
 
-	doAjax: function(ref, action='new_select_search') {
+	doAjax: function(ref, action) {
 		// ref - input field that event occurs on
+		if (action === undefined) { action='new_select_search'; }
 		var toto = this;
 		var wndw = ref.closest('article');
 		var load_limit = wndw.children('input[name=load-limit]').val();
