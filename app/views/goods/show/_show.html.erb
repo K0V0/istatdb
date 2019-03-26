@@ -98,7 +98,7 @@
 
 	<%= render('/goods/show/calculator_list') %>
 
-	<% if !@record.uncomplete.nil? %>
+	<% if !@record.uncomplete.nil?&&!@record.uncomplete==false %>
 
 		<%= render('/goods/show/uncomplete_reason') %>
 		
