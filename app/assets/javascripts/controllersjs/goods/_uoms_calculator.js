@@ -1,6 +1,6 @@
 // show action on goods controller only
 
-function UomsCalculator(val=null, multiplier=null, uom_type=null) {
+function UomsCalculator(val, multiplier, uom_type) {
 	this.H = new UomsCalculatorHelper();
 	this.val = val;
 	this.multiplier = multiplier;
@@ -87,7 +87,7 @@ UomsCalculator.prototype = {
 		this.uom_type = $.trim($('b.uoms_calculator_uom_type').text());
 	},
 
-	setVals: function(val=null, multiplier=null, uom_type=null) {
+	setVals: function(val, multiplier, uom_type) {
 		this.val = val;
 		this.multiplier = multiplier;
 		this.uom_type = uom_type;
