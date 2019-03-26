@@ -55,6 +55,8 @@ sk:
     wait_until_backup: Táto operácia môže chvíľu trvať, počkajte. Na konci Vám bude ponúknutý súbor na stiahnutie.
 
   items_table:
+    added_by: pridal
+    last_mod: upravil
     results_count: počet výsledkov
     nothing_found: Podľa zadaných kritérií nebola nájdená žiadna položka
     no_items: Zatiaľ neboli pridané žiadne položky v tejto sekcii

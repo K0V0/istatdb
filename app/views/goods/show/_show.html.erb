@@ -98,4 +98,10 @@
 
 	<%= render('/goods/show/calculator_list') %>
 
+	<% if !@record.uncomplete.nil? %>
+
+		<%= render('/goods/show/uncomplete_reason') %>
+		
+	<% end %>
+
 <% end %>

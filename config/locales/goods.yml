@@ -70,7 +70,7 @@ sk:
         ident: Referencia
         description: Popis tovaru
         uncomplete: Je položka nedošetrená?
-        uncomplete_reason: Dôvod
+        uncomplete_reason: Dôvod/poznámka
         impexpcompany_filter: Spravodajská jednotka
         manufacturer_filter: Výrobca/odberateľ
         uncomplete_filter: Stav
@@ -108,6 +108,7 @@ sk:
       add_uom: Pridajte mernú jednotku
     show_details:
       good: "Tovar"
+      uncomplete_reason: Dôvod na došetrenie/poznámka
     uoms_calculator:
       cap: Kalkulácia množstvo <-> hodnota
       price_per: Hodnota za sadu
