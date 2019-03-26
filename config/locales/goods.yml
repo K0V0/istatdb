@@ -8,6 +8,7 @@ en:
         description: Description of goods
         impexpcompany_filter: Filter by intrastat subject
         manufacturer_filter: Filter by consumer/manufacturer
+        uncomplete_filter: Filter by state
     errors:
       models:
         good:
@@ -68,8 +69,11 @@ sk:
       good:
         ident: Referencia
         description: Popis tovaru
+        uncomplete: Je položka nedošetrená?
+        uncomplete_reason: Dôvod
         impexpcompany_filter: Spravodajská jednotka
         manufacturer_filter: Výrobca/odberateľ
+        uncomplete_filter: Stav
     errors:
       models:
         good:

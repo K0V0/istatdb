@@ -59,6 +59,9 @@ en:
   goods_search:
     impexpcompany_prompt: do NOT apply...
     manufacturer_prompt: Everyone...
+    uncompletes_prompt: Show all...
+    uncompletes_prompt_complete: "only completed"
+    uncompletes_prompt_not_complete: "only uncomplete"
     google: Search on Google
 
   new_form_selects:

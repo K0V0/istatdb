@@ -67,6 +67,9 @@ sk:
   goods_search:
     impexpcompany_prompt: "nefiltrovať..."
     manufacturer_prompt: "všetci..."
+    uncompletes_prompt: "všetky..."
+    uncompletes_prompt_complete: "len došetrené"
+    uncompletes_prompt_not_complete: "len nedošetrené"
     google: Vyhľadať cez Google
 
   new_form_selects:

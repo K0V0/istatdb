@@ -1,0 +1,22 @@
+
+<% 
+	uncompleted_selected = params.deep_has_key?(:q, :uncomplete_filter) ? params[:q][:uncomplete_filter] : nil
+%>
+
+<div>
+
+	<span>
+		<%= obj.label :uncomplete_filter %>
+	</span>
+
+	<span>
+		<%= select(
+			:q,
+			:uncomplete_filter,
+			[[t('goods_search.uncompletes_prompt_complete'), 0], [t('goods_search.uncompletes_prompt_not_complete'), 1]],
+			include_blank: t('goods_search.uncompletes_prompt'),
+			selected: uncompleted_selected
+		) %>
+	</span>
+
+</div>

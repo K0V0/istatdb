@@ -57,7 +57,7 @@ section.form {
 				padding-right: 0.25em;
 			}
 
-			input.allow_add_new {
+			input.allow_add_new, input[type=checkbox] {
 				display: inline-block;
 				line-height:1em;
 				vertical-align: middle;
