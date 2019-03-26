@@ -160,7 +160,7 @@ module NewFormsHelper
     # field 		- column in table (AR) that is field related to
     # type 			- type of textfield (like text_area, search_field)
     # default_val 	- default value if field has no value
-    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false, js_check_existence: false, html_class: "", required: false)
+    def new_form_plain_textfield(obj: nil, field: nil, type: :text_field, default_val:nil, autofocus: false, js_check_existence: false, html_class: "", required: false, disabled: false)
         output = ""
         klass = ""
         parent_obj_model_name = obj.object.class.name.underscore
@@ -171,7 +171,7 @@ module NewFormsHelper
         klass += "#{parent_obj_model_name}_#{field.to_s} #{html_class}"
         data = js_check_existence ? { model: parent_obj_model_name, field: field.to_s } : ""
 
-        options = { class: klass, autofocus: autofocus, required: required, data: data, autocomplete: 'off' }
+        options = { class: klass, autofocus: autofocus, required: required, data: data, autocomplete: 'off', disabled: disabled }
         options.merge!(value: default_val) if !default_val.nil?
         arguments = [ type, field ]
         arguments += [ options ]

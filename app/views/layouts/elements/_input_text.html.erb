@@ -1,5 +1,14 @@
 <div>
 
+	<%
+		if defined?(html_class).nil? == true
+			html_class = ""
+		end
+		if !(c = opts[:html_class]).blank?
+			html_class += " #{c.to_s}"
+		end
+	%>
+
 	<%= obj.label(
 		field_name,
 		class: (opts[:required] ? "required" : "")
@@ -13,7 +22,8 @@
 		autofocus: opts[:autofocus],
 		js_check_existence: opts[:js_check_existence],
         html_class: defined?(html_class) ? html_class : "",
-        required: opts[:required]
+        required: opts[:required],
+        disabled: opts[:disabled]
 	) %>
 
 	<% if opts[:google_search] %>

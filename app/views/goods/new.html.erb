@@ -89,6 +89,19 @@
 			<% end %>
 		</aside>
 
+		<%= new_edit(
+			obj: t,
+			fields: {
+				uncomplete: {
+					type: :check_box
+				},
+				uncomplete_reason: {
+					type: :text_area,
+					disabled: :disabled
+				}
+			}
+		) %>
+
 		<%= new_edit(obj: t, type: :submit, add_next: true) %>
 
 	<% end %>

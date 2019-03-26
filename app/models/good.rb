@@ -90,8 +90,17 @@ class Good < ActiveRecord::Base
 		.references(:manufacturers)
 	}
 
+	scope :uncomplete_filter, -> (pars) {
+		if pars == "0"
+			self.where(uncomplete: nil)
+		elsif pars == "1"
+			self.where(uncomplete: true)
+		end
+	}
+		
+
 	def self.ransackable_scopes(*pars)
-	    %i(impexpcompany_filter manufacturer_filter)
+	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter)
 	end
 
 	def local_taric_selected_or_created

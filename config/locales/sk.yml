@@ -55,6 +55,8 @@ sk:
     wait_until_backup: Táto operácia môže chvíľu trvať, počkajte. Na konci Vám bude ponúknutý súbor na stiahnutie.
 
   items_table:
+    added_by: pridal
+    last_mod: upravil
     results_count: počet výsledkov
     nothing_found: Podľa zadaných kritérií nebola nájdená žiadna položka
     no_items: Zatiaľ neboli pridané žiadne položky v tejto sekcii
@@ -67,6 +69,9 @@ sk:
   goods_search:
     impexpcompany_prompt: "nefiltrovať..."
     manufacturer_prompt: "všetci..."
+    uncompletes_prompt: "všetky..."
+    uncompletes_prompt_complete: "len došetrené"
+    uncompletes_prompt_not_complete: "len nedošetrené"
     google: Vyhľadať cez Google
 
   new_form_selects:

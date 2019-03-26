@@ -1,0 +1,29 @@
+<section class="decorated_wrap shrinked items_table">
+
+	<table class="rows_colored no_line_height">
+
+		<caption>
+			<%= t('goods.show_details.uncomplete_reason') %>
+		</caption>
+
+		<tbody>
+			<tr>
+				<td>
+					<%= @record.uncomplete_reason %>
+				</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th colspan="99">
+					<div id="items_table_total_count"> 
+						<%= t 'items_table.added_by' %>: <b><%= @record.user.email %><b>
+					</div>
+				</th>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>

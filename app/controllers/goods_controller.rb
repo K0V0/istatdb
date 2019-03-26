@@ -14,6 +14,8 @@ class GoodsController < ApplicationController
 			:ident,
 			:description,
 			:local_taric_id,
+			:uncomplete,
+			:uncomplete_reason,
 			local_taric_attributes: [:kncode, :description, :allow_search_as_new],
 			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
 			impexpcompany_ids: [],

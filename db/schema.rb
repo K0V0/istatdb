@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521115555) do
+ActiveRecord::Schema.define(version: 20190326084914) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -54,10 +54,12 @@ ActiveRecord::Schema.define(version: 20180521115555) do
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
     t.text     "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "local_taric_id"
     t.integer  "user_id"
+    t.boolean  "uncomplete"
+    t.text     "uncomplete_reason"
   end
 
   add_index "goods", ["local_taric_id"], name: "index_goods_on_local_taric_id"

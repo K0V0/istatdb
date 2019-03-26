@@ -1,6 +1,7 @@
 function Uom() {
     this.HELPER;
     this.HELPER = new UomHelper();
+    this.MATRIX;
     this.init();
 }
 
@@ -9,6 +10,13 @@ Uom.prototype = {
 
     init: function() {
         var toto = this;
+
+        this.MATRIX = $(document).find('article.uoms').first().clone();
+
+        $(document).on('input', 'article.uoms > div > div > input', function() {
+            logger('uom input text changed');
+            toto.validate_actions(this);
+        });
 
         // znema vyberu spravodajskej jednotky alebo dodavatela/odberatela pre tovar
         $('article.impexpcompany_select, article.manufacturer_select')
@@ -31,6 +39,7 @@ Uom.prototype = {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown options changed');
                 toto.validate(this);
+                toto.validate_actions(this);
             }
         });
 
@@ -41,6 +50,7 @@ Uom.prototype = {
                 logger('dropdown clicked');
                 toto.HELPER.set_user_manipulated(this);
             }
+            toto.validate_actions(this);
         });
 
         // zaznamena zmenu este po odchode focusu z elementu, napr prepinanie tabom
@@ -49,6 +59,22 @@ Uom.prototype = {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown focused out');
             }
+        });
+
+        $(document).on('click', 'button.add_uom', function() {
+
+        });
+
+        $(document).on('click', 'button.remove_uom', function() {
+
+        });
+
+        $(document).on('click', 'button.restore_uom', function() {
+
+        });
+
+        $(document).on('click', 'u.cancel_uom_delete', function() {
+
         });
     },
 
@@ -59,7 +85,6 @@ Uom.prototype = {
 
         $(document).find('article.uoms').find('select').each(function() {
             if ($(this).attr('id').indexOf(dropdowns_class) > 0) {
-                logger('dropdown found');
                 toto.HELPER.fillup_dropdown_data(this, data);
                 toto.validate(this);
             }
@@ -101,6 +126,10 @@ Uom.prototype = {
                 }
             });
         }
-    }
+    },
 
+    validate_actions: function(ref) {
+        logger("validate_actions");
+
+    }
 }
