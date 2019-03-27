@@ -166,6 +166,10 @@ UomHelper.prototype = {
             uoms.find('button.remove_uom').attr('disabled', true);
         }*/
 
+    },
+
+    delete_actions: function(ref) {
+
     }
 
 }
