@@ -1,32 +1,36 @@
 
-function UomData() {
-    var data = [];
-
-    this.add = function(d) {
-        data.push(d);
-    }
-
-    this.get = function() {
-        return data;
-    }
-
-    this.remove = function(id) {
-        for (var i=0; i<data.length; i++) {
-            if (parseInt(data[i].id) == parseInt(id)) {
-                data.splice(i, 1);
-                break;
-            }
-        }
+function UomData(data) {
+    this.data;
+    if (data === undefined) {
+        this.data = [];
+    } else {
+        this.data = data;
     }
 }
 
 UomData.prototype = {
     constructor: UomData,
 
+    add: function(d) {
+        this.data.push(d);
+    },
+
+    get: function() {
+        return Object.assign([], this.data);
+    },
+
+    remove: function(id) {
+        for (var i=0; i<this.data.length; i++) {
+            if (parseInt(this.data[i].id) == parseInt(id)) {
+                this.data.splice(i, 1);
+                break;
+            }
+        }
+    },
+
     contains: function(id) {
-        var data = this.get();
-        for (var i=0; i<data.length; i++) {
-            if (parseInt(data[i].id) == parseInt(id)) {
+        for (var i=0; i<this.data.length; i++) {
+            if (parseInt(this.data[i].id) == parseInt(id)) {
                 return true;
             }
         }
@@ -35,15 +39,15 @@ UomData.prototype = {
 
     generate_options: function() {
         var buff = "";
-        var data = this.get();
-        for (var i=0; i<data.length; i++) {
-            buff += '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+
+        for (var i=0; i<this.data.length; i++) {
+            buff += '<option value="'+ this.data[i].id +'">'+ this.data[i].name +'</option>';
         }
         return $(buff);
     },
 
     size: function(){
-        return this.get().length;
+        return this.data.length;
     }
 
 }
