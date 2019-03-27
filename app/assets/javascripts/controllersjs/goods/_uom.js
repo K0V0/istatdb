@@ -1,7 +1,8 @@
 function Uom() {
     this.HELPER;
     this.HELPER = new UomHelper();
-    this.MATRIX;
+    this.UOM_CLONE;
+    this.UOM_CLONE = new UomClone();
     this.init();
 }
 
@@ -11,11 +12,16 @@ Uom.prototype = {
     init: function() {
         var toto = this;
 
-        this.MATRIX = $(document).find('article.uoms').first().clone();
+        $(document)
+        .on('UOMadded', 'article.uoms', function() {
+            logger('aside changed');
+            toto.HELPER.unlock_actions($(this).children('div').first());
+        });
 
-        $(document).on('input', 'article.uoms > div > div > input', function() {
+        $(document)
+        .on('input', 'article.uoms > div > div > input', function() {
             logger('uom input text changed');
-            toto.validate_actions(this);
+            toto.HELPER.unlock_actions(this);
         });
 
         // znema vyberu spravodajskej jednotky alebo dodavatela/odberatela pre tovar
@@ -39,7 +45,7 @@ Uom.prototype = {
             if (toto.HELPER.is_dropdown(this)) {
                 logger('dropdown options changed');
                 toto.validate(this);
-                toto.validate_actions(this);
+                toto.HELPER.unlock_actions(this);
             }
         });
 
@@ -50,7 +56,7 @@ Uom.prototype = {
                 logger('dropdown clicked');
                 toto.HELPER.set_user_manipulated(this);
             }
-            toto.validate_actions(this);
+            toto.HELPER.unlock_actions(this);
         });
 
         // zaznamena zmenu este po odchode focusu z elementu, napr prepinanie tabom
@@ -62,7 +68,7 @@ Uom.prototype = {
         });
 
         $(document).on('click', 'button.add_uom', function() {
-
+            toto.UOM_CLONE.make_new($(this).closest('article'));
         });
 
         $(document).on('click', 'button.remove_uom', function() {
@@ -126,10 +132,6 @@ Uom.prototype = {
                 }
             });
         }
-    },
-
-    validate_actions: function(ref) {
-        logger("validate_actions");
-
     }
+
 }

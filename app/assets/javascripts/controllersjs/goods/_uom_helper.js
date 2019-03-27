@@ -45,31 +45,32 @@ UomHelper.prototype = {
 
     fillup_dropdown_data: function(ref, data) {
         var toto = this;
+        var tmpdata = new UomData(data.get());
         $(ref).children('option').each(function() {
             var id = $(this).val();
             if ($(this).is(':selected')) {
                 // vlastnost je aktualne vybrata
-                if (data.contains(id)) {
+                if (tmpdata.contains(id)) {
                     // vlasntost by bola duplicitne
-                    data.remove(id);
+                    tmpdata.remove(id);
                 } else {
                     // tovar uz tuto vlastnost neobsahuje
                     if ($(ref).data("user-manipulated") == "1") {
-                        
+
                     } else {
                         // kludne mozno odstranit
                         $(this).remove();
                     }
                 }
             } else {
-                if (data.contains(id)) {
-                    data.remove(id);
+                if (tmpdata.contains(id)) {
+                    tmpdata.remove(id);
                 } else {
                     $(this).remove();
                 }
             }
         });
-        $(ref).append(data.generate_options());
+        $(ref).append(tmpdata.generate_options());
     },
 
     set_user_manipulated: function(ref) {
@@ -110,7 +111,7 @@ UomHelper.prototype = {
         var assoc = this.get_regex_for_validation_messages_class(ref);
 
         this.remove_validation_messages(ref);
-       
+
         switch(num) {
             // polozka odstranena z atributov tovaru
             case 1:
@@ -138,6 +139,37 @@ UomHelper.prototype = {
     remove_validation_messages: function(ref) {
         var assoc = this.get_regex_for_validation_messages_class(ref);
         $(ref).closest('article').find('span.errormessage.uom_'+assoc).remove();
+    },
+
+    unlock_actions: function(ref) {
+        var uom = $(ref).closest('article');
+        var uoms = $(ref).closest('aside').find('article');
+        var valid = true;
+
+        uom.find('input[type=text]').each(function() {
+            if (!/^\d+$/.test($(this).val())) { valid = false; }
+        });
+
+        uom.find('select').each(function() {
+            if (!/^[^0][0-9]*$/.test($(this).val())) { valid = false; }
+        });
+
+        if (valid) {
+            uom.find('button.add_uom').attr('disabled', false);
+        } else {
+            uom.find('button.add_uom').attr('disabled', true);
+        }
+
+        /*if (uoms.length > 1) {
+            uoms.find('button.remove_uom').attr('disabled', false);
+        } else {
+            uoms.find('button.remove_uom').attr('disabled', true);
+        }*/
+
+    },
+
+    delete_actions: function(ref) {
+
     }
 
 }
