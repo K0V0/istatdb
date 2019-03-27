@@ -19,6 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :output, "log/cron_log.log"
+env :PATH, ENV["PATH"]
+
 every 1.day, at: '4:30 am' do
-  rake 'exchange_rates:load', :output => {:error => 'error.log', :standard => 'cron.log'}
+  rake 'exchange_rates:load'
 end
