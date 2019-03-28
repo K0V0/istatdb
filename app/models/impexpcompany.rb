@@ -19,4 +19,8 @@ class Impexpcompany < ActiveRecord::Base
 		order(company_name: :asc)
 	}
 
+	def name_field
+		self.company_name
+	end
+
 end
