@@ -20,7 +20,8 @@
 # Learn more: http://github.com/javan/whenever
 
 set :output, "log/cron_log.log"
-env :PATH, ENV["PATH"]
+env :PATH, ENV['PATH']
+env :GEM_PATH, ENV['GEM_PATH']
 
 every 1.day, at: '4:30 am' do
   rake 'exchange_rates:load'
