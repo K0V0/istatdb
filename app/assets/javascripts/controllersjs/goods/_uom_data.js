@@ -39,7 +39,6 @@ UomData.prototype = {
 
     generate_options: function() {
         var buff = "";
-
         for (var i=0; i<this.data.length; i++) {
             buff += '<option value="'+ this.data[i].id +'">'+ this.data[i].name +'</option>';
         }

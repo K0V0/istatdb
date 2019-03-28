@@ -1,4 +1,8 @@
 
+<%
+	disabled = obj.object.uom.blank?
+%>
+
 <article
 	class="decorated_wrap shrinked uoms"
 	id="uom_<%= index %>"
@@ -70,13 +74,9 @@
 			html_class: "uom_manufacturer"
 		) %>
 
-		<button class="button add_uom" type="button" disabled="disabled">
-			<%= t 'actions.add_next' %>
-		</button>
+		<%= button_tag(t('actions.add_next'), class: "button add_uom", disabled: disabled, type: :button ) %>
 
-		<button class="button danger remove_uom" type="button" disabled="disabled">
-			<%= t 'actions.delete' %>
-		</button>
+		<%= button_tag(t('actions.delete'), class: "button danger remove_uom", disabled: disabled, type: :button ) %>
 
 		<button class="button restore_uom" type="button" disabled="disabled">
 			<%= t 'actions.restore' %>

@@ -16,6 +16,7 @@ UomClone.prototype = {
         this.transfer_dropdown_data(new_clone, ref);
         this.rename_inputs(new_clone, new_id);
         this.clear_textfields(new_clone);
+        this.clear_delete_after_submit_link(new_clone);
 
         $(document).find('aside').append(new_clone);
         $(document).find('aside').children(new_clone).trigger('UOMadded');
@@ -61,8 +62,13 @@ UomClone.prototype = {
             var id = $(this).attr('id');
             var orig_data = original.find('#'+id).data();
             $(this).data(orig_data);
-            logger(orig_data);
         });
+    },
+
+    clear_delete_after_submit_link: function(klon) {
+        klon.find('input.delete_uom').attr('uom_id', "");
+        klon.children('input.delete_uom').val('false');
+        klon.removeClass('to_delete');
     }
 
 }

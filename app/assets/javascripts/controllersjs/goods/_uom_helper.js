@@ -143,33 +143,34 @@ UomHelper.prototype = {
 
     unlock_actions: function(ref) {
         var uom = $(ref).closest('article');
-        var uoms = $(ref).closest('aside').find('article');
         var valid = true;
 
         uom.find('input[type=text]').each(function() {
-            if (!/^\d+$/.test($(this).val())) { valid = false; }
+            if (!/^[\d]+([\.|,]?[\d]+)*$/.test($(this).val())) { valid = false; }
         });
-
-        uom.find('select').each(function() {
-            if (!/^[^0][0-9]*$/.test($(this).val())) { valid = false; }
-        });
-
+        if (uom.find('input.delete_uom').attr('uom_id') == "") {
+            uom.find('select').each(function() {
+                if (!/^[^0][0-9]*$/.test($(this).val())) { valid = false; }
+            });
+        }
         if (valid) {
             uom.find('button.add_uom').attr('disabled', false);
         } else {
             uom.find('button.add_uom').attr('disabled', true);
         }
-
-        /*if (uoms.length > 1) {
-            uoms.find('button.remove_uom').attr('disabled', false);
-        } else {
-            uoms.find('button.remove_uom').attr('disabled', true);
-        }*/
-
     },
 
     delete_actions: function(ref) {
+        var uoms = $(ref).closest('aside').find('article');
+        var uom = $(ref).closest('article');
 
+        if (uom.find('input.uom_val').val() != "") {
+            uom.find('button.remove_uom').attr('disabled', false);
+        } else if (uoms.length > 1) {
+            uom.find('button.remove_uom').attr('disabled', false);
+        } else {
+            uom.find('button.remove_uom').attr('disabled', true);
+        }
     }
 
 }

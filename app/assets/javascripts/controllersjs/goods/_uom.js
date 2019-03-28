@@ -16,12 +16,14 @@ Uom.prototype = {
         .on('UOMadded', 'article.uoms', function() {
             logger('aside changed');
             toto.HELPER.unlock_actions($(this).children('div').first());
+            toto.HELPER.delete_actions($(this).children('div').first());
         });
 
         $(document)
         .on('input', 'article.uoms > div > div > input', function() {
             logger('uom input text changed');
             toto.HELPER.unlock_actions(this);
+            toto.HELPER.delete_actions(this);
         });
 
         // znema vyberu spravodajskej jednotky alebo dodavatela/odberatela pre tovar
@@ -68,11 +70,11 @@ Uom.prototype = {
         });
 
         $(document).on('click', 'button.add_uom', function() {
-            toto.UOM_CLONE.make_new($(this).closest('article'));
+            toto.addUom(this);
         });
 
         $(document).on('click', 'button.remove_uom', function() {
-
+            toto.removeUom(this);
         });
 
         $(document).on('click', 'button.restore_uom', function() {
@@ -80,7 +82,7 @@ Uom.prototype = {
         });
 
         $(document).on('click', 'u.cancel_uom_delete', function() {
-
+            toto.cancelDeleteOnUploaded(this);
         });
     },
 
@@ -95,6 +97,35 @@ Uom.prototype = {
                 toto.validate(this);
             }
         });
+    },
+
+    removeUom: function(ref) {
+        var uom = $(ref).closest('article');
+        var uoms = $(ref).closest('aside').find('article');
+        if ($('body').is('.edit, .update')) {
+            if (uom.find('input.delete_uom').attr('uom_id') != "") {
+                uom.find('input.delete_uom').val('1');
+                uom.addClass('to_delete');
+            } else {
+                uom.remove();
+            }
+        } else {
+            if (uoms.length > 1) {
+                uom.remove();
+            } else {
+                uom.find('input.uom_val').val('');
+            }
+        }
+    },
+
+    cancelDeleteOnUploaded: function(ref) {
+        var uom = $(ref).closest('article');
+        uom.children('input.delete_uom').val('false');
+        uom.removeClass('to_delete');
+    },
+
+    addUom: function(ref) {
+        this.UOM_CLONE.make_new($(ref).closest('article'));
     },
 
     validate: function(ref) {
