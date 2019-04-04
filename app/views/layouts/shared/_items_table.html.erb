@@ -79,6 +79,15 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 				<% object.each do |item| %>
 
+					<%= item.try(:uncomplete) == true %>
+
+					<%  tr_class=""
+						if o = options[0].try(:[], :row_danger) 
+
+						end
+
+					%>
+
 					<tr>
 						<%= items_table_fields(item, fields) %>
 						<% if is_in_administrative %>
