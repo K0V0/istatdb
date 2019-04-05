@@ -3,13 +3,13 @@
 	<table class="rows_colored no_line_height">
 
 		<caption>
-			<%= t('goods.show_details.uncomplete_reason') %>
+			<%= caption %>
 		</caption>
 
 		<tbody>
 			<tr>
 				<td>
-					<%= @record.uncomplete_reason %>
+					<%= content %>
 				</td>
 			</tr>
 		</tbody>
@@ -18,7 +18,7 @@
 			<tr>
 				<th colspan="99">
 					<div id="items_table_total_count"> 
-						<%= t 'items_table.added_by' %>: <b><%= @record.user.email %><b>
+						<%= foot_content %>
 					</div>
 				</th>
 			</tr>

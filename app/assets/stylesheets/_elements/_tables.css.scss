@@ -105,6 +105,14 @@ table.rows_colored {
 			&:nth-child(2n-1) {
 				background-color: $table_row_odd_background;
 			}
+
+			&.danger {
+				background-color: $light_red;
+
+				&:hover {
+					background-color: $soft_red;
+				}
+			}
 		}
 	}
 

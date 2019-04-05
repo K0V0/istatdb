@@ -39,32 +39,30 @@
 
 	<%= render('layouts/shared/items_table',
 
-		object: @for_manufacturerstable,
+		object: @for_manufacturerstable_2,
 
 		fields: {
-			name: {
-
-			},
-			impexpcompany_manufacturers: [
-				local_taric: [
-					kncode: {
-						call_decorator: :num_to_kncode,
-						fill_if_empty: true,
-						is_link: true,
-						clipboard_button: true
-					}
-				],
-				incoterm: [
-					shortland: {
-						fill_if_empty: true,
-						clipboard_button: true
-					}
-				],
-				invoices_correct: {
+			manufacturer: [
+				name: {}
+			],
+			local_taric: [
+				kncode: {
+					call_decorator: :num_to_kncode,
 					fill_if_empty: true,
-					call_decorator: :bool_to_human,
+					is_link: true,
+					clipboard_button: true
 				}
-			]
+			],
+			incoterm: [
+				shortland: {
+					fill_if_empty: true,
+					clipboard_button: true
+				}
+			],
+			invoices_correct: {
+				fill_if_empty: true,
+				call_decorator: :bool_to_human,
+			}
 		},
 
 		options: [

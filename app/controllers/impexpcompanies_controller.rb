@@ -14,14 +14,14 @@ class ImpexpcompaniesController < ApplicationController
 
  	def show_action
 		super
-		# this include only taric code, incoterm and correct invoices mark
-		# only for impexpcompany shown
-		@for_manufacturerstable = @record.manufacturers
-			.joins(impexpcompany_manufacturers: [:local_taric, :incoterm])
-			.includes(impexpcompany_manufacturers: [:local_taric, :incoterm])
-			.default_order
+		
+		@for_manufacturerstable_2 = ImpexpcompanyManufacturer
+			.where(impexpcompany_id: @record.id)
+			.includes(:manufacturer, :incoterm, local_taric: :translations)
+			.order('manufacturers.name asc')
+
 		@for_tarictable = @record.goods
-			.preload(:local_taric)
+			.preload(local_taric: :translations)
 			.select('distinct "goods"."local_taric_id"')
 			.default_order
 	end

@@ -97,7 +97,7 @@
 				},
 				uncomplete_reason: {
 					type: :text_area,
-					disabled: :disabled
+					disabled: (@record.uncomplete == true) ? false : "disabled"
 				}
 			}
 		) %>

@@ -79,16 +79,16 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 
 				<% object.each do |item| %>
 
-					<%= item.try(:uncomplete) == true %>
-
-					<%  tr_class=""
-						if o = options[0].try(:[], :row_danger) 
-
+					<% 
+					tr_class=""
+					if o = options[0].try(:[], :row_danger) 
+						if item.try(o.keys.first) == o.values.first
+							tr_class = "danger"
 						end
-
+					end
 					%>
 
-					<tr>
+					<tr class="<%= tr_class %>">
 						<%= items_table_fields(item, fields) %>
 						<% if is_in_administrative %>
 							<%= items_table_row_administrative_buttons(item) %>

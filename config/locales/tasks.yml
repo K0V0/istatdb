@@ -6,6 +6,7 @@ en:
       task:
         task: Task
         created_at: Submitted
+        updated_at: Updated
         done: Is done
         type_filter: Type of task
         done_filter: Hide completed
@@ -34,6 +35,7 @@ sk:
       task:
         task: Úloha
         created_at: Zadané dňa
+        updated_at: Zmena
         done: Dokončená
         type_filter: Typ
         done_filter: Iba nedokončené

@@ -12,7 +12,7 @@ article.tasks {
                      white-space: nowrap;
                 }
 
-                &.tasks-created_at {
+                &.tasks-created_at, &.tasks-updated_at {
                     white-space: nowrap;
                 }
 

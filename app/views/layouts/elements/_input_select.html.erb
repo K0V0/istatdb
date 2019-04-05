@@ -2,7 +2,7 @@
 	is_blank = (defined?(blank_text)).nil? ? false : blank_text
 	is_disabled = (collection.nil? || !collection.collect(&:id).any?) && (is_blank != false) ? 'disabled' : false
 	any_errors = !obj.object.errors[collection.model_name.to_s.underscore].blank?
-	is_selected = defined?(selected).nil? ? nil : selected.send(method_to_get_vals)
+	is_selected = defined?(selected).nil? ? nil : selected.try(method_to_get_vals)
 
 	klass_html = any_errors ? "error" : ""
 	klass_html += defined?(html_class) ? " #{html_class}" : ""
