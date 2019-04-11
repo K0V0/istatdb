@@ -16,6 +16,7 @@ class LocalTaric < ActiveRecord::Base
 	validate :record_identical
 
 	before_destroy :check_if_used
+	before_validation :normalize
 
 	scope :default_order, -> {
 		includes(:translations)
@@ -59,6 +60,10 @@ class LocalTaric < ActiveRecord::Base
 			errors.add(:base, :is_used)
 			return false
 		end
+	end
+
+	def normalize
+		self.kncode = self.kncode.gsub(/\s+/, "")
 	end
 
 end

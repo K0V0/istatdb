@@ -46,3 +46,20 @@ String.prototype.classycase = function() {
 
 	return this.capitalize().camelize();
 }
+
+String.prototype.toHsCode = function () {
+    var ret = [];
+    var spc = 0;
+    var str = this.replace(/\s/g, "");
+
+    for(var i=0; i<str.length; i++) {
+        ret.push(str[i]);
+        if (i >= 2) { spc++; }
+        if ((spc == 2)) {
+            ret.push(" ");
+            spc = 0;
+        }
+    }
+
+    return ret.join("").trim();
+};
