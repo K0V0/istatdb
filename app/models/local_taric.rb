@@ -18,6 +18,10 @@ class LocalTaric < ActiveRecord::Base
 	before_destroy :check_if_used
 	before_validation :normalize
 
+	ransacker :kncode, formatter: proc { |r| r.split.join }, type: :string do
+        Arel.sql("kncode")
+    end
+
 	scope :default_order, -> {
 		includes(:translations)
 		.order(kncode: :asc)

@@ -1,7 +1,7 @@
 function SearchItemActions() {
 	this.init();
-	this.rememberLastSearches = new RememberLastSearches();
-	this.lastSearchSwitchTimer = null;
+	//this.rememberLastSearches = new RememberLastSearches();
+	//this.lastSearchSwitchTimer = null;
 }
 
 SearchItemActions.prototype = {
@@ -11,19 +11,19 @@ SearchItemActions.prototype = {
 		var T = this;
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
-			if ($(this).hasClass('paused')) {
+			//if ($(this).hasClass('paused')) {
 
-			} else {
+			//} else {
 				$(this).append('<input type="hidden" name="page" value="1">');
 				var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
 				inputs.val($(e.target).val());
 			  	$(this).submit();
-			}
+			//}
 		});
 
-		$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {
+		/*$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {
 			T.rememberLastSearches.add($(this));
-		});
+		});*/
 
 		$(document).on('click', '#clear_search', function() {
 			$(this).closest('section.search_bar').find('input[type="search"]').val('');
@@ -38,7 +38,7 @@ SearchItemActions.prototype = {
 			window.open('http://google.com/search?q=' + searched_term);
 		});
 
-		$(document).on('click', '#last_searches', function() {
+		/*$(document).on('click', '#last_searches', function() {
 			$(document).find("section.search_bar > form").addClass('paused');
 			window.clearTimeout(T.lastSearchSwitchTimer);
 			var res = T.rememberLastSearches.rewind($(this));
@@ -48,6 +48,6 @@ SearchItemActions.prototype = {
 				.removeClass('paused')
 				.submit();
 			}, 1500);
-		});
+		});*/
 	}
 }

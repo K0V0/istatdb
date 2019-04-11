@@ -1,3 +1,4 @@
+<% klass = (action_name == "show") ? "hidden" : "" %>
 <% 
 output = ""
 
@@ -9,7 +10,7 @@ if @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}").b
 			action: "administrative"
 		},
 		remote: true,
-		class: "button administration_from_search", 
+		class: "button administration_from_search #{klass}", 
 		id: "#{controller_name.singularize}_administration_from_search"
 	) 
 
@@ -22,7 +23,7 @@ else
 			action: "end_administrative"
 		},
 		remote: true,
-		class: "button selected administration_from_search", 
+		class: "button selected administration_from_search #{klass}", 
 		id: "#{controller_name.singularize}_administration_from_search"
 	)
 
