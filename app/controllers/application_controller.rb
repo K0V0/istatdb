@@ -141,6 +141,8 @@ class ApplicationController < ActionController::Base
     @body_class = "#{action_name} #{controller_name}"
     @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')
     @body_class += " tride" if setting_is_set?(:gui_enable_3d)
+    @items_table_class = ""
+    @items_table_class += "searchbar_pinned" if setting_is_set?(:gui_pin_searchbar)
     params[:per] = setting(:gui_per_page)
     remember_param :page    ## page number
     remember_param :q       ## search

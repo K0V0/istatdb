@@ -16,6 +16,7 @@ en:
         per_page: Number of results to be shown
         show_footer: Show footer (bottom strip with ads)
         enable_3d: Enable 3D effects
+        pin_searchbar: Pin Search panels
       backup:
         section_window_title: Backup - FTP settings
         actions_window_title: Backup
@@ -54,7 +55,8 @@ sk:
         section_window_title: Grafické rozhranie
         per_page: Počet výsledkov zobrazených na jednu stránku
         show_footer: Zobraziť pätu (spodný pruh s reklamou)
-        enable_3d: zapnúť 3D vzhľad
+        enable_3d: Zapnúť 3D vzhľad
+        pin_searchbar: Pripnúť panel s vyhľadávačom (scrollovať len tabuľky)
       backup:
         section_window_title: Zálohovanie - nastavenie FTP
         actions_window_title: Zálohovanie

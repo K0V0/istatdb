@@ -34,7 +34,8 @@ class Setting < ActiveRecord::Base
 		{
 			gui_per_page: 		"10",
 			gui_show_footer: 	"1",
-			gui_enable_3d: 		"1"
+			gui_enable_3d: 		"1",
+			gui_pin_searchbar: 	"1"
 		}
 	end
 

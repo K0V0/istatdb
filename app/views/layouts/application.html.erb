@@ -54,7 +54,7 @@
 
 			<% if content_for? :items_table %>
 
-				<article class="index <%= controller_name %>">
+				<article class="index <%= controller_name %> <%= @items_table_class %>">
 					<%= yield :items_table %>
 				</article>
 
