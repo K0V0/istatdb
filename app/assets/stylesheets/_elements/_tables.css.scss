@@ -56,6 +56,27 @@ table {
 			@include links_transitions();
 			line-height:1.25em;
 
+			&.contains_note {
+
+				td:first-child {
+
+					&::after {
+						@include links_transitions();
+						content: 'i';
+						display: inline-block;
+						font-weight: bold;
+						width:1em;
+						height: 1em;
+						text-align: center;
+						background-color: $black;
+						color: $white;
+						line-height: 1em;
+						margin: 0.125em;
+						border-radius: 50%;
+					}
+				}
+			}
+
 			td {
 				vertical-align: middle;
 
@@ -142,6 +163,13 @@ table.with_efects {
 			&:hover {
 				background-color: $table_row_hover_background;
 				color: $table_row_hover_text;
+
+				td:first-child {
+
+					&::after {
+						background-color: $strong_black;
+					}
+				}
 			}
 
 			/*&:active,*/ &.selected {

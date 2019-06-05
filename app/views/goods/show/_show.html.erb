@@ -98,7 +98,9 @@
 
 	<%= render('/goods/show/calculator_list') %>
 
-	<% if !@record.uncomplete.nil?&&!@record.uncomplete==false %>
+	<%# if !@record.uncomplete.nil?&&!@record.uncomplete==false %>
+
+	<% if !@record.uncomplete_reason.blank? %>
 
 		<%= render(
 			'/layouts/shared/items_table/note_window',

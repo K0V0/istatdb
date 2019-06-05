@@ -86,6 +86,13 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 							tr_class = "danger"
 						end
 					end
+					if o = options[0].try(:[], :row_changed) 
+						if i = item.try(o.keys.first)
+							if !i.try(o.values.first)
+								tr_class += " contains_note"
+							end
+						end
+					end
 					%>
 
 					<tr class="<%= tr_class %>">

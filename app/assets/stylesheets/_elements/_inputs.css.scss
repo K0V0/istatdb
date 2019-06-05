@@ -177,14 +177,22 @@ label {
 }
 
 .copy_to_clipboard {
-	margin: 0 0.25em;
+	margin-left: 0.125em;
+	margin-top: 0.125em;
+	margin-bottom: 0.125em;
+	border-radius: 50%;
+	width: 1em;
+	height: 1em;
+	line-height: 1em;
+	text-align: center;
 	cursor: pointer;
 	font-weight: normal;
 	display: inline-block;
-	transition: transform 0.2s ease-in-out;
+	@include links_transitions();
 
 	&:hover {
-		transform: rotate(-45deg);
+		background-color: $strong_black;
+		color: $white;
 	}
 }
 

@@ -20,6 +20,10 @@ b.copy_to_clipboard {
 
 nav {
     z-index: 7;
+
+    li.active {
+        z-index: 8;
+    }
 }
 
 ::-webkit-scrollbar {

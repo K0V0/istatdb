@@ -8,7 +8,7 @@ body.index, body.search, body.administrative, body.delete, body.change_status {
 			display: flex;
 
 			&.searchbar_pinned {
-				min-height: 12em;
+				min-height: 1em;
 			}
 
 			section.items_table {
