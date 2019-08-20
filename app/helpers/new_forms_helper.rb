@@ -62,25 +62,44 @@ module NewFormsHelper
 		# coll - passed in collection to select from
 		mem_param_name = "#{coll.name.underscore}"
 		coll_name = "#{mem_param_name}_ids"
+
+        #logger "v helperi"
+        #logger obj.try("#{coll.name.pluralize.underscore}").length
+        #logger obj.try("#{coll.name.pluralize.underscore}").ids
+        ## tu su tiez ako v kontroleri pocet rovnaky ale nevidno ids
+        #logger obj.try("#{coll.name.pluralize.underscore}").first.id
+        ## toto zobrazi id
+        #logger obj.try("#{coll.name.pluralize.underscore}").map(&:id)
+        ## toto zobrazi array of ids
+
     	# this loads associations of passed in obj to match checked checkboxes later
-		associated_records = obj.try("#{coll.name.pluralize.underscore}").try(:pluck, :id)
+		#associated_records = obj.try("#{coll.name.pluralize.underscore}").try(:pluck, :id)
+        associated_records = obj.try("#{coll.name.pluralize.underscore}").map(&:id)
+
+        #logger associated_records
+
 		# this checks for params hash to catch if unsaved
 		pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 		# id of association that is search limited (filtered) by
 		id_from_search_filter = get_selected_filter_obj_id_from_mem(mem_param_name)
+        # ids remembered from last good attributes association
+        #ids_from_repeater_mem = @MEM.send("last_#{coll.name.pluralize.underscore}_#{controller_name.singularize.underscore}")
 
 		if coll.length > 0
 	    	coll.each do |c|
 	    		output = ""
                 # do this only on edit - preloads values from parent object
                 # must do hack, because after validation checkboxes defaultly preselected appeared (parent associations)
-	    		record_is_in_associated = (action_name == "edit" ? associated_records.include?(c.id) : false)
+	    		#record_is_in_associated = (action_name == "edit" ? associated_records.include?(c.id) : false)
+                record_is_in_associated = (associated_records.include?(c.id))
 	    		# check comparing to params if should be checked (e.g. render after validation fail)
                 record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
                 # preselecting for faster UX if searched with filters, do only on new
 	    		was_selected_in_search_bar_filter = (action_name == "new" ? id_from_search_filter == c.id : false)
+                # button "repead last associated attributes was pushed"
+                #commanded_to_be_repeated = (params.has_key?(:apply_last_select) ? ids_from_repeater_mem.include?(c.id) : false)
 
-	    		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter
+	    		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter#||#commanded_to_be_repeated
 
 	    		output += "<tr><td>"
 		    		output += check_box(

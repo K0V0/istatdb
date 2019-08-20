@@ -14,7 +14,8 @@ GOODS = {
 		uom: ["on_reload"],
 		search_on_google: ["on_reload"],
 		uncomplete_handler: ["on_reload"],
-		goods_validations: ["on_reload"]
+		goods_validations: ["on_reload"],
+		repeater_handler: ["on_reload"]
 	}
 }
 

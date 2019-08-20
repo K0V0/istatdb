@@ -58,6 +58,12 @@ Rails.application.routes.draw do
     to: "goods#index",
     as: "goods"
 
+  # znovu pridat podla posledneho zaradenia
+  #get "goodsdb/repeat_association",
+    #to: "goods#apply_last_select",
+    #as: "repeated_assoc_good"
+  
+
   # pridat novy tovar
   get "goodsdb/new",
     to: "goods#new",

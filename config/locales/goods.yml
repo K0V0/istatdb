@@ -28,6 +28,7 @@ en:
       good:
         create: Add good(s)
         update: Update item details
+        repeat: Use last associated attributes
 
   goods:
     new_form_texts:
@@ -94,6 +95,7 @@ sk:
       good:
         create: Pridať tovarovú položku
         update: Upraviť tovarovú položku
+        repeat: Použiť posledné zaradenie
 
   goods:
     new_form_texts:

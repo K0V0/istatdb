@@ -126,7 +126,14 @@ module ApplicationConcern
     			ids_arr.push(params[:q]["#{par.to_s.singularize}_filter".to_sym].to_i)
     		end
 
+    		if is_new&&!par.to_s.is_singular?&&params.has_key?(:apply_last_select)
+    			ids_from_repeater_mem = @MEM.send("last_#{par}_#{controller_name.singularize.underscore}")
+    			logger ids_from_repeater_mem
+    			ids_arr.push(ids_from_repeater_mem)
+    		end
+
     		cnt = "#{controller_name.singularize.underscore}".to_sym
+
     		if !is_new&&par.to_s.is_singular?
     			assoc = "#{par.to_s}_id"
     			id = params[cnt][assoc.to_sym] if params.deep_has_key?(cnt, assoc)

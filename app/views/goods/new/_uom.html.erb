@@ -8,7 +8,7 @@
 	id="uom_<%= index %>"
 >
 
-	 <input id="good_uoms_attributes_<%= index %>__destroy" class="delete_uom" type="hidden" value="false" name="good[uoms_attributes][<%= index %>][_destroy]" uom_id="<%= "#{obj.object.id}" %>">
+	<input id="good_uoms_attributes_<%= index %>__destroy" class="delete_uom" type="hidden" value="false" name="good[uoms_attributes][<%= index %>][_destroy]" uom_id="<%= "#{obj.object.id}" %>">
 
 	<div class="caption">
 		<%= Uom.model_name.human %>

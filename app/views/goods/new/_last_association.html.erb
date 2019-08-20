@@ -1,0 +1,21 @@
+<article
+	class="decorated_wrap shrinked uoms"
+>
+
+	<div>
+		<%= link_to(
+			t('helpers.submit.good.repeat'),
+			{ 
+				controller: :goods, 
+				action: action_name, 
+				apply_last_select: true,
+				item: '',
+				description: ''
+
+			},
+			class: "button important",
+			id: 'good_repeat_assignment'
+		) %>
+	</div>
+
+</article>

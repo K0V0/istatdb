@@ -2,6 +2,11 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
+	#def apply_last_select
+		#url = Rails.application.routes.recognize_path(request.referrer)
+		#redirect_to({ action: url[:action], controller: url[:controller], apply_last_select: true })
+	#end
+
 	private
 
 	def _searcher_settings
@@ -51,6 +56,7 @@ class GoodsController < ApplicationController
 
 	def _around_new
 		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
+		get_last_selects
 	end
 
 	def _around_create_after_save_failed
@@ -59,6 +65,7 @@ class GoodsController < ApplicationController
 
 	def _around_edit
 		build_if_empty :impexpcompanies, :manufacturers, :local_taric
+		get_last_selects
 		load_uoms
 	end
 
@@ -77,11 +84,40 @@ class GoodsController < ApplicationController
 		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms
 	end
 
+	def _around_create_after_save_ok
+		remember_last_select
+	end
+
+	def _around_update_after_save_ok
+		remember_last_select
+	end
+
+	def remember_last_select
+		controller_mem_set(:last_taric, @record.local_taric.id)
+		controller_mem_set(:last_manufacturers, @record.manufacturers.ids)
+		controller_mem_set(:last_impexpcompanies, @record.impexpcompanies.ids)
+	end
+
+	def get_last_selects
+		if params.has_key?(:apply_last_select)
+			@record.ident = params[:item]
+			@record.description = params[:description]
+			@record.local_taric = LocalTaric.find(controller_mem_get(:last_taric))
+			@record.manufacturers = Manufacturer.find(controller_mem_get(:last_manufacturers))
+			#logger "v kontrolleri"
+			#logger @record.manufacturers.length
+			@record.impexpcompanies = Impexpcompany.find(controller_mem_get(:last_impexpcompanies))
+			## ok, funguje
+		end
+	end
+
 	### OVERRIDES
 
 	def show_action
 		super
 		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
 	end
+
+
 
 end
