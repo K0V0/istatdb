@@ -12,15 +12,15 @@ RepeaterHandler.prototype = {
         totok.elem = $(document).find('a#good_repeat_assignment');
         totok.url = totok.elem.attr('href');
 
-        totok.inputChange(totok, $(document).find('input#good_ident'));
-        totok.textareaChange(totok, $(document).find('textarea#good_description'));
+        totok.inputChange(totok, $(document).find('input#good_ident'), 'item');
+        totok.inputChange(totok, $(document).find('textarea#good_description'), 'description');
 
     	$(document).on('keyup', 'input#good_ident', function() {
-            totok.inputChange(totok, this);
+            totok.inputChange(totok, this, 'item');
     	});
 
         $(document).on('keyup', 'textarea#good_description', function() {
-            totok.textareaChange(totok, this);
+            totok.inputChange(totok, this, 'description');
         });
     },
 
@@ -44,13 +44,8 @@ RepeaterHandler.prototype = {
         return baseURL + "?" + newAdditionalURL + rows_txt;
     },
 
-    textareaChange: function(totok, dis) {
-        totok.url = totok.editURLparameter(totok.url, 'description', $(dis).text());
-        totok.elem.attr('href', totok.url);
-    },
-
-    inputChange: function(totok, dis) {
-        totok.url = totok.editURLparameter(totok.url, 'item', $(dis).val());
+    inputChange: function(totok, dis, name) {
+        totok.url = totok.editURLparameter(totok.url, name, $(dis).val());
         totok.elem.attr('href', totok.url);
     }
 }
