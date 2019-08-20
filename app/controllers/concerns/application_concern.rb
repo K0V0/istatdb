@@ -128,8 +128,10 @@ module ApplicationConcern
 
     		if is_new&&!par.to_s.is_singular?&&params.has_key?(:apply_last_select)
     			ids_from_repeater_mem = @MEM.send("last_#{par}_#{controller_name.singularize.underscore}")
+    			ids_from_repeater_mem = [] if ids_from_repeater_mem.nil?
     			logger ids_from_repeater_mem
-    			ids_arr.push(ids_from_repeater_mem)
+    			#ids_arr.push(ids_from_repeater_mem)
+    			ids_arr = ids_arr|ids_from_repeater_mem
     		end
 
     		cnt = "#{controller_name.singularize.underscore}".to_sym
@@ -163,8 +165,12 @@ module ApplicationConcern
  				ids_arr.push(model.default_order.limit(ids_to_load_count).pluck(:id))
  			end
 
- 			result = model.where(id: ids_arr.flatten).order_as_specified(id: ids_arr.flatten)
- 			instance_variable_set("@#{par.to_s.pluralize}", result)
+ 			logger ids_arr
+
+ 			if !ids_arr.blank? 
+ 				result = model.where(id: ids_arr.flatten).order_as_specified(id: ids_arr.flatten)
+ 				instance_variable_set("@#{par.to_s.pluralize}", result)
+ 			end
  		end
  	end
 

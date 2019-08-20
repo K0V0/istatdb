@@ -100,13 +100,16 @@ class GoodsController < ApplicationController
 
 	def get_last_selects
 		if params.has_key?(:apply_last_select)
+			taric = controller_mem_get(:last_taric)
+			manufacturers = controller_mem_get(:last_manufacturers)
+			impexpcompanies = controller_mem_get(:last_impexpcompanies)
 			@record.ident = params[:item]
 			@record.description = params[:description]
-			@record.local_taric = LocalTaric.find(controller_mem_get(:last_taric))
-			@record.manufacturers = Manufacturer.find(controller_mem_get(:last_manufacturers))
+			@record.local_taric = LocalTaric.find(taric) if !taric.blank?
+			@record.manufacturers = Manufacturer.find(manufacturers) if !manufacturers.blank?
 			#logger "v kontrolleri"
 			#logger @record.manufacturers.length
-			@record.impexpcompanies = Impexpcompany.find(controller_mem_get(:last_impexpcompanies))
+			@record.impexpcompanies = Impexpcompany.find(impexpcompanies) if !impexpcompanies.blank?
 			## ok, funguje
 		end
 	end
