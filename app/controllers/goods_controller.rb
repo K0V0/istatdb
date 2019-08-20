@@ -2,11 +2,6 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
-	#def apply_last_select
-		#url = Rails.application.routes.recognize_path(request.referrer)
-		#redirect_to({ action: url[:action], controller: url[:controller], apply_last_select: true })
-	#end
-
 	private
 
 	def _searcher_settings
@@ -93,22 +88,20 @@ class GoodsController < ApplicationController
 	end
 
 	def remember_last_select
-		controller_mem_set(:last_taric, @record.local_taric.id)
+		controller_mem_set(:last_local_taric, @record.local_taric.id)
 		controller_mem_set(:last_manufacturers, @record.manufacturers.ids)
 		controller_mem_set(:last_impexpcompanies, @record.impexpcompanies.ids)
 	end
 
 	def get_last_selects
 		if params.has_key?(:apply_last_select)
-			taric = controller_mem_get(:last_taric)
+			taric = controller_mem_get(:last_local_taric)
 			manufacturers = controller_mem_get(:last_manufacturers)
 			impexpcompanies = controller_mem_get(:last_impexpcompanies)
 			@record.ident = params[:item]
 			@record.description = params[:description]
 			@record.local_taric = LocalTaric.find(taric) if !taric.blank?
 			@record.manufacturers = Manufacturer.find(manufacturers) if !manufacturers.blank?
-			#logger "v kontrolleri"
-			#logger @record.manufacturers.length
 			@record.impexpcompanies = Impexpcompany.find(impexpcompanies) if !impexpcompanies.blank?
 			## ok, funguje
 		end

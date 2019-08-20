@@ -22,7 +22,7 @@
 			}
 		) %>
 
-		<%= render('goods/new/last_association') %>
+		<%= render('goods/new/last_association') if (action_name=='new'||action_name=='create') %>
 
 		<%= new_edit(
 			obj: t,
