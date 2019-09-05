@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190326084914) do
+ActiveRecord::Schema.define(version: 20190905081522) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20190326084914) do
     t.integer  "user_id"
     t.boolean  "uncomplete"
     t.text     "uncomplete_reason"
+    t.text     "note"
   end
 
   add_index "goods", ["local_taric_id"], name: "index_goods_on_local_taric_id"
@@ -226,18 +227,6 @@ ActiveRecord::Schema.define(version: 20190326084914) do
   create_table "trade_types", force: :cascade do |t|
     t.text "type"
   end
-
-  create_table "units", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "good_id"
-    t.integer  "manufacturer_id"
-    t.integer  "impexpcompany_id"
-  end
-
-  add_index "units", ["good_id"], name: "index_units_on_good_id"
-  add_index "units", ["impexpcompany_id"], name: "index_units_on_impexpcompany_id"
-  add_index "units", ["manufacturer_id"], name: "index_units_on_manufacturer_id"
 
   create_table "uom_type_translations", force: :cascade do |t|
     t.integer  "uom_type_id", null: false

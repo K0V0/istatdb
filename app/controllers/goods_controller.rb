@@ -16,6 +16,7 @@ class GoodsController < ApplicationController
 			:local_taric_id,
 			:uncomplete,
 			:uncomplete_reason,
+			:note,
 			local_taric_attributes: [:kncode, :description, :allow_search_as_new],
 			impexpcompanies_attributes: [:id, :company_name, :allow_search_as_new],
 			impexpcompany_ids: [],
@@ -60,7 +61,7 @@ class GoodsController < ApplicationController
 
 	def _around_edit
 		build_if_empty :impexpcompanies, :manufacturers, :local_taric
-		get_last_selects
+		#get_last_selects
 		load_uoms
 	end
 

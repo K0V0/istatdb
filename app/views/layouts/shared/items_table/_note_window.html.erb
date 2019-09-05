@@ -1,4 +1,11 @@
-<section class="decorated_wrap shrinked items_table">
+<%
+	html_class = ""
+	if defined?(not_resolved)
+		html_class = not_resolved ? "not_resolved" : ""
+	end
+%>
+
+<section class="decorated_wrap shrinked items_table <%= html_class %>">
 
 	<table class="rows_colored no_line_height">
 

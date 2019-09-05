@@ -106,6 +106,18 @@
 			'/layouts/shared/items_table/note_window',
 			caption: t('goods.show_details.uncomplete_reason'),
 			content: simple_format(@record.uncomplete_reason, {}, wrapper_tag: :span),
+			foot_content: "#{t('items_table.added_by')}: <b>#{@record.user.email}<b>".html_safe,
+			not_resolved: !@record.uncomplete.nil?&&!@record.uncomplete==false
+		) %>
+		
+	<% end %>
+
+	<% if !@record.note.blank? %>
+
+		<%= render(
+			'/layouts/shared/items_table/note_window',
+			caption: t('activerecord.attributes.good.note'),
+			content: simple_format(@record.note, {}, wrapper_tag: :span),
 			foot_content: "#{t('items_table.added_by')}: <b>#{@record.user.email}<b>".html_safe
 		) %>
 		

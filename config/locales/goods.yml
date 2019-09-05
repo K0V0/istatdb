@@ -9,6 +9,7 @@ en:
         impexpcompany_filter: Filter by intrastat subject
         manufacturer_filter: Filter by consumer/manufacturer
         uncomplete_filter: Filter by state
+        note: Notes
     errors:
       models:
         good:
@@ -75,6 +76,7 @@ sk:
         impexpcompany_filter: Spravodajská jednotka
         manufacturer_filter: Výrobca/odberateľ
         uncomplete_filter: Stav
+        note: Poznámky
     errors:
       models:
         good:

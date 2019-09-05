@@ -104,6 +104,15 @@
 			}
 		) %>
 
+		<%= new_edit(
+			obj: t,
+			fields: {
+				note: {
+					type: :text_area
+				}
+			}
+		) %>
+
 		<%= new_edit(obj: t, type: :submit, add_next: true) %>
 
 	<% end %>
