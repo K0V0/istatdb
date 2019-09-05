@@ -1,3 +1,9 @@
+
+<% 
+show_flash = !flash.empty? && user_signed_in? 
+@body_class += " noscroll" if show_flash
+%>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 
@@ -25,8 +31,6 @@
 		<input type="checkbox" id="show_topmenu" role="button" class="hidden">
 		<input type="checkbox" id="show_paginator" role="button" class="hidden">
 		<input type="checkbox" id="show_searchpanel_opts" role="button" class="hidden" checked="checked">
-
-		<% show_flash = !flash.empty? && user_signed_in? %>
 
 		<div class="flash_messages <%= show_flash ? 'visible' : '' %>">
 			<%= render('layouts/base/flash_messages') if show_flash %>

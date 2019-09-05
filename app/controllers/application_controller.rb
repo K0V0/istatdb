@@ -193,6 +193,7 @@ class ApplicationController < ActionController::Base
         if params.has_key? :add_next
           if params[:add_next] == '1'
             @record = @record.dup
+            flash.now[:item_added] = t('actions.added_successfully')
             _around_do_add_another
             render "#{@render_command_prepend}new"
             continue = false

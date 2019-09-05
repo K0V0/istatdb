@@ -22,5 +22,6 @@ FlashMessages.prototype = {
     hideMessages: function() {
         $('body > div.flash_messages').children().remove();
         $('body > div.flash_messages').removeClass('visible');
+        $('body').removeClass('noscroll');
     }
 }
