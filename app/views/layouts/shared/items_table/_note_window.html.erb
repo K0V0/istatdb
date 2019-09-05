@@ -1,7 +1,8 @@
 <%
 	html_class = ""
 	if defined?(not_resolved)
-		html_class = not_resolved ? "not_resolved" : ""
+		html_class = not_resolved === true ? "not_resolved" : ""
+		html_class = not_resolved === false ? "resolved" : ""
 	end
 %>
 

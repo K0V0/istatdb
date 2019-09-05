@@ -27,6 +27,35 @@
 					}
 				}
 			}
+
+			&.not_resolved {
+
+				tr {
+					background-color: $soft_red;
+				}
+			}
 		}
+	}
+
+
+}
+
+article.goods.show {
+
+	section.not_resolved {
+
+		table {
+
+			tbody {
+
+				tr {
+					background-color: $soft_red;
+				}
+			}	
+		}
+	}
+
+	section.resolved {
+		
 	}
 }
