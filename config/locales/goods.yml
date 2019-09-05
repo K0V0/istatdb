@@ -149,3 +149,8 @@ sk:
       text14: kde sa nachádza portfólio daného výrobcu/odberateľa a určiť zaradenie tovaru na základe podobnosti/podobnej charakteristiky s inými tovarmi z portfólia
       text15: kde sa môže nachádzať explicitná informácia o tom, že doklady týkajúce sa tohoto subjektu obsahujú potrebné a pravdivé informácie ohľadom tovaru a teda nie je potrebné jeho zaradenie do databázy
       text16: kde sa môže nachádzať explicitná informácia o tom, že predmetný subjekt vyrába/odoberá len jeden druh tovarov a teda všetky dokumenty so všetkými položkami vždy patria pod jednu nomenklatúru
+    about_item:
+      about: O položke
+      added: Pridaná
+      updated: Posledná úprava
+      added_by: Pridal 

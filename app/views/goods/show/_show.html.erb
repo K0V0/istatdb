@@ -14,7 +14,7 @@
 					}
 				],
 				[:local_taric, :description]
-			]
+			],
 		]
 	) %>
 
@@ -122,5 +122,17 @@
 		) %>
 		
 	<% end %>
+
+	<% user_that_added = @record.user.blank? ? "---" : @record.user.email %>
+
+	<%= render(
+		'/layouts/shared/items_table/note_window',
+		caption: t('goods.about_item.about'),
+		content: "
+			<b>#{t('goods.about_item.added')}:</b> #{@record.created_at}
+			<br><b>#{t('goods.about_item.updated')}:</b> #{@record.updated_at}
+			".html_safe,
+		foot_content: "#{t('items_table.added_by')}: <b>#{user_that_added}<b>".html_safe
+	) %>
 
 <% end %>

@@ -8,7 +8,8 @@ ALL = {
 		confirmation: ['on_ready'],
 		copy_paste: ['on_reload'],
 		number_format: ['on_reload'],
-		tooltip: ['on_reload', 'on_change']
+		tooltip: ['on_reload', 'on_change'],
+		hotkeys: ['on_ready']
 	},
 
 	_new_edit_update_create_update_multiple_edit_multiple: {
