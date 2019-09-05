@@ -59,8 +59,8 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 						<%# if (span = o.try(:[], :span)) %>
 							<%#= items_table_head(fields, object.model, span) %>
 						<%# else %>
-							<% logger @result %>
-							<% logger object %>
+							<%# logger @result %>
+							<%# logger object %>
 							<%= items_table_head(fields, object.model) %>
 						<%# end %>
 						<% if is_in_administrative %>
@@ -86,11 +86,17 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 							tr_class = "danger"
 						end
 					end
-					if o = options[0].try(:[], :row_changed) 
-						if i = item.try(o.keys.first)
-							if !i.try(o.values.first)
-								tr_class += " contains_note"
+					if o = options[0].try(:[], :row_changed)
+						test_result = false
+						o.each do |tested_field, test|
+							if f = item.try(tested_field)
+								if !f.try(test)
+									test_result = true
+								end
 							end
+						end
+						if test_result
+							tr_class += " contains_note"
 						end
 					end
 					%>
