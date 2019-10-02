@@ -1,0 +1,33 @@
+<article
+	class="decorated_wrap shrinked images"
+	id="good_images"
+>
+
+	<div class="caption">
+		<%= t('activerecord.attributes.good.image') %>
+	</div>
+
+	<div class="images">
+		<% #i = 0 %>
+
+		<%= obj.fields_for :good_images do |img| %>
+
+			<%
+               # blank = img.object.image.blank?
+               # i += 1
+               # val = img.object.identificator.nil? ? i : ps.object.identificator
+            %>
+
+			<picture>
+				<%= img.file_field :image %>
+                <%= img.hidden_field :image_cache %>
+                <%= img.hidden_field :id %>
+                <%= img.check_box(:_destroy) %>
+                <%= image_tag(img.object.image) %>
+			</picture>
+
+		<% end %>
+
+	</div>
+
+</article>

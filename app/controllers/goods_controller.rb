@@ -22,7 +22,9 @@ class GoodsController < ApplicationController
 			impexpcompany_ids: [],
 			manufacturers_attributes: [:id, :name, :allow_search_as_new],
 			manufacturer_ids: [],
-			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy]
+			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy],
+			good_images_attributes: [:id, :_destroy, :image],
+			good_image_ids: [],
 		]
 	end
 
@@ -51,33 +53,33 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_new
-		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms, :good_images
 		get_last_selects
 	end
 
 	def _around_create_after_save_failed
-		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms, :good_images
 	end
 
 	def _around_edit
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images
 		#get_last_selects
 		load_uoms
 	end
 
 	def _around_update_after_save
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images
 	end
 
 	def _around_update_after_save_failed
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images
 		load_uoms
 	end
 
 	def _around_do_add_another
 		@record.ident = ""
 		@record.description = ""
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms, :good_images
 	end
 
 	def _around_create_after_save_ok

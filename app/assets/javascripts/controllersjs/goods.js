@@ -15,6 +15,10 @@ GOODS = {
 		search_on_google: ["on_reload"],
 		uncomplete_handler: ["on_reload"],
 		goods_validations: ["on_reload"],
+		image_preview: ["on_reload"]
+	},
+
+	_new_create: {
 		repeater_handler: ["on_reload"]
 	}
 }

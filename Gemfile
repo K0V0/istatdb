@@ -71,6 +71,10 @@ gem "down", "~> 4.4"
 
 gem 'whenever', require: false
 
+gem 'carrierwave'
+
+gem 'rmagick'
+
 #gem "backup"
 
 #gem 'globalize-accessors'

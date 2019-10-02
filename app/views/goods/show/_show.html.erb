@@ -135,4 +135,13 @@
 		foot_content: "#{t('items_table.added_by')}: <b>#{user_that_added}<b>".html_safe
 	) %>
 
+	<% if @record.good_images.any? %>
+
+		<%= render(
+			'/goods/show/images', 
+			images: @record.good_images
+		) %>
+
+	<% end %>
+
 <% end %>

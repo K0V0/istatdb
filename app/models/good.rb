@@ -50,6 +50,13 @@ class Good < ActiveRecord::Base
 		allow_destroy: true
 	)
 
+	has_many :good_images, inverse_of: :good, dependent: :destroy
+    accepts_nested_attributes_for(
+        :good_images,
+        allow_destroy: true,
+        reject_if: proc { |c| c[:image].blank? }
+    )
+
 	nested_attrs_getter_for :manufacturers, :impexpcompanies, :local_taric
 	## monkey patch for having <associated>_attributes getter and instance variable
 	## from model itself when using accept_nested_attributes_for

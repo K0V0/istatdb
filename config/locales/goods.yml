@@ -10,6 +10,7 @@ en:
         manufacturer_filter: Filter by consumer/manufacturer
         uncomplete_filter: Filter by state
         note: Notes
+        image: Image(s)
     errors:
       models:
         good:
@@ -77,6 +78,7 @@ sk:
         manufacturer_filter: Výrobca/odberateľ
         uncomplete_filter: Stav
         note: Poznámky
+        image: Snímky
     errors:
       models:
         good:

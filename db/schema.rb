@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190905081522) do
+ActiveRecord::Schema.define(version: 20191002155223) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20190905081522) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "good_images", force: :cascade do |t|
+    t.string  "image"
+    t.integer "good_id"
+  end
+
+  add_index "good_images", ["good_id"], name: "index_good_images_on_good_id"
 
   create_table "goods", force: :cascade do |t|
     t.text     "ident"
