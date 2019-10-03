@@ -3,24 +3,28 @@
 	<%= t 'search.also_exist_in_db' %>
 </span>
 
-<%= link_to(
-	t('actions.show'), 
-	{
-		controller: params[:model].pluralize,
-		action: :show,
-		id: @result.id
-	},
-	class: 'button',
-	target: :_blank
-) %>
+<% if !@result.nil? %>
 
-<%= link_to(
-	t('actions.edit'), 
-	{
-		controller: params[:model].pluralize,
-		action: :edit,
-		id: @result.id
-	},
-	class: 'button'
-) %>
+	<%= link_to(
+		t('actions.show'), 
+		{
+			controller: params[:model].pluralize,
+			action: :show,
+			id: @result.id
+		},
+		class: 'button record_exist',
+		target: :_blank
+	) %>
+
+	<%= link_to(
+		t('actions.edit'), 
+		{
+			controller: params[:model].pluralize,
+			action: :edit,
+			id: @result.id
+		},
+		class: 'button record_exist'
+	) %>
+
+<% end %>
 
