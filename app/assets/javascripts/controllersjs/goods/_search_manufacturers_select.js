@@ -27,6 +27,11 @@ SearchManufacturersSelect.prototype = {
             e.stopPropagation();
         });
 
+        $(document).on('change', 'div.multiselect', function(e) {
+          console.log('changed');
+          $(document).find("form#good_search").submit();
+           });
+
         /*$(document).on({
            click: function(){
               $("div.multiselect").removeClass("open");

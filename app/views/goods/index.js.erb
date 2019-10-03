@@ -9,5 +9,11 @@ $("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
 $("<%=j Impexpcompany.find(params[:q][:impexpcompany_filter]).company_name %>")
 .appendTo('div.debug');
 
+$("<%=j Impexpcompany.find(params[:q][:impexpcompany_filter]).nil? %>")
+.appendTo('div.debug');
+
+$("<b>kokot</b>")
+.appendTo('div.debug');
+
 
 
