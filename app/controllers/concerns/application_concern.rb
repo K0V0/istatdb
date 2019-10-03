@@ -102,7 +102,7 @@ module ApplicationConcern
 					if !any_builded_assoc
 						@record.send(a).send(:build)
 					else
-						instance_variable_set(assoc_var_name, @record.send(a))	
+						instance_variable_set(assoc_var_name, @record.send(a))
 					end
 					#instance_variable_set(assoc_var_name, @record.send(a))
 				end
@@ -123,7 +123,14 @@ module ApplicationConcern
  			is_new = (action_name=='new'||action_name=='create') ? true : false
 
  			if params.deep_has_key?(:q, "#{par.to_s.singularize}_filter".to_sym)
-    			ids_arr.push(params[:q]["#{par.to_s.singularize}_filter".to_sym].to_i)
+                if (p = params[:q]["#{par.to_s.singularize}_filter"]).instance_of?(String)
+			         ids_arr.push(p.to_i)
+                elsif p.instance_of?(Array)
+                    tmp_arr = p.map { |x| x.to_i }
+                    tmp_arr2 = tmp_arr - ids_arr&tmp_arr
+                    ids_arr.concat(tmp_arr2)
+                end
+
     		end
 
     		if is_new&&params.has_key?(:apply_last_select)
@@ -155,7 +162,7 @@ module ApplicationConcern
  			else
  				id = @record.try("#{par.to_s}_id") if is_new
  				id = @record.try("#{par.to_s}").try(:id) if !is_new
- 				ids_arr.push(id) if !id.nil? 
+ 				ids_arr.push(id) if !id.nil?
  			end
 
  			model = par.to_s.classify.constantize
@@ -167,7 +174,7 @@ module ApplicationConcern
  				ids_arr.push(model.default_order.limit(ids_to_load_count).pluck(:id))
  			end
 
- 			if !ids_arr.blank? 
+ 			if !ids_arr.blank?
  				result = model.where(id: ids_arr.flatten).order_as_specified(id: ids_arr.flatten)
  				instance_variable_set("@#{par.to_s.pluralize}", result)
  			end

@@ -1,14 +1,18 @@
 <%
 select_text = ""
-case @manufacturers.size
+selected_mans = get_selected_manufacturers.try(:size)
+case selected_mans
+when nil
+    select_text = t('goods_search.manufacturer_prompt')
 when 0
 	select_text = t('goods_search.manufacturer_prompt')
 when 1
-	select_text = @manufacturers.first.name
-when 2..3
-	select_text = "<b>#{@manufacturers.size}</b> #{t('goods_search.manufacturer_prompt_few')}"
+	#select_text = @manufacturers.find(get_selected_manufacturers.first).name
+    select_text = "jeden"
+when 2..4
+	select_text = "<b>#{selected_mans}</b> #{t('goods_search.manufacturer_prompt_few')}"
 else
-	select_text = "<b>#{@manufacturers.size}</b> #{t('goods_search.manufacturer_prompt_many')}"
+	select_text = "<b>#{selected_mans}</b> #{t('goods_search.manufacturer_prompt_many')}"
 end
 %>
 
@@ -16,5 +20,12 @@ end
 	<span> <%= select_text.html_safe %> </span>
 	<div>
 		<%= render_manufacturers_select(obj: @manufacturers) %>
-	</div>	
+	</div>
 </div>
+
+<%
+Rails.logger.info "---------------------------------------"
+Rails.logger.info Impexpcompany.find(params[:q][:impexpcompany_filter]).company_name
+Rails.logger.info "---------------------------------------"
+
+ %>

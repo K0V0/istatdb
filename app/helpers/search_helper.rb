@@ -42,13 +42,21 @@ module SearchHelper
 		return output.html_safe
 	end
 
-	def render_manufacturers_select(obj: nil)
-		manufacturers_selected = nil
+	def get_selected_manufacturers(obj:nil)
 		if params.deep_has_key?(:q, :manufacturer_filter)
 			if (a = params[:q][:manufacturer_filter]).instance_of?(Array)
-				manufacturers_selected = a.map { |x| x.to_i }
+				#from_params = a.map { |x| x.to_i }
+				#from_db = obj.try(:ids)
+				#return from_db&from_params
+				return a.map { |x| x.to_i }
+			else
+				return nil
 			end
  		end
+	end
+
+	def render_manufacturers_select(obj: nil)
+		manufacturers_selected = get_selected_manufacturers(obj: obj)
  		output = ""
 
  		if manufacturers_selected.nil?

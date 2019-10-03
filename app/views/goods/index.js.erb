@@ -6,5 +6,8 @@ $('#search_items_select_manufacturer').empty();
 $("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
 .appendTo('#search_items_select_manufacturer');
 
+$("<%=j Impexpcompany.find(params[:q][:impexpcompany_filter]).company_name %>")
+.appendTo('div.debug');
+
 
 

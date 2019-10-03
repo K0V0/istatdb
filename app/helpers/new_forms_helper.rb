@@ -31,7 +31,12 @@ module NewFormsHelper
     	if action_name == "new"
     		# params are restored from mem on page load if not new are set
     		if params.deep_has_key?(:q, "#{association_name}_filter".to_sym)
-    			return params[:q]["#{association_name}_filter".to_sym].to_i
+                p = params[:q]["#{association_name}_filter"]
+                if p.instance_of? String
+    			    return [p.to_i]
+                elsif p.instance_of? Array
+                    return p.map { |x| x.to_i }
+                end
     		end
     	end
     	return false
@@ -68,7 +73,7 @@ module NewFormsHelper
 		# this checks for params hash to catch if unsaved
 		pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 		# id of association that is search limited (filtered) by
-		id_from_search_filter = get_selected_filter_obj_id_from_mem(mem_param_name)
+		ids_from_search_filter = get_selected_filter_obj_id_from_mem(mem_param_name)
 
 		if coll.length > 0
 	    	coll.each do |c|
@@ -79,7 +84,7 @@ module NewFormsHelper
 	    		# check comparing to params if should be checked (e.g. render after validation fail)
                 record_was_checked_before_validation_fail = pars.include?(c.id.to_s)
                 # preselecting for faster UX if searched with filters, do only on new
-	    		was_selected_in_search_bar_filter = (action_name == "new" ? id_from_search_filter == c.id : false)
+	    		was_selected_in_search_bar_filter = (action_name == "new" ? ids_from_search_filter.include?(c.id) : false)
 
 	    		checked = record_is_in_associated||record_was_checked_before_validation_fail||was_selected_in_search_bar_filter#||#commanded_to_be_repeated
 
