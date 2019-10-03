@@ -1,6 +1,6 @@
 
-<% 
-show_flash = !flash.empty? && user_signed_in? 
+<%
+show_flash = !flash.empty? && user_signed_in?
 @body_class += " noscroll" if show_flash
 %>
 
@@ -80,7 +80,7 @@ show_flash = !flash.empty? && user_signed_in?
 
 			<%= yield %>
 
-			<%= render 'layouts/base/logo' %>
+			<%#= render('layouts/base/logo') %>
 
 		</main>
 
@@ -92,7 +92,7 @@ show_flash = !flash.empty? && user_signed_in?
 				<% end %>
 		<% end %>
 
-		<%= render 'layouts/base/footer' %>
+		<%#= render 'layouts/base/footer' %>
 
 	</body>
 

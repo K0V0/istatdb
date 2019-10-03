@@ -43,8 +43,12 @@ module SearchHelper
 	end
 
 	def render_manufacturers_select(obj: nil)
-		manufacturers_selected = params.deep_has_key?(:q, :manufacturer_filter) ? (params[:q][:manufacturer_filter].map { |x| x.to_i })
- : nil
+		manufacturers_selected = nil
+		if params.deep_has_key?(:q, :manufacturer_filter)
+			if (a = params[:q][:manufacturer_filter]).instance_of?(Array)
+				manufacturers_selected = a.map { |x| x.to_i }
+			end
+ 		end
  		output = ""
 
  		if manufacturers_selected.nil?

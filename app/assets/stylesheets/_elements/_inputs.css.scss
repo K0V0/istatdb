@@ -100,7 +100,7 @@ select, div.multiselect {
 	padding-right: 1.25em;
 	cursor: pointer;
 	max-width: 100%;
-	overflow: hidden;
+	//overflow: hidden;
 	position: relative;
 	background-image: image-url('select_dropdown_arrow.png');
 	background-repeat: no-repeat;
@@ -125,22 +125,66 @@ div.multiselect {
 	//border:0;
 	height: 1.625em;
 	position: relative;
+	//overflow-y: visible;
+	padding-left: 0;
+	padding-right:0;
 
 	span {
 		font-size: 1em;
 		//line-height: 1.125em;
 		display: inline-block;
 		vertical-align: middle;
+		line-height: 1.25em;
+		height:1.5em;
+		margin-right:1.5em;
+		margin-left:0.25em;
+
 	}
 
 	div {
-		-webkit-transform: rotate(10deg);
-		transform: translateZ(-2em);
-		display: flex;
-		flex-direction: column;
+		//display: table;
+		//-webkit-transform: rotate(10deg);
+		//transform: translateZ(-2em);
+		//display: none;
+		//flex-direction: column;
+		max-height: 50vh;
 		position: relative;
+		border: 0.125em solid black;
+		overflow-y: scroll;
+
 		background-color: red;
 		z-index: 9999;
+		//border-right: 3em solid black;
+		//
+		/*&::before {
+			content: '';
+			position: absolute;
+			top:0;
+			bottom:0;
+			left: 100%;
+			width:1.5em;
+			background-color: black;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top:0;
+			bottom:0;
+			left: 100%;
+			width:1.5em;
+			background-color: black;
+		}*/
+
+		span {
+			display: block;
+			height:1.25em;
+			line-height: 1.25em;
+
+			input, label {
+				display: inline-block;
+			}
+		}
 	}
 
 
@@ -156,7 +200,7 @@ div.multiselect {
 		//position: absolute;
 	}
 
-	tr { 
+	tr {
 		/*height: 1.25em;
 		vertical-align: middle;
 

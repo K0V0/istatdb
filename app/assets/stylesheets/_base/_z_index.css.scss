@@ -12,10 +12,11 @@ figure.logo {
 
 section, article, aside {
     //z-index: 4;
+    position: relative;
 }
 
 b.copy_to_clipboard {
-    z-index: 5;
+    //z-index: 5;
 }
 
 nav {
