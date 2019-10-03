@@ -41,4 +41,42 @@ module SearchHelper
 
 		return output.html_safe
 	end
+
+	def render_manufacturers_select(obj: nil)
+		manufacturers_selected = params.deep_has_key?(:q, :manufacturer_filter) ? (params[:q][:manufacturer_filter].map { |x| x.to_i })
+ : nil
+ 		output = ""
+
+ 		if manufacturers_selected.nil?
+ 			@manufacturers.each do |man|
+		 		output += render_manufacturers_select_row(obj:man)
+		 	end
+ 		else
+		 	@manufacturers.select { |x| manufacturers_selected.include?(x.id) }.each do |man|
+		 		output += render_manufacturers_select_row(obj:man, checked:true)
+		 	end
+		 	@manufacturers.select { |x| !manufacturers_selected.include?(x.id) }.each do |man|
+		 		output += render_manufacturers_select_row(obj:man)
+		 	end
+		end
+	 	output.html_safe
+	end
+
+	def render_manufacturers_select_row(obj:nil, checked:false)
+		output = "<span>"
+		output += check_box_tag(
+			'q[manufacturer_filter][]',
+			obj.id,
+			checked,
+			{
+				id: "q_manufacturer_filter_#{obj.id}"
+			}
+		)
+		output += ""
+		output += label_tag(
+			"q[manufacturer_filter][#{obj.id}]",
+			obj.name
+		)
+		output += "</span>"
+	end
 end

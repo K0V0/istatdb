@@ -87,8 +87,18 @@ class Good < ActiveRecord::Base
 		})
 		.references(:impexpcompanies)
 	}
-
+=begin
 	scope :manufacturer_filter, -> (pars) {
+		self
+		.includes(:manufacturers)
+		.where(manufacturers: {
+			id: pars
+		})
+		.references(:manufacturers)
+	}
+=end
+
+	scope :manufacturer_filter, -> (*pars) {
 		self
 		.includes(:manufacturers)
 		.where(manufacturers: {

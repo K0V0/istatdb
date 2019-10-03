@@ -1,13 +1,20 @@
-
-<% 
-	manufacturer_selected = params.deep_has_key?(:q, :manufacturer_filter) ? params[:q][:manufacturer_filter] : nil
+<%
+select_text = ""
+case @manufacturers.size
+when 0
+	select_text = t('goods_search.manufacturer_prompt')
+when 1
+	select_text = @manufacturers.first.name
+when 2..3
+	select_text = "<b>#{@manufacturers.size}</b> #{t('goods_search.manufacturer_prompt_few')}"
+else
+	select_text = "<b>#{@manufacturers.size}</b> #{t('goods_search.manufacturer_prompt_many')}"
+end
 %>
 
-<%= select(
-	:q,
-	:manufacturer_filter,
-	@manufacturers.collect { |m| [m.name, m.id] },
-	include_blank: t('goods_search.manufacturer_prompt'),
-	selected: manufacturer_selected
-) %>
-
+<div class="multiselect" tabindex="0">
+	<span> <%= select_text.html_safe %> </span>
+	<div>
+		<%= render_manufacturers_select(obj: @manufacturers) %>
+	</div>	
+</div>

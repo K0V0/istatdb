@@ -1,6 +1,6 @@
 @import "variables";
 
-input, select, textarea {
+input, select, textarea, div.multiselect {
 	@include reset_input_browser_styles();
 	@include all_transitions();
 
@@ -96,7 +96,7 @@ input[type=search]::-webkit-search-cancel-button {
     }
 }
 
-select {
+select, div.multiselect {
 	padding-right: 1.25em;
 	cursor: pointer;
 	max-width: 100%;
@@ -117,6 +117,60 @@ select {
 			background-color: $input_disabled_background;
 			color: $input_disabled_text;
 		}
+	}
+}
+
+div.multiselect {
+	margin:0;
+	//border:0;
+	height: 1.625em;
+	position: relative;
+
+	span {
+		font-size: 1em;
+		//line-height: 1.125em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	div {
+		-webkit-transform: rotate(10deg);
+		transform: translateZ(-2em);
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		background-color: red;
+		z-index: 9999;
+	}
+
+
+	&.open {
+		//max-height: 50%;
+		//overflow-x: scroll;
+		//height: auto;
+		//max-height: 50vh;
+	}
+
+	tbody {
+		//max-height: 50%;
+		//position: absolute;
+	}
+
+	tr { 
+		/*height: 1.25em;
+		vertical-align: middle;
+
+		td {
+			vertical-align: middle;
+		}
+
+		label {
+			display: inline-block;
+			font-size: 1em;
+			height: 1.25em;
+			vertical-align: middle;
+		}*/
+
 	}
 }
 
