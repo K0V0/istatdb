@@ -1,7 +1,8 @@
 module LayoutsHelper
 
 	def new_edit(type: nil, obj: nil, assoc: nil, fields: {}, multiedit: false, searcher_settings: nil, add_next: false, &block)
-		type = :main if type.nil? && assoc.nil?
+		is_secondary_main = type.to_s == 'secondary'
+		type = :main if (type.nil? && assoc.nil?)||(is_secondary_main)
 		type = :belongs_to if type.nil? && assoc.to_s.is_singular?
 		type = :has_many if type.nil? && !assoc.to_s.is_singular?
 		type = :submit if fields.blank?
@@ -15,6 +16,7 @@ module LayoutsHelper
 				multiedit: multiedit,
 				searcher_settings: searcher_settings,
 				add_next: add_next,
+				main_secondary: is_secondary_main,
 				#required: required,
 				block: block
 			}

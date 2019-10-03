@@ -101,7 +101,8 @@
 					type: :text_area,
 					disabled: (@record.uncomplete == true) ? false : "disabled"
 				}
-			}
+			},
+			type: :secondary
 		) %>
 
 		<%= new_edit(
@@ -110,7 +111,8 @@
 				note: {
 					type: :text_area
 				}
-			}
+			},
+			type: :secondary
 		) %>
 
 		<%= render('goods/new/images', obj: t) %>

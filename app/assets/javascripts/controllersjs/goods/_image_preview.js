@@ -22,47 +22,38 @@ ImagePreview.prototype = {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                T.cloneNewImageButton();
+                //T.cloneNewImageButton();
                 T.appendPreview($(input), e.target.result);
+                T.cloneNewImageButton();
             }
             reader.readAsDataURL(input.files[0]);
         }
     },
 
     appendPreview: function(ref, src) {
-        //var lbl = ref.siblings('span').children('label')
-        //var i = ref.siblings('input.identificator').val();
-        //lbl.empty();
-        //lbl.append('<img>');
-        //lbl.children('img').attr('src', src);
-        /*ref.parent()
-            .append('<em>'+i+'</em>')
-            .append('<label class="destroy new">X</label>');*/
         ref.siblings('img').attr('src', src);
         this.triggerChange(ref);
     },
 
     cloneNewImageButton: function() {
-        var some_empty = false
-        var next_index = 0;
         var container = $('article#good_images').children('div.images');
-        container.children('picture').each(function() {
-            var index = parseInt($(this).find('input[type=file]').attr('name').match(/\d+/));
-            //var index = parseInt($(this).find('input.identificator').val());
-            if (index > next_index) { next_index = index; }
-        });
-        next_index++;
-        var tmp_obj = this.newImageClone.clone();
-        tmp_obj.children('input').each(function() {
-            var new_name = $(this).attr('name').replace(/\d+/, next_index);
-            //var new_id = $(this).attr('id').replace(/\d+/, next_index);
-            $(this).attr('name', new_name);
-            //$(this).attr('id', new_id);
-        });
-        //var label_name = $(tmp_obj).children('span').children('label').attr('for').replace(/\d+/, next_index);
-        //tmp_obj.children('input#post_post_images_attributes_'+next_index+'_identificator').val(next_index/*+1*/);
-        //$(tmp_obj).children('span').children('label').attr('for', label_name)
-        tmp_obj.appendTo(container);
+        var new_upload_field_present = (container.find('img[src=""]').length > 0);
+
+        if (!new_upload_field_present) {
+            var some_empty = false
+            var next_index = 0;
+            container.children('picture').each(function() {
+                var index = parseInt($(this).find('input[type=file]').attr('name').match(/\d+/));
+                if (index > next_index) { next_index = index; }
+            });
+            next_index++;
+            var tmp_obj = this.newImageClone.clone();
+            tmp_obj.children('input').each(function() {
+                var new_name = $(this).attr('name').replace(/\d+/, next_index);
+                $(this).attr('name', new_name);
+            });
+            tmp_obj.appendTo(container);
+        }
     },
 
     removeNewlyAddedImage: function(ref) {

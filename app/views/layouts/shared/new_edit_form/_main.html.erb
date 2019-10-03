@@ -1,7 +1,11 @@
 
+<%
+ 	id = main_secondary ? "" : "#{obj.object.model_name.to_s.underscore}_fields"
+%>
+
 <article
 	class="decorated_wrap shrinked"
-	id="<%= obj.object.model_name.to_s.underscore %>_fields"
+	id="<%= id %>"
 >
 
 	<div>

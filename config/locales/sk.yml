@@ -34,6 +34,7 @@ sk:
     add_and_add_next: Pridať, a pridať ďalšiu položku
     added_successfully: Položka bola úspešne pridaná, môžete pokračovať
     edit: Upraviť
+    show: Zobraziť
     delete: Odstrániť
     back: Naspäť
     select: Vybrať

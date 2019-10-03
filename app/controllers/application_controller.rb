@@ -300,9 +300,10 @@ class ApplicationController < ActionController::Base
   end
 
   def apicall_exist_action
-  	@results_count = controller_name.classify.constantize
+  	@results = controller_name.classify.constantize
   		.where("#{params[:field].to_s} LIKE ?", "#{params[:text]}")
-  		.size
+  	@results_count = @results.size
+    @result = @results.first
   	respond_to do |format|
   		format.js { render('layouts/shared/new_edit_form/record_exist') }
   	end
