@@ -1,6 +1,8 @@
 <%
 select_text = ""
 selected_mans = get_selected_manufacturers.try(:size)
+show_button = false
+
 case selected_mans
 when nil
     select_text = t('goods_search.manufacturer_prompt')
@@ -11,17 +13,25 @@ when 1
 		select_text = t('goods_search.manufacturer_prompt')
 	else
 		select_text = @manufacturers.find(get_selected_manufacturers.first).name
+		show_button = true
 	end
 when 2..4
 	select_text = "<b>#{selected_mans}</b> #{t('goods_search.manufacturer_prompt_few')}"
+	show_button = true
 else
 	select_text = "<b>#{selected_mans}</b> #{t('goods_search.manufacturer_prompt_many')}"
+	show_button = true
 end
 %>
 
 <div class="multiselect" tabindex="0">
 	<span> <%= select_text.html_safe %> </span>
 	<div>
+		<% if show_button %>
+			<span class="select_reset_button">
+				<button class="button" type="button" id="reset_manufacturers">Reset - všetci</button>
+			</span>
+		<% end %>
 		<%= render_manufacturers_select(obj: @manufacturers) %>
 	</div>
 </div>
