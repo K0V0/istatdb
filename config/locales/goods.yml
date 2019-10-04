@@ -110,6 +110,8 @@ sk:
       uom_impexpcompany_removed_from_source: Spravodajská jednotka zvolená pre túto mernú jednotku bola odstránená z vlastností tovaru
       uom_for_remove: "Táto merná jednotka bude po odoslaní formuláru vymazaná"
       cancel_uom_remove: "Nechcem vymazať túto položku"
+      select_image: Vyberte obrázok
+      image_for_removal: Na odstránenie
     edit_form_texts:
       add_uom: Pridajte mernú jednotku
     show_details:

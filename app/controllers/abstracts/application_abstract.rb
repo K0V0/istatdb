@@ -66,4 +66,10 @@ module ApplicationAbstract
 	def _around_do_add_another
 	end
 
+	def _before_inits
+	end
+
+	def _before_db_load
+	end
+
 end

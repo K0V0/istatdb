@@ -30,6 +30,12 @@ class ApplicationController < ActionController::Base
   before_render :last_visited_get, only: [:index, :search, :show, :administrative]
 
   before_action(
+    only: [:index, :search, :show, :administrative, :change_status],
+    if: -> { @user_logged_and_model_exist }) {
+    _before_db_load
+  }
+
+  before_action(
   	only: [:index, :search, :show, :administrative, :change_status],
   	if: -> { @user_logged_and_model_exist }) {
     searcher_for(
@@ -138,6 +144,7 @@ class ApplicationController < ActionController::Base
   def inits
     User.current = current_user
   	init_mem
+    _before_inits
     @body_class = "#{action_name} #{controller_name}"
     @body_class += " noscroll" if (action_name == 'index')||(action_name == 'search')
     @body_class += " tride" if setting_is_set?(:gui_enable_3d)

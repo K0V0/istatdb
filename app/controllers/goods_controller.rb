@@ -2,6 +2,8 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
+	#before_action :reset_manufacturers_if_client_changed, only: [:index, :search, :administrative, :end_administrative, :show]
+
 	private
 
 	def _searcher_settings
@@ -29,6 +31,13 @@ class GoodsController < ApplicationController
 	end
 
 	def _loads_for_search_panel
+
+		Rails.logger.info "---loads for search panel-----------------------------"
+
+		Rails.logger.info Manufacturer.where(id: params[:q][:manufacturer_filter]).map(&:name)
+		Rails.logger.info Manufacturer.where(id: controller_mem_get(:q)[:manufacturer_filter]).map(&:name)
+		Rails.logger.info "--------------------------------"
+
 		@impexpcompanies = Impexpcompany.all.default_order
 		if (params.deep_has_key?(:q, :impexpcompany_filter))&&(!params[:q][:impexpcompany_filter].blank?)
 			@manufacturers = @impexpcompanies.find(params[:q][:impexpcompany_filter]).manufacturers.default_order
@@ -107,6 +116,23 @@ class GoodsController < ApplicationController
 			@record.manufacturers = Manufacturer.find(manufacturers) if !manufacturers.blank?
 			@record.impexpcompanies = Impexpcompany.find(impexpcompanies) if !impexpcompanies.blank?
 			## ok, funguje
+		end
+	end
+
+	def _before_inits
+		## patch ked zmenena spravodajska jednotka za inu, ale su vybrati vyrobcovia,
+		## ktorych druha spravodajska jednotka nema, nezobrazia sa ziadne tovary
+		from_params = params.try(:[], :q).try(:[], :impexpcompany_filter).to_i
+		from_mem = controller_mem_get(:q).try(:[], :impexpcompany_filter).to_i
+		if from_params != 0
+			if from_params != from_mem
+				avail = Impexpcompany.find(from_params).manufacturers.ids
+				if !(p = params.try(:[], :q).try(:[], :manufacturer_filter)).blank?
+					in_p = p.map(&:to_i)
+					not_in_set = in_p - avail
+					params[:q][:manufacturer_filter] = in_p - not_in_set
+				end
+			end
 		end
 	end
 

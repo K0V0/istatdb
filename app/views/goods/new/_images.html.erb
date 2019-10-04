@@ -19,11 +19,22 @@
             %>
 
 			<picture>
-				<%= img.file_field :image %>
-                <%= img.hidden_field :image_cache %>
+
+				<%= img.hidden_field :image_cache %>
                 <%= img.hidden_field :id %>
-                <%= img.check_box(:_destroy) %>
+
                 <%= image_tag(img.object.image) %>
+
+                <div>
+					<%= img.label(:image, t('goods.new_form_texts.select_image'), class: 'button') %>
+					<%= img.file_field(:image, class: 'hidden') %>
+	                <% if !img.object.image.blank? %>
+	                	<br>
+	                	<%= img.check_box(:_destroy) %>
+	                	<%= img.label :_destroy, t('goods.new_form_texts.image_for_removal') %>
+	                <% end %>
+	            </div>
+
 			</picture>
 
 		<% end %>

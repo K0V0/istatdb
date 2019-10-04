@@ -11,12 +11,18 @@ article {
 			
 			display: inline-block;
 			vertical-align: middle;
-			//padding: 0.125em;
 			box-shadow: 2px 2px 4px 1px black;
 			border-radius: 0.375em;
 			margin:0.5em;
-			//background-color: $strong_grey;
 			background-color: transparent;
+
+			div {
+
+				input[type=checkbox] {
+					margin-left: 0.5em;
+					margin-bottom: 0.125em;
+				}
+			}
 
 			img {
 				max-width: 16em;
@@ -24,10 +30,6 @@ article {
 				display: block;
 				margin: 0.125em;
 				border-radius: 0.25em;
-				//padding: 0.25em;
-				//box-shadow: 1px 1px 2px 0px black;
-				//border: 0.25em solid $strong_grey;
-				//background-color: $strong_grey;
 			}
 		}
 	}

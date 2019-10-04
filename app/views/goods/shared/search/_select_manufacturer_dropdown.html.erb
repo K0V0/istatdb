@@ -7,8 +7,7 @@ when nil
 when 0
 	select_text = t('goods_search.manufacturer_prompt')
 when 1
-	#select_text = @manufacturers.find(get_selected_manufacturers.first).name
-    select_text = "jeden"
+	select_text = @manufacturers.find(get_selected_manufacturers.first).name
 when 2..4
 	select_text = "<b>#{selected_mans}</b> #{t('goods_search.manufacturer_prompt_few')}"
 else
@@ -22,10 +21,3 @@ end
 		<%= render_manufacturers_select(obj: @manufacturers) %>
 	</div>
 </div>
-
-<%
-Rails.logger.info "---------------------------------------"
-Rails.logger.info Impexpcompany.find(params[:q][:impexpcompany_filter]).company_name
-Rails.logger.info "---------------------------------------"
-
- %>
