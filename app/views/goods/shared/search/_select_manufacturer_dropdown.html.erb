@@ -27,11 +27,14 @@ end
 <div class="multiselect" tabindex="0">
 	<span> <%= select_text.html_safe %> </span>
 	<div>
-		<% if show_button %>
-			<span class="select_reset_button">
-				<button class="button" type="button" id="reset_manufacturers">Reset - všetci</button>
-			</span>
-		<% end %>
+		<span class="select_reset_button">
+			<button class="button <%= "novisible" if !show_button %>" type="button" id="reset_manufacturers">
+				<%= t('goods_search.manufacturer_prompt_button_reset') %>
+			</button>
+			<button class="button novisible" type="button" id="confirm_manufacturers">
+				<b> <%= t('goods_search.manufacturer_prompt_button_done') %> </b>
+			</button>
+		</span>
 		<%= render_manufacturers_select(obj: @manufacturers) %>
 	</div>
 </div>

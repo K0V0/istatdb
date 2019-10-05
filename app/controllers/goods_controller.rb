@@ -31,13 +31,6 @@ class GoodsController < ApplicationController
 	end
 
 	def _loads_for_search_panel
-
-		Rails.logger.info "---loads for search panel-----------------------------"
-
-		Rails.logger.info Manufacturer.where(id: params[:q][:manufacturer_filter]).map(&:name)
-		Rails.logger.info Manufacturer.where(id: controller_mem_get(:q)[:manufacturer_filter]).map(&:name)
-		Rails.logger.info "--------------------------------"
-
 		@impexpcompanies = Impexpcompany.all.default_order
 		if (params.deep_has_key?(:q, :impexpcompany_filter))&&(!params[:q][:impexpcompany_filter].blank?)
 			@manufacturers = @impexpcompanies.find(params[:q][:impexpcompany_filter]).manufacturers.default_order
@@ -48,7 +41,7 @@ class GoodsController < ApplicationController
 
 	# new, create, edit, update
 	def _load_vars
-		will_paginate :manufacturers, :local_taric 
+		will_paginate :manufacturers, :local_taric
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)

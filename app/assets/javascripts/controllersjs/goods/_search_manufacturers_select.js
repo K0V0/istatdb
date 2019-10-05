@@ -8,18 +8,29 @@ SearchManufacturersSelect.prototype = {
     constructor: SearchManufacturersSelect,
 
     init: function() {
-        var totok = this;
-        var container = $(document).find('span#search_items_select_manufacturer');
-        var detected_target = container.children('div.multiselect').children('span');
-
-        container.on('click', function() {
-            $(this).children('div.multiselect').toggleClass('open');
-        });
 
         $(document).on('click', function(e) {
-          if (e.target.id != 'search_items_select_manufacturer' && $(e.target).parents('#search_items_select_manufacturer').length == 0) {
-            $(document).find('div.multiselect').removeClass('open');
-          }
+            var container = $(document).find('div.multiselect');
+            var target = $(e.target);
+
+            if (target.is(container) || target.is(container.children('span'))) {
+                container.toggleClass('open');
+            } else if (!target.is('input[type=checkbox]')) {
+                container.removeClass('open');
+                if (target.is('label')) {
+                    e.preventDefault();
+                    container.find('input[type=checkbox]').removeAttr('checked');
+                    target.siblings('input[type=checkbox]').prop('checked', true);
+                }
+            } else if (target.is('input[type=checkbox]')) {
+                $(document).find('button#confirm_manufacturers').removeClass('novisible');
+            }
+
+            if (container.find('input:checked').length > 0) {
+                $(document).find('button#reset_manufacturers').removeClass('novisible');
+            } else {
+                $(document).find('button#reset_manufacturers').addClass('novisible');
+            }
         });
 
         $(document).on('click', 'button#reset_manufacturers', function() {
@@ -28,5 +39,8 @@ SearchManufacturersSelect.prototype = {
             $(this).closest('form').submit();
         });
 
+        $(document).on('click', 'button#confirm_manufacturers', function() {
+            $(this).closest('form').submit();
+        });
     }
 }

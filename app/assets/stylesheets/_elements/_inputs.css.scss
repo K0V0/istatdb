@@ -140,7 +140,6 @@ div.multiselect {
 	}
 
 	div {
-		//@include all_transitions();
 		max-height: 50vh;
 		position: relative;
 		border: 0.125em solid $strong_grey;
@@ -148,11 +147,11 @@ div.multiselect {
 		overflow-x: hidden;
 		background-color: $widget_background;
 		z-index: 9999;
-		//display: inline-table;
 
 		span {
 			@include all_transitions();
-			display: block;
+			display: flex;
+			align-items: center;
 			height:1.25em;
 			line-height: 1.25em;
 			vertical-align: middle;
@@ -179,22 +178,24 @@ div.multiselect {
 
 			label {
 				max-height: 1.25em;
-				padding-left:0.125em;
 				width:100%;
-				padding-left: 1.5em;
+				margin-left: 0.25em;
 				cursor: pointer;
+
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 
 			input {
-				display: inline-block;
-				position: absolute;
-				left:0.175em;
-				bottom: 0em;
+				flex: 0 0 auto;
+				margin:0.25em !important;
 			}
 		}
 
 		span.select_reset_button {
-			height:2em;
+			padding:0.125em;
+			height:auto;
 		}
 	}
 

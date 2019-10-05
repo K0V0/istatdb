@@ -73,6 +73,8 @@ sk:
     manufacturer_prompt: "všetci..."
     manufacturer_prompt_few: "položky vybrané"
     manufacturer_prompt_many: "položiek vybraných"
+    manufacturer_prompt_button_reset: "Reset - všetci"
+    manufacturer_prompt_button_done: "Hotovo!"
     uncompletes_prompt: "všetky..."
     uncompletes_prompt_complete: "len došetrené"
     uncompletes_prompt_not_complete: "len nedošetrené"
