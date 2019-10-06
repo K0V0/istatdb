@@ -14,10 +14,12 @@ SearchItemActions.prototype = {
 			//if ($(this).hasClass('paused')) {
 
 			//} else {
-				$(this).append('<input type="hidden" name="page" value="1">');
-				var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
-				inputs.val($(e.target).val());
-			  	$(this).submit();
+				if (!$(e.target).hasClass('skip_events')) {
+					$(this).append('<input type="hidden" name="page" value="1">');
+					var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
+					inputs.val($(e.target).val());
+				  	$(this).submit();
+				}
 			//}
 		});
 

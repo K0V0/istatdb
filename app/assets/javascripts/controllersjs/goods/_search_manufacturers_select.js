@@ -8,10 +8,12 @@ SearchManufacturersSelect.prototype = {
     constructor: SearchManufacturersSelect,
 
     init: function() {
+        var checkbox_used_last = false;
 
         $(document).on('click', function(e) {
             var container = $(document).find('div.multiselect');
             var target = $(e.target);
+            var form = container.closest('form');
 
             if (target.is(container) || target.is(container.children('span'))) {
                 container.toggleClass('open');
@@ -21,9 +23,13 @@ SearchManufacturersSelect.prototype = {
                     e.preventDefault();
                     container.find('input[type=checkbox]').removeAttr('checked');
                     target.siblings('input[type=checkbox]').prop('checked', true);
-                }
+                    form.submit();
+                } else if (checkbox_used_last) {
+                    form.submit();
+                } 
             } else if (target.is('input[type=checkbox]')) {
                 $(document).find('button#confirm_manufacturers').removeClass('novisible');
+                checkbox_used_last = true;
             }
 
             if (container.find('input:checked').length > 0) {

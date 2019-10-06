@@ -81,7 +81,8 @@ module SearchHelper
 			obj.id,
 			checked,
 			{
-				id: "q_manufacturer_filter_#{obj.id}"
+				id: "q_manufacturer_filter_#{obj.id}",
+				class: 'skip_events'
 			}
 		)
 		output += ""
