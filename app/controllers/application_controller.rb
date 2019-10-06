@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   before_render :last_visited_set, only: [:show]
 
-  before_render :last_visited_get, only: [:index, :search, :show, :administrative]
+  before_render :last_visited_get, only: [:index, :search, :show, :administrative, :export]
 
   before_action(
     only: [:index, :search, :show, :administrative, :change_status],
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   }
 
   before_action(
-  	only: [:index, :search, :show, :administrative, :change_status],
+  	only: [:index, :search, :show, :administrative, :change_status, :export],
   	if: -> { @user_logged_and_model_exist }) {
     searcher_for(
     	_searcher_settings

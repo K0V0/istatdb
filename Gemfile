@@ -75,6 +75,10 @@ gem 'carrierwave'
 
 gem 'rmagick'
 
+gem 'rubyzip', '>= 1.2.1'
+gem 'caxlsx'
+gem 'axlsx_rails'
+
 #gem "backup"
 
 #gem 'globalize-accessors'

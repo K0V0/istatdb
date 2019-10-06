@@ -1,0 +1,9 @@
+<%= link_to(
+    t('actions.export'),
+    {
+        controller: controller_name,
+        action: "export"
+    },
+    class: "button export_item_from_search",
+    id: "export_#{controller_name.singularize}_from_search"
+) %>

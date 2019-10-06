@@ -84,6 +84,8 @@
 
 				--><%= render 'layouts/shared/actions/go_to_administrative' if actions.include? :administrative %><!--
 
+				--><%= render 'layouts/shared/actions/export_button' if actions.include? :export %><!--
+
 				--><% if actions.include? :google_search %><!--
 					--><button id="search_item_on_google" class="button">
 						<%= t 'goods_search.google' %>

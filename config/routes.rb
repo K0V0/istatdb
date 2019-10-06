@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   #get "goodsdb/repeat_association",
     #to: "goods#apply_last_select",
     #as: "repeated_assoc_good"
-  
+
 
   # pridat novy tovar
   get "goodsdb/new",
@@ -73,6 +73,11 @@ Rails.application.routes.draw do
   get "goodsdb/search",
     to: "goods#search",
     as: "search_goods"
+
+  # ransack search
+  get "goodsdb/export",
+    to: "goods#export",
+    as: "export_goods"
 
   # administration - enter index page into administration mode
   get "goodsdb/administrative",

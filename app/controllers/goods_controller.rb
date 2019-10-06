@@ -2,7 +2,13 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
-	#before_action :reset_manufacturers_if_client_changed, only: [:index, :search, :administrative, :end_administrative, :show]
+	def export
+		_loads_for_search_panel
+	end
+
+	def do_export
+
+	end
 
 	private
 
