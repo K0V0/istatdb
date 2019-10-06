@@ -5,5 +5,7 @@
 
 <%= render 'goods/shared/items_table' %>
 
-<%= render 'goods/export/export_properties' %>
+<% content_for :popup do %>
+    <%= render 'goods/export/export_properties' %>
+<% end %>
 

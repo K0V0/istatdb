@@ -31,7 +31,7 @@ nav {
     z-index: 97;
 }
 
-div.flash_messages.visible {
+div.flash_messages.visible, div.popups.visible {
     z-index: 98;
 
     div {

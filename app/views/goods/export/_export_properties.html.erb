@@ -1,12 +1,13 @@
 
-<% content_for :popup do %>
+<%= form_tag(url: export_goods_path) do |f| %>
     <div class="decorated_wrap shrinked">
+
         <table class="for_nontabular with_controls confirmation">
-            <caption>Ste si istý ?</caption>
+            <caption>Export</caption>
             <thead></thead>
             <tbody>
                 <tr>
-                    <td>Ste si istý že chcete odstrániť túto položku ?</td>
+                    <td></td>
                 </tr>
             </tbody>
             <tfoot>
@@ -18,6 +19,10 @@
                 </tr>
             </tfoot>
         </table>
+
     </div>
 
 <% end %>
+
+
+

@@ -33,7 +33,7 @@ JS.H.run('on_change');
 			.addClass('visible');
 	<% end %>
 
-	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete'||an=='change_status' %>
+	<% if an=='index'||an=='show'||an=='search'||an=='administrative'||an=='end_administrative'||an=='delete'||an=='change_status'||an=='export' %>
 
 		if (an != 'delete') {
 			window.history.pushState("", "", "<%= url_for(action: action_name)%>");
