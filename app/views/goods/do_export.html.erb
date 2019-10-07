@@ -1,0 +1,50 @@
+
+<table>
+	<% @result.all.each_with_index do |r, i| %>
+	
+		<tr>
+			<td> <%= i+1 %> </td>
+
+			<% params[:fields].each do |p, v| %>
+
+				<% if v.instance_of? String %>
+
+					<td><%= r.send(p) %></td>
+
+				<% else %>
+					
+					<td>
+						<table>
+						
+							<% if p.to_s.is_singular? %>
+
+								<tr>
+									<% v.each do |k, w| %>
+										<td> <%= r.send(p).send(k) %> </td>
+									<% end %>
+								</tr>
+
+							<% else %>
+
+								<% r.send(p).each do |e| %>
+									<tr>
+										<% v.each do |k, w| %>
+											<td> <%= e.send(k) %> </td>
+										<% end %>
+									</tr>
+								<% end %>
+								
+							<% end %>
+					
+						
+						</table>
+					</td>
+
+				<% end %>
+
+			<% end %>
+
+		</tr>
+
+	<% end %>
+</table>

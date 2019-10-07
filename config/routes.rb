@@ -97,6 +97,11 @@ Rails.application.routes.draw do
     to: "goods#create",
     as: "create_good"
 
+  # vytvorit novu
+  post "goodsdb/export",
+    to: "goods#do_export",
+    as: "do_export_goods"
+
   # sekcia upravy - nacitanie polozky
   get "goodsdb/:id/edit",
     to: "goods#edit",

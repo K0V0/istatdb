@@ -1,27 +1,85 @@
+<%
+fields_to_select = [
+    :ident,
+    :description,
+    { 
+        local_taric: [
+            :kncode,
+            :description
+        ] 
+    }, 
+    { 
+        manufacturers: [
+            :name
+        ]
+    },
+    {
+        impexpcompanies: [
+            :company_name
+        ]
+    }
+]
+%>
 
-<%= form_tag(url: export_goods_path) do |f| %>
+
+<%= form_tag(public_send("do_export_#{controller_name}_path"), method: :post) do |f| %>
     <div class="decorated_wrap shrinked">
 
-        <table class="for_nontabular with_controls confirmation">
+        <table class="">
+
             <caption>Export</caption>
+
             <thead></thead>
+
             <tbody>
-                <tr>
-                    <td></td>
-                </tr>
+                <% fields_to_select.each do |field| %>
+
+                    <% if field.instance_of? Hash %>
+
+                        <% k = field.keys.first %>
+                        <tr>
+                            <td> <%= t("activerecord.models.#{k.to_s.singularize}") %> </td>
+                            <td>
+                                <table>
+                                    <% field[k].each do |subfield| %>
+                                        <%= render(
+                                            'goods/export/export_properties_fields',
+                                            mdl: "#{k.to_s.singularize}",
+                                            field: subfield,
+                                            name: "[#{k.to_s}][#{subfield.to_s}]"
+                                        ) %>
+                                    <% end %>
+                                </table>
+                            </td>
+                        </tr>
+
+                    <% else %>
+
+                        <%= render(
+                            'goods/export/export_properties_fields',
+                            mdl: "#{controller_name.singularize}",
+                            field: field,
+                            name: "[#{field.to_s}]"
+                        ) %>
+
+                    <% end %>
+                    
+                <% end %>
             </tbody>
+
             <tfoot>
                 <tr>
                     <td colspan="10">
-                        <button type="button" class="button confirmation_ok">OK</button>
-                        <button type="button" class="button confirmation_cancel">Storno</button>
+                        <input type="submit" class="button" value="Excel tabuľka" name="submit_excel">
+                        <input type="submit" class="button" value="HTML" name="submit_html">
+                        <%= link_to "Storno", :back, class: 'button' %>
                     </td>
                 </tr>
             </tfoot>
+
         </table>
 
     </div>
-
 <% end %>
 
 

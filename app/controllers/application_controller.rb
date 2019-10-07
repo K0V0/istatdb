@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   }
 
   before_action(
-  	only: [:index, :search, :show, :administrative, :change_status, :export],
+  	only: [:index, :search, :show, :administrative, :change_status, :export, :do_export],
   	if: -> { @user_logged_and_model_exist }) {
     searcher_for(
     	_searcher_settings
@@ -155,6 +155,7 @@ class ApplicationController < ActionController::Base
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
     is_subsection_of(parent_controller: _parent_controller)
+    _after_inits
   end
 
   def index_action

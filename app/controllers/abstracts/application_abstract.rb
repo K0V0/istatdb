@@ -69,6 +69,9 @@ module ApplicationAbstract
 	def _before_inits
 	end
 
+	def _after_inits
+	end
+
 	def _before_db_load
 	end
 

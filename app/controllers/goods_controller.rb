@@ -7,7 +7,11 @@ class GoodsController < ApplicationController
 	end
 
 	def do_export
-
+		if params.has_key? :submit_excel
+			render xlsx: 'do_export'
+		elsif params.has_key? :submit_html
+			render 'do_export'
+		end
 	end
 
 	private
@@ -132,6 +136,13 @@ class GoodsController < ApplicationController
 					params[:q][:manufacturer_filter] = in_p - not_in_set
 				end
 			end
+		end
+	end
+
+	def _after_inits
+		if action_name == 'do_export'
+			params[:per] = 999999
+			#params[:page] = 0
 		end
 	end
 

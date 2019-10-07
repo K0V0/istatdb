@@ -80,12 +80,20 @@ class Good < ActiveRecord::Base
 	}
 
 	scope :impexpcompany_filter, -> (pars) {
+=begin
 		self
 		.includes(:impexpcompanies)
 		.where(impexpcompanies: {
 			id: pars
 		})
 		.references(:impexpcompanies)
+=end
+		self
+		.joins(:impexpcompanies)
+		.where(impexpcompanies: {
+			id: pars
+		})
+		.preload(:impexpcompanies)
 	}
 =begin
 	scope :manufacturer_filter, -> (pars) {
@@ -99,12 +107,21 @@ class Good < ActiveRecord::Base
 =end
 
 	scope :manufacturer_filter, -> (*pars) {
+=begin
 		self
 		.includes(:manufacturers)
 		.where(manufacturers: {
 			id: pars
 		})
 		.references(:manufacturers)
+=end
+		self
+		.joins(:manufacturers)
+		.where(manufacturers: {
+			id: pars
+		})
+		.preload(:manufacturers)
+
 	}
 
 	scope :uncomplete_filter, -> (pars) {
