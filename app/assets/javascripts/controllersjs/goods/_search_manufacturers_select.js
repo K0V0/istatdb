@@ -20,10 +20,12 @@ SearchManufacturersSelect.prototype = {
             } else if (!target.is('input[type=checkbox]')) {
                 container.removeClass('open');
                 if (target.is('label')) {
-                    e.preventDefault();
-                    container.find('input[type=checkbox]').removeAttr('checked');
-                    target.siblings('input[type=checkbox]').prop('checked', true);
-                    form.submit();
+                    if (target.closest(container).length > 0) {
+                        e.preventDefault();
+                        container.find('input[type=checkbox]').removeAttr('checked');
+                        target.siblings('input[type=checkbox]').prop('checked', true);
+                        form.submit();
+                    }
                 } else if (checkbox_used_last) {
                     form.submit();
                 } 
