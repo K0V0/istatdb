@@ -1,50 +1,28 @@
 
-<table>
-	<% @result.all.each_with_index do |r, i| %>
-	
+<table class="html_export">
+
+	<thead>
 		<tr>
-			<td> <%= i+1 %> </td>
+			<td>p.č.</td>
+			<% params[:fields].each do |field| %>
+				<%= render_html_export_head(field) %>
+			<% end %>
+		</tr>
+	</thead>
 
-			<% params[:fields].each do |p, v| %>
+	<tbody>
+		<% @result.all.each_with_index do |result, i| %>
+		
+			<tr>
+				<td> <%= i+1 %> </td>
 
-				<% if v.instance_of? String %>
+				<% params[:fields].each do |field| %>
 
-					<td><%= r.send(p) %></td>
-
-				<% else %>
-					
-					<td>
-						<table>
-						
-							<% if p.to_s.is_singular? %>
-
-								<tr>
-									<% v.each do |k, w| %>
-										<td> <%= r.send(p).send(k) %> </td>
-									<% end %>
-								</tr>
-
-							<% else %>
-
-								<% r.send(p).each do |e| %>
-									<tr>
-										<% v.each do |k, w| %>
-											<td> <%= e.send(k) %> </td>
-										<% end %>
-									</tr>
-								<% end %>
-								
-							<% end %>
-					
-						
-						</table>
-					</td>
+					<%= render_html_export_body(field, result) %>
 
 				<% end %>
+			</tr>
 
-			<% end %>
-
-		</tr>
-
-	<% end %>
+		<% end %>
+	</tbody>
 </table>

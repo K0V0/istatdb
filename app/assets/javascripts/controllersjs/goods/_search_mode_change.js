@@ -38,6 +38,6 @@ SearchModeChange.prototype = {
 		}
 		// to let remembered choice after page reload, do search to send required param "search_both=>1"
 		// to server side
-		$(document).find("form#good_search").submit();
+		//$(document).find("form#good_search").submit();
 	}
 }

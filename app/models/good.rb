@@ -80,21 +80,22 @@ class Good < ActiveRecord::Base
 	}
 
 	scope :impexpcompany_filter, -> (pars) {
-=begin
 		self
 		.includes(:impexpcompanies)
 		.where(impexpcompanies: {
 			id: pars
 		})
 		.references(:impexpcompanies)
-=end
+=begin
 		self
 		.joins(:impexpcompanies)
 		.where(impexpcompanies: {
 			id: pars
 		})
 		.preload(:impexpcompanies)
+=end
 	}
+
 =begin
 	scope :manufacturer_filter, -> (pars) {
 		self
@@ -105,23 +106,21 @@ class Good < ActiveRecord::Base
 		.references(:manufacturers)
 	}
 =end
-
 	scope :manufacturer_filter, -> (*pars) {
-=begin
 		self
 		.includes(:manufacturers)
 		.where(manufacturers: {
 			id: pars
 		})
 		.references(:manufacturers)
-=end
+=begin
 		self
 		.joins(:manufacturers)
 		.where(manufacturers: {
 			id: pars
 		})
 		.preload(:manufacturers)
-
+=end
 	}
 
 	scope :uncomplete_filter, -> (pars) {
@@ -131,10 +130,9 @@ class Good < ActiveRecord::Base
 			self.where(uncomplete: true)
 		end
 	}
-		
 
 	def self.ransackable_scopes(*pars)
-	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter)
+	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter)
 	end
 
 	def local_taric_selected_or_created

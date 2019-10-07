@@ -1,0 +1,26 @@
+<% has_search_datetime = params.deep_has_key? :q, :search_datetime %>
+
+<div class="select_time_wrap">
+
+	<span>
+		<%= obj.label :time_filter %>
+	</span>
+
+	<span class="datetime_select">
+		<%= obj.datetime_select(
+			:created_at_gteq,
+			disabled: !has_search_datetime,
+			default: DateTime.current 
+		) %>
+	</span>
+
+	<span>
+		<%= check_box_tag(
+			'q[search_datetime]',
+			1,
+			has_search_datetime,
+			class: "big"
+		) %>
+	</span>
+
+</div>

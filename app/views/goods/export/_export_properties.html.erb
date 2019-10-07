@@ -22,10 +22,10 @@ fields_to_select = [
 %>
 
 
-<%= form_tag(public_send("do_export_#{controller_name}_path"), method: :post) do |f| %>
+<%= form_tag(public_send("do_export_#{controller_name}_path"), target: '_blank', method: :post) do |f| %>
     <div class="decorated_wrap shrinked">
 
-        <table class="">
+        <table class="with_controls export">
 
             <caption>Export</caption>
 
@@ -38,9 +38,11 @@ fields_to_select = [
 
                         <% k = field.keys.first %>
                         <tr>
-                            <td> <%= t("activerecord.models.#{k.to_s.singularize}") %> </td>
-                            <td>
+                            <td colspan="3" class="subtable">
                                 <table>
+                                    <thead>
+                                        <tr><th><%= t("activerecord.models.#{k.to_s.singularize}") %></th></tr>
+                                    </thead>
                                     <% field[k].each do |subfield| %>
                                         <%= render(
                                             'goods/export/export_properties_fields',

@@ -1,10 +1,10 @@
-<tr>
-    <td> 
+<tr class="checkboxes">
+    <td class="checkbox"> 
         <%= check_box_tag(
             "fields#{name}"
         ) %> 
     </td>
-    <td>
+    <td class="label">
         <%= label_tag(
             "fields#{name}",
             t("activerecord.attributes.#{mdl}.#{field.to_s}")

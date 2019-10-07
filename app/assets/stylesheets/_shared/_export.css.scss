@@ -1,0 +1,98 @@
+@import 'variables';
+
+div.popups {
+
+	table.export {
+
+		& > tbody {
+
+			& > tr {
+
+				&:first-child {
+					margin-top:0.25em;
+				}
+
+				&:last-child {
+					margin-bottom: 0.25em;
+				}
+			}
+		}
+
+		tr {
+			display:flex;
+			align-items: center;
+
+			&.checkboxes {
+
+				td {
+					padding: 0.125em 0.25em;
+
+					label, input {
+						line-height: 1.25em;
+					}
+
+					label {
+						cursor: pointer;
+						&:hover { text-decoration: underline; }
+					}
+
+					&.checkbox {
+						min-width: 1%;
+					}
+
+					&.label {
+						max-width: 99%;
+						white-space: nowrap;
+					}
+				}
+			}
+
+			td, th {
+				//line-height: 1em;
+
+				&:first-child {
+					padding-left: 0.5em;
+				}
+
+				&:last-child {
+					padding-right: 0.5em;
+				}
+
+				&.subtable {
+					padding:0;
+
+					td:first-child {
+						padding-left: 0.75em;
+					}
+
+					table {
+						margin:0.25em;
+					}
+
+				}
+			}
+
+			th {
+				white-space: nowrap;
+			}
+		}
+	}
+}
+
+table.html_export {
+	text-align: left;
+
+	& > tbody {
+
+		& > tr {
+
+			&:nth-child(2n) {
+				background-color: $soft_grey;
+			}
+
+			&:nth-child(2n-1) {
+				background-color: $white;
+			}
+		}
+	}
+}
