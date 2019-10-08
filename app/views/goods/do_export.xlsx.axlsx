@@ -2,13 +2,13 @@ wb = xlsx_package.workbook
 wb.add_worksheet(name: "Export") do |sheet|
 
     title_style = sheet.styles.add_style(
-        :bg_color => "00CCCCCC",
+        :bg_color => "00BBBBBB",
         :alignment=>{:vertical => :center},
         b: true
     )
 
     title2_style = sheet.styles.add_style(
-        :bg_color => "00CCCCCC",
+        :bg_color => "00BBBBBB",
         :alignment=>{:vertical => :center}
     )
 
@@ -16,12 +16,22 @@ wb.add_worksheet(name: "Export") do |sheet|
         :alignment=>{:vertical => :center, horizontal: :center}
     )
 
+    first_col_style_even = sheet.styles.add_style(
+        :alignment=>{:vertical => :center, horizontal: :center},
+        :bg_color => "00DDDDDD"
+    )
+
     ordinary_style = sheet.styles.add_style(
         :alignment=>{:vertical => :center, horizontal: :left}
     )
 
+    ordinary_style_even = sheet.styles.add_style(
+        :alignment=>{:vertical => :center, horizontal: :left},
+        :bg_color => "00DDDDDD"
+    )
+
     index_fix_style = sheet.styles.add_style(
-        :bg_color => "00CCCCCC",
+        :bg_color => "00BBBBBB",
         :alignment=>{:vertical => :center, horizontal: :center}
     )
 
@@ -94,7 +104,9 @@ wb.add_worksheet(name: "Export") do |sheet|
         rows = render_excel_export_body(params[:fields], result)
         rows.each do |row|
             index_added ? row.unshift(nil) : row.unshift(index+1)
-            sheet.add_row row, style: ([first_col_style].fill(ordinary_style, 1..columns_count-1))
+            result_style = index%2==0 ? ordinary_style : ordinary_style_even
+            line_num_style = index%2==0 ? first_col_style : first_col_style_even
+            sheet.add_row row, style: ([line_num_style].fill(result_style, 1..columns_count-1))
             index_added = true
         end
     end

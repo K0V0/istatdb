@@ -47,6 +47,8 @@ module ExportHelper
 				if field[1].instance_of? String
 					if i==0
 						row.push(obj.send(field[0]))
+					else
+						row.push(nil)
 					end
 				else
 					if field[0].is_singular?
@@ -54,9 +56,13 @@ module ExportHelper
 							field[1].each do |f|
 								row.push(obj.send(field[0]).send(f[0]))
 							end
+						else
+							row.push(nil)
 						end
 					else
-
+						field[1].each do |f|
+							row.push(obj.send(field[0])[i].try(f[0]))
+						end
 					end
 				end
 			end
