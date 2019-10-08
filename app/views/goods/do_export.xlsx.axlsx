@@ -32,9 +32,9 @@ wb.add_worksheet(name: "Export") do |sheet|
         image.start_at(0, 0)
     end
 
-    7.times do
-        sheet.add_row [" "]
-    end
+    sheet.add_row [nil, "ver. #{@version_number}", "© Matej Kováč #{Date.current.year}"], height: 96, sz: 10
+
+    sheet.add_row [" "]
 
     ref_search = is_param?(:ident_or_description_cont)||is_param?(:ident_cont)
     desc_search = is_param?(:description_cont)
@@ -77,6 +77,7 @@ wb.add_worksheet(name: "Export") do |sheet|
     end
     sheet.add_row ["", "Stav - kompletnosť dát: ", "", "zobraziť #{item_state}"], style: ordinary_style
     sheet.add_row ["", "Časové obdobie: ", "", item_time_filter], style: ordinary_style
+    sheet.add_row ["", "Čas vygenerovania súboru: ", "", DateTime.current.strftime("%d %B %Y, %H:%M")]
 
     sheet.add_row [" "]
     sheet.add_row [" "]

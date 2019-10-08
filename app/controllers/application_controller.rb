@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   before_action :inits
 
+  before_action :version_number_check, only: [:index]
+
+  before_action :version_number
+
   before_action :convert_params_to_date
 
   before_render :last_visited_set, only: [:show]

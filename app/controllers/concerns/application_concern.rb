@@ -293,6 +293,29 @@ module ApplicationConcern
     	@last_visits = last_visits
     end
 
+    def version_number_check
+    	vn = "0.0.0"
+	    vb = "00000000-0000"
+	    if session[:APP_VER_NUM].nil?
+	        @last_change = Change.last_change
+	        if !@last_change.blank?
+	            session[:APP_VER_NUM] = vn = @last_change.version_num
+	            session[:APP_VER_BUILD] = vb = @last_change.created_at.strftime("%Y%m%d-%H%M")
+
+	        else
+	            session[:APP_VER_NUM] = vn
+	            session[:APP_VER_BUILD] = vb
+	        end
+	    else
+	        vn = session[:APP_VER_NUM]
+	        vb = session[:APP_VER_BUILD]
+	    end
+    end
+
+    def version_number
+    	@version_number = session[:APP_VER_NUM]
+    end
+
 	module ClassMethods
 
 	end

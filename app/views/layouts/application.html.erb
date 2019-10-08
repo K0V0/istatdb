@@ -36,7 +36,6 @@ show_flash = !flash.empty? && user_signed_in?
 			<%= yield :popup %>
 		</div>
 
-
 		<div class="flash_messages <%= show_flash ? 'visible' : '' %>">
 			<%= render('layouts/base/flash_messages') if show_flash %>
 		</div>
