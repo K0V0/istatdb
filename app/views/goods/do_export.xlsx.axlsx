@@ -1,6 +1,30 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Export") do |sheet|
 
+    title_style = sheet.styles.add_style(
+        :bg_color => "00CCCCCC",
+        :alignment=>{:vertical => :center},
+        b: true
+    )
+
+    title2_style = sheet.styles.add_style(
+        :bg_color => "00CCCCCC",
+        :alignment=>{:vertical => :center}
+    )
+
+    first_col_style = sheet.styles.add_style(
+        :alignment=>{:vertical => :center, horizontal: :center}
+    )
+
+    ordinary_style = sheet.styles.add_style(
+        :alignment=>{:vertical => :center, horizontal: :left}
+    )
+
+    index_fix_style = sheet.styles.add_style(
+        :bg_color => "00CCCCCC",
+        :alignment=>{:vertical => :center, horizontal: :center}
+    )
+
     img = File.expand_path('app/assets/images/logo_small.png')
     sheet.add_image(:image_src => img, :noSelect => true, :noMove => true) do |image|
         image.width = 448
@@ -12,18 +36,64 @@ wb.add_worksheet(name: "Export") do |sheet|
         sheet.add_row [" "]
     end
 
-    column_names = render_excel_export_head(params[:fields])
-    sheet.add_row column_names[:higher]
-    sheet.add_row column_names[:lower]
+    ref_search = is_param?(:ident_or_description_cont)||is_param?(:ident_cont)
+    desc_search = is_param?(:description_cont)
+    sj_filter = is_param?(:impexpcompany_filter) ? Impexpcompany.find(params[:q][:impexpcompany_filter]).company_name : "---"
+    manufacturer_filter = "---"
+    if (p = is_param?(:manufacturer_filter))
+        manufacturer_filter = Manufacturer.where(id: p).pluck(:name)
+    end
+    item_state = is_param?(:manufacturer_filter)
+    case item_state
+        when "0"
+            item_state = "len došetrené"
+        when "1"
+            item_state = "len nedošetrené"
+        when false
+            item_state = "všetky"
+        else
+            item_state = "všetky"  
+    end
+    item_time_filter = "bez obmedzenia"
+    if is_param?(:search_datetime)
+        p = params[:q]
+        timestring = "#{p['created_at_gteq(1i)']}"
+        time = DateTime.parse("#{p['created_at_gteq(1i)']}-#{p['created_at_gteq(2i)']}-#{p['created_at_gteq(3i)']}-#{p['created_at_gteq(4i)']}:#{p['created_at_gteq(5i)']}")
+        item_time_start = time.strftime("%d %B %Y, %H:%M")
+        item_time_end = DateTime.current.strftime("%d %B %Y, %H:%M")
+        item_time_filter = "#{item_time_start} - #{item_time_end}"
+    end
 
-    #sheet.add_row ["kokokot\x0Apicasdsd \x0A kurva"]
+    sheet.add_row [nil, "Kritériá vyhľadávania: ", "", ""], :style=>[nil, title_style, title_style, title_style]
+    sheet.add_row ["", "Referencia alebo popis obsahuje: ", "", (ref_search||"---")], style: ordinary_style
+    sheet.add_row ["", "Popis tovaru obsahuje: ", "", (desc_search||"---")], style: ordinary_style
+    sheet.add_row ["", "Spravodajská jednotka: ", "", sj_filter], style: ordinary_style
+    if is_param?(:manufacturer_filter)
+        manufacturer_filter.each_with_index do |man, index|
+            sheet.add_row ["", (index==0 ? "Výrobca/Odberateľ: " : " "), "", man], style: ordinary_style
+        end
+    else
+        sheet.add_row ["", "Výrobca/Odberateľ: ", "", "---"], style: ordinary_style
+    end
+    sheet.add_row ["", "Stav - kompletnosť dát: ", "", "zobraziť #{item_state}"], style: ordinary_style
+    sheet.add_row ["", "Časové obdobie: ", "", item_time_filter], style: ordinary_style
+
+    sheet.add_row [" "]
+    sheet.add_row [" "]
+
+    column_names = render_excel_export_head(params[:fields])
+    columns_count = column_names[:lower].size
+    sheet.add_row(column_names[:higher], style: title_style) if column_names[:higher].any?
+    sheet.add_row column_names[:lower], style: ([index_fix_style].fill(title2_style, 1..columns_count-1))
+
+    sheet.add_row [" "]
 
     @result.all.each_with_index do |result, index|
         index_added = false
         rows = render_excel_export_body(params[:fields], result)
         rows.each do |row|
             index_added ? row.unshift(nil) : row.unshift(index+1)
-            sheet.add_row row
+            sheet.add_row row, style: ([first_col_style].fill(ordinary_style, 1..columns_count-1))
             index_added = true
         end
     end

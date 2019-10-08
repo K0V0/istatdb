@@ -11,6 +11,8 @@ SearchManufacturersSelect.prototype = {
         var checkbox_used_last = false;
 
         $(document).on('click', function(e) {
+            // pri navrate z exportu sa tento event spusta dvakrat, zistit preco
+            // prehodene na on_ready, zatial ide
             var container = $(document).find('div.multiselect');
             var target = $(e.target);
             var form = container.closest('form');

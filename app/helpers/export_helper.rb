@@ -19,7 +19,7 @@ module ExportHelper
 	def render_excel_export_head(fields)
 		ret = {
 			lower: ["index"],
-			higher: [" "]
+			higher: [nil]
 		}
 		fields.to_a.each do |field|
 			if field[1].instance_of? String
@@ -87,6 +87,18 @@ module ExportHelper
 			end
 			str += "</table></td>"
 			str.html_safe
+		end
+	end
+
+	def is_param?(param)
+		if params.deep_has_key?(:q, param)
+			if !(p = params[:q][param]).blank?
+				return p
+			else
+				return false
+			end
+		else
+			return false
 		end
 	end
 
