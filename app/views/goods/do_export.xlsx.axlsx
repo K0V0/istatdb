@@ -1,6 +1,31 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Export") do |sheet|
-  #@buttons.each do |button|
-    sheet.add_row ["test", "test"]
-  #end
+
+    img = File.expand_path('app/assets/images/logo_small.png')
+    sheet.add_image(:image_src => img, :noSelect => true, :noMove => true) do |image|
+        image.width = 448
+        image.height = 96
+        image.start_at(0, 0)
+    end
+
+    7.times do
+        sheet.add_row [" "]
+    end
+
+    column_names = render_excel_export_head(params[:fields])
+    sheet.add_row column_names[:higher]
+    sheet.add_row column_names[:lower]
+
+    #sheet.add_row ["kokokot\x0Apicasdsd \x0A kurva"]
+
+    @result.all.each_with_index do |result, index|
+        index_added = false
+        rows = render_excel_export_body(params[:fields], result)
+        rows.each do |row|
+            index_added ? row.unshift(nil) : row.unshift(index+1)
+            sheet.add_row row
+            index_added = true
+        end
+    end
+
 end

@@ -16,6 +16,57 @@ module ExportHelper
 		end
 	end
 
+	def render_excel_export_head(fields)
+		ret = {
+			lower: ["index"],
+			higher: [" "]
+		}
+		fields.to_a.each do |field|
+			if field[1].instance_of? String
+				translation = "#{t("activerecord.attributes.#{controller_name.singularize}.#{field[0].to_s}")}"
+				ret[:lower].push(translation)
+				ret[:higher].push(nil)
+			else
+				field[1].each do |f|
+					translation = "#{t("activerecord.models.#{field[0].singularize}")}"
+					ret[:higher].include?(translation) ? ret[:higher].push(nil) : ret[:higher].push(translation)
+					translation = "#{t("activerecord.attributes.#{field[0].singularize}.#{f[0].to_s}")}"
+					ret[:lower].push(translation)
+				end
+			end
+		end
+		return ret
+	end
+
+	def render_excel_export_body(fields, obj)
+		ret = []
+		i = 0
+		loop do
+			row = []
+			fields.each do |field|
+				if field[1].instance_of? String
+					if i==0
+						row.push(obj.send(field[0]))
+					end
+				else
+					if field[0].is_singular?
+						if i==0
+							field[1].each do |f|
+								row.push(obj.send(field[0]).send(f[0]))
+							end
+						end
+					else
+
+					end
+				end
+			end
+			i = i+1
+		  	break if ((row.all? { |r| r.nil? })||(row.blank?))
+		  	ret.push(row)
+		end
+		return ret
+	end
+
 	def render_html_export_body(field, obj, cont=false)
 		if field[1].instance_of? String
 			return "<td>#{obj.send(field[0])}</td>".html_safe
