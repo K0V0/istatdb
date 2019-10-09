@@ -16,6 +16,11 @@ wb.add_worksheet(name: "Export") do |sheet|
         :alignment=>{:vertical => :center, horizontal: :center}
     )
 
+    first_col_style_odd = sheet.styles.add_style(
+        :alignment=>{:vertical => :center, horizontal: :center},
+        :bg_color => "00FFFFFF"
+    )
+
     first_col_style_even = sheet.styles.add_style(
         :alignment=>{:vertical => :center, horizontal: :center},
         :bg_color => "00DDDDDD"
@@ -23,6 +28,11 @@ wb.add_worksheet(name: "Export") do |sheet|
 
     ordinary_style = sheet.styles.add_style(
         :alignment=>{:vertical => :center, horizontal: :left}
+    )
+
+    ordinary_style_odd = sheet.styles.add_style(
+        :alignment=>{:vertical => :center, horizontal: :left},
+        :bg_color => "00FFFFFF"
     )
 
     ordinary_style_even = sheet.styles.add_style(
@@ -74,26 +84,28 @@ wb.add_worksheet(name: "Export") do |sheet|
         item_time_filter = "#{item_time_start} - #{item_time_end}"
     end
 
-    sheet.add_row [nil, "Kritériá vyhľadávania: ", "", ""], :style=>[nil, title_style, title_style, title_style]
-    sheet.add_row ["", "Referencia alebo popis obsahuje: ", "", (ref_search||"---")], style: ordinary_style
-    sheet.add_row ["", "Popis tovaru obsahuje: ", "", (desc_search||"---")], style: ordinary_style
-    sheet.add_row ["", "Spravodajská jednotka: ", "", sj_filter], style: ordinary_style
+    sheet.add_row [nil, "Kritériá vyhľadávania: ", ""], :style=>[nil, title_style, title_style]
+    sheet.add_row ["", "Referencia alebo popis obsahuje: ", (ref_search||"---")], style: ordinary_style
+    sheet.add_row ["", "Popis tovaru obsahuje: ", (desc_search||"---")], style: ordinary_style
+    sheet.add_row ["", "Spravodajská jednotka: ", sj_filter], style: ordinary_style
     if is_param?(:manufacturer_filter)
         manufacturer_filter.each_with_index do |man, index|
-            sheet.add_row ["", (index==0 ? "Výrobca/Odberateľ: " : " "), "", man], style: ordinary_style
+            sheet.add_row ["", (index==0 ? "Výrobca/Odberateľ: " : " "), man], style: ordinary_style
         end
     else
-        sheet.add_row ["", "Výrobca/Odberateľ: ", "", "---"], style: ordinary_style
+        sheet.add_row ["", "Výrobca/Odberateľ: ", "---"], style: ordinary_style
     end
-    sheet.add_row ["", "Stav - kompletnosť dát: ", "", "zobraziť #{item_state}"], style: ordinary_style
-    sheet.add_row ["", "Časové obdobie: ", "", item_time_filter], style: ordinary_style
-    sheet.add_row ["", "Čas vygenerovania súboru: ", "", DateTime.current.strftime("%d %B %Y, %H:%M")]
+    sheet.add_row ["", "Stav - kompletnosť dát: ", "zobraziť #{item_state}"], style: ordinary_style
+    sheet.add_row ["", "Časové obdobie: ", item_time_filter], style: ordinary_style
+    sheet.add_row ["", "Čas vygenerovania súboru: ", DateTime.current.strftime("%d %B %Y, %H:%M")]
 
     sheet.add_row [" "]
     sheet.add_row [" "]
 
     column_names = render_excel_export_head(params[:fields])
     columns_count = column_names[:lower].size
+    mergable_columns = generate_column_map_for_merging(params[:fields])
+    mergable_cells = []
     sheet.add_row(column_names[:higher], style: title_style) if column_names[:higher].any?
     sheet.add_row column_names[:lower], style: ([index_fix_style].fill(title2_style, 1..columns_count-1))
 
@@ -101,14 +113,35 @@ wb.add_worksheet(name: "Export") do |sheet|
 
     @result.all.each_with_index do |result, index|
         index_added = false
+        first_of_set_row_reference = nil
+        row_reference = nil
         rows = render_excel_export_body(params[:fields], result)
+
         rows.each do |row|
             index_added ? row.unshift(nil) : row.unshift(index+1)
-            result_style = index%2==0 ? ordinary_style : ordinary_style_even
-            line_num_style = index%2==0 ? first_col_style : first_col_style_even
-            sheet.add_row row, style: ([line_num_style].fill(result_style, 1..columns_count-1))
+            result_style = index%2==0 ? ordinary_style_odd : ordinary_style_even
+            line_num_style = index%2==0 ? first_col_style_odd : first_col_style_even
+            row_reference = sheet.add_row row, style: ([line_num_style].fill(result_style, 1..columns_count-1))
+            first_of_set_row_reference = row_reference if !index_added
             index_added = true
         end
+
+        if first_of_set_row_reference != row_reference
+            mergable_columns.each_with_index do |mc, index|
+                if mc
+                    character = (65+index).chr
+                    first = "#{character}#{sheet.rows.index(first_of_set_row_reference)+1}"
+                    last = "#{character}#{sheet.rows.index(row_reference)+1}"
+                    #sheet["#{character}#{first}"].merge(sheet["#{character}#{last}"])
+                    mergable_cells.push([first, last])
+                end
+            end
+        end
+    end
+
+    mergable_cells.each do |cell|
+        sheet[cell[0]].merge sheet[cell[1]]
+
     end
 
 end

@@ -16,6 +16,26 @@ module ExportHelper
 		end
 	end
 
+	def generate_column_map_for_merging(fields)
+		f_map = [true]
+		fields.to_a.each do |f|
+			if f[1].instance_of? String
+				f_map.push(true)
+			else
+				if (f[0].to_s.is_singular?)
+					(f[1].size).times do 
+						f_map.push(true)
+					end
+				else
+					(f[1].size).times do 
+						f_map.push(false)
+					end
+				end
+			end
+		end
+		return f_map
+	end
+
 	def render_excel_export_head(fields)
 		ret = {
 			lower: ["index"],
@@ -57,11 +77,17 @@ module ExportHelper
 								row.push(obj.send(field[0]).send(f[0]))
 							end
 						else
-							row.push(nil)
+							(field[1].size).times do  
+								row.push(nil)
+							end
 						end
 					else
 						field[1].each do |f|
-							row.push(obj.send(field[0])[i].try(f[0]))
+							if (o = obj.send(field[0])[i]).blank?
+								row.push(nil)
+							else
+								row.push(o.send(f[0]))
+							end
 						end
 					end
 				end
