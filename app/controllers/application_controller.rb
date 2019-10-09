@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   #include Devise::Controllers::Helpers
   include ApplicationConcern
   include ApplicationAbstract
-  #include BeforeRender
+  include BeforeRender
   include RansackSearchWrapper
   include Log
   include MemHelper
@@ -29,9 +29,9 @@ class ApplicationController < ActionController::Base
 
   before_action :convert_params_to_date
 
-  before_action :last_visited_set, only: [:show]
+  before_render :last_visited_set, only: [:show]
 
-  before_action :last_visited_get, only: [:index, :search, :show, :administrative, :export]
+  before_render :last_visited_get, only: [:index, :search, :show, :administrative, :export]
 
   before_action(
     only: [:index, :search, :show, :administrative, :change_status],
