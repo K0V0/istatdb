@@ -6,14 +6,6 @@ class GoodsController < ApplicationController
 		_loads_for_search_panel
 	end
 
-	def do_export
-		if params.has_key? :submit_excel
-			render xlsx: 'do_export'
-		elsif params.has_key? :submit_html
-			render 'do_export'
-		end
-	end
-
 	private
 
 	def _searcher_settings

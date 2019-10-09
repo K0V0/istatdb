@@ -1,5 +1,9 @@
 class ManufacturersController < ApplicationController
 
+    def export
+        _loads_for_search_panel
+    end
+
   	private
 
   	def _searcher_settings

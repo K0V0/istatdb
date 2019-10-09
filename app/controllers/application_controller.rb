@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   #include Devise::Controllers::Helpers
   include ApplicationConcern
   include ApplicationAbstract
-  include BeforeRender
+  #include BeforeRender
   include RansackSearchWrapper
   include Log
   include MemHelper
@@ -29,9 +29,9 @@ class ApplicationController < ActionController::Base
 
   before_action :convert_params_to_date
 
-  before_render :last_visited_set, only: [:show]
+  before_action :last_visited_set, only: [:show]
 
-  before_render :last_visited_get, only: [:index, :search, :show, :administrative, :export]
+  before_action :last_visited_get, only: [:index, :search, :show, :administrative, :export]
 
   before_action(
     only: [:index, :search, :show, :administrative, :change_status],
@@ -141,6 +141,14 @@ class ApplicationController < ActionController::Base
   def end_administrative
   	redirect_to action: "index"
     end_administrative_action if @user_logged_and_model_exist && !@task_banned_for_user
+  end
+
+  def do_export
+    if params.has_key? :submit_excel
+      render xlsx: 'do_export'
+    elsif params.has_key? :submit_html
+      render 'do_export'
+    end
   end
 
   private

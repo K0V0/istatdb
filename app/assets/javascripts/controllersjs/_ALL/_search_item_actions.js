@@ -33,6 +33,7 @@ SearchItemActions.prototype = {
 
 		$(document).on('click', '#reset_search', function() {
 			$(this).closest('section.search_bar').find('input:not([type="submit"]), select').val('');
+			//$(this).closest('section.search_bar').find('div.multiselect > span').empty().text(t('goods_search.manufacturer_prompt'));
 		});
 
 		$(document).on('click', '#search_item_on_google, #search_item_on_google_2' , function() {

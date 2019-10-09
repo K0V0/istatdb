@@ -164,6 +164,11 @@ Rails.application.routes.draw do
     to: "manufacturers#search",
     as: "search_manufacturers"
 
+    # ransack search
+  get "manufacturersdb/export",
+    to: "manufacturers#export",
+    as: "export_manufacturers"
+
   # administration - enter index page into administration mode
   get "manufacturersdb/administrative",
     to: "manufacturers#administrative"
@@ -190,6 +195,10 @@ Rails.application.routes.draw do
   post "manufacturersdb/new",
     to: "manufacturers#create",
     as: "create_manufacturer"
+
+  post "manufacturersdb/export",
+    to: "manufacturers#do_export",
+    as: "do_export_manufacturers"
 
   patch "manufacturersdb/:id/edit",
     to: "manufacturers#update",

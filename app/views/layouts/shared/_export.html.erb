@@ -1,28 +1,7 @@
-<%
-fields_to_select = [
-    :ident,
-    :description,
-    { 
-        local_taric: [
-            :kncode,
-            :description
-        ] 
-    }, 
-    { 
-        manufacturers: [
-            :name
-        ]
-    },
-    {
-        impexpcompanies: [
-            :company_name
-        ]
-    }
-]
-%>
-
-
 <%= form_tag(public_send("do_export_#{controller_name}_path"), target: '_blank', method: :post) do |f| %>
+
+    <%= hidden_field_tag 'head', head.to_json %>
+
     <div class="decorated_wrap shrinked">
 
         <table class="with_controls export">
@@ -45,7 +24,7 @@ fields_to_select = [
                                     </thead>
                                     <% field[k].each do |subfield| %>
                                         <%= render(
-                                            'goods/export/export_properties_fields',
+                                            'layouts/shared/export/export_properties_field',
                                             mdl: "#{k.to_s.singularize}",
                                             field: subfield,
                                             name: "[#{k.to_s}][#{subfield.to_s}]"
@@ -58,7 +37,7 @@ fields_to_select = [
                     <% else %>
 
                         <%= render(
-                            'goods/export/export_properties_fields',
+                            'layouts/shared/export/export_properties_field',
                             mdl: "#{controller_name.singularize}",
                             field: field,
                             name: "[#{field.to_s}]"
@@ -74,7 +53,7 @@ fields_to_select = [
                     <td colspan="10">
                         <input type="submit" class="button" value="Excel tabuľka" name="submit_excel">
                         <input type="submit" class="button" value="HTML" name="submit_html">
-                        <%= link_to "Storno", goods_path, class: 'button' %>
+                        <%= link_to "Storno", { action: :index, controller: controller_name }, class: 'button' %>
                     </td>
                 </tr>
             </tfoot>
@@ -83,6 +62,3 @@ fields_to_select = [
 
     </div>
 <% end %>
-
-
-

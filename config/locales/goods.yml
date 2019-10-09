@@ -73,7 +73,7 @@ sk:
         ident: Referencia
         description: Popis tovaru
         uncomplete: Je položka nedošetrená?
-        uncomplete_reason: Dôvod/poznámka
+        uncomplete_reason: Dôvod/poznámka k došetrovaniu
         impexpcompany_filter: Spravodajská jednotka
         manufacturer_filter: Výrobca/odberateľ
         uncomplete_filter: Stav

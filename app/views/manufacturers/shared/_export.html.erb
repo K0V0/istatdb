@@ -1,0 +1,17 @@
+<%
+
+fields_to_export = [
+    :name
+]
+
+head = [
+	["Spravodajská jednotka", Impexpcompany.where(id: is_param?(:impexpcompany_filter)).pluck(:company_name)]
+]
+
+%>
+
+<%= render(
+    'layouts/shared/export',
+    fields_to_select: fields_to_export,
+    head: head
+) %>
