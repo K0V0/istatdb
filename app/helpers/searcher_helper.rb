@@ -16,4 +16,18 @@ module SearcherHelper
 		end
 	end
 
+	def timesort_method
+		tm = 'created_at_or_updated_at_gteq'
+		if params.has_key?(:timesort_method) 
+			if !(p = params[:timesort_method]).blank?
+				tm = p
+			end
+		end
+		return tm
+	end
+
+	def datetime_param(i)
+		return params[:q]["#{timesort_method}(#{i}i)"]
+	end
+
 end

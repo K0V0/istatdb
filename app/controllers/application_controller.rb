@@ -166,6 +166,7 @@ class ApplicationController < ActionController::Base
     remember_param :page    ## page number
     remember_param :q       ## search
     remember_sortlink       ## sort link direction
+    remember_param :timesort_method
     is_subsection_of(parent_controller: _parent_controller)
     _after_inits
   end

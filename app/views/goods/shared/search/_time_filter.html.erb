@@ -1,4 +1,6 @@
-<% has_search_datetime = params.deep_has_key? :q, :search_datetime %>
+<% 
+	has_search_datetime = params.deep_has_key? :q, :search_datetime
+%>
 
 <div class="select_time_wrap">
 
@@ -7,11 +9,27 @@
 	</span>
 
 	<span class="datetime_select">
+
 		<%= obj.datetime_select(
-			:created_at_gteq,
+			timesort_method,
 			disabled: !has_search_datetime,
 			default: DateTime.current 
 		) %>
+
+		&nbsp;
+
+		<%= select_tag(
+			"timesort_method",
+			options_for_select(
+				[
+					["Pridanie/úprava", :created_at_or_updated_at_gteq],
+					["Pridanie", :created_at_gteq],
+					["Úprava", :updated_at_gteq]
+				],
+				timesort_method
+			)
+		) %>
+
 	</span>
 
 	<span>

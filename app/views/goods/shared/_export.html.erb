@@ -13,10 +13,22 @@
     if is_param?(:search_datetime)
         p = params[:q]
         timestring = "#{p['created_at_gteq(1i)']}"
-        time = DateTime.parse("#{p['created_at_gteq(1i)']}-#{p['created_at_gteq(2i)']}-#{p['created_at_gteq(3i)']}-#{p['created_at_gteq(4i)']}:#{p['created_at_gteq(5i)']}")
+        time = DateTime.parse("#{datetime_param(1)}-#{datetime_param(2)}-#{datetime_param(3)}-#{datetime_param(4)}:#{datetime_param(5)}")
         item_time_start = time.strftime("%d %B %Y, %H:%M")
         item_time_end = DateTime.current.strftime("%d %B %Y, %H:%M")
         item_time_filter = "#{item_time_start} - #{item_time_end}"
+    end
+
+    time_filter_mode = "pridania alebo poslednej úpravy"
+    if params.has_key? :timesort_method
+        case params[:timesort_method].to_s
+            when "created_at_or_updated_at_gteq"
+                # nic
+            when "created_at_gteq"
+                time_filter_mode = "pridania"
+            when "updated_at_gteq"
+                time_filter_mode = "poslednej úpravy"  
+        end
     end
 %>
 
@@ -59,7 +71,8 @@ head = [
     ["Spravodajská jednotka: ", Impexpcompany.where(id: is_param?([:impexpcompany_filter])).pluck(:company_name)],
     ["Výrobcovia/Odberatelia: ", Manufacturer.where(id: is_param?([:manufacturer_filter])).pluck(:name)],
     ["Stav položky: ", item_state],
-    ["Časové obdobie: ", item_time_filter]
+    ["Časové obdobie: ", item_time_filter],
+    ["Filtrované podľa času: ", time_filter_mode]
 ]
 %>
 
