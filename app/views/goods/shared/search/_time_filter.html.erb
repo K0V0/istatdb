@@ -26,8 +26,13 @@
 					["Pridanie", :created_at_gteq],
 					["Úprava", :updated_at_gteq]
 				],
-				timesort_method
-			)
+				{
+					selected: timesort_method
+				}
+			),
+			{
+				disabled: !has_search_datetime
+			}
 		) %>
 
 	</span>
