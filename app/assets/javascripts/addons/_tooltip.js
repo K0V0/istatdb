@@ -11,11 +11,13 @@
 				t.text(txt);
 				var ex = $(this).offset().top; // vertikal
 				var ey = $(this).offset().left;// horizontal
-				var ew = $(this).outerWidth();
-				var eh = $(this).outerHeight();
-				var ww = $(window).width();
-				var tw = t.outerWidth();
-				var th = t.outerHeight();
+				var scr_x = $(window).scrollTop(); // kolko px zoscrolllovne
+				var ew = $(this).outerWidth(); //sirka elementu ku ktoremu ma byt bublinka
+				var eh = $(this).outerHeight(); // detto, vyska
+				var ww = $(window).width(); // sirka priezoru
+				var wh = $(window).height(); // vyska priezoru
+				var tw = t.outerWidth(); // sirka bublinky
+				var th = t.outerHeight(); //vyska bublinky
 				var hpos = 0; 
 				var vpos = 0;
 
@@ -26,10 +28,11 @@
 					hpos = ey;
 				}
 
-				if (ex >= th+gap) {
-					vpos = ex-th-gap/2;
+				if (ex-scr_x >= th+gap) {
+					console.log(ex-scr_x);
+					vpos = ex-th-scr_x-gap/2;
 				} else {
-					vpos = ex+eh+th+gap/2;
+					vpos = ex-scr_x+eh+gap/2;
 				}
 
 				t.css("left", hpos);
