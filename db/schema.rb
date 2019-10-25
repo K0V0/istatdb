@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191025001438) do
+ActiveRecord::Schema.define(version: 20191025064657) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"

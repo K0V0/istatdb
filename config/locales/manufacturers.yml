@@ -36,6 +36,7 @@ sk:
     attributes:
       manufacturer:
         name: Výrobca/odberateľ
+        goods_count: Počet tovarov
         impexpcompany_filter: spolupracuje so spravodajskou jednotkou
 
   helpers:
