@@ -1,13 +1,15 @@
+<% meno = mdl == controller_name.to_s.singularize ? "[#{field.to_s}]" : "[#{mdl}][#{field.to_s}]" %>
+
 <tr class="checkboxes">
     <td class="checkbox"> 
         <%= check_box_tag(
-            "fields#{name}"
+            "fields#{meno}"
         ) %> 
     </td>
     <td class="label">
         <%= label_tag(
-            "fields#{name}",
-            t("activerecord.attributes.#{mdl}.#{field.to_s}")
+            "fields#{meno}",
+            t("activerecord.attributes.#{mdl.singularize}.#{field.to_s}")
         ) %>
     </td>
 </tr>

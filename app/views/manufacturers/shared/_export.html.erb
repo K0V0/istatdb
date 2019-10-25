@@ -1,8 +1,21 @@
 <%
 
-fields_to_export = [
-    :name
-]
+fields_to_export = {
+    name: [],
+    goods: [
+        :ident,
+        :description
+    ],
+    impexpcompany_manufacturers: [
+        impexpcompany: [
+            :company_name
+        ],
+        local_taric: [
+            :kncode,
+            :description
+        ]
+    ]
+}
 
 head = [
 	["Spravodajská jednotka", Impexpcompany.where(id: is_param?(:impexpcompany_filter)).pluck(:company_name)]

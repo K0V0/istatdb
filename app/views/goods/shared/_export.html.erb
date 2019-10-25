@@ -12,7 +12,7 @@
     item_time_filter = "- bez obmedzenia -"
     if is_param?(:search_datetime)
         p = params[:q]
-        timestring = "#{p['created_at_gteq(1i)']}"
+        timestring = "#[p['created_at_gteq(1i)']}"
         time = DateTime.parse("#{datetime_param(1)}-#{datetime_param(2)}-#{datetime_param(3)}-#{datetime_param(4)}:#{datetime_param(5)}")
         item_time_start = time.strftime("%d %B %Y, %H:%M")
         item_time_end = DateTime.current.strftime("%d %B %Y, %H:%M")
@@ -34,42 +34,34 @@
 
 
 <%
-fields_to_export = [
-    :ident,
-    :description,
-    :note,
-    :uncomplete_reason,
-    :uncomplete,
-    { 
-        local_taric: [
-            :kncode,
-            :description
-        ] 
-    }, 
-    { 
-        manufacturers: [
-            :name
-        ]
-    },
-    {
-        impexpcompanies: [
-            :company_name
-        ]
-    }, 
-    {
-        uoms: [
-            :uom,
-            :uom_multiplier,
-            :type
-        ]
-    }
-]
+fields_to_export = {
+    ident: [],
+    description: [],
+    note: [],
+    uncomplete_reason: [],
+    uncomplete: [],
+    local_taric: [
+        :kncode,
+        :description
+    ],
+    manufacturers: [
+        :name
+    ],
+    impexpcompanies: [
+        :company_name
+    ],
+    uoms: [
+        :uom,
+        :uom_multiplier,
+        :type
+    ]
+}
 
 head = [
     ["Referencia alebo popis tovaru obsahuje: ", is_param?(:ident_or_description_cont)||is_param?(:ident_cont)],
     ["Popis tovaru obsahuje: ", is_param?(:description_cont)],
-    ["Spravodajská jednotka: ", Impexpcompany.where(id: is_param?([:impexpcompany_filter])).pluck(:company_name)],
-    ["Výrobcovia/Odberatelia: ", Manufacturer.where(id: is_param?([:manufacturer_filter])).pluck(:name)],
+    ["Spravodajská jednotka: ", Impexpcompany.where(id: is_param?(:impexpcompany_filter)).pluck(:company_name)],
+    ["Výrobcovia/Odberatelia: ", Manufacturer.where(id: is_param?(:manufacturer_filter)).pluck(:name)],
     ["Stav položky: ", item_state],
     ["Časové obdobie: ", item_time_filter],
     ["Filtrované podľa času: ", time_filter_mode]

@@ -21,6 +21,8 @@ module ExportHelper
 		fields.to_a.each do |f|
 			if f[1].instance_of? String
 				f_map.push(true)
+			#elsif f[1].instance_of? Hash 
+
 			else
 				if (f[0].to_s.is_singular?)
 					(f[1].size).times do 
@@ -58,19 +60,24 @@ module ExportHelper
 		return ret
 	end
 
-	def render_excel_export_body(fields, obj)
-		ret = []
-		i = 0
-		loop do
-			row = []
-			fields.each do |field|
-				if field[1].instance_of? String
-					if i==0
-						row.push(obj.send(field[0]))
-					else
-						row.push(nil)
-					end
+
+	def render_excel_export_field(fields, obj, i)
+
+
+Rails.logger.info "---------------fields"
+					Rails.logger.info fields
+					Rails.logger.info "---------------fields"
+
+		row = []
+		fields.each do |field|
+			if field[1].instance_of? String
+				if i==0
+					row.push(obj.send(field[0]))
 				else
+					row.push(nil)
+				end
+			else
+				#if field[1].depth == 0
 					if field[0].is_singular?
 						if i==0
 							field[1].each do |f|
@@ -90,8 +97,46 @@ module ExportHelper
 							end
 						end
 					end
-				end
+				#else
+					## dorobit support vnorenych asociacii
+					#Rails.logger.info "---------------fields"
+					#Rails.logger.info fields
+					#Rails.logger.info "---------------fields"
+					#Rails.logger.info "---------------rentet"
+					#Rails.logger.info field[0]
+					#if field[0].is_singular?
+					#	Rails.logger.info render_excel_export_field(field[1], obj.send(field[0]), i)
+					#else
+
+						#Rails.logger.info obj.send(field[0]).size
+
+						#o = obj.send(field[0])
+						#row_tmp = []
+						#obj.send(field[0]).each do |o|
+						#	Rails.logger.info render_excel_export_field(field[1], o, i)
+						#end
+						#row.push(row_tmp)
+
+						#field[1].each do |f|
+						#	render_excel_export_body(field[1], obj.send(f[0]))
+						#end
+
+					#end
+					#Rails.logger.info "---------------rentet"
+				#end
 			end
+		end
+		return row
+	end
+
+	def render_excel_export_body(fields, obj)
+		ret = []
+		i = 0
+		Rails.logger.info "---------------fields"
+		Rails.logger.info fields
+		Rails.logger.info "---------------fields"
+		loop do
+			row = render_excel_export_field(fields, obj, i)
 			i = i+1
 		  	break if ((row.all? { |r| r.nil? })||(row.blank?))
 		  	ret.push(row)

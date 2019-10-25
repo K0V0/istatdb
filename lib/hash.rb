@@ -1,6 +1,17 @@
 
 class Hash
 
+	def depth
+	    arr = values
+	    d = 0
+	    loop do
+	      arr = arr.flatten.select { |e| e.is_a? Hash }
+	      break d if arr.empty?
+	      d += 1
+	      arr = arr.map(&:values)
+	    end
+	end
+
 	def deep_has_key? *args
 		return false if self.nil?
 		return true if (deep_do_generation_fu(args, false) != false)

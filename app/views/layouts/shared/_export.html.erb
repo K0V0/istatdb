@@ -11,41 +11,12 @@
             <thead></thead>
 
             <tbody>
-                <% fields_to_select.each do |field| %>
 
-                    <% if field.instance_of? Hash %>
+                <%= render(
+                    'layouts/shared/export/export_properties_line',
+                    field: fields_to_select
+                ) %>
 
-                        <% k = field.keys.first %>
-                        <tr>
-                            <td colspan="3" class="subtable">
-                                <table>
-                                    <thead>
-                                        <tr><th><%= t("activerecord.models.#{k.to_s.singularize}") %></th></tr>
-                                    </thead>
-                                    <% field[k].each do |subfield| %>
-                                        <%= render(
-                                            'layouts/shared/export/export_properties_field',
-                                            mdl: "#{k.to_s.singularize}",
-                                            field: subfield,
-                                            name: "[#{k.to_s}][#{subfield.to_s}]"
-                                        ) %>
-                                    <% end %>
-                                </table>
-                            </td>
-                        </tr>
-
-                    <% else %>
-
-                        <%= render(
-                            'layouts/shared/export/export_properties_field',
-                            mdl: "#{controller_name.singularize}",
-                            field: field,
-                            name: "[#{field.to_s}]"
-                        ) %>
-
-                    <% end %>
-                    
-                <% end %>
             </tbody>
 
             <tfoot>
