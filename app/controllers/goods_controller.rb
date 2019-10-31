@@ -27,7 +27,7 @@ class GoodsController < ApplicationController
 			manufacturers_attributes: [:id, :name, :allow_search_as_new],
 			manufacturer_ids: [],
 			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy],
-			good_images_attributes: [:id, :_destroy, :image],
+			good_images_attributes: [:id, :_destroy, :image, :image_cache],
 			good_image_ids: [],
 		]
 	end

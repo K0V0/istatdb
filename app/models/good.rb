@@ -75,7 +75,7 @@ class Good < ActiveRecord::Base
 
 	before_save :assign_to_user
 
-	after_save :add_manufacturer_impexpcompany_relationships
+	after_save :add_manufacturer_impexpcompany_relationships #aj update aj create ide
 	after_update :update_manufacturer_impexpcompany_relationships
 	after_destroy :update_manufacturer_impexpcompany_relationships
 
@@ -162,6 +162,9 @@ class Good < ActiveRecord::Base
 	end
 
 	def add_manufacturer_impexpcompany_relationships
+		Rails.logger.info "-----------------------"
+		Rails.logger.info "add_manufacturer_impexpcompany_relationships"
+		Rails.logger.info "-----------------------"
 		self_manuf_ids = self.manufacturers.ids
 		self_impexp_ids = self.impexpcompanies.ids
 		# pridanie ak je novy vztah SJ <=> Vyrobca/odberatel
@@ -175,43 +178,41 @@ class Good < ActiveRecord::Base
 		end
 	end
 
-	def update_manufacturer_impexpcompany_relationships
-		Rails.logger.info "-----------------------"
-		Rails.logger.info @old_manufacturers_ids
-		Rails.logger.info "-----------------------"
-
-=begin
-		# cleanup ImpexpcompanyManufacturer model
-		# gopnik patch because before_ and after_destroy not working on Intertable model
-		# when using collections (rails mistake by design)
-		# update relationship table between impexpcompanies and manufacturers
-		# based on goods they are both conected with
-		impexps = Impexpcompany.preload(:manufacturers, goods: [:manufacturers])
-
-		#Thread.new do
-			impexps.each do |impexp|
-				# from ImpexpcompanyManufacturer model
-				x = impexp.manufacturers.collect { |w| w.id }
-				# by going through goods and their impexpcompanies
-				y = impexp.goods.collect { |w| w.manufacturers.collect { |q| q.id } }.flatten.uniq
-				missing_new_manufacturers = y - x
-				manufacturers_deselected = x - y
-				# create association if not exist
-				impexp.manufacturers << Manufacturer.find(missing_new_manufacturers)
-				# remove association if Intrastat client no more have any bussines with supplier/consumer
-				# but leave it intact if user decided or some other informations are associated here
-				# (edited or added from manufacturers section for example)
-				obsolete_mans_ids = impexp.manufacturers
-					.joins(:impexpcompany_manufacturers)
-					.where(id: manufacturers_deselected)
-					.where(impexpcompany_manufacturers: { added_or_modded_by_user: false || nil })
-					.distinct
-					.ids
-				impexp.manufacturers.delete(*obsolete_mans_ids)
+	def decice_impexpcompany_manufacturer_relation_removal(impexp, manuf)
+		g = Good
+			.joins(:impexpcompanies, :manufacturers)
+			.where(impexpcompanies: { id: impexp })
+			.where(manufacturers: { id: manuf })
+		if g.size == 0 
+			im = ImpexpcompanyManufacturer
+				.where(impexpcompany_id: impexp)
+				.where(manufacturer_id: manuf)
+				.where(added_or_modded_by_user: false || nil)
+			im.all.each do |im2remove|
+				im2remove.destroy
 			end
-			#ActiveRecord::Base.connection.close
-		#end
-=end
+		end
+	end
+
+	def update_manufacturer_impexpcompany_relationships
+		removed_manufacturers = @old_manufacturers_ids - self.manufacturers.ids
+		removed_impexpcompanies = @old_impexpcompanies_ids - self.impexpcompanies.ids
+
+		if !removed_manufacturers.blank?
+			Impexpcompany.all.each do |ri|
+				removed_manufacturers.each do |rm|
+					decice_impexpcompany_manufacturer_relation_removal(ri, rm)
+				end
+			end
+		end
+
+		if !removed_impexpcompanies.blank?
+			Manufacturer.all.each do |rm|
+				removed_impexpcompanies.each do |ri|
+					decice_impexpcompany_manufacturer_relation_removal(ri, rm)
+				end
+			end
+		end
 	end
 
 	def assign_to_user
@@ -221,13 +222,5 @@ class Good < ActiveRecord::Base
 	def name_field
 		self.ident
 	end
-
-	#def old_manufacturers_ids
-	#	@
-	#end
-
-	#def old_impexpcompanies_ids
-
-	#end
 
 end
