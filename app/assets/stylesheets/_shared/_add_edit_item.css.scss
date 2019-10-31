@@ -58,9 +58,13 @@ section.form {
 			}
 
 			input.allow_add_new, input[type=checkbox] {
-				display: inline-block;
+				//display: inline-block;
 				line-height:1em;
 				vertical-align: middle;
+			}
+
+			input.allow_add_new {
+				display: inline-block;
 			}
 
 			div.select_wrapper {
