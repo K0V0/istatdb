@@ -9,6 +9,9 @@ class Good < ActiveRecord::Base
 	# nested_attributes - co je v textovych poliach
 	# ids - checkboxy/ radiobuttony
 
+	attr_accessor :old_manufacturers_ids
+	attr_accessor :old_impexpcompanies_ids
+
 	belongs_to :user, inverse_of: :goods
 
 	has_many :intertables, inverse_of: :good, dependent: :destroy
@@ -72,7 +75,8 @@ class Good < ActiveRecord::Base
 
 	before_save :assign_to_user
 
-	after_save :update_manufacturer_impexpcompany_relationships
+	after_save :add_manufacturer_impexpcompany_relationships
+	after_update :update_manufacturer_impexpcompany_relationships
 	after_destroy :update_manufacturer_impexpcompany_relationships
 
 	scope :default_order, -> {
@@ -157,14 +161,33 @@ class Good < ActiveRecord::Base
 		end
 	end
 
+	def add_manufacturer_impexpcompany_relationships
+		self_manuf_ids = self.manufacturers.ids
+		self_impexp_ids = self.impexpcompanies.ids
+		# pridanie ak je novy vztah SJ <=> Vyrobca/odberatel
+		self_impexp_ids.each do |self_impexp_id|
+			self_manuf_ids.each do |self_manuf_id|
+				ImpexpcompanyManufacturer.find_or_create_by(
+					impexpcompany_id: self_impexp_id,
+					manufacturer_id: self_manuf_id
+				)
+			end
+		end
+	end
+
 	def update_manufacturer_impexpcompany_relationships
+		Rails.logger.info "-----------------------"
+		Rails.logger.info @old_manufacturers_ids
+		Rails.logger.info "-----------------------"
+
+=begin
 		# cleanup ImpexpcompanyManufacturer model
 		# gopnik patch because before_ and after_destroy not working on Intertable model
 		# when using collections (rails mistake by design)
 		# update relationship table between impexpcompanies and manufacturers
 		# based on goods they are both conected with
 		impexps = Impexpcompany.preload(:manufacturers, goods: [:manufacturers])
-		
+
 		#Thread.new do
 			impexps.each do |impexp|
 				# from ImpexpcompanyManufacturer model
@@ -188,6 +211,7 @@ class Good < ActiveRecord::Base
 			end
 			#ActiveRecord::Base.connection.close
 		#end
+=end
 	end
 
 	def assign_to_user
@@ -197,5 +221,13 @@ class Good < ActiveRecord::Base
 	def name_field
 		self.ident
 	end
+
+	#def old_manufacturers_ids
+	#	@
+	#end
+
+	#def old_impexpcompanies_ids
+
+	#end
 
 end
