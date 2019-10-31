@@ -72,13 +72,9 @@ class GoodsController < ApplicationController
 		#@record.tmp = "kokoooot"
 		@MEM.goods_old_impexpcompanies_ids = @record.impexpcompanies.ids
 		@MEM.goods_old_manufacturers_ids = @record.manufacturers.ids
-		#Rails.logger.info "-----------------------"
-		#Rails.logger.info @MEM.goods_old_impexpcompanies
-		#Rails.logger.info "-----------------------"
 	end
 
 	def _around_update
-		#@record.tmp = "kokoooot"
 		@record.old_manufacturers_ids = @MEM.goods_old_manufacturers_ids
 		@record.old_impexpcompanies_ids = @MEM.goods_old_impexpcompanies_ids
 	end

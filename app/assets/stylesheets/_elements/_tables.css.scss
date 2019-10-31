@@ -58,7 +58,7 @@ table {
 
 			&.contains_note {
 
-				td:first-child {
+				& > td:first-child {
 
 					&::after {
 						@include links_transitions();

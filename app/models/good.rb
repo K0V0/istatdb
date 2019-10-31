@@ -223,4 +223,12 @@ class Good < ActiveRecord::Base
 		self.ident
 	end
 
+	def reason_and_note
+		if !self.uncomplete_reason.blank?&&!self.note.blank?
+			"<b>Došetrovanie:</b> \r\n #{self.uncomplete_reason} \r\n<b>Poznámky:</b> \r\n #{self.note}"
+		else
+			"#{self.uncomplete_reason}\r\n#{self.note}"
+		end
+	end
+
 end
