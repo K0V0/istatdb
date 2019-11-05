@@ -188,7 +188,7 @@ module ItemsTableHelper
 				( cls = ((p[0].split(" "))[0] == field.to_s) ? "preffered" : "" ) if !p.nil?
 				ret = sort_link(@search, field, { action: :search, default_order: :desc }, class: cls, remote: true)
 			else
-				cls = ((p[0].split(" "))[0] == o[:field].to_s) ? "preffered" : ""
+				( cls = ((p[0].split(" "))[0] == o[:field].to_s) ? "preffered" : "" ) if !p.nil?
 				if !o.has_key?(:other_orders)
 					ret = sort_link(@search, o[:field], { action: :search, default_order: :desc }, class: cls, remote: true)
 				else
