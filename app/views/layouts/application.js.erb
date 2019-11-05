@@ -19,7 +19,7 @@ JS.H.run('on_change');
 
 	body.data('controller_name', CTRL);
 	body.data('action_name', AN);
-	body.children('main').children('article').attr('class', AN+' '+CTRL);
+	body.children('main').children('article').attr('class', AN+' <%= @items_table_class %> '+CTRL);
 	body.attr('class',  AN+' '+CTRL+' '+TRID);
 
 	$(document).find('nav.pagination').remove();

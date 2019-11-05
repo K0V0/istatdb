@@ -11,10 +11,6 @@
 			main_fields_cnt = main_fields.size
 		%>
 
-		<% if params.deep_has_key? :q, :s %>
-			<input type="hidden" name="q[s]" value="<%= params[:q][:s] %>" id="q_s">
-		<% end %>
-
 		<div class="searchform_main_fields disable_on_bigscreen">
 
 			<% main_fields.each_with_index do |(k, v), index| %>

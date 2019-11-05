@@ -176,11 +176,25 @@ module ItemsTableHelper
 		return output.html_safe
 	end
 
+
 	def items_table_caption_decorator(opts, object, field)
 		ret = object.human_attribute_name(field)
 
-		if opts[:is_sortlink]
-			ret = sort_link(@search, field, { action: :search, default_order: :desc }, remote: true)
+		if (o = opts[:is_sortlink])
+			p = params.try(:[], :q).try(:[], :s)
+			cls = ""
+
+			if o == true
+				( cls = ((p[0].split(" "))[0] == field.to_s) ? "preffered" : "" ) if !p.nil?
+				ret = sort_link(@search, field, { action: :search, default_order: :desc }, class: cls, remote: true)
+			else
+				cls = ((p[0].split(" "))[0] == o[:field].to_s) ? "preffered" : ""
+				if !o.has_key?(:other_orders)
+					ret = sort_link(@search, o[:field], { action: :search, default_order: :desc }, class: cls, remote: true)
+				else
+					ret = sort_link(@search, o[:field], { action: :search }, class: cls, remote: true) 
+				end
+			end
 		end
 
 		return ret

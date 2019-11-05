@@ -64,9 +64,9 @@ module ExportHelper
 	def render_excel_export_field(fields, obj, i)
 
 
-Rails.logger.info "---------------fields"
-					Rails.logger.info fields
-					Rails.logger.info "---------------fields"
+#Rails.logger.info "---------------fields"
+	#				Rails.logger.info fields
+					#Rails.logger.info "---------------fields"
 
 		row = []
 		fields.each do |field|
@@ -132,9 +132,9 @@ Rails.logger.info "---------------fields"
 	def render_excel_export_body(fields, obj)
 		ret = []
 		i = 0
-		Rails.logger.info "---------------fields"
-		Rails.logger.info fields
-		Rails.logger.info "---------------fields"
+		#Rails.logger.info "---------------fields"
+		#Rails.logger.info fields
+		#Rails.logger.info "---------------fields"
 		loop do
 			row = render_excel_export_field(fields, obj, i)
 			i = i+1

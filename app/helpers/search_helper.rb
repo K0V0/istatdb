@@ -44,9 +44,6 @@ module SearchHelper
 
 	def get_selected_manufacturers(obj:nil)
 		if params.deep_has_key?(:q, :manufacturer_filter)
-			Rails.logger.info "---------------------------"
-			Rails.logger.info params[:q][:manufacturer_filter]
-			Rails.logger.info "---------------------------"
 			if (a = params[:q][:manufacturer_filter]).instance_of?(Array)
 				if a.all? { |x| x.blank? }
 					return nil

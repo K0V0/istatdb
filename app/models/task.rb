@@ -32,7 +32,6 @@ class Task < ActiveRecord::Base
     }
 
     scope :date_filter, -> (*pars) {
-        Rails.logger.info pars
         where("created_at > ?", Date.parse(*pars))
     }
 

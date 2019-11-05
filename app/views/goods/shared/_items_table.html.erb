@@ -23,6 +23,12 @@ render('layouts/shared/items_table',
 		],
 		local_taric: [
 			kncode: {
+				is_sortlink: {
+					field: :local_taric_kncode,
+					other_orders: {
+						ident: :preserve
+					}
+				},
 				call_decorator: :num_to_kncode,
 				is_link: true,
 				clipboard_button: true,

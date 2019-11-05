@@ -164,9 +164,9 @@ class ApplicationController < ActionController::Base
     @items_table_class += "searchbar_pinned" if setting_is_set?(:gui_pin_searchbar)
     params[:per] = setting(:gui_per_page)
     remember_param :page    ## page number
-    remember_param :q       ## search
-    remember_sortlink       ## sort link direction
+    remember_param :q       ## search, druhy je okrem
     remember_param :timesort_method
+    remember_sortlink  
     is_subsection_of(parent_controller: _parent_controller)
     _after_inits
   end

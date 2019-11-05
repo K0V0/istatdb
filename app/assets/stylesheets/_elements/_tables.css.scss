@@ -41,6 +41,32 @@ table {
 
 			th {
 				text-align: left;
+
+				a.sort_link {
+
+					b {
+						color: $input_disabled_background;
+						white-space: nowrap;
+					}
+
+					&.asc, &.desc {
+
+						b {  
+							color: $black;
+						}
+					}
+
+					&.preffered {
+
+						b {
+
+							&::before {
+								content: '•';
+								display: inline-block;
+							}
+						}
+					}
+				}
 			}
 		}
 

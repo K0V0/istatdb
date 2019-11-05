@@ -1,8 +1,8 @@
 Ransack.configure do |c|
   c.custom_arrows = {
-    up_arrow: '&#x25b2;',
-    down_arrow: '&#x25bc;',
-    default_arrow: '&#x25bc;'
+    up_arrow: '<b>&#x25b2;</b>',
+    down_arrow: '<b>&#x25bc;</b>',
+    default_arrow: '<b>&#x25bc;</b>'
   }
 
   c.sanitize_custom_scope_booleans = false

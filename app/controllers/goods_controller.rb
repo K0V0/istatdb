@@ -39,6 +39,7 @@ class GoodsController < ApplicationController
 		else
 			@manufacturers = Manufacturer.all.default_order
 		end
+		#@ident_sortlink_directionf = controller_mem_get(:sort).try(:[], :ident)
 	end
 
 	# new, create, edit, update

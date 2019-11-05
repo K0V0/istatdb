@@ -181,16 +181,36 @@ module ApplicationConcern
  		end
  	end
 
-	def remember_param param
+	def remember_param(param)
 		controller_mem_set(param, params[param]) if params.has_key? param
 		params[param] = controller_mem_get(param)
 	end
 
 	def remember_sortlink
 		if params.deep_has_key? :q, :s
-		  	controller_mem_set :s, params[:q][:s]
-		elsif params.has_key? :q && !params[:q].blank?
+			rgx = /^([a-z_]+)\s+(asc|desc)$/
+			p = params[:q][:s]
+			if !p.blank?
+				p = [p] if p.instance_of?(String)
+				mx = controller_mem_get(:sort) || {}
+				res = p[0].match(rgx)
+				mx.delete(res[1]) # odstranit prvy vysledok, nemusi byt prvy
+				m = { res[1] => res[2] }.merge(mx) # uz je prvy
+				p.each do |par|
+					vals = par.match(rgx)
+					m.merge!({vals[1] => vals[2]})
+				end
+				controller_mem_set(:sort, m)
+			end
+			out = []
+			m.each do |k, v|
+				out.push("#{k.to_s} #{v.to_s}")
+			end
+			params[:q].merge!({ s: out })
+			controller_mem_set :s, params[:q][:s]
+		elsif params.has_key?(:q)&&!params[:q].blank?
 		  	params[:q].merge!({ s: controller_mem_get(:s) })
+		  	Rails.logger.info params
 		end
 	end
 

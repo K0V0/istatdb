@@ -7,7 +7,7 @@ class Good < ActiveRecord::Base
 	extend OrderAsSpecified
 
 	# nested_attributes - co je v textovych poliach
-	# ids - checkboxy/ radiobuttony
+	# ids - checkboxy/radiobuttony
 
 	attr_accessor :old_manufacturers_ids
 	attr_accessor :old_impexpcompanies_ids
@@ -84,14 +84,6 @@ class Good < ActiveRecord::Base
 	}
 
 	scope :impexpcompany_filter, -> (pars) {
-=begin
-		self
-		.includes(:impexpcompanies)
-		.where(impexpcompanies: {
-			id: pars
-		})
-		.references(:impexpcompanies)
-=end
 		self
 		.joins(:impexpcompanies)
 		.where(impexpcompanies: {
@@ -102,25 +94,7 @@ class Good < ActiveRecord::Base
 
 	}
 
-=begin
-	scope :manufacturer_filter, -> (pars) {
-		self
-		.includes(:manufacturers)
-		.where(manufacturers: {
-			id: pars
-		})
-		.references(:manufacturers)
-	}
-=end
 	scope :manufacturer_filter, -> (*pars) {
-=begin
-		self
-		.includes(:manufacturers)
-		.where(manufacturers: {
-			id: pars
-		})
-		.references(:manufacturers)
-=end
 		self
 		.joins(:manufacturers)
 		.where(manufacturers: {
@@ -162,9 +136,6 @@ class Good < ActiveRecord::Base
 	end
 
 	def add_manufacturer_impexpcompany_relationships
-		Rails.logger.info "-----------------------"
-		Rails.logger.info "add_manufacturer_impexpcompany_relationships"
-		Rails.logger.info "-----------------------"
 		self_manuf_ids = self.manufacturers.ids
 		self_impexp_ids = self.impexpcompanies.ids
 		# pridanie ak je novy vztah SJ <=> Vyrobca/odberatel
@@ -195,8 +166,19 @@ class Good < ActiveRecord::Base
 	end
 
 	def update_manufacturer_impexpcompany_relationships
-		removed_manufacturers = @old_manufacturers_ids - self.manufacturers.ids
-		removed_impexpcompanies = @old_impexpcompanies_ids - self.impexpcompanies.ids
+		if @old_manufacturers_ids.nil?
+			# deje sa pri odstranovani polozky
+			removed_manufacturers = self.manufacturers.ids
+		else
+			removed_manufacturers = @old_manufacturers_ids - self.manufacturers.ids
+		end
+
+		if @old_impexpcompanies_ids.nil?
+			# detto
+			removed_impexpcompanies = self.impexpcompanies.ids
+		else
+			removed_impexpcompanies = @old_impexpcompanies_ids - self.impexpcompanies.ids
+		end
 
 		if !removed_manufacturers.blank?
 			Impexpcompany.all.each do |ri|
