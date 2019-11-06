@@ -182,19 +182,15 @@ module ItemsTableHelper
 
 		if (o = opts[:is_sortlink])
 			p = params.try(:[], :q).try(:[], :s)
-			cls = ""
-
-			if o == true
-				( cls = ((p[0].split(" "))[0] == field.to_s) ? "preffered" : "" ) if !p.nil?
-				ret = sort_link(@search, field, { action: :search, default_order: :desc }, class: cls, remote: true)
-			else
-				( cls = ((p[0].split(" "))[0] == o[:field].to_s) ? "preffered" : "" ) if !p.nil?
-				if !o.has_key?(:other_orders)
-					ret = sort_link(@search, o[:field], { action: :search, default_order: :desc }, class: cls, remote: true)
+			if o != true
+				if o.has_key?(:field)
+					field = o[:field]
 				else
-					ret = sort_link(@search, o[:field], { action: :search }, class: cls, remote: true) 
+					## este nepouzite
 				end
 			end
+			cls = p.nil? ? "" : (((p[0].split(" "))[0] == field.to_s) ? "preffered" : "") 
+			ret = sort_link(@search, field, { action: :search, default_order: :desc }, class: cls, remote: true)
 		end
 
 		return ret
