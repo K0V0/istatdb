@@ -1,8 +1,9 @@
 class ImpexpcompanyManufacturersController < ApplicationController
 
 	def edit_multiple
-		_load_vars
 		@details = ImpexpcompanyManufacturer.where(manufacturer_id: params[:id])
+		_load_vars
+		#@details = ImpexpcompanyManufacturer.where(manufacturer_id: params[:id])
 	end
 
 	def update_multiple
@@ -44,6 +45,15 @@ class ImpexpcompanyManufacturersController < ApplicationController
 		@incoterms = Incoterm.includes(:translations).all.default_order
 		#@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1).per(20)
 		will_paginate :local_taric
+		if action_name == "edit_multiple"
+			@details.each do |detail|
+				local_tarics_original = @local_tarics.ids
+				local_taric_selected_id = [detail.local_taric.id]
+				@local_tarics = LocalTaric
+									.includes(:translations)
+									.where(id: local_tarics_original + local_taric_selected_id)
+			end
+		end
 		@local_taric = LocalTaric.new
 		@trade_types = TradeType.includes(:translations).all.default_order
 	end

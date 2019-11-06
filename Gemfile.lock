@@ -237,6 +237,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
     whenever (0.10.0)
       chronic (>= 0.6.3)
+    where-or (0.1.6)
     yaml_db (0.4.2)
       rails (>= 3.0, < 5.1)
       rake (>= 0.8.7)
@@ -279,6 +280,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   whenever
+  where-or
   yaml_db
 
 BUNDLED WITH

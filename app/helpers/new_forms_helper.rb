@@ -119,7 +119,10 @@ module NewFormsHelper
     	coll_name = "#{coll.name.underscore}_id"
         obj_name = "#{obj.class.name.underscore}"
         obj_name = "#{obj_name.pluralize}[#{obj.try(:id).to_s}]" if multiedit == true
+        #Rails.logger.info "=============multiedit"
+        #Rails.logger.info obj_name
     	checked_id = obj.try(coll.name.underscore).try(:id)
+        #Rails.logger.info checked_id
     	pars = params.deep_has_key?(obj_name, coll_name) ? params[obj_name][coll_name] : []
 
     	if coll.length > 0
@@ -188,8 +191,7 @@ module NewFormsHelper
     # for simple input text field generation - prefill with content of search field on main page
     # when adding sometning new
     def prefill_from_search_field(pars)
-        if (!pars.nil?)&&(action_name == 'new')
-            logger(params)
+        if (!pars.nil?)&&(action_name == 'new')&&!params.has_key?(:apply_last_select)
             search_params = (params[:prefill] || @MEM.send("q_#{controller_name.singularize.underscore}"))
             if !search_params.nil?
                 pars.each do |par|

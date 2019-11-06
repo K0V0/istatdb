@@ -79,6 +79,8 @@ gem 'rubyzip', '>= 1.2.1'
 gem 'caxlsx'
 gem 'axlsx_rails'
 
+gem 'where-or'
+
 #gem "backup"
 
 #gem 'globalize-accessors'

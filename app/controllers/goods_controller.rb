@@ -45,6 +45,11 @@ class GoodsController < ApplicationController
 	# new, create, edit, update
 	def _load_vars
 		will_paginate :manufacturers, :local_taric
+		if action_name=='update'
+			@local_tarics = LocalTaric.includes(:translations).where(
+				id: @local_tarics.ids + [@record.local_taric.id]
+			)
+		end
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
