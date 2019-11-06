@@ -261,7 +261,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js {
         flash.now[:cannot_destroy] = t('notices.cannot_destroy') if !sucess
-        #flash[:destroy_ok] = t('notices.destroy_ok') if sucess
+        flash[:destroy_ok] = t('notices.destroy_ok') if sucess
         render "#{@render_command_prepend}index"
       }
       #format.html { redirect_to(controller: controller_name, action: 'index'), notice: "Order was successfully deleted" }
