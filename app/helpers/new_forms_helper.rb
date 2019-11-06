@@ -8,7 +8,7 @@ module NewFormsHelper
 
 	def get_fields_from_ransack_params
     	if params.has_key? :q
-    		return params[:q].map { |k, v| k.to_s.sub(/_[a-z]+$/, '').sub('translations_', '') }
+    		return params[:q].except(:s).map { |k, v| k.to_s.sub(/_[a-z]+$/, '').sub('translations_', '') }
     	end
     end
 
