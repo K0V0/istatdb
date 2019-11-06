@@ -13,11 +13,13 @@ Main.prototype = {
 		// runs when everyting on page loaded include images (first load/F5)
 		$(window).on('load', function() {
 			H.run('on_load');
+			console.log("on load")
 		});
 
 		// runs when DOM is ready (first load/F5)
 		$(document).ready(function(){
 			H.run('on_ready');
+			console.log("on ready")
 			//H.run('once');
 		});
 
@@ -25,11 +27,13 @@ Main.prototype = {
 		$(document).on("turbolinks:load", function() {
 			H.run('on_reload');
 			H.run('once');
+			console.log("on turbolinks load")
 		});
 
 		// runs when page is resized (resize event ends/nothing happen for 0.5s)
 		$(window).frequentFireLimit('resize', 500, this, function(e) {
 			H.run('on_resize');
+			console.log("on resize")
 		});
 	}
 }
