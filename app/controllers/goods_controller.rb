@@ -46,9 +46,10 @@ class GoodsController < ApplicationController
 	def _load_vars
 		will_paginate :manufacturers, :local_taric
 		if action_name=='update'
-			@local_tarics = LocalTaric.includes(:translations).where(
-				id: @local_tarics.ids + [@record.local_taric.id]
-			)
+			@local_tarics = LocalTaric
+				.includes(:translations)
+				.where(id: @local_tarics.ids + [@record.local_taric.id])
+				.order(kncode: :asc)
 		end
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order

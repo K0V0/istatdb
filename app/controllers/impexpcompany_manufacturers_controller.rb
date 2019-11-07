@@ -46,13 +46,17 @@ class ImpexpcompanyManufacturersController < ApplicationController
 		#@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1).per(20)
 		will_paginate :local_taric
 		if action_name == "edit_multiple"
+			local_tarics_original = @local_tarics.ids
+			local_taric_selected_ids = []
 			@details.each do |detail|
-				local_tarics_original = @local_tarics.ids
-				local_taric_selected_id = [detail.local_taric.id]
-				@local_tarics = LocalTaric
-									.includes(:translations)
-									.where(id: local_tarics_original + local_taric_selected_id)
+				if !detail.local_taric.nil?
+					local_taric_selected_ids.push(detail.local_taric.id)
+				end
 			end
+			@local_tarics = LocalTaric
+								.includes(:translations)
+								.where(id: local_tarics_original + local_taric_selected_ids)
+								.order(kncode: :asc)
 		end
 		@local_taric = LocalTaric.new
 		@trade_types = TradeType.includes(:translations).all.default_order
