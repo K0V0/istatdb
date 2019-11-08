@@ -73,7 +73,8 @@ class Good < ActiveRecord::Base
 	validates_associated :uoms
 	# needed only when updating, as per documentation
 
-	before_save :assign_to_user
+	before_create :assign_to_user
+	before_update :assign_to_moderator
 
 	after_save :add_manufacturer_impexpcompany_relationships #aj update aj create ide
 	after_update :update_manufacturer_impexpcompany_relationships
@@ -201,8 +202,22 @@ class Good < ActiveRecord::Base
 		self.user = User.current
 	end
 
+	def assign_to_moderator
+		self.updated_by = User.current.id
+	end
+
 	def name_field
 		self.ident
+	end
+
+	def user_added
+		self.user.email
+	end
+
+	def user_modded
+		if !self.updated_by.blank?
+			User.find(self.updated_by).email
+		end
 	end
 
 	def reason_and_note

@@ -80,6 +80,8 @@ sk:
         time_filter: Novšie ako
         note: Poznámky
         image: Snímky
+        user_added: Pridal(a)
+        user_modded: Naposledy upravil(a)
     errors:
       models:
         good:

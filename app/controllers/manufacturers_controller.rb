@@ -18,6 +18,7 @@ class ManufacturersController < ApplicationController
         [
             :id,
             :name,
+            :note,
             impexpcompanies_attributes: [:id, :company_name],
             impexpcompany_ids: []
         ]

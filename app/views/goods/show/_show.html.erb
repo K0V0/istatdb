@@ -123,7 +123,14 @@
 		
 	<% end %>
 
-	<% user_that_added = @record.user.blank? ? "---" : @record.user.email %>
+	<% 
+		user_that_added = @record.user.blank? ? "---" : @record.user.email 
+		foot_content = "#{t('items_table.added_by')}: <b>#{user_that_added}</b>"
+		if !(mod_id = @record.updated_by).blank?
+			logger mod_id.blank?
+			foot_content += "<br>#{t('items_table.modded_by')}: <b>#{User.find(mod_id).email}</b>"
+		end
+	%>
 
 	<%= render(
 		'/layouts/shared/items_table/note_window',
@@ -132,7 +139,7 @@
 			<b>#{t('goods.about_item.added')}:</b> #{@record.created_at}
 			<br><b>#{t('goods.about_item.updated')}:</b> #{@record.updated_at}
 			".html_safe,
-		foot_content: "#{t('items_table.added_by')}: <b>#{user_that_added}<b>".html_safe
+		foot_content: foot_content.html_safe
 	) %>
 
 	<% if @record.good_images.any? %>

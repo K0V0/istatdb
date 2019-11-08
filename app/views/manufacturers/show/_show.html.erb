@@ -53,6 +53,17 @@
 
 	) %>
 
+	<% if !@record.note.blank? %>
+
+		<%= render(
+			'/layouts/shared/items_table/note_window',
+			caption: t('activerecord.attributes.good.note'),
+			content: simple_format(@record.note, {}, wrapper_tag: :span),
+			foot_content: ""
+		) %>
+		
+	<% end %>
+
 	<%= render('layouts/shared/items_table',
 
 		object: @for_tarictable,

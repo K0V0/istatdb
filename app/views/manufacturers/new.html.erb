@@ -30,6 +30,16 @@
 			}
 		) %>
 
+		<%= new_edit(
+			obj: t,
+			fields: {
+				note: {
+					type: :text_area
+				}
+			},
+			type: :secondary
+		) %>
+
 		<article class="decorated_wrap shrinked edit_next <%= "novisible" if @record.impexpcompanies.size == 0 %>">
 			<div>
 				<%= t.button(
