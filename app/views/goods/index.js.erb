@@ -6,10 +6,3 @@ $('#search_items_select_manufacturer').empty();
 $("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
 .appendTo('#search_items_select_manufacturer');
 
-$(document).find('span.datetime_select').children('select').each(function() {
-	console.log('replacing');
-	var attribute = $(this).attr('name');
-	var string_to_replace = attribute.match(/^q\[([a-z_]+)\(\d+i\)\]$/)[1];
-	var replaced = attribute.replace(string_to_replace, "<%= timesort_method %>")
-	$(this).attr('name', replaced);
-});

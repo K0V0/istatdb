@@ -5,7 +5,8 @@ GOODS = {
 		search_mode_change: ["on_reload"],
 		time_mode_activation: ["on_reload"],
 		search_manufacturers_select: ['on_ready'],
-		trigger_focus_on_searchfield: ['on_ready', 'on_reload', 'on_change', 'on_resize']
+		//trigger_focus_on_searchfield: ['on_ready', 'on_reload', 'on_change', 'on_resize']
+		trigger_focus_on_searchfield: ['on_ready', 'on_reload', 'on_resize']
 	},
 
 	show: {

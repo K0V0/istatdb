@@ -33,6 +33,7 @@ module ApplicationConcern
   			'edit'
   		end
   		@form_url = { url: url }
+  		#@form_url = 
  	end
 
  	def watch_if_allowed

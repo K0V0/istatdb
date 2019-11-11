@@ -11,6 +11,7 @@ SearchItemActions.prototype = {
 		var T = this;
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
+			//console.log('fired');
 			//if ($(this).hasClass('paused')) {
 
 			//} else {
