@@ -10,11 +10,13 @@
 			html_class = ''
 		end
 	end
+	table_class = 'rows_colored no_line_height'
+	table_class += defined?(foot_content) ? '' : ' no_footer_fix'
 %>
 
 <section class="decorated_wrap shrinked items_table <%= html_class %>">
 
-	<table class="rows_colored no_line_height">
+	<table class="<%= table_class %>">
 
 		<caption>
 			<%= caption %>
@@ -28,15 +30,17 @@
 			</tr>
 		</tbody>
 
-		<tfoot>
-			<tr>
-				<th colspan="99">
-					<div id="items_table_total_count"> 
-						<%= foot_content %>
-					</div>
-				</th>
-			</tr>
-		</tfoot>
+		<% if defined?(foot_content) %>
+			<tfoot>
+				<tr>
+					<th colspan="99">
+						<div id="items_table_total_count"> 
+							<%= foot_content %>
+						</div>
+					</th>
+				</tr>
+			</tfoot>
+		<% end %>
 
 	</table>
 

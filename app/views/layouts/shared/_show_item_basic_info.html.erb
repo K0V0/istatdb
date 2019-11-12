@@ -13,7 +13,7 @@ end
 	<<%= tag.to_s %> class="decorated_wrap shrinked items_table">
 <% end %>
 
-	<table class="rows_colored no_line_height" id="<%= cn %>">
+	<table class="rows_colored no_line_height no_footer_fix" id="<%= cn %>">
 
 		<caption>
 			<%= object.model_name.human %>
@@ -30,14 +30,6 @@ end
 				</tr>
 			<% end %>
 		</tbody>
-
-		<tfoot>
-			<tr>
-				<td>
-					&nbsp;
-				</td>
-			</tr>
-		</tfoot>
 
 	</table>
 

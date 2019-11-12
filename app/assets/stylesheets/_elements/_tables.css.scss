@@ -293,7 +293,6 @@ table.no_assocs {
 			}
 		}
 	}
-
 }
 
 table.checkboxes_list, table.radio_buttons_list {
@@ -487,5 +486,22 @@ table.with_controls {
 
 table.disabled {
 	pointer-events: none;
+}
+
+table.no_footer_fix {
+
+	tbody {
+
+		tr:last-child {
+
+			td:first-child {
+				border-bottom-left-radius: 0.25em;
+			}
+
+			td:last-child {
+				border-bottom-right-radius: 0.25em;
+			}
+		}
+	}
 }
 
