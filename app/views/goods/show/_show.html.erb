@@ -118,7 +118,8 @@
 			'/layouts/shared/items_table/note_window',
 			caption: t('activerecord.attributes.good.note'),
 			content: simple_format(@record.note, {}, wrapper_tag: :span),
-			foot_content: "#{t('items_table.added_by')}: <b>#{@record.user.email}<b>".html_safe
+			#foot_content: "#{t('items_table.added_by')}: <b>#{@record.user.email}<b>".html_safe
+			foot_content: "&nbsp;".html_safe
 		) %>
 		
 	<% end %>
@@ -127,7 +128,6 @@
 		user_that_added = @record.user.blank? ? "---" : @record.user.email 
 		foot_content = "#{t('items_table.added_by')}: <b>#{user_that_added}</b>"
 		if !(mod_id = @record.updated_by).blank?
-			logger mod_id.blank?
 			foot_content += "<br>#{t('items_table.modded_by')}: <b>#{User.find(mod_id).email}</b>"
 		end
 	%>
