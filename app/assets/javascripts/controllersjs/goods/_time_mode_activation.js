@@ -11,14 +11,12 @@ TimeModeActivation.prototype = {
 
 	init: function() {
 		var totok = this;
-		this.checkbox = $(document).find("input#q_search_datetime");
-		this.mode_select = $(document).find("select#timesort_method");
 
-		this.checkbox.on('change', function() {
+		$(document).on('change', "input#q_search_datetime", function() {
 			totok.changeInputProps(this);
 		});
 
-		this.mode_select.on('change', function() {
+		$(document).on('change', "select#timesort_method", function() {
 			totok.changeFieldsSearchStrings(this);
 		});
 	},

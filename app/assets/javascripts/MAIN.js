@@ -27,7 +27,7 @@ Main.prototype = {
 		$(document).on("turbolinks:load", function() {
 			H.run('on_reload');
 			H.run('once');
-			console.log("on turbolinks load")
+			console.log("on reload")
 		});
 
 		// runs when page is resized (resize event ends/nothing happen for 0.5s)

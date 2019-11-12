@@ -1,12 +1,11 @@
 
 GOODS = {
 	_index_search_show_administrative_end_administrative_export: {
-		search_item_actions: ["on_ready"],
-		search_mode_change: ["on_reload"],
-		time_mode_activation: ["on_reload"],
-		search_manufacturers_select: ['on_ready'],
-		//trigger_focus_on_searchfield: ['on_ready', 'on_reload', 'on_change', 'on_resize']
-		trigger_focus_on_searchfield: ['on_ready', 'on_reload', 'on_resize']
+		search_item_actions: ["once"],
+		search_mode_change: ["once"],
+		time_mode_activation: ["once"],
+		search_manufacturers_select: ['once'],
+		trigger_focus_on_searchfield: ['on_reload', 'on_resize']
 	},
 
 	show: {

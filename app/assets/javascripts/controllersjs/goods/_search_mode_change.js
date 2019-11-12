@@ -1,7 +1,7 @@
 //index, search, show, administrative, end_administrative
 
 function SearchModeChange() {
-	this.checkbox = null;
+	//this.checkbox = null;
 	this.init();
 }
 
@@ -10,9 +10,8 @@ SearchModeChange.prototype = {
 
 	init: function() {
 		var totok = this;
-		this.checkbox = $(document).find("input#q_search_both");
 
-		this.checkbox.on('change', function() {
+		$(document).on('change', "input#q_search_both", function() {
 			totok.changeInputProps(this);
 		});
 	},
