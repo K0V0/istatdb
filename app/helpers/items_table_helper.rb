@@ -189,7 +189,7 @@ module ItemsTableHelper
 					## este nepouzite
 				end
 			end
-			cls = p.nil? ? "" : (((p[0].split(" "))[0] == field.to_s) ? "preffered" : "") 
+			cls = p.blank? ? "" : (((p[0].split(" "))[0] == field.to_s) ? "preffered" : "")
 			ret = sort_link(@search, field, { action: :search, default_order: :desc }, class: cls, remote: true)
 		end
 

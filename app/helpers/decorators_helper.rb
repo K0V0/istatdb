@@ -5,17 +5,21 @@ module DecoratorsHelper
 	# patt -				pattern to be higlighted
 	# case_insensitive - 	self-explaining
 	# tag -					wrapping html element
+	#
+	# ASI FINALNA funkcia kadial prechadza text na vystup
 	def highlight_searched str: "", patt: "", case_insensitive: true, tag: :em
+		logger "highlight serached runs"
 		if patt.blank?
-			return str
+			return CGI::escapeHTML(str)
 		else
 			patt_mod = patt.chars.map { |p| "\s?[#{p}]" } .join
 			pattern = /(#{patt_mod})/i
-			tmp = str.gsub(pattern) do |x|
+			#tmp = str.gsub(pattern) do |x|
+			str.gsub(pattern) do |x|
 				if x =~ /^\s/
-					" <#{tag.to_s}>#{x.strip}</#{tag.to_s}>"
+					" <#{tag.to_s}>#{CGI::escapeHTML(x.strip)}</#{tag.to_s}>"
 				else
-					"<#{tag.to_s}>#{x}</#{tag.to_s}>"
+					"<#{tag.to_s}>#{CGI::escapeHTML(x)}</#{tag.to_s}>"
 				end
 			end .html_safe
 		end

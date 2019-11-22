@@ -166,7 +166,7 @@ class ApplicationController < ActionController::Base
     remember_param :page    ## page number
     remember_param :q       ## search, druhy je okrem
     remember_param :timesort_method
-    remember_sortlink  
+    remember_sortlink
     is_subsection_of(parent_controller: _parent_controller)
     _after_inits
   end
@@ -260,9 +260,11 @@ class ApplicationController < ActionController::Base
     index_action
     respond_to do |format|
       format.js {
-        flash.now[:cannot_destroy] = t('notices.cannot_destroy') if !sucess
-        flash.now[:destroy_ok] = t('notices.destroy_ok') if sucess
-        render "#{@render_command_prepend}index"
+          flash.now[:cannot_destroy] = t('notices.cannot_destroy') if !sucess
+          flash[:destroy_ok] = t('notices.destroy_ok') if sucess
+          ## ^^ lebo je redirect medzi
+          redirect_to :back
+        #end
       }
       #format.html { redirect_to(controller: controller_name, action: 'index'), notice: "Order was successfully deleted" }
     end

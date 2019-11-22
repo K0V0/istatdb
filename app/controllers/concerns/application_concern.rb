@@ -33,7 +33,7 @@ module ApplicationConcern
   			'edit'
   		end
   		@form_url = { url: url }
-  		#@form_url = 
+  		#@form_url =
  	end
 
  	def watch_if_allowed
@@ -202,13 +202,15 @@ module ApplicationConcern
 					m.merge!({vals[1] => vals[2]})
 				end
 				controller_mem_set(:sort, m)
-			end
-			out = []
-			m.each do |k, v|
-				out.push("#{k.to_s} #{v.to_s}")
-			end
-			params[:q].merge!({ s: out })
-			controller_mem_set :s, params[:q][:s]
+			#end
+			    out = []
+			    m.each do |k, v|
+				    out.push("#{k.to_s} #{v.to_s}")
+			    end
+			    params[:q].merge!({ s: out })
+			   # controller_mem_set :s, params[:q][:s]
+            end
+            controller_mem_set :s, params[:q][:s]
 		elsif params.has_key?(:q)&&!params[:q].blank?
 		  	params[:q].merge!({ s: controller_mem_get(:s) })
 		  	Rails.logger.info params
