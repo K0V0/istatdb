@@ -213,7 +213,7 @@ module ApplicationConcern
             controller_mem_set :s, params[:q][:s]
 		elsif params.has_key?(:q)&&!params[:q].blank?
 		  	params[:q].merge!({ s: controller_mem_get(:s) })
-		  	Rails.logger.info params
+		  	#Rails.logger.info params
 		end
 	end
 

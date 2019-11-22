@@ -11,6 +11,8 @@
 			main_fields_cnt = main_fields.size
 		%>
 
+		<%= hidden_field_tag :search_performed, "true" %>
+
 		<div class="searchform_main_fields disable_on_bigscreen">
 
 			<% main_fields.each_with_index do |(k, v), index| %>

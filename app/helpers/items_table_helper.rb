@@ -56,7 +56,15 @@ module ItemsTableHelper
 			end
 
 			if opts[:is_link]
-				text = link_to object, remote: opts[:is_link].try(:[], :remote) do
+				path = {
+					controller: object.model_name.route_key,
+					action: :show,
+					id: object.id,
+				}
+				if object.only_one
+					path.merge!({ is_only_one: true })
+				end
+				text = link_to(path, remote: opts[:is_link].try(:[], :remote)) do
 					text
 				end
 			end

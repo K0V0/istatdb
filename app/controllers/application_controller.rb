@@ -260,10 +260,16 @@ class ApplicationController < ActionController::Base
     index_action
     respond_to do |format|
       format.js {
+          route = Rails.application.routes.recognize_path(request.referrer)
           flash.now[:cannot_destroy] = t('notices.cannot_destroy') if !sucess
           flash[:destroy_ok] = t('notices.destroy_ok') if sucess
           ## ^^ lebo je redirect medzi
-          redirect_to :back
+          if route[:action] != 'show'
+            redirect_to :back
+          else
+            route[:action] = "index"
+            redirect_to route
+          end
         #end
       }
       #format.html { redirect_to(controller: controller_name, action: 'index'), notice: "Order was successfully deleted" }

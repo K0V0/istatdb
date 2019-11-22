@@ -9,7 +9,7 @@
 <li class="prev">
  	<%= link_to(
   		t('views.pagination.previous').html_safe,
-  		url, 
+  		kaminari_url_patch(url),
   		:rel => 'prev',
   		:remote => remote,
   		class: current_page.first? ? "inactive" : ""

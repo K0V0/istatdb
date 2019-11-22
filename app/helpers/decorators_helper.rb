@@ -8,7 +8,6 @@ module DecoratorsHelper
 	#
 	# ASI FINALNA funkcia kadial prechadza text na vystup
 	def highlight_searched str: "", patt: "", case_insensitive: true, tag: :em
-		logger "highlight serached runs"
 		if patt.blank?
 			return CGI::escapeHTML(str)
 		else

@@ -8,6 +8,7 @@ module Defaults
 	  base.instance_eval do
 
 	  	attr_accessor :allow_search_as_new
+	  	attr_accessor :only_one
 
 	  	scope :order_this_id_first, -> (pars) {
 	  		if !pars.blank?

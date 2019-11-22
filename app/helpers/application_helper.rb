@@ -31,4 +31,12 @@ module ApplicationHelper
     	return { controller: params[:controller], action: 'index' }
     end
 
+    def kaminari_url_patch(url)
+        if url.include?('&search_performed=true')
+            return url.gsub('&search_performed=true', '&no_search=true')
+        else
+            return "#{url}&no_search=true"
+        end
+    end
+
 end

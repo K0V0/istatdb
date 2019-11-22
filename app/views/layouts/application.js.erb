@@ -16,6 +16,7 @@ JS.H.run('on_change');
 	var searchform_administrative_button;
 	var searchform_sortlink_remember_helper;
 	var searchform_last_visits;
+	var searchform_submit_button;
 
 	body.data('controller_name', CTRL);
 	body.data('action_name', AN);
@@ -49,6 +50,8 @@ JS.H.run('on_change');
 
 		searchform_delete_button = searchform_actions.children('a.delete_item_from_search');
 
+		searchform_submit_button = searchform_actions.children('#back_or_search');
+
 		searchform_administrative_button = searchform_actions.children('a.administration_from_search');
 
 		searchform_sortlink_remember_helper = body.find('section.search_bar > form > input#q_s');
@@ -76,6 +79,10 @@ JS.H.run('on_change');
 		searchform_administrative_button.removeClass('hidden');
 
 	<% elsif an == 'show' %>
+
+		var btn = $('<%=j render("layouts/shared/actions/search_or_back_button") %>');
+		searchform_submit_button.remove();
+		searchform_actions.append(btn);
 
 		searchform_edit_button
 			.removeClass('hidden')

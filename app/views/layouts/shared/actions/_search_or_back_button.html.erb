@@ -1,11 +1,17 @@
 <% if get_path_back[:controller] == controller_name %>
-	<%=
-		s.submit(
-			t(action_name == 'show' ? 'actions.back' : 'search.submit'),
-			class: "button important",
-			id: "back_or_search"
-		)
-	%>
+
+    <% if params.has_key?(:is_only_one) %>
+        <%= link_to(t('actions.back'), get_path_back, class: 'button important') %>
+    <% else %>
+    	<%=
+    		submit_tag(
+    			t(action_name == 'show' ? 'actions.back' : 'search.submit'),
+    			class: "button important",
+    			id: "back_or_search"
+    		)
+    	%>
+    <% end %>
+
 <% else %>
 	<%= link_to(t('actions.back'), get_path_back, class: 'button important') %>
 <% end %>

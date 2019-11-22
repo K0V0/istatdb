@@ -15,7 +15,6 @@ module RansackSearchWrapper
 	    	object = object.with_translations(I18n.locale)
 	    end
 
-	    
 	    if !object.nil?
 
 	    	if !not_load_ids.blank?
@@ -29,12 +28,25 @@ module RansackSearchWrapper
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
 
-		    if (params[:per] != "1" &&
+		    total_pages = @result.total_pages
+		    if total_pages < params[:page].to_i
+		    	@result = @result.page(total_pages)
+		    end
+
+		    if 	(
+		    	params[:per] != "1" &&
 		    	@result.length == 1 &&
 		    	!request.xhr?.nil? &&
 		    	autoshow &&
-		    	action_name == "search")
+		    	!params.has_key?(:no_search) &&
+		    	action_name == "search"
+		    	)
 		    		redirect_to controller: controller_name, action: :show, id: @result.first.id
+		    elsif (
+	    		params[:per] != "1" &&
+	    		@result.length == 1
+		    	)
+		    		@result.first.only_one = true
 		    end
 
 		    if params.has_key? :last_visits
