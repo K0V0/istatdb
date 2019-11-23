@@ -137,6 +137,55 @@ section.form {
 					}
 				}
 			}
+
+			picture	{
+
+				&.to_delete {
+					background-color: $soft_red;
+				}
+
+				div {
+
+					label.button {
+						margin: 0.25em 0em;
+					}
+
+					label.remove_image {
+						display: none;
+					}
+
+					input[type=checkbox] {
+						display: none;
+					}
+
+					input[type=checkbox] + label {
+						background-color: $dark_red;
+						font-weight: bold;
+						color: $white;
+					}
+
+					input[type=checkbox] + label:hover {
+						background-color: $strong_red;
+						color: $strong_white;
+					}
+
+					input[type=checkbox]:checked + label {
+						//background-color: $red;
+						background-color: $strong_red;
+						color: $strong_white;
+					}
+				}
+
+				&.on_server, &.to_upload {
+
+					div {
+
+						label.remove_image {
+							display: inherit;
+						}
+					}
+				}
+			}
 		}
 	}
 }

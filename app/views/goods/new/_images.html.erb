@@ -12,13 +12,12 @@
 
 		<%= obj.fields_for :good_images do |img| %>
 
-			<%
-               # blank = img.object.image.blank?
-               # i += 1
-               # val = img.object.identificator.nil? ? i : ps.object.identificator
+            <%
+                html_class = ""
+                html_class += "on_server" if !img.object.image.blank?
             %>
 
-			<picture>
+			<picture class="<%= html_class %>">
 
 				<%= img.hidden_field :image_cache %>
                 <%= img.hidden_field :id %>
@@ -26,13 +25,12 @@
                 <%= image_tag(img.object.image) %>
 
                 <div>
-					<%= img.label(:image, t('goods.new_form_texts.select_image'), class: 'button') %>
+					<%= img.label(:image, t('goods.new_form_texts.select_image'), class: 'button add_image') %>
 					<%= img.file_field(:image, class: 'hidden') %>
-	                <% if !img.object.image.blank? %>
-	                	<br>
-	                	<%= img.check_box(:_destroy) %>
-	                	<%= img.label :_destroy, t('goods.new_form_texts.image_for_removal') %>
-	                <% end %>
+	                <%# if !img.object.image.blank? %>
+	                	<%= img.check_box :_destroy, class: 'remove_image' %>
+                        <%= img.label :_destroy, 'X', class: 'button remove_image' %>
+	                <%#end %>
 	            </div>
 
 			</picture>
