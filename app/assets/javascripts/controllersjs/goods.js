@@ -9,7 +9,8 @@ GOODS = {
 	},
 
 	show: {
-		uoms_calculator: ["once"]
+		uoms_calculator: ["once"],
+		image_gallery: ["on_reload"]
 	},
 
 	_new_edit_update_create: {

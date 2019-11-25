@@ -1,30 +1,21 @@
 <section class="decorated_wrap shrinked items_table">
 
-	
+    <div class="images_list">
+        <% images.each_with_index do |image, index| %>
+            <%= hidden_field_tag("image[#{index}]", image.image.max.url.sub(/\.(jpg|jpeg|gif|png)$/i, ".jpg")) %>
+        <% end %>
+    </div>
 
-		
-		<div class="caption">
+	<div class="caption">
 		<%= t('activerecord.attributes.good.image') %>
 	</div>
 
-	<div class="images"><!--
-		
-
-<% images.each do |image| %>
-
-				
-					
-					--><picture>
-						<%= image_tag(image.image) %>
-					</picture><!--
-
-				
-			<% end %>
-			
-
-	--></div>
-
-			
-	
+	<div class="images gallery_set">
+        <% images.each do |image| %>
+    		<picture>
+    			<%= image_tag(image.image.preview.url.sub(/\.(jpg|jpeg|gif|png)$/i, ".jpg")) %>
+    		</picture>
+        <% end %>
+	</div>
 
 </section>

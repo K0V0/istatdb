@@ -58,6 +58,25 @@
     outline:    none;
 }
 
+@mixin box_sizing() {
+  -webkit-box-sizing: border-box;   // okrem IE 6 a 7 vraj všetko
+  -moz-box-sizing:    border-box;
+  -o-box-sizing:      border-box;
+  box-sizing:         border-box;
+}
+
+@mixin shadow($x, $y, $blur:0, $expand:0, $color:none) {
+    @if $color == none {
+        -moz-box-shadow:    $x $y $blur $expand;
+        -webkit-box-shadow: $x $y $blur $expand;
+        box-shadow:         $x $y $blur $expand;
+    } @else {
+        -moz-box-shadow:    $x $y $blur $expand $color;
+        -webkit-box-shadow: $x $y $blur $expand $color;
+        box-shadow:         $x $y $blur $expand $color;
+    }
+}
+
 @mixin scrollbars() {
   ::-webkit-scrollbar {
       width:  1em;

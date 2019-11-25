@@ -109,7 +109,7 @@
 			foot_content: "#{t('items_table.added_by')}: <b>#{@record.user.email}<b>".html_safe,
 			not_resolved: @record.uncomplete
 		) %>
-		
+
 	<% end %>
 
 	<% if !@record.note.blank? %>
@@ -119,11 +119,11 @@
 			caption: t('activerecord.attributes.good.note'),
 			content: simple_format(@record.note, {}, wrapper_tag: :span)
 		) %>
-		
+
 	<% end %>
 
-	<% 
-		user_that_added = @record.user.blank? ? "---" : @record.user.email 
+	<%
+		user_that_added = @record.user.blank? ? "---" : @record.user.email
 		foot_content = "#{t('items_table.added_by')}: <b>#{user_that_added}</b>"
 		if !(mod_id = @record.updated_by).blank?
 			foot_content += "<br>#{t('items_table.modded_by')}: <b>#{User.find(mod_id).email}</b>"
@@ -143,9 +143,11 @@
 	<% if @record.good_images.any? %>
 
 		<%= render(
-			'/goods/show/images', 
+			'/goods/show/images',
 			images: @record.good_images
 		) %>
+
+		<%= render 'layouts/base/galery_viewer', images: @record.good_images %>
 
 	<% end %>
 

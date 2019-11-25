@@ -1,0 +1,21 @@
+<% content_for :gallery do %>
+
+    <div class="top"></div>
+
+    <div class="body">
+        <picture>
+            <img src="">
+        </picture>
+    </div>
+
+    <div class="switcher">
+        <span class="left"></span>
+        <span class="right"></span>
+        <% images.each do |img| %>
+            <picture>
+                <%= image_tag(img.image.thumb.url.suffix_lowcase('jpg')) %>
+            </picture>
+        <% end %>
+    </div>
+
+<% end %>

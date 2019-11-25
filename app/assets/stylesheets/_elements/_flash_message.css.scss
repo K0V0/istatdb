@@ -2,7 +2,7 @@
 
 body {
 
-    div.flash_messages, div.popups {
+    div.flash_messages, div.popups, div.gallery {
         @include flashmessage_transitions();
         position: fixed;
         top:0;
