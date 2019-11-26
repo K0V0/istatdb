@@ -9,13 +9,20 @@
     </div>
 
     <div class="switcher">
-        <span class="left"></span>
-        <span class="right"></span>
-        <% images.each do |img| %>
-            <picture>
-                <%= image_tag(img.image.thumb.url.suffix_lowcase('jpg')) %>
+        <span class="left"><p></p></span>
+        <% images.each_with_index do |img, index| %>
+            <%
+                html_class = ""
+                html_class = "first" if index == 0
+                html_class = "last" if index+1 == images.size
+            %>
+            <picture class="<%= html_class %>">
+                <%= image_tag(
+                    img.image.thumb.url.suffix_lowcase('jpg')
+                ) %>
             </picture>
         <% end %>
+        <span class="right"><p></p></span>
     </div>
 
 <% end %>

@@ -1,5 +1,11 @@
 function ImageGallery() {
+    this.scrolled = 0;
+    this.timer;
     this.images_list = [];
+
+    this.scroll_speed = 250;
+    this.step = 128;
+
     this.init();
 }
 
@@ -16,19 +22,50 @@ ImageGallery.prototype = {
 
         $(document).on('click', 'div.gallery', function() {
             totok.closeViewer($(this));
+            this.scrolled = 0;
+            $(this).children('div.switcher').scrollLeft(0);
         });
 
         $(document).on('click', 'div.gallery > div.switcher > picture', function(e) {
-            e.stopPropagation();
             totok.selectImage($(this));
+            totok.stopEvents(e);
+        });
+
+        $(document).on('mousedown', 'div.gallery > div.switcher > span > p', function(e) {
+            totok.scrollWithArrows($(this));
+            totok.stopEvents(e);
+        }).on('mouseup', 'div.gallery > div.switcher > span > p', function(e) {
+            clearInterval(totok.timer);
+            totok.stopEvents(e);
+        });
+
+        $(document).on('click', 'div.gallery > div.switcher', function(e) {
+            totok.stopEvents(e);
+        });
+
+        $(document).on('click', 'div.gallery > div.switcher > span', function(e) {
+            totok.stopEvents(e);
+        });
+
+        $(document).on('click', 'div.gallery > div.switcher > span > p', function(e) {
+            totok.stopEvents(e);
+        });
+
+        $(document).find('div.switcher').on('scroll', function() {
+            totok.hideArrowsBasedOnScroll($(this));
+            logger("Iide");
         });
     },
 
     loadImagesList: function() {
         var totok = this;
         this.images_list = [];
-        $(document).find('div.images_list').children('input').each(function() {
-            totok.images_list.push($(this).val());
+        var imgs_obj = $(document).find('div.gallery').children('body').find('img');
+        //var len = imgs_obj.length;
+        //var i = 0;
+        imgs_obj.each(function() {
+            var url = $(this).attr('src').replace('/preview_', '/max_');
+            totok.images_list.push(url);
         })
     },
 
@@ -49,7 +86,6 @@ ImageGallery.prototype = {
         var pic_to_show = pic.children('img').attr('src').replace(/\/(preview_|thumb_)/, '/max_');
         var gallery = $(document).find('div.gallery');
         gallery.children('div.body').find('img').attr('src', pic_to_show);
-        //gallery.children('div.body').children('picture').css({'background-image':'url('+pic_to_show+')'});
         this.prelightSelectedIcon(pic_to_show);
     },
 
@@ -65,10 +101,60 @@ ImageGallery.prototype = {
     },
 
     scrollHorizont: function(ref) {
+        var toto = this;
         ref.mousewheel(function(event, delta) {
-              this.scrollLeft -= delta * 200;
-              event.preventDefault();
+            this.scrollLeft -= delta * toto.step;
+            event.preventDefault();
+            logger("skroluje");
+            this.scrolled = ref.scrollLeft();
         });
+    },
+
+    hideArrowsBasedOnScroll: function(ref) {
+        //logger('scrolled');
+        this.scrolled = ref.scrollLeft();
+        //logger(ref.scrollLeft());
+        var left_arrow = ref.children('span.left');
+        var right_arrow = ref.children('span.right');
+        var full_width = ref.get(0).scrollWidth;
+
+        //logger($('div.switcher').get(0).scrollWidth);
+        if (this.scrolled <= 0) {
+            left_arrow.addClass('hidden');
+        } else {
+            left_arrow.removeClass('hidden');
+        }
+        if (this.scrolled + ref.width() == full_width) {
+            right_arrow.addClass('hidden');
+        } else {
+            right_arrow.removeClass('hidden');
+        }
+    },
+
+    scrollWithArrows: function(ref) {
+        var toto = this;
+        var direction = ref.parent().attr('class');
+        var fx;
+
+        if (direction == 'left') {
+            fx = function() {
+                $('div.switcher').stop().animate({ scrollLeft: toto.scrolled-toto.step }, toto.scroll_speed);
+            };
+        } else {
+            fx = function() {
+                $('div.switcher').stop().animate({ scrollLeft: toto.scrolled+toto.step }, toto.scroll_speed);
+            };
+        }
+
+        this.timer = setInterval(fx, this.scroll_speed+2);
+    },
+
+    stopEvents: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
     }
+
+
 
 }
