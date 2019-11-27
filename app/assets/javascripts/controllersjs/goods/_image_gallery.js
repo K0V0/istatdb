@@ -5,6 +5,7 @@ function ImageGallery() {
 
     this.scroll_speed = 250;
     this.step = 128;
+    this.close_timeout = 380;
 
     this.init();
 }
@@ -31,6 +32,11 @@ ImageGallery.prototype = {
             totok.stopEvents(e);
         });
 
+        $(document).on('click', 'div.body > span', function(e) {
+            totok.switchImage($(this));
+            totok.stopEvents(e);
+        });
+
         $(document).on('mousedown', 'div.gallery > div.switcher > span > p', function(e) {
             totok.scrollWithArrows($(this));
             totok.stopEvents(e);
@@ -39,22 +45,12 @@ ImageGallery.prototype = {
             totok.stopEvents(e);
         });
 
-        $(document).on('click', 'div.gallery > div.switcher', function(e) {
-            totok.stopEvents(e);
-        });
-
-        $(document).on('click', 'div.gallery > div.switcher > span', function(e) {
-            totok.stopEvents(e);
-        });
-
-        $(document).on('click', 'div.gallery > div.switcher > span > p', function(e) {
-            totok.stopEvents(e);
-        });
-
         $(document).find('div.switcher').on('scroll', function() {
             totok.hideArrowsBasedOnScroll($(this));
-            logger("Iide");
+            //logger("Iide");
         });
+
+        this.disableImportantClicks();
     },
 
     loadImagesList: function() {
@@ -79,7 +75,9 @@ ImageGallery.prototype = {
 
     closeViewer: function(gal) {
         gal.removeClass('visible');
-        $(document).find('body').hideScrollbars(false);
+        setTimeout(function() {
+            $(document).find('body').hideScrollbars(false);
+        }, this.close_timeout);
     },
 
     selectImage: function(pic) {
@@ -87,6 +85,24 @@ ImageGallery.prototype = {
         var gallery = $(document).find('div.gallery');
         gallery.children('div.body').find('img').attr('src', pic_to_show);
         this.prelightSelectedIcon(pic_to_show);
+    },
+
+    switchImage: function(ref) {
+        if (ref.hasClass('left')) {
+            this.prevImage();
+        } else if (ref.hasClass('right')) {
+            this.nextImage();
+        } else if (ref.hasClass('close')) {
+            this.closeViewer($('div.gallery'));
+        }
+    },
+
+    prevImage: function() {
+
+    },
+
+    nextImage: function() {
+
     },
 
     prelightSelectedIcon: function(pic_addr) {
@@ -105,7 +121,7 @@ ImageGallery.prototype = {
         ref.mousewheel(function(event, delta) {
             this.scrollLeft -= delta * toto.step;
             event.preventDefault();
-            logger("skroluje");
+            //logger("skroluje");
             this.scrolled = ref.scrollLeft();
         });
     },
@@ -149,12 +165,20 @@ ImageGallery.prototype = {
         this.timer = setInterval(fx, this.scroll_speed+2);
     },
 
+    disableImportantClicks: function() {
+        var totok = this;
+        $(document).on('click', 'div.gallery > div.switcher', function(e) {
+            totok.stopEvents(e);
+        });
+        $(document).on('click', 'div.body > picture > img', function(e) {
+            totok.stopEvents(e);
+        });
+    },
+
     stopEvents: function(e) {
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
     }
-
-
 
 }
