@@ -84,6 +84,17 @@ body {
                     &.close {
                         top: 2.75em;
                         right: 1em;
+                        text-align: center;
+
+                        p {
+                            position:relative;
+                            height:1em;
+                            line-height: 1em;
+                            top:0.25em;
+                            font-size: 2em;
+                            border: none;
+                            vertical-align: middle;
+                        }
                     }
                 }
 
