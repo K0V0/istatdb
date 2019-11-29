@@ -15,19 +15,17 @@ ImageGallery.prototype = {
 
     init: function() {
         var totok = this;
-        this.loadImagesList();
+        totok.loadImagesList();
 
         $(document).on('click', 'div.images.gallery_set > picture', function() {
             var sw = $(document).find('div.gallery').children('div.switcher');
             totok.openViewer($(this));
-            //totok.scrollWithArrows();
             totok.hideArrowsBasedOnScroll(sw);
-            totok.alignScrollbar(sw);
         });
 
         $(document).on('click', 'div.gallery', function() {
             totok.closeViewer($(this));
-            this.scrolled = 0;
+            totok.scrolled = 0;
             $(this).children('div.switcher').scrollLeft(0);
         });
 
@@ -38,7 +36,10 @@ ImageGallery.prototype = {
 
         $(document).on('click', 'div.body > span', function(e) {
             totok.switchImage($(this));
-            totok.alignScrollbar($(this).closest('div.gallery').children('div.switcher'));
+            totok.stopEvents(e);
+        });
+
+        $(document).on('click', 'div.gallery > div.switcher', function(e) {
             totok.stopEvents(e);
         });
 
@@ -54,7 +55,14 @@ ImageGallery.prototype = {
             totok.hideArrowsBasedOnScroll($(this));
         });
 
-        this.disableImportantClicks();
+        $(document).on('click', 'div.body > picture > img', function(e) {
+            totok.stopEvents(e);
+        });
+
+        $(document).on('change', 'div.switcher', function(e) {
+            totok.alignScrollbar($(this));
+            totok.stopEvents(e);
+        });
     },
 
     loadImagesList: function() {
@@ -92,6 +100,7 @@ ImageGallery.prototype = {
         var gallery = $(document).find('div.gallery');
         gallery.children('div.body').find('img').attr('src', pic_to_show);
         this.prelightSelectedIcon(pic_to_show);
+        $(document).find('div.switcher').trigger('change');
     },
 
     switchImage: function(ref) {
@@ -105,6 +114,7 @@ ImageGallery.prototype = {
         } else if (ref.hasClass('close')) {
             this.closeViewer($('div.gallery'));
         }
+        logger("image switched");
     },
 
     prevImage: function(i) {
@@ -173,47 +183,27 @@ ImageGallery.prototype = {
     },
 
     alignScrollbar: function(ref) {
-        var coeficient = 48;
-        var checked_element_pos = ref.children('picture.selected').offset().left;
-        var checked_element_width = ref.children('picture.selected').outerWidth();
-        //logger(checked_element_pos);
-         //logger(checked_element_width);
-        var full_area_width = ref.get(0).scrollWidth;
-        //logger(full_area_width);
-        var visible_width = ref.width();
-        //logger(ref.width());
+        var padding = 24;
         var scrolled = ref.scrollLeft();
-        //logger(scrolled);
-
+        var checked_element_pos = ref.children('picture.selected').position().left + scrolled;
+        var checked_element_width = ref.children('picture.selected').outerWidth();
+        var full_area_width = ref.get(0).scrollWidth;
+        var visible_width = ref.width();
         var visible_range_start = scrolled;
         var visible_range_end = scrolled + visible_width;
         var misalign = 0;
 
-        if (checked_element_pos < visible_range_start) {
-            logger("range start");
-            //misalign = checked_element_pos + checked_element_width - visible_range_start;
-        } else if (checked_element_pos + checked_element_width + coeficient > visible_range_end) {
-            logger("range end");
-            //misalign = checked_element_pos - (visible_range_end - checked_element_width);
-            logger(checked_element_pos + checked_element_width + coeficient);
-            logger(visible_range_end);
-            misalign = checked_element_pos + checked_element_width + coeficient - visible_range_end;
+        if (checked_element_pos + checked_element_width + padding == full_area_width) {
+            misalign = full_area_width - visible_width;
+        } else if (checked_element_pos == 0) {
+            misalign = -scrolled;
+        } else if (checked_element_pos - padding*2 <= visible_range_start) {
+            misalign = -checked_element_width;
+        } else if (checked_element_pos + checked_element_width + padding*2 >= visible_range_end) {
+            misalign = checked_element_width;
         }
-        logger("----------");
-        logger(misalign);
-        logger(scrolled);
-        logger(" ");
-        ref.stop().animate({ scrollLeft: scrolled + misalign }, this.scroll_speed);
-    },
 
-    disableImportantClicks: function() {
-        var totok = this;
-        $(document).on('click', 'div.gallery > div.switcher', function(e) {
-            totok.stopEvents(e);
-        });
-        $(document).on('click', 'div.body > picture > img', function(e) {
-            totok.stopEvents(e);
-        });
+        ref.scrollLeft(scrolled + misalign);
     },
 
     stopEvents: function(e) {
