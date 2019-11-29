@@ -45,7 +45,7 @@
 			method_to_get_texts: :name_for_form_input,
 			send_parameters_name: :uom_type_id,
 			html_class: "uom_type",
-			selected: @uom_types.find(1)
+			selected: @uom_types.where(id: 1).first
 		) %>
 
 		<%= render('layouts/elements/input_select',

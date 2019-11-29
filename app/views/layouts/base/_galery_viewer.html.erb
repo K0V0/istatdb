@@ -1,31 +1,16 @@
-<% content_for :gallery do %>
+<div class="top"></div>
 
-    <div class="top"></div>
+<div class="body">
+    <span class="close"><p>&#10060;</p></span>
+    <span class="left"><p></p></span>
+    <picture>
+        <img src="">
+    </picture>
+    <span class="right"><p></p></span>
+</div>
 
-    <div class="body">
-        <span class="close"><p>&#10060;</p></span>
-        <span class="left"><p></p></span>
-        <picture>
-            <img src="">
-        </picture>
-        <span class="right"><p></p></span>
-    </div>
+<div class="switcher">
+    <span class="left"><p></p></span>
+    <span class="right"><p></p></span>
+</div>
 
-    <div class="switcher">
-        <span class="left"><p></p></span><!--
-        --><% images.each_with_index do |img, index| %><!--
-            --><%
-                html_class = ""
-                html_class = "first" if index == 0
-                html_class = "last" if index+1 == images.size
-            %><!--
-            --><picture class="<%= html_class %>"><!--
-                --><%= image_tag(
-                    img.image.thumb.url.suffix_lowcase('jpg')
-                ) %><!--
-            --></picture><!--
-        --><% end %><!--
-        --><span class="right"><p></p></span>
-    </div>
-
-<% end %>

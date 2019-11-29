@@ -18,15 +18,11 @@ ImageGallery.prototype = {
         totok.loadImagesList();
 
         $(document).on('click', 'div.images.gallery_set > picture', function() {
-            var sw = $(document).find('div.gallery').children('div.switcher');
             totok.openViewer($(this));
-            totok.hideArrowsBasedOnScroll(sw);
         });
 
         $(document).on('click', 'div.gallery', function() {
             totok.closeViewer($(this));
-            totok.scrolled = 0;
-            $(this).children('div.switcher').scrollLeft(0);
         });
 
         $(document).on('click', 'div.gallery > div.switcher > picture', function(e) {
@@ -52,6 +48,7 @@ ImageGallery.prototype = {
         });
 
         $(document).find('div.switcher').on('scroll', function() {
+            logger("scrolluje");
             totok.hideArrowsBasedOnScroll($(this));
         });
 
@@ -75,18 +72,38 @@ ImageGallery.prototype = {
         })
     },
 
+    loadImagePreviews: function(ref) {
+        prev_elem = ref.children('span.left');
+        var no_of_images = this.images_list.length;
+        this.images_list.forEach(function(elem, index) {
+            var url = elem.replace('/max_', '/thumb_');
+            var new_elem = $('<picture><img src="'+url+'"></picture>');
+            if (index == 0) { new_elem.addClass('first'); }
+            if (index+1 == no_of_images) { new_elem.addClass('last'); }
+            new_elem.insertAfter(prev_elem);
+            prev_elem = new_elem;
+        });
+    },
+
     openViewer: function(pic) {
-        $(document).find('div.gallery').addClass('visible');
         $(document).find('body').hideScrollbars(true);
-        $(document).find('div.switcher').hideScrollbars(true);
-        this.scrollHorizont($(document).find('div.switcher'));
+        var sw = $(document).find('div.gallery').children('div.switcher');
+        this.loadImagePreviews(sw);
         this.selectImage(pic);
+        this.scrollHorizont(sw);
+        this.hideArrowsBasedOnScroll(sw);
+        $(document).find('div.gallery').addClass('visible');
     },
 
     closeViewer: function(gal) {
+        var toto = this;
+        var sw = gal.children('div.switcher');
         gal.removeClass('visible');
         setTimeout(function() {
             $(document).find('body').hideScrollbars(false);
+            sw.children('picture').remove();
+            toto.scrolled = 0;
+            sw.scrollLeft(0);
         }, this.close_timeout);
     },
 
@@ -114,7 +131,6 @@ ImageGallery.prototype = {
         } else if (ref.hasClass('close')) {
             this.closeViewer($('div.gallery'));
         }
-        logger("image switched");
     },
 
     prevImage: function(i) {
@@ -143,43 +159,45 @@ ImageGallery.prototype = {
         ref.mousewheel(function(event, delta) {
             this.scrollLeft -= delta * toto.step;
             event.preventDefault();
-            this.scrolled = ref.scrollLeft();
         });
     },
 
     hideArrowsBasedOnScroll: function(ref) {
-        this.scrolled = ref.scrollLeft();
         var left_arrow = ref.children('span.left');
         var right_arrow = ref.children('span.right');
-        var full_width = ref.get(0).scrollWidth;
-
-        if (this.scrolled <= 0) {
-            left_arrow.addClass('hidden');
-        } else {
-            left_arrow.removeClass('hidden');
-        }
-        if (this.scrolled + ref.width() == full_width) {
-            right_arrow.addClass('hidden');
-        } else {
-            right_arrow.removeClass('hidden');
-        }
+        ref.waitForImages(function() {
+            var full_width = $(this).get(0).scrollWidth;
+            var scrolled = $(this).scrollLeft();
+            if (scrolled <= 0) {
+                left_arrow.addClass('hidden');
+            } else {
+                left_arrow.removeClass('hidden');
+            }
+            if (scrolled + $(this).width() == full_width) {
+                right_arrow.addClass('hidden');
+            } else {
+                right_arrow.removeClass('hidden');
+            }
+        });
     },
 
     scrollWithArrows: function(ref) {
-        logger("ide");
         var toto = this;
         var direction = ref.parent().attr('class');
+        var sw = ref.closest('div.switcher');
+        toto.scrolled = sw.scrollLeft();
+        var smer;
         var fx;
-        if (direction == 'left') {
-            fx = function() {
-                $('div.switcher').stop().animate({ scrollLeft: toto.scrolled-toto.step }, toto.scroll_speed);
-            };
-        } else {
-            fx = function() {
-                $('div.switcher').stop().animate({ scrollLeft: toto.scrolled+toto.step }, toto.scroll_speed);
-            };
-        }
-        this.timer = setInterval(fx, this.scroll_speed+2);
+        if (direction == 'left') { smer = -1; }
+        else { smer = 1; }
+        fx = function() {
+            $('div.switcher')
+                .stop()
+                .animate({ scrollLeft: toto.scrolled+(toto.step*smer) }, toto.scroll_speed, function() {
+                    toto.scrolled = sw.scrollLeft();
+                });
+        };
+        this.timer = setInterval(fx, this.scroll_speed+100);
     },
 
     alignScrollbar: function(ref) {
@@ -192,7 +210,6 @@ ImageGallery.prototype = {
         var visible_range_start = scrolled;
         var visible_range_end = scrolled + visible_width;
         var misalign = 0;
-
         if (checked_element_pos + checked_element_width + padding == full_area_width) {
             misalign = full_area_width - visible_width;
         } else if (checked_element_pos == 0) {
@@ -202,7 +219,6 @@ ImageGallery.prototype = {
         } else if (checked_element_pos + checked_element_width + padding*2 >= visible_range_end) {
             misalign = checked_element_width;
         }
-
         ref.scrollLeft(scrolled + misalign);
     },
 

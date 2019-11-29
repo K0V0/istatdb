@@ -147,7 +147,9 @@
 			images: @record.good_images
 		) %>
 
-		<%= render 'layouts/base/galery_viewer', images: @record.good_images %>
+		<% content_for :gallery do %>
+			<%= render 'layouts/base/galery_viewer' %>
+		<% end %>
 
 	<% end %>
 

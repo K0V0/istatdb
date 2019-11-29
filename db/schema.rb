@@ -238,18 +238,6 @@ ActiveRecord::Schema.define(version: 20191108005004) do
     t.text "type"
   end
 
-  create_table "units", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "good_id"
-    t.integer  "manufacturer_id"
-    t.integer  "impexpcompany_id"
-  end
-
-  add_index "units", ["good_id"], name: "index_units_on_good_id"
-  add_index "units", ["impexpcompany_id"], name: "index_units_on_impexpcompany_id"
-  add_index "units", ["manufacturer_id"], name: "index_units_on_manufacturer_id"
-
   create_table "uom_type_translations", force: :cascade do |t|
     t.integer  "uom_type_id", null: false
     t.string   "locale",      null: false
