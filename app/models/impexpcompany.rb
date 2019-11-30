@@ -6,16 +6,19 @@ class Impexpcompany < ActiveRecord::Base
 
 	has_many :intertables, inverse_of: :impexpcompany, dependent: :destroy
 	has_many :goods, through: :intertables
-	
+
 	has_many :impexpcompany_manufacturers, inverse_of: :impexpcompany, dependent: :destroy
 	has_many :manufacturers, through: :impexpcompany_manufacturers
 
 	has_many :uoms, inverse_of: :impexpcompany
 
+	has_many :impexpcompany_issues, inverse_of: :impexpcompany, dependent: :destroy
+	has_many :issues, through: :impexpcompany_issues
+
 	validates :company_name, presence: true
 	validates_uniqueness_of :company_name, scope: :affiliated_office
 
-	scope :default_order, -> { 
+	scope :default_order, -> {
 		order(company_name: :asc)
 	}
 

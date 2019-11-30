@@ -6,6 +6,7 @@ en:
       others: Other
       tasks: Tasks
       valuts: Valuts
+      issues: Issues
 
 sk:
   others:
@@ -15,4 +16,5 @@ sk:
       others: Ostatné
       tasks: Úlohy
       valuts: Kurzy
+      issues: Prípady
 

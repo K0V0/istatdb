@@ -1,0 +1,9 @@
+sk:
+  activerecord:
+    models:
+      issue: Prípady
+    attributes:
+      issue:
+        name: Prípad
+        note: Poznámka
+        created_at: Vytvorený

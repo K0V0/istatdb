@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   post "task_types/new_select_search",
     to: "task_types#new_select_search"
 
+  post "issues/new_select_search",
+    to: "issues#new_select_search"
+
   ## check existence ajax call
 
   post "good/check_existence",
@@ -284,8 +287,8 @@ Rails.application.routes.draw do
 
   #index
   get "others",
-    to: "others#index",
-    as: "others"
+    to: redirect('others/issues')#,
+    #as: "others"
 
   ## ostatne - kalkulacka
 
@@ -377,6 +380,51 @@ Rails.application.routes.draw do
   get "others/valuts",
     to: "valuts#index",
     as: "valuts"
+
+  ## ostatne - pripady
+
+  #index
+  get "others/issues",
+    to: "issues#index",
+    as: "issues"
+
+  get "others/issues/search",
+    to: "issues#search",
+    as: "search_issues"
+
+  get "others/issues/administrative",
+    to: "issues#administrative"
+
+  get "others/issues/end_administrative",
+    to: "issues#end_administrative"
+
+  get "others/issues/new",
+    to: "issues#new",
+    as: "new_issue"
+
+  get "others/issues/:id",
+    to: "issues#show",
+    as: "issue"
+
+  post "others/issues/new",
+    to: "issues#create",
+    as: "create_issue"
+
+  get "others/issues/:id/edit",
+    to: "issues#edit",
+    as: "edit_issue"
+
+  patch "others/issues/:id/edit",
+    to: "issues#update",
+    as: "update_issue"
+
+  delete "others/issues/:id",
+    to: "issues#delete",
+    as: "delete_issue"
+
+  #put "others/issues/:id",
+    #to: "issues#change_status"#,
+    #as: "issue"
 
 
 

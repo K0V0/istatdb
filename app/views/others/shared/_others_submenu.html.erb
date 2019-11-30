@@ -1,5 +1,12 @@
 
 <%= active_link_to(
+    t("others.sections.issues"),
+    issues_path,
+    #active: :exclusive,
+    wrap_tag: :li
+) %>
+
+<%= active_link_to(
     t("others.sections.calculator"),
     calculators_path,
     wrap_tag: :li
@@ -17,7 +24,7 @@
     wrap_tag: :li
 ) %>
 
-<%= active_link_to(
+<%#= active_link_to(
     t("others.sections.others"),
     others_path,
     active: :exclusive,

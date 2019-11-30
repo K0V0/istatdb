@@ -1,0 +1,50 @@
+<% content_for :show_content do %>
+
+    <%= render('layouts/shared/show_item_basic_info',
+        fields: [
+            [:name, :note]
+        ]
+    ) %>
+
+    <%= render('layouts/shared/items_table',
+        object: @record.goods,
+
+        fields: {
+            ident: {
+                is_link: true,
+                tooltip: :reason_and_note
+            },
+            description: {
+
+            },
+            local_taric: [
+                kncode: {
+                    fill_if_empty: true,
+                    call_decorator: :num_to_kncode,
+                    is_link: true,
+                    clipboard_button: true,
+                    tooltip: :description
+                }
+            ]
+        },
+
+        options: [
+            caption: true,
+            head: true,
+            foot: true,
+            html_options: {
+                main_class: "shrinked"
+            },
+            row_danger: {
+                uncomplete: true
+            },
+            row_changed: {
+                uncomplete_reason: :blank?,
+                note: :blank?
+            },
+            not_editable: true,
+            change_on_smallscreen: true
+        ]
+    ) %>
+
+<% end %>

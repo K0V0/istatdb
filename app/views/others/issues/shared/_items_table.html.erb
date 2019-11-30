@@ -1,0 +1,28 @@
+<% content_for :items_table do
+
+render('layouts/shared/items_table',
+
+    fields: {
+        name: {
+            is_highlighted: true,
+            is_sortlink: true,
+            is_link: true
+        },
+        note: {
+            is_highlighted: true,
+            is_multiple_with: :name
+        },
+        created_at: {
+            is_sortlink: true,
+            call_decorator: :date_to_human
+        }
+    },
+
+    options: [
+        head: true,
+        foot: true,
+        change_on_smallscreen: true
+    ]
+)
+
+end %>

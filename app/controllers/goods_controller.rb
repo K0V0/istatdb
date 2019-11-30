@@ -29,6 +29,8 @@ class GoodsController < ApplicationController
 			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy],
 			good_images_attributes: [:id, :_destroy, :image, :image_cache],
 			good_image_ids: [],
+			issues_attributes: [:id, :name, :allow_search_as_new],
+			issue_ids: []
 		]
 	end
 
@@ -39,12 +41,13 @@ class GoodsController < ApplicationController
 		else
 			@manufacturers = Manufacturer.all.default_order
 		end
+		@issues = Issue.all.default_order
 		#@ident_sortlink_directionf = controller_mem_get(:sort).try(:[], :ident)
 	end
 
 	# new, create, edit, update
 	def _load_vars
-		will_paginate :manufacturers, :local_taric
+		will_paginate :manufacturers, :local_taric, :issues
 		if action_name=='update'
 			@local_tarics = LocalTaric
 				.includes(:translations)
@@ -64,16 +67,16 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_new
-		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms, :good_images
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms, :good_images, :issues
 		get_last_selects
 	end
 
 	def _around_create_after_save_failed
-		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms, :good_images
+		build_if_empty :local_taric, :impexpcompanies, :manufacturers, :uoms, :good_images, :issues
 	end
 
 	def _around_edit
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images, :issues
 		#get_last_selects
 		load_uoms
 		#@record.tmp = "kokoooot"
@@ -87,11 +90,11 @@ class GoodsController < ApplicationController
 	end
 
 	def _around_update_after_save
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images, :issues
 	end
 
 	def _around_update_after_save_failed
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :good_images, :issues
 		load_uoms
 	end
 

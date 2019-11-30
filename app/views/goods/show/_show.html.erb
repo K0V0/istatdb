@@ -65,7 +65,6 @@
 	<% if @record.uoms.any? %>
 
 		<%= render('layouts/shared/items_table',
-
 			object: @record.uoms,
 
 			fields: {
@@ -87,7 +86,6 @@
 				not_editable: true,
 				change_on_smallscreen: true
 			]
-
 		) %>
 
 		<%= render('goods/show/uom_input') %>
@@ -97,8 +95,6 @@
 	<% end %>
 
 	<%= render('/goods/show/calculator_list') %>
-
-	<%# if !@record.uncomplete.nil?&&!@record.uncomplete==false %>
 
 	<% if !@record.uncomplete_reason.blank? %>
 
@@ -122,6 +118,30 @@
 
 	<% end %>
 
+	<% if @record.issues.any? %>
+
+		<%= render('layouts/shared/items_table',
+			object: @record.issues,
+
+			fields: {
+				name: {
+					is_link: true
+				}
+			},
+
+			options: [
+				caption: true,
+				foot: true,
+				html_options: {
+					main_class: "shrinked"
+				},
+				not_editable: true,
+				change_on_smallscreen: true
+			]
+		) %>
+
+	<% end %>
+
 	<%
 		user_that_added = @record.user.blank? ? "---" : @record.user.email
 		foot_content = "#{t('items_table.added_by')}: <b>#{user_that_added}</b>"
@@ -129,7 +149,6 @@
 			foot_content += "<br>#{t('items_table.modded_by')}: <b>#{User.find(mod_id).email}</b>"
 		end
 	%>
-
 	<%= render(
 		'/layouts/shared/items_table/note_window',
 		caption: t('goods.about_item.about'),

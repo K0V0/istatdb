@@ -79,6 +79,7 @@ sk:
     uncompletes_prompt: "všetky..."
     uncompletes_prompt_complete: "len došetrené"
     uncompletes_prompt_not_complete: "len nedošetrené"
+    issue_prompt: Bez filtra...
     google: Vyhľadať cez Google
 
   new_form_selects:

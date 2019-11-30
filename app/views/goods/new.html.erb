@@ -115,6 +115,20 @@
 			type: :secondary
 		) %>
 
+		<%= new_edit(
+			obj: t,
+			assoc: :issues,
+			fields: {
+				name: { },
+			},
+			searcher_settings: {
+				query: {
+					name: :cont
+				},
+				caption: {  }
+			}
+		) %>
+
 		<%= render('goods/new/images', obj: t) %>
 
 		<%= new_edit(obj: t, type: :submit, add_next: true) %>

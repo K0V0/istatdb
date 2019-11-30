@@ -78,6 +78,7 @@ sk:
         manufacturer_filter: Výrobca/odberateľ
         uncomplete_filter: Stav
         time_filter: Novšie ako
+        issue_filter: Prípad
         note: Poznámky
         image: Snímky
         user_added: Pridal(a)
@@ -160,4 +161,4 @@ sk:
       about: O položke
       added: Pridaná
       updated: Posledná úprava
-      added_by: Pridal 
+      added_by: Pridal

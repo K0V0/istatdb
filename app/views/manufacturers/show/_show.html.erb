@@ -20,7 +20,8 @@
 					fill_if_empty: true,
 					call_decorator: :num_to_kncode,
 					is_link: true,
-					clipboard_button: true
+					clipboard_button: true,
+                    tooltip: :description
 				}
 			],
 			incoterm: [
@@ -61,7 +62,7 @@
 			content: simple_format(@record.note, {}, wrapper_tag: :span),
 			foot_content: ""
 		) %>
-		
+
 	<% end %>
 
 	<%= render('layouts/shared/items_table',
@@ -73,7 +74,8 @@
 				kncode: {
 					call_decorator: :num_to_kncode,
 					is_link: true,
-					clipboard_button: true
+					clipboard_button: true,
+					tooltip: :description
 				},
 				description: {
 

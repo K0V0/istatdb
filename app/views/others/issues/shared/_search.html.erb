@@ -1,0 +1,20 @@
+<%= render(
+    layout: 'layouts/shared/search',
+    locals: {
+        main_fields: {
+            name: :name_or_note_cont
+        },
+        actions: [
+            :add,
+            :edit,
+            :delete,
+            :clear_fields,
+            :clear_all,
+            :administrative
+        ]
+    }
+) do %>
+
+    <%#= render 'others/tasks/shared/search/user_filter', obj: @s %>
+
+<% end %>

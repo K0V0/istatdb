@@ -38,6 +38,22 @@ class Good < ActiveRecord::Base
 		}
 	)
 
+	has_many :good_issues, inverse_of: :good, dependent: :destroy
+	accepts_nested_attributes_for(
+		:good_issues,
+		reject_if: lambda { |c|
+			c[:good_id].blank?&&c[:íssue_id].blank?
+		}
+	)
+
+	has_many :issues, -> { distinct }, through: :good_issues
+	accepts_nested_attributes_for(
+		:issues,
+		reject_if: lambda { |c|
+			c[:allow_search_as_new] == "0"
+		}
+	)
+
 	belongs_to :local_taric, inverse_of: :goods
 	accepts_nested_attributes_for(
 		:local_taric,
@@ -92,7 +108,6 @@ class Good < ActiveRecord::Base
 		})
 		.preload(:impexpcompanies)
 		.distinct
-
 	}
 
 	scope :manufacturer_filter, -> (*pars) {
@@ -103,7 +118,6 @@ class Good < ActiveRecord::Base
 		})
 		.preload(:manufacturers)
 		.distinct
-
 	}
 
 	scope :uncomplete_filter, -> (pars) {
@@ -114,8 +128,18 @@ class Good < ActiveRecord::Base
 		end
 	}
 
+	scope :issue_filter, -> (*pars) {
+		self
+		.joins(:issues)
+		.where(issues: {
+			id: pars
+		})
+		.preload(:issues)
+		.distinct
+	}
+
 	def self.ransackable_scopes(*pars)
-	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter)
+	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter issue_filter)
 	end
 
 	def local_taric_selected_or_created
@@ -155,7 +179,7 @@ class Good < ActiveRecord::Base
 			.joins(:impexpcompanies, :manufacturers)
 			.where(impexpcompanies: { id: impexp })
 			.where(manufacturers: { id: manuf })
-		if g.size == 0 
+		if g.size == 0
 			im = ImpexpcompanyManufacturer
 				.where(impexpcompany_id: impexp)
 				.where(manufacturer_id: manuf)

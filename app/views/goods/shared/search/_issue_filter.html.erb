@@ -1,0 +1,16 @@
+<div>
+
+    <span>
+        <%= obj.label :issue_filter %>
+    </span>
+
+    <span>
+        <%= obj.collection_select :issue_filter,
+            @issues,
+            :id,
+            :name,
+            include_blank: t('goods_search.issue_prompt')
+        %>
+    </span>
+
+</div>
