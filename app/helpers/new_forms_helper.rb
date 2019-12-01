@@ -44,6 +44,7 @@ module NewFormsHelper
 
     def generate_labels_for_select_table(result_row, obj_name, coll_name, text_method, opts)
     	output = ""
+        #logger(text_method)
     	[*text_method].each do |l|
 			output += "<td>"
 			output += label(
@@ -52,6 +53,10 @@ module NewFormsHelper
 				result_row.send(l),
 				value: result_row.id
 			) do
+                logger(result_row.send(l))
+                logger(opts)
+                logger(result_row)
+                logger(l)
 				items_table_field_decorator(result_row.send(l), opts, result_row, l)
 			end
 			output += "</td>"

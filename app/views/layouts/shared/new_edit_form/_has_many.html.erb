@@ -83,7 +83,8 @@
 	<%= render('/layouts/elements/table_list_checkboxes',
 		obj: obj.object,
 		coll: coll,
-		text_method: fields.keys
+		text_method: fields.keys,
+		##opts: { a: fields.keys } ## pridat podporu pre options
 	) if coll.length > 0 %>
 
 	<%= render('/layouts/shared/new_edit_form/not_any_record') if coll.length == 0 %>

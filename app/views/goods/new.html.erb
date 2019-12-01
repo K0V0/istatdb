@@ -121,7 +121,8 @@
 			fields: {
 				name: { },
 				season: {
-					type: :date_select
+					type: :date_select,
+					call_decrorator: :date_to_season
 				}
 			},
 			searcher_settings: {

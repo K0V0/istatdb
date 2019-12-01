@@ -26,11 +26,25 @@ article.issues {
 
         @media only screen and (max-width: 480px) {
 
-           table#goods {
+           table#issues {
 
                 td, th {
+                    &.issues-season {
+                        width:auto;
+                    }
 
+                    &.issues-name {
+                        width:auto;
+                    }
 
+                    &.issues-note {
+                        width:100%;
+                    }
+
+                    &.issues-created_at {
+                        width:100%;
+                        text-align: right;
+                    }
                 }
             }
         }

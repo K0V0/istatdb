@@ -17,6 +17,7 @@ module LayoutsHelper
 				searcher_settings: searcher_settings,
 				add_next: add_next,
 				main_secondary: is_secondary_main,
+				## opts: pridat nastavenia !!!!!!, su teraz vo fields asi nutna prestavba
 				#required: required,
 				block: block
 			}

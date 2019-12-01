@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   post "task_types/new_select_search",
     to: "task_types#new_select_search"
 
+  post "issues/new_select_load_items",
+    to: "issues#new_select_load_items"
+
   post "issues/new_select_search",
     to: "issues#new_select_search"
 

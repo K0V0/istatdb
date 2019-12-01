@@ -3,10 +3,19 @@
     <%
         html_options = { }
         html_options.merge!(disabled: 'disabled', class: 'disabled') if @issues.size <= 0
+        options = {
+            include_blank: t('goods_search.issue_prompt'),
+            selected: params.try(:[], :q).try(:[], :issue_filter)
+        }
     %>
 
     <span>
-        <%= label :q, :issue_filter, html_options %>
+        <%= label(
+            :q,
+            :issue_filter,
+            t('activerecord.attributes.good.issue_filter'),
+            html_options
+        ) %>
     </span>
 
     <span>
@@ -14,7 +23,7 @@
             :q,
             :issue_filter,
             @issues.all.collect { |i| [ i.name_for_search_dropdown, i.id ] },
-            { include_blank: t('goods_search.issue_prompt') },
+            options,
             html_options
         ) %>
     </span>

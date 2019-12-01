@@ -7,7 +7,8 @@
 			if (show === false) {
 					t.css({"opacity":"0", "top":"-100%", "left":"", "right":""}).text("");
 			} else {
-				var txt = $.trim($(this).children("sup").html());
+				//var par = $(this).parent('td');
+				var txt = $.trim($(this).children('sup').html());
 				if (txt != "") {
 					t.html(txt.replace(/(?:\r\n|\r|\n)/g, '<br>'));
 					var ex = $(this).offset().top; // vertikal
@@ -19,7 +20,7 @@
 					var wh = $(window).height(); // vyska priezoru
 					var tw = t.outerWidth(); // sirka bublinky
 					var th = t.outerHeight(); //vyska bublinky
-					var hpos = 0; 
+					var hpos = 0;
 					var vpos = 0;
 
 					if (ey+tw >= ww-gap) {

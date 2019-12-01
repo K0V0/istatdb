@@ -40,11 +40,15 @@ class Issue < ActiveRecord::Base
     # uniquenes prerobit na meno a zaroven datum
 
     scope :default_order, -> {
-        order(season: :asc)
+        order(season: :desc)
     }
 
     def name_for_search_dropdown
         "#{self.name} - #{self.season.strftime('%m/%Y')}"
+    end
+
+    def season_human
+        self.season.strftime("%m/%Y")
     end
 
     def name_field

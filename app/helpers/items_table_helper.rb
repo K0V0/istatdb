@@ -76,7 +76,19 @@ module ItemsTableHelper
 
 			if opts[:tooltip]
 				if (o = opts[:tooltip].to_s).is_singular?
-					text = text + "<sup>#{object.send(o)}</sup>".html_safe
+					if !(txt = object.send(o)).blank?
+						text = text + "<var class=\"note\">i<sup class=\"note\">#{txt}</sup></var>".html_safe
+					end
+				else
+
+				end
+			end
+
+			if opts[:issues]
+				if (o = opts[:issues]).is_a?(Symbol)
+					if !(txt = object.send(o)).blank?
+						text = text + "<dfn class=\"issue\">?<sup class=\"issue\">#{txt}</sup></dfn>".html_safe
+					end
 				else
 
 				end

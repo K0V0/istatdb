@@ -9,7 +9,7 @@ class GoodsController < ApplicationController
 	private
 
 	def _searcher_settings
-		{ preload: [{local_taric: [:translations]}, :manufacturers], paginate: true, autoshow: true }
+		{ preload: [{local_taric: [:translations]}, :manufacturers, :issues], paginate: true, autoshow: true }
 	end
 
 	def _allowed_params
@@ -39,10 +39,10 @@ class GoodsController < ApplicationController
 		if (params.deep_has_key?(:q, :impexpcompany_filter))&&(!params[:q][:impexpcompany_filter].blank?)
 			impexpcmp = @impexpcompanies.find(params[:q][:impexpcompany_filter])
 			@manufacturers = impexpcmp.manufacturers.default_order
-			@issues = impexpcmp.issues.default_order
+			@issues = impexpcmp.issues.default_order.distinct
 		else
 			@manufacturers = Manufacturer.all.default_order
-			@issues = Issue.all.default_order
+			@issues = Issue.all.default_order.distinct
 		end
 		#@ident_sortlink_directionf = controller_mem_get(:sort).try(:[], :ident)
 	end
@@ -50,13 +50,14 @@ class GoodsController < ApplicationController
 	# new, create, edit, update
 	def _load_vars
 		will_paginate :manufacturers, :local_taric, :issues
-		@issues = @issues.uniq
+		logger(@issues.distinct.ids)
+		#@issues = @issues.distinct
 		if action_name=='update'
 			@local_tarics = LocalTaric
 				.includes(:translations)
 				.where(id: @local_tarics.ids + [@record.local_taric.id])
 				.order(kncode: :asc)
-			@issues = Issue.all
+			@issues = Issue.all.distinct
 		end
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order

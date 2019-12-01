@@ -64,6 +64,14 @@ section.search_bar {
 					input[type=checkbox] {
 						margin: 0.25em 0;
 					}
+
+					&.datetime_select {
+						padding: 0 0.125em;
+
+						select {
+							margin:0.125em 0;
+						}
+					}
 				}
 			}
 

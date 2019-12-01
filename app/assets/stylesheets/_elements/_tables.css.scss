@@ -51,7 +51,7 @@ table {
 
 					&.asc, &.desc {
 
-						b {  
+						b {
 							color: $black;
 						}
 					}
@@ -82,24 +82,23 @@ table {
 			@include links_transitions();
 			line-height:1.25em;
 
-			&.contains_note {
+			& > td:first-child {
 
-				& > td:first-child {
-
-					&::after {
-						@include links_transitions();
-						content: 'i';
-						display: inline-block;
-						font-weight: bold;
-						width:1em;
-						height: 1em;
-						text-align: center;
-						background-color: $black;
-						color: $white;
-						line-height: 1em;
-						margin: 0.125em;
-						border-radius: 50%;
-					}
+				var, dfn {
+					@include links_transitions();
+					display: inline-block;
+					font-weight: bold;
+					width:1em;
+					height: 1em;
+					text-align: center;
+					vertical-align: middle;
+					background-color: $black;
+					color: $white;
+					line-height: 1em;
+					margin: 0.125em;
+					border-radius: 50%;
+					cursor: default;
+					position: relative;
 				}
 			}
 

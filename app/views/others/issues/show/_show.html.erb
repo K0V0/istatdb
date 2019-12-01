@@ -2,7 +2,7 @@
 
     <%= render('layouts/shared/show_item_basic_info',
         fields: [
-            [:name, :note]
+            [:name, :note, :season_human]
         ]
     ) %>
 
@@ -15,9 +15,6 @@
                 tooltip: :reason_and_note
             },
             description: {
-
-            },
-            season: {
 
             },
             local_taric: [

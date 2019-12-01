@@ -291,6 +291,10 @@ class Good < ActiveRecord::Base
 		end
 	end
 
+	def patale
+		self.issues.map{ |i| "#{i.season.strftime('%m/%Y')} - #{i.name}" }.join('<br>').html_safe
+	end
+
 	def reason_and_note
 		if !self.uncomplete_reason.blank?&&!self.note.blank?
 			"<b>Došetrovanie:</b> \r\n #{self.uncomplete_reason} \r\n<b>Poznámky:</b> \r\n #{self.note}"
