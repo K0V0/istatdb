@@ -182,6 +182,7 @@ module NewFormsHelper
 
         options = { class: klass, autofocus: autofocus, required: required, data: data, autocomplete: 'off', disabled: disabled }
         options.merge!(value: default_val) if !default_val.nil?
+        options.merge!(order: [:month, :year]) if type == :date_select
         arguments = [ type, field ]
         arguments += [ options ]
         output += obj.send(*arguments)

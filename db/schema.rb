@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191129183459) do
+ActiveRecord::Schema.define(version: 20191201021047) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -61,11 +61,13 @@ ActiveRecord::Schema.define(version: 20191129183459) do
   create_table "good_issues", force: :cascade do |t|
     t.integer  "good_id"
     t.integer  "issue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "impexpcompany_id"
   end
 
   add_index "good_issues", ["good_id"], name: "index_good_issues_on_good_id"
+  add_index "good_issues", ["impexpcompany_id"], name: "index_good_issues_on_impexpcompany_id"
   add_index "good_issues", ["issue_id"], name: "index_good_issues_on_issue_id"
 
   create_table "goods", force: :cascade do |t|
@@ -123,16 +125,6 @@ ActiveRecord::Schema.define(version: 20191129183459) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "impexpcompany_issues", force: :cascade do |t|
-    t.integer  "impexpcompany_id"
-    t.integer  "issue_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "impexpcompany_issues", ["impexpcompany_id"], name: "index_impexpcompany_issues_on_impexpcompany_id"
-  add_index "impexpcompany_issues", ["issue_id"], name: "index_impexpcompany_issues_on_issue_id"
-
   create_table "impexpcompany_manufacturers", force: :cascade do |t|
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -185,6 +177,7 @@ ActiveRecord::Schema.define(version: 20191129183459) do
     t.text     "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date     "season"
   end
 
   create_table "local_taric_translations", force: :cascade do |t|

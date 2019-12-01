@@ -1,11 +1,12 @@
-<% 
+<%
 	has_search_datetime = params.deep_has_key? :q, :search_datetime
 %>
 
 <div class="select_time_wrap">
 
 	<span>
-		<%= obj.label :time_filter %>
+		<% html_class = !has_search_datetime ? 'disabled' : '' %>
+		<%= obj.label :time_filter, class: html_class %>
 	</span>
 
 	<span class="datetime_select">
@@ -13,7 +14,7 @@
 		<%= obj.datetime_select(
 			timesort_method,
 			disabled: !has_search_datetime,
-			default: DateTime.current 
+			default: DateTime.current
 		) %>
 
 		&nbsp;

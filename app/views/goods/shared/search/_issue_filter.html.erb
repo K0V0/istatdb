@@ -1,16 +1,22 @@
-<div>
+<div id="search_issue_filter">
+
+    <%
+        html_options = { }
+        html_options.merge!(disabled: 'disabled', class: 'disabled') if @issues.size <= 0
+    %>
 
     <span>
-        <%= obj.label :issue_filter %>
+        <%= label :q, :issue_filter, html_options %>
     </span>
 
     <span>
-        <%= obj.collection_select :issue_filter,
-            @issues,
-            :id,
-            :name,
-            include_blank: t('goods_search.issue_prompt')
-        %>
+        <%= select(
+            :q,
+            :issue_filter,
+            @issues.all.collect { |i| [ i.name_for_search_dropdown, i.id ] },
+            { include_blank: t('goods_search.issue_prompt') },
+            html_options
+        ) %>
     </span>
 
 </div>

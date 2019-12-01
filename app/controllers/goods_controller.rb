@@ -29,7 +29,7 @@ class GoodsController < ApplicationController
 			uoms_attributes: [:id, :uom, :uom_type_id, :uom_multiplier, :manufacturer_id, :impexpcompany_id, :_destroy],
 			good_images_attributes: [:id, :_destroy, :image, :image_cache],
 			good_image_ids: [],
-			issues_attributes: [:id, :name, :allow_search_as_new],
+			issues_attributes: [:id, :name, :allow_search_as_new, :season, :"season(3i)", :"season(2i)", :"season(1i)"],
 			issue_ids: []
 		]
 	end
@@ -37,11 +37,13 @@ class GoodsController < ApplicationController
 	def _loads_for_search_panel
 		@impexpcompanies = Impexpcompany.all.default_order
 		if (params.deep_has_key?(:q, :impexpcompany_filter))&&(!params[:q][:impexpcompany_filter].blank?)
-			@manufacturers = @impexpcompanies.find(params[:q][:impexpcompany_filter]).manufacturers.default_order
+			impexpcmp = @impexpcompanies.find(params[:q][:impexpcompany_filter])
+			@manufacturers = impexpcmp.manufacturers.default_order
+			@issues = impexpcmp.issues.default_order
 		else
 			@manufacturers = Manufacturer.all.default_order
+			@issues = Issue.all.default_order
 		end
-		@issues = Issue.all.default_order
 		#@ident_sortlink_directionf = controller_mem_get(:sort).try(:[], :ident)
 	end
 
@@ -54,6 +56,7 @@ class GoodsController < ApplicationController
 				.where(id: @local_tarics.ids + [@record.local_taric.id])
 				.order(kncode: :asc)
 		end
+		@issues = @issues.uniq
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
@@ -82,11 +85,14 @@ class GoodsController < ApplicationController
 		#@record.tmp = "kokoooot"
 		@MEM.goods_old_impexpcompanies_ids = @record.impexpcompanies.ids
 		@MEM.goods_old_manufacturers_ids = @record.manufacturers.ids
+		@MEM.goods_old_issues_ids = @record.issues.ids
+		#@MEM.goods_old_manufacturers_ids = @record.manufacturers.ids
 	end
 
 	def _around_update
 		@record.old_manufacturers_ids = @MEM.goods_old_manufacturers_ids
 		@record.old_impexpcompanies_ids = @MEM.goods_old_impexpcompanies_ids
+		@record.old_issues_ids = @MEM.goods_old_issues_ids
 	end
 
 	def _around_update_after_save

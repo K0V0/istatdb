@@ -11,6 +11,7 @@ class Good < ActiveRecord::Base
 
 	attr_accessor :old_manufacturers_ids
 	attr_accessor :old_impexpcompanies_ids
+	attr_accessor :old_issues_ids
 
 	belongs_to :user, inverse_of: :goods
 
@@ -85,7 +86,6 @@ class Good < ActiveRecord::Base
 	validate :at_least_one_impexpcompany_selected
 	validate :at_least_one_manufacturer_selected
 	validate :local_taric_selected_or_created
-
 	validates_associated :uoms
 	# needed only when updating, as per documentation
 
@@ -93,6 +93,8 @@ class Good < ActiveRecord::Base
 	before_update :assign_to_moderator
 
 	after_save :add_manufacturer_impexpcompany_relationships #aj update aj create ide
+	after_save :add_good_impexpcompany_issue_relationships
+
 	after_update :update_manufacturer_impexpcompany_relationships
 	after_destroy :update_manufacturer_impexpcompany_relationships
 
@@ -220,6 +222,25 @@ class Good < ActiveRecord::Base
 				end
 			end
 		end
+	end
+
+	def add_good_impexpcompany_issue_relationships
+		self_id = self.id
+		self_issue_ids = self.issues.ids
+		self_impexp_ids = self.impexpcompanies.ids
+		self_impexp_ids.each do |self_impexp_id|
+			self_issue_ids.each do |self_issue_id|
+				GoodIssue.find_or_create_by(
+					good_id: self_id,
+					impexpcompany_id: self_impexp_id,
+					issue_id: self_issue_id
+				)
+			end
+		end
+	end
+
+	def decice_good_issue_relation_removal()
+
 	end
 
 	def assign_to_user

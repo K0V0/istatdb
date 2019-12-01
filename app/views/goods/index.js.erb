@@ -6,3 +6,8 @@ $('#search_items_select_manufacturer').empty();
 $("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
 .appendTo('#search_items_select_manufacturer');
 
+$('#search_issue_filter').empty();
+
+$("<%=j render('goods/shared/search/issue_filter') %>").children()
+.appendTo('#search_issue_filter');
+

@@ -14,6 +14,7 @@ TimeModeActivation.prototype = {
 
 		$(document).on('change', "input#q_search_datetime", function() {
 			totok.changeInputProps(this);
+			$('form').submit();
 		});
 
 		$(document).on('change', "select#timesort_method", function() {
@@ -23,12 +24,14 @@ TimeModeActivation.prototype = {
 
 	changeInputProps: function(ref) {
 		var is_checked = $(ref).is(':checked');
+		var el = $(document).find('span.datetime_select');
 
 		if (is_checked === true) {
-			$(document).find('span.datetime_select').children('select').removeAttr('disabled');
+			el.children('select').removeAttr('disabled');
+			el.siblings('span').children('label').removeClass('disabled');
 		} else {
-			$(document).find('span.datetime_select').children('select').attr('disabled', 'disabled');
-			
+			el.children('select').attr('disabled', 'disabled');
+			el.siblings('span').children('label').addClass('disabled');
 		}
 		// to let remembered choice after page reload, do search to send required param "search_both=>1"
 		// to server side
@@ -37,10 +40,10 @@ TimeModeActivation.prototype = {
 
 	changeFieldsSearchStrings: function(ref) {
 		var totok = this;
+		var replacement = $(ref).val();
 		$(document).find('span.datetime_select').children('select:not(#timesort_method)').each(function() {
 			var attribute = $(this).attr('name');
 			var string_to_replace = attribute.match(/^q\[([a-z_]+)\(\d+i\)\]$/)[1];
-			var replacement = totok.mode_select.val();
 			var replaced = attribute.replace(string_to_replace, replacement);
 			$(this).attr('name', replaced);
 		});

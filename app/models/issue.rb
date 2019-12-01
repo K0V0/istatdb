@@ -18,7 +18,7 @@ class Issue < ActiveRecord::Base
             #c[:name].blank?
         #}
     )
-
+=begin
     has_many :impexpcompany_issues, inverse_of: :issue #, dependent: :destroy
     accepts_nested_attributes_for(
         :impexpcompany_issues#,
@@ -26,8 +26,8 @@ class Issue < ActiveRecord::Base
             #c[:good_id].blank?&&c[:íssue_id].blank?
         #}
     )
-
-    has_many :impexpcompanies, -> { distinct }, through: :impexpcompany_issues
+=end
+    has_many :impexpcompanies, -> { distinct }, through: :good_issues
     accepts_nested_attributes_for(
         :impexpcompanies#,
         #reject_if: lambda { |c|
@@ -36,14 +36,15 @@ class Issue < ActiveRecord::Base
     )
 
     validates :name, presence: true
-    validates_uniqueness_of :name
+    validates_uniqueness_of :name, scope: :season
+    # uniquenes prerobit na meno a zaroven datum
 
     scope :default_order, -> {
-        order(created_at: :asc)
+        order(season: :asc)
     }
 
-    def name_new_searcher
-        "#{self.name} - #{self.note}"
+    def name_for_search_dropdown
+        "#{self.name} - #{self.season.strftime('%m/%Y')}"
     end
 
     def name_field
