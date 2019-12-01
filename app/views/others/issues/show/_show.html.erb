@@ -17,6 +17,9 @@
             description: {
 
             },
+            season: {
+
+            },
             local_taric: [
                 kncode: {
                     fill_if_empty: true,
@@ -41,6 +44,26 @@
             row_changed: {
                 uncomplete_reason: :blank?,
                 note: :blank?
+            },
+            not_editable: true,
+            change_on_smallscreen: true
+        ]
+    ) %>
+
+    <%= render('layouts/shared/items_table',
+        object: @record.impexpcompanies,
+
+        fields: {
+            company_name: {
+
+            }
+        },
+
+        options: [
+            caption: true,
+            foot: true,
+            html_options: {
+                main_class: "shrinked"
             },
             not_editable: true,
             change_on_smallscreen: true

@@ -1,18 +1,18 @@
 
-article.issues {
+article.goods, article.searchers {
 
 	section {
 
-		table#issues {
+		table#goods {
 
 			td {
 
-				&.issues-name {
+				&.local_tarics-kncode {
 					white-space: nowrap;
 					width:1%;
 				}
 
-				&.issues-created_at {
+				&.goods-ident {
 					width:1%;
 					white-space: nowrap;
 				}
@@ -25,7 +25,22 @@ article.issues {
 
 		   		td, th {
 
+		   			&.inner_table {
+		   				width: 100%;
+		   			}
 
+		   			&.goods-ident, &.local_tarics-kncode, &.goods-description {
+		   				width: 100%;
+		   			}
+
+		   			&.goods-ident {
+						font-weight: bold;
+					}
+
+					&.local_tarics-kncode {
+						text-align: right;
+						font-style: italic;
+					}
 		   		}
 		   	}
 		}

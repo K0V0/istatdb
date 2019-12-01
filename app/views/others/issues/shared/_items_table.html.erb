@@ -3,6 +3,10 @@
 render('layouts/shared/items_table',
 
     fields: {
+        season: {
+            is_sortlink: true,
+            call_decorator: :date_to_season
+        },
         name: {
             is_highlighted: true,
             is_sortlink: true,

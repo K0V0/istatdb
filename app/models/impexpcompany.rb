@@ -11,7 +11,7 @@ class Impexpcompany < ActiveRecord::Base
 
 	has_many :uoms, inverse_of: :impexpcompany
 
-	has_many :good_issues, inverse_of: :impexpcompany, dependent: :destroy
+	has_many :good_issues, inverse_of: :impexpcompany#, dependent: :destroy
 	has_many :issues, through: :good_issues
 
 	validates :company_name, presence: true

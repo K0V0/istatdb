@@ -39,7 +39,7 @@ class Good < ActiveRecord::Base
 		}
 	)
 
-	has_many :good_issues, inverse_of: :good, dependent: :destroy
+	has_many :good_issues, inverse_of: :good#, dependent: :destroy
 	accepts_nested_attributes_for(
 		:good_issues,
 		reject_if: lambda { |c|
@@ -51,7 +51,7 @@ class Good < ActiveRecord::Base
 	accepts_nested_attributes_for(
 		:issues,
 		reject_if: lambda { |c|
-			c[:allow_search_as_new] == "0"
+			c[:allow_search_as_new] == "0" || c[:allow_search_as_new].blank?
 		}
 	)
 
@@ -77,7 +77,7 @@ class Good < ActiveRecord::Base
         reject_if: proc { |c| c[:image].blank? }
     )
 
-	nested_attrs_getter_for :manufacturers, :impexpcompanies, :local_taric
+	nested_attrs_getter_for :manufacturers, :impexpcompanies, :local_taric, :issues
 	## monkey patch for having <associated>_attributes getter and instance variable
 	## from model itself when using accept_nested_attributes_for
 
@@ -93,10 +93,13 @@ class Good < ActiveRecord::Base
 	before_update :assign_to_moderator
 
 	after_save :add_manufacturer_impexpcompany_relationships #aj update aj create ide
-	after_save :add_good_impexpcompany_issue_relationships
+	after_save :add_good_impexpcompany_issue_relationships #aj update aj create ide
 
 	after_update :update_manufacturer_impexpcompany_relationships
+	after_update :update_good_issue_impexpcompany_relationships
+
 	after_destroy :update_manufacturer_impexpcompany_relationships
+	after_destroy :update_good_issue_impexpcompany_relationships
 
 	scope :default_order, -> {
 		order(ident: :asc)
@@ -239,8 +242,31 @@ class Good < ActiveRecord::Base
 		end
 	end
 
-	def decice_good_issue_relation_removal()
-
+	def update_good_issue_impexpcompany_relationships
+		if @old_issues_ids.nil?
+			# deje sa pri odstranovani polozky
+			removed_issues = self.issues.ids
+		else
+			removed_issues = @old_issues_ids - self.issues.ids
+		end
+		if @old_impexpcompanies_ids.nil?
+			# detto
+			removed_impexpcompanies = self.impexpcompanies.ids
+		else
+			removed_impexpcompanies = @old_impexpcompanies_ids - self.impexpcompanies.ids
+		end
+		if !removed_impexpcompanies.blank?
+			gi = GoodIssue
+					.where(good_id: self.id)
+					.where(impexpcompany_id: removed_impexpcompanies)
+			gi.delete_all
+		end
+		if !removed_issues.blank?
+			gi = GoodIssue
+					.where(good_id: self.id)
+					.where(issue_id: removed_issues)
+			gi.delete_all
+		end
 	end
 
 	def assign_to_user

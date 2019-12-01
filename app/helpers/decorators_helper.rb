@@ -81,6 +81,10 @@ module DecoratorsHelper
 		return Date.parse(text).strftime("%d. %b %Y")
 	end
 
+	def date_to_season text
+		return Date.parse(text).strftime("%Y/%m")
+	end
+
 	def num_pretty num
 		number_with_delimiter(num, delimiter: " ", separator: ",")
 	end

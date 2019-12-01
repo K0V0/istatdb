@@ -1,0 +1,38 @@
+
+article.issues {
+
+    section {
+
+        table#issues {
+
+            td {
+
+                &.issues-season {
+                    white-space: nowrap;
+                    width:1%;
+                }
+
+                &.issues-name {
+                    white-space: nowrap;
+                    width:1%;
+                }
+
+                &.issues-created_at {
+                    width:1%;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+           table#goods {
+
+                td, th {
+
+
+                }
+            }
+        }
+    }
+}

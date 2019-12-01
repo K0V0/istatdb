@@ -50,13 +50,14 @@ class GoodsController < ApplicationController
 	# new, create, edit, update
 	def _load_vars
 		will_paginate :manufacturers, :local_taric, :issues
+		@issues = @issues.uniq
 		if action_name=='update'
 			@local_tarics = LocalTaric
 				.includes(:translations)
 				.where(id: @local_tarics.ids + [@record.local_taric.id])
 				.order(kncode: :asc)
+			@issues = Issue.all
 		end
-		@issues = @issues.uniq
 		@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
@@ -107,7 +108,7 @@ class GoodsController < ApplicationController
 	def _around_do_add_another
 		@record.ident = ""
 		@record.description = ""
-		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms, :good_images
+		build_if_empty :impexpcompanies, :manufacturers, :local_taric, :uoms, :good_images, :issues
 	end
 
 	def _around_create_after_save_ok
