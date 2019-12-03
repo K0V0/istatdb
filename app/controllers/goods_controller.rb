@@ -52,6 +52,7 @@ class GoodsController < ApplicationController
 		will_paginate :manufacturers, :local_taric, :issues
 		logger(@issues.distinct.ids)
 		#@issues = @issues.distinct
+		# zistit preco tento patch neni automatizovany
 		if action_name=='update'
 			@local_tarics = LocalTaric
 				.includes(:translations)

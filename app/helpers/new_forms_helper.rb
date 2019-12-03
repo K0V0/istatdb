@@ -44,7 +44,7 @@ module NewFormsHelper
 
     def generate_labels_for_select_table(result_row, obj_name, coll_name, text_method, opts)
     	output = ""
-        #logger(text_method)
+        #logger(opts)
     	[*text_method].each do |l|
 			output += "<td>"
 			output += label(
@@ -53,11 +53,14 @@ module NewFormsHelper
 				result_row.send(l),
 				value: result_row.id
 			) do
+                #### TU TU TU toto a l si vsimat
                 logger(result_row.send(l))
-                logger(opts)
-                logger(result_row)
-                logger(l)
-				items_table_field_decorator(result_row.send(l), opts, result_row, l)
+                #logger(opts)
+                #logger(l)
+                #logger(l)
+                o = opts[l].nil? ? {} : opts[l]
+                logger(o)
+				items_table_field_decorator(result_row.send(l), o, result_row, l)
 			end
 			output += "</td>"
 		end
@@ -65,6 +68,7 @@ module NewFormsHelper
     end
 
     def new_form_has_many_select(obj: nil, coll: nil, val_method: :id, text_method: :id, opts: {})
+        #logger(opts)
     	output_first = ""
     	output_other = ""
     	# obj - passsed in AR object

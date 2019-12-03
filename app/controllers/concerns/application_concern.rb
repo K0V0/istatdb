@@ -176,7 +176,13 @@ module ApplicationConcern
  			end
 
  			if !ids_arr.blank?
- 				result = model.where(id: ids_arr.flatten).order_as_specified(id: ids_arr.flatten)
+                if !(r = model.where(id: ids_arr.flatten).try(:default_order)).nil?
+                    result = r.order_as_specified(id: ids_arr.flatten)
+                else
+                    result = model
+                                .where(id: ids_arr.flatten)
+                                .order_as_specified(id: ids_arr.flatten)
+                end
  				instance_variable_set("@#{par.to_s.pluralize}", result)
  			end
  		end
