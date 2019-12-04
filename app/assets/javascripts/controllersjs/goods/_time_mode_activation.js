@@ -14,7 +14,7 @@ TimeModeActivation.prototype = {
 
 		$(document).on('change', "input#q_search_datetime", function() {
 			totok.changeInputProps(this);
-			$('form').submit();
+			//$('form').submit();
 		});
 
 		$(document).on('change', "select#timesort_method", function() {
