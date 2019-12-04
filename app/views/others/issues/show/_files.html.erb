@@ -1,0 +1,33 @@
+<section class="items_table decorated_wrap shrinked change_on_smallscreen">
+
+	<table class="items rows_colored with_efects" id="good_issue_files_list">
+
+		<caption>
+			<%= t 'issues.files_list.cap' %>
+		</caption>
+
+		<tbody>
+			<% object.each do |file| %>
+
+				<tr>
+					<td>
+						<%= link_to(file.file_identifier, file.file.url) %>
+					</td>
+				</tr>
+
+			<% end %>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th colspan="10">
+					<div id="items_table_total_count">
+						<%= "#{t('items_table.results_count')}: " %> <b><%= "#{object.size}" %></b>
+					</div>
+				</th>
+			</tr>
+		</tfoot>
+
+	</table>
+
+</section>

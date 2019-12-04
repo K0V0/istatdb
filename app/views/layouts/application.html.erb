@@ -33,7 +33,8 @@ show_flash = !flash.empty? && user_signed_in?
 		<input type="checkbox" id="show_searchpanel_opts" role="button" class="hidden" checked="checked">
 
 		<div class="gallery">
-			<%= yield :gallery %>
+			<%#= yield :gallery %>
+			<%= render 'layouts/base/galery_viewer' %>
 		</div>
 
 		<div class="popups">

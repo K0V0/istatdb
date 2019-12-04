@@ -1,0 +1,58 @@
+<article
+	class="decorated_wrap shrinked files"
+	id="good_issue_files"
+>
+
+	<div class="caption">
+		<%= t('activerecord.attributes.issue.file') %>
+	</div>
+
+	<div>
+
+		<div class="files">
+			<%= obj.fields_for :good_issue_files do |file| %>
+
+	            <% if !file.object.file.blank? %>
+
+	            	<% 
+	            		orig_file = file.object.file_identifier
+	            		cache_file = file.object.file_cache.sub(/(^[0-9\-]+\/)/, "")
+	            		filename = orig_file.blank? ? cache_file : orig_file 
+	            	%>
+
+					<div class="on_server">
+	                	<%= file.hidden_field :id %>
+	                	<%= file.label(:file, filename, class: 'button add_file') %>
+						<%= file.file_field(:file, class: 'hidden') %>
+						<%= file.hidden_field :file_cache %>
+		                <%= file.check_box :_destroy, class: "remove_file" %>
+	                    <%= file.label :_destroy, 'X', class: "button remove_file" %>
+					</div>
+
+				<% else %>
+
+					<% empty_alone = obj.object.good_issue_files.size == 1 %>
+
+					<div class="empty_file <%= 'novisible' if !empty_alone %>">
+	                	<%= file.hidden_field :id %>
+	                	<%= file.label(:file, t('issues.files_list.choose'), class: 'button add_file') %>
+						<%= file.file_field(:file, class: 'hidden') %>
+						<%= file.hidden_field :file_cache %>
+		                <%= file.check_box :_destroy, class: "remove_file" %>
+	                    <%= file.label :_destroy, 'X', class: "button remove_file #{('novisible' if empty_alone)}" %>
+					</div>
+
+				<% end %>
+
+			<% end %>
+		</div>
+
+		<br>
+
+		<button id="add_files" type="button" name="<%= t('actions.add_next') %>">
+			<%= t('actions.add_next') %>
+		</button>
+
+	</div>
+
+</article>

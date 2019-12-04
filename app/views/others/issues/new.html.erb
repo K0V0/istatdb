@@ -12,25 +12,14 @@
                 },
                 note: {
                     type: :text_area
+                },
+                season: {
+                    type: :date_select
                 }
             }
         ) %>
 
-        <%#= new_edit(
-            obj: t,
-            assoc: :task_type,
-            fields: {
-                typ: {  }
-            },
-            searcher_settings: {
-                query: {
-                    typ: :cont
-                },
-                #caption: {
-
-                #}
-            }
-        ) %>
+        <%= render 'others/issues/new/files', obj: t %>
 
         <%= new_edit(
             obj: t

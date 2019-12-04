@@ -8,9 +8,16 @@ sk:
         note: Poznámka
         created_at: Vytvorený
         season: Obdobie
+        file: Súbor
     errors:
       models:
         issue:
           attributes:
             name:
               blank: Zadajte popis pre prípad, ktorý chete pridať.
+              taken: Prípad s daným popisom a v danom období už v databáze existuje
+
+  issues:
+    files_list:
+      cap: Priložené súbory
+      choose: Vybrať súbor

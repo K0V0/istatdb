@@ -1,0 +1,28 @@
+@import "variables";
+
+section.form {
+
+	article.files {
+		
+		& > div:not(.caption) {
+			padding: 0;
+		}
+
+		div {
+
+			div.files	{
+				margin:0;
+				margin-bottom: 0.25em;
+
+				div {
+					padding: 0 0.375em;
+					display: block;
+				}
+			}
+
+			button {
+				margin:0.125em 0.375em;
+			}
+		}
+	}
+}

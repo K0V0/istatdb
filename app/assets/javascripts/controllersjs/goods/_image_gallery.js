@@ -18,6 +18,7 @@ ImageGallery.prototype = {
         totok.loadImagesList();
 
         $(document).on('click', 'div.images.gallery_set > picture', function() {
+            //logger(totok.images_list);
             totok.openViewer($(this));
         });
 
@@ -48,7 +49,6 @@ ImageGallery.prototype = {
         });
 
         $(document).find('div.switcher').on('scroll', function() {
-            logger("scrolluje");
             totok.hideArrowsBasedOnScroll($(this));
         });
 
@@ -86,12 +86,13 @@ ImageGallery.prototype = {
     },
 
     openViewer: function(pic) {
-        $(document).find('body').hideScrollbars(true);
+        this.loadImagesList();
         var sw = $(document).find('div.gallery').children('div.switcher');
         this.loadImagePreviews(sw);
         this.selectImage(pic);
         this.scrollHorizont(sw);
         this.hideArrowsBasedOnScroll(sw);
+        $(document).find('body').hideScrollbars(true);
         $(document).find('div.gallery').addClass('visible');
     },
 
@@ -99,6 +100,7 @@ ImageGallery.prototype = {
         var toto = this;
         var sw = gal.children('div.switcher');
         gal.removeClass('visible');
+        toto.images_list = [];
         setTimeout(function() {
             $(document).find('body').hideScrollbars(false);
             sw.children('picture').remove();
@@ -203,8 +205,13 @@ ImageGallery.prototype = {
     alignScrollbar: function(ref) {
         var padding = 24;
         var scrolled = ref.scrollLeft();
-        var checked_element_pos = ref.children('picture.selected').position().left + scrolled;
-        var checked_element_width = ref.children('picture.selected').outerWidth();
+        var checked_element_pos = 0;
+        var checked_element_width = 0;
+        var selected_pic = ref.children('picture.selected');
+        if (selected_pic.length > 0) {
+            checked_element_pos = ref.children('picture.selected').position().left + scrolled;
+            checked_element_width = ref.children('picture.selected').outerWidth();
+        }
         var full_area_width = ref.get(0).scrollWidth;
         var visible_width = ref.width();
         var visible_range_start = scrolled;

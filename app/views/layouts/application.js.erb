@@ -1,6 +1,14 @@
 var an = "<%= an = action_name %>";
 
 JS.H.run('on_change');
+console.log("on_change");
+
+<% #if performed? %>
+	
+	//JS.H.run('after_redirect');
+	//console.log("after_redirect");
+
+<% #end %>
 
 <% if an != 'new_select_search' && an != 'new_select_load_items' && an != 'check_existence' && an != 'add_to_calculator_mem' && an != 'clear_calculator_mem' && an != 'remove_from_calculator_mem' && an != 'edit_rec_in_calculator_mem' && !params.has_key?(:norender_default_jserb) %>
 

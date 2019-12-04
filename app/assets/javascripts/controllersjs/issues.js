@@ -9,7 +9,7 @@ ISSUES = {
     },
 
     _new_edit_update_create: {
-
+        files_handler: ['once']
     },
 
     _new_create: {

@@ -5,12 +5,13 @@ GOODS = {
 		search_mode_change: ["once"],
 		time_mode_activation: ["once"],
 		search_manufacturers_select: ['once'],
-		trigger_focus_on_searchfield: ['on_reload', 'on_resize']
+		trigger_focus_on_searchfield: ['on_reload', 'on_resize'],
+		image_gallery: ["once"]
 	},
 
 	show: {
 		uoms_calculator: ["once"],
-		image_gallery: ["on_change", "on_reload"]
+		//image_gallery: ["on_change", "on_reload"]
 	},
 
 	_new_edit_update_create: {

@@ -67,4 +67,8 @@
         ]
     ) %>
 
+    <% if @record.good_issue_files.any? %>
+        <%= render 'others/issues/show/files', object: @record.good_issue_files %>
+    <% end %>
+
 <% end %>

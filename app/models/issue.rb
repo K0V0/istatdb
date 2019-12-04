@@ -35,6 +35,13 @@ class Issue < ActiveRecord::Base
         #}
     )
 
+    has_many :good_issue_files, inverse_of: :issue, dependent: :destroy
+    accepts_nested_attributes_for(
+        :good_issue_files,
+        allow_destroy: true,
+        reject_if: proc { |c| c[:file].blank? and c[:file_cache].blank? }
+    )
+
     validates :name, presence: true
     validates_uniqueness_of :name, scope: :season
     # uniquenes prerobit na meno a zaroven datum

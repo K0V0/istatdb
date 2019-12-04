@@ -138,13 +138,17 @@ section.form {
 				}
 			}
 
-			picture	{
+			picture, div.files	{
 
 				&.to_delete {
 					background-color: $soft_red;
 				}
 
 				div {
+
+					&.to_delete {
+						background-color: $soft_red;
+					}
 
 					label.button {
 						margin: 0.25em 0em;
@@ -183,6 +187,14 @@ section.form {
 						label.remove_image {
 							display: inherit;
 						}
+					}
+				}
+
+				&.files {
+					margin:0 0.125em;
+
+					div {
+						margin:0;
 					}
 				}
 			}

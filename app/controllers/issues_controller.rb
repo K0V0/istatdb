@@ -14,8 +14,26 @@ class IssuesController < ApplicationController
         [
             :id,
             :name,
-            :note
+            :note,
+            :season,
+            good_issue_files_attributes: [:id, :_destroy, :file, :file_cache]
         ]
+    end
+
+    def _around_new
+        build_if_empty :good_issue_files
+    end
+
+    def _around_create_after_save_failed
+        build_if_empty :good_issue_files
+    end
+
+    def _around_edit
+        build_if_empty :good_issue_files
+    end
+
+    def _around_update_after_save_failed
+        build_if_empty :good_issue_files
     end
 
 end

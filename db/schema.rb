@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191201021047) do
+ActiveRecord::Schema.define(version: 20191204090714) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20191201021047) do
   end
 
   add_index "good_images", ["good_id"], name: "index_good_images_on_good_id"
+
+  create_table "good_issue_files", force: :cascade do |t|
+    t.string   "file"
+    t.integer  "issue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "good_issue_files", ["issue_id"], name: "index_good_issue_files_on_issue_id"
 
   create_table "good_issues", force: :cascade do |t|
     t.integer  "good_id"
@@ -257,18 +266,6 @@ ActiveRecord::Schema.define(version: 20191201021047) do
   create_table "trade_types", force: :cascade do |t|
     t.text "type"
   end
-
-  create_table "units", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "good_id"
-    t.integer  "manufacturer_id"
-    t.integer  "impexpcompany_id"
-  end
-
-  add_index "units", ["good_id"], name: "index_units_on_good_id"
-  add_index "units", ["impexpcompany_id"], name: "index_units_on_impexpcompany_id"
-  add_index "units", ["manufacturer_id"], name: "index_units_on_manufacturer_id"
 
   create_table "uom_type_translations", force: :cascade do |t|
     t.integer  "uom_type_id", null: false

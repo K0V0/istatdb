@@ -290,7 +290,7 @@ Rails.application.routes.draw do
 
   #index
   get "others",
-    to: redirect('others/issues')#,
+    to: "issues#index"#,
     #as: "others"
 
   ## ostatne - kalkulacka

@@ -74,7 +74,7 @@ class Good < ActiveRecord::Base
     accepts_nested_attributes_for(
         :good_images,
         allow_destroy: true,
-        reject_if: proc { |c| c[:image].blank? }
+        reject_if: proc { |c| c[:image].blank? and c[:image_cache].blank? }
     )
 
 	nested_attrs_getter_for :manufacturers, :impexpcompanies, :local_taric, :issues
