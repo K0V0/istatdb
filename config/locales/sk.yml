@@ -68,6 +68,7 @@ sk:
     add_new_solution: novú položku
     no_results: Žiadne výsledky na zobrazenie
     requires_admin: Úpravy tejto sekcie môžu vyžadovať používateľa s právami administrátora. Skúste takúto osobu kontaktovať.
+    no_more_records: Koniec, už žiadne položky na zobrazenie
 
   goods_search:
     impexpcompany_prompt: "nefiltrovať..."

@@ -1,25 +1,14 @@
 <%
 	single = instance_variable_get("@#{assoc.to_s.singularize}")
 	coll = instance_variable_get("@#{assoc.to_s}")
-
-	## be always singular due to js api targetting elements
-	if (defined? html_class)&&(!html_class.blank?)
-		klass = html_class.to_s
-	else
-		klass = "#{assoc.to_s.singularize}_select"
-	end
-
+	klass = generate_search_window_class(html_class, assoc)
 	html_id = "#{klass}_#{(obj.object.try(:id) || 0).to_s}"
-	#html_id = "#{klass}_#{(obj.object.try(:id) || 0).to_s}"
 %>
 
 <article
- class="decorated_wrap shrinked <%= klass %>"
- id="<%= html_id %>"
- <% if !(ss = searcher_settings).nil? %>
- 	<%= "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query %>
- 	<%= "data-searcher-assoc=#{assoc.to_s.singularize}" %>
- <% end %>
+	class="decorated_wrap shrinked <%= klass %>"
+ 	id="<%= html_id %>"
+ 	<%= generate_search_query_attribute(searcher_settings, assoc, fields) %>
 >
 
 	<input type="hidden" name="assoc-type" value="has_many">
@@ -31,17 +20,7 @@
 		<% end %>
 	<% end %>
 
-	<% if !ss.nil? %>
-		<% if ss.has_key? :caption %>
-			<div class="caption <%= 'required' if ss[:caption].has_key?(:required) %>">
-				<%= assoc.to_s.classify.constantize.model_name.human %>
-			</div>
-		<% else %>
-			<% if !ss.has_key? :query %>
-				<div class="caption"><%= obj.object.model_name.human %></div>
-			<% end %>
-		<% end %>
-	<% end %>
+	<%= generate_search_window_caption(searcher_settings, assoc) %>
 
 	<%= obj.fields_for assoc.to_sym, single do |a| %>
 
@@ -84,7 +63,6 @@
 		obj: obj.object,
 		coll: coll,
 		text_method: fields.keys,
-		##opts: { a: fields.keys } ## pridat podporu pre options
 		opts: fields
 	) if coll.length > 0 %>
 

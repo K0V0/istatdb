@@ -19,8 +19,6 @@
 
 		<tbody>
 
-            <% #logger(opts) ## IDE %>
-
 			<%= new_form_has_many_select(
 				generate_params_for_render_helper(local_assigns, :obj, :coll, :val_method, :text_method, :opts)
 			) %>

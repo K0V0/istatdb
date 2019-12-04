@@ -177,6 +177,7 @@ module ApplicationConcern
 
  			if !ids_arr.blank?
                 if !(r = model.where(id: ids_arr.flatten).try(:default_order)).nil?
+                    #logger("def order")
                     result = r.order_as_specified(id: ids_arr.flatten)
                 else
                     result = model

@@ -6,6 +6,13 @@ class ImpexpcompaniesController < ApplicationController
         :settings
     end
 
+    def _searcher_settings
+  		{
+        	autoshow: false,
+        	paginate: true
+        }
+  	end
+
 	def _allowed_params
    		[ :company_name ]
  	end
@@ -14,7 +21,7 @@ class ImpexpcompaniesController < ApplicationController
 
  	def show_action
 		super
-		
+
 		@for_manufacturerstable_2 = ImpexpcompanyManufacturer
 			.where(impexpcompany_id: @record.id)
 			.includes(:manufacturer, :incoterm, local_taric: :translations)

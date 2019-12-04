@@ -1,0 +1,10 @@
+// search-select section (widget)
+var mainElem = $(document).find("#<%= params[:window_id] %>");
+// table body
+var tBody = mainElem.find("div.tablewrap").children("table").children("tbody");
+
+var error = jQuery.parseHTML("<%=j render('layouts/shared/new_edit_form/no_more_records') %>");
+
+if (tBody.find('td.new_form_select_no_results').length == 0) {
+    tBody.append(error);
+}

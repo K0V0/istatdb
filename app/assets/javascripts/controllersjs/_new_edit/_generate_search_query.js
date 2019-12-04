@@ -65,6 +65,8 @@ GenerateSearchQuery.prototype = {
 		  		model: 				wndw.data('searcher-assoc'),
 		  		source_controller: 	$('body').data('controller_name').singularize(),
 		  		association_type: 	wndw.children('input[name=assoc-type]').val(),
+		  		fields: 			wndw.data('searcher-fields'),
+		  		opts: 				wndw.data('searcher-opts'),
 		  		window_id: 			wndw.attr('id'),
 		  		multiedit: 			wndw.data('searcher-multiedit'),
 		  		loaded_page: 		loaded_page,

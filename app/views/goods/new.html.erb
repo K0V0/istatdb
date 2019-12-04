@@ -29,7 +29,9 @@
 			assoc: :local_taric,
 			fields: {
 				kncode: {
+					call_decorator: :num_to_kncode
 					#required: true
+
 				},
 				description: {
 					type: :text_area,
@@ -122,7 +124,7 @@
 				name: { },
 				season: {
 					type: :date_select,
-					call_decrorator: :date_to_season
+					call_decorator: :date_to_season
 				}
 			},
 			searcher_settings: {

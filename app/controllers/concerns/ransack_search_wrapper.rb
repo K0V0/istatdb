@@ -7,6 +7,7 @@ module RansackSearchWrapper
 		mdl = controller_name.classify.constantize
 		if mdl.respond_to? :default_order
 	    	object ||= mdl.try(:default_order)
+	    	#logger("mdl respond to def order #{controller_name}")
 	    else
 	    	object ||= mdl
 	    end

@@ -40,7 +40,7 @@ class Issue < ActiveRecord::Base
     # uniquenes prerobit na meno a zaroven datum
 
     scope :default_order, -> {
-        order(season: :desc)
+        order(season: :desc, name: :desc)
     }
 
     def name_for_search_dropdown

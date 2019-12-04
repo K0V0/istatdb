@@ -123,9 +123,10 @@ class ApplicationController < ActionController::Base
     apicall_search_action if @user_logged_and_model_exist && !@task_banned_for_user
   end
 
-  def new_select_add_items
-    apicall_add_next_action if @user_logged_and_model_exist && !@task_banned_for_user
-  end
+  ### vyzera byt nikde nevyuzite
+  #def new_select_add_items
+   # apicall_add_next_action if @user_logged_and_model_exist && !@task_banned_for_user
+  #end
 
   def check_existence
     apicall_exist_action if @user_logged_and_model_exist
@@ -294,9 +295,11 @@ class ApplicationController < ActionController::Base
     elsif action_name == "new_select_load_items"
       # akcia len natahovania dalsieho obsahu
       params[:page] = params[:loaded_page].to_i + 1
-      params[:per] = params[:per_page]
-      searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked])
-      rndr = false if @result.blank?
+      #if (params[:page] <= @result.total_pages)
+        params[:per] = params[:per_page]
+        searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked])
+        rndr = false if @result.blank?
+      #end
     end
 
     if ((params.has_key? :association_type) && rndr)
@@ -321,8 +324,11 @@ class ApplicationController < ActionController::Base
       ## nepridava asociacie
       #logger(instance_variable_get("@#{params[:source_controller]}").send("#{params[:model].to_s.pluralize}").size)
       #logger(params[:checked])
-
-  		apicall_render(params[:association_type])
+      if (params[:page] <= @result.total_pages)||(@result.size == 0)
+  		  apicall_render(params[:association_type])
+      else
+        render('layouts/shared/new_edit_form/no_more_records')
+      end
   	else
   		head :ok
   	end

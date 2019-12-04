@@ -6,9 +6,7 @@
 		obj: instance_variable_get("@#{params[:source_controller]}"),
 		coll: @result,
 		text_method: get_fields_from_ransack_params,
-		opts: { is_highlighted: true }
-		### TU treba dostat aj ine options, options absolutne neprechadzaju do finalneho
-		# renderovacieho ghelpera
+		opts: get_opts_from_ransack_params
 	)
 %>
 

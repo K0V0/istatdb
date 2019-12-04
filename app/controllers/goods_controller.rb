@@ -49,8 +49,8 @@ class GoodsController < ApplicationController
 
 	# new, create, edit, update
 	def _load_vars
-		will_paginate :manufacturers, :local_taric, :issues
-		logger(@issues.distinct.ids)
+		will_paginate :manufacturers, :local_taric, :issues, :impexpcompanies
+		#logger(@issues.distinct.ids)
 		#@issues = @issues.distinct
 		# zistit preco tento patch neni automatizovany
 		if action_name=='update'
@@ -58,9 +58,10 @@ class GoodsController < ApplicationController
 				.includes(:translations)
 				.where(id: @local_tarics.ids + [@record.local_taric.id])
 				.order(kncode: :asc)
-			@issues = Issue.all.distinct
+			#@issues = Issue.all.distinct
+			### skusit update, ci budu issues naloadovane
 		end
-		@impexpcompanies = Impexpcompany.all.default_order
+		#@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
 		@manufacturers_for_uoms = Manufacturer.where(id: @record.manufacturer_ids)

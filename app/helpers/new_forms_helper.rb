@@ -6,10 +6,63 @@ module NewFormsHelper
 		collection.collect(&:id).any? ? msg_if_any : msg_if_blank
 	end
 
+    ### vytvori data atributy pre jednotlive "okno" ktore sa budu posielat pri JS requeste na nacitanie
+    ### dalsich poloziek
+    def generate_search_query_attribute(ss, assoc, fields)
+        attrs = []
+        if !ss.nil?
+            attrs.push "data-searcher-query=#{ss[:query].to_json}" if ss.has_key? :query
+            attrs.push "data-searcher-assoc=#{assoc.to_s.singularize}"
+            attrs.push "data-searcher-fields=#{fields.keys.to_json}"
+            attrs.push "data-searcher-opts=#{fields.to_json}"
+        end
+        return attrs.join(" ")
+    end
+
+    ### self-explanatory
+    def generate_search_window_caption(ss, assoc)
+        cap = ""
+        if !ss.nil?
+            if ss.has_key? :caption
+                required = ss[:caption].has_key?(:required) ? "required" : ""
+                cap = "<div class=\"caption #{required}\">#{assoc.to_s.classify.constantize.model_name.human}</div>"
+            else
+                if !ss.has_key? :query
+                    cap = "<div class=\"caption\">#{obj.object.model_name.human}</div>"
+                end
+            end
+        end
+        return cap.html_safe
+    end
+
+    ### self-explanatory
+    def generate_search_window_class(html_class, assoc)
+        ## be always singular due to js api targetting elements
+        if (defined? html_class)&&(!html_class.blank?)
+            return html_class.to_s
+        else
+            return "#{assoc.to_s.singularize}_select"
+        end
+    end
+
+    ### pri JS requeste, vyextrahuje nazvy poli, ktore ma vyrenderovat
 	def get_fields_from_ransack_params
-    	if params.has_key? :q
-    		return params[:q].except(:s).map { |k, v| k.to_s.sub(/_[a-z]+$/, '').sub('translations_', '') }
-    	end
+        return params[:fields]
+    end
+
+    def get_opts_from_ransack_params
+        p = params[:opts]
+        first_field_key = get_fields_from_ransack_params.first
+        if p.nil?
+            p = {first_field_key => { is_highlighted: true }}
+        else
+            if p.has_key?(first_field_key)
+                p[first_field_key].merge!(is_highlighted: true)
+            else
+                p.merge!({first_field_key => { is_highlighted: true }})
+            end
+        end
+        return p
     end
 
     # genrerates hash that is passed to rendering fuction only from variables
@@ -50,17 +103,25 @@ module NewFormsHelper
 			output += label(
 				obj_name,
 				coll_name,
-				result_row.send(l),
+				result_row.send(l).to_s,
 				value: result_row.id
 			) do
                 #### TU TU TU toto a l si vsimat
-                logger(result_row.send(l))
+                #logger(coll_name)
                 #logger(opts)
                 #logger(l)
                 #logger(l)
-                o = opts[l].nil? ? {} : opts[l]
-                logger(o)
-				items_table_field_decorator(result_row.send(l), o, result_row, l)
+                #o = opts[l].nil? ? {} : opts[l]
+                o = nil
+                if opts.nil?
+                    o = {}
+                else
+                    o = opts[l].nil? ? {} : opts[l]
+                end
+                #o = opts.has_key?(l) ? {} : opts[l]
+                #o = opts
+                #logger(o)
+				items_table_field_decorator(result_row.send(l).to_s, o, result_row, l)
 			end
 			output += "</td>"
 		end

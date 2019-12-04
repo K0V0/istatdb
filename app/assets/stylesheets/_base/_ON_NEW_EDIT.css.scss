@@ -8,6 +8,23 @@ body.new, body.edit, body.create, body.update, body.edit_multiple, body.update_m
 
 				article {
 					margin :0.75em 0.75em;
+
+					div {
+
+						table {
+
+							tbody {
+
+								tr {
+
+									td:nth-child(2) {
+										white-space: nowrap;
+										overflow: ellipsis;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -16,5 +33,5 @@ body.new, body.edit, body.create, body.update, body.edit_multiple, body.update_m
 			padding-top:1.25em;
 		}
 	}
-	
+
 }
