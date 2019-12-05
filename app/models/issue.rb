@@ -18,15 +18,7 @@ class Issue < ActiveRecord::Base
             #c[:name].blank?
         #}
     )
-=begin
-    has_many :impexpcompany_issues, inverse_of: :issue #, dependent: :destroy
-    accepts_nested_attributes_for(
-        :impexpcompany_issues#,
-        #reject_if: lambda { |c|
-            #c[:good_id].blank?&&c[:íssue_id].blank?
-        #}
-    )
-=end
+
     has_many :impexpcompanies, -> { distinct }, through: :good_issues
     accepts_nested_attributes_for(
         :impexpcompanies#,
@@ -60,6 +52,12 @@ class Issue < ActiveRecord::Base
 
     def name_field
         self.name
+    end
+
+    def resolved_bilance
+        total = self.goods.size
+        resolved = total - (self.goods.select { |g| g.uncomplete == true } .size)
+        "#{resolved} / #{total}"
     end
 
 end

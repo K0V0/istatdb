@@ -62,6 +62,7 @@ section.items_table {
 			tr {
 
 				th, td {
+					overflow-y: hidden;
 
 					&.inner_table {
 						padding:0;

@@ -281,22 +281,25 @@ label {
 }
 
 .copy_to_clipboard {
-	margin-left: 0.125em;
-	margin-top: 0.125em;
-	margin-bottom: 0.125em;
+	margin: 0 0.125em;
 	border-radius: 50%;
 	width: 1em;
 	height: 1em;
 	line-height: 1em;
 	text-align: center;
 	cursor: pointer;
-	font-weight: normal;
 	display: inline-block;
 	@include links_transitions();
+	background-color: $black;
+	color: $white;
 
 	&:hover {
 		background-color: $strong_black;
-		color: $white;
+		color: $strong_white;
+	}
+
+	&:active {
+		background-color: $dark_red;
 	}
 }
 

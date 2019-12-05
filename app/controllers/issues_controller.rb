@@ -3,7 +3,14 @@ class IssuesController < ApplicationController
     private
 
     def _searcher_settings
-        { paginate: true, autoshow: false }
+        {
+            paginate: true,
+            autoshow: false,
+            preload: [
+                :impexpcompanies,
+                :goods
+            ]
+        }
     end
 
     def _parent_controller

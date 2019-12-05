@@ -82,23 +82,34 @@ table {
 			@include links_transitions();
 			line-height:1.25em;
 
-			& > td:first-child {
+			& > td {
 
 				var, dfn {
+					font-style: normal;
 					@include links_transitions();
 					display: inline-block;
-					font-weight: bold;
 					width:1em;
 					height: 1em;
 					text-align: center;
-					vertical-align: middle;
 					background-color: $black;
 					color: $white;
 					line-height: 1em;
-					margin: 0.125em;
+					margin: 0 0.125em;
 					border-radius: 50%;
 					cursor: default;
 					position: relative;
+				}
+
+				var {
+					font-weight: bold;
+				}
+
+				dfn {
+
+					&.previews {
+						position: relative;
+						@include transform(rotate(45deg));
+					}
 				}
 			}
 

@@ -3,18 +3,22 @@
 render('layouts/shared/items_table',
 
     fields: {
-        season: {
-            is_sortlink: true,
-            call_decorator: :date_to_season
-        },
         name: {
             is_highlighted: true,
             is_sortlink: true,
             is_link: true
         },
-        note: {
-            is_highlighted: true,
-            is_multiple_with: :name
+        season: {
+            is_sortlink: true,
+            call_decorator: :date_to_season
+        },
+        impexpcompanies: [
+            company_name: {
+
+            }
+        ],
+        resolved_bilance: {
+
         },
         created_at: {
             is_sortlink: true,

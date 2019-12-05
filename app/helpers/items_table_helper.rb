@@ -87,10 +87,23 @@ module ItemsTableHelper
 			if opts[:issues]
 				if (o = opts[:issues]).is_a?(Symbol)
 					if !(txt = object.send(o)).blank?
-						text = text + "<dfn class=\"issue\">?<sup class=\"issue\">#{txt}</sup></dfn>".html_safe
+						text = text + "<dfn class=\"issue\">&#9874;<sup class=\"issue\">#{txt}</sup></dfn>".html_safe
 					end
 				else
 
+				end
+			end
+
+			if opts[:image_previews]
+				if (o = opts[:image_previews]).is_a?(Symbol)
+					if (imgs = object.send(o)).size > 0
+						text += "<dfn class=\"previews\">&#x2756;<sup class=\"previews\">".html_safe
+						imgs.each do |img|
+							text += image_tag(img.image.thumb.url.sub(/\.(jpg|jpeg|gif|png)$/i, ".jpg"))
+						end
+						text += "</sup></dfn>".html_safe
+
+					end
 				end
 			end
 

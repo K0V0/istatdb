@@ -9,6 +9,7 @@ sk:
         created_at: Vytvorený
         season: Obdobie
         file: Súbor
+        resolved_bilance: Bilancia
     errors:
       models:
         issue:
