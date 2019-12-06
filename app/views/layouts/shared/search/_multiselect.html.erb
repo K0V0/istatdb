@@ -1,0 +1,42 @@
+<%
+select_text = ""
+key = multiselect_filter_key(obj: obj)
+selected = get_selected_multiselect(filter_key: key)
+selected_size = selected.try(:size)
+show_button = false
+
+case selected_size
+when nil
+    select_text = t('goods_search.manufacturer_prompt')
+when 0
+    select_text = t('goods_search.manufacturer_prompt')
+when 1
+    if selected.first == 0
+        select_text = t('goods_search.manufacturer_prompt')
+    else
+        select_text = @manufacturers.find(get_selected_manufacturers.first).name
+        show_button = true
+    end
+when 2..4
+    select_text = "<b>#{selected_size}</b> #{t('goods_search.manufacturer_prompt_few')}"
+    show_button = true
+else
+    select_text = "<b>#{selected_size}</b> #{t('goods_search.manufacturer_prompt_many')}"
+    show_button = true
+end
+%>
+
+<div class="multiselect" id="<%= key %>" tabindex="0">
+    <span> <%= select_text.html_safe %> </span>
+    <div>
+        <span class="select_reset_button">
+            <button class="button <%= "novisible" if !show_button %>" type="button" id="reset_manufacturers">
+                <%= t('goods_search.manufacturer_prompt_button_reset') %>
+            </button>
+            <button class="button novisible" type="button" id="confirm_manufacturers">
+                <b> <%= t('goods_search.manufacturer_prompt_button_done') %> </b>
+            </button>
+        </span>
+        <%= render_multiselect(obj: obj) %>
+    </div>
+</div>

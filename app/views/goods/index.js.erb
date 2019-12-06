@@ -3,11 +3,11 @@
 
 $('#search_items_select_manufacturer').empty();
 
-$("<%=j render('goods/shared/search/select_manufacturer_dropdown') %>")
+$("<%=j render('layouts/shared/search/multiselect', obj: @manufacturers) %>")
 .appendTo('#search_items_select_manufacturer');
 
-$('#search_issue_filter').empty();
+$('#search_items_select_issue').empty();
 
-$("<%=j render('goods/shared/search/issue_filter') %>").children()
-.appendTo('#search_issue_filter');
+$("<%=j render('layouts/shared/search/multiselect', obj: @issues) %>")
+.appendTo('#search_items_select_issue');
 

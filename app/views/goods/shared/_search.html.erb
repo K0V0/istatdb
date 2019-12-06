@@ -29,11 +29,18 @@
 			<%= @s.label :manufacturer_filter %>
 		</span>
 		<span id="search_items_select_manufacturer">
-			<%= render 'goods/shared/search/select_manufacturer_dropdown' %>
+			<%= render 'layouts/shared/search/multiselect', obj: @manufacturers %>
 		</span>
 	</div>
 
-	<%= render 'goods/shared/search/issue_filter', obj: @s %>
+	<div>
+		<span>
+			<%= @s.label :issue_filter %>
+		</span>
+		<span id="search_items_select_issue">
+			<%= render 'layouts/shared/search/multiselect', obj: @issues %>
+		</span>
+	</div>
 
 	<%= render 'goods/shared/search/uncomplete_filter', obj: @s %>
 

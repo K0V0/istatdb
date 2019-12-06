@@ -4,7 +4,7 @@ GOODS = {
 		search_item_actions: ["once"],
 		search_mode_change: ["once"],
 		time_mode_activation: ["once"],
-		search_manufacturers_select: ['once'],
+		multiselect_handler: ['once'],
 		trigger_focus_on_searchfield: ['on_reload', 'on_resize'],
 		image_gallery: ["once"]
 	},

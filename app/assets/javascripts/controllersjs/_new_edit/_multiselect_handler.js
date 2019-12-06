@@ -1,24 +1,31 @@
 //index, search, show, administrative, end_administrative
 
-function SearchManufacturersSelect() {
+function MultiselectHandler() {
     this.init();
 }
 
-SearchManufacturersSelect.prototype = {
-    constructor: SearchManufacturersSelect,
+MultiselectHandler.prototype = {
+    constructor: MultiselectHandler,
 
     init: function() {
         var checkbox_used_last = false;
 
         $(document).on('click', function(e) {
             // pri navrate z exportu sa tento event spusta dvakrat, zistit preco
+            // zistene opravene
             // prehodene na on_ready, zatial ide
             var container = $(document).find('div.multiselect');
+            //logger(container.parent().attr('id'));
+            //logger(e.target);
             var target = $(e.target);
+            //logger(target.hasClass('multiselect')||)
             var form = container.closest('form');
 
             if (target.is(container) || target.is(container.children('span'))) {
-                container.toggleClass('open');
+                var cnt_id = target.attr('id');
+                container.filter('#'+cnt_id+'').toggleClass('open');
+                logger(container);
+                logger('ide');
             } else if (!target.is('input[type=checkbox]')) {
                 container.removeClass('open');
                 if (target.is('label')) {
@@ -30,7 +37,7 @@ SearchManufacturersSelect.prototype = {
                     }
                 } else if (checkbox_used_last) {
                     form.submit();
-                } 
+                }
             } else if (target.is('input[type=checkbox]')) {
                 $(document).find('button#confirm_manufacturers').removeClass('novisible');
                 checkbox_used_last = true;

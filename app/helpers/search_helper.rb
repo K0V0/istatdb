@@ -93,4 +93,61 @@ module SearchHelper
 		)
 		output += "</span>"
 	end
+
+	def render_multiselect(obj: nil)
+		params_filter_key = multiselect_filter_key(obj: obj)
+		selected = get_selected_multiselect(obj: obj, filter_key: params_filter_key)
+ 		output = ""
+
+ 		if selected.nil?
+ 			obj.each do |man|
+		 		output += render_multiselect_row(obj:man, filter_key: params_filter_key)
+		 	end
+ 		else
+		 	obj.select { |x| selected.include?(x.id) }.each do |man|
+		 		output += render_multiselect_row(obj:man, checked:true, filter_key: params_filter_key)
+		 	end
+		 	obj.select { |x| !selected.include?(x.id) }.each do |man|
+		 		output += render_multiselect_row(obj:man, filter_key: params_filter_key)
+		 	end
+		end
+	 	output.html_safe
+	end
+
+	def multiselect_filter_key(obj:nil)
+		"#{obj.model_name.name.downcase}_filter"
+	end
+
+	def get_selected_multiselect(obj: nil, filter_key: nil)
+		if params.deep_has_key?(:q, filter_key)
+			if (a = params[:q][filter_key]).instance_of?(Array)
+				if a.all? { |x| x.blank? }
+					return nil
+				else
+					return a.map { |x| x.to_i }
+				end
+			else
+				return nil
+			end
+ 		end
+	end
+
+	def render_multiselect_row(obj:nil, checked:false, filter_key:nil)
+		output = "<span>"
+		output += check_box_tag(
+			"q[#{filter_key}][]",
+			obj.id,
+			checked,
+			{
+				id: "q_#{filter_key}_#{obj.id}",
+				class: 'skip_events'
+			}
+		)
+		output += ""
+		output += label_tag(
+			"q[#{filter_key}][#{obj.id}]",
+			obj.name
+		)
+		output += "</span>"
+	end
 end
