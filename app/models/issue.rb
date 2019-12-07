@@ -51,7 +51,8 @@ class Issue < ActiveRecord::Base
     end
 
     def name_field
-        self.name
+        #self.name
+        self.name_for_search_dropdown
     end
 
     def resolved_bilance

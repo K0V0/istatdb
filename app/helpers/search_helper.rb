@@ -146,7 +146,7 @@ module SearchHelper
 		output += ""
 		output += label_tag(
 			"q[#{filter_key}][#{obj.id}]",
-			obj.name
+			obj.name_field
 		)
 		output += "</span>"
 	end

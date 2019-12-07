@@ -14,7 +14,7 @@ when 1
     if selected.first == 0
         select_text = t('goods_search.manufacturer_prompt')
     else
-        select_text = @manufacturers.find(get_selected_manufacturers.first).name
+        select_text = obj.find(selected.first).name_field
         show_button = true
     end
 when 2..4
@@ -30,10 +30,10 @@ end
     <span> <%= select_text.html_safe %> </span>
     <div>
         <span class="select_reset_button">
-            <button class="button <%= "novisible" if !show_button %>" type="button" id="reset_manufacturers">
+            <button class="button <%= "novisible" if !show_button %>" type="button" id="reset_multiselect">
                 <%= t('goods_search.manufacturer_prompt_button_reset') %>
             </button>
-            <button class="button novisible" type="button" id="confirm_manufacturers">
+            <button class="button novisible" type="button" id="confirm_multiselect">
                 <b> <%= t('goods_search.manufacturer_prompt_button_done') %> </b>
             </button>
         </span>

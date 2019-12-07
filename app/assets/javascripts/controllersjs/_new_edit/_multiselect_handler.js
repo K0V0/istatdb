@@ -1,6 +1,9 @@
 //index, search, show, administrative, end_administrative
 
 function MultiselectHandler() {
+    this.form = {};
+    this.container = {};
+    this.container_ids = [];
     this.init();
 }
 
@@ -8,55 +11,57 @@ MultiselectHandler.prototype = {
     constructor: MultiselectHandler,
 
     init: function() {
+        var toto = this;
         var checkbox_used_last = false;
+        var toto = this;
+
+        toto.container = $(document).find('div.multiselect');
+        toto.form = toto.container.closest('form');
+        toto.container.each(function() {
+            toto.container_ids.push(this.id);
+        });
 
         $(document).on('click', function(e) {
-            // pri navrate z exportu sa tento event spusta dvakrat, zistit preco
-            // zistene opravene
-            // prehodene na on_ready, zatial ide
-            var container = $(document).find('div.multiselect');
-            //logger(container.parent().attr('id'));
-            //logger(e.target);
             var target = $(e.target);
-            //logger(target.hasClass('multiselect')||)
-            var form = container.closest('form');
+            var current_container_id = (target.filter('div.multiselect').length <= 0) ?  target.closest('div.multiselect').attr('id') : e.target.id;
+            var current_container = $('#'+current_container_id+'');
+            var target = $(e.target);
 
-            if (target.is(container) || target.is(container.children('span'))) {
-                var cnt_id = target.attr('id');
-                container.filter('#'+cnt_id+'').toggleClass('open');
-                logger(container);
-                logger('ide');
+            if (target.is(current_container) || target.is(current_container.children('span'))) {
+                current_container.toggleClass('open');
+                toto.container.not(current_container).removeClass('open');
             } else if (!target.is('input[type=checkbox]')) {
-                container.removeClass('open');
+                toto.container.removeClass('open');
                 if (target.is('label')) {
-                    if (target.closest(container).length > 0) {
+                    if (target.closest(current_container).length > 0) {
                         e.preventDefault();
-                        container.find('input[type=checkbox]').removeAttr('checked');
+                        current_container.find('input[type=checkbox]').removeAttr('checked');
                         target.siblings('input[type=checkbox]').prop('checked', true);
-                        form.submit();
+                        toto.form.submit();
                     }
                 } else if (checkbox_used_last) {
-                    form.submit();
+                    toto.container.removeClass('open');
+                    toto.form.submit();
                 }
             } else if (target.is('input[type=checkbox]')) {
-                $(document).find('button#confirm_manufacturers').removeClass('novisible');
+                current_container.find('button#confirm_multiselect').removeClass('novisible');
                 checkbox_used_last = true;
             }
 
-            if (container.find('input:checked').length > 0) {
-                $(document).find('button#reset_manufacturers').removeClass('novisible');
+            if (current_container.find('input:checked').length > 0) {
+                $(document).find('button#reset_multiselect').removeClass('novisible');
             } else {
-                $(document).find('button#reset_manufacturers').addClass('novisible');
+                $(document).find('button#reset_multiselect').addClass('novisible');
             }
         });
 
-        $(document).on('click', 'button#reset_manufacturers', function() {
+        $(document).on('click', 'button#reset_multiselect', function() {
             var chkbx = $(this).closest('div').find('input[type=checkbox]');
             chkbx.removeAttr('checked');
             $(this).closest('form').submit();
         });
 
-        $(document).on('click', 'button#confirm_manufacturers', function() {
+        $(document).on('click', 'button#confirm_multiselect', function() {
             $(this).closest('form').submit();
         });
     }
