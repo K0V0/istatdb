@@ -37,7 +37,17 @@
 
                 <tbody>
                     <% obj.each do |row| %>
-                        <tr>
+                        <%
+                            if defined?(options)
+                                tr_class = ""
+                                if o = options[0].try(:[], :row_danger)
+                                    if row.try(o.keys.first) == o.values.first
+                                        tr_class += "danger"
+                                    end
+                                end
+                            end
+                        %>
+                        <tr class="<%= tr_class %>">
                              <%= items_table_fields(row, fields) %>
                         </tr>
                     <% end %>

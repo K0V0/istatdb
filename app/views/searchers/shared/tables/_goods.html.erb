@@ -1,16 +1,22 @@
 <%= render(
     'searchers/shared/results_table',
+
     obj: @goods,
+
     fields: {
         ident: {
             is_link: true,
-            is_highlighted: :search
+            is_highlighted: :search,
+            tooltip: :reason_and_note,
+            issues: :patale,
+            image_previews: :good_images,
+            link: :link
         },
         description: {
             is_highlighted: :search
         },
         manufacturers: [
-            name: { 
+            name: {
                 is_link: true
             }
         ],
@@ -22,5 +28,11 @@
                 tooltip: :description
             }
         ]
-    }
+    },
+
+    options: [
+        row_danger: {
+            uncomplete: true
+        }
+    ]
 ) %>

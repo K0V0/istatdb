@@ -14,7 +14,7 @@ class SearchersController < ApplicationController
         par = q.nil? ? "" : q[:search_cont]
 
         @goods = Good
-            .includes([{local_taric: [:translations]}, :manufacturers])
+            .includes([{local_taric: [:translations]}, :manufacturers, :issues, :good_images])
             .ransack(ident_or_description_cont: par)
             .result
             .order('ident ASC')

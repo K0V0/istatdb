@@ -5,6 +5,7 @@ sk:
     attributes:
       issue:
         name: Prípad
+        name_field: Prípad
         note: Poznámka
         created_at: Vytvorený
         season: Obdobie

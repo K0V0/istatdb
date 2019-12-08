@@ -1,4 +1,4 @@
-<% 
+<%
     item_state = nil
     case is_param?(:manufacturer_filter)
         when "0"
@@ -6,7 +6,7 @@
         when "1"
             item_state = "len nedošetrené"
         else
-            item_state = "- bez obmedzenia -"  
+            item_state = "- bez obmedzenia -"
     end
 
     item_time_filter = "- bez obmedzenia -"
@@ -27,7 +27,7 @@
             when "created_at_gteq"
                 time_filter_mode = "pridania"
             when "updated_at_gteq"
-                time_filter_mode = "poslednej úpravy"  
+                time_filter_mode = "poslednej úpravy"
         end
     end
 %>
@@ -42,6 +42,9 @@ fields_to_export = {
     uncomplete: [],
     user_added: [],
     user_modded: [],
+    issues: [
+        :name_field
+    ],
     local_taric: [
         :kncode,
         :description
@@ -66,7 +69,12 @@ head = [
     ["Výrobcovia/Odberatelia: ", Manufacturer.where(id: is_param?(:manufacturer_filter)).pluck(:name)],
     ["Stav položky: ", item_state],
     ["Časové obdobie: ", item_time_filter],
-    ["Filtrované podľa času: ", time_filter_mode]
+    ["Filtrované podľa času: ", time_filter_mode],
+    ["Prípad(y): ",
+        Issue.where(id: is_param?(:issue_filter))
+            .select(:name, :season).all
+            .map{ |f| "#{f.name} #{f.season.strftime('%m/%Y')}" }
+    ]
 ]
 %>
 
