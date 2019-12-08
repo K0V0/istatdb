@@ -120,6 +120,15 @@ module ItemsTableHelper
 				)
 			end
 
+			if opts[:link]
+				if !(o = object.send(opts[:link])).blank?
+					text += "<dfn class=\"link\"><b>w</b>
+						#{link_to('', o, target: '_blank')}
+						<sup><b>Klik: </b>#{o}</sup>
+						</dfn>".html_safe
+				end
+			end
+
 		end
 
 		return text
