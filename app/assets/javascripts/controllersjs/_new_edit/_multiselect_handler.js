@@ -15,13 +15,12 @@ MultiselectHandler.prototype = {
         var checkbox_used_last = false;
         var toto = this;
 
-        toto.container = $(document).find('div.multiselect');
-        toto.form = toto.container.closest('form');
-        toto.container.each(function() {
-            toto.container_ids.push(this.id);
-        });
-
         $(document).on('click', function(e) {
+            toto.container = $(document).find('div.multiselect');
+            toto.form = toto.container.closest('form');
+            toto.container.each(function() {
+                toto.container_ids.push(this.id);
+            });
             var target = $(e.target);
             var current_container_id = (target.filter('div.multiselect').length <= 0) ?  target.closest('div.multiselect').attr('id') : e.target.id;
             var current_container = $('#'+current_container_id+'');
@@ -31,7 +30,6 @@ MultiselectHandler.prototype = {
                 current_container.toggleClass('open');
                 toto.container.not(current_container).removeClass('open');
             } else if (!target.is('input[type=checkbox]')) {
-                toto.container.removeClass('open');
                 if (target.is('label')) {
                     if (target.closest(current_container).length > 0) {
                         e.preventDefault();
@@ -42,6 +40,8 @@ MultiselectHandler.prototype = {
                 } else if (checkbox_used_last) {
                     toto.container.removeClass('open');
                     toto.form.submit();
+                } else {
+                    toto.container.removeClass('open');
                 }
             } else if (target.is('input[type=checkbox]')) {
                 current_container.find('button#confirm_multiselect').removeClass('novisible');

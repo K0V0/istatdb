@@ -1,6 +1,19 @@
+@import "variables";
+
 body.new, body.edit, body.create, body.update, body.edit_multiple, body.update_multiple {
 
 	main {
+
+		article.warning_required {
+			margin:0.75em;
+			margin-bottom:0;
+			background-color: $soft_red;
+
+			span {
+				display: inline-block;
+				margin:0.25em 0.5em;
+			}
+		}
 
 		section {
 

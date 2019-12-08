@@ -17,6 +17,7 @@ class GoodsController < ApplicationController
 			:id,
 			:ident,
 			:description,
+			:link,
 			:local_taric_id,
 			:uncomplete,
 			:uncomplete_reason,

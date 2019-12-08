@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191204090714) do
+ActiveRecord::Schema.define(version: 20191208012736) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20191204090714) do
     t.text     "uncomplete_reason"
     t.text     "note"
     t.integer  "updated_by"
+    t.string   "link"
   end
 
   add_index "goods", ["local_taric_id"], name: "index_goods_on_local_taric_id"

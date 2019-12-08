@@ -27,6 +27,10 @@ class IssuesController < ApplicationController
         ]
     end
 
+    def _loads_for_search_panel
+        @impexpcompanies = Impexpcompany.all.default_order
+    end
+
     def _around_new
         build_if_empty :good_issue_files
     end

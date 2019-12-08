@@ -11,7 +11,7 @@ GOODS = {
 
 	show: {
 		uoms_calculator: ["once"],
-		//image_gallery: ["on_change", "on_reload"]
+		multiselect_handler: ['once']
 	},
 
 	_new_edit_update_create: {

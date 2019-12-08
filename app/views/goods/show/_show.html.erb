@@ -151,14 +151,20 @@
 		if !(mod_id = @record.updated_by).blank?
 			foot_content += "<br>#{t('items_table.modded_by')}: <b>#{User.find(mod_id).email}</b>"
 		end
+		content = "
+			<b>#{t('goods.about_item.added')}:</b> #{@record.created_at}
+			<br><b>#{t('goods.about_item.updated')}:</b> #{@record.updated_at}
+		"
+		if !@record.link.blank?
+			content += "
+				<br><b>Link: </b><a href=\"#{@record.link}\">#{@record.link}</a>
+			"
+		end
 	%>
 	<%= render(
 		'/layouts/shared/items_table/note_window',
 		caption: t('goods.about_item.about'),
-		content: "
-			<b>#{t('goods.about_item.added')}:</b> #{@record.created_at}
-			<br><b>#{t('goods.about_item.updated')}:</b> #{@record.updated_at}
-			".html_safe,
+		content: content.html_safe,
 		foot_content: foot_content.html_safe
 	) %>
 

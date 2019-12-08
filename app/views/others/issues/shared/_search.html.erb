@@ -15,6 +15,8 @@
     }
 ) do %>
 
-    <%#= render 'others/tasks/shared/search/user_filter', obj: @s %>
+    <%= render 'goods/shared/search/select_client_dropdown', obj: @s %>
+
+    <%= render 'others/issues/shared/search/season_select', obj: @s %>
 
 <% end %>

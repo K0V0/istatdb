@@ -10,6 +10,8 @@ sk:
         season: Obdobie
         file: Súbor
         resolved_bilance: Bilancia
+        impexpcompany_filter: Spravodajská jednotka
+        season_filter: Obdobie
     errors:
       models:
         issue:

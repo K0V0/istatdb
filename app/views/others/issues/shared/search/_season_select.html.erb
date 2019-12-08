@@ -1,0 +1,32 @@
+<%
+    has_search_date = params.deep_has_key? :q, :search_date
+%>
+
+<div class="select_time_wrap">
+    <span>
+        <% html_class = !has_search_date ? 'disabled' : '' %>
+        <%= obj.label(:season, class: html_class) %>
+    </span>
+
+    <span class="date_select">
+        <%=
+            obj.date_select(
+                :season_eq,
+                {
+                    discard_day: true,
+                    disabled: !has_search_date
+                },
+                {}
+            )
+        %>
+    </span>
+
+    <span>
+        <%= check_box_tag(
+            'q[search_date]',
+            1,
+            has_search_date,
+            class: "big"
+        ) %>
+    </span>
+</div>

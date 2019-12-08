@@ -42,6 +42,20 @@ class Issue < ActiveRecord::Base
         order(season: :desc, name: :desc)
     }
 
+    scope :impexpcompany_filter, -> (pars) {
+        self
+        .joins(:impexpcompanies)
+        .where(impexpcompanies: {
+            id: pars
+        })
+        .preload(:impexpcompanies)
+        .distinct
+    }
+
+    def self.ransackable_scopes(*pars)
+        %i(impexpcompany_filter)
+    end
+
     def name_for_search_dropdown
         "#{self.name} - #{self.season.strftime('%m/%Y')}"
     end

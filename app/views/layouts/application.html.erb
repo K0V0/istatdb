@@ -87,6 +87,10 @@ show_flash = !flash.empty? && user_signed_in?
 
 			<% end %>
 
+			<% if (["new", "edit", "create", "update", "edit_multiple", "update_multiple"].include?(action_name)) %>
+				<%= render 'layouts/elements/required_warning' %>
+			<% end %>
+
 			<%= yield %>
 
 			<%#= render('layouts/base/logo') %>
