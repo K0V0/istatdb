@@ -1,7 +1,31 @@
 
+<%# logger(field) %>
+
 <% field.each do |f, v| %>
 
-    <% if v.blank? %>
+<%# logger(f)
+logger(v.class)
+logger("-------")%>
+
+<%# logger(v.try(:[], 0).class) %>
+
+    <%#= defined?(recursed) %>
+
+    <%
+        if !defined?(recursed)
+            recursed = false
+        end
+    %>
+
+    <%# logger f # f moze byt aj hash%>
+
+    <% #logger v.class %>
+        <% #logger v %>
+        <% #logger " " %>
+
+    <% if v.blank?&&f.is_a?(Symbol) %>
+
+
 
         <% mdl = "#{controller_name.to_s.singularize}" if mdl.blank? %>
 
@@ -12,21 +36,34 @@
         ) %>
 
     <% else %>
-
+        <%# logger(v.try(:[], 0).class) %>
+        <%# logger f  # f iba text je %>
+        <% v = v[0].is_a?(Hash) ? v[0] : v %>
         <tr>
             <td colspan="3" class="subtable">
                 <table>
 
-                    <thead>
-                        <tr><th><%= t("activerecord.models.#{f.to_s.singularize}") %></th></tr>
-                    </thead>
+                    <% #if !recursed %>
+                        <thead>
+                            <tr><th><%= t("activerecord.models.#{f.to_s.singularize}") %></th></tr>
+                        </thead>
+                    <% #end %>
 
                     <tbody>
-                        <%= render(
-                            'layouts/shared/export/export_properties_line',
-                            field: v,
-                            mdl: f.to_s
-                        ) %>
+                        <%# if !recursed %>
+                            <% logger v[0] %>
+                            <%# logger v.class %>
+                            <%# logger " " %>
+                            <%= render(
+                                'layouts/shared/export/export_properties_line',
+                                field: v,
+                                mdl: f.to_s,
+                                #recursed: v.try(:[], 0).is_a?(Hash)
+                            ) %>
+                             <%# logger(v) %>
+                        <%# else %>
+
+                        <% #end %>
                     </tbody>
 
                 </table>
