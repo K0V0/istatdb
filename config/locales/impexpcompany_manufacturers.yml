@@ -11,12 +11,18 @@ en:
 sk:
   activerecord:
     models:
-      impexpcompany_manufacturer: Spravodajské jednotky <-> Výrobcovia/odberatelia
+      impexpcompany_manufacturer: Výrobca/odberateľ => iné atribúty
     attributes:
       impexpcompany_manufacturer:
         invoices_correct: Poskytuje správne údaje
+        invoices_correct_human: Poskytuje správne údaje
         incoterm_id: Dodacia podmienka
         trade_type_id: Obcodná operácia
+        export_impexpcompany_company_name: Spravodajské jednotky
+        export_local_taric_kncode: Kódy TARIC
+        export_local_taric_description: Popis TARIC skupiny
+        export_incoterm_shortland: Dodacie podmienky
+        export_trade_type_type: Kód operácie
   impexpcompany_manufacturer:
     back_to_manufacturer: Späť na vlastnosti výrobcu/odberateľa
     back_to_manufacturers: Storno a návrat na vyhľadávanie

@@ -1,33 +1,25 @@
 <%
-
 fields_to_export = {
-    name: [],
-    goods: [
-        :ident,
-        :description
-    ],
-    impexpcompany_manufacturers: [
-        impexpcompany: [
-            :company_name
-        ],
-        local_taric: [
-            :kncode,
-            :description
-        ],
-        incoterm: [
-            :shortland
-        ],
-        trade_type: [
-            :type
-        ],
-        :invoices_correct
-    ]
+    name: {},
+    goods_count: {},
+    goods: {
+        ident: {},
+        description: {}
+    },
+    impexpcompany_manufacturers: {
+        export_impexpcompany_company_name: {},
+        export_local_taric_kncode: {},
+        export_local_taric_description: {},
+        export_incoterm_shortland: {},
+        export_trade_type_type: {},
+        invoices_correct_human: {}
+    }
 }
 
 head = [
+    ["Názov výrobcu/odberateľa obsahuje: ", is_param?(:name_cont)],
 	["Spravodajská jednotka", Impexpcompany.where(id: is_param?(:impexpcompany_filter)).pluck(:company_name)]
 ]
-
 %>
 
 <%= render(

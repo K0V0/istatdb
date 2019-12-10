@@ -38,7 +38,8 @@ logger("-------")%>
     <% else %>
         <%# logger(v.try(:[], 0).class) %>
         <%# logger f  # f iba text je %>
-        <% v = v[0].is_a?(Hash) ? v[0] : v %>
+        <% logger(v) %>
+        <%# v = v[0].is_a?(Hash) ? v[0] : v %>
         <tr>
             <td colspan="3" class="subtable">
                 <table>

@@ -19,16 +19,20 @@
         item_time_filter = "#{item_time_start} - #{item_time_end}"
     end
 
-    time_filter_mode = "pridania alebo poslednej úpravy"
-    if params.has_key? :timesort_method
-        case params[:timesort_method].to_s
-            when "created_at_or_updated_at_gteq"
-                # nic
-            when "created_at_gteq"
-                time_filter_mode = "pridania"
-            when "updated_at_gteq"
-                time_filter_mode = "poslednej úpravy"
+    if is_param?(:search_datetime)
+        time_filter_mode = "pridania alebo poslednej úpravy"
+        if params.has_key? :timesort_method
+            case params[:timesort_method].to_s
+                when "created_at_or_updated_at_gteq"
+                    # nic
+                when "created_at_gteq"
+                    time_filter_mode = "pridania"
+                when "updated_at_gteq"
+                    time_filter_mode = "poslednej úpravy"
+            end
         end
+    else
+        time_filter_mode = "---"
     end
 %>
 
