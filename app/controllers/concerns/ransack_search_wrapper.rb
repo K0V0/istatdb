@@ -22,12 +22,37 @@ module RansackSearchWrapper
 	    		object = object.where.not(id: not_load_ids)
 	    	end
 
-		    @search = object.ransack(params[:q]) if joins.nil?
-		    @search = object.joins(joins).ransack(params[:q]) if !joins.nil?
-		    @result = @search.result if preload.nil?
-		    @result = @search.result.send(:preload, preload) if !preload.nil?
+	    	@search = object.ransack(params[:q]) if joins.nil?
+			@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
+			@result = @search.result
+
+	    	if (params.try(:[], :q).first)[0].to_s.match(/_cont$/)
+	    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
+	    		begins_with_results_ids = object.ransack(replaced_params).result.pluck(:id)
+	    		#@result = @search.result
+	    		#logger(begins_with_results_ids)
+	    		#conts_results_ids = object.ransack(params[:q]).result.pluck(:id)
+	    		#logger(conts_results_ids)
+	    		#final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+	    	end
+
+	    	conts_results_ids = @result.ids
+		    final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+
+	    	#@search = object.ransack(params[:q]) if joins.nil?
+			#@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
+
+			#@result = @search.result if preload.nil?
+		    @result = @result.send(:preload, preload) if !preload.nil?
+
+		    #conts_results_ids = @result.select(:id)
+		   # final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+
+
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
+
+		    #logger @result.to_sql
 
 		    total_pages = @result.total_pages
 		    if total_pages < params[:page].to_i
@@ -59,6 +84,10 @@ module RansackSearchWrapper
 		    if @result.length == 1 && generate_single_result_var
 		    	@result1 = @result.first
 		    end
+
+			#end
+
+		    #logger @result.methods
 		end
     end
 
