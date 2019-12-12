@@ -26,7 +26,7 @@ module RansackSearchWrapper
 			@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
 			@result = @search.result
 
-	    	if (params.try(:[], :q).first)[0].to_s.match(/_cont$/)
+	    	if (params.try(:[], :q).try(:first)).try(:[], 0).to_s.match(/_cont$/)
 	    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
 	    		begins_with_results_ids = object.ransack(replaced_params).result.pluck(:id)
 	    		#@result = @search.result
@@ -34,10 +34,17 @@ module RansackSearchWrapper
 	    		#conts_results_ids = object.ransack(params[:q]).result.pluck(:id)
 	    		#logger(conts_results_ids)
 	    		#final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+	    		conts_results_ids = @result.ids
+		    	final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+		    	@result = @result.order_as_specified(id: final_order_ids)
+		    	logger "ide"
 	    	end
 
-	    	conts_results_ids = @result.ids
-		    final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+	    	logger @result.to_sql
+
+	    	#conts_results_ids = @result.ids
+		    #final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
+
 
 	    	#@search = object.ransack(params[:q]) if joins.nil?
 			#@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
