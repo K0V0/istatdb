@@ -109,6 +109,10 @@ class Good < ActiveRecord::Base
 		order(ident: :asc)
 	}
 
+	#scope :ident_or_description_cont, -> (pars) {
+		#logger pars
+	#}
+
 	##scope :ident_cont_intel, -> (pars) {
 		##logger(pars)
 		##self
@@ -160,7 +164,7 @@ class Good < ActiveRecord::Base
 	}
 
 	def self.ransackable_scopes(*pars)
-	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter issue_filter, ident_cont_intel)
+	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter issue_filter, ident_or_description_cont)
 	end
 
 	def local_taric_selected_or_created

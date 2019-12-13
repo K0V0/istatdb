@@ -53,7 +53,7 @@ gem 'recursive-open-struct'
 
 gem 'activerecord-session_store'
 
-gem 'order_as_specified'
+gem 'order_as_specified', "~> 1.3"
 
 gem 'clipboard-rails'
 
