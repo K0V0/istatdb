@@ -25,6 +25,7 @@ module RansackSearchWrapper
 
 	    	logger object.to_sql
 
+	    	## skusit vytvori hidden fields s ids
 	    	object = object.unscope(:order).order_as_specified(id: [229, 1524, 498, 497, 724, 210, 577, 551, 675, 1715, 2300, 1390, 1532, 625, 626, 479, 1412, 1556, 2129, 2068, 2073, 796, 1714, 1719, 1699, 1708, 1713, 1519]).default_order
 
 	    	logger object.to_sql
