@@ -1,15 +1,14 @@
 module RansackSearchWrapper
 
-	require 'order_as_specified'
+	#require 'order_as_specified'
 
-	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: []
+	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: [], intelligent_mode: false
 
 		params[:q] = [] if disabled
 
 		mdl = controller_name.classify.constantize
 		if mdl.respond_to? :default_order
-	    	object ||= mdl#.try(:default_order)
-	    	#logger("mdl respond to def order #{controller_name}")
+	    	object ||= mdl.try(:default_order)
 	    else
 	    	object ||= mdl
 	    end
@@ -24,58 +23,19 @@ module RansackSearchWrapper
 	    		object = object.where.not(id: not_load_ids)
 	    	end
 
-	    	#logger object.to_sql
+	    	logger object.to_sql
 
-	    	#@search = object.ransack(params[:q]) if joins.nil?
-			#@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
-			#@result = @search.result
+	    	object = object.unscope(:order).order_as_specified(id: [229, 1524, 498, 497, 724, 210, 577, 551, 675, 1715, 2300, 1390, 1532, 625, 626, 479, 1412, 1556, 2129, 2068, 2073, 796, 1714, 1719, 1699, 1708, 1713, 1519]).default_order
 
-	    	if (params.try(:[], :q).try(:first)).try(:[], 0).to_s.match(/_cont$/)
-	    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
-	    		begins_with_results_ids = object.ransack(replaced_params).result.ids
-	    		#@result = @search.result
-	    		#logger(begins_with_results_ids)
-	    		#conts_results_ids = object.ransack(params[:q]).result.pluck(:id)
-	    		#logger(conts_results_ids)
-	    		#final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
-	    		#logger @result.to_sql
-	    		conts_results_ids = object.ransack(params).result.ids
-		    	final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
-		    	#logger final_order_ids
-		    	@result = object.order_as_specified(id: [final_order_ids])
-		    	#logger res.size
-		    	#@result = @result.sort_by { |r| final_order_ids.index r.id }
-		    	#logger Good.find_ordered(final_order_ids)
-		    	logger "ide"
-	    	end
+	    	logger object.to_sql
 
-	    	@search = object.ransack(params[:q]) if joins.nil?
-			@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
-			#@result = @search.result
-			#@result = @search.result.order_as_specified(id: [final_order_ids]).order(description: :desc)
+		    @search = object.ransack(params[:q]) if joins.nil?
+		    @search = object.joins(joins).ransack(params[:q]) if !joins.nil?
 
-	    	#logger @result.to_sql
-
-	    	#conts_results_ids = @result.ids
-		    #final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
-
-
-	    	#@search = object.ransack(params[:q]) if joins.nil?
-			#@search = object.joins(joins).ransack(params[:q]) if !joins.nil?
-
-			#@result = @search.result if preload.nil?
+		    @result = @search.result
 		    @result = @result.send(:preload, preload) if !preload.nil?
-
-		    #conts_results_ids = @result.select(:id)
-		   # final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
-
-
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
-
-		    #logger @result.to_sql
-		    #
-		    @result = @search.result.order_as_specified(id: [final_order_ids]).order(description: :desc).page(params[:page]).per(params[:per])
 
 		    total_pages = @result.total_pages
 		    if total_pages < params[:page].to_i
@@ -107,12 +67,6 @@ module RansackSearchWrapper
 		    if @result.length == 1 && generate_single_result_var
 		    	@result1 = @result.first
 		    end
-
-		    #@result = @result.order_as_specified(id: [final_order_ids])
-
-			#end
-
-		    #logger @result.methods
 		end
     end
 

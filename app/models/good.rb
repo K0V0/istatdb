@@ -101,29 +101,9 @@ class Good < ActiveRecord::Base
 	after_destroy :update_manufacturer_impexpcompany_relationships
 	after_destroy :update_good_issue_impexpcompany_relationships
 
-	#ransacker :created_at do
-  		#Arel.sql('ident LIKE ?', '')
-	#end
-
 	scope :default_order, -> {
 		order(ident: :asc)
 	}
-
-	#scope :ident_or_description_cont, -> (pars) {
-		#logger pars
-	#}
-
-	##scope :ident_cont_intel, -> (pars) {
-		##logger(pars)
-		##self
-		##.where("ident LIKE ?", "#{pars}")
-	##}
-	#
-	#ransacker :by_country_state, formatter: proc { |v|
-	   # City.where(country_state: v).map{ |city| city.ddd }.uniq
-	   # }, splat_param: true do |parent|
-	    #parent.table[:ddd]
-	# end
 
 	scope :impexpcompany_filter, -> (pars) {
 		self
