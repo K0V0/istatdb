@@ -1,42 +1,52 @@
 module RansackSearchWrapper
 
-	#require 'order_as_specified'
+	### require 'order_as_specified' musi byt na modeli ktory bude pouzivat
+	### intelignetny rezim
 
 	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: [], intelligent_mode: false
 
 		params[:q] = [] if disabled
-
 		mdl = controller_name.classify.constantize
-		if mdl.respond_to? :default_order
-	    	object ||= mdl.try(:default_order)
-	    else
-	    	object ||= mdl
-	    end
-
-	    if !object.try(:translated_locales).blank?
-	    	object = object.with_translations(I18n.locale)
-	    end
+	    object ||= mdl
 
 	    if !object.nil?
+
+	    	if !object.try(:translated_locales).blank?
+		    	object = object.with_translations(I18n.locale)
+		    end
 
 	    	if !not_load_ids.blank?
 	    		object = object.where.not(id: not_load_ids)
 	    	end
 
-	    	logger object.to_sql
+	    	if intelligent_mode
+	    		if (params.try(:[], :q).try(:first)).try(:[], 0).to_s.match(/_cont$/)
+		    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
+		    		### limit 1600 kvoli gemu - limit na SQL QUERY
+		    		begins_with_results_ids = object.ransack(replaced_params).result.limit(1600).ids
+		    		object = object.order_as_specified(id: begins_with_results_ids)
+		    	end
+	    	end
 
-	    	## skusit vytvori hidden fields s ids
-	    	object = object.unscope(:order).order_as_specified(id: [229, 1524, 498, 497, 724, 210, 577, 551, 675, 1715, 2300, 1390, 1532, 625, 626, 479, 1412, 1556, 2129, 2068, 2073, 796, 1714, 1719, 1699, 1708, 1713, 1519]).default_order
+	    	if mdl.respond_to? :default_order
+	    		object = object.try(:default_order)
+	    	end
 
-	    	logger object.to_sql
+	    	p = params[:q].except(:s)
+		    @search = object.ransack(p) if joins.nil?
+		    @search = object.joins(joins).ransack(p) if !joins.nil?
+		    #@search.sorts = params[:q][:s]
 
-		    @search = object.ransack(params[:q]) if joins.nil?
-		    @search = object.joins(joins).ransack(params[:q]) if !joins.nil?
+		    #logger params[:q][:s]
 
 		    @result = @search.result
+		    #logger @result.ids
 		    @result = @result.send(:preload, preload) if !preload.nil?
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
+
+		    ## priradit parametre az po funuse, treba aby sa zobrazovali sortlinky
+		    @search.sorts = params[:q][:s]
 
 		    total_pages = @result.total_pages
 		    if total_pages < params[:page].to_i
@@ -69,6 +79,12 @@ module RansackSearchWrapper
 		    	@result1 = @result.first
 		    end
 		end
+    end
+
+    def generate_search_rules_hash()
+    	## na triedenie
+    	## urobit tunak funkciu ktora vygeneruhe z parametrov sql query poslanu na result namiesto
+    	# posielania na ransack object lebo ten vymaze custom poradie prvych poloziek
     end
 
 end
