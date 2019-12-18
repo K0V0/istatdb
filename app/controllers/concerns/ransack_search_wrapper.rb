@@ -11,6 +11,14 @@ module RansackSearchWrapper
 
 	    if !object.nil?
 
+	    	if !joins.nil?
+	    		object = object.joins(joins)
+	    	end
+
+	    	if !preload.nil?
+	    		object = object.preload(preload)
+	    	end
+
 	    	if !object.try(:translated_locales).blank?
 		    	object = object.with_translations(I18n.locale)
 		    end
@@ -28,23 +36,37 @@ module RansackSearchWrapper
 		    	end
 	    	end
 
-	    	if mdl.respond_to? :default_order
-	    		object = object.try(:default_order)
-	    	end
+	    	### pre cosi ma prve triedenie prednost
+	    	#object = object.order(ident: :desc)
 
-	    	p = params[:q].except(:s)
-		    @search = object.ransack(p) if joins.nil?
-		    @search = object.joins(joins).ransack(p) if !joins.nil?
+	    	if !(o = order_by_ransack_params(object)).nil?
+
+	    		object = o
+	    	else
+		    	if mdl.respond_to? :default_order
+		    		object = object.try(:default_order)
+		    	end
+		    end
+
+	    	#object = object.order(ident: :desc)
+
+	    	#p = params[:q].except(:s)
+		    @search = object.ransack(params[:q].except(:s)) #if joins.nil?
+		    #@search = object.joins(joins).ransack(p) if !joins.nil?
 		    #@search.sorts = params[:q][:s]
 
 		    #logger params[:q][:s]
+		    #
+		    #
+		     @search.sorts = params[:q][:s]
 
 		    @result = @search.result
 		    #logger @result.ids
-		    @result = @result.send(:preload, preload) if !preload.nil?
+		    #@result = @result.send(:preload, preload) if !preload.nil?
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
 
+		    logger @result.to_sql
 		    ## priradit parametre az po funuse, treba aby sa zobrazovali sortlinky
 		    @search.sorts = params[:q][:s]
 
@@ -85,6 +107,14 @@ module RansackSearchWrapper
     	## na triedenie
     	## urobit tunak funkciu ktora vygeneruhe z parametrov sql query poslanu na result namiesto
     	# posielania na ransack object lebo ten vymaze custom poradie prvych poloziek
+
+    end
+
+    def order_by_ransack_params(obj)
+    	rule = generate_search_rules_hash()
+    	#logger obj.order("ident desc").order('local_taric.kncode desc').to_sql
+    	#obj.preload(:local_taric).order('local_tarics.kncode desc')
+    	nil
     end
 
 end
