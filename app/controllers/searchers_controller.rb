@@ -13,10 +13,29 @@ class SearchersController < ApplicationController
         q = params[:q]
         par = q.nil? ? "" : q[:search_cont]
 
+        if !par.blank?
+            goods_first_ids = Good
+                .ransack(ident_or_description_start: par)
+                .result
+                .order('ident ASC')
+                .limit(1600)
+                .ids
+
+            manufacturers_first_ids = Manufacturer
+                .ransack(name_start: par)
+                .result
+                .order('name ASC')
+                .limit(1600)
+                .ids
+        else
+           goods_first_ids, manufacturers_first_ids = [], [] 
+        end
+
         @goods = Good
             .includes([{local_taric: [:translations]}, :manufacturers, :issues, :good_images])
             .ransack(ident_or_description_cont: par)
             .result
+            .order_as_specified(id: goods_first_ids)
             .order('ident ASC')
             .page(params[:goods_page])
 
@@ -24,6 +43,9 @@ class SearchersController < ApplicationController
             .preload_items
             .ransack(name_cont: par)
             .result
+            .unscope(:order)
+            .order_as_specified(id: manufacturers_first_ids)
+            .order('name ASC')
             .page(params[:manufacturers_page])
 
         @local_tarics = LocalTaric

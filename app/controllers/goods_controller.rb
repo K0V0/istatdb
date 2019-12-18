@@ -16,7 +16,13 @@ class GoodsController < ApplicationController
 	private
 
 	def _searcher_settings
-		{ preload: [{local_taric: [:translations]}, :manufacturers, :issues, :good_images], paginate: true, autoshow: true, intelligent_mode: true }
+		{ 
+			preload: [{local_taric: [:translations]}, :manufacturers, :issues, :good_images],
+			joins: [:local_taric],
+			paginate: true,
+			autoshow: true,
+			intelligent_mode: true
+		}
 	end
 
 	def _allowed_params

@@ -2,12 +2,16 @@ module RansackSearchWrapper
 
 	### require 'order_as_specified' musi byt na modeli ktory bude pouzivat
 	### intelignetny rezim
+	### controller nastavenie searchera musi joinovat asociacie ak sa podla nich
+	### bude sortovat tabulka
 
 	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: [], intelligent_mode: false
 
 		params[:q] = [] if disabled
 		mdl = controller_name.classify.constantize
 	    object ||= mdl
+	    params_no_search = params.try(:[], :q).try(:except, :s) if !params[:q].nil?
+	    disable_ransack_sort = false
 
 	    if !object.nil?
 
@@ -27,48 +31,35 @@ module RansackSearchWrapper
 	    		object = object.where.not(id: not_load_ids)
 	    	end
 
-	    	if intelligent_mode
-	    		if (params.try(:[], :q).try(:first)).try(:[], 0).to_s.match(/_cont$/)
-		    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
-		    		### limit 1600 kvoli gemu - limit na SQL QUERY
-		    		begins_with_results_ids = object.ransack(replaced_params).result.limit(1600).ids
-		    		object = object.order_as_specified(id: begins_with_results_ids)
-		    	end
-	    	end
-
-	    	### pre cosi ma prve triedenie prednost
-	    	#object = object.order(ident: :desc)
-
-	    	if !(o = order_by_ransack_params(object)).nil?
-
-	    		object = o
-	    	else
-		    	if mdl.respond_to? :default_order
-		    		object = object.try(:default_order)
-		    	end
+	    	if mdl.respond_to? :default_order
+		    	object = object.try(:default_order)
 		    end
 
-	    	#object = object.order(ident: :desc)
+	    	if intelligent_mode
+	    		if !params_no_search.values.all? { |p| p.blank? }
+	    			### nic nieje v hladani, speed improvement
+		    		if (params.try(:[], :q).try(:first)).try(:[], 0).to_s.match(/_cont$/)
+			    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
+			    		### limit 1600 kvoli gemu - limit na SQL QUERY
+			    		begins_with_results_ids = object.ransack(replaced_params).result.limit(1600).ids
+			    		object = object.unscope(:order).order_as_specified(id: begins_with_results_ids)
+			    		object = order_by_ransack_params(object)
+			    	end
+			    	disable_ransack_sort = true
+			    end
+	    	end
 
-	    	#p = params[:q].except(:s)
-		    @search = object.ransack(params[:q].except(:s)) #if joins.nil?
-		    #@search = object.joins(joins).ransack(p) if !joins.nil?
-		    #@search.sorts = params[:q][:s]
-
-		    #logger params[:q][:s]
-		    #
-		    #
-		     @search.sorts = params[:q][:s]
+		    @search = object.ransack(params[:q].try(:except, :s)) if disable_ransack_sort
+		    @search = object.ransack(params[:q]) if !disable_ransack_sort
 
 		    @result = @search.result
-		    #logger @result.ids
-		    #@result = @result.send(:preload, preload) if !preload.nil?
 		    @result = @result.page(params[:page]) if !paginate.nil?
 		    @result = @result.per(params[:per]) if !paginate.nil?&&params.has_key?(:per)
 
-		    logger @result.to_sql
 		    ## priradit parametre az po funuse, treba aby sa zobrazovali sortlinky
-		    @search.sorts = params[:q][:s]
+		    if params.deep_has_key?(:q, :s)
+		    	@search.sorts = params[:q][:s] if !params[:q][:s].blank?
+		    end
 
 		    total_pages = @result.total_pages
 		    if total_pages < params[:page].to_i
@@ -103,18 +94,43 @@ module RansackSearchWrapper
 		end
     end
 
-    def generate_search_rules_hash()
-    	## na triedenie
-    	## urobit tunak funkciu ktora vygeneruhe z parametrov sql query poslanu na result namiesto
-    	# posielania na ransack object lebo ten vymaze custom poradie prvych poloziek
+    def generate_search_query(obj)
+    	mdls = ActiveRecord::Base.send(:subclasses)
+    		.select { |c| c.name =~ /^[A-Za-z]+$/ }
+    		.map { |c| c.name.underscore }
+    	queries = []
 
+    	if !(po = params.try(:[], :q)).blank?
+    		p = po.try(:[], :s)
+	    	if !p.nil?
+	    		if !p.blank?
+	    			p.each do |par|
+	    				k, v = par.split(' ')
+	    				mdls.each do |mdl|
+	    					query = nil
+	    					if k.include?(mdl)&&(k != mdl)
+	    						# je to asociacia
+	    						assoc_t = mdl.pluralize
+	    						field = k.sub(mdl, '').sub(/^_/, '')
+	    						query = "#{assoc_t}.#{field} #{v}"
+	    					elsif (controller_name.classify.constantize.new.attributes.keys.include?(k))
+	    						# je to atribut hlavneho modelu
+	    						query = "#{k} #{v}"
+	    					end
+	    					queries.push(query) if !queries.include?(query)&&!query.nil?
+	    				end
+	    			end
+	    		end
+	    	end
+	    end
+
+    	return queries.join(", ")
     end
 
     def order_by_ransack_params(obj)
-    	rule = generate_search_rules_hash()
-    	#logger obj.order("ident desc").order('local_taric.kncode desc').to_sql
-    	#obj.preload(:local_taric).order('local_tarics.kncode desc')
-    	nil
+    	rule = generate_search_query(obj)
+    	#logger rule
+    	return rule.blank? ? nil : obj.order(rule)
     end
 
 end
