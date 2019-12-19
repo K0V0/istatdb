@@ -5,7 +5,7 @@ module RansackSearchWrapper
 	### controller nastavenie searchera musi joinovat asociacie ak sa podla nich
 	### bude sortovat tabulka
 
-	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: [], intelligent_mode: false
+	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: [], intelligent_mode: false, intelligent_mode2:false
 
 		params[:q] = [] if disabled
 		mdl = controller_name.classify.constantize
@@ -50,18 +50,44 @@ module RansackSearchWrapper
 			    end
 	    	end
 
-	    	intelligent2_mode = true
-
-	    	if intelligent2_mode
+	    	if intelligent_mode2
 	    		if !params_no_search.values.all? { |p| p.blank? }
 	    			p = params[:q]
-	    			replacable_params = []
+	    			s = p.try(:[], :s) || []
+	    			replacable_params = {}
+	    			params_fields = {}
+	    			subqueries_results = {}
+	    			ids_for_order_as_first = []
+
 	    			p.each do |k, v|
 	    				if k.to_s =~ /_cont$/
-	    					replacable_params.push({k => v})
+	    					replacable_params.merge!(k => v)
 	    				end
 	    			end
-	    			#logger replacable_params
+
+	    			replacable_params.each do |k, v|
+	    				tmp = k.to_s.sub(/_cont$/, "")
+	    				fields = tmp.split("_or_")
+	    				params_fields.merge!(k => fields)
+	    			end
+
+	    			params_fields.each do |k, v|
+	    				v.each do |field|
+	    					replacement_param = {"#{field}_start" => replacable_params[k]}.merge(s: s) 
+	    					ids = object.ransack(replacement_param).result.limit(1600).ids
+	    					subqueries_results.merge!(field => ids)
+	    				end
+	    			end
+
+	    			subqueries_results.each do |k, v|
+	    				ids_for_order_as_first = ids_for_order_as_first|v
+	    			end
+	    			logger ids_for_order_as_first
+	    			## spravit kontrolu ci ich nie je viac ako 1600
+
+	    			object = object.unscope(:order).order_as_specified(id: ids_for_order_as_first)
+	    			object = order_by_ransack_params(object)
+	    			disable_ransack_sort = true
 	    		end
 	    	end
 

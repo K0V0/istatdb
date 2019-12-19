@@ -21,7 +21,7 @@ class GoodsController < ApplicationController
 			joins: [:local_taric],
 			paginate: true,
 			autoshow: true,
-			intelligent_mode: true
+			intelligent_mode2: true
 		}
 	end
 

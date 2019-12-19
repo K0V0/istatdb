@@ -11,7 +11,7 @@ class ManufacturersController < ApplicationController
   			object: Manufacturer.preload_items,
         	autoshow: false,
         	paginate: true,
-            intelligent_mode: true
+            intelligent_mode2: true
         }
   	end
 
