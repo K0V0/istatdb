@@ -10,6 +10,7 @@ module RansackSearchWrapper
 		params[:q] = [] if disabled
 		mdl = controller_name.classify.constantize
 	    object ||= mdl
+	    params_no_search = []
 	    params_no_search = params.try(:[], :q).try(:except, :s) if !params[:q].nil?
 	    disable_ransack_sort = false
 
@@ -47,6 +48,21 @@ module RansackSearchWrapper
 			    	end
 			    	disable_ransack_sort = true
 			    end
+	    	end
+
+	    	intelligent2_mode = true
+
+	    	if intelligent2_mode
+	    		if !params_no_search.values.all? { |p| p.blank? }
+	    			p = params[:q]
+	    			replacable_params = []
+	    			p.each do |k, v|
+	    				if k.to_s =~ /_cont$/
+	    					replacable_params.push({k => v})
+	    				end
+	    			end
+	    			#logger replacable_params
+	    		end
 	    	end
 
 		    @search = object.ransack(params[:q].try(:except, :s)) if disable_ransack_sort
