@@ -144,9 +144,7 @@ UomsCalculatorHelper.prototype = {
 	},
 
 	handleNanError: function(evt) {
-		//logger(etarget);
 		$(evt.target).val("");
-		//$(evt.target).val("");
 	},
 
 	handleZeroError: function() {

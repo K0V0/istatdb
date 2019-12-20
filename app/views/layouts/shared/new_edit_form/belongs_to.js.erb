@@ -4,11 +4,8 @@
 	allow_new = @result.size > 0 ? "0" : "1"
 	is_multiedit = false
 	if params.has_key?(:multiedit)
-		#logger(params['multiedit'], "multiedit")
 		is_multiedit = params['multiedit'] == "true" ? true : false
 	end
-
-	logger @result.length, "result"
 
 	template = new_form_has_one_select(
 		obj: parent_object,

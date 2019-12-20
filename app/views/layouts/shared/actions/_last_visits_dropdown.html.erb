@@ -5,7 +5,6 @@
 	
 	options.merge!(disabled: "disabled") if @last_visits.blank?
 	checked = params.has_key?(:redirect_by_last_visits) ? params[:id].to_i : ""
-	logger params[:last_visits]
 %>
 
 <div class="last_visits_dropdown">

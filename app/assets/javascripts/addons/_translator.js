@@ -17,7 +17,6 @@ $(function() {
       return "N/A";
     }
 
-    //logger(comp);
     return comp;
   };
 });

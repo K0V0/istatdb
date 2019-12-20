@@ -54,8 +54,6 @@ GenerateSearchQuery.prototype = {
 			checked.push($(this).attr('id').replace(/\D+/, ""));
 		});
 
-		//logger(wndw.find('table').find('input').length);
-
 		$.ajax({
 		  	method: 	"POST",
 		  	async: 		false,

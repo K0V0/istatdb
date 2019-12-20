@@ -2,13 +2,6 @@ class GoodsController < ApplicationController
 
 	include UomsCalcMem
 
-	before_action(
-	  	only: [:index, :search, :show, :administrative, :change_status, :export, :do_export],
-	  	if: -> { @user_logged_and_model_exist }) {
-		    #logger @result
-		    #try_reorder
-	 	}
-
 	def export
 		_loads_for_search_panel
 	end
@@ -180,38 +173,11 @@ class GoodsController < ApplicationController
 		end
 	end
 
-	def try_reorder
-		if (params.try(:[], :q).try(:first)).try(:[], 0).to_s.match(/_cont$/)
-    		replaced_params = Hash[params[:q].map { |a, v| [a.to_s.sub(/_cont$/, '_start').to_sym, v] }]
-    		begins_with_results_ids = Good.ransack(replaced_params).result.ids
-    		#@result = @search.result
-    		logger(begins_with_results_ids)
-    		all_ids =  Good.ransack(params[:q]).result.ids
-    		logger(all_ids)
-    		#conts_results_ids = object.ransack(params[:q]).result.pluck(:id)
-    		#logger(conts_results_ids)
-    		#final_order_ids = begins_with_results_ids | conts_results_ids - begins_with_results_ids
-    		#logger @result.to_sql
-    		#conts_results_ids = object.ransack(params).result.ids
-	    	final_order_ids = begins_with_results_ids | (all_ids - begins_with_results_ids)
-	    	#logger final_order_ids
-	    	#@result = object.order_as_specified(id: [final_order_ids])
-	    	#logger res.size
-	    	#@result = @result.sort_by { |r| final_order_ids.index r.id }
-	    	#logger Good.find_ordered(final_order_ids)
-	    	logger "ide"
-
-	    	@result = @result.unscope(:order).order_as_specified(id: final_order_ids)
-    	end
-	end
-
 	### OVERRIDES
 
 	def show_action
 		super
 		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
 	end
-
-
 
 end

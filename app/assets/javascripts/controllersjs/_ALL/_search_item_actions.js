@@ -11,21 +11,16 @@ SearchItemActions.prototype = {
 		var T = this;
 
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
-			//console.log('fired');
-			//if ($(this).hasClass('paused')) {
-				//logger("imput search");
-			//} else {
-				if($(e.target).is('input[type=search]')) {
-					T.resetLastViewed();
-				}
+			if($(e.target).is('input[type=search]')) {
+				T.resetLastViewed();
+			}
 
-				if (!$(e.target).hasClass('skip_events')) {
-					$(this).append('<input type="hidden" name="page" value="1">');
-					var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
-					inputs.val($(e.target).val());
-				  	$(this).submit();
-				}
-			//}
+			if (!$(e.target).hasClass('skip_events')) {
+				$(this).append('<input type="hidden" name="page" value="1">');
+				var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
+				inputs.val($(e.target).val());
+			  	$(this).submit();
+			}
 		});
 
 		/*$(document).frequentFireLimit('input', 2500, "section.search_bar > form input[type=search]", function(e) {

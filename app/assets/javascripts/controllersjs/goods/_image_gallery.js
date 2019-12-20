@@ -18,7 +18,6 @@ ImageGallery.prototype = {
         totok.loadImagesList();
 
         $(document).on('click', 'div.images.gallery_set > picture', function() {
-            //logger(totok.images_list);
             totok.openViewer($(this));
         });
 

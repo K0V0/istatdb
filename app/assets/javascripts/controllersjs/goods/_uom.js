@@ -14,14 +14,12 @@ Uom.prototype = {
 
         $(document)
         .on('UOMadded', 'article.uoms', function() {
-            logger('aside changed');
             toto.HELPER.unlock_actions($(this).children('div').first());
             toto.HELPER.delete_actions($(this).children('div').first());
         });
 
         $(document)
         .on('input', 'article.uoms > div > div > input', function() {
-            logger('uom input text changed');
             toto.HELPER.unlock_actions(this);
             toto.HELPER.delete_actions(this);
         });
@@ -29,7 +27,6 @@ Uom.prototype = {
         // znema vyberu spravodajskej jednotky alebo dodavatela/odberatela pre tovar
         $('article.impexpcompany_select, article.manufacturer_select')
         .on('change', 'div.tablewrap > table > tbody > tr > td > input', function(e) {
-            logger('impexp or manufacturer changed');
             toto.updateDropdowns(this, e);
         });
 
@@ -37,7 +34,6 @@ Uom.prototype = {
         $(document)
         .on('change', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
-                logger('dropdown changed');
                 toto.validate(this);
             }
         });
@@ -45,7 +41,6 @@ Uom.prototype = {
         $(document)
         .on('DOMSubtreeModified', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
-                logger('dropdown options changed');
                 toto.validate(this);
                 toto.HELPER.unlock_actions(this);
             }
@@ -55,7 +50,6 @@ Uom.prototype = {
         $(document)
         .on('click', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
-                logger('dropdown clicked');
                 toto.HELPER.set_user_manipulated(this);
             }
             toto.HELPER.unlock_actions(this);
@@ -65,7 +59,6 @@ Uom.prototype = {
         $(document)
         .on('focusout', 'article.uoms > div > div > select', function() {
             if (toto.HELPER.is_dropdown(this)) {
-                logger('dropdown focused out');
             }
         });
 
