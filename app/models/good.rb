@@ -127,7 +127,7 @@ class Good < ActiveRecord::Base
 
 	scope :uncomplete_filter, -> (pars) {
 		if pars == "0"
-			self.where(uncomplete: nil)
+			self.where(uncomplete: [nil, "", false])
 		elsif pars == "1"
 			self.where(uncomplete: true)
 		end
