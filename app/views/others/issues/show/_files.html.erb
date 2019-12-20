@@ -6,12 +6,28 @@
 			<%= t 'issues.files_list.cap' %>
 		</caption>
 
+		<thead>
+			<th><%= t 'activerecord.attributes.issue.file' %></th>
+			<th><%= t 'activerecord.attributes.issue.note' %></th>
+			<th><%= t 'issues.files_list.created_at' %></th>
+			<th><%= t 'issues.files_list.updated_at' %></th>
+		</thead>
+
 		<tbody>
 			<% object.each do |file| %>
 
 				<tr>
 					<td>
 						<%= link_to(file.file_identifier, file.file.url) %>
+					</td>
+					<td>
+						<%= file.note %>
+					</td>
+					<td>
+						<%= date_with_hours_to_human(file.created_at) %>
+					</td>
+					<td>
+						<%= date_with_hours_to_human(file.updated_at) %>
 					</td>
 				</tr>
 

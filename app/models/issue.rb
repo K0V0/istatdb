@@ -31,7 +31,7 @@ class Issue < ActiveRecord::Base
     accepts_nested_attributes_for(
         :good_issue_files,
         allow_destroy: true,
-        reject_if: proc { |c| c[:file].blank? and c[:file_cache].blank? }
+        reject_if: proc { |c| c[:file].blank? and c[:file_cache].blank? and c[:note].blank? }
     )
 
     validates :name, presence: true

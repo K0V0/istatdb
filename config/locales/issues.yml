@@ -25,3 +25,5 @@ sk:
     files_list:
       cap: Priložené súbory
       choose: Vybrať súbor
+      created_at: Vytvorený
+      updated_at: Upravený

@@ -77,6 +77,13 @@ module DecoratorsHelper
 		end
 	end
 
+	def date_with_hours_to_human text
+		format = "%Y-%m-%dT%H:%M:%S"
+		#Time.strptime(text, format) 
+		#return DateTime.parse(text).strftime("%d. %b %Y %H:%M")
+		text.to_datetime.strftime("%d. %b %Y %H:%M")
+	end
+
 	def date_to_human text
 		return Date.parse(text).strftime("%d. %b %Y")
 	end

@@ -27,6 +27,7 @@
 						<%= file.hidden_field :file_cache %>
 		                <%= file.check_box :_destroy, class: "remove_file" %>
 	                    <%= file.label :_destroy, 'X', class: "button remove_file" %>
+	                    <%= file.text_area :note %>
 					</div>
 
 				<% else %>
@@ -40,6 +41,7 @@
 						<%= file.hidden_field :file_cache %>
 		                <%= file.check_box :_destroy, class: "remove_file" %>
 	                    <%= file.label :_destroy, 'X', class: "button remove_file #{('novisible' if empty_alone)}" %>
+	                    <%= file.text_area(:note) %>
 					</div>
 
 				<% end %>
