@@ -11,3 +11,8 @@ $('#search_items_select_issue').empty();
 $("<%=j render('layouts/shared/search/multiselect', obj: @issues) %>")
 .appendTo('#search_items_select_issue');
 
+$('div.last_visits_dropdown').empty();
+$("<%=j render('layouts/shared/actions/last_visits_dropdown', obj: @last_visits) %>")
+.children()
+.appendTo('div.last_visits_dropdown');
+

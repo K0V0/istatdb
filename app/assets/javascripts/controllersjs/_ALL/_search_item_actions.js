@@ -13,8 +13,12 @@ SearchItemActions.prototype = {
 		$(document).frequentFireLimit('input', 350, "section.search_bar > form", function(e) {
 			//console.log('fired');
 			//if ($(this).hasClass('paused')) {
-
+				//logger("imput search");
 			//} else {
+				if($(e.target).is('input[type=search]')) {
+					T.resetLastViewed();
+				}
+
 				if (!$(e.target).hasClass('skip_events')) {
 					$(this).append('<input type="hidden" name="page" value="1">');
 					var inputs = $(document).find("input."+$(e.target).attr('class')+"[type=search]");
@@ -42,6 +46,10 @@ SearchItemActions.prototype = {
 			window.open('http://google.com/search?q=' + searched_term);
 		});
 
+		$(document).on('click', '#back_or_search', function() {
+			T.resetLastViewed();
+		});
+
 		/*$(document).on('click', '#last_searches', function() {
 			$(document).find("section.search_bar > form").addClass('paused');
 			window.clearTimeout(T.lastSearchSwitchTimer);
@@ -53,5 +61,9 @@ SearchItemActions.prototype = {
 				.submit();
 			}, 1500);
 		});*/
+	},
+
+	resetLastViewed: function() {
+		$(document).find('form').find('select#last_visits').val('');
 	}
 }

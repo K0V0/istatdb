@@ -129,7 +129,7 @@ module RansackSearchWrapper
 
 		    if params.has_key? :last_visits
 		    	if !(id = params[:last_visits]).blank?
-		    		redirect_to controller: controller_name, action: :show, id: id
+		    		redirect_to controller: controller_name, action: :show, id: id, redirect_by_last_visits: true
 		    	end
 		    end
 
