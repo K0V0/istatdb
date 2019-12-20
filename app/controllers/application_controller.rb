@@ -286,18 +286,18 @@ class ApplicationController < ActionController::Base
       # akcia vyhladavania - input do text pola
       if params[:per_page].blank?
         # widget natahujuci vsetko
-        searcher_for(autoshow: false)
+        searcher_for(autoshow: false, intelligent_mode2: true)
       else
         # widget bude strankovany
         params[:page] = 1
-        searcher_for(autoshow: false, paginate: true)
+        searcher_for(autoshow: false, paginate: true, intelligent_mode2: true)
       end
     elsif action_name == "new_select_load_items"
       # akcia len natahovania dalsieho obsahu
       params[:page] = params[:loaded_page].to_i + 1
       #if (params[:page] <= @result.total_pages)
         params[:per] = params[:per_page]
-        searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked])
+        searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked], intelligent_mode2: true)
         rndr = false if @result.blank?
       #end
     end

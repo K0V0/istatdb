@@ -74,6 +74,18 @@ input, select, textarea, div.multiselect {
 textarea {
 	font-family: inherit;
     font-size: inherit;
+
+    &.enlarged {
+    	height: 8em;
+    	width: 33vw;
+    }
+
+    @media only screen and (max-width: 480px) {
+
+    	&.enlarged {
+	    	width: 100%;
+	    }
+    }
 }
 
 input[type=text], input[type=search], select {

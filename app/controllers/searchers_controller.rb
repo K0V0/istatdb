@@ -14,12 +14,19 @@ class SearchersController < ApplicationController
         par = q.nil? ? "" : q[:search_cont]
 
         if !par.blank?
-            goods_first_ids = Good
-                .ransack(ident_or_description_start: par)
+            goods_first1_ids = Good
+                .ransack(ident_start: par)
                 .result
                 .order('ident ASC')
-                .limit(1600)
+                .limit(800)
                 .ids
+            goods_first2_ids = Good
+                .ransack(description_start: par)
+                .result
+                .order('ident ASC')
+                .limit(800)
+                .ids
+            goods_first_ids = goods_first1_ids | goods_first2_ids
 
             manufacturers_first_ids = Manufacturer
                 .ransack(name_start: par)
@@ -28,7 +35,7 @@ class SearchersController < ApplicationController
                 .limit(1600)
                 .ids
         else
-           goods_first_ids, manufacturers_first_ids = [], [] 
+           goods_first_ids, manufacturers_first_ids = [], []
         end
 
         @goods = Good

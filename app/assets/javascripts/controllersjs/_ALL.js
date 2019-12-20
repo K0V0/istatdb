@@ -18,6 +18,7 @@ ALL = {
 		generate_search_query: ['on_reload'],
         belongs_to_disable_select_table_on_new: ['on_reload'],
         reset_fields_button: ['on_reload'],
-        belongs_to_detach_assoc: ['on_ready']
+        belongs_to_detach_assoc: ['on_ready'],
+        textarea_sizer: ['on_ready']
 	}
 }

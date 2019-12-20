@@ -14,10 +14,10 @@
 
 	            <% if !file.object.file.blank? %>
 
-	            	<% 
+	            	<%
 	            		orig_file = file.object.file_identifier
-	            		cache_file = file.object.file_cache.sub(/(^[0-9\-]+\/)/, "")
-	            		filename = orig_file.blank? ? cache_file : orig_file 
+	            		cache_file = file.object.file_cache.sub(/(^[0-9\-]+\/)/, "") if !file.object.file_cache.nil?
+	            		filename = orig_file.blank? ? cache_file : orig_file
 	            	%>
 
 					<div class="on_server">
