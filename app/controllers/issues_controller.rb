@@ -23,7 +23,7 @@ class IssuesController < ApplicationController
             :name,
             :note,
             :season,
-            good_issue_files_attributes: [:id, :_destroy, :file, :file_cache]
+            good_issue_files_attributes: [:id, :_destroy, :file, :file_cache, :note]
         ]
     end
 

@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20191222002708) do
     t.integer  "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "note"
   end
 
   add_index "good_issue_files", ["issue_id"], name: "index_good_issue_files_on_issue_id"

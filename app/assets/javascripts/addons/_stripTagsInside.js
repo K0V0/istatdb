@@ -9,11 +9,3 @@
 		});
 	}
 }(jQuery));
-
-/*
-// just escapes tags
-var container = document.createElement('div');
-var text = document.createTextNode($(this).html());
-container.appendChild(text);
-logger(container.innerHTML);
-*/

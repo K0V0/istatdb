@@ -83,13 +83,13 @@ module RansackSearchWrapper
 	    			subqueries_results.each do |k, v|
 	    				ids_for_order_as_first = ids_for_order_as_first|v
 	    			end
-	    			logger ids_for_order_as_first
+	    			#logger ids_for_order_as_first
 	    			## spravit kontrolu ci ich nie je viac ako 1600
-	    			logger object
+	    			#logger object
 	    			object = object.unscope(:order).order_as_specified(id: ids_for_order_as_first)
-	    			logger object
+	    			#logger object
 	    			object = order_by_ransack_params(object)
-	    			logger object
+	    			#logger object
 	    			disable_ransack_sort = true
 	    		end
 	    	end
@@ -129,7 +129,7 @@ module RansackSearchWrapper
 
 		    if params.has_key? :last_visits
 		    	if !(id = params[:last_visits]).blank?
-		    		redirect_to controller: controller_name, action: :show, id: id
+		    		redirect_to controller: controller_name, action: :show, id: id, redirect_by_last_visits: true
 		    	end
 		    end
 
@@ -174,7 +174,7 @@ module RansackSearchWrapper
 
     def order_by_ransack_params(obj)
     	rule = generate_search_query(obj)
-    	logger rule
+    	#logger rule
     	return rule.blank? ? obj : obj.order(rule)
     end
 

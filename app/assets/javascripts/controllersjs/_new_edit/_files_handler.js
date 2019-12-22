@@ -61,7 +61,7 @@ FilesHandler.prototype = {
         });
         next_index++;
         var tmp_obj = this.newFileClone.clone();
-        tmp_obj.find('input, label').each(function() {
+        tmp_obj.find('input, label, textarea').each(function() {
             toto.cloneIds($(this), next_index);
         });
         tmp_obj.removeClass('novisible');

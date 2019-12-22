@@ -4,15 +4,17 @@
 	}
 	
 	options.merge!(disabled: "disabled") if @last_visits.blank?
+	checked = params.has_key?(:redirect_by_last_visits) ? params[:id].to_i : ""
 %>
 
-<div>
+<div class="last_visits_dropdown">
 
 	<span>
 		<%= select_tag(
 			'last_visits',
 			options_for_select(
-				@last_visits.map { |obj| [obj[:title], obj[:id]] }
+				@last_visits.map { |obj| [obj[:title], obj[:id]] },
+				checked
 			),
 			options
 		) %>
