@@ -31,6 +31,12 @@
 ) %>
 
 <%= active_link_to(
+	t("settings.sections.people"),
+	people_path,
+	wrap_tag: :li
+) %>
+
+<%= active_link_to(
 	t("settings.sections.users"),
 	user_settings_path,
 	wrap_tag: :li

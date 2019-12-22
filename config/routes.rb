@@ -628,6 +628,52 @@ Rails.application.routes.draw do
     to: "trade_types#delete",
     as: "delete_trade_type"
 
+
+  ## nastavenia - referenti
+
+  # index
+  get "settings/people",
+    to: "people#index",
+    as: "people"
+
+  # new
+  get "settings/people/new",
+    to: "people#new",
+    as: "new_person_type"
+
+  # administration
+  get "settings/people/administrative",
+    to: "people#administrative"
+
+  # end administration
+  get "settings/people/end_administrative",
+    to: "people#end_administrative"
+
+  # show
+  get "settings/people/:id",
+    to: "people#show",
+    as: "person_type"
+
+  # create
+  post "settings/people/new",
+    to: "people#create",
+    as: "create_person_type"
+
+  # edit
+  get "settings/people/:id/edit",
+    to: "people#edit",
+    as: "edit_person_type"
+
+  # update
+  patch "settings/people/:id/edit",
+    to: "people#update",
+    as: "update_person_type"
+
+  # delete
+  delete "settings/people/:id",
+    to: "people#delete",
+    as: "delete_person_type"
+
   ## Nastavenia - pouzivatelia
 
   # index

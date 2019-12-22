@@ -1,0 +1,45 @@
+<%= render 'layouts/base/main_menu' %>
+
+<section class="form">
+
+    <%= form_for @record, @form_url do |t| %>
+
+        <%= new_edit(
+            obj: t,
+            fields: {
+                first_name: {
+                    autofocus: true,
+                    required: true
+                },
+                last_name: {
+                    required: true
+                },
+                email: {},
+                phone: {}
+            }
+        ) %>
+
+        <%= new_edit(
+            obj: t,
+            assoc: :impexpcompany,
+            fields: {
+                company_name: {  }
+            },
+            searcher_settings: {
+                query: {
+                    company_name: :cont
+                },
+                caption: {
+                    required: true
+                }
+            }
+        ) %>
+
+        <%= new_edit(
+            obj: t,
+            type: :submit
+        ) %>
+
+    <% end %>
+
+</section>
