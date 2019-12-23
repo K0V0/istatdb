@@ -7,7 +7,43 @@ class PeopleController < ApplicationController
     end
 
     def _allowed_params
-         [ :id, :first_name, :last_name, :email, :phone ]
+         [
+            :id,
+            :first_name,
+            :last_name,
+            :email,
+            :phone,
+            :impexpcompany_id,
+            impexpcompany_attributes: [
+                :id,
+                :company_name,
+                :allow_search_as_new
+            ],
+        ]
+    end
+
+    def _load_vars
+        will_paginate :impexpcompany
+    end
+
+    def _around_new
+        build_if_empty :impexpcompany
+    end
+
+    def _around_create_after_save_failed
+        build_if_empty :impexpcompany
+    end
+
+    def _around_edit
+        build_if_empty :impexpcompany
+    end
+
+    def _around_update_after_save
+        build_if_empty :impexpcompany
+    end
+
+    def _around_update_after_save_failed
+        build_if_empty :impexpcompany
     end
 
 end

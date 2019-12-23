@@ -1,5 +1,8 @@
 class ManufacturersController < ApplicationController
 
+    ### pri uprave vlastnosti vyrobcu - pri pridelovani referenta jednotlivym
+    # spravodaj jednotkam nedomiesat referentov z inej spravodajskej jednotky
+
     def export
         _loads_for_search_panel
     end
@@ -66,7 +69,7 @@ class ManufacturersController < ApplicationController
         @for_impexpcompaniestable =
             @record
             .impexpcompany_manufacturers
-            .includes(:impexpcompany, :incoterm, :trade_type, local_taric: [:translations])
+            .includes(:person, :impexpcompany, :incoterm, :trade_type, local_taric: [:translations])
             .order('impexpcompanies.company_name ASC')
         @for_goodstable = @record
             .goods

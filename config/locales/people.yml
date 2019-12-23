@@ -1,0 +1,21 @@
+sk:
+  activerecord:
+    models:
+      person: Referenti
+    attributes:
+      person:
+        first_name: Meno
+        last_name: Priezvisko
+        email: e-mail
+        phone: telefón
+    errors:
+      models:
+        person:
+          attributes:
+
+
+  helpers:
+    submit:
+      person:
+        create: Pridať referenta
+        update: Upraviť referenta

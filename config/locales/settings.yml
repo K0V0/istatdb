@@ -21,7 +21,7 @@ en:
         section_window_title: Backup - FTP settings
         actions_window_title: Backup
         adress: adress
-        port: Port 
+        port: Port
         user: Login
         pass: Password
         root: Root directory
@@ -40,7 +40,7 @@ en:
 
 sk:
   settings:
-    only_admin: Prístupné iba používateľovi s právami administrátora 
+    only_admin: Prístupné iba používateľovi s právami administrátora
 
     sections:
       general: Všeobecné
@@ -49,6 +49,7 @@ sk:
       trade_types: Typy operácií
       users: Užívateľ
       impexpcompanies: Spravodajské jednotky
+      people: Referenti
 
     general:
       gui:
@@ -61,7 +62,7 @@ sk:
         section_window_title: Zálohovanie - nastavenie FTP
         actions_window_title: Zálohovanie
         adress: Adresa
-        port: Port 
+        port: Port
         user: Meno
         pass: Heslo
         root: Koreň. adresár

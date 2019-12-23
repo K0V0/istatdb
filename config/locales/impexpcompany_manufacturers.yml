@@ -14,6 +14,7 @@ sk:
       impexpcompany_manufacturer: Výrobca/odberateľ => iné atribúty
     attributes:
       impexpcompany_manufacturer:
+        person: Referent
         invoices_correct: Poskytuje správne údaje
         invoices_correct_human: Poskytuje správne údaje
         incoterm_id: Dodacia podmienka

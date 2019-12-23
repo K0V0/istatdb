@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191222002708) do
+ActiveRecord::Schema.define(version: 20191223021902) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -146,12 +146,14 @@ ActiveRecord::Schema.define(version: 20191222002708) do
     t.boolean  "invoices_correct"
     t.integer  "incoterm_id"
     t.integer  "trade_type_id"
+    t.integer  "person_id"
   end
 
   add_index "impexpcompany_manufacturers", ["impexpcompany_id"], name: "index_impexpcompany_manufacturers_on_impexpcompany_id"
   add_index "impexpcompany_manufacturers", ["incoterm_id"], name: "index_impexpcompany_manufacturers_on_incoterm_id"
   add_index "impexpcompany_manufacturers", ["local_taric_id"], name: "index_impexpcompany_manufacturers_on_local_taric_id"
   add_index "impexpcompany_manufacturers", ["manufacturer_id"], name: "index_impexpcompany_manufacturers_on_manufacturer_id"
+  add_index "impexpcompany_manufacturers", ["person_id"], name: "index_impexpcompany_manufacturers_on_person_id"
   add_index "impexpcompany_manufacturers", ["trade_type_id"], name: "index_impexpcompany_manufacturers_on_trade_type_id"
 
   create_table "incoterm_translations", force: :cascade do |t|
