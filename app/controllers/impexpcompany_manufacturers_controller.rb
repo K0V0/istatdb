@@ -60,6 +60,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 		end
 		@local_taric = LocalTaric.new
 		@trade_types = TradeType.includes(:translations).all.default_order
+		#@people = Person.all
 	end
 
 	def permitted_pars pars
@@ -70,6 +71,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 			:incoterm_id,
 			:trade_type_id,
 			:invoices_correct,
+			:person_id,
 			:detach_local_taric,
 			local_taric: [:kncode, :description, :id, :allow_search_as_new]
 		)

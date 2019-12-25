@@ -3,8 +3,9 @@
 render('layouts/shared/items_table',
 
     fields: {
-        first_name: {},
-        last_name: {},
+        full_name: {
+            is_link: true
+        },
         email: {},
         phone: {},
         impexpcompany: [

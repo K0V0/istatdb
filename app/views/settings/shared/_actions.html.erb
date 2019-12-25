@@ -3,7 +3,7 @@
 
     <% content_for :search_bar do %>
 
-    	<form class="decorated_wrap shrinked">
+        <%= form_tag({ action: :index }, method: :get, class: 'decorated_wrap shrinked' ) do %>
 
     		<div>
 
@@ -11,12 +11,17 @@
 
     				--><%= render "/layouts/shared/actions/add_new_button" %><!--
     				--><%= render "/layouts/shared/actions/go_to_administrative" %><!--
+                    --><%= render "/layouts/shared/actions/edit_button" %><!--
+
+                    --><% if action_name == 'show' %>
+                        <%= render "/layouts/shared/actions/search_or_back_button" %>
+                    <% end %><!--
 
     			--></div>
 
     		</div>
 
-    	</form>
+    	<% end %>
 
     <% end %>
 

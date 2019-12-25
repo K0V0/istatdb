@@ -26,6 +26,8 @@ module ApplicationHelper
     	if !session[:path_back].nil?
     		if !session[:path_back][:controller].nil?
     			return session[:path_back]
+            else
+                return { controller: params[:controller], action: 'index' }
     		end
     	end
     	return { controller: params[:controller], action: 'index' }

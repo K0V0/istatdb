@@ -63,6 +63,22 @@
 
 					</article>
 
+					<article class="decorated_wrap shrinked select_referent">
+
+						<% impexp_id = d.object.impexpcompany_id %>
+
+						<%= render('layouts/elements/input_select',
+							obj: d,
+							collection: Impexpcompany.find(impexp_id).people,
+							method_to_get_vals: :id,
+							method_to_get_texts: :full_name,
+							send_parameters_name: :person_id,
+							blank_text: "---",
+							selected: d.object.person_id
+						) %>
+
+					</article>
+
 					<%= new_edit(
 						obj: d,
 						assoc: :local_taric,
