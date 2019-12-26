@@ -32,6 +32,10 @@ class Person < ActiveRecord::Base
         self.full_name
     end
 
+    scope :default_order, -> {
+        order(first_name: :asc, last_name: :asc)
+    }
+
     scope :impexpcompany_filter, -> (pars) {
         self.where(impexpcompany_id: pars)
     }
