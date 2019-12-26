@@ -61,9 +61,7 @@
 
 			<li>
 				<%= t('goods.nothing_found.text10a') %>
-				<button id="good_send_request_email" class="button">
-					<%= t('goods.nothing_found.text10b') %>
-				</button>
+				<%= link_to(t('goods.nothing_found.text10b'), people_path, class: 'button') %>
 				<%= t('goods.nothing_found.text10c') %>
 			</li>
 

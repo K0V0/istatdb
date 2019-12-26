@@ -32,4 +32,12 @@ class Person < ActiveRecord::Base
         self.full_name
     end
 
+    scope :impexpcompany_filter, -> (pars) {
+        self.where(impexpcompany_id: pars)
+    }
+
+    def self.ransackable_scopes(*pars)
+        %i(impexpcompany_filter)
+    end
+
 end

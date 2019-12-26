@@ -1,0 +1,29 @@
+<%
+selected = params.try(:[], :q).try(:[], :impexpcompany_filter)
+logger selected
+options = {
+    include_blank: t('goods_search.issue_prompt'),
+    selected: selected
+}
+%>
+
+<div>
+
+    <span>
+        <%= label :q, :impexpcompany_filter, "tirrii" %>
+    </span>
+
+    <span>
+        <%= select(
+            :q,
+            :impexpcompany_filter,
+            @impexpcompanies.collect { |i| [ i.company_name, i.id ] },
+            options
+        ) %>
+    </span>
+
+</div>
+
+<button id="reset_search" class="button">
+    <%= t 'search.reset' %>
+</button>

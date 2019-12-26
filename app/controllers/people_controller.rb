@@ -6,6 +6,12 @@ class PeopleController < ApplicationController
         :settings
     end
 
+    def _searcher_settings
+        {
+            paginate: true
+        }
+    end
+
     def _allowed_params
          [
             :id,
@@ -20,6 +26,10 @@ class PeopleController < ApplicationController
                 :allow_search_as_new
             ],
         ]
+    end
+
+    def _loads_for_search_panel
+        @impexpcompanies = Impexpcompany.all
     end
 
     def _load_vars

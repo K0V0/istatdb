@@ -1,0 +1,32 @@
+article.people {
+
+    section {
+
+        table#people {
+
+            td {
+                white-space: nowrap;
+                width:1%;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+           table#people {
+
+                td, th {
+                    width:100%;
+
+                    &.people-full_name {
+                        font-weight: bold;
+                    }
+
+                    &.impexpcompanies-company_name {
+                        font-style: italic;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}

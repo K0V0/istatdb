@@ -3,9 +3,15 @@
 
     <% content_for :search_bar do %>
 
-        <%= form_tag({ action: :index }, method: :get, class: 'decorated_wrap shrinked' ) do %>
+        <%= form_tag({ action: :index }, method: :get, class: 'decorated_wrap shrinked', remote: true ) do %>
 
     		<div>
+
+                <% if content_for? :settings_searchbar %>
+
+                    <%= yield :settings_searchbar %>
+
+                <% end %>
 
     			<div class="searchform_actions"><!--
 
