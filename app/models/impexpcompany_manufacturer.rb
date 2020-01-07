@@ -18,6 +18,8 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
     after_initialize :def_export_methods
 
+    attr_accessor :detach_local_taric
+
     private
 
     def export_methods

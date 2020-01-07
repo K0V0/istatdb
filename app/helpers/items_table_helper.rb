@@ -31,6 +31,10 @@ module ItemsTableHelper
 
 		if !object.nil?
 
+			if opts[:is_email]
+				text = mail_to(text)
+			end
+
 			if o = opts[:is_highlighted]
 				#logger "high"
 				if o.is_a? TrueClass

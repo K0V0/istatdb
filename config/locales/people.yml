@@ -5,10 +5,11 @@ sk:
     attributes:
       person:
         first_name: Meno
-        full_name: Meno
+        full_name: Meno referenta
         last_name: Priezvisko
         email: e-mail
         phone: telefón
+        impexpcompany_filter: Spravodajská jednotka
     errors:
       models:
         person:

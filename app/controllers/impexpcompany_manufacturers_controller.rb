@@ -25,6 +25,9 @@ class ImpexpcompanyManufacturersController < ApplicationController
 					# if something selected
 					detail.local_taric = LocalTaric.find(pars[:local_taric_id])
 				end
+				if pars[:detach_local_taric] == "true"
+					detail.local_taric = nil
+				end
 			end
 			# assign other attributes
 			detail.assign_attributes(permitted_pars(pars).except!(:local_taric_id, :local_taric, :local_taric_attributes))

@@ -97,4 +97,6 @@
 		assoc: assoc
 	) if obj.object.respond_to?("detach_#{assoc.to_s}") %>
 
+	<% logger obj.object.respond_to?("detach_#{assoc.to_s}") %>
+
 </article>
