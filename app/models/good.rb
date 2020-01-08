@@ -144,7 +144,7 @@ class Good < ActiveRecord::Base
 	}
 
 	def self.ransackable_scopes(*pars)
-	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter issue_filter, ident_or_description_cont)
+	    %i(impexpcompany_filter manufacturer_filter uncomplete_filter time_filter issue_filter ident_or_description_cont)
 	end
 
 	def local_taric_selected_or_created
