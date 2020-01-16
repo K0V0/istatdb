@@ -25,8 +25,11 @@ class BackupsController < ApplicationController
                 GlobalSettings.backup_adress,
                 GlobalSettings.backup_user,
                 GlobalSettings.backup_pass) do |ftp|
+                    rgx = Regexp.new("#{GlobalSettings.backup_root.sub('/', '')}$")
+                    ftp.mkdir(GlobalSettings.backup_root) if !ftp.list("/").any?{|dir| dir.match(rgx)}
                     ftp.passive = true
                     ftp.putbinaryfile("public/backups/#{timestring}-data.yml")
+                    ftp.rename("/#{timestring}-data.yml", "#{GlobalSettings.backup_root}/#{timestring}-data.yml")
             end
         end
     end
