@@ -1,12 +1,19 @@
+<% 
+	set_name = "settings[#{name}]"
+	set_name = "global_" + set_name if only_admin
+	val = only_admin ? @global_settings[name] : @settings[name]
+%>
+
 <td> 
 
-	<input type="hidden" name="settings[<%= name %>]" value="0">
+	<input type="hidden" name="<%= set_name %>" value="0">
 
 	<input 
 		type="checkbox" 
-		name="settings[<%= name %>]" 
+		name="<%= set_name %>" 
 		value="1" 
 		class="big settings"
-		<%= "checked" if @MEM.settings.send(name) == "1" %>
+		<%#= "checked" if @MEM.settings.send(name) == "1" %>
+		<%= "checked" if val == "1" %>
 	>
 </td>
