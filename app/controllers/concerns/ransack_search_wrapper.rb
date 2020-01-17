@@ -12,6 +12,13 @@ module RansackSearchWrapper
 	    object ||= mdl
 	    params_no_search = []
 	    params_no_search = params.try(:[], :q).try(:except, :s) if !params[:q].nil?
+	    if !params_no_search.blank?
+	    	params_no_search.each_with_index do |p, index|
+	    		if p[0] =~ /_filter$/
+	    			params_no_search[p[0]] = ""
+	    		end
+	    	end
+	    end
 	    disable_ransack_sort = false
 
 	    if !object.nil?
