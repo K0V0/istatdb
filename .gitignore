@@ -7,8 +7,9 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
-/public/upload
+/public/uploads
 /public/backups
+/public/valuts
 /coverage/
 /spec/tmp
 **.orig
