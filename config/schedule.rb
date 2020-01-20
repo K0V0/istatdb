@@ -33,6 +33,11 @@ every 1.day, at: '4:30 am' do
   rake 'exchange_rates:load'
 end
 
-every 1.minute do
-  rake 'exchange_rates:load'
+every 1.day, at: '4:00 am' do
+  rake 'backup:database'
 end
+
+every 1.day, at: '4:10 am' do
+  rake 'backup:files'
+end
+

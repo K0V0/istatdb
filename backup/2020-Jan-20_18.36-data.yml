@@ -1,0 +1,61 @@
+
+---
+global_settings:
+  columns:
+  - id
+  - var
+  - value
+  - thing_id
+  - thing_type
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - backup_enabled
+    - "--- '0'\n"
+    - 
+    - 
+    - '2020-01-20 18:34:02.252062'
+    - '2020-01-20 18:34:02.252062'
+
+---
+sessions:
+  columns:
+  - id
+  - session_id
+  - data
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - f59cefcc7b42b695388eff4690acabc4
+    - |
+      BAh7CEkiE3VzZXJfcmV0dXJuX3RvBjoGRVQiFC9nb29kc2RiL3NlYXJjaEki
+      CE1FTQY7AFQiEwQIVToMTWVtRGF0YXsASSIQX2NzcmZfdG9rZW4GOwBGSSIx
+      dGU5R1dhMW1rV09XZVpTNlo3Z2M4aENRQUhEcE9vaitnNmxWRVdQam5KYz0G
+      OwBG
+    - '2020-01-20 18:34:17.333246'
+    - '2020-01-20 18:35:55.859619'
+
+---
+settings:
+  columns:
+  - id
+  - k
+  - v
+  - created_at
+  - updated_at
+  - user_id
+  records: 
+  - - 1
+    - per_page
+    - '25'
+    - '2020-01-20 18:34:01.437714'
+    - '2020-01-20 18:34:01.437714'
+    - 
+  - - 2
+    - show_footer
+    - '1'
+    - '2020-01-20 18:34:01.449435'
+    - '2020-01-20 18:34:01.449435'
+    - 

@@ -2,26 +2,28 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '~> 4.2.11.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem 'sprockets', '~> 3.7.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc'
 
 gem 'hirb'
 
@@ -37,17 +39,17 @@ gem 'i18n'
 
 gem 'jquery-turbolinks'
 
-#gem 'active_link_to'
+gem 'active_link_to'
 
 #gem 'active_link_to', :path => "/home/kovo/:. GitHub/ActiveLinkTo"
 
-gem 'active_link_to', git: 'https://github.com/K0V0/active_link_to'
+#gem 'active_link_to', git: 'https://github.com/K0V0/active_link_to'
 
 #gem 'localtunnel'
 
 gem 'yaml_db'
 
-gem 'kaminari', git: 'https://github.com/kaminari/kaminari'
+gem 'kaminari'
 
 gem 'recursive-open-struct'
 
@@ -61,13 +63,13 @@ gem 'devise'
 
 #gem 'rubocop'
 
-gem 'globalize', '~> 5.0.0'
+gem 'globalize', '~> 5.1.0'
 
-gem "rails-settings-cached"
+gem "rails-settings-cached", "~> 0.7.2"
 
 gem 'naturally'
 
-gem "down", "~> 4.4"
+gem "down"
 
 gem 'whenever', require: false
 
@@ -75,11 +77,13 @@ gem 'carrierwave'
 
 gem 'rmagick'
 
-gem 'rubyzip', '>= 1.2.1'
+gem 'rubyzip'
 gem 'caxlsx'
 gem 'axlsx_rails'
 
 gem 'where-or'
+
+#gem 'zipruby'
 
 #gem "backup"
 
