@@ -10,7 +10,7 @@ module RansackSearchWrapper
 		params[:q] = [] if disabled
 		mdl = controller_name.classify.constantize
 	    object ||= mdl
-	    params_no_search = []
+	    params_no_search = {}
 	    params_no_search = params.try(:[], :q).try(:except, :s) if !params[:q].nil?
 	    if !params_no_search.blank?
 	    	params_no_search.each_with_index do |p, index|
