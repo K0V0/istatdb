@@ -942,27 +942,6 @@ changes:
     - '2020-01-17 12:14:23.274898'
     - '2020-01-17 12:14:23.274898'
     - 3
-  - - 140
-    - "- spojazdnené automatické zálohovanie aj nahratých príloh lokálne aj na FTP
-      server"
-    - 2.1.9.3-pre
-    - '2020-01-21 11:47:05.325550'
-    - '2020-01-21 11:47:05.325550'
-    - 4
-  - - 141
-    - "- opravený null error po prihlásení sa a presmerovaní na sekciu tovarov - spôsobené
-      novým vyhladaávacím algoritmom"
-    - 2.1.9.4-pre
-    - '2020-01-22 01:56:17.663178'
-    - '2020-01-22 01:56:17.663178'
-    - 1
-  - - 142
-    - "- karta úvodnej sekcie prestala byť zobrazovaná ako aktívna ak bolo na túto
-      sekciu pristúpené z koreňovej adresy"
-    - 2.1.9.4-pre
-    - '2020-01-22 01:57:38.221069'
-    - '2020-01-22 01:58:00.322075'
-    - 5
 
 ---
 global_settings:
@@ -2275,42 +2254,6 @@ good_issues:
     - 16
     - '2020-01-16 08:43:22.015315'
     - '2020-01-16 08:43:22.015315'
-    - 3
-  - - 195
-    - 2443
-    - 16
-    - '2020-01-21 16:52:51.206788'
-    - '2020-01-21 16:52:51.206788'
-    - 
-  - - 196
-    - 2443
-    - 16
-    - '2020-01-21 16:52:51.225147'
-    - '2020-01-21 16:52:51.225147'
-    - 3
-  - - 197
-    - 2444
-    - 16
-    - '2020-01-21 16:53:30.023101'
-    - '2020-01-21 16:53:30.023101'
-    - 
-  - - 198
-    - 2444
-    - 16
-    - '2020-01-21 16:53:30.040762'
-    - '2020-01-21 16:53:30.040762'
-    - 3
-  - - 199
-    - 2445
-    - 16
-    - '2020-01-21 17:40:44.354047'
-    - '2020-01-21 17:40:44.354047'
-    - 
-  - - 200
-    - 2445
-    - 16
-    - '2020-01-21 17:40:44.402634'
-    - '2020-01-21 17:40:44.402634'
     - 3
 
 ---
@@ -31011,54 +30954,6 @@ goods:
     - ''
     - 
     - ''
-  - - 2442
-    - '12844'
-    - 36TXE11 thermostat
-    - '2020-01-21 16:17:05.837094'
-    - '2020-01-21 16:17:05.837094'
-    - 395
-    - 11
-    - false
-    - 
-    - ''
-    - 
-    - ''
-  - - 2443
-    - T45296
-    - krátky náboj spojky TRASCO
-    - '2020-01-21 16:52:51.192057'
-    - '2020-01-21 16:52:51.192057'
-    - 325
-    - 11
-    - true
-    - ''
-    - ''
-    - 
-    - ''
-  - - 2444
-    - T45311
-    - krátky náboj spojky trasco
-    - '2020-01-21 16:53:30.007689'
-    - '2020-01-21 16:53:30.007689'
-    - 325
-    - 11
-    - true
-    - ''
-    - ''
-    - 
-    - ''
-  - - 2445
-    - m4 STY D6R L50 EWL38
-    - A-5000-3709
-    - '2020-01-21 17:40:44.314904'
-    - '2020-01-21 17:40:44.314904'
-    - 325
-    - 11
-    - true
-    - ''
-    - ''
-    - 
-    - ''
 
 ---
 goods_impexpcompanies:
@@ -41610,14 +41505,14 @@ impexpcompany_manufacturers:
     - 
   - - 49
     - '2016-12-19 07:15:34.279000'
-    - '2020-01-21 13:59:51.042679'
+    - '2018-03-16 15:02:10.915891'
     - 3
     - 50
     - 8
-    - true
+    - false
     - false
     - 
-    - 90
+    - 
     - 
   - - 50
     - '2016-12-19 07:17:09.298000'
@@ -41687,14 +41582,14 @@ impexpcompany_manufacturers:
     - 
   - - 56
     - '2016-12-19 07:23:42.048000'
-    - '2020-01-21 17:33:34.588454'
+    - '2018-03-16 15:02:11.155239'
     - 3
     - 57
     - 52
-    - true
+    - false
     - false
     - 
-    - 90
+    - 
     - 
   - - 57
     - '2016-12-19 07:25:08.400000'
@@ -41775,7 +41670,7 @@ impexpcompany_manufacturers:
     - 
   - - 64
     - '2016-12-19 07:35:32.268000'
-    - '2020-01-21 14:49:16.423976'
+    - '2018-09-28 06:57:03.161719'
     - 3
     - 65
     - 331
@@ -41973,14 +41868,14 @@ impexpcompany_manufacturers:
     - 
   - - 82
     - '2016-12-19 08:03:07.418000'
-    - '2020-01-21 16:29:51.504042'
+    - '2018-03-16 15:02:12.486096'
     - 3
     - 83
     - 63
-    - true
+    - false
     - false
     - 8
-    - 90
+    - 
     - 
   - - 83
     - '2016-12-19 08:04:21.062000'
@@ -41995,14 +41890,14 @@ impexpcompany_manufacturers:
     - 
   - - 84
     - '2016-12-19 08:06:02.054000'
-    - '2020-01-21 16:19:30.105704'
+    - '2018-03-16 15:02:12.559581'
     - 3
     - 85
     - 64
-    - true
+    - false
     - false
     - 2
-    - 90
+    - 
     - 
   - - 85
     - '2016-12-19 12:33:53.542000'
@@ -42259,25 +42154,25 @@ impexpcompany_manufacturers:
     - 
   - - 108
     - '2016-12-19 13:34:07.869000'
-    - '2020-01-21 16:55:51.787303'
+    - '2018-03-16 15:02:13.462375'
     - 3
     - 109
     - 79
-    - true
+    - false
     - false
     - 
-    - 90
+    - 
     - 
   - - 109
     - '2016-12-19 13:36:49.155000'
-    - '2020-01-21 17:07:59.560980'
+    - '2018-03-16 15:02:13.494996'
     - 3
     - 110
     - 
-    - true
+    - false
     - false
     - 2
-    - 90
+    - 
     - 
   - - 110
     - '2016-12-19 13:44:48.675000'
@@ -42479,7 +42374,7 @@ impexpcompany_manufacturers:
     - 
   - - 128
     - '2016-12-19 14:38:17.192000'
-    - '2020-01-21 17:15:35.995559'
+    - '2018-09-28 12:54:35.668336'
     - 3
     - 129
     - 
@@ -42556,25 +42451,25 @@ impexpcompany_manufacturers:
     - 
   - - 135
     - '2016-12-19 15:05:38.117000'
-    - '2020-01-21 17:11:13.328138'
+    - '2018-03-16 15:02:14.776623'
     - 3
     - 136
     - 
-    - true
+    - false
     - false
     - 15
-    - 90
+    - 
     - 
   - - 136
     - '2016-12-19 15:11:39.945000'
-    - '2020-01-21 17:21:06.959093'
+    - '2018-03-16 15:02:15.177570'
     - 3
     - 137
     - 92
-    - true
+    - false
     - false
     - 3
-    - 90
+    - 
     - 
   - - 137
     - '2016-12-19 15:12:23.197000'
@@ -42677,14 +42572,14 @@ impexpcompany_manufacturers:
     - 
   - - 146
     - '2016-12-19 15:23:54.116000'
-    - '2020-01-21 17:49:36.452746'
+    - '2018-03-16 15:02:15.550384'
     - 3
     - 147
     - 66
-    - true
+    - false
     - false
     - 
-    - 90
+    - 
     - 
   - - 147
     - '2016-12-19 15:24:12.262000'
@@ -43480,14 +43375,14 @@ impexpcompany_manufacturers:
     - 
   - - 219
     - '2017-01-17 07:43:02.446000'
-    - '2020-01-21 17:30:25.060797'
+    - '2018-03-16 15:02:18.935396'
     - 3
     - 219
     - 13
-    - true
+    - false
     - false
     - 2
-    - 90
+    - 
     - 
   - - 220
     - '2017-01-17 08:00:08.930000'
@@ -43667,12 +43562,12 @@ impexpcompany_manufacturers:
     - 
   - - 236
     - '2017-01-24 14:27:42.661000'
-    - '2020-01-21 17:32:06.609228'
+    - '2019-06-24 14:22:47.512815'
     - 3
     - 236
     - 22
     - true
-    - true
+    - false
     - 2
     - 90
     - 
@@ -44624,14 +44519,14 @@ impexpcompany_manufacturers:
     - 
   - - 324
     - '2017-05-29 14:02:39.856000'
-    - '2020-01-21 16:15:05.825504'
+    - '2018-03-16 15:02:24.634065'
     - 3
     - 321
     - 
-    - true
     - false
-    - 3
-    - 90
+    - false
+    - 
+    - 
     - 
   - - 325
     - '2017-05-29 14:03:40.537000'
@@ -45867,7 +45762,7 @@ impexpcompany_manufacturers:
     - 
   - - 441
     - '2018-04-24 12:45:38.973046'
-    - '2020-01-21 17:53:39.712407'
+    - '2018-04-24 12:46:40.031686'
     - 3
     - 430
     - 
@@ -46890,14 +46785,14 @@ impexpcompany_manufacturers:
     - 
   - - 536
     - '2018-11-26 17:46:44.661351'
-    - '2020-01-21 17:45:16.159569'
+    - '2018-11-26 17:46:44.661351'
     - 3
     - 520
     - 
     - true
     - false
     - 
-    - 90
+    - 
     - 
   - - 537
     - '2018-11-26 18:29:44.922232'
@@ -48394,72 +48289,6 @@ impexpcompany_manufacturers:
     - false
     - 
     - 
-    - 
-  - - 677
-    - '2020-01-21 16:58:39.858813'
-    - '2020-01-21 16:58:39.858813'
-    - 3
-    - 646
-    - 
-    - true
-    - false
-    - 
-    - 
-    - 
-  - - 678
-    - '2020-01-21 17:10:40.918491'
-    - '2020-01-21 17:10:40.918491'
-    - 3
-    - 647
-    - 
-    - true
-    - false
-    - 
-    - 
-    - 
-  - - 679
-    - '2020-01-21 17:14:20.212030'
-    - '2020-01-21 17:14:26.059793'
-    - 3
-    - 648
-    - 
-    - true
-    - false
-    - 
-    - 90
-    - 
-  - - 680
-    - '2020-01-21 17:40:44.378538'
-    - '2020-01-21 17:40:44.378538'
-    - 3
-    - 649
-    - 
-    - false
-    - false
-    - 
-    - 
-    - 
-  - - 681
-    - '2020-01-21 17:56:36.428624'
-    - '2020-01-21 17:56:36.428624'
-    - 3
-    - 650
-    - 
-    - true
-    - false
-    - 
-    - 
-    - 
-  - - 682
-    - '2020-01-21 17:58:19.764790'
-    - '2020-01-21 17:58:33.008398'
-    - 3
-    - 651
-    - 136
-    - true
-    - false
-    - 
-    - 90
     - 
 
 ---
@@ -77798,54 +77627,6 @@ intertables:
     - 
     - '2020-01-16 11:00:14.187030'
     - '2020-01-16 11:00:14.187030'
-  - - 5329
-    - 2442
-    - 
-    - 3
-    - '2020-01-21 16:17:05.843643'
-    - '2020-01-21 16:17:05.843643'
-  - - 5330
-    - 2442
-    - 321
-    - 
-    - '2020-01-21 16:17:05.847420'
-    - '2020-01-21 16:17:05.847420'
-  - - 5331
-    - 2443
-    - 
-    - 3
-    - '2020-01-21 16:52:51.196792'
-    - '2020-01-21 16:52:51.196792'
-  - - 5332
-    - 2443
-    - 29
-    - 
-    - '2020-01-21 16:52:51.200300'
-    - '2020-01-21 16:52:51.200300'
-  - - 5333
-    - 2444
-    - 
-    - 3
-    - '2020-01-21 16:53:30.012844'
-    - '2020-01-21 16:53:30.012844'
-  - - 5334
-    - 2444
-    - 29
-    - 
-    - '2020-01-21 16:53:30.016548'
-    - '2020-01-21 16:53:30.016548'
-  - - 5335
-    - 2445
-    - 
-    - 3
-    - '2020-01-21 17:40:44.323666'
-    - '2020-01-21 17:40:44.323666'
-  - - 5336
-    - 2445
-    - 649
-    - 
-    - '2020-01-21 17:40:44.338550'
-    - '2020-01-21 17:40:44.338550'
 
 ---
 issues:
@@ -80679,13 +80460,6 @@ local_taric_translations:
     - '2020-01-15 16:17:42.240003'
     - Zariadenia na počítanie výrobkov
     - 
-  - - 410
-    - 395
-    - sk
-    - '2020-01-21 16:17:05.831702'
-    - '2020-01-21 16:17:05.831702'
-    - Elektronické termostaty
-    - 
 
 ---
 local_tarics:
@@ -82231,10 +82005,6 @@ local_tarics:
     - '90291000'
     - '2020-01-15 16:17:42.222445'
     - '2020-01-15 16:17:42.222445'
-  - - 395
-    - '90321020'
-    - '2020-01-21 16:17:05.827250'
-    - '2020-01-21 16:17:05.827250'
 
 ---
 manufacturers:
@@ -82434,7 +82204,7 @@ manufacturers:
     - 
     - '2016-12-07 13:09:31.761000'
     - '2016-12-07 13:09:31.761000'
-    - 28
+    - 26
     - 
   - - 30
     - MaR servis/CZ
@@ -82580,9 +82350,9 @@ manufacturers:
     - Automarine/GB
     - 
     - '2016-12-19 07:15:34.269000'
-    - '2020-01-21 13:59:37.821645'
+    - '2016-12-19 07:15:34.269000'
     - 0
-    - ''
+    - 
   - - 51
     - Birch valley Plastics/GB
     - 
@@ -82629,9 +82399,9 @@ manufacturers:
     - Ramseier/AT
     - 
     - '2016-12-19 07:23:42.017000'
-    - '2020-01-21 17:33:30.962210'
+    - '2016-12-19 07:23:42.017000'
     - 0
-    - ''
+    - 
   - - 58
     - Dexhal/CZ
     - 
@@ -82685,9 +82455,9 @@ manufacturers:
     - Conex/PL
     - 
     - '2016-12-19 07:35:32.259000'
-    - '2020-01-21 14:49:08.979486'
+    - '2016-12-19 07:35:32.259000'
     - 0
-    - ''
+    - 
   - - 66
     - CS/IT
     - 
@@ -82811,9 +82581,9 @@ manufacturers:
     - Eurometal/PL
     - 
     - '2016-12-19 08:03:07.410000'
-    - '2020-01-21 16:29:46.863574'
+    - '2016-12-19 08:03:07.410000'
     - 0
-    - ''
+    - 
   - - 84
     - Elkubema/DE
     - 
@@ -82825,9 +82595,9 @@ manufacturers:
     - EMH/DE
     - 
     - '2016-12-19 08:06:02.040000'
-    - '2020-01-21 16:19:24.731860'
+    - '2016-12-19 08:06:02.040000'
     - 1
-    - ''
+    - 
   - - 86
     - Hortex/CZ
     - 
@@ -82993,16 +82763,16 @@ manufacturers:
     - Karl Hoffman/DE
     - 
     - '2016-12-19 13:34:07.860000'
-    - '2020-01-21 16:55:47.296746'
+    - '2016-12-19 13:34:07.860000'
     - 0
-    - ''
+    - 
   - - 110
     - Lingl/DE
     - 
     - '2016-12-19 13:36:49.101000'
-    - '2020-01-21 17:07:53.824135'
+    - '2016-12-19 13:36:49.101000'
     - 3
-    - ''
+    - 
   - - 111
     - Leotronics/GB
     - 
@@ -83032,12 +82802,12 @@ manufacturers:
     - 3
     - 
   - - 115
-    - Milacron (DME Europe)/BE
+    - Milacron/BE
     - 
     - '2016-12-19 13:53:57.766000'
-    - '2020-01-21 14:52:36.148059'
+    - '2016-12-19 13:53:57.766000'
     - 0
-    - ''
+    - 
   - - 116
     - MDS services/GB
     - 
@@ -83133,9 +82903,9 @@ manufacturers:
     - Natis/CZ
     - 
     - '2016-12-19 14:38:17.142000'
-    - '2020-01-21 17:15:31.937568'
+    - '2016-12-19 14:38:17.142000'
     - 2
-    - ''
+    - 
   - - 130
     - Rapid/GB
     - 
@@ -83182,16 +82952,16 @@ manufacturers:
     - Proled/DE
     - 
     - '2016-12-19 15:05:38.053000'
-    - '2020-01-21 17:11:09.130934'
+    - '2016-12-19 15:05:38.053000'
     - 2
-    - ''
+    - 
   - - 137
     - Pilous/CZ
     - 
     - '2016-12-19 15:11:39.937000'
-    - '2020-01-21 17:21:02.565482'
+    - '2016-12-19 15:11:39.937000'
     - 0
-    - ''
+    - 
   - - 138
     - PEI-Genesis/GB
     - 
@@ -83259,9 +83029,9 @@ manufacturers:
     - SiBo/DE
     - 
     - '2016-12-19 15:23:54.102000'
-    - '2020-01-21 17:49:30.824960'
+    - '2016-12-19 15:23:54.102000'
     - 0
-    - ''
+    - 
   - - 148
     - Seno/AT
     - 
@@ -83756,9 +83526,9 @@ manufacturers:
     - Prechter+Renner/DE
     - 
     - '2017-01-17 07:43:02.437000'
-    - '2020-01-21 17:30:21.396147'
+    - '2017-01-17 07:43:02.437000'
     - 0
-    - ''
+    - 
   - - 220
     - Rosenberger/DE
     - 
@@ -83875,9 +83645,9 @@ manufacturers:
     - Protec/DE
     - 
     - '2017-01-24 14:27:42.644000'
-    - '2020-01-21 17:32:01.103698'
+    - '2017-01-24 14:27:42.644000'
     - 0
-    - ''
+    - 
   - - 237
     - Rosler/AT
     - 
@@ -84463,9 +84233,9 @@ manufacturers:
     - Emerson/NL
     - 
     - '2017-05-29 14:02:39.795000'
-    - '2020-01-21 16:14:42.931911'
-    - 3
-    - ''
+    - '2017-05-29 14:02:39.795000'
+    - 2
+    - 
   - - 322
     - Ecom/CZ
     - 
@@ -85198,9 +84968,9 @@ manufacturers:
     - Tempco/NL
     - 
     - '2018-04-24 12:45:38.957306'
-    - '2020-01-21 17:53:34.625779'
+    - '2018-04-24 12:45:38.957306'
     - 2
-    - ''
+    - 
   - - 431
     - Cablecraft/GB
     - 
@@ -85821,9 +85591,9 @@ manufacturers:
     - Saint-gobain/PL
     - 
     - '2018-11-26 17:46:44.648536'
-    - '2020-01-21 17:45:11.220176'
+    - '2018-11-26 17:46:44.648536'
     - 0
-    - ''
+    - 
   - - 521
     - Walezholz/DE
     - 
@@ -86685,48 +86455,6 @@ manufacturers:
     - '2019-12-17 16:29:35.183884'
     - 1
     - 
-  - - 646
-    - Kavoz manipulační technika/CZ
-    - 
-    - '2020-01-21 16:58:39.854637'
-    - '2020-01-21 16:58:39.854637'
-    - 
-    - ''
-  - - 647
-    - Mars/CZ
-    - 
-    - '2020-01-21 17:10:40.914850'
-    - '2020-01-21 17:10:40.914850'
-    - 
-    - ''
-  - - 648
-    - My robot center/AT
-    - 
-    - '2020-01-21 17:14:20.208495'
-    - '2020-01-21 17:14:20.208495'
-    - 
-    - ''
-  - - 649
-    - Renishaw/GB
-    - 
-    - '2020-01-21 17:40:44.331252'
-    - '2020-01-21 17:40:44.331252'
-    - 1
-    - 
-  - - 650
-    - Uniman/CZ
-    - 
-    - '2020-01-21 17:56:36.425041'
-    - '2020-01-21 17:56:36.425041'
-    - 
-    - ''
-  - - 651
-    - Uniplast/CZ
-    - 
-    - '2020-01-21 17:58:19.761171'
-    - '2020-01-21 17:58:19.761171'
-    - 
-    - ''
 
 ---
 sessions:
@@ -89224,220 +88952,221 @@ sessions:
   - - 341
     - 2684ec6eac6ea7a02bbbd14fd2d655e2
     - |
-      BAh7C0kiCE1FTQY6BkVUIgKFDwQIVToMTWVtRGF0YXsvOhJwYWdlX3NlYXJj
+      BAh7C0kiCE1FTQY6BkVUIgKVDwQIVToMTWVtRGF0YXsvOhJwYWdlX3NlYXJj
       aGVySSIGMQY6BkVUOg9xX3NlYXJjaGVySUM6IUFjdGlvbkNvbnRyb2xsZXI6
-      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiCXphcHAGOwdUBjoP
-      QHBlcm1pdHRlZEY6DXNldHRpbmdzVToPT3BlblN0cnVjdHsJOhFndWlfcGVy
-      X3BhZ2VJIgcyMAY7B1Q6FGd1aV9zaG93X2Zvb3RlckkiBjAGOwdUOhJndWlf
-      ZW5hYmxlXzNkSSIGMQY7B1Q6Fmd1aV9waW5fc2VhcmNoYmFySSIGMQY7B1Q6
-      HWxhc3RfdmlzaXRzX21hbnVmYWN0dXJlclsZewc6B2lkaQHuOgp0aXRsZUki
-      DVdhdGVrL0NaBjsHVHsHOxJpJDsTSSIRVW5pbWFnbmV0L0NaBjsHVHsHOxJp
-      Aq4BOxNJIg5UZW1wY28vTkwGOwdUewc7EmkCOwI7E0kiE1RlY2huaVRyYWRl
-      L0NaBjsHVHsHOxJpAZM7E0kiDFNpQm8vREUGOwdUewc7EmkCCAI7E0kiFFNh
-      aW50LWdvYmFpbi9QTAY7B1R7BzsSaT47E0kiEFJhbXNlaWVyL0FUBjsHVHsH
-      OxJpAew7E0kiDlByb3RlYy9ERQY7B1R7BzsSaQHbOxNJIhdQcmVjaHRlcitS
-      ZW5uZXIvREUGOwdUewc7EmkhOxNJIhRHRiBNYWNoaW5pbmcvQ1oGOwdUewc7
-      EmkXOxNJIgtQS1IvR0IGOwdUewc7EmkBiTsTSSIOUGlsb3VzL0NaBjsHVHsH
-      OxJpAYo7E0kiE1BFSS1HZW5lc2lzL0dCBjsHVHsHOxJpArUBOxNJIhpPSyBU
-      ZWNobmljYWwgR3JvdXAvQ1oGOwdUewc7EmkBgTsTSSINTmF0aXMvQ1oGOwdU
-      ewc7EmkBiDsTSSIOUHJvbGVkL0RFBjsHVHsHOxJpczsTSSINTGluZ2wvREUG
-      OwdUewc7EmkCZwE7E0kiDktpdHJvbi9ERQY7B1R7BzsSaRM7E0kiEktJVCBJ
-      bnZlc3QvQ1oGOwdUewc7EmkBrzsTSSIPS2V5ZW5jZS9ERQY7B1Q6FnBhZ2Vf
-      bWFudWZhY3R1cmVySSIGMQY7B1Q6E3FfbWFudWZhY3R1cmVySUM7CXsHSSIO
-      bmFtZV9jb250BjsHVEkiCnVuaW1hBjsHVEkiGWltcGV4cGNvbXBhbnlfZmls
-      dGVyBjsHVEkiAAY7B1QGOwpGOhJhbGxvd19hZGRfbmV3ewZJIhRsb2NhbF90
-      YXJpY182ODIGOwdURjoScV9sb2NhbF90YXJpY0lDOwl7B0kiEWtuY29kZV9z
-      dGFydAY7B1RJIg85MDMyIDEwIDIwBjsHVEkiFWRlc2NyaXB0aW9uX2NvbnQG
-      OwdUSSIdRWxla3Ryb25pY2vDqSB0ZXJtb3N0YXR5BjsHVAY7CkY6DnBhZ2Vf
-      Z29vZEkiBjEGOwdUOgtxX2dvb2RJQzsJewhJIh5pZGVudF9vcl9kZXNjcmlw
-      dGlvbl9jb250BjsHVEkiAAY7B1RJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7
-      B1RJIgAGOwdUSSIWdW5jb21wbGV0ZV9maWx0ZXIGOwdUSSIABjsHVAY7CkY6
-      FWxhc3RfdmlzaXRzX2dvb2RbGXsHOxJpAjkJOxNJIgtUNDUzMjUGOwdUewc7
-      EmkCfwE7E0kiEDAtMDc5NDYxNy02BjsHVHsHOxJpAn4JOxNJIgxSMS4xOTI2
-      BjsHVHsHOxJpAn0JOxNJIgxSMS4xNDA5BjsHVHsHOxJpAm0JOxNJIg9QMTI4
-      MS0xMzVCBjsHVHsHOxJpAs8GOxNJIg5QMTI4MS0xMzUGOwdUewc7EmkC3AU7
-      E0kiDlAxMjgxLTEyNQY7B1R7BzsSaQJdCTsTSSIic3RhYmlsaXphY25pIG5v
-      aGEgdHJvanVoZWxuaWsGOwdUewc7EmkCXAk7E0kiHnN0YWJpbGl6YWNuaSBu
-      b2hhIGN0dmVyZWMGOwdUewc7EmkC1wU7E0kiCTM5NTAGOwdUewc7EmkCvgE7
-      E0kiG1BDQiB0ZXJtIG1hbGUgPHJvem1lcj4GOwdUewc7EmkCfwk7E0kiCjEw
-      MzQ3BjsHVHsHOxJpAoAJOxNJIgoxMDM1MgY7B1R7BzsSaQJsCTsTSSIUUFJF
-      MTg2OTE0LTAwOjA1BjsHVHsHOxJpAoMJOxNJIgw3MjEtNjA3BjsHVHsHOxJp
-      AnsJOxNJIgw3MTAwMDc4BjsHVHsHOxJpAm4JOxNJIhBBMjc3NTVDVC1ORAY7
-      B1R7BzsSaQKIAzsTSSIMMjMzNjE0MgY7B1R7BzsSaQIyAjsTSSIOU1VCLUZU
-      MDMzBjsHVHsHOxJpGzsTSSIOU1VCLUZUMDM0BjsHVDoLcV90YXNrSUM7CXsG
-      SSIQZG9uZV9maWx0ZXIGOwdUSSIGMQY7B1QGOwpGOiBpc19pbl9hZG1pbmlz
-      dHJhdGl2ZV9jaGFuZ2VGOhVwYWdlX2xvY2FsX3RhcmljSSIGMQY7B1Q6C3Nf
-      dGFza1sHSSIUdXBkYXRlZF9hdCBkZXNjBjsHVEkiFGNyZWF0ZWRfYXQgZGVz
-      YwY7B1Q6DnBhZ2VfdGFza0kiBjEGOwdUOh5pc19pbl9hZG1pbmlzdHJhdGl2
-      ZV90YXNrRjoQcGFnZV9jaGFuZ2VJIgYxBjsHVDoNdW9tc2NhbGMwOhV1b21z
-      Y2FsY19yZXN1bHRzMDocbGFzdF92aXNpdHNfbG9jYWxfdGFyaWNbGXsHOxJp
-      AbE7E0kiDzg0ODEgODAgNzkGOwdUewc7EmkCEAE7E0kiDzg1MjggNTkgMDAG
-      OwdUewc7EmkCZwE7E0kiDzg1MjggNTIgOTEGOwdUewc7EmkCGwE7E0kiDzg1
-      MjggNTIgMTAGOwdUewc7EmkBlTsTSSISMDAzOSAxNyAyOSAwMAY7B1R7BzsS
-      aRk7E0kiDzAwMDAgMDAgMDAGOwdUewc7Eml6OxNJIg80MDA5IDMxIDAwBjsH
-      VHsHOxJpAes7E0kiDzQwMDkgMTIgMDAGOwdUewc7Eml2OxNJIg80MDA5IDEx
-      IDAwBjsHVHsHOxJpAhQBOxNJIg8zOTE3IDMyIDUxBjsHVHsHOxJpKDsTSSIP
-      MzkxNyAzMiAwMAY7B1R7BzsSaQGVOxNJIg8zOTE3IDI5IDAwBjsHVHsHOxJp
-      GTsTSSIPMzkxNyAyOSAwMAY7B1R7BzsSaR87E0kiDzcwMTkgOTAgMDAGOwdU
-      ewc7EmkCVgE7E0kiDzg0ODEgMzAgOTEGOwdUewc7EmkCcAE7E0kiDzg0ODEg
-      MzAgOTkGOwdUewc7EmkyOxNJIg83MzIwIDkwIDkwBjsHVHsHOxJpCDsTSSIP
-      ODUzNiA5MCAxMAY7B1R7BzsSaTY7E0kiDzc0MTEgMTAgMTAGOwdUewc7EmkB
-      uDsTSSIPODQ4MCA3OSAwMAY7B1Q6FHFfaW1wZXhwY29tcGFueUlDOwl7Bkki
-      FmNvbXBhbnlfbmFtZV9jb250BjsHVEkiAAY7B1QGOwpGOhJwYWdlX3VvbV90
-      eXBlSSIGMQY7B1Q6ImlzX2luX2FkbWluaXN0cmF0aXZlX3VvbV90eXBlRjoU
-      bGFzdF90YXJpY19nb29kaQHhOhxsYXN0X21hbnVmYWN0dXJlcnNfZ29vZFsG
-      aQKJAjoebGFzdF9pbXBleHBjb21wYW5pZXNfZ29vZFsGaQg6Gmxhc3RfbG9j
-      YWxfdGFyaWNfZ29vZGkCRQE6EHFfdGFza190eXBlSUM7CXsGSSINdHlwX2Nv
-      bnQGOwdUSSIVVsO9dm9qIC0gdnpoxL5hZAY7B1QGOwpGOh5pc19pbl9hZG1p
-      bmlzdHJhdGl2ZV9nb29kRjoZdGltZXNvcnRfbWV0aG9kX2dvb2RJIiJjcmVh
-      dGVkX2F0X29yX3VwZGF0ZWRfYXRfZ3RlcQY7B1Q6Hmxhc3RfdmlzaXRzX2lt
-      cGV4cGNvbXBhbnlbB3sHOxJpCjsTSSIUTm9iZWwgb2Rvc2xhbmllBjsHVHsH
-      OxJpCTsTSSITTm9iZWwgcHJpamF0aWUGOwdUOiJnb29kc19vbGRfaW1wZXhw
-      Y29tcGFuaWVzX2lkc1sGaQg6IGdvb2RzX29sZF9tYW51ZmFjdHVyZXJzX2lk
-      c1sGaQLnAToOc29ydF9nb29kewdJIgppZGVudAY7B1RJIghhc2MGOwdUSSIX
-      bG9jYWxfdGFyaWNfa25jb2RlBjsHVEkiCGFzYwY7B1Q6C3NfZ29vZFsHSSIO
-      aWRlbnQgYXNjBjsHVEkiG2xvY2FsX3RhcmljX2tuY29kZSBhc2MGOwdUOg5z
-      b3J0X3Rhc2t7B0kiD3VwZGF0ZWRfYXQGOwdUSSIJZGVzYwY7B1RJIg9jcmVh
-      dGVkX2F0BjsHVEkiCWRlc2MGOwdUOg9zX3NlYXJjaGVySSIABjsHVDoZZ29v
-      ZHNfb2xkX2lzc3Vlc19pZHNbBmkVOhZsYXN0X3Zpc2l0c19pc3N1ZVsTewc7
-      EmkVOxNJIhdwcmlqYXRpZSAtIDA5LzIwMTkGOwdUewc7EmkLOxNJIhdwcmlq
-      YXRpZSAtIDA3LzIwMTkGOwdUewc7EmkUOxNJIhhvZG9zbGFuaWUgLSAxMi8y
-      MDE5BjsHVHsHOxJpEzsTSSIXcHJpamF0aWUgLSAxMi8yMDE5BjsHVHsHOxJp
-      BjsTSSIjcHJpamF0aWUgZG9kYXRvxI1uw6kgLSAxMC8yMDE5BjsHVHsHOxJp
-      EDsTSSIXcHJpamF0aWUgLSAwMy8yMDE5BjsHVHsHOxJpCjsTSSIXcHJpamF0
-      aWUgLSAwOC8yMDE5BjsHVHsHOxJpCDsTSSIkb2Rvc2xhbmllIGRvZGF0b8SN
-      bsOpIC0gMDkvMjAxOQY7B1R7BzsSaQ87E0kiF3ByaWphdGllIC0gMDQvMjAx
-      OQY7B1R7BzsSaQc7E0kiJG9kb3NsYW5pZSBkb2RhdG/EjW7DqSAtIDEwLzIw
-      MTkGOwdUewc7EmkJOxNJIhhvZG9zbGFuaWUgLSAxMS8yMDE5BjsHVHsHOxJp
-      CDsTSSIab2Rvc2xhbmllIGRvZGF0b8SNbsOpBjsHVHsHOxJpBzsTSSIab2Rv
-      c2xhbmllIGRvZGF0b8SNbsOpBjsHVHsHOxJpBjsTSSIZcHJpamF0aWUgZG9k
-      YXRvxI1uw6kGOwdUOgxxX2lzc3VlSUM7CXsGSSIObmFtZV9jb250BjsHVEki
-      AAY7B1QGOwpGOhNzX21hbnVmYWN0dXJlckkiAAY7B1RJIg5wYXRoX2JhY2sG
-      OwBGewc6D2NvbnRyb2xsZXJJIg5zZWFyY2hlcnMGOwBUOgthY3Rpb25JIgtz
-      ZWFyY2gGOwBUSSIZd2FyZGVuLnVzZXIudXNlci5rZXkGOwBUWwdbBmkQSSIi
-      JDJhJDExJGtLb3l1aXB6LmhhSXl3RUNzUENJeC4GOwBUSSIQX2NzcmZfdG9r
-      ZW4GOwBGSSIxdE1oY0RERkk0NHR3cUdtbzl1Q3hiWUhudDNOdkwrZUdHR2tz
-      Q2hsSlFvUT0GOwBGSSIQQVBQX1ZFUl9OVU0GOwBGSSIQMi4xLjkuMy1wcmUG
-      OwBUSSISQVBQX1ZFUl9CVUlMRAY7AEZJIhIyMDIwMDEyMS0xMTQ3BjsAVA==
+      OlBhcmFtZXRlcnN7BkkiEHNlYXJjaF9jb250BjsHVEkiAAY7B1QGOg9AcGVy
+      bWl0dGVkRjoNc2V0dGluZ3NVOg9PcGVuU3RydWN0ewk6EWd1aV9wZXJfcGFn
+      ZUkiBzIwBjsHVDoUZ3VpX3Nob3dfZm9vdGVySSIGMAY7B1Q6Emd1aV9lbmFi
+      bGVfM2RJIgYxBjsHVDoWZ3VpX3Bpbl9zZWFyY2hiYXJJIgYxBjsHVDodbGFz
+      dF92aXNpdHNfbWFudWZhY3R1cmVyWxl7BzoHaWRpAhkBOgp0aXRsZUkiGVBv
+      d2VyIGFuZCBTaWduYWxsL05MBjsHVHsHOxJpAlwBOxNJIg9EaWdpS2V5L1VT
+      BjsHVHsHOxJpAf47E0kiFFJPTiBTb2Z0d2FyZS9DWgY7B1R7BzsSaQH1OxNJ
+      Ig9NdW50ZXJzL1BMBjsHVHsHOxJpAtMBOxNJIhJFYXRvbi9VUyAoTVgpBjsH
+      VHsHOxJpAbE7E0kiDEFURVEvQ1oGOwdUewc7EmkCPwI7E0kiHVBvbnR0ZS9D
+      WiAoSmlyaSBOb3ZvdG55KQY7B1R7BzsSaQJAAjsTSSIOUmF6aW9sL0RFBjsH
+      VHsHOxJpAj4COxNJIhRHdXN0YXYgV29sZmYvREUGOwdUewc7EmkCQQE7E0ki
+      D0VtZXJzb24vTkwGOwdUewc7EmkCaQI7E0kiDlN0cmlwcy9TSQY7B1R7BzsS
+      aQKDAjsTSSIRU1ZQIFNvbGFyL0NaBjsHVHsHOxJpAh8COxNJIhFUSSBQb2xh
+      bmQvUEwGOwdUewc7EmkgOxNJIhVGZWRlcmFsIE1vZ3VsL0ZSBjsHVHsHOxJp
+      Ac07E0kiC1ZJUC9GUgY7B1R7BzsSaQG0OxNJIhRUYXVydXMgU2FnZXMvRlIG
+      OwdUewc7EmkB0TsTSSIOU2FjcmVkL0ZSBjsHVHsHOxJpAdQ7E0kiEE1lc3Vy
+      ZXVyL0ZSBjsHVHsHOxJpAjIBOxNJIg5SZWxhdHMvRlIGOwdUewc7EmkCXQE7
+      E0kiE05vcm1hIEdyb3VwL0RFBjsHVDoWcGFnZV9tYW51ZmFjdHVyZXJJIgYx
+      BjsHVDoTcV9tYW51ZmFjdHVyZXJJQzsJewZJIg5uYW1lX2NvbnQGOwdUSSIA
+      BjsHVAY7CkY6EmFsbG93X2FkZF9uZXd7CUkiEGxvY2FsX3RhcmljBjsHVEZJ
+      IhZpbXBleHBjb21wYW5pZXNfMQY7B1RGSSIUbWFudWZhY3R1cmVyc18xBjsH
+      VEZJIg1pc3N1ZXNfMQY7B1RGOhJxX2xvY2FsX3RhcmljSUM7CXsHSSIRa25j
+      b2RlX3N0YXJ0BjsHVEkiDDc0MTEgMTAGOwdUSSIVZGVzY3JpcHRpb25fY29u
+      dAY7B1RJIgAGOwdUBjsKRjoOcGFnZV9nb29kSSIGMQY7B1Q6C3FfZ29vZElD
+      Owl7CEkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwdUSSIABjsHVEki
+      GWltcGV4cGNvbXBhbnlfZmlsdGVyBjsHVEkiAAY7B1RJIhZ1bmNvbXBsZXRl
+      X2ZpbHRlcgY7B1RJIgAGOwdUBjsKRjoVbGFzdF92aXNpdHNfZ29vZFsZewc7
+      EmkCfgk7E0kiDFIxLjE5MjYGOwdUewc7EmkCfQk7E0kiDFIxLjE0MDkGOwdU
+      ewc7EmkCbQk7E0kiD1AxMjgxLTEzNUIGOwdUewc7EmkCzwY7E0kiDlAxMjgx
+      LTEzNQY7B1R7BzsSaQLcBTsTSSIOUDEyODEtMTI1BjsHVHsHOxJpAl0JOxNJ
+      IiJzdGFiaWxpemFjbmkgbm9oYSB0cm9qdWhlbG5pawY7B1R7BzsSaQJcCTsT
+      SSIec3RhYmlsaXphY25pIG5vaGEgY3R2ZXJlYwY7B1R7BzsSaQLXBTsTSSIJ
+      Mzk1MAY7B1R7BzsSaQK+ATsTSSIbUENCIHRlcm0gbWFsZSA8cm96bWVyPgY7
+      B1R7BzsSaQJ/CTsTSSIKMTAzNDcGOwdUewc7EmkCgAk7E0kiCjEwMzUyBjsH
+      VHsHOxJpAmwJOxNJIhRQUkUxODY5MTQtMDA6MDUGOwdUewc7EmkCgwk7E0ki
+      DDcyMS02MDcGOwdUewc7EmkCewk7E0kiDDcxMDAwNzgGOwdUewc7EmkCbgk7
+      E0kiEEEyNzc1NUNULU5EBjsHVHsHOxJpAogDOxNJIgwyMzM2MTQyBjsHVHsH
+      OxJpAjICOxNJIg5TVUItRlQwMzMGOwdUewc7EmkbOxNJIg5TVUItRlQwMzQG
+      OwdUewc7EmkCWAI7E0kiDDI3MVIxMFYGOwdUewc7EmkQOxNJIgwyNjhSMTBW
+      BjsHVDoLcV90YXNrSUM7CXsGSSIQZG9uZV9maWx0ZXIGOwdUSSIGMQY7B1QG
+      OwpGOiBpc19pbl9hZG1pbmlzdHJhdGl2ZV9jaGFuZ2VGOhVwYWdlX2xvY2Fs
+      X3RhcmljSSIGMQY7B1Q6C3NfdGFza1sHSSIUdXBkYXRlZF9hdCBkZXNjBjsH
+      VEkiFGNyZWF0ZWRfYXQgZGVzYwY7B1Q6DnBhZ2VfdGFza0kiBjEGOwdUOh5p
+      c19pbl9hZG1pbmlzdHJhdGl2ZV90YXNrRjoQcGFnZV9jaGFuZ2VJIgYxBjsH
+      VDoNdW9tc2NhbGMwOhV1b21zY2FsY19yZXN1bHRzMDocbGFzdF92aXNpdHNf
+      bG9jYWxfdGFyaWNbGXsHOxJpAbE7E0kiDzg0ODEgODAgNzkGOwdUewc7EmkC
+      EAE7E0kiDzg1MjggNTkgMDAGOwdUewc7EmkCZwE7E0kiDzg1MjggNTIgOTEG
+      OwdUewc7EmkCGwE7E0kiDzg1MjggNTIgMTAGOwdUewc7EmkBlTsTSSISMDAz
+      OSAxNyAyOSAwMAY7B1R7BzsSaRk7E0kiDzAwMDAgMDAgMDAGOwdUewc7Eml6
+      OxNJIg80MDA5IDMxIDAwBjsHVHsHOxJpAes7E0kiDzQwMDkgMTIgMDAGOwdU
+      ewc7Eml2OxNJIg80MDA5IDExIDAwBjsHVHsHOxJpAhQBOxNJIg8zOTE3IDMy
+      IDUxBjsHVHsHOxJpKDsTSSIPMzkxNyAzMiAwMAY7B1R7BzsSaQGVOxNJIg8z
+      OTE3IDI5IDAwBjsHVHsHOxJpGTsTSSIPMzkxNyAyOSAwMAY7B1R7BzsSaR87
+      E0kiDzcwMTkgOTAgMDAGOwdUewc7EmkCVgE7E0kiDzg0ODEgMzAgOTEGOwdU
+      ewc7EmkCcAE7E0kiDzg0ODEgMzAgOTkGOwdUewc7EmkyOxNJIg83MzIwIDkw
+      IDkwBjsHVHsHOxJpCDsTSSIPODUzNiA5MCAxMAY7B1R7BzsSaTY7E0kiDzc0
+      MTEgMTAgMTAGOwdUewc7EmkBuDsTSSIPODQ4MCA3OSAwMAY7B1Q6FHFfaW1w
+      ZXhwY29tcGFueUlDOwl7BkkiFmNvbXBhbnlfbmFtZV9jb250BjsHVEkiAAY7
+      B1QGOwpGOhJwYWdlX3VvbV90eXBlSSIGMQY7B1Q6ImlzX2luX2FkbWluaXN0
+      cmF0aXZlX3VvbV90eXBlRjoUbGFzdF90YXJpY19nb29kaQHhOhxsYXN0X21h
+      bnVmYWN0dXJlcnNfZ29vZFsGaQLnAToebGFzdF9pbXBleHBjb21wYW5pZXNf
+      Z29vZFsGaQg6Gmxhc3RfbG9jYWxfdGFyaWNfZ29vZGk2OhBxX3Rhc2tfdHlw
+      ZUlDOwl7BkkiDXR5cF9jb250BjsHVEkiFVbDvXZvaiAtIHZ6aMS+YWQGOwdU
+      BjsKRjoeaXNfaW5fYWRtaW5pc3RyYXRpdmVfZ29vZEY6GXRpbWVzb3J0X21l
+      dGhvZF9nb29kSSIiY3JlYXRlZF9hdF9vcl91cGRhdGVkX2F0X2d0ZXEGOwdU
+      Oh5sYXN0X3Zpc2l0c19pbXBleHBjb21wYW55Wwd7BzsSaQo7E0kiFE5vYmVs
+      IG9kb3NsYW5pZQY7B1R7BzsSaQk7E0kiE05vYmVsIHByaWphdGllBjsHVDoi
+      Z29vZHNfb2xkX2ltcGV4cGNvbXBhbmllc19pZHNbBmkIOiBnb29kc19vbGRf
+      bWFudWZhY3R1cmVyc19pZHNbBmkC5wE6DnNvcnRfZ29vZHsHSSIKaWRlbnQG
+      OwdUSSIIYXNjBjsHVEkiF2xvY2FsX3RhcmljX2tuY29kZQY7B1RJIghhc2MG
+      OwdUOgtzX2dvb2RbB0kiDmlkZW50IGFzYwY7B1RJIhtsb2NhbF90YXJpY19r
+      bmNvZGUgYXNjBjsHVDoOc29ydF90YXNrewdJIg91cGRhdGVkX2F0BjsHVEki
+      CWRlc2MGOwdUSSIPY3JlYXRlZF9hdAY7B1RJIglkZXNjBjsHVDoPc19zZWFy
+      Y2hlckkiAAY7B1Q6GWdvb2RzX29sZF9pc3N1ZXNfaWRzWwZpFToWbGFzdF92
+      aXNpdHNfaXNzdWVbE3sHOxJpFTsTSSIXcHJpamF0aWUgLSAwOS8yMDE5BjsH
+      VHsHOxJpCzsTSSIXcHJpamF0aWUgLSAwNy8yMDE5BjsHVHsHOxJpFDsTSSIY
+      b2Rvc2xhbmllIC0gMTIvMjAxOQY7B1R7BzsSaRM7E0kiF3ByaWphdGllIC0g
+      MTIvMjAxOQY7B1R7BzsSaQY7E0kiI3ByaWphdGllIGRvZGF0b8SNbsOpIC0g
+      MTAvMjAxOQY7B1R7BzsSaRA7E0kiF3ByaWphdGllIC0gMDMvMjAxOQY7B1R7
+      BzsSaQo7E0kiF3ByaWphdGllIC0gMDgvMjAxOQY7B1R7BzsSaQg7E0kiJG9k
+      b3NsYW5pZSBkb2RhdG/EjW7DqSAtIDA5LzIwMTkGOwdUewc7EmkPOxNJIhdw
+      cmlqYXRpZSAtIDA0LzIwMTkGOwdUewc7EmkHOxNJIiRvZG9zbGFuaWUgZG9k
+      YXRvxI1uw6kgLSAxMC8yMDE5BjsHVHsHOxJpCTsTSSIYb2Rvc2xhbmllIC0g
+      MTEvMjAxOQY7B1R7BzsSaQg7E0kiGm9kb3NsYW5pZSBkb2RhdG/EjW7DqQY7
+      B1R7BzsSaQc7E0kiGm9kb3NsYW5pZSBkb2RhdG/EjW7DqQY7B1R7BzsSaQY7
+      E0kiGXByaWphdGllIGRvZGF0b8SNbsOpBjsHVDoMcV9pc3N1ZUlDOwl7Bkki
+      Dm5hbWVfY29udAY7B1RJIgAGOwdUBjsKRjoTc19tYW51ZmFjdHVyZXJJIgAG
+      OwdUSSIOcGF0aF9iYWNrBjsARnsHOg9jb250cm9sbGVySSIKZ29vZHMGOwBU
+      OgthY3Rpb25JIgtzZWFyY2gGOwBUSSIZd2FyZGVuLnVzZXIudXNlci5rZXkG
+      OwBUWwdbBmkQSSIiJDJhJDExJGtLb3l1aXB6LmhhSXl3RUNzUENJeC4GOwBU
+      SSIQX2NzcmZfdG9rZW4GOwBGSSIxdE1oY0RERkk0NHR3cUdtbzl1Q3hiWUhu
+      dDNOdkwrZUdHR2tzQ2hsSlFvUT0GOwBGSSIQQVBQX1ZFUl9OVU0GOwBGSSIQ
+      Mi4xLjkuMi1wcmUGOwBUSSISQVBQX1ZFUl9CVUlMRAY7AEZJIhIyMDIwMDEx
+      Ny0xMjE0BjsAVA==
     - '2019-03-15 12:29:21.259351'
-    - '2020-01-21 18:02:36.225594'
+    - '2020-01-20 21:36:44.045350'
   - - 343
     - 7e540c941940ffa58b8f8b421ac6911f
     - |
-      BAh7C0kiCE1FTQY6BkVUIgJhEgQIVToMTWVtRGF0YXsiOg1zZXR0aW5nc1U6
+      BAh7C0kiCE1FTQY6BkVUIgJyEgQIVToMTWVtRGF0YXsiOg1zZXR0aW5nc1U6
       D09wZW5TdHJ1Y3R7CDoRZ3VpX3Blcl9wYWdlSSIHMTAGOgZFVDoUZ3VpX3No
       b3dfZm9vdGVySSIGMAY7CVQ6Emd1aV9lbmFibGVfM2RJIgYxBjsJVDoSYWxs
-      b3dfYWRkX25ld3sAOhJxX2xvY2FsX3RhcmljSUM6IUFjdGlvbkNvbnRyb2xs
-      ZXI6OlBhcmFtZXRlcnN7B0kiEWtuY29kZV9zdGFydAY7CVRJIgAGOwlUSSIi
-      dHJhbnNsYXRpb25zX2Rlc2NyaXB0aW9uX2NvbnQGOwlUSSIABjsJVAY6D0Bw
-      ZXJtaXR0ZWRGOgtxX3Rhc2tJQzsOewZJIhBkb25lX2ZpbHRlcgY7CVRJIgYx
-      BjsJVAY7D0Y6IGlzX2luX2FkbWluaXN0cmF0aXZlX2NoYW5nZUY6EnBhZ2Vf
-      c2VhcmNoZXJJIgYxBjsJVDoPcV9zZWFyY2hlcklDOw57BkkiEHNlYXJjaF9j
-      b250BjsJVEkiAAY7CVQGOw9GOh1sYXN0X3Zpc2l0c19tYW51ZmFjdHVyZXJb
-      E3sHOgdpZGkB8joKdGl0bGVJIg1WaW5jby9FUwY7CVR7BzsVaQLxATsWSSIV
-      U3BpIG1hdGVyaWFscy9HQgY7CVR7BzsVaT47FkkiEFJhbXNlaWVyL0FUBjsJ
-      VHsHOxVpAiMBOxZJIiFSYWRlayBNZW7FocOtayBBQUEgcGFww61yL0NaBjsJ
-      VHsHOxVpAm4BOxZJIg9QZWhhbWV0L1BMBjsJVHsHOxVpAhcCOxZJIhVPRU0g
-      YXV0b21hdGljL1NFBjsJVHsHOxVpFTsWSSINT2J6b3IvQ1oGOwlUewc7FWkC
-      ZwE7FkkiDktpdHJvbi9ERQY7CVR7BzsVaSI7FkkiEUhhYmVya29ybi9DWgY7
-      CVR7BzsVaQKyATsWSSITSHluZWsgTmVtZWMvQ1oGOwlUewc7FWkCFQI7Fkki
-      Hkhpcm9zZSBlbGVjdHJpYyBFdXJvcGUvTkwGOwlUewc7FWkCnAE7FkkiFkZ1
-      bGd1ciBCYXR0bWFuL0NaBjsJVHsHOxVpAiEBOxZJIg1EaWVobC9ERQY7CVR7
-      BzsVaQ07FkkiFEF2bmV0IEFiYWN1cy9CRQY7CVQ6FnBhZ2VfbWFudWZhY3R1
-      cmVySSIGMQY7CVQ6E3FfbWFudWZhY3R1cmVySUM7DnsHSSIObmFtZV9jb250
-      BjsJVEkiC3ZlbGvDvQY7CVRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CVRJ
-      IgAGOwlUBjsPRjoLc190YXNrSSIUY3JlYXRlZF9hdCBkZXNjBjsJVDoOcGFn
-      ZV9nb29kSSIGMQY7CVQ6C3FfZ29vZElDOw57CUkiHmlkZW50X29yX2Rlc2Ny
-      aXB0aW9uX2NvbnQGOwlUSSIIbGl0BjsJVEkiGWltcGV4cGNvbXBhbnlfZmls
-      dGVyBjsJVEkiAAY7CVRJIhFpc3N1ZV9maWx0ZXIGOwlUWwZJIgY0BjsJVEki
-      FnVuY29tcGxldGVfZmlsdGVyBjsJVEkiAAY7CVQGOw9GOhVsYXN0X3Zpc2l0
-      c19nb29kWw17BzsVaQKDAzsWSSIZTGl0aGl1bSBiYXR0ZXJ5IDMsNlYGOwlU
-      ewc7FWkCVgc7FkkiC2NsOTAzaAY7CVR7BzsVaQIMCTsWSSITQUdDLTEwMDI2
-      LjIwMTkGOwlUewc7FWkCOQI7FkkiE3NsbjQ0MUEwMDAyOjAxBjsJVHsHOxVp
-      AjoCOxZJIhNzbG40NDFBMDAwMTowMQY7CVR7BzsVaQIfAjsWSSITU0xONDM4
-      QTAwMDE6MDEGOwlUewc7FWkSOxZJIhRIRUwxODY5MTQtMDA6MDUGOwlUewc7
-      FWkCWgM7FkkiFVNMTi00LTYxLUEtMDAtMDEGOwlUOg11b21zY2FsY1sLSUM7
-      DnsSSSIOZ29vZF9uYW1lBjsJVEkiFVNMTi00LTYxLUEtMDAtMDEGOwlUSSII
-      dW9tBjsJVEkiCjE4LjczBjsJVEkiD211bHRpcGxpZXIGOwlUSSIJMTAwMAY7
-      CVRJIg11b21fdHlwZQY7CVRJIghFVVIGOwlUSSIKY291bnQGOwlUSSIKNDAw
-      MDAGOwlUSSILcmVzdWx0BjsJVEkiCjc0OS4yBjsJVEkiDGdvb2RfaWQGOwlU
-      SSIIODU4BjsJVEkiD2NvbnRyb2xsZXIGOwlGSSIKZ29vZHMGOwlUSSILYWN0
-      aW9uBjsJRkkiGmFkZF90b19jYWxjdWxhdG9yX21lbQY7CVRJIghwZXIGOwlG
-      SSIHMTAGOwlUSSIJcGFnZQY7CUZJIgYxBjsJVEkiBnEGOwlGSUM7DnsJSSIe
-      aWRlbnRfb3JfZGVzY3JpcHRpb25fY29udAY7CVRJIgAGOwlUSSIZaW1wZXhw
-      Y29tcGFueV9maWx0ZXIGOwlUSSIABjsJVEkiGG1hbnVmYWN0dXJlcl9maWx0
-      ZXIGOwlUSSIABjsJVEkiFnVuY29tcGxldGVfZmlsdGVyBjsJVEkiAAY7CVQG
-      Ow9GSSIHaWQGOwlGaQYGOw9GSUM7DnsSSSIOZ29vZF9uYW1lBjsJVEkiFVNM
-      Ti00LTYxLUEtMDAtMDEGOwlUSSIIdW9tBjsJVEkiCjE4LjczBjsJVEkiD211
-      bHRpcGxpZXIGOwlUSSIJMTAwMAY7CVRJIg11b21fdHlwZQY7CVRJIghFVVIG
-      OwlUSSIKY291bnQGOwlUSSIKNDAwMDAGOwlUSSILcmVzdWx0BjsJVEkiCjc0
-      OS4yBjsJVEkiDGdvb2RfaWQGOwlUSSIIODU4BjsJVEkiD2NvbnRyb2xsZXIG
-      OwlGSSIKZ29vZHMGOwlUSSILYWN0aW9uBjsJRkkiGmFkZF90b19jYWxjdWxh
-      dG9yX21lbQY7CVRJIghwZXIGOwlGSSIHMTAGOwlUSSIJcGFnZQY7CUZJIgYx
-      BjsJVEkiBnEGOwlGSUM7DnsJSSIeaWRlbnRfb3JfZGVzY3JpcHRpb25fY29u
-      dAY7CVRJIgAGOwlUSSIZaW1wZXhwY29tcGFueV9maWx0ZXIGOwlUSSIABjsJ
-      VEkiGG1hbnVmYWN0dXJlcl9maWx0ZXIGOwlUSSIABjsJVEkiFnVuY29tcGxl
-      dGVfZmlsdGVyBjsJVEkiAAY7CVQGOw9GSSIHaWQGOwlGaQcGOw9GSUM7DnsS
-      SSIOZ29vZF9uYW1lBjsJVEkiFEhFTDE4NjkxNC0wMDowNQY7CVRJIgh1b20G
-      OwlUSSILMC4wMDYzBjsJVEkiD211bHRpcGxpZXIGOwlUSSIGMQY7CVRJIg11
-      b21fdHlwZQY7CVRJIghFVVIGOwlUSSIKY291bnQGOwlUSSILMTgwMDAwBjsJ
-      VEkiC3Jlc3VsdAY7CVRJIgkxMTM0BjsJVEkiDGdvb2RfaWQGOwlUSSIHMTMG
+      b3dfYWRkX25ld3sGSSIOdGFza190eXBlBjsJVEY6EnFfbG9jYWxfdGFyaWNJ
+      QzohQWN0aW9uQ29udHJvbGxlcjo6UGFyYW1ldGVyc3sHSSIRa25jb2RlX3N0
+      YXJ0BjsJVEkiAAY7CVRJIiJ0cmFuc2xhdGlvbnNfZGVzY3JpcHRpb25fY29u
+      dAY7CVRJIgAGOwlUBjoPQHBlcm1pdHRlZEY6C3FfdGFza0lDOw57BkkiEGRv
+      bmVfZmlsdGVyBjsJVEkiBjEGOwlUBjsPRjogaXNfaW5fYWRtaW5pc3RyYXRp
+      dmVfY2hhbmdlRjoScGFnZV9zZWFyY2hlckkiBjEGOwlUOg9xX3NlYXJjaGVy
+      SUM7DnsGSSIQc2VhcmNoX2NvbnQGOwlUSSIABjsJVAY7D0Y6HWxhc3Rfdmlz
+      aXRzX21hbnVmYWN0dXJlclsTewc6B2lkaQHyOgp0aXRsZUkiDVZpbmNvL0VT
+      BjsJVHsHOxVpAvEBOxZJIhVTcGkgbWF0ZXJpYWxzL0dCBjsJVHsHOxVpPjsW
+      SSIQUmFtc2VpZXIvQVQGOwlUewc7FWkCIwE7FkkiIVJhZGVrIE1lbsWhw61r
+      IEFBQSBwYXDDrXIvQ1oGOwlUewc7FWkCbgE7FkkiD1BlaGFtZXQvUEwGOwlU
+      ewc7FWkCFwI7FkkiFU9FTSBhdXRvbWF0aWMvU0UGOwlUewc7FWkVOxZJIg1P
+      Ynpvci9DWgY7CVR7BzsVaQJnATsWSSIOS2l0cm9uL0RFBjsJVHsHOxVpIjsW
+      SSIRSGFiZXJrb3JuL0NaBjsJVHsHOxVpArIBOxZJIhNIeW5layBOZW1lYy9D
+      WgY7CVR7BzsVaQIVAjsWSSIeSGlyb3NlIGVsZWN0cmljIEV1cm9wZS9OTAY7
+      CVR7BzsVaQKcATsWSSIWRnVsZ3VyIEJhdHRtYW4vQ1oGOwlUewc7FWkCIQE7
+      FkkiDURpZWhsL0RFBjsJVHsHOxVpDTsWSSIUQXZuZXQgQWJhY3VzL0JFBjsJ
+      VDoWcGFnZV9tYW51ZmFjdHVyZXJJIgYxBjsJVDoTcV9tYW51ZmFjdHVyZXJJ
+      QzsOewdJIg5uYW1lX2NvbnQGOwlUSSILdmVsa8O9BjsJVEkiGWltcGV4cGNv
+      bXBhbnlfZmlsdGVyBjsJVEkiAAY7CVQGOw9GOgtzX3Rhc2tJIhRjcmVhdGVk
+      X2F0IGRlc2MGOwlUOg5wYWdlX2dvb2RJIgYxBjsJVDoLcV9nb29kSUM7DnsJ
+      SSIeaWRlbnRfb3JfZGVzY3JpcHRpb25fY29udAY7CVRJIghsaXQGOwlUSSIZ
+      aW1wZXhwY29tcGFueV9maWx0ZXIGOwlUSSIABjsJVEkiEWlzc3VlX2ZpbHRl
+      cgY7CVRbBkkiBjQGOwlUSSIWdW5jb21wbGV0ZV9maWx0ZXIGOwlUSSIABjsJ
+      VAY7D0Y6FWxhc3RfdmlzaXRzX2dvb2RbDXsHOxVpAoMDOxZJIhlMaXRoaXVt
+      IGJhdHRlcnkgMyw2VgY7CVR7BzsVaQJWBzsWSSILY2w5MDNoBjsJVHsHOxVp
+      AgwJOxZJIhNBR0MtMTAwMjYuMjAxOQY7CVR7BzsVaQI5AjsWSSITc2xuNDQx
+      QTAwMDI6MDEGOwlUewc7FWkCOgI7FkkiE3NsbjQ0MUEwMDAxOjAxBjsJVHsH
+      OxVpAh8COxZJIhNTTE40MzhBMDAwMTowMQY7CVR7BzsVaRI7FkkiFEhFTDE4
+      NjkxNC0wMDowNQY7CVR7BzsVaQJaAzsWSSIVU0xOLTQtNjEtQS0wMC0wMQY7
+      CVQ6DXVvbXNjYWxjWwtJQzsOexJJIg5nb29kX25hbWUGOwlUSSIVU0xOLTQt
+      NjEtQS0wMC0wMQY7CVRJIgh1b20GOwlUSSIKMTguNzMGOwlUSSIPbXVsdGlw
+      bGllcgY7CVRJIgkxMDAwBjsJVEkiDXVvbV90eXBlBjsJVEkiCEVVUgY7CVRJ
+      Igpjb3VudAY7CVRJIgo0MDAwMAY7CVRJIgtyZXN1bHQGOwlUSSIKNzQ5LjIG
+      OwlUSSIMZ29vZF9pZAY7CVRJIgg4NTgGOwlUSSIPY29udHJvbGxlcgY7CUZJ
+      Igpnb29kcwY7CVRJIgthY3Rpb24GOwlGSSIaYWRkX3RvX2NhbGN1bGF0b3Jf
+      bWVtBjsJVEkiCHBlcgY7CUZJIgcxMAY7CVRJIglwYWdlBjsJRkkiBjEGOwlU
+      SSIGcQY7CUZJQzsOewlJIh5pZGVudF9vcl9kZXNjcmlwdGlvbl9jb250BjsJ
+      VEkiAAY7CVRJIhlpbXBleHBjb21wYW55X2ZpbHRlcgY7CVRJIgAGOwlUSSIY
+      bWFudWZhY3R1cmVyX2ZpbHRlcgY7CVRJIgAGOwlUSSIWdW5jb21wbGV0ZV9m
+      aWx0ZXIGOwlUSSIABjsJVAY7D0ZJIgdpZAY7CUZpBgY7D0ZJQzsOexJJIg5n
+      b29kX25hbWUGOwlUSSIVU0xOLTQtNjEtQS0wMC0wMQY7CVRJIgh1b20GOwlU
+      SSIKMTguNzMGOwlUSSIPbXVsdGlwbGllcgY7CVRJIgkxMDAwBjsJVEkiDXVv
+      bV90eXBlBjsJVEkiCEVVUgY7CVRJIgpjb3VudAY7CVRJIgo0MDAwMAY7CVRJ
+      IgtyZXN1bHQGOwlUSSIKNzQ5LjIGOwlUSSIMZ29vZF9pZAY7CVRJIgg4NTgG
       OwlUSSIPY29udHJvbGxlcgY7CUZJIgpnb29kcwY7CVRJIgthY3Rpb24GOwlG
       SSIaYWRkX3RvX2NhbGN1bGF0b3JfbWVtBjsJVEkiCHBlcgY7CUZJIgcxMAY7
       CVRJIglwYWdlBjsJRkkiBjEGOwlUSSIGcQY7CUZJQzsOewlJIh5pZGVudF9v
-      cl9kZXNjcmlwdGlvbl9jb250BjsJVEkiCzE4NjkxNAY7CVRJIhlpbXBleHBj
-      b21wYW55X2ZpbHRlcgY7CVRJIgAGOwlUSSIYbWFudWZhY3R1cmVyX2ZpbHRl
-      cgY7CVRJIgAGOwlUSSIWdW5jb21wbGV0ZV9maWx0ZXIGOwlUSSIABjsJVAY7
-      D0ZJIgdpZAY7CUZpCAY7D0ZJQzsOexJJIg5nb29kX25hbWUGOwlUSSITU0xO
-      NDM4QTAwMDE6MDEGOwlUSSIIdW9tBjsJVEkiCTkuNjYGOwlUSSIPbXVsdGlw
-      bGllcgY7CVRJIgkxMDAwBjsJVEkiDXVvbV90eXBlBjsJVEkiCEVVUgY7CVRJ
-      Igpjb3VudAY7CVRJIgsxMjAwMDAGOwlUSSILcmVzdWx0BjsJVEkiCzExNTku
-      MgY7CVRJIgxnb29kX2lkBjsJVEkiCDU0MwY7CVRJIg9jb250cm9sbGVyBjsJ
-      RkkiCmdvb2RzBjsJVEkiC2FjdGlvbgY7CUZJIhphZGRfdG9fY2FsY3VsYXRv
-      cl9tZW0GOwlUSSIIcGVyBjsJRkkiBzEwBjsJVEkiCXBhZ2UGOwlGSSIGMQY7
-      CVRJIgZxBjsJRklDOw57CUkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQG
-      OwlUSSIIc2xuBjsJVEkiGWltcGV4cGNvbXBhbnlfZmlsdGVyBjsJVEkiAAY7
-      CVRJIhhtYW51ZmFjdHVyZXJfZmlsdGVyBjsJVEkiAAY7CVRJIhZ1bmNvbXBs
-      ZXRlX2ZpbHRlcgY7CVRJIgAGOwlUBjsPRkkiB2lkBjsJRmkJBjsPRklDOw57
-      EkkiDmdvb2RfbmFtZQY7CVRJIhNzbG40NDFBMDAwMTowMQY7CVRJIgh1b20G
-      OwlUSSIJNy41MwY7CVRJIg9tdWx0aXBsaWVyBjsJVEkiCTEwMDAGOwlUSSIN
-      dW9tX3R5cGUGOwlUSSIIRVVSBjsJVEkiCmNvdW50BjsJVEkiCjQwMDAwBjsJ
-      VEkiC3Jlc3VsdAY7CVRJIgozMDEuMgY7CVRJIgxnb29kX2lkBjsJVEkiCDU3
-      MAY7CVRJIg9jb250cm9sbGVyBjsJRkkiCmdvb2RzBjsJVEkiC2FjdGlvbgY7
-      CUZJIhphZGRfdG9fY2FsY3VsYXRvcl9tZW0GOwlUSSIIcGVyBjsJRkkiBzEw
-      BjsJVEkiCXBhZ2UGOwlGSSIGMQY7CVRJIgZxBjsJRklDOw57CUkiHmlkZW50
-      X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwlUSSIIc2xuBjsJVEkiGWltcGV4cGNv
-      bXBhbnlfZmlsdGVyBjsJVEkiAAY7CVRJIhhtYW51ZmFjdHVyZXJfZmlsdGVy
-      BjsJVEkiAAY7CVRJIhZ1bmNvbXBsZXRlX2ZpbHRlcgY7CVRJIgAGOwlUBjsP
-      RkkiB2lkBjsJRmkKBjsPRklDOw57EkkiDmdvb2RfbmFtZQY7CVRJIhNzbG40
-      NDFBMDAwMjowMQY7CVRJIgh1b20GOwlUSSIJNy41MwY7CVRJIg9tdWx0aXBs
-      aWVyBjsJVEkiCTEwMDAGOwlUSSINdW9tX3R5cGUGOwlUSSIIRVVSBjsJVEki
-      CmNvdW50BjsJVEkiCjQwMDAwBjsJVEkiC3Jlc3VsdAY7CVRJIgozMDEuMgY7
-      CVRJIgxnb29kX2lkBjsJVEkiCDU2OQY7CVRJIg9jb250cm9sbGVyBjsJRkki
-      Cmdvb2RzBjsJVEkiC2FjdGlvbgY7CUZJIhphZGRfdG9fY2FsY3VsYXRvcl9t
-      ZW0GOwlUSSIIcGVyBjsJRkkiBzEwBjsJVEkiCXBhZ2UGOwlGSSIGMQY7CVRJ
-      IgZxBjsJRklDOw57CUkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwlU
-      SSIIc2xuBjsJVEkiGWltcGV4cGNvbXBhbnlfZmlsdGVyBjsJVEkiAAY7CVRJ
-      IhhtYW51ZmFjdHVyZXJfZmlsdGVyBjsJVEkiAAY7CVRJIhZ1bmNvbXBsZXRl
-      X2ZpbHRlcgY7CVRJIgAGOwlUBjsPRkkiB2lkBjsJRmkLBjsPRjoVdW9tc2Nh
-      bGNfcmVzdWx0c3sGOghFVVJmCTQzOTQ6Gmxhc3RfbG9jYWxfdGFyaWNfZ29v
-      ZGkBiDocbGFzdF9tYW51ZmFjdHVyZXJzX2dvb2RbBmkC1wE6Hmxhc3RfaW1w
-      ZXhwY29tcGFuaWVzX2dvb2RbBmkNOg5zb3J0X2dvb2R7BkkiCmlkZW50BjsJ
-      VEkiCGFzYwY7CVQ6C3NfZ29vZFsGSSIOaWRlbnQgYXNjBjsJVDoeaXNfaW5f
-      YWRtaW5pc3RyYXRpdmVfZ29vZEY6DnBhZ2VfdGFza0kiBjEGOwlUOg9wYWdl
-      X2lzc3VlSSIGMQY7CVQ6DHFfaXNzdWVJQzsOewZJIg5uYW1lX2NvbnQGOwlU
-      SSIHb2QGOwlUBjsPRjoiZ29vZHNfb2xkX2ltcGV4cGNvbXBhbmllc19pZHNb
-      BmkIOiBnb29kc19vbGRfbWFudWZhY3R1cmVyc19pZHNbBmkB+ToZZ29vZHNf
-      b2xkX2lzc3Vlc19pZHNbADoeaXNfaW5fYWRtaW5pc3RyYXRpdmVfdGFza0ZJ
-      Ig5wYXRoX2JhY2sGOwBGewc6D2NvbnRyb2xsZXJJIg5zZWFyY2hlcnMGOwBU
-      OgthY3Rpb25JIgppbmRleAY7AFRJIhl3YXJkZW4udXNlci51c2VyLmtleQY7
-      AFRbB1sGaRBJIiIkMmEkMTEka0tveXVpcHouaGFJeXdFQ3NQQ0l4LgY7AFRJ
-      IhBfY3NyZl90b2tlbgY7AEZJIjE2Q1dsRnVveXpWSzVaMm9zZE1aT1N5Zklj
-      ZG9EMEJMNW5LemsrQjZDT0hZPQY7AEZJIhBBUFBfVkVSX05VTQY7AEZJIhAy
-      LjEuOS40LXByZQY7AFRJIhJBUFBfVkVSX0JVSUxEBjsARkkiEjIwMjAwMTIy
-      LTAxNTcGOwBU
+      cl9kZXNjcmlwdGlvbl9jb250BjsJVEkiAAY7CVRJIhlpbXBleHBjb21wYW55
+      X2ZpbHRlcgY7CVRJIgAGOwlUSSIYbWFudWZhY3R1cmVyX2ZpbHRlcgY7CVRJ
+      IgAGOwlUSSIWdW5jb21wbGV0ZV9maWx0ZXIGOwlUSSIABjsJVAY7D0ZJIgdp
+      ZAY7CUZpBwY7D0ZJQzsOexJJIg5nb29kX25hbWUGOwlUSSIUSEVMMTg2OTE0
+      LTAwOjA1BjsJVEkiCHVvbQY7CVRJIgswLjAwNjMGOwlUSSIPbXVsdGlwbGll
+      cgY7CVRJIgYxBjsJVEkiDXVvbV90eXBlBjsJVEkiCEVVUgY7CVRJIgpjb3Vu
+      dAY7CVRJIgsxODAwMDAGOwlUSSILcmVzdWx0BjsJVEkiCTExMzQGOwlUSSIM
+      Z29vZF9pZAY7CVRJIgcxMwY7CVRJIg9jb250cm9sbGVyBjsJRkkiCmdvb2Rz
+      BjsJVEkiC2FjdGlvbgY7CUZJIhphZGRfdG9fY2FsY3VsYXRvcl9tZW0GOwlU
+      SSIIcGVyBjsJRkkiBzEwBjsJVEkiCXBhZ2UGOwlGSSIGMQY7CVRJIgZxBjsJ
+      RklDOw57CUkiHmlkZW50X29yX2Rlc2NyaXB0aW9uX2NvbnQGOwlUSSILMTg2
+      OTE0BjsJVEkiGWltcGV4cGNvbXBhbnlfZmlsdGVyBjsJVEkiAAY7CVRJIhht
+      YW51ZmFjdHVyZXJfZmlsdGVyBjsJVEkiAAY7CVRJIhZ1bmNvbXBsZXRlX2Zp
+      bHRlcgY7CVRJIgAGOwlUBjsPRkkiB2lkBjsJRmkIBjsPRklDOw57EkkiDmdv
+      b2RfbmFtZQY7CVRJIhNTTE40MzhBMDAwMTowMQY7CVRJIgh1b20GOwlUSSIJ
+      OS42NgY7CVRJIg9tdWx0aXBsaWVyBjsJVEkiCTEwMDAGOwlUSSINdW9tX3R5
+      cGUGOwlUSSIIRVVSBjsJVEkiCmNvdW50BjsJVEkiCzEyMDAwMAY7CVRJIgty
+      ZXN1bHQGOwlUSSILMTE1OS4yBjsJVEkiDGdvb2RfaWQGOwlUSSIINTQzBjsJ
+      VEkiD2NvbnRyb2xsZXIGOwlGSSIKZ29vZHMGOwlUSSILYWN0aW9uBjsJRkki
+      GmFkZF90b19jYWxjdWxhdG9yX21lbQY7CVRJIghwZXIGOwlGSSIHMTAGOwlU
+      SSIJcGFnZQY7CUZJIgYxBjsJVEkiBnEGOwlGSUM7DnsJSSIeaWRlbnRfb3Jf
+      ZGVzY3JpcHRpb25fY29udAY7CVRJIghzbG4GOwlUSSIZaW1wZXhwY29tcGFu
+      eV9maWx0ZXIGOwlUSSIABjsJVEkiGG1hbnVmYWN0dXJlcl9maWx0ZXIGOwlU
+      SSIABjsJVEkiFnVuY29tcGxldGVfZmlsdGVyBjsJVEkiAAY7CVQGOw9GSSIH
+      aWQGOwlGaQkGOw9GSUM7DnsSSSIOZ29vZF9uYW1lBjsJVEkiE3NsbjQ0MUEw
+      MDAxOjAxBjsJVEkiCHVvbQY7CVRJIgk3LjUzBjsJVEkiD211bHRpcGxpZXIG
+      OwlUSSIJMTAwMAY7CVRJIg11b21fdHlwZQY7CVRJIghFVVIGOwlUSSIKY291
+      bnQGOwlUSSIKNDAwMDAGOwlUSSILcmVzdWx0BjsJVEkiCjMwMS4yBjsJVEki
+      DGdvb2RfaWQGOwlUSSIINTcwBjsJVEkiD2NvbnRyb2xsZXIGOwlGSSIKZ29v
+      ZHMGOwlUSSILYWN0aW9uBjsJRkkiGmFkZF90b19jYWxjdWxhdG9yX21lbQY7
+      CVRJIghwZXIGOwlGSSIHMTAGOwlUSSIJcGFnZQY7CUZJIgYxBjsJVEkiBnEG
+      OwlGSUM7DnsJSSIeaWRlbnRfb3JfZGVzY3JpcHRpb25fY29udAY7CVRJIghz
+      bG4GOwlUSSIZaW1wZXhwY29tcGFueV9maWx0ZXIGOwlUSSIABjsJVEkiGG1h
+      bnVmYWN0dXJlcl9maWx0ZXIGOwlUSSIABjsJVEkiFnVuY29tcGxldGVfZmls
+      dGVyBjsJVEkiAAY7CVQGOw9GSSIHaWQGOwlGaQoGOw9GSUM7DnsSSSIOZ29v
+      ZF9uYW1lBjsJVEkiE3NsbjQ0MUEwMDAyOjAxBjsJVEkiCHVvbQY7CVRJIgk3
+      LjUzBjsJVEkiD211bHRpcGxpZXIGOwlUSSIJMTAwMAY7CVRJIg11b21fdHlw
+      ZQY7CVRJIghFVVIGOwlUSSIKY291bnQGOwlUSSIKNDAwMDAGOwlUSSILcmVz
+      dWx0BjsJVEkiCjMwMS4yBjsJVEkiDGdvb2RfaWQGOwlUSSIINTY5BjsJVEki
+      D2NvbnRyb2xsZXIGOwlGSSIKZ29vZHMGOwlUSSILYWN0aW9uBjsJRkkiGmFk
+      ZF90b19jYWxjdWxhdG9yX21lbQY7CVRJIghwZXIGOwlGSSIHMTAGOwlUSSIJ
+      cGFnZQY7CUZJIgYxBjsJVEkiBnEGOwlGSUM7DnsJSSIeaWRlbnRfb3JfZGVz
+      Y3JpcHRpb25fY29udAY7CVRJIghzbG4GOwlUSSIZaW1wZXhwY29tcGFueV9m
+      aWx0ZXIGOwlUSSIABjsJVEkiGG1hbnVmYWN0dXJlcl9maWx0ZXIGOwlUSSIA
+      BjsJVEkiFnVuY29tcGxldGVfZmlsdGVyBjsJVEkiAAY7CVQGOw9GSSIHaWQG
+      OwlGaQsGOw9GOhV1b21zY2FsY19yZXN1bHRzewY6CEVVUmYJNDM5NDoabGFz
+      dF9sb2NhbF90YXJpY19nb29kaQGIOhxsYXN0X21hbnVmYWN0dXJlcnNfZ29v
+      ZFsGaQLXAToebGFzdF9pbXBleHBjb21wYW5pZXNfZ29vZFsGaQ06DnNvcnRf
+      Z29vZHsGSSIKaWRlbnQGOwlUSSIIYXNjBjsJVDoLc19nb29kWwZJIg5pZGVu
+      dCBhc2MGOwlUOh5pc19pbl9hZG1pbmlzdHJhdGl2ZV9nb29kRjoOcGFnZV90
+      YXNrSSIGMQY7CVQ6D3BhZ2VfaXNzdWVJIgYxBjsJVDoMcV9pc3N1ZUlDOw57
+      BkkiDm5hbWVfY29udAY7CVRJIgdvZAY7CVQGOw9GOiJnb29kc19vbGRfaW1w
+      ZXhwY29tcGFuaWVzX2lkc1sGaQg6IGdvb2RzX29sZF9tYW51ZmFjdHVyZXJz
+      X2lkc1sGaQH5Ohlnb29kc19vbGRfaXNzdWVzX2lkc1sAOh5pc19pbl9hZG1p
+      bmlzdHJhdGl2ZV90YXNrVEkiDnBhdGhfYmFjawY7AEZ7BzoPY29udHJvbGxl
+      ckkiCnRhc2tzBjsAVDoLYWN0aW9uSSIKaW5kZXgGOwBUSSIZd2FyZGVuLnVz
+      ZXIudXNlci5rZXkGOwBUWwdbBmkQSSIiJDJhJDExJGtLb3l1aXB6LmhhSXl3
+      RUNzUENJeC4GOwBUSSIQX2NzcmZfdG9rZW4GOwBGSSIxNkNXbEZ1b3l6Vks1
+      WjJvc2RNWk9TeWZJY2RvRDBCTDVuS3prK0I2Q09IWT0GOwBGSSIQQVBQX1ZF
+      Ul9OVU0GOwBGSSIQMi4xLjYuNC1wcmUGOwBUSSISQVBQX1ZFUl9CVUlMRAY7
+      AEZJIhIyMDE5MTIxMC0wMTQzBjsAVA==
     - '2019-03-16 00:26:04.857219'
-    - '2020-01-22 02:02:14.486913'
+    - '2019-12-20 02:09:35.573424'
   - - 345
     - f19c2908a20d97c15d7790c4da941ae0
     - |
@@ -90542,15 +90271,6 @@ tasks:
     - 1
     - '2020-01-17 12:10:26.765727'
     - '2020-01-17 12:10:26.765727'
-  - - 109
-    - "- pri prihlásení sa a presmerovaní do sekcie tovary tu aplikácia spadne na
-      nejaký NULL error - možno sa objavuje len pri prvom spustení ak v DB nie sú
-      žiadne tovary"
-    - 11
-    - true
-    - 4
-    - '2020-01-21 17:28:59.888888'
-    - '2020-01-22 01:54:44.382223'
 
 ---
 trade_type_translations:

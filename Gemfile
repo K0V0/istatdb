@@ -79,7 +79,7 @@ gem 'rmagick'
 
 gem 'rubyzip'
 gem 'caxlsx'
-gem 'axlsx_rails'
+gem 'caxlsx_rails'
 
 gem 'where-or'
 
