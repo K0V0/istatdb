@@ -286,12 +286,12 @@ module ApplicationConcern
         end
     end
 
-    def set_path_back(controller: params[:controller], action: params[:action])
+    def set_path_back(controller: params[:controller], action: params[:action], id: nil)
     	#r = Rails.application.routes.router.recognize(request)
     	#logger
     	#logger request
     	#logger request[:controller]
-    	session[:path_back] = { controller: controller, action: action }
+    	session[:path_back] = { controller: controller, action: action, id: id }
     	#logger r[:controller]
 
     end
@@ -303,6 +303,17 @@ module ApplicationConcern
     		end
     	end
     	return { controller: params[:controller], action: 'index' }
+    end
+
+    def alternate_path_back
+        if params.has_key?(:routeback)
+            p = params[:routeback]
+            set_path_back(
+                controller: p[:controller],
+                action: p[:action],
+                id: p[:id]
+            )
+        end
     end
 
     def last_visited_set

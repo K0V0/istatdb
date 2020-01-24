@@ -53,6 +53,10 @@ class ApplicationController < ActionController::Base
   )
 
   before_action(
+    :alternate_path_back
+  )
+
+  before_action(
     :generate_form_url,
     only: [:new, :edit, :create, :update],
     if: -> { !@task_banned_for_user }
