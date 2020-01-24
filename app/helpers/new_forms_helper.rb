@@ -83,8 +83,14 @@ module NewFormsHelper
     	# not on repeat after validation failed
     	if action_name == "new"
     		# params are restored from mem on page load if not new are set
+            p = nil
     		if params.deep_has_key?(:q, "#{association_name}_filter".to_sym)
                 p = params[:q]["#{association_name}_filter"]
+            end
+            if params.has_key?("#{association_name}_prefill_ids".to_sym)
+                p = params["#{association_name}_prefill_ids"]
+            end
+            if !p.blank?
                 if p.instance_of? String
     			    return [p.to_i]
                 elsif p.instance_of? Array

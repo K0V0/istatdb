@@ -1,9 +1,31 @@
+<%
+
+pars = {
+    manufacturer_prefill_ids: [obj.id],
+    routeback: {
+        controller: :manufacturers,
+        action: :show,
+        id: obj.id
+    }
+}
+
+if obj.impexpcompanies.size == 1
+    pars.merge!(impexpcompany_prefill_ids: [obj.impexpcompanies.first.id])
+end
+
+%>
+
+
 <section class="decorated_wrap shrinked" id="manufacturer_add_goods">
+
 	<%= link_to(
 		t('helpers.submit.good.create'),
-		new_good_path,
+		new_good_path(
+            pars
+        ),
 		{
 			class: 'button'
 		}
 	) %>
+
 </section>
