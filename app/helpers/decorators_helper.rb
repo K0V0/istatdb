@@ -33,9 +33,21 @@ module DecoratorsHelper
 	def highlight_search obj: nil, field: nil, param: nil, multiple_with: nil, return_patt: false
 		p = ""
 		param = field if param.nil?
+
 		if params.has_key? :q
-			if !params[:q].blank?
-				tmp = multiple_with || param
+			if !(sp = params[:q]).blank?
+				tmp = param
+				if !multiple_with.blank?
+					keys = sp.except(:s).except(:search_both).select { |x| !(x =~ /_filter$/) }.keys
+					cont_both = false
+					keys.each do |key|
+						if key.include?(param.to_s)&&key.include?(multiple_with.to_s)&&key.include?('_or_')
+							cont_both = true
+							break
+						end
+					end
+					tmp = multiple_with if cont_both
+				end
 				k = params[:q].keys.select { |key| key.to_s.match(Regexp.new("^(translations_)?" + tmp.to_s + "_.+$")) }.first
 				p = params[:q][(k.to_sym)] if !k.blank?
 			end
@@ -51,6 +63,7 @@ module DecoratorsHelper
 				p = params[contr.to_sym][obj_contr + '_' + param.to_s]
 			end
 		end
+
 		return p if return_patt == true
 		highlight_searched str: obj.send(param), patt: p
 	end
@@ -79,7 +92,7 @@ module DecoratorsHelper
 
 	def date_with_hours_to_human text
 		format = "%Y-%m-%dT%H:%M:%S"
-		#Time.strptime(text, format) 
+		#Time.strptime(text, format)
 		#return DateTime.parse(text).strftime("%d. %b %Y %H:%M")
 		text.to_datetime.strftime("%d. %b %Y %H:%M")
 	end

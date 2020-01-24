@@ -4,12 +4,14 @@ key = multiselect_filter_key(obj: obj)
 selected = get_selected_multiselect(filter_key: key)
 selected_size = selected.try(:size)
 show_button = false
+disabled_class = obj.size == 0 ? "disabled" : ""
+c_name = obj.first.class.name.downcase
 
 case selected_size
 when nil
-    select_text = t('goods_search.manufacturer_prompt')
+    select_text = obj.first.nil? ? t("goods_search.na") : t("goods_search.#{c_name}_prompt")
 when 0
-    select_text = t('goods_search.manufacturer_prompt')
+    select_text = t("goods_search.#{c_name}_prompt")
 when 1
     if selected.first == 0
         select_text = t('goods_search.manufacturer_prompt')
@@ -26,7 +28,7 @@ else
 end
 %>
 
-<div class="multiselect" id="<%= key %>" tabindex="0">
+<div class="multiselect <%= disabled_class %>" id="<%= key %>" tabindex="0">
     <span> <%= select_text.html_safe %> </span>
     <div>
         <span class="select_reset_button">

@@ -32,12 +32,15 @@
 			assoc: :local_taric,
 			fields: {
 				kncode: {
-					call_decorator: :num_to_kncode
+					call_decorator: :num_to_kncode,
+					is_highlighted: true
 					#required: true
 
 				},
 				description: {
 					type: :text_area,
+					has_translations: true,
+					is_highlighted: true
 					#required: true
 				}
 			},

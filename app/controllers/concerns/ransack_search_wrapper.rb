@@ -32,6 +32,7 @@ module RansackSearchWrapper
 	    	end
 
 	    	if !object.try(:translated_locales).blank?
+	    		#logger "translaaaacie"
 		    	object = object.with_translations(I18n.locale)
 		    end
 
@@ -58,6 +59,7 @@ module RansackSearchWrapper
 	    	end
 
 	    	if intelligent_mode2
+	    		## issue s poradim parametrov, preto nekonzistentne hladanie pri hladani pomocou 2 a viac poli
 	    		if !params_no_search.values.all? { |p| p.blank? }
 	    			p = params[:q]
 	    			s = p.try(:[], :s) || []
@@ -77,26 +79,24 @@ module RansackSearchWrapper
 	    				fields = tmp.split("_or_")
 	    				params_fields.merge!(k => fields)
 	    			end
-	    			#logger params_fields
 
 	    			params_fields.each do |k, v|
 	    				v.each do |field|
-	    					replacement_param = {"#{field}_start" => replacable_params[k]}.merge(s: s)
-	    					ids = object.ransack(replacement_param).result.limit(1600).ids
-	    					subqueries_results.merge!(field => ids)
+	    					if !replacable_params[k].blank?
+		    					replacement_param = {"#{field}_start" => replacable_params[k]}.merge(s: s)
+		    					ids = object.ransack(replacement_param).result.limit(1600).ids
+		    					subqueries_results.merge!(field => ids)
+		    				end
 	    				end
 	    			end
+
 
 	    			subqueries_results.each do |k, v|
 	    				ids_for_order_as_first = ids_for_order_as_first|v
 	    			end
-	    			#logger ids_for_order_as_first
 	    			## spravit kontrolu ci ich nie je viac ako 1600
-	    			#logger object
 	    			object = object.unscope(:order).order_as_specified(id: ids_for_order_as_first)
-	    			#logger object
 	    			object = order_by_ransack_params(object)
-	    			#logger object
 	    			disable_ransack_sort = true
 	    		end
 	    	end

@@ -99,7 +99,8 @@ class ManufacturersController < ApplicationController
                 render "new"
             end
         elsif !params.has_key?(:edit_other_details) && saved
-            redirect_to action: :index
+            #redirect_to action: :index
+            redirect_to get_path_back
         else
             render "new"
         end

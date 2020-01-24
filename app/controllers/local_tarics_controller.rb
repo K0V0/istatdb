@@ -10,7 +10,7 @@ class LocalTaricsController < ApplicationController
     end
 
     def _searcher_settings
-    	{ paginate: true, autoshow: false }
+    	{ paginate: true, autoshow: false, intelligent_mode2: true }
     end
 
     def _allowed_params

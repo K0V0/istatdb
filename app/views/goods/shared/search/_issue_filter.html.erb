@@ -2,11 +2,11 @@
 
     <%
         html_options = { }
-        html_options.merge!(disabled: 'disabled', class: 'disabled') if @issues.size <= 0
         options = {
             include_blank: t('goods_search.issue_prompt'),
             selected: params.try(:[], :q).try(:[], :issue_filter)
         }
+        html_options.merge!(disabled: 'disabled', class: 'disabled') if @issues.size <= 0
     %>
 
     <span>

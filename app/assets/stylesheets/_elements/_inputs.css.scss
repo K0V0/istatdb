@@ -140,6 +140,15 @@ div.multiselect {
 	padding-right:0;
 	overflow: hidden;
 
+	&.disabled {
+		background-color: $button_disabled_background;
+		color: $button_disabled_text;
+		border-color: $button_disabled_background;
+		cursor: not-allowed;
+		pointer-events: none;
+		background-image: image-url('select_dropdown_arrow_disabled.png');
+	}
+
 	& > span {
 		font-size: 1em;
 		display: inline-block;
@@ -192,6 +201,7 @@ div.multiselect {
 				max-height: 1.25em;
 				width:100%;
 				margin-left: 0.25em;
+				padding-right:0.375em;
 				cursor: pointer;
 
 				&:hover {

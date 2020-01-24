@@ -38,7 +38,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 			render :edit_multiple
 			# if at least one assoc does not pass validation, do not submit
 		else
-			redirect_to manufacturers_path
+			redirect_to get_path_back
 		end
 	end
 

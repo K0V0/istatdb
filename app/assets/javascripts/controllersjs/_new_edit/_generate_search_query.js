@@ -79,9 +79,13 @@ GenerateSearchQuery.prototype = {
 		var querystring = {};
 		var ransack_scheme = ref.data('searcher-query');
 		var scheme_keys = Object.keys(ransack_scheme);
+		var opts = ref.closest('article').data('searcher-opts');
 
 		for (var i=0; i<scheme_keys.length; i++) {
 			var qs_key = scheme_keys[i] + '_' + ransack_scheme[ scheme_keys[i] ];
+			if (opts[scheme_keys[i]].has_translations === true) {
+				qs_key = qs_key.replace(/^/, 'translations_');
+			}
 			var qs_val = ref.find('.' + ref.data('searcher-assoc') + '_' + scheme_keys[i].replace("translations_", "")).val();
 			querystring[qs_key] = qs_val;
 		}

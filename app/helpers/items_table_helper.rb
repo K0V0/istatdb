@@ -36,8 +36,7 @@ module ItemsTableHelper
 			end
 
 			if o = opts[:is_highlighted]
-				#logger "high"
-				if o.is_a? TrueClass
+				if o.is_a?(TrueClass)||(o=="true")
 					patt = highlight_search(
 						obj: object,
 						field: field,
