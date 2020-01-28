@@ -46,10 +46,16 @@ rows.each(function() {
 });
 
 if (alower.data('user-choosed') === undefined) {
+	var before_state = alower.is(':checked');
 	if ("<%= allow_new %>" == "1") {
 		alower.prop('checked', true);
 	} else {
 		alower.prop('checked', false);
+	}
+	var after_state = alower.is(':checked');
+	// potrebne pre staticky js skript vypinajuci tabulku
+	if (before_state != after_state) {
+		alower.trigger('change');
 	}
 }
 
