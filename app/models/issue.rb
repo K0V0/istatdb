@@ -75,4 +75,10 @@ class Issue < ActiveRecord::Base
         "#{resolved} / #{total}"
     end
 
+    def is_resolved
+        total = self.goods.size
+        resolved = total - (self.goods.select { |g| g.uncomplete == true } .size)
+        return (total-resolved == 0)
+    end
+
 end
