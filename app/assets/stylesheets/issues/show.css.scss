@@ -5,5 +5,14 @@ article.issues.show {
 		&#issue_add_goods {
 			padding: 0.25em;
 		}
+
+		table#issues-good {
+
+			td.goods-ident, td.local_tarics-kncode {
+				white-space: nowrap;
+                width:1%;
+			}
+
+		}
 	}
 }
