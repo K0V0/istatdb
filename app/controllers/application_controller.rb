@@ -272,7 +272,11 @@ class ApplicationController < ActionController::Base
           if route[:action] != 'show'
             redirect_to :back
           else
-            route[:action] = "index"
+            if params.has_key?(:routeback)
+              route.merge!(params[:routeback])
+            else
+              route[:action] = "index"
+            end
             redirect_to route
           end
         #end

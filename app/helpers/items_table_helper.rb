@@ -64,6 +64,18 @@ module ItemsTableHelper
 					action: :show,
 					id: object.id,
 				}
+				if (o = opts[:is_link]) != true
+					if o.has_key?(:set_route_back)
+						rb = o[:set_route_back]
+						pars = {}
+						if rb == true
+							pars = route_back
+						else
+							
+						end
+						path.merge!(pars)
+					end
+				end
 				if object.only_one
 					path.merge!({ is_only_one: true })
 				end
@@ -148,25 +160,36 @@ module ItemsTableHelper
 	#
 	# obj - one row from AR result set
 	#
-	def items_table_row_administrative_buttons(obj)
+	def items_table_row_administrative_buttons(obj, path_back)
+		cntrl = obj.class.name.underscore.pluralize
+		id = obj.id
+
+		edit_route = {
+			controller: cntrl,
+			action: "edit",
+			id: id
+		}
+		delete_route = {
+			controller: cntrl,
+			action: "delete",
+			id: id
+		}
+
+		if path_back
+			edit_route.merge!(route_back)
+			delete_route.merge!(route_back)
+		end
+
 		output = "<td class=\"edit_item\">"
 			output += link_to(
 				t('actions.edit'),
-				{
-					controller: controller_name,
-					action: "edit",
-					id: obj.id
-				},
+				edit_route,
 				class: "button"
 			)
 		output += "</td><td class=\"delete_item\">"
 			output += link_to(
 				t('actions.delete'),
-				{
-					controller: controller_name,
-					action: "delete",
-					id: obj.id
-				},
+				delete_route,
 				data: { confirmation: t('actions.ru_sure_delete') },
 				#method: :delete,
 				#remote: true,
@@ -302,6 +325,19 @@ module ItemsTableHelper
 			end
 		end
 		output
+	end
+
+	def route_back
+		pars = {
+			routeback: {
+		        controller: controller_name,
+		        action: action_name
+		    }
+		}
+		if action_name == 'show'
+			pars[:routeback].merge!(id: params[:id])
+		end
+		return pars
 	end
 
 	private :render_field

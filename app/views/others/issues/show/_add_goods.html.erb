@@ -1,0 +1,35 @@
+<%
+
+pars = {
+    issue_prefill_ids: [obj.id],
+    routeback: {
+        controller: :issues,
+        action: :show,
+        id: obj.id
+    }
+}
+
+if obj.impexpcompanies.size == 1
+    pars.merge!(impexpcompany_prefill_ids: [obj.impexpcompanies.first.id])
+else
+    if params.deep_has_key?(:q, :impexpcompany_filter)
+        pars.merge!(impexpcompany_prefill_ids: [params[:q][:impexpcompany_filter]])
+    end
+end
+
+%>
+
+
+<section class="decorated_wrap shrinked" id="issue_add_goods">
+
+	<%= link_to(
+		t('helpers.submit.good.create'),
+		new_good_path(
+            pars
+        ),
+		{
+			class: 'button'
+		}
+	) %>
+
+</section>

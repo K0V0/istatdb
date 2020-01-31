@@ -3,6 +3,8 @@ html_class_main = "items_table decorated_wrap"
 html_class_table = "items rows_colored with_efects"
 editable = true
 show_administrative_action = true
+always_administrable = false
+path_back = false
 cn = controller_name.to_s
 
 if !defined? object
@@ -31,9 +33,20 @@ if defined? options
 	restrict_to_admin = true if options[0].try(:[], :admin_restricted_actions)
 	show_administrative_action = (restrict_to_admin == false)||(current_user.email == "admin@admin.hsdb")
 	editable = false if options[0].try(:[], :not_editable)
+	#always_administrable ||= options[0].try(:[], :always_administrable)
+	if !(aa = options[0].try(:[], :always_administrable)).blank?
+		always_administrable = aa
+	end
+	if always_administrable.boolean?
+
+	else
+		if always_administrable.has_key?(:set_route_back)
+			path_back = true
+		end
+	end
 end
 
-is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singularize.underscore}")&&editable
+is_in_administrative = (@MEM.send("is_in_administrative_#{controller_name.singularize.underscore}")&&editable)||(always_administrable)
 %>
 
 
@@ -104,7 +117,7 @@ is_in_administrative = @MEM.send("is_in_administrative_#{controller_name.singula
 					<tr class="<%= tr_class %>">
 						<%= items_table_fields(item, fields) %>
 						<% if is_in_administrative %>
-							<%= items_table_row_administrative_buttons(item) %>
+							<%= items_table_row_administrative_buttons(item, path_back) %>
 						<% end %>
 					</tr>
 

@@ -38,6 +38,8 @@ module Taric
 
     #require 'extensions/active_record/find_by_ordered_ids'
 
+    require 'object'
+
     require 'action_view/helpers/form_builder'
 
     require 'mem'

@@ -1,3 +1,4 @@
+
 <% content_for :show_content do %>
 
     <%= render('layouts/shared/show_item_basic_info',
@@ -6,12 +7,16 @@
         ]
     ) %>
 
+    <%= render('others/issues/show/add_goods', obj: @record) %>
+
     <%= render('layouts/shared/items_table',
         object: @record.goods,
 
         fields: {
             ident: {
-                is_link: true,
+                is_link: {
+                    set_route_back: true
+                },
                 tooltip: :reason_and_note
             },
             description: {
@@ -24,7 +29,8 @@
             ],
             manufacturers: [
                 name: {
-                    is_link: true
+                    is_link: true,
+                    set_route_back: true
                 }
             ],
             local_taric: [
@@ -33,7 +39,8 @@
                     call_decorator: :num_to_kncode,
                     is_link: true,
                     clipboard_button: true,
-                    tooltip: :description
+                    tooltip: :description,
+                    set_route_back: true
                 }
             ]
         },
@@ -53,6 +60,9 @@
                 note: :blank?
             },
             not_editable: true,
+            always_administrable: {
+                set_route_back: true
+            },
             change_on_smallscreen: true
         ]
     ) %>
