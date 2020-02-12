@@ -27,17 +27,20 @@ wb.add_worksheet(name: "Export") do |sheet|
     )
 
     ordinary_style = sheet.styles.add_style(
-        :alignment=>{:vertical => :center, horizontal: :left}
+        :alignment=>{:vertical => :center, horizontal: :left},
+        format_code: '@'
     )
 
     ordinary_style_odd = sheet.styles.add_style(
         :alignment=>{:vertical => :center, horizontal: :left},
-        :bg_color => "00FFFFFF"
+        :bg_color => "00FFFFFF",
+        format_code: '@' 
     )
 
     ordinary_style_even = sheet.styles.add_style(
         :alignment=>{:vertical => :center, horizontal: :left},
-        :bg_color => "00DDDDDD"
+        :bg_color => "00DDDDDD",
+        format_code: '@'
     )
 
     index_fix_style = sheet.styles.add_style(
@@ -99,7 +102,7 @@ wb.add_worksheet(name: "Export") do |sheet|
             index_added ? row.unshift(nil) : row.unshift(index+1)
             result_style = index%2==0 ? ordinary_style_odd : ordinary_style_even
             line_num_style = index%2==0 ? first_col_style_odd : first_col_style_even
-            row_reference = sheet.add_row row, style: ([line_num_style].fill(result_style, 1..columns_count-1))
+            row_reference = sheet.add_row row, style: ([line_num_style].fill(result_style, 1..columns_count-1)), types: ([].fill(:string, 1..columns_count-1))
             first_of_set_row_reference = row_reference if !index_added
             index_added = true
         end
