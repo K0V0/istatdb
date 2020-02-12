@@ -20,8 +20,8 @@
                                     <%= t 'actions.add' %>
                                     <%= link_to(
                                         t('searchers.goods'),
-                                        new_good_path(prefill: 
-                                            { 
+                                        new_good_path(
+                                            prefill: { 
                                                 ident_or_description: searched_from_mem,
                                             },
                                             manufacturer_prefill_ids: [nil],
@@ -33,13 +33,18 @@
                                     <%= t 'or' %>
                                     <%= link_to(
                                         t('searchers.supplier'),
-                                        new_manufacturer_path(prefill: { name: searched_from_mem }),
+                                        new_manufacturer_path(
+                                            prefill: { name: searched_from_mem },
+                                            impexpcompany_prefill_ids: [nil]
+                                        ),
                                         class: 'button'
                                     ) %>
                                     <%= t 'or' %>
                                     <%= link_to(
                                         t('searchers.taric'),
-                                        new_local_taric_path(prefill: prefill_for_new_local_taric),
+                                        new_local_taric_path(
+                                            prefill: prefill_for_new_local_taric
+                                        ),
                                         class: 'button'
                                     ) %>
                                 </li>
