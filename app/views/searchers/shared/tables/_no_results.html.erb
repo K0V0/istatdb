@@ -20,7 +20,14 @@
                                     <%= t 'actions.add' %>
                                     <%= link_to(
                                         t('searchers.goods'),
-                                        new_good_path(prefill: { ident_or_description: searched_from_mem }),
+                                        new_good_path(prefill: 
+                                            { 
+                                                ident_or_description: searched_from_mem,
+                                            },
+                                            manufacturer_prefill_ids: [nil],
+                                            impexpcompany_prefill_ids: [nil],
+                                            issue_prefill_ids: [nil]
+                                        ),
                                         class: 'button' 
                                     ) %>
                                     <%= t 'or' %>

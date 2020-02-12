@@ -72,6 +72,7 @@ class GoodsController < ApplicationController
 		@uom_types = UomType.includes(:translations).all.default_order
 		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
 		@manufacturers_for_uoms = Manufacturer.where(id: @record.manufacturer_ids)
+		logger params
 	end
 
 	def load_uoms
