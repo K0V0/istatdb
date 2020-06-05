@@ -42,6 +42,7 @@ nav.pagination {
 
 					&.inactive {
 						pointer-events: none;
+						color: $halftone;
 					}
 				}
 			}
