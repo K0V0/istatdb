@@ -73,7 +73,7 @@ class ManufacturersController < ApplicationController
             .order('impexpcompanies.company_name ASC')
         @for_goodstable = @record
             .goods
-            .includes(local_taric: [:translations])
+            .includes(:issues, :good_images, local_taric: [:translations])
             .order('goods.ident ASC')
         @for_tarictable = @record
             .goods
