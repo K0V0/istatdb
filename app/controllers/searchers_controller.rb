@@ -60,7 +60,7 @@ class SearchersController < ApplicationController
             .ransack(kncode_start_or_translations_description_cont: par)
             .result
             .order('kncode ASC')
-            .page(params[:local_taric_page])
+            .page(params[:local_tarics_page])
 
         load_counts
         render "index"
