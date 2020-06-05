@@ -12,8 +12,32 @@ Useful
 UX/Eye-candy
 ------------
 
-- messagess like "no item found by this criteria" in case of app firstrun 
+- messagess like "no item found by this criteria" in case of app firstrun
 
 
 Extras
 ------
+
+
+if params.deep_has_key?(:q, "#{par.to_s.singularize}_filter".to_sym)
+                p_to_prefill = params[:q]["#{par.to_s.singularize}_filter"]
+            end
+            ## pridanie z inej sekcie, uprednostnit
+            if params.has_key?("#{par.to_s.singularize}_prefill_ids".to_sym)
+                p_to_prefill = params["#{par.to_s.singularize}_prefill_ids"]
+            end
+
+            Rails.logger.info "============================="
+            #Rails.logger.info association_name
+            Rails.logger.info p_to_prefill
+            Rails.logger.info "============================="
+
+            if !p_to_prefill.nil?
+                if p_to_prefill.instance_of?(String)
+                    ids_arr.push(p_to_prefill.to_i)
+                elsif p.instance_of?(Array)
+                    tmp_arr = p_to_prefill.map { |x| x.to_i }
+                    tmp_arr2 = tmp_arr - ids_arr&tmp_arr
+                    ids_arr.concat(tmp_arr2)
+                end
+            end

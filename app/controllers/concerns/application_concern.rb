@@ -122,16 +122,25 @@ module ApplicationConcern
  		pars.each do |par|
  			ids_arr = []
  			is_new = (action_name=='new'||action_name=='create') ? true : false
+            p_to_prefill = nil
 
- 			if params.deep_has_key?(:q, "#{par.to_s.singularize}_filter".to_sym)
-                if (p = params[:q]["#{par.to_s.singularize}_filter"]).instance_of?(String)
-			         ids_arr.push(p.to_i)
-                elsif p.instance_of?(Array)
-                    tmp_arr = p.map { |x| x.to_i }
+            ## prefill z vyhladavace
+            if params.deep_has_key?(:q, "#{par.to_s.singularize}_filter".to_sym)
+                p_to_prefill = params[:q]["#{par.to_s.singularize}_filter"]
+            end
+            ## prefill z pridania z podsekcie
+            if params.has_key?("#{par.to_s.singularize}_prefill_ids".to_sym)
+                p_to_prefill = params["#{par.to_s.singularize}_prefill_ids"]
+            end
+
+ 			if !p_to_prefill.nil?
+                if p_to_prefill.instance_of?(String)
+                    ids_arr.push(p_to_prefill.to_i)
+                elsif p_to_prefill.instance_of?(Array)
+                    tmp_arr = p_to_prefill.map { |x| x.to_i }
                     tmp_arr2 = tmp_arr - ids_arr&tmp_arr
                     ids_arr.concat(tmp_arr2)
                 end
-
     		end
 
     		if is_new&&params.has_key?(:apply_last_select)

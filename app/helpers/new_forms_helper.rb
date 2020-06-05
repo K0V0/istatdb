@@ -90,6 +90,10 @@ module NewFormsHelper
             if params.has_key?("#{association_name}_prefill_ids".to_sym)
                 p = params["#{association_name}_prefill_ids"]
             end
+            #Rails.logger.info "============================="
+            #Rails.logger.info association_name
+            #Rails.logger.info p
+            #Rails.logger.info "============================="
             if !p.blank?
                 if p.instance_of? String
     			    return [p.to_i]
