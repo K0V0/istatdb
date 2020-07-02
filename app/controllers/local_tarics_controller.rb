@@ -9,7 +9,7 @@ class LocalTaricsController < ApplicationController
         super
         @for_goodstable = @record
             .goods
-            .includes(:issues, :good_images, :impexpcompanies)
+            .includes(:issues, :good_images, :impexpcompanies, :manufacturers)
             .order('goods.ident ASC')
     end
 
