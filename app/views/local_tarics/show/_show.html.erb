@@ -16,13 +16,15 @@
 		]
 	) %>
 
-	<%= render('layouts/shared/items_table',
 
-		object: @record.goods,
-
-		fields: {
+	<% 
+		fields_for_goodstable = {
 			ident: {
-				is_link: true
+				is_link: true,
+				tooltip: :reason_and_note,
+	            issues: :patale,
+	            image_previews: :good_images,
+	            link: :link
 			},
 			description: {
 
@@ -37,7 +39,27 @@
 					is_link: true
 				}
 			]
-		},
+		}
+
+		goodstable_has_issues = @for_goodstable.any? { |good| !good.issues.blank? }
+		if goodstable_has_issues
+
+			fields_for_goodstable.merge!(
+				issues: [
+					name_field: { 
+						is_link: true
+					}
+				]
+			)
+
+		end
+	%>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @for_goodstable,
+
+		fields: fields_for_goodstable,
 
 		options: [
 			caption: true,
@@ -45,6 +67,9 @@
 			foot: true,
 			html_options: {
 				main_class: "shrinked"
+			},
+			row_danger: {
+				uncomplete: true
 			},
 			not_editable: true,
 			change_on_smallscreen: true

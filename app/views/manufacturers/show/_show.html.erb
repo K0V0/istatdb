@@ -110,11 +110,8 @@
 
 	) %>
 
-	<%= render('layouts/shared/items_table',
-
-		object: @for_goodstable,
-
-		fields: {
+	<% 
+		fields_for_goodstable = {
 			ident: {
 				is_link: {
 					remote: true
@@ -135,7 +132,41 @@
 					tooltip: :description
 				}
 			]
-		},
+		}
+
+		if @record.impexpcompanies.size > 1
+
+			fields_for_goodstable.merge!(
+				impexpcompanies: [
+					company_name: { 
+						#is_link: true
+					}
+				]
+			)
+
+		end
+
+		goodstable_has_issues = @for_goodstable.any? { |good| !good.issues.blank? }
+		if goodstable_has_issues
+
+			fields_for_goodstable.merge!(
+				issues: [
+					name_field: { 
+						is_link: true
+					}
+				]
+			)
+
+		end
+
+
+	%>
+
+	<%= render('layouts/shared/items_table',
+
+		object: @for_goodstable,
+
+		fields: fields_for_goodstable,
 
 		options: [
 			caption: true,
@@ -143,6 +174,9 @@
 			foot: true,
 			html_options: {
 				main_class: "shrinked"
+			},
+			row_danger: {
+				uncomplete: true
 			},
 			not_editable: true,
 			change_on_smallscreen: true

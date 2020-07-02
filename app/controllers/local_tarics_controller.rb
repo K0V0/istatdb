@@ -4,6 +4,15 @@ class LocalTaricsController < ApplicationController
 
     private
 
+    ### override
+    def show_action
+        super
+        @for_goodstable = @record
+            .goods
+            .includes(:issues, :good_images, :impexpcompanies)
+            .order('goods.ident ASC')
+    end
+
     ### must be because of prelignting will not work when in create/edit action
     def normalize_kncode_search_params
     	params[:q][:kncode_start].gsub!(/\s+/, "")
