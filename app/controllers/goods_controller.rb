@@ -166,19 +166,24 @@ class GoodsController < ApplicationController
 		## patch ked zmenena spravodajska jednotka za inu, ale su vybrati vyrobcovia,
 		## ktorych druha spravodajska jednotka nema, nezobrazia sa ziadne tovary
 		from_params = params.try(:[], :q).try(:[], :impexpcompany_filter)#.to_i
-		logger from_params.nil?, "from_params nil"
+		#logger from_params.nil?, "from_params nil"
 		from_mem = controller_mem_get(:q).try(:[], :impexpcompany_filter)#.to_i
-		logger from_mem.nil?, "from_mem nil"
+		#logger from_mem.nil?, "from_mem nil"
 
 		if from_params != nil #0
 			logger from_params, "from_params"
 			logger from_mem, "from_mem"
 			#if !from_mem.nil?
 				if from_params != from_mem
-					logger Impexpcompany.all.size
-					logger Impexpcompany.all.class.name
+					#logger Impexpcompany.all.size
+					#logger Impexpcompany.all.class.name
 					#avail = Impexpcompany.all.find(from_params).manufacturers.ids
-					avail = Impexpcompany.all.find(1).manufacturers.ids
+					avail = Manufacturer
+						.joins(:impexpcompanies)
+						.where(impexpcompanies: { id: from_params })
+						.distinct
+						.pluck(:id)
+					#avail = Impexpcompany.all.find(1).manufacturers.ids
 					if !(p = params.try(:[], :q).try(:[], :manufacturer_filter)).blank?
 						in_p = p.map(&:to_i)
 						not_in_set = in_p - avail
