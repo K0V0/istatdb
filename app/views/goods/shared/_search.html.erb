@@ -23,7 +23,18 @@
 
 	<%= render 'goods/shared/search/search_both', obj: @s %>
 
-	<%= render 'goods/shared/search/select_client_dropdown', obj: @s %>
+	<%#= render 'goods/shared/search/select_client_dropdown', obj: @s %>
+
+	<div>
+		<span>
+			<%= @s.label :impexpcompany_filter %>
+		</span>
+		<span id="search_items_select_impexpcompany">
+			<%= render 'layouts/shared/search/multiselect', obj: @impexpcompanies %>
+		</span>
+	</div>
+
+
 
 	<div>
 		<span>

@@ -1,6 +1,11 @@
 
 <%= render 'goods/shared/items_table' %>
 
+$('#search_items_select_impexpcompany').empty();
+
+$("<%=j render('layouts/shared/search/multiselect', obj: @impexpcompanies) %>")
+.appendTo('#search_items_select_impexpcompany');
+
 $('#search_items_select_manufacturer').empty();
 
 $("<%=j render('layouts/shared/search/multiselect', obj: @manufacturers) %>")

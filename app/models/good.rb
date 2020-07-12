@@ -105,7 +105,7 @@ class Good < ActiveRecord::Base
 		order(ident: :asc)
 	}
 
-	scope :impexpcompany_filter, -> (pars) {
+	scope :impexpcompany_filter, -> (*pars) {
 		self
 		.joins(:impexpcompanies)
 		.where(impexpcompanies: {
