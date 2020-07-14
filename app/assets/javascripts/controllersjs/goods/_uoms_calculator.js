@@ -41,7 +41,7 @@ UomsCalculator.prototype = {
 				parseFloat($(this).children('td.uoms-uom').first().text()),
 				parseFloat($(this).children('td.uoms-uom_multiplier').first().text()),
 				$(this).children('td.uoms-type').first().text(),
-				$(this).children('td.uoms-description').first().text(),
+				$(this).children('td.uoms-description').first().text()
 			);
 		});
 	},
