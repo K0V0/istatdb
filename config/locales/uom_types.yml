@@ -13,12 +13,16 @@ en:
         uom_type: Unit
         full_name: Full name
         description: Description
+        intrastat_code: Intrastat code
 
   helpers:
     submit:
       uom_type:
         create: Add new UOM
         update: Update UOM
+
+  uom_types:
+    own: "- own -"
 
 
 sk:
@@ -36,9 +40,14 @@ sk:
         uom_type: Jednotka
         full_name: Celý názov
         description: Popis
+        intrastat_code: Intrastat kód
 
   helpers:
     submit:
       uom_type:
         create: Pridať jednotku
         update: Upraviť jednotku
+
+  uom_types:
+    own: "- vlastná -"
+

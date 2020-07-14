@@ -1,5 +1,7 @@
 class UomType < ActiveRecord::Base
 
+	extend OrderAsSpecified
+
 	include Defaults
 
 	translates :full_name, :description
@@ -9,12 +11,13 @@ class UomType < ActiveRecord::Base
 	validates :uom_type, presence: true
 
 	scope :default_order, -> {
-		order(uom_type: :asc)
+		customs = self.where(intrastat_code: nil).pluck(:id)
+		order_as_specified(id: customs)
 	}
 
 	def name_for_form_input
-		prep = intrastat_code.blank? ? "---" : intrastat_code
-		"#{self.full_name} [#{self.uom_type}] - {#{prep}}"
+		prep = intrastat_code.blank? ? "(#{description})" : "{#{intrastat_code}}"
+		"#{self.full_name} [#{self.uom_type}] - #{prep}"
 	end
 
 end
