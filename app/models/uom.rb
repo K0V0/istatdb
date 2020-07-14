@@ -40,6 +40,15 @@ class Uom < ActiveRecord::Base
 		uom_type.try(:full_name)
 	end
 
+	def description
+		uom_type.try(:description)
+	end
+
+	def istat_code 
+		ic = uom_type.try(:intrastat_code)
+		ic.blank? ? "---" : ic
+	end
+
 	def manufacturer_name
 		self.manufacturer.name
 	end

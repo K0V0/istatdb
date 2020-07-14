@@ -129,7 +129,7 @@ sk:
       price: Celková hodnota
       add: Vložiť do pamäti
       clear: Vyčistiť polia
-      type: Jednotky
+      type: Prepočet
     calc_mem_list:
       cap: Pamäť kalkulačky
       name: Tovar

@@ -40,7 +40,8 @@ UomsCalculator.prototype = {
 			totok.setVals(
 				parseFloat($(this).children('td.uoms-uom').first().text()),
 				parseFloat($(this).children('td.uoms-uom_multiplier').first().text()),
-				$(this).children('td.uoms-type').first().text()
+				$(this).children('td.uoms-type').first().text(),
+				$(this).children('td.uoms-description').first().text(),
 			);
 		});
 	},
@@ -87,13 +88,14 @@ UomsCalculator.prototype = {
 		this.uom_type = $.trim($('b.uoms_calculator_uom_type').text());
 	},
 
-	setVals: function(val, multiplier, uom_type) {
+	setVals: function(val, multiplier, uom_type, uom_description) {
 		this.val = val;
 		this.multiplier = multiplier;
 		this.uom_type = uom_type;
 		$('input[name=uom_value]').val(val);
 		$('input[name=uom_multiplier]').val(multiplier);
 		$('b.uoms_calculator_uom_type').text(uom_type);
+		$('table#uoms_calculator_input thead tr th i').text(uom_description);
 		if (this.last_calculated_was_quantity === false) {
 			this.calculateResult();
 		} else if (this.last_calculated_was_quantity === true) {

@@ -13,6 +13,8 @@ sk:
         impexpcompany_name: Spravodajská jednotka
         manufacturer_id: Výrobca/odberateľ
         manufacturer_name: Výrobca/odberateľ
+        description: Popis
+        istat_code: Intrastat kód
     errors:
       models:
         uom:
@@ -37,6 +39,7 @@ en:
         manufacturer_id: Manufacturer/consumer
         impexpcompany_name: Intrastat client
         manufacturer_name: Manufacturer/consumer
+        description: Description
     errors:
       models:
         uom:

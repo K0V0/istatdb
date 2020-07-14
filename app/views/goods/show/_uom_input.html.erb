@@ -4,6 +4,15 @@
 
 		<caption> <%= t('goods.uoms_calculator.cap') %> </caption>
 
+		<thead>
+			<tr>
+				<th>
+					<%= t('goods.uoms_calculator.type') %>:
+					<i> <%= @uom_alone.try(:uom_type).try(:description) %> </i>
+				</th>
+			</tr>
+		</thead>
+
 		<tbody>
 
 			<tr>

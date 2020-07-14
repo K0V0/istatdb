@@ -6,9 +6,25 @@ article.goods {
 
 		table#uoms_calculator_input {
 
+			thead {
+
+				tr {
+
+					th {
+						font-weight: normal;
+						font-style: italic;
+
+						i {
+							font-weight: bold;
+						}
+					}
+				}
+
+			}
+
 			tbody {
 
-   			tr {
+   				tr {
 
 					td {
 
@@ -27,7 +43,7 @@ article.goods {
 							height:1.625em;
 						}
 					}
-			   }
+			   	}
 			}
 		}
 
