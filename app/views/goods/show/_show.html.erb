@@ -15,7 +15,10 @@
 				],
 				[:local_taric, :description]
 			],
-		]
+		],
+		options: {
+			danger: @record.uncomplete
+		}
 	) %>
 
 	<%= render('layouts/shared/items_table',

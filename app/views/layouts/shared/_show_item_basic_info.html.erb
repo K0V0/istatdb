@@ -7,6 +7,14 @@ cn = "#{controller_name}-baseinfo"
 if defined? wrap_tag
 	tag = wrap_tag
 end
+o = {}
+if defined? options
+	o = options
+end
+tr_class = ""
+if o.has_key? :danger
+	tr_class = "class=\"danger\"".html_safe if o[:danger]
+end
 %>
 
 <% if tag != false %>
@@ -21,7 +29,7 @@ end
 
 		<tbody>
 			<% fields.each do |section| %>
-				<tr>
+				<tr <%= tr_class %>>
 					<td>
 						<% section.each_with_index do |row, index| %>
 							<h<%= index+1 %>><%= get_content_for(object, row) %></h<%= index+1 %>>
