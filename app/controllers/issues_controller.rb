@@ -47,4 +47,19 @@ class IssuesController < ApplicationController
         build_if_empty :good_issue_files
     end
 
+    ### override
+    def show_action
+        super
+        @impexpcompany_filter = controller_mem_get(:q).try(:[], :impexpcompany_filter)
+        if !@impexpcompany_filter.blank?
+            @for_goodstable = @record.goods
+                .joins(:impexpcompanies)
+                .where(impexpcompanies: { id: @impexpcompany_filter })
+                .order(ident: :asc)
+                .distinct
+        else
+            @for_goodstable = @record.goods
+        end
+    end
+
 end

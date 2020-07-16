@@ -39,10 +39,10 @@ class Issue < ActiveRecord::Base
     # uniquenes prerobit na meno a zaroven datum
 
     scope :default_order, -> {
-        order(season: :desc, name: :desc)
+        order(season: :desc, name: :asc)
     }
 
-    scope :impexpcompany_filter, -> (pars) {
+    scope :impexpcompany_filter, -> (*pars) {
         self
         .joins(:impexpcompanies)
         .where(impexpcompanies: {

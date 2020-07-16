@@ -49,6 +49,7 @@ class GoodsController < ApplicationController
 			@manufacturers = Manufacturer
 				.joins(:impexpcompanies)
 				.where(impexpcompanies: { id: params[:q][:impexpcompany_filter] })
+				.order(name: :asc)
 				.distinct
 			#@issues = @impexpcompanies
 				#.find(params[:q][:impexpcompany_filter])
@@ -58,6 +59,7 @@ class GoodsController < ApplicationController
 			@issues = Issue
 				.joins(:impexpcompanies)
 				.where(impexpcompanies: { id: params[:q][:impexpcompany_filter] })
+				.order(season: :desc, name: :asc)
 				.distinct
 		else
 			@manufacturers = Manufacturer.all.default_order
@@ -171,8 +173,8 @@ class GoodsController < ApplicationController
 		#logger from_mem.nil?, "from_mem nil"
 
 		if from_params != nil #0
-			logger from_params, "from_params"
-			logger from_mem, "from_mem"
+			#logger from_params, "from_params"
+			#logger from_mem, "from_mem"
 			#if !from_mem.nil?
 				if from_params != from_mem
 					#logger Impexpcompany.all.size
@@ -181,6 +183,7 @@ class GoodsController < ApplicationController
 					avail = Manufacturer
 						.joins(:impexpcompanies)
 						.where(impexpcompanies: { id: from_params })
+						.order(name: :asc)
 						.distinct
 						.pluck(:id)
 					#avail = Impexpcompany.all.find(1).manufacturers.ids
