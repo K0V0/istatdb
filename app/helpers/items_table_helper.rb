@@ -160,7 +160,7 @@ module ItemsTableHelper
 	#
 	# obj - one row from AR result set
 	#
-	def items_table_row_administrative_buttons(obj, path_back)
+	def items_table_row_administrative_buttons(obj, path_back:nil)
 		cntrl = obj.class.name.underscore.pluralize
 		id = obj.id
 
