@@ -1,0 +1,78 @@
+
+<% 
+p = params[:search_string]
+routeback = { controller: :searchers, action: :index }
+%>
+
+<div class="decorated_wrap shrinked">
+
+    <table class="with_controls export">
+
+        <caption> <%= t('actions.add_as') %> </caption>
+
+        <thead></thead>
+
+        <tbody>
+        	<tr>
+        		<td> Pridať <b> "<%= p %>" </b> ako: </td>
+        	</tr>
+        </tbody>
+
+        <tfoot>
+        	<tr>
+        		<td colspan="10">
+        			<%= link_to(
+        				t('searchers.goods'),
+        				{ 
+        					controller: :goods, 
+        					action: :new, 
+        					prefill: {
+        						ident_or_description: p
+        					},
+        					routeback: routeback
+        				},
+        				class: 'button'
+        			) %>
+        			<%= link_to(
+        				t('searchers.supplier'),
+        				{ 
+        					controller: :manufacturers, 
+        					action: :new, 
+        					prefill: {
+        						name: p
+        					},
+        					routeback: routeback
+        				},
+        				class: 'button'
+        			) %>
+        			<%= link_to(
+        				t('searchers.taric'),
+        				{ 
+        					controller: :local_tarics, 
+        					action: :new, 
+        					prefill: {
+        						kncode: p
+        					},
+        					routeback: routeback
+        				},
+        				class: 'button'
+        			) %>
+        		</td>
+        	</tr>
+        	<tr>
+        		<td>&nbsp;</td>
+        	</tr>
+            <tr>
+                <td colspan="10">
+                    <%= link_to(
+                    	t('actions.back'),
+                    	routeback,
+                    	class: 'button'
+                    ) %>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>

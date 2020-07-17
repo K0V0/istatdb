@@ -56,6 +56,14 @@ Rails.application.routes.draw do
     to: "trade_types#check_existence"
 
 
+  ### intro stranka - vyhladavace
+
+  # pridat nieco
+  get "searchers/add_dialog",
+    to: "searchers#add",
+    as: "add_something"
+
+
 
   ### hlavna stranka - databaza tovarov
 

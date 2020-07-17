@@ -49,7 +49,16 @@
             </div>
 
             <div class="searchform_actions">
-                <button id="clear_search" class="button">
+                <%= link_to(
+                    t('actions.add'),
+                    add_something_path({
+                        norender_default_jserb: true,
+                        search_string: params[:q][:search_cont]
+                    }),
+                    class: 'button',
+                    remote: true
+                ) %><!--
+                --><button id="clear_search" class="button">
                      <%= t 'search.reset' %>
                 </button><!--
                 --><button id="search_item_on_google" class="button">

@@ -31,6 +31,7 @@ sk:
   actions:
     add: Pridať
     add_next: Pridať dalšie
+    add_as: Pridať ako...
     add_and_add_next: Pridať, a pridať ďalšiu položku
     added_successfully: Položka bola úspešne pridaná, môžete pokračovať
     edit: Upraviť

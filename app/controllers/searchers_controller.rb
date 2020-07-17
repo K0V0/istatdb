@@ -66,6 +66,10 @@ class SearchersController < ApplicationController
         render "index"
     end
 
+    def add
+        
+    end
+
     private
 
     def load_counts
