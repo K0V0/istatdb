@@ -53,7 +53,7 @@
                     t('actions.add'),
                     add_something_path({
                         norender_default_jserb: true,
-                        search_string: params[:q][:search_cont]
+                        search_string: params.deep_has_key?(:q, :search_cont) ? params[:q][:search_cont] : ""
                     }),
                     class: 'button',
                     remote: true
