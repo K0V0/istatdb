@@ -10,6 +10,12 @@
             .append("<%=j render 'searchers/shared/tables/manufacturers' %>")
             .append("<%=j render 'searchers/shared/tables/local_tarics' %>");
 
+        var tmphref = $("<%=j render 'searchers/shared/add_link' %>").attr('href');
+
+        $('div.searchform_actions')
+            .find('a#add_something_path')
+            .attr('href', tmphref);
+
     <% else %>
 
         $('article.searchers')
