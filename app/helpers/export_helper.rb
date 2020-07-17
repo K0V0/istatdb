@@ -38,14 +38,15 @@ module ExportHelper
 		return f_map
 	end
 
-	def render_excel_export_head(fields)
+	def render_excel_export_head(fields, other_model)
 		ret = {
 			lower: ["index"],
 			higher: [nil]
 		}
 		fields.to_a.each do |field|
 			if field[1].instance_of? String
-				translation = "#{t("activerecord.attributes.#{controller_name.singularize}.#{field[0].to_s}")}"
+				tmp = other_model.nil? ? controller_name.singularize : other_model.model.name.downcase
+				translation = "#{t("activerecord.attributes.#{tmp}.#{field[0].to_s}")}"
 				ret[:lower].push(translation)
 				ret[:higher].push(nil)
 			else

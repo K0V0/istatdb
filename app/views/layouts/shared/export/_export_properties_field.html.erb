@@ -1,4 +1,11 @@
-<% meno = mdl == controller_name.to_s.singularize ? "[#{field.to_s}]" : "[#{mdl}][#{field.to_s}]" %>
+<% 
+    meno = ""
+    if obj.nil?
+        meno = mdl == controller_name.to_s.singularize ? "[#{field.to_s}]" : "[#{mdl}][#{field.to_s}]"
+    else
+        meno = mdl == obj.model.name.downcase ? "[#{field.to_s}]" : "[#{mdl}][#{field.to_s}]"
+    end
+%>
 
 <tr class="checkboxes">
     <td class="checkbox"> 

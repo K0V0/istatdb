@@ -1,0 +1,44 @@
+
+<% 
+
+fields_to_export = {
+    ident: [],
+    description: [],
+    note: [],
+    uncomplete_reason: [],
+    uncomplete: [],
+    user_added: [],
+    user_modded: [],
+    issues: [
+        :name_field
+    ],
+    local_taric: [
+        :kncode,
+        :description
+    ],
+    manufacturers: [
+        :name
+    ],
+    impexpcompanies: [
+        :company_name
+    ],
+    uoms: [
+        :uom,
+        :uom_multiplier,
+        :type
+    ]
+}
+
+head = [
+	
+]
+
+%>
+
+<%= render(
+    'layouts/shared/export',
+    fields_to_select: fields_to_export,
+    head: head,
+    obj: @for_export,
+    backlink: issue_path(params[:id])
+) %>

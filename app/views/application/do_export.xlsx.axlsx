@@ -1,3 +1,13 @@
+res = nil
+other_model = nil
+
+if defined?(@for_export)
+    res = @for_export
+    other_model = res
+else
+    res = @result
+end
+
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Export") do |sheet|
 
@@ -78,12 +88,12 @@ wb.add_worksheet(name: "Export") do |sheet|
     end
 
     sheet.add_row ["", "Čas vygenerovania súboru: ", DateTime.current.strftime("%d %B %Y, %H:%M")], style: ordinary_style
-    sheet.add_row ["", "Počet výsledkov: ", @result.size], style: ordinary_style
+    sheet.add_row ["", "Počet výsledkov: ", res.size], style: ordinary_style
 
     sheet.add_row [" "]
     sheet.add_row [" "]
 
-    column_names = render_excel_export_head(params[:fields])
+    column_names = render_excel_export_head(params[:fields], other_model)
     columns_count = column_names[:lower].size
     mergable_columns = generate_column_map_for_merging(params[:fields])
     mergable_cells = []
@@ -92,7 +102,7 @@ wb.add_worksheet(name: "Export") do |sheet|
 
     sheet.add_row [" "]
 
-    @result.all.each_with_index do |result, index|
+    res.all.each_with_index do |result, index|
         index_added = false
         first_of_set_row_reference = nil
         row_reference = nil

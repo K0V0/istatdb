@@ -429,6 +429,14 @@ Rails.application.routes.draw do
     #to: "issues#change_status"#,
     #as: "issue"
 
+  get "others/issues/:id/export",
+    to: "issues#export",
+    as: "export_issues"
+
+  post "others/issues/:id/export",
+    to: "issues#do_export",
+    as: "do_export_issues"
+
 
 
 

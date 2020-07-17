@@ -32,4 +32,28 @@ end
 		}
 	) %>
 
+    <%= link_to(
+        t('issues.export_all'),
+        export_issues_path({
+            id: obj.id,
+            only_uncomplete: false
+        }),
+        {
+            class: 'button',
+            remote: true
+        }
+    ) %>
+
+    <%= link_to(
+        t('issues.export_uncomplete'),
+        export_issues_path({
+            id: obj.id,
+            only_uncomplete: true
+        }),
+        {
+            class: 'button',
+            remote: true
+        }
+    ) %>
+
 </section>

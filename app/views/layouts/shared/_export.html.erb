@@ -1,6 +1,21 @@
+<% 
+obj = nil if !defined?(obj)
+path_back = defined?(backlink) ? backlink : { action: :index, controller: controller_name }
+%>
+
 <%= form_tag(public_send("do_export_#{controller_name}_path"), target: '_blank', method: :post) do |f| %>
 
     <%= hidden_field_tag 'head', head.to_json %>
+
+    <% if defined?(@export_options) %>
+
+        <% @export_options.each do |k, o| %>
+
+            <%= hidden_field_tag(k, o) %>
+
+        <% end %>
+
+    <% end %>
 
     <div class="decorated_wrap shrinked">
 
@@ -14,7 +29,8 @@
 
                 <%= render(
                     'layouts/shared/export/export_properties_line',
-                    field: fields_to_select
+                    field: fields_to_select,
+                    obj: obj
                 ) %>
 
             </tbody>
@@ -24,7 +40,7 @@
                     <td colspan="10">
                         <input type="submit" class="button" value="Excel tabuľka" name="submit_excel">
                         <input type="submit" class="button" value="HTML" name="submit_html">
-                        <%= link_to "Storno", { action: :index, controller: controller_name }, class: 'button' %>
+                        <%= link_to "Storno", path_back, class: 'button' %>
                     </td>
                 </tr>
             </tfoot>

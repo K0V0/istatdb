@@ -28,3 +28,5 @@ sk:
       created_at: Vytvorený
       updated_at: Upravený
     filter_active: Máte aktívne filtrovanie podľa spravodajskej jednotky, zobrazené v tejto sekcii budú len tovary prináležiace spravodajskej jednotke/spravodajským jednotkám zvoleným vo filtroch vyhľadávača.
+    export_all: Exportovať všetky položky
+    export_uncomplete: Exportovať len nedošetrené položky

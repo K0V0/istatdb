@@ -3,12 +3,21 @@
 
     <% if v.blank?&&f.is_a?(Symbol) %>
 
-        <% mdl = "#{controller_name.to_s.singularize}" if mdl.blank? %>
+        <% 
+        if !defined?(mdl)
+            if obj.nil?
+                mdl = "#{controller_name.to_s.singularize}"
+            else
+                mdl = "#{obj.model.name.downcase}"
+            end
+        end
+        %>
 
         <%= render(
             'layouts/shared/export/export_properties_field',
             mdl: mdl,
-            field: f
+            field: f,
+            obj: obj
         ) %>
 
     <% else %>
@@ -25,6 +34,7 @@
                             'layouts/shared/export/export_properties_line',
                             field: v,
                             mdl: f.to_s,
+                            obj: obj
                         ) %>
                     </tbody>
                 </table>

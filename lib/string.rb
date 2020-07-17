@@ -20,4 +20,8 @@ class String
         self.sub(regex, ".#{suffix.downcase}")
     end
 
+    def true?
+        self.to_s.downcase == "true"
+    end
+
 end

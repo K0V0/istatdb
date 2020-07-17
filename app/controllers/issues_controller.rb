@@ -1,5 +1,32 @@
 class IssuesController < ApplicationController
 
+    def export
+        @for_export = Issue.find(params[:id]).goods
+        @export_options = {
+            only_uncomplete: params[:only_uncomplete]
+        }
+        render 'others/issues/export'
+    end
+
+    ### OVERRIDE
+    def do_export
+        @for_export = select_goods(
+            Issue.find(params[:id]),
+            controller_mem_get(:q).try(:[], :impexpcompany_filter)
+        )
+        if (p = params[:only_uncomplete].true?)
+            @for_export = @for_export.where(uncomplete: p)
+        end
+
+        #.where(uncomplete: params[:only_uncomplete].true?)
+
+        #logger params[:only_uncomplete], "only_uncomplete"
+
+        #logger params['only_uncomplete'], "only_uncomplete"
+
+        super
+    end
+
     private
 
     def _searcher_settings
@@ -51,14 +78,18 @@ class IssuesController < ApplicationController
     def show_action
         super
         @impexpcompany_filter = controller_mem_get(:q).try(:[], :impexpcompany_filter)
-        if !@impexpcompany_filter.blank?
-            @for_goodstable = @record.goods
+        @for_goodstable = select_goods(@record, @impexpcompany_filter)
+    end
+
+    def select_goods(obj, impexp_filter)
+        if !impexp_filter.blank?
+            return obj.goods
                 .joins(:impexpcompanies)
-                .where(impexpcompanies: { id: @impexpcompany_filter })
+                .where(impexpcompanies: { id: impexp_filter })
                 .order(ident: :asc)
                 .distinct
         else
-            @for_goodstable = @record.goods
+            return obj.goods
         end
     end
 
