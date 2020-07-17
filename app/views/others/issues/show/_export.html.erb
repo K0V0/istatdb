@@ -30,7 +30,9 @@ fields_to_export = {
 }
 
 head = [
-	
+    ["Spravodajská jednotka: ", Impexpcompany.where(id: is_param?(:impexpcompany_filter)).pluck(:company_name)],
+	["Prípad: ", Issue.find(params[:id]).name_field],
+    ["Exportované len nedošetrené položky: ", params[:only_uncomplete] ? "Áno" : "Nie"]
 ]
 
 %>

@@ -36,7 +36,8 @@ end
         t('issues.export_all'),
         export_issues_path({
             id: obj.id,
-            only_uncomplete: false
+            only_uncomplete: false,
+            impexpcompany_filter: @impexpcompany_filter
         }),
         {
             class: 'button',
@@ -48,7 +49,8 @@ end
         t('issues.export_uncomplete'),
         export_issues_path({
             id: obj.id,
-            only_uncomplete: true
+            only_uncomplete: true,
+            impexpcompany_filter: @impexpcompany_filter
         }),
         {
             class: 'button',

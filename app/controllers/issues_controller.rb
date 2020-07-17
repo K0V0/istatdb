@@ -3,7 +3,8 @@ class IssuesController < ApplicationController
     def export
         @for_export = Issue.find(params[:id]).goods
         @export_options = {
-            only_uncomplete: params[:only_uncomplete]
+            only_uncomplete: params[:only_uncomplete],
+            impexpcompany_filter: controller_mem_get(:q).try(:[], :impexpcompany_filter)
         }
         render 'others/issues/export'
     end
@@ -17,13 +18,6 @@ class IssuesController < ApplicationController
         if (p = params[:only_uncomplete].true?)
             @for_export = @for_export.where(uncomplete: p)
         end
-
-        #.where(uncomplete: params[:only_uncomplete].true?)
-
-        #logger params[:only_uncomplete], "only_uncomplete"
-
-        #logger params['only_uncomplete'], "only_uncomplete"
-
         super
     end
 
