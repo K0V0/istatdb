@@ -11,6 +11,8 @@ pars = {
 
 if obj.impexpcompanies.size == 1
     pars.merge!(impexpcompany_prefill_ids: [obj.impexpcompanies.first.id])
+else
+    pars.merge!(impexpcompany_prefill_ids: [nil])
 end
 
 %>

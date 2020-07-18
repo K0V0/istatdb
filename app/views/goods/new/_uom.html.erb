@@ -73,7 +73,7 @@
 				cbt('new_form_texts.uom_cannot_select_manufacturer')
 			),
 			html_class: "uom_manufacturer",
-			selected: (@impexpcompanies_for_uoms.length == 1) ? @impexpcompanies_for_uoms.first : nil
+			selected: (@manufacturers_for_uoms.length == 1) ? @manufacturers_for_uoms.first : nil
 		) %>
 
 		<%= button_tag(t('actions.add_next'), class: "button add_uom", disabled: disabled, type: :button ) %>

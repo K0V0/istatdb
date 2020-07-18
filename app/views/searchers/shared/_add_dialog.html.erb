@@ -27,8 +27,11 @@ routeback = { controller: :searchers, action: :index }
         					controller: :goods, 
         					action: :new, 
         					prefill: {
-        						ident_or_description: p
+        						ident_or_description: p,
+                                description: ""
         					},
+                            manufacturer_prefill_ids: [nil],
+                            impexpcompany_prefill_ids: [nil],
         					routeback: routeback
         				},
         				class: 'button'
@@ -41,6 +44,7 @@ routeback = { controller: :searchers, action: :index }
         					prefill: {
         						name: p
         					},
+                            impexpcompany_prefill_ids: [nil],
         					routeback: routeback
         				},
         				class: 'button'

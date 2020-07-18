@@ -84,15 +84,35 @@ class GoodsController < ApplicationController
 		end
 		#@impexpcompanies = Impexpcompany.all.default_order
 		@uom_types = UomType.includes(:translations).all.default_order
-		@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
-		@manufacturers_for_uoms = Manufacturer.where(id: @record.manufacturer_ids)
+		#@impexpcompanies_for_uoms = Impexpcompany.where(id: @record.impexpcompany_ids)
+		#@manufacturers_for_uoms = Manufacturer.where(id: @record.manufacturer_ids)
 		#logger params
+		loads_fields_for_uoms(:impexpcompany)
+		loads_fields_for_uoms(:manufacturer)
 	end
 
 	def load_uoms
 		@uom = Uom.new if !@record.uoms.any?
 		@impexpcompanies_for_uoms = @record.impexpcompanies
 		@manufacturers_for_uoms = @record.manufacturers
+	end
+
+	def loads_fields_for_uoms(assoc)
+		res = nil
+		mdl = assoc.to_s.capitalize.constantize
+		if action_name == "new"
+			if params.deep_has_key?(:q, "#{assoc.to_s}_filter")
+				#logger "has filter", "has filter"
+				res = mdl.where(id: params[:q]["#{assoc.to_s}_filter"])
+			end
+		else
+			#logger "has not filter", "has not filter"
+			res = mdl.where(id: @record.send("#{assoc.to_s}_ids"))
+		end
+		instance_variable_set(
+			"@#{assoc.to_s.pluralize}_for_uoms",
+			res
+		)
 	end
 
 	def _around_new
