@@ -17,7 +17,7 @@ class Impexpcompany < ActiveRecord::Base
 	validates :company_name, presence: true
 	validates_uniqueness_of :company_name, scope: :affiliated_office
 
-	has_many :people
+	has_many :persons, inverse_of: :impexpcompany
 
 	scope :default_order, -> {
 		order(company_name: :asc)

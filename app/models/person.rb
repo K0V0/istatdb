@@ -4,15 +4,16 @@ class Person < ActiveRecord::Base
     include NestedAttributesGetterConcern
     include NestedSelectedOrCreatedAnyConcern
 
-    belongs_to :impexpcompany, inverse_of: :people
+    has_many :impexpcompany_manufacturers, inverse_of: :person
+
+    belongs_to :impexpcompany, inverse_of: :persons
+
     accepts_nested_attributes_for(
         :impexpcompany,
         reject_if: lambda { |c|
             c[:allow_search_as_new] == "0" || c[:allow_search_as_new].blank?
         }
     )
-
-    has_many :impexpcompany_manufacturers, inverse_of: :person
 
     nested_attrs_getter_for :impexpcompany
 

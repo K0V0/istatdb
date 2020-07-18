@@ -21,7 +21,7 @@ class PeopleController < ApplicationController
             :phone,
             :impexpcompany_id,
             impexpcompany_attributes: [
-                :id,
+                #:id,
                 :company_name,
                 :allow_search_as_new
             ],
