@@ -1,0 +1,28 @@
+
+<%= render(
+		layout: 'layouts/shared/search',
+		locals: {
+			main_fields: {
+				full_name: :fullname_search
+			},
+			actions: [
+				:add,
+				:edit,
+				:delete,
+				:clear_all,
+				:administrative,
+			]
+		}
+	) do %>
+
+	<div>
+		<span>
+			<%= @s.label :impexpcompany_filter %>
+		</span>
+		<span id="search_items_select_impexpcompany">
+			<%= render 'layouts/shared/search/multiselect', obj: @impexpcompanies %>
+		</span>
+	</div>
+
+<% end %>
+

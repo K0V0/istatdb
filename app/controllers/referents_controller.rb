@@ -7,6 +7,20 @@ class ReferentsController < ApplicationController
         super(obj: obj)
     end
 
+    ### OVERRIDE
+    def show_action
+        super
+        ids = @record
+            .impexpcompany_manufacturers
+            .where(impexpcompany: @record.impexpcompany)
+            .distinct
+            .ids
+        logger ids, "ids"
+        @for_manufacturerstable = Manufacturer
+            .joins(:impexpcompany_manufacturers)
+            .where(impexpcompany_manufacturers: { id: ids })
+    end
+
     private
 
     def _parent_controller
@@ -15,7 +29,8 @@ class ReferentsController < ApplicationController
 
     def _searcher_settings
         {
-            paginate: true
+            paginate: true,
+            autoshow: false
         }
     end
 

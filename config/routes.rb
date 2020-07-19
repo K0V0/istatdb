@@ -655,6 +655,11 @@ Rails.application.routes.draw do
     to: "referents#index",
     as: "referents"
 
+  # search
+  get "settings/referents/search",
+    to: "referents#search",
+    as: "search_referents"
+
   # new
   get "settings/referents/new",
     to: "referents#new",

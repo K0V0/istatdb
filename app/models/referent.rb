@@ -42,12 +42,18 @@ class Referent < ActiveRecord::Base
         order(first_name: :asc, last_name: :asc)
     }
 
-    scope :impexpcompany_filter, -> (pars) {
+    scope :impexpcompany_filter, -> (*pars) {
         self.where(impexpcompany_id: pars)
     }
 
+    scope :fullname_search, -> (pars) {
+        meno_ids = self.where('first_name LIKE ?', "#{pars}%").ids
+        priezvisko_ids = self.where('last_name LIKE ?', "#{pars}%").ids
+        self.where(id: meno_ids|priezvisko_ids)
+    }
+
     def self.ransackable_scopes(*pars)
-        %i(impexpcompany_filter)
+        %i(impexpcompany_filter fullname_search)
     end
 
 end

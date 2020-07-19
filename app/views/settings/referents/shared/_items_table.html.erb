@@ -4,7 +4,9 @@ render('layouts/shared/items_table',
 
     fields: {
         full_name: {
-            is_link: true
+            is_link: {
+                remote: true
+            }
         },
         email: {},
         phone: {},

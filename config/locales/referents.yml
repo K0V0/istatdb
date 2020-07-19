@@ -6,6 +6,7 @@ sk:
       referent:
         first_name: Meno
         full_name: Meno referenta
+        fullname_search: Meno/Priezvisko
         last_name: Priezvisko
         email: e-mail
         phone: telefón
