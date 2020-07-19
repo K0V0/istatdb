@@ -12,7 +12,7 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
     belongs_to :trade_type, inverse_of: :impexpcompany_manufacturers
 
-    belongs_to :person, inverse_of: :impexpcompany_manufacturers
+    belongs_to :referent, inverse_of: :impexpcompany_manufacturers
 
     accepts_nested_attributes_for :local_taric, update_only: true
 

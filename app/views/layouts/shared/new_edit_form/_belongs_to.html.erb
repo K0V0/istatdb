@@ -15,6 +15,8 @@
 	<% end %>
 >
 
+	<% #logger obj.object.class.name.underscore %>
+
 	<input type="hidden" name="assoc-type" value="belongs_to">
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 
@@ -71,16 +73,23 @@
 		<% end %>
 	</div>
 
+	<% 
+	collection = coll
+	if !assoc_query_where.nil?
+		collection = coll.where(assoc_query_where)
+	end
+	%>
+
 	<%= render('/layouts/elements/table_list_radio_buttons',
 		obj: obj.object,
 		# main controller singleton instance variable
-		coll: coll,
+		coll: collection,
 		# collection of all from associated model
 		text_method: fields.keys,
 		multiedit: multiedit,
 		disabled: (@MEM.allow_add_new)[mem_query] || false,
 		opts: fields
-	) if coll.length > 0 %>
+	) if collection.length > 0 %>
 
 	<%= render('/layouts/shared/new_edit_form/not_any_record') if coll.length == 0 %>
 

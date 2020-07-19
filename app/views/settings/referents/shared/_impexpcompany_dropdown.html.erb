@@ -1,6 +1,6 @@
 <%
 selected = params.try(:[], :q).try(:[], :impexpcompany_filter)
-logger selected
+#logger selected
 options = {
     include_blank: t('goods_search.issue_prompt'),
     selected: selected

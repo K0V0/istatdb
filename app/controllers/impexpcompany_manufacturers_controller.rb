@@ -47,7 +47,7 @@ class ImpexpcompanyManufacturersController < ApplicationController
 	def _load_vars
 		@incoterms = Incoterm.includes(:translations).all.default_order
 		#@local_tarics = LocalTaric.includes(:translations).all.default_order.page(1).per(20)
-		will_paginate :local_taric, 
+		will_paginate :local_taric, :referent
 		if action_name == "edit_multiple"
 			local_tarics_original = @local_tarics.ids
 			local_taric_selected_ids = []
@@ -74,9 +74,11 @@ class ImpexpcompanyManufacturersController < ApplicationController
 			:incoterm_id,
 			:trade_type_id,
 			:invoices_correct,
-			:person_id,
+			:referent_id,
 			:detach_local_taric,
-			local_taric: [:kncode, :description, :id, :allow_search_as_new]
+			:detach_person,
+			local_taric: [:kncode, :description, :id, :allow_search_as_new],
+			referent: [:first_name, :last_name, :email, :phone, :allow_search_as_new]
 		)
 	end
 

@@ -1,12 +1,14 @@
-class Person < ActiveRecord::Base
+class Referent < ActiveRecord::Base
+
+    extend OrderAsSpecified
 
     include Defaults
     include NestedAttributesGetterConcern
     include NestedSelectedOrCreatedAnyConcern
 
-    has_many :impexpcompany_manufacturers, inverse_of: :person
+    has_many :impexpcompany_manufacturers, inverse_of: :referent
 
-    belongs_to :impexpcompany, inverse_of: :persons
+    belongs_to :impexpcompany, inverse_of: :referents
 
     accepts_nested_attributes_for(
         :impexpcompany,

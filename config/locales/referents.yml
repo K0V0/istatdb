@@ -1,9 +1,9 @@
 sk:
   activerecord:
     models:
-      person: Referenti
+      referent: Referenti
     attributes:
-      person:
+      referent:
         first_name: Meno
         full_name: Meno referenta
         last_name: Priezvisko
@@ -12,12 +12,12 @@ sk:
         impexpcompany_filter: Spravodajská jednotka
     errors:
       models:
-        person:
+        referent:
           attributes:
 
 
   helpers:
     submit:
-      person:
+      referent:
         create: Pridať referenta
         update: Upraviť referenta

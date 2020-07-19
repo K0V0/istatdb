@@ -648,47 +648,47 @@ Rails.application.routes.draw do
   ## nastavenia - referenti
 
   # index
-  get "settings/people",
-    to: "people#index",
-    as: "people"
+  get "settings/referents",
+    to: "referents#index",
+    as: "referents"
 
   # new
-  get "settings/people/new",
-    to: "people#new",
-    as: "new_person_type"
+  get "settings/referents/new",
+    to: "referents#new",
+    as: "new_referent"
 
   # administration
-  get "settings/people/administrative",
-    to: "people#administrative"
+  get "settings/referents/administrative",
+    to: "referents#administrative"
 
   # end administration
-  get "settings/people/end_administrative",
-    to: "people#end_administrative"
+  get "settings/referents/end_administrative",
+    to: "referents#end_administrative"
 
   # show
-  get "settings/people/:id",
-    to: "people#show",
-    as: "person_type"
+  get "settings/referents/:id",
+    to: "referents#show",
+    as: "show_referent"
 
   # create
-  post "settings/people/new",
-    to: "people#create",
-    as: "create_person_type"
+  post "settings/referents/new",
+    to: "referents#create",
+    as: "create_referent"
 
   # edit
-  get "settings/people/:id/edit",
-    to: "people#edit",
-    as: "edit_person_type"
+  get "settings/referents/:id/edit",
+    to: "referents#edit",
+    as: "edit_referent"
 
   # update
-  patch "settings/people/:id/edit",
-    to: "people#update",
-    as: "update_person_type"
+  patch "settings/referents/:id/edit",
+    to: "referents#update",
+    as: "update_referent"
 
   # delete
-  delete "settings/people/:id",
-    to: "people#delete",
-    as: "delete_person_type"
+  delete "settings/referents/:id",
+    to: "referents#delete",
+    as: "delete_referent"
 
   ## Nastavenia - pouzivatelia
 

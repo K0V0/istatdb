@@ -1,20 +1,23 @@
 <%
-	html_class = "" if !defined? html_class
+	h_class = ""
+	if defined?(html_class)
+		h_class += html_class
+	end
 	if defined?(not_resolved)
 		case not_resolved
 		when true
-			html_class += ' not_resolved'
+			h_class += ' not_resolved'
 		when false
-			html_class += ' resolved'
+			h_class += ' resolved'
 		else
-			#html_class = ''
+			#h_class = ''
 		end
 	end
 	table_class = 'rows_colored no_line_height'
 	table_class += defined?(foot_content) ? '' : ' no_footer_fix'
 %>
 
-<section class="decorated_wrap shrinked items_table <%= html_class %>">
+<section class="decorated_wrap shrinked items_table <%= h_class %>">
 
 	<table class="<%= table_class %>">
 

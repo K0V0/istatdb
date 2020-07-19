@@ -6,6 +6,8 @@
 
 		<% @details.each do |detail| %>
 
+			<br>
+
 			<%= fields_for "impexpcompany_manufacturers[#{detail.id}]", detail do |d| %>
 
 				<aside class="impexpcompany_manufacturers_details">
@@ -63,21 +65,24 @@
 
 					</article>
 
-					<article class="decorated_wrap shrinked select_referent">
-
-						<% impexp_id = d.object.impexpcompany_id %>
-
-						<%= render('layouts/elements/input_select',
-							obj: d,
-							collection: Impexpcompany.find(impexp_id).people,
-							method_to_get_vals: :id,
-							method_to_get_texts: :full_name,
-							send_parameters_name: :person_id,
-							blank_text: "---",
-							selected: d.object.person_id
-						) %>
-
-					</article>
+					<%= new_edit(
+						obj: d,
+						assoc: :referent,
+						assoc_query_where: { impexpcompany_id: detail.impexpcompany.id },
+						multiedit: true,
+						fields: {
+							first_name: {  },
+							last_name: {  },
+							email: { },
+							phone: { },
+						},
+						searcher_settings: {
+							query: {
+								first_name: :start,
+								last_name: :start
+							}
+						}
+					) %>
 
 					<%= new_edit(
 						obj: d,
@@ -100,6 +105,8 @@
 				</aside>
 
 		    <% end %>
+
+		    <br>
 
 		<% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200116090058) do
+ActiveRecord::Schema.define(version: 20200718222013) do
 
   create_table "calculators", force: :cascade do |t|
     t.text     "data"
@@ -146,14 +146,14 @@ ActiveRecord::Schema.define(version: 20200116090058) do
     t.boolean  "invoices_correct"
     t.integer  "incoterm_id"
     t.integer  "trade_type_id"
-    t.integer  "person_id"
+    t.integer  "referent_id"
   end
 
   add_index "impexpcompany_manufacturers", ["impexpcompany_id"], name: "index_impexpcompany_manufacturers_on_impexpcompany_id"
   add_index "impexpcompany_manufacturers", ["incoterm_id"], name: "index_impexpcompany_manufacturers_on_incoterm_id"
   add_index "impexpcompany_manufacturers", ["local_taric_id"], name: "index_impexpcompany_manufacturers_on_local_taric_id"
   add_index "impexpcompany_manufacturers", ["manufacturer_id"], name: "index_impexpcompany_manufacturers_on_manufacturer_id"
-  add_index "impexpcompany_manufacturers", ["person_id"], name: "index_impexpcompany_manufacturers_on_person_id"
+  add_index "impexpcompany_manufacturers", ["referent_id"], name: "index_impexpcompany_manufacturers_on_referent_id"
   add_index "impexpcompany_manufacturers", ["trade_type_id"], name: "index_impexpcompany_manufacturers_on_trade_type_id"
 
   create_table "incoterm_translations", force: :cascade do |t|
@@ -220,7 +220,7 @@ ActiveRecord::Schema.define(version: 20200116090058) do
     t.text     "note"
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "referents", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -230,7 +230,7 @@ ActiveRecord::Schema.define(version: 20200116090058) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "people", ["impexpcompany_id"], name: "index_people_on_impexpcompany_id"
+  add_index "referents", ["impexpcompany_id"], name: "index_referents_on_impexpcompany_id"
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
