@@ -169,9 +169,11 @@ class ApplicationController < ActionController::Base
     @items_table_class = ""
     @items_table_class += "searchbar_pinned" if setting_is_set?(:gui_pin_searchbar)
     params[:per] = setting(:gui_per_page)
-    remember_param :page    ## page number
-    remember_param :q       ## search, druhy je okrem
-    remember_param :timesort_method
+    if (action_name != "new_select_search")&&(action_name != "new_select_load_items")
+      remember_param :page    ## page number
+      remember_param :q       ## search, druhy je okrem
+      remember_param :timesort_method
+    end
     remember_sortlink
     is_subsection_of(parent_controller: _parent_controller)
     _after_inits
@@ -288,25 +290,27 @@ class ApplicationController < ActionController::Base
     ### len 1 request, bez now 2 requesty vydrzi
   end
 
-  def apicall_search_action
+  def apicall_search_action(obj: nil)
+
+    _before_apicall_load
 
     rndr = true
     if action_name == "new_select_search"
       # akcia vyhladavania - input do text pola
       if params[:per_page].blank?
         # widget natahujuci vsetko
-        searcher_for(autoshow: false, intelligent_mode2: true)
+        searcher_for(autoshow: false, intelligent_mode2: true, object: obj)
       else
         # widget bude strankovany
         params[:page] = 1
-        searcher_for(autoshow: false, paginate: true, intelligent_mode2: true)
+        searcher_for(autoshow: false, paginate: true, intelligent_mode2: true, object: obj)
       end
     elsif action_name == "new_select_load_items"
       # akcia len natahovania dalsieho obsahu
       params[:page] = params[:loaded_page].to_i + 1
       #if (params[:page] <= @result.total_pages)
         params[:per] = params[:per_page]
-        searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked], intelligent_mode2: true)
+        searcher_for(autoshow: false, paginate: true, not_load_ids: params[:checked], intelligent_mode2: true, object: obj)
         rndr = false if @result.blank?
       #end
     end
@@ -329,6 +333,8 @@ class ApplicationController < ActionController::Base
   			"@#{params[:source_controller]}",
   			parent_obj
   		)
+
+      _before_apicall_render
 
       ## nepridava asociacie
       #logger(instance_variable_get("@#{params[:source_controller]}").send("#{params[:model].to_s.pluralize}").size)

@@ -75,4 +75,10 @@ module ApplicationAbstract
 	def _before_db_load
 	end
 
+	def _before_apicall_render
+	end
+
+	def _before_apicall_load
+	end
+
 end

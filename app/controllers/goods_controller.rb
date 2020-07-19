@@ -104,6 +104,8 @@ class GoodsController < ApplicationController
 			if params.deep_has_key?(:q, "#{assoc.to_s}_filter")
 				#logger "has filter", "has filter"
 				res = mdl.where(id: params[:q]["#{assoc.to_s}_filter"])
+			else
+				res = mdl.where(id: 0)
 			end
 		else
 			#logger "has not filter", "has not filter"

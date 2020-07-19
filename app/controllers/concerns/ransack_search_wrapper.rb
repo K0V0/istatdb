@@ -5,7 +5,20 @@ module RansackSearchWrapper
 	### controller nastavenie searchera musi joinovat asociacie ak sa podla nich
 	### bude sortovat tabulka
 
-	def searcher_for object: nil, autoshow: true, preload: nil, joins: nil, paginate: nil, generate_single_result_var: false, disabled: false, group_by: nil, not_load_ids: [], intelligent_mode: false, intelligent_mode2:false
+	def searcher_for(
+		object: nil,
+		autoshow: true, 
+		preload: nil, 
+		joins: nil, 
+		paginate: nil, 
+		generate_single_result_var: false, 
+		disabled: false, 
+		group_by: nil, 
+		not_load_ids: [],
+		load_ids: [], 
+		intelligent_mode: false,
+		intelligent_mode2: false
+	)
 
 		params[:q] = [] if disabled
 		mdl = controller_name.classify.constantize
@@ -35,6 +48,10 @@ module RansackSearchWrapper
 	    		#logger "translaaaacie"
 		    	object = object.with_translations(I18n.locale)
 		    end
+
+		    if !load_ids.blank?
+	    		object = object.where(id: load_ids)
+	    	end
 
 	    	if !not_load_ids.blank?
 	    		object = object.where.not(id: not_load_ids)

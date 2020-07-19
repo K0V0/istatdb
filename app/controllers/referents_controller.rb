@@ -1,5 +1,12 @@
 class ReferentsController < ApplicationController
 
+    ### OVERRIDE
+    def apicall_search_action
+        id = params[:window_id].sub(/\D+/, '').to_i
+        obj = ImpexpcompanyManufacturer.find(id).impexpcompany.referents
+        super(obj: obj)
+    end
+
     private
 
     def _parent_controller

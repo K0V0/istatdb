@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   post "issues/new_select_search",
     to: "issues#new_select_search"
 
+  post "referents/new_select_search",
+    to: "referents#new_select_search"
+
   ## check existence ajax call
 
   post "good/check_existence",

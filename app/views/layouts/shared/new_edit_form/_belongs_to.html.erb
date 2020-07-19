@@ -15,8 +15,6 @@
 	<% end %>
 >
 
-	<% #logger obj.object.class.name.underscore %>
-
 	<input type="hidden" name="assoc-type" value="belongs_to">
 	<input type="hidden" value="" name="<%= "#{obj.object.class.name.underscore}[#{coll.name.underscore}_id]" %>">
 

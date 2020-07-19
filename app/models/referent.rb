@@ -19,9 +19,12 @@ class Referent < ActiveRecord::Base
 
     nested_attrs_getter_for :impexpcompany
 
-    validate :at_least_one_impexpcompany_selected
+    #validates :first_name, presence: true
+    #validates :last_name, presence: true
+    #validate :at_least_one_impexpcompany_selected
 
     def at_least_one_impexpcompany_selected
+        ## dava nil error pri multiuploade
         if !nested_selected_or_created_any?(:impexpcompany, :company_name)
             self.errors.add(:impexpcompany_attributes, :not_selected_or_created)
         end

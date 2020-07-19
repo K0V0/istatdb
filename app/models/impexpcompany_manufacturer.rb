@@ -1,6 +1,10 @@
 class ImpexpcompanyManufacturer < ActiveRecord::Base
 
+    extend OrderAsSpecified
+
     include Defaults
+    include NestedAttributesGetterConcern
+    include NestedSelectedOrCreatedAnyConcern
 
 	belongs_to :impexpcompany, inverse_of: :impexpcompany_manufacturers
 
@@ -16,9 +20,12 @@ class ImpexpcompanyManufacturer < ActiveRecord::Base
 
     accepts_nested_attributes_for :local_taric, update_only: true
 
+    accepts_nested_attributes_for :referent, update_only: true
+
     after_initialize :def_export_methods
 
     attr_accessor :detach_local_taric
+    attr_accessor :detach_referent
 
     private
 
