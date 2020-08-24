@@ -1,0 +1,7 @@
+<% if @user_settings %>
+	<% @user_settings.marshal_dump.each do |setting| %>
+		
+		<%= hidden_field_tag("user_settings_#{setting[0].to_s}", setting[1]) %>
+		
+	<% end %>
+<% end %>

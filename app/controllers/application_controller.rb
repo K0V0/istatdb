@@ -176,6 +176,11 @@ class ApplicationController < ActionController::Base
     end
     remember_sortlink
     is_subsection_of(parent_controller: _parent_controller)
+    if user_signed_in?
+      @user_settings = current_user.settings.l
+    else
+      
+    end
     _after_inits
   end
 

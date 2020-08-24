@@ -32,6 +32,8 @@ show_flash = !flash.empty? && user_signed_in?
 		<input type="checkbox" id="show_paginator" role="button" class="hidden">
 		<input type="checkbox" id="show_searchpanel_opts" role="button" class="hidden" checked="checked">
 
+		<%= render 'layouts/base/expose_user_settings' %>
+
 		<div class="gallery">
 			<%#= yield :gallery %>
 			<%= render 'layouts/base/galery_viewer' %>

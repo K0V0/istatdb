@@ -72,6 +72,11 @@ sk:
         section_window_title: Zdroje výmenných kurzov
         adress_daily: Denné kurzy
         adress_history: Všetky kurzy
+      behavior:
+        section_window_title: Správanie aplikácie
+        submit_by_enter: Potvrdenie dopytu klávesou Enter
+        autosubmit: Automatické potvrdenie dopytu po dokončení zadávania vstupu
+        autosubmit_delay: Doba neaktívnosti, po ktorej nastane automatické odoslanie dopytu
 
 
     users:

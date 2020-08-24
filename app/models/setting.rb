@@ -32,10 +32,13 @@ class Setting < ActiveRecord::Base
 
 	def self.defaults
 		{
-			gui_per_page: 		"10",
-			gui_show_footer: 	"1",
-			gui_enable_3d: 		"1",
-			gui_pin_searchbar: 	"1"
+			gui_per_page: 				"10",
+			gui_show_footer: 			"1",
+			gui_enable_3d: 				"1",
+			gui_pin_searchbar: 			"1",
+			behavior_submit_by_enter: 	"1",
+			behavior_autosubmit_delay: 	"350",
+			behavior_autosubmit: 		"1",
 		}
 	end
 
