@@ -32,9 +32,11 @@ SearchItemActions.prototype = {
 		if (T.enter_submit === true) {
 			$(document).on('keypress',function(e) {
 			    if(e.which == 13) {
-			        e.preventDefault();
-			        $(document).find("section.search_bar > form").append('<input type="hidden" name="page" value="1">');
-			        $(document).find("section.search_bar > form").submit();
+			    	if ($(document).find('body').attr('class').match('index|search|show') !== null) {
+			        	e.preventDefault();
+			        	$(document).find("section.search_bar > form").append('<input type="hidden" name="page" value="1">');
+			        	$(document).find("section.search_bar > form").submit();
+			        }
 			    }
 			});
 		}
