@@ -10,7 +10,7 @@ class GoodsController < ApplicationController
 
 	def _searcher_settings
 		{ 
-			preload: [{local_taric: [:translations]}, :manufacturers, :issues, :good_images, :impexpcompanies],
+			preload: [{local_taric: [:translations]}, {uoms: [:uom_type]}, :manufacturers, :issues, :good_images, :impexpcompanies],
 			joins: [:local_taric],
 			paginate: true,
 			autoshow: true,

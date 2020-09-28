@@ -109,6 +109,33 @@ module ItemsTableHelper
 				end
 			end
 
+			if opts[:uoms]
+				logger object
+				logger object.uoms
+				if !(tmp = object.send(:uoms)).blank?
+					tmptext = "<var class=\"uoms\">Σ<sup class=\"uoms\">"
+					len = tmp.size
+					tmp.each_with_index do |uom, index|
+						tmptext = tmptext + "<b>#{uom.uom_type.description}:</b> #{uom.uom} #{uom.uom_type.uom_type} na #{uom.uom_multiplier} "
+						quantum = ""
+						case uom.uom_multiplier
+						when 1
+							quantum = "jednotku"
+						when 2..4
+							quantum = "jednotky"
+						else
+							quantum = "jednotiek"
+						end
+						tmptext = tmptext + quantum
+						if index+1 < len
+							tmptext = tmptext + "<hr>"
+						end
+					end
+					tmptext = tmptext + "</sup></var>"
+					text += tmptext.html_safe
+				end
+			end
+
 			if opts[:image_previews]
 				if (o = opts[:image_previews]).is_a?(Symbol)
 					if (imgs = object.send(o)).size > 0
