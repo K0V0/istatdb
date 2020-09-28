@@ -100,12 +100,17 @@ class GoodsController < ApplicationController
 	def loads_fields_for_uoms(assoc)
 		res = nil
 		mdl = assoc.to_s.capitalize.constantize
+		#logger assoc
 		if action_name == "new"
 			if params.deep_has_key?(:q, "#{assoc.to_s}_filter")
 				#logger "has filter", "has filter"
 				res = mdl.where(id: params[:q]["#{assoc.to_s}_filter"])
 			else
-				res = mdl.where(id: 0)
+				if params.has_key?(:apply_last_select)
+					res = @record.send("#{assoc.to_s.pluralize}")
+				else
+					res = mdl.where(id: 0)
+				end
 			end
 		else
 			#logger "has not filter", "has not filter"
