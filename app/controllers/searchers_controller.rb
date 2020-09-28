@@ -39,7 +39,7 @@ class SearchersController < ApplicationController
         end
 
         @goods = Good
-            .includes([{local_taric: [:translations]}, :manufacturers, :issues, :good_images])
+            .includes([{local_taric: [:translations]}, {uoms: [:uom_type]}, :manufacturers, :issues, :good_images])
             .ransack(ident_or_description_cont: par)
             .result
             .order_as_specified(id: goods_first_ids)
