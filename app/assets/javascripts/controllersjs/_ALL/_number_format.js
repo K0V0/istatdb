@@ -17,6 +17,9 @@ NumberFormat.prototype = {
     },
 
     format: function(num) {
-    	return num.toString().replace(/ /g,'').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        var tmp = num.toString().replace(/ /g,'').split(/\.|\,/);
+        var decadic = tmp[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        var decimal = tmp[1] === undefined ? "" : ("."+tmp[1]); 
+    	return decadic + decimal
     }
 }

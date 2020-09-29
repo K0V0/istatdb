@@ -18,6 +18,7 @@ UomsCalculator.prototype = {
 	init: function() {
 		var totok = this
 		$(document).on('input', 'input[name=uom_count]', function(e) {
+			//console.log($(this).val());
 			totok.calculateResult();
 			totok.validate(e);
 		});
@@ -57,6 +58,7 @@ UomsCalculator.prototype = {
 			this.H.handleNanError(evt);
 			this.valid = false;
 		}
+		//console.log(this.valid);
 		this.H.blockAddButton(!(this.valid));
 	},
 
@@ -67,19 +69,29 @@ UomsCalculator.prototype = {
 	calculateResult: function() {
 		this.last_calculated_was_quantity = false;
 		this.getValsFromFields();
-		this.count = parseFloat(this.H.sanitizeComma($('input[name=uom_count]').val().replace(/\s/g, '')));
-		this.result = (this.val * this.count) / this.multiplier;
-		$('input[name=uom_result]').val(NumberFormat(this.result.toFixed(2)));
-		$('input[name=uom_count]').val(NumberFormat(this.count));
+		var count_str = this.H.sanitizeComma($('input[name=uom_count]').val().replace(/\s/g, ''));
+		if (this.H.waitForDecimal(count_str)) {
+			// cakat
+		} else {
+			this.count = parseFloat(count_str);
+			this.result = (this.val * this.count) / this.multiplier;
+			$('input[name=uom_result]').val(NumberFormat(this.result.toFixed(2)));
+			$('input[name=uom_count]').val(NumberFormat(this.count));
+		}
 	},
 
 	calculateQuantity: function() {
 		this.last_calculated_was_quantity = true;
 		this.getValsFromFields();
-		this.result = parseFloat(this.H.sanitizeComma($('input[name=uom_result]').val().replace(/\s/g, '')));
-		this.count = this.result / (this.val / this.multiplier);
-		$('input[name=uom_count]').val(NumberFormat(Math.ceil(this.count)));
-		$('input[name=uom_result]').val(NumberFormat(this.result));
+		var result_str = this.H.sanitizeComma($('input[name=uom_result]').val().replace(/\s/g, ''));
+		if (this.H.waitForDecimal(result_str)) {
+			// cakat
+		} else {
+			this.result = parseFloat(result_str);
+			this.count = this.result / (this.val / this.multiplier);
+			$('input[name=uom_count]').val(NumberFormat(Math.floor(this.count)));
+			$('input[name=uom_result]').val(NumberFormat(this.result));
+		}
 	},
 
 	getValsFromFields: function() {
@@ -151,6 +163,14 @@ UomsCalculatorHelper.prototype = {
 
 	handleZeroError: function() {
 
+	},
+
+	waitForDecimal: function(str) {
+		if (str.match(/^\d+[\.|\,]$/)) {
+			return true;
+		} else {
+			return false;
+		}
 	},
 
 	blockAddButton: function(block) {
