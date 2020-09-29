@@ -139,6 +139,7 @@ div.multiselect {
 	padding-left: 0;
 	padding-right:0;
 	overflow: hidden;
+	max-width: 16em;
 
 	&.disabled {
 		background-color: $button_disabled_background;
@@ -173,7 +174,7 @@ div.multiselect {
 			@include all_transitions();
 			display: flex;
 			align-items: center;
-			height:1.25em;
+			//height:1.25em;
 			line-height: 1.25em;
 			vertical-align: middle;
 			position: relative;
@@ -198,7 +199,7 @@ div.multiselect {
 			}
 
 			label {
-				max-height: 1.25em;
+				//max-height: 1.25em;
 				width:100%;
 				margin-left: 0.25em;
 				padding-right:0.375em;
@@ -211,7 +212,7 @@ div.multiselect {
 
 			input {
 				flex: 0 0 auto;
-				margin:0.25em !important;
+				margin:0.25em 0.125em !important;
 			}
 		}
 
