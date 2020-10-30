@@ -236,6 +236,7 @@ class GoodsController < ApplicationController
 	def show_action
 		super
 		@uom_alone = @record.uoms.first if (@record.uoms.size == 1)
+		@s_manufacturers = @record.manufacturers.preload_items
 	end
 
 end

@@ -45,16 +45,49 @@
 
 	<%= render('layouts/shared/items_table',
 
-		object: @record.manufacturers,
+		object: @s_manufacturers,
 
 		fields: {
 			name: {
-				is_link: true
-			}
+				is_link: true,
+				tooltip: :note
+			},
+			impexpcompany_manufacturers: [
+				impexpcompany: [
+					company_name: {
+
+					}
+				],
+				local_taric: [
+					kncode: {
+						call_decorator: :num_to_kncode,
+						fill_if_empty: true,
+						is_link: true,
+						clipboard_button: true,
+						tooltip: :description
+					}
+				],
+				incoterm: [
+					shortland: {
+						fill_if_empty: true,
+						clipboard_button: true
+					}
+				],
+				trade_type: [
+					type: {
+						fill_if_empty: true
+					}
+				],
+				invoices_correct: {
+					fill_if_empty: true,
+					call_decorator: :bool_to_human,
+				}
+			],
 		},
 
 		options: [
 			caption: true,
+			head: true,
 			foot: true,
 			html_options: {
 				main_class: "shrinked"

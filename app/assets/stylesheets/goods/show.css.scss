@@ -42,6 +42,35 @@
 
 article.goods.show {
 
+	section {
+
+		table#goods-manufacturer {
+
+			td {
+
+				&.manufacturers-name {
+					white-space: nowrap;
+					width:1%;
+				}
+			}
+
+
+			th, td {
+
+				&.inner_table {
+
+					table {
+						table-layout: fixed;
+
+						th, td {
+							width: 25%;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	section.not_resolved {
 
 		table {
