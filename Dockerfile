@@ -1,6 +1,12 @@
 # Dockerfile
 FROM ruby:2.5
 
+# replace APT files for old Debian release
+#
+RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "0";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 
 # refresh outdated repos && intall nodejs and npm
 #
@@ -29,19 +35,24 @@ ENV RAILS_ENV=production
 
 # Install some gems with native extensions
 #
-RUN bundle update caxlsx # mimemagick causing problems with purged version(s) from repo due to licence problems
+RUN RAILS_ENV=production bundle update caxlsx # mimemagick causing problems with purged version(s) from repo due to licence problems
 
 
 # build rails app
 #
-RUN bundle install
+RUN RAILS_ENV=production bundle install
 
 
 # precompile assets
 #
-RUN rake assets:precompile
+RUN RAILS_ENV=production rake assets:precompile
+
+
+# run database migrations
+#
+RUN RAILS_ENV=production rake db:migrate
 
 
 # run rails app
 #
-CMD rails s -b 0.0.0.0
+CMD RAILS_ENV=production rails s -b 0.0.0.0
