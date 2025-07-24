@@ -16,7 +16,7 @@ jobs:
         id: vars
         run: |
           TAG=$(date +'%Y-%m-%d-%H-%M')
-          IMAGE_NAME="${{ secrets.DOCKERHUB_USER }}/your-image-name"
+          IMAGE_NAME="${{ secrets.DOCKERHUB_USER }}/istatdb"
           echo "image=${IMAGE_NAME}" >> $GITHUB_OUTPUT
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
 

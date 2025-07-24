@@ -1,6 +1,12 @@
 # Dockerfile
 FROM ruby:2.5
 
+# replace APT files for old Debian release
+#
+RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "0";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 
 # refresh outdated repos && intall nodejs and npm
 #
