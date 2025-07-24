@@ -35,24 +35,24 @@ ENV RAILS_ENV=production
 
 # Install some gems with native extensions
 #
-RUN bundle update caxlsx # mimemagick causing problems with purged version(s) from repo due to licence problems
+RUN RAILS_ENV=production bundle update caxlsx # mimemagick causing problems with purged version(s) from repo due to licence problems
 
 
 # build rails app
 #
-RUN bundle install
+RUN RAILS_ENV=production bundle install
 
 
 # precompile assets
 #
-RUN rake assets:precompile
+RUN RAILS_ENV=production rake assets:precompile
 
 
 # run database migrations
 #
-RUN rake db:migrate
+RUN RAILS_ENV=production rake db:migrate
 
 
 # run rails app
 #
-CMD rails s -b 0.0.0.0
+CMD RAILS_ENV=production rails s -b 0.0.0.0

@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+
   app:
     image: roulage/istatdb:latest
     container_name: istatdb-app
@@ -12,3 +13,22 @@ services:
 #      - .:/app         # optional: mount local code into container
 #      - sqlite_data:/app/db
 #    command: bash -c "bundle install && ruby app.rb"  # adjust to your app's entrypoint
+    networks:
+      - nginx-proxy
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - nginx-proxy
+
+
+
+networks:
+  nginx-proxy:
+    driver: bridge
