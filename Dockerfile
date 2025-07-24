@@ -48,6 +48,11 @@ RUN bundle install
 RUN rake assets:precompile
 
 
+# run database migrations
+#
+RUN rake db:migrate
+
+
 # run rails app
 #
 CMD rails s -b 0.0.0.0
