@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   app:
-    image: roulage/istatdb:latest
+    image: roulage/istatdb:2025-07-24-10-03
     container_name: istatdb-app
     ports:
       - "3000:3000"   # adjust if your app runs on a different port
